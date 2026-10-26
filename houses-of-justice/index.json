@@ -3,138 +3,22 @@
     "entries": [
         {
             "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/",
+            "finalUrl": "https://maintenance.etnic.be/",
             "status": 200,
-            "contentType": "text/html;charset=utf-8",
+            "contentType": "",
             "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/index.html",
-            "sha256": "74c26ad0a2a7e6057b955cec21e68675dc85bd80263747a61edd28798f80b0a4",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-arlon/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-arlon/index.html",
-            "sha256": "c25baac9e8f271e3f7dd7558888ad84bec01afd95264f712dea5e558a85a0d41",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-bruxelles/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-bruxelles/index.html",
-            "sha256": "0fe9abf3ce20604dba127593e3379f7dbf173b4ad335078b92d2377d08867573",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-charleroi/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-charleroi/index.html",
-            "sha256": "5f46556b3c8a2e00ec435b2dcb309d8bbd13d4a73d0c49e8d9a2165484f11ae3",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-dinant/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-dinant/index.html",
-            "sha256": "babeb337d5cc1e7605692f6028b1dcd2938e9c631f3c8f99ba6638b33af67ebc",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-huy/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-huy/index.html",
-            "sha256": "4598c64c58fe7b7db0f8f5627f11754f3ded0e9e5c10583c338ae33ea03eccb9",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-liege/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-liege/index.html",
-            "sha256": "6453880f66637703a6645d7a1a58563f0df8036ae4d17578176d7c226678f067",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-marche-en-famenne/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-marche-en-famenne/index.html",
-            "sha256": "1eb9eb7416f2f49955e4cfe0dc9b311dd0acc3311a82f6717c0bf2bb35185645",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-mons/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-mons/index.html",
-            "sha256": "3692d741af01e77d1af9772b20bc99a006bfe1196d5b71cbb07b0e36ef950240",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-namur/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-namur/index.html",
-            "sha256": "6e582a3fa9aa071ec8e9a479c6e782cd1bdb33659db38d86e33448cff1d9f2a3",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-neufchateau/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-neufchateau/index.html",
-            "sha256": "f84575cefc56ac07046bfc663d0a094a39c7513c2bd8f7e6b90297cad37032aa",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-nivelles/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-nivelles/index.html",
-            "sha256": "608f9d10c75a86bc751ad9bdd4244182b3c473a957f9ef98e42451d621b47bdb",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-tournai/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-tournai/index.html",
-            "sha256": "ca9bd75c095b2493bde79f68a5a9d268331110e5067de0618e5460de3ce80711",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
-        },
-        {
-            "url": "https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-verviers/",
-            "status": 200,
-            "contentType": "text/html;charset=utf-8",
-            "file": "www.maisonsdejustice.be/menu-de-droite/trouverunemj/maison-justice-verviers/index.html",
-            "sha256": "d6d495a660e47f81c56e0223793086c654066f31d1347790796f909bc8edd5ee",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "6789066bed8d96b745c7788adff0c295a25474f3325c786a5ad355cf165f2a44",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
             "status": 200,
             "contentType": "text/html;charset=UTF-8",
             "file": "www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen.html",
-            "sha256": "7ecb98135c6a056e5bd9e87f9bb51e17c7a9b99a5d799de57015e0db2c315848",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "a957cb9bbc7441a36f05ae4dc444851af7ce560dbc0568139ed9e0926419d013",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         }
     ]
 }

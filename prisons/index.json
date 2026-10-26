@@ -9,7 +9,7 @@
             "file": "justitie.belgium.be/de/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_dendermonde.html",
             "sha256": "6eb0f2b9a78ab6486c773fc5f11a3812d06d7d2854eb4b3178eb74d88712325a",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_aarlen",
@@ -19,7 +19,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_aarlen.html",
             "sha256": "33664f6a2f3f34ad02eb1c1a70118fb8d393e8149e45bde0a756fc3b4e648706",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_andenne",
@@ -29,7 +29,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_andenne.html",
             "sha256": "8e90ed51bb0f04a8d748fa299e03413cd4f57fe1d752cbfcbec9bb0458f6df72",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_antwerpen",
@@ -39,7 +39,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_antwerpen.html",
             "sha256": "1d05b46fafd27bd51d5f4f518e6103b6642e4be8b6df79ae30123c5459a2de08",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_antwerpen_0",
@@ -47,9 +47,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_antwerpen_0.html",
-            "sha256": "dd896be82925fac84ea785e860d7727d65294bdd624c58537779bf3403b409ac",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "50522a9dca92653ad0b6f35eeb51c93166ca250a03add1aaea8486cf3de4a46e",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_beveren",
@@ -59,7 +59,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_beveren.html",
             "sha256": "ad4032ec7c19b656acdb6c80003b521df4f8b2db218ab09649ad96b591b9b767",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_bruegge",
@@ -69,7 +69,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_bruegge.html",
             "sha256": "b17f3a1a4ce5353326e78a226cf0a64ca8fd6ceed856866de0dc2a1beb90327c",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_dendemonde_hulp",
@@ -79,7 +79,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_dendemonde_hulp.html",
             "sha256": "fdb0ae94c9536c191ee3745f4b2fafb8509edc8d42962c06d045151fbdc2b785",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_dinant",
@@ -89,7 +89,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_dinant.html",
             "sha256": "aef1d4a770756932d386ff7e6455ed09529d103d43577197fbbe56011a199f31",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_gent",
@@ -99,7 +99,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_gent.html",
             "sha256": "0c02ccea33ba58b575ac25519e851b113bc2d8dd0e82c20f01a464f99a6d9050",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_haren",
@@ -109,7 +109,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_haren.html",
             "sha256": "9f8151c3324767b740f2a67f5678ee3ae3bf1496473f7180c15d866128317d9d",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_hasselt",
@@ -119,7 +119,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_hasselt.html",
             "sha256": "1f11313cbad74236049be46e116f2f10c5e89eee744b996001b96fbf82b0cf0d",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_hoogstraten",
@@ -127,9 +127,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_hoogstraten.html",
-            "sha256": "1daa393e5343ac4c44110d44fbe978ca12b25e7d80a9d817e3ac212e8a9166cf",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "d13a10e5e933b1291d2ae29640eaf8d066fcf39b64206bae94da37a4657cd09e",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_huy",
@@ -139,7 +139,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_huy.html",
             "sha256": "35a5a56be98f3158554f1a0b395075d9081af74ff9e5e04a50dab81119816b0f",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_ieper",
@@ -149,7 +149,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_ieper.html",
             "sha256": "ba65d66b684892b0d937a4e16c32f82e8eff8d4699b5a12ce48816382f56fa41",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_ittre",
@@ -159,7 +159,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_ittre.html",
             "sha256": "4a1ecf6b1210148d93a4713bf3cd8bed8de2764df5d1ac4d1b70adbcd30e9096",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_jamioulx",
@@ -169,7 +169,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_jamioulx.html",
             "sha256": "642fa1f4e532c25f4ed9500b028d547344b9cabfdfd60f6853db6084a6461718",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_lantin",
@@ -179,7 +179,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_lantin.html",
             "sha256": "0f38c6831030e1b09494ad216b6678f8a172447bfc878ae827effbe3a17d1ff6",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_leuze",
@@ -189,7 +189,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_leuze.html",
             "sha256": "00ac1725ae1e3c532ac7552f0a090ea9087697c6c0dd2b23307798b8dcfeb37e",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_loewen",
@@ -199,7 +199,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_loewen.html",
             "sha256": "833e1a2e47b6caf1441ab6574200fca52ce8a3e92102fb5d18e90fadee141246",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_marneffe",
@@ -209,7 +209,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_marneffe.html",
             "sha256": "f7bca7eb39589a1f2d8d3250aa102b0c1e23eb40b8669bdba90d7deb0be97bd5",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_mecheln",
@@ -217,9 +217,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_mecheln.html",
-            "sha256": "360dcfcd5373f22a9a55d967b8f99b9ce45e458b635ce7cf6077b80fc53a972a",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "99da1e1f8d1a107bf6a6c2a6b315ea90e62aed8b7ff0bda71892cbe38744d79a",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_merksplas",
@@ -229,7 +229,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_merksplas.html",
             "sha256": "dbf46a821a89d97ff3a870d0b488910243b0331e621741a26a270ad16550874e",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_mons",
@@ -239,7 +239,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_mons.html",
             "sha256": "d8a7a88eb136fb939cd1dbab1544c7fb2638c934f96fbda3b6c50f71522a42e9",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_namur",
@@ -249,7 +249,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_namur.html",
             "sha256": "708e8e5aeef3bcc00ae27395e268e5805ce2c15b8899bc5105757cbfbb5fd359",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_nivelles",
@@ -259,7 +259,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_nivelles.html",
             "sha256": "9735e72e8e41e1a12dcd1e1f93f36d13f4a79b4c343176bfa60bcf082172f353",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_oudenaarde",
@@ -269,7 +269,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_oudenaarde.html",
             "sha256": "1a671c97ea2ffd42ca67b67bc19d539f8b5bdefcd50f7aac9b5253f9a6fc9a46",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_paifve",
@@ -279,7 +279,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_paifve.html",
             "sha256": "f838e587d11cd1de46af8c58e40ed4c33e91a5c1dea80eb06463e1d7aacdef9d",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_ruiselede",
@@ -289,7 +289,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_ruiselede.html",
             "sha256": "7e7e664203c527e407209bc7eab128ee932dbd711fe785e4e90de621ee296570",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_stgilles",
@@ -299,7 +299,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_stgilles.html",
             "sha256": "ff45699539dd52c50667dd717c7b954bf87bdac2f91fab5e511122f1a342d66e",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_tongeren",
@@ -309,7 +309,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_tongeren.html",
             "sha256": "50f2c12b4499eb8c196f0fa3af00f8bf8fbfc89eda82b5784795ac587ccf2661",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_tournai",
@@ -319,7 +319,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_tournai.html",
             "sha256": "4ec62228ce29ecb76fb4ae2dd99b4984f2849721edf31f3e8d6671c5efec875a",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_turnhout",
@@ -329,7 +329,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_turnhout.html",
             "sha256": "08c67aff07a1d321ebbddf87fe258d1dcd814193019546bc7035be4b10ffea22",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_wortel",
@@ -339,7 +339,7 @@
             "file": "justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_wortel.html",
             "sha256": "87262d350c1dbbeef9caa398e2337963b9063e816b468b80ebf1a859c40e71d4",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengniss_sthubert",
@@ -349,7 +349,7 @@
             "file": "justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengniss_sthubert.html",
             "sha256": "ffb2fb55ad03dec3bceae9c25df35daccedcc5c3abca71ec9b8f30358520ffbe",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalt/haftanstalt_forest",
@@ -359,7 +359,7 @@
             "file": "justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalt/haftanstalt_forest.html",
             "sha256": "d18bf4f947711f4de747184ac7db975868eebe2abe566cf7429b128b052a7b01",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalten/haftanstalt_kortrijk",
@@ -369,7 +369,7 @@
             "file": "justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalten/haftanstalt_kortrijk.html",
             "sha256": "736d62b15d20524768e9283ad781c29af57e23f1a453a6147303a8fe775b6942",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalten/haftanstalt_olen",
@@ -377,9 +377,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalten/haftanstalt_olen.html",
-            "sha256": "1da7a35e03ea25767650f662387b76874cf7c138aef87513110e412ec827f0c6",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "a556e2878874db2a4b920a59fe62aef15e9e8441727316232241a840e582bec7",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/de/themes_and_dossiers/gefaengnisse/belgische_gefaengnisse/adresse_gefaengnis_marche-en-famenne",
@@ -387,9 +387,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/de/themes_and_dossiers/gefaengnisse/belgische_gefaengnisse/adresse_gefaengnis_marche-en-famenne.html",
-            "sha256": "bb3cc8a526f571a4570d85b5efef87f5726a14aad1a65239b3bef158e0ae09f3",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "def0e295297bba8db246121a8e33551165b4cbf10fc5134aeb40f036df72d37a",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/maisons_de_d%C3%A9tention/adres_maison_de_d%C3%A9tention_courtrai",
@@ -399,7 +399,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/maisons_de_d_tention/adres_maison_de_d_tention_courtrai.html",
             "sha256": "5cbbf6d0f12fa211054b699b55cb431bccdee4e427253e1e7b6bbf1bebae6a84",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/maisons_de_d%C3%A9tention/adres_maison_de_d%C3%A9tention_forest",
@@ -409,7 +409,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/maisons_de_d_tention/adres_maison_de_d_tention_forest.html",
             "sha256": "c96ed6de3b36207ba7ab054e9fdaf9f55437434bc41805f95514d19157732dfb",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/maisons_de_detention/adres_maison_de_detention_olen",
@@ -417,9 +417,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/maisons_de_detention/adres_maison_de_detention_olen.html",
-            "sha256": "3509792fafcf0049ad064399a4211fb6d431826a3316af430cecd78e2c0e2e3e",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "b2fa5d505424467801f30aa2be6fcd555920bd596f0312791d7aa0dbc3d7136b",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_aarlen",
@@ -429,7 +429,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_aarlen.html",
             "sha256": "10ba544f0096da0b8094b7edae5e45fe4fe404d7a1638ac46257248243f0f96d",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_andenne",
@@ -439,7 +439,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_andenne.html",
             "sha256": "7ee3bf2cdc8486a359fc75ad5aca46ba48c43881d6a965d00f57d6bbec29fe18",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_antwerpen",
@@ -449,7 +449,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_antwerpen.html",
             "sha256": "bd0a3f86ec6992ce6ce6ca64c2665a4690bd7b2dfda88e4419de366b0da3c23b",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_antwerpen_0",
@@ -457,9 +457,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_antwerpen_0.html",
-            "sha256": "075a982a805292652a8ad7d2aafbdb08b55a7efea2b773f5308b6c72d4ef1fc9",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "a89e268e0146c8bb08bde4cccfc4c0d4d9f470f7a11b94e64f29fa80cb07c28c",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_beveren",
@@ -469,7 +469,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_beveren.html",
             "sha256": "af9d331adc5f8834aaadd6c2697a8323887db502558c32075e1543a38653dfa2",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_brugge",
@@ -479,7 +479,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_brugge.html",
             "sha256": "3d6f6cbed8e5dc02d0827ea1ab525b8afca7f57ae7d5ad953a852553da58f3bb",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_dendemonde_hulp",
@@ -489,7 +489,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_dendemonde_hulp.html",
             "sha256": "3834087c0a6914eb629246b59e6c0d628be733451303d87037cddca2a739e46b",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_dendermonde",
@@ -499,7 +499,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_dendermonde.html",
             "sha256": "9154de20b7d0248fa2eba72b52f50b85c21853430cd98829d4b1318bc35dc243",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_dinant",
@@ -509,7 +509,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_dinant.html",
             "sha256": "d6da66a18a485e965a9acc87752623712f98995531aba899f477f306154bbe72",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_gent",
@@ -519,7 +519,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_gent.html",
             "sha256": "62d6ac7bdd8448377783e03e691b41dff4aadbb576953b4a956bd17e6d04a80d",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_haren",
@@ -529,7 +529,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_haren.html",
             "sha256": "533d1f9db75ab1059ffb5c0778dc4716acc092db6aeeb5ddf6759dca4ed90522",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_hasselt",
@@ -539,7 +539,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_hasselt.html",
             "sha256": "db30de16cff1ede3e193fcc53b9bb04f617a8d20f72d88b451eebd023e4a62c9",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_hoei",
@@ -549,7 +549,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_hoei.html",
             "sha256": "114d8f8bcc55f7e3707c14a3899e7a29147267566b5de86f9a3155c60bd46b52",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_hoogstraten",
@@ -557,9 +557,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_hoogstraten.html",
-            "sha256": "25857a668bb674ab8474018f97da15160aba0b2ef25b75dca58127948f330c97",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "41ddf1bf1e19a35a5f9026658ee9af2a52bbaa9b3c9d6fa23bd02aa2b8019b3c",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_ieper",
@@ -569,7 +569,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_ieper.html",
             "sha256": "1e416ef50514610702898f1bfbc36eb876126bb87a182a160a5782ca0f491d59",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_ittre",
@@ -579,7 +579,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_ittre.html",
             "sha256": "e9ef50632d0769d97d18e7a3962534ed6811a85676c82eb8fe120101708bb88a",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_jamioulx",
@@ -589,7 +589,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_jamioulx.html",
             "sha256": "e7c4da6c6fd6f1bb9b3e9f6f278aead2190f13f93ee7592f9d9ec5cbb4ab75c4",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_lantin",
@@ -599,7 +599,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_lantin.html",
             "sha256": "7a10e0345a46d675d431359dd87fecf1dda4e9a3116f9d60c44d2a53cb38fa09",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_leuven",
@@ -609,7 +609,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_leuven.html",
             "sha256": "ec2b327cf22b9632863c5c82b95360e9eac586f63acd4c6060d24462535b1356",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_leuze",
@@ -619,7 +619,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_leuze.html",
             "sha256": "9df678c34f151fc45e7f8b4276991f4987e9bbe431e320a0c444241af3ba4063",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_marche-en-famenne",
@@ -627,9 +627,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_marche-en-famenne.html",
-            "sha256": "a8e41463872d74130027353f5a551f8a4d882226db96fa5ccec50c1c92e67cce",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "a31daf809e3d2b02a1fdf8ec8311a15542697f2ded10d900d00adc7048a731fc",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_marneffe",
@@ -639,7 +639,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_marneffe.html",
             "sha256": "d71760e4d1c58c4efb0ed66409dcc48153bab4b6710443bb04cf88827fa48540",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_mechelen",
@@ -647,9 +647,9 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_mechelen.html",
-            "sha256": "ffae3b737f51acabef3e6e10a4bdd1276aacd47eae0743cf871fb090724c17d6",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "2aef5b65e24027e3ec92e45174aa002b032343bf8e523864dd46a6753b679bd1",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_merksplas",
@@ -659,7 +659,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_merksplas.html",
             "sha256": "c0414ab5ff7b9bc006d368a6e7c41f1dda85e58d441d0c7ca6e085fcec794ff8",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_mons",
@@ -669,7 +669,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_mons.html",
             "sha256": "48d74927e9f7a6c446e3f2f59d55e1d57122354a89d39d3d166bcbe56b9ae2e1",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_namen",
@@ -679,7 +679,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_namen.html",
             "sha256": "0f35e40a6dc6dc2a3cafbbc67fd405d161638a508f986a5afc82d944c0c80745",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_nijvel",
@@ -689,7 +689,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_nijvel.html",
             "sha256": "6c170ab28cc0ec7192a04b498722bc5cba8a50cece526a34bb39a9d49fb93a42",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_oudenaarde",
@@ -699,7 +699,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_oudenaarde.html",
             "sha256": "8410a0ba7478002fdae1cdadee3687b520af3053bd531984cc62a39baf10dda3",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_paifve",
@@ -709,7 +709,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_paifve.html",
             "sha256": "145386f4fdb366c88d765e19fa1c12746a18e012e64efc10812deefa1054e70b",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_ruiselede",
@@ -719,7 +719,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_ruiselede.html",
             "sha256": "cd753e223cd5ac3cde142803e117f91d24c62c2feb3578bb771ac382985dca3f",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_stgillis",
@@ -729,7 +729,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_stgillis.html",
             "sha256": "f08649d24e429ff17d51853a5aacb502a63c6ca0db13d3e1f09c09b8c7df0977",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_sthubert",
@@ -739,7 +739,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_sthubert.html",
             "sha256": "32df3575937e7d0ab57cb0401a43dfc5cea45189601446112606ce3e79beff9f",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_tongeren",
@@ -749,7 +749,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_tongeren.html",
             "sha256": "6757ce147134403cc86c0fd5447f4a66d341341bbc9a3e7469b00a4f2214851d",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_tournai",
@@ -759,7 +759,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_tournai.html",
             "sha256": "29cd5d10400782135ada51c566c660ed334e196945bd52290191f5b93f2d391e",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_turnhout",
@@ -769,7 +769,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_turnhout.html",
             "sha256": "53675901465b692caff2789f0687f0506c99c92d9f47eabcd8a36d770bce12bb",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_wortel",
@@ -779,7 +779,7 @@
             "file": "justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_wortel.html",
             "sha256": "b61661da70bddef6656f7567f80ff7760a600304d6b5baa85c476ea1cb97ee98",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen",
@@ -788,7 +788,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen.html",
             "sha256": "0e8f89c47eb0cefd0ef098801b20b59ca68b913dfeec050623bcfad50020d393",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/detentiehuizen/adres_detentiehuis_kortrijk",
@@ -797,16 +797,16 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/detentiehuizen/adres_detentiehuis_kortrijk.html",
             "sha256": "2835d9766410cca122c031f1ba9272c7beb98249c1208e8735d0991e1732608f",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/detentiehuizen/adres_detentiehuis_olen",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/detentiehuizen/adres_detentiehuis_olen.html",
-            "sha256": "751491337344bdc6673f72e8df8ec6ccb446aa4e8363dbab38a5954983d23765",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "aa8e8e379c01c6f8c1499bbb71a4900e09409c3dc86838b20ad86fe51a2e6185",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/detentiehuizen/adres_detentiehuis_vorst",
@@ -815,7 +815,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/detentiehuizen/adres_detentiehuis_vorst.html",
             "sha256": "2dcead4a1b88683e4dea09c42a0cf7b68ea98fddbaa1608919e6488d7504b339",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_aarlen",
@@ -824,7 +824,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_aarlen.html",
             "sha256": "fac32ee421c6d59a66ac2ebb2535a52261356e8697a438f0ead89a86846533f6",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_andenne",
@@ -833,16 +833,16 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_andenne.html",
             "sha256": "dc741d363fae21e55cf1472099588cc205750c2fbc6619703f63a82c2afbc655",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_antwerpen_0",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_antwerpen_0.html",
-            "sha256": "7cc6e3cbe7005b44b1aac1a3d60e9d18093f1f6eabf2a63b539fbfed683b1e60",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "0367119bb44216bc3e9338e01667af998189787eff59195107061e0f69751cc5",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_beveren",
@@ -851,7 +851,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_beveren.html",
             "sha256": "52a54500a12da244c7570b5a49bf29f78f10f738c5c1b3ad7196e84b3d7e7684",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_brugge",
@@ -860,7 +860,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_brugge.html",
             "sha256": "587de517ccdd0822c92a87365ccdd14e4a09b8e8784f4409f7feb90cdc105143",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_dendemonde_hulp",
@@ -869,7 +869,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_dendemonde_hulp.html",
             "sha256": "5dd0884de91c5b337400d485fa0a786b649f05aeaefbbe73aeeef2d0ab5157c3",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_dendermonde",
@@ -878,7 +878,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_dendermonde.html",
             "sha256": "996dd680aeacc17357daf68294dc30d7237bdf11646c68d4dbfd4a2ec848ab12",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_dinant",
@@ -887,7 +887,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_dinant.html",
             "sha256": "78a17bae59f0f67eb520c340fafb9a55db001ecb600e83b9aeb085f697131c5b",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_gent",
@@ -896,7 +896,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_gent.html",
             "sha256": "6d50baded72345a0b20e1fff8341f6841eb2ae15a201ff5cd8c26fad9e6894f9",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_haren",
@@ -905,7 +905,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_haren.html",
             "sha256": "e9640c6f957c90650a5fe2e63c47d299311aeb239f168a1b426a7b066983f421",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_hasselt",
@@ -914,7 +914,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_hasselt.html",
             "sha256": "915ce1fede879b219c6e5da15fde48f514321ffdab633509394767ffe579fbb0",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_hoei",
@@ -923,16 +923,16 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_hoei.html",
             "sha256": "836dc1667512daa132df1e117596c14be6ef6503233e9188b63ec5fd74041320",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_hoogstraten",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_hoogstraten.html",
-            "sha256": "d7dc4801464e3ed77c715eed4aeccd8c72662435747fbd6da0348dd3442098df",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "8e3f4c91d24889a04ea6e043a6474aaf23397b2e3c72b1492e986d60db7fe5b3",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_ieper",
@@ -941,7 +941,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_ieper.html",
             "sha256": "5ce40fb63af6f08b3c235a83bf4ab69283becaecdcec00e5a614336ed4eb6150",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_ittre",
@@ -950,7 +950,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_ittre.html",
             "sha256": "3b1cb8d2c49c77d8e3edfa07d11d3b8aebb747c729e2caecd657ddd7f38975f3",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_jamioulx",
@@ -959,7 +959,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_jamioulx.html",
             "sha256": "a753c7264f4e5ccdb33735f6696650fd678ac4375fc1e208cbf4059d361d3a47",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_lantin",
@@ -968,7 +968,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_lantin.html",
             "sha256": "23f869ff34898c5e2aaa97371c98e426c99cb9306272a88e397f73f487323f5e",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_leuven",
@@ -977,7 +977,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_leuven.html",
             "sha256": "d7c17eadb27be57583ac57d4eec1d48fcfb8c71eafd66b75f6065a178765bb63",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_leuvenhulp",
@@ -986,7 +986,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_leuvenhulp.html",
             "sha256": "f92a9ddc67c1ef9355b7e9488bf4af428f910c38e9b2fcf6a6fe6cdabe637d26",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_leuze",
@@ -995,16 +995,16 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_leuze.html",
             "sha256": "bfcee59a69e0fe12a26e8a3d9b240da3b8fc7277309c1e340654a882f2f41885",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_marche-en-famenne",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_marche-en-famenne.html",
-            "sha256": "f0f6c630eb91a25d277c0ceed5357ffe34101c6a17b9da346010f84679edba17",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "cd01d1af603c954fae8884e4dcd2e87b1d46b79fde930dddee2e71a501766808",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_marneffe",
@@ -1013,16 +1013,16 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_marneffe.html",
             "sha256": "8f6167031075681f33e53fec947dbdbd7306f287f8401a7bdfbc68e88d22ab0b",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_mechelen",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_mechelen.html",
-            "sha256": "92d8f367b3a8c9fc35d9f580f6df8a3a7bb5e36a4f10a85ff5f0cc90fef02616",
-            "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "sha256": "ba7623a4d16d597d86256ff89f1148020722f3159985803b79a08a3d97386347",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_merksplas",
@@ -1031,7 +1031,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_merksplas.html",
             "sha256": "24df987c9f78504b6e1f45e754f0a708638f2d67e6bdedab6be25baef72f7e36",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_mons",
@@ -1040,7 +1040,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_mons.html",
             "sha256": "93743e95ba93971399fa71d878f070321b960088072be8ee950e7e4791816b73",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_namen",
@@ -1049,7 +1049,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_namen.html",
             "sha256": "f6f0427d190e9567655e2311834b782e28685d0dba15cab32b498b7d4cadec64",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_nijvel",
@@ -1058,7 +1058,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_nijvel.html",
             "sha256": "4f7221b69630de24e94f746ff718a98ef6439a08a6b7abec56704455aa3f43d8",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_oudenaarde",
@@ -1067,7 +1067,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_oudenaarde.html",
             "sha256": "162fcb2727cbb1ce98b084b98ede407293c6c9e7f6ef0f70e4e27f7797d68e02",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_paifve",
@@ -1076,7 +1076,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_paifve.html",
             "sha256": "791eb8e5c38c1f3e547f18ff02a9cf4284cde505ef51c6b82a64cedfe6bff521",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_ruiselede",
@@ -1085,7 +1085,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_ruiselede.html",
             "sha256": "76446f2a9d4286f97eb30436857bc505beb909a59802e8424e78e5dc7c3c6cc9",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_stgillis",
@@ -1094,7 +1094,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_stgillis.html",
             "sha256": "9c12db4e3f06cac8499777feb3983e59c183d815575920a6a1e191739b6a430f",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_sthubert",
@@ -1103,7 +1103,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_sthubert.html",
             "sha256": "d606ddae96bdaf85b5b2bb2ab903d93b2244b7bc3899c5dfea53ea9cdc93eebe",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_tongeren",
@@ -1112,7 +1112,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_tongeren.html",
             "sha256": "0fa17da7cdee61c6353210f4b1d07b236c49a550c20789a3afee1422272024c3",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_tournai",
@@ -1121,7 +1121,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_tournai.html",
             "sha256": "234cfcb1c136148fc809f53326a12727f6d1fb31f73f12cbd9c8674a6645d7de",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_turnhout",
@@ -1130,7 +1130,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_turnhout.html",
             "sha256": "eda4e0a7cc6ffa19185bf3408c2183240c2bccfb607934316b6080f49a878446",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         },
         {
             "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_wortel",
@@ -1139,7 +1139,7 @@
             "file": "justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_wortel.html",
             "sha256": "cd9a32e302320875bd2fd834190b38a9c17189762c387c44a1417bbe670bfcdc",
             "retrieved": "2026-10-20",
-            "checked": "2026-10-20"
+            "checked": "2026-10-26"
         }
     ]
 }

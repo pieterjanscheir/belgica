@@ -1,0 +1,14 @@
+{
+    "source": "ngi",
+    "entries": [
+        {
+            "url": "https://ac.ngi.be/remoteclient-open/ngi-standard-open/Vectordata/TerritorialDivisions/TerritorialDivisions-JudicialCanton/e1f61c40-623a-11eb-9e7c-186571a04de3_geopackage+sqlite3_4326.zip",
+            "status": 200,
+            "contentType": "application/octet-stream",
+            "file": "ac.ngi.be/remoteclient-open/ngi-standard-open/Vectordata/TerritorialDivisions/TerritorialDivisions-JudicialCanton/e1f61c40-623a-11eb-9e7c-186571a04de3_geopackage_sqlite3_4326.zip",
+            "sha256": "b87830e710ec7661bdac261600162e5a5a7514dbfb276b333511d1cefcda5bcf",
+            "retrieved": "2026-10-26",
+            "checked": "2026-10-26"
+        }
+    ]
+}
