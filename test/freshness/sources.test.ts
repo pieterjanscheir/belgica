@@ -16,6 +16,8 @@ const urls = new Set<string>(
 // ejustice resets connections from GitHub's runners; check it from elsewhere (pnpm build:cantons)
 const blocked = (url: string) => new URL(url).host === 'www.ejustice.just.fgov.be'
 const runner = process.env['GITHUB_ACTIONS'] === 'true'
+// The e-Justice portal's firewall answers GitHub's runners with 403; a moved page still shows as 404
+const walled = (url: string) => new URL(url).host === 'e-justice.europa.eu'
 
 describe.runIf(process.env['FRESHNESS_ONLINE'] === '1')('source URLs', () => {
     it.each([...urls].filter((url) => !(runner && blocked(url))))('%s responds', async (url) => {
@@ -27,6 +29,7 @@ describe.runIf(process.env['FRESHNESS_ONLINE'] === '1')('source URLs', () => {
             },
             signal: AbortSignal.timeout(25_000),
         })
+        if (runner && walled(url) && res.status === 403) return
         expect(res.status, url).toBeLessThan(400)
     })
 })
