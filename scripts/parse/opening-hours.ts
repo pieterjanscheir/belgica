@@ -71,11 +71,13 @@ function tokenize(text: string): Token[] | undefined {
         .toLowerCase()
         .replace(/[–—-]/g, ' - ')
         .replace(WORKDAYS, ' @workdays ')
+        // The dashes are spaced out above, so "après-midi" reads "après - midi". `\b` doesn't
+        // see the é of "fermé" as part of a word; a lookahead for a letter does.
         .replace(
-            /\b(?:namiddag|middag|'s middags|après-midi|nachmittags?)\s+(?:gesloten|fermé|geschlossen)\b/g,
+            /\b(?:namiddag|middag|'s middags|après - midi|nachmittags?)\s+(?:gesloten|fermé|geschlossen)(?!\p{L})/gu,
             ' @afternoonclosed ',
         )
-        .replace(/\b(?:gesloten|fermé|geschlossen)\b/g, ' @closed ')
+        .replace(/\b(?:gesloten|fermé|geschlossen)(?!\p{L})/gu, ' @closed ')
         .replace(
             /(\d{1,2})\s*(?:[u:h.]\s*(\d{2}))?(?:\s*(?:heures|uhr|uur|u|h)\b)?(?!\d)/g,
             (_, h: string, m?: string) => ` @t${h}_${m ?? '00'} `,

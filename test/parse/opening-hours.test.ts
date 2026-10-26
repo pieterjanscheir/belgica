@@ -28,6 +28,12 @@ describe('toOpeningHours', () => {
         ['Maandag, dinsdag en donderdag van 9u tot 12u', 'Mo,Tu,Th 09:00-12:00'],
         // Days with no hours, said once, are simply closed
         ['Maandag tot donderdag van 9u tot 12u. Vrijdag gesloten.', 'Mo-Th 09:00-12:00'],
+        // "fermé" at the end, and the afternoon closed in French
+        [
+            'Lundi: 08h30 - 12h30 | 13h30 - 16h00 Mardi: 08h30 - 12h30 Mercredi: 08h30 - 12h30 | 13h30 - 16h00 Jeudi: 08h30 - 12h30 Vendredi: fermé',
+            'Mo,We 08:30-12:30,13:30-16:00; Tu,Th 08:30-12:30',
+        ],
+        ['Lundi au vendredi de 9h à 12h30 – après-midi fermé', 'Mo-Fr 09:00-12:30'],
     ])('reads %j', (text, expected) => {
         expect(toOpeningHours(text)).toBe(expected)
     })
