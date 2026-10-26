@@ -28,7 +28,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -61,7 +61,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -94,7 +94,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -127,7 +127,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -160,7 +160,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -193,7 +193,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -226,7 +226,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -259,7 +259,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -292,7 +292,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -325,7 +325,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -358,7 +358,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -391,7 +391,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -424,7 +424,7 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
@@ -457,12 +457,13 @@
     "sources": [
       {
         "url": "https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-10-26"
       }
     ]
   },
   {
     "id": "maison-justice-arlon",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice d'Arlon"
@@ -514,6 +515,7 @@
   },
   {
     "id": "maison-justice-bruxelles",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Bruxelles"
@@ -551,6 +553,7 @@
   },
   {
     "id": "maison-justice-charleroi",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Charleroi"
@@ -602,6 +605,7 @@
   },
   {
     "id": "maison-justice-dinant",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Dinant"
@@ -644,6 +648,7 @@
   },
   {
     "id": "maison-justice-huy",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Huy"
@@ -686,6 +691,7 @@
   },
   {
     "id": "maison-justice-liege",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Liège"
@@ -732,6 +738,7 @@
   },
   {
     "id": "maison-justice-marche-en-famenne",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Marche-en-Famenne"
@@ -769,6 +776,7 @@
   },
   {
     "id": "maison-justice-mons",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Mons"
@@ -805,6 +813,7 @@
   },
   {
     "id": "maison-justice-namur",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Namur"
@@ -847,6 +856,7 @@
   },
   {
     "id": "maison-justice-neufchateau",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Neufchâteau"
@@ -898,6 +908,7 @@
   },
   {
     "id": "maison-justice-nivelles",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Nivelles"
@@ -949,6 +960,7 @@
   },
   {
     "id": "maison-justice-tournai",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Tournai"
@@ -1000,6 +1012,7 @@
   },
   {
     "id": "maison-justice-verviers",
+    "validTo": "2026-10-25",
     "community": "french",
     "name": {
       "fr": "Maison de justice de Verviers"
