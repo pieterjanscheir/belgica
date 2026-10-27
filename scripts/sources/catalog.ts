@@ -113,8 +113,12 @@ const housesOfJustice: Source = {
         )
         const list = 'https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/'
         const res = await get(list)
-        for (const url of links(html(res), res.url).sort())
-            if (url.startsWith(list + 'maison-justice-')) await get(url)
+        const pages = links(html(res), res.url).filter((url) =>
+            url.startsWith(list + 'maison-justice-'),
+        )
+        // A maintenance page answers 200 without the list; an empty walk would retire them all
+        if (pages.length === 0) throw new Error(`No houses of justice listed on ${res.url}`)
+        for (const url of pages.sort()) await get(url)
     },
 }
 
