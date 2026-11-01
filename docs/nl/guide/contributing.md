@@ -85,8 +85,9 @@ Elke dataset krijgt dezelfde behandeling, zodat gebruikers erop kunnen rekenen:
 4. **Bronnen**: een `sources: [{ url, retrieved }]` op elk record, en een entry in
    `datapackage.json` met de bronnen van de dataset, de licentie, `lastReviewed` en
    `reviewEveryMonths`.
-5. **Types en helpers**: `src/<name>.ts`, geëxporteerd uit `src/index.ts`, plus een entry point
-   in `tsup.config.ts` en in de `exports` van `package.json`.
+5. **Types en helpers**: `src/<name>.ts`, met een eigen entry point
+   in `tsup.config.ts` en in de `exports` van `package.json`. Exporteer hem alleen opnieuw uit
+   `src/index.ts` als hij heel klein is ([hieronder](#keeping-the-package-light)).
 6. **Schema**: voeg het bestandstype toe aan `scripts/schema-types.ts` en
    `scripts/build-schemas.ts`.
 7. **Bron en parser**: een walk in `scripts/sources/catalog.ts` die de officiële pagina's
@@ -111,7 +112,7 @@ package niet voor iedereen groter maken:
    tabeldata.
 5. **Controleer de grootte.** `pnpm test:package` toont de grootte van het package en faalt boven
    de limieten in `test/smoke/package-size.mjs` (het hele package, het package zonder de grenzen,
-   en elk afzonderlijk bestand), en `test/smoke/bundle-size.mjs` doet hetzelfde voor wat een
+   en elk afzonderlijk bestand buiten de grenzen), en `test/smoke/bundle-size.mjs` doet hetzelfde voor wat een
    browserapp meelevert. CI zet de cijfers in de samenvatting van de job. Verhoog een limiet
    bewust, met de reden in de changelog.
 

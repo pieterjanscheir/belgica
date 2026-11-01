@@ -11,6 +11,7 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
 import { appendFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 
 const MB = 1024 * 1024
 // 34.0 MB when the check was added (0.6.1), 30 MB of it the canton and arrondissement boundaries
@@ -20,7 +21,7 @@ const WITHOUT_GEOMETRY_LIMIT = 6 * MB
 const FILE_LIMIT = 1 * MB
 const geometry = (path) => /^data\/[a-z-]+-boundaries\.json$/.test(path)
 
-const root = new URL('../../', import.meta.url).pathname
+const root = fileURLToPath(new URL('../../', import.meta.url))
 const [pack] = JSON.parse(
     execFileSync('npm', ['pack', '--dry-run', '--json', '--ignore-scripts'], {
         cwd: root,

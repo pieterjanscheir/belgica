@@ -11,7 +11,7 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 - `pnpm test:package` checks the size of the package: the whole package unpacked (34.0 MB, limit
   40 MB), the package without the boundary files (4.3 MB, limit 6 MB) and any single file
-  (limit 1 MB), with the numbers in CI's job summary
+  outside the boundaries (limit 1 MB), with the numbers in CI's job summary
   ([#82](https://github.com/pieterjanscheir/belgica/issues/82)).
 - The contributing guide says how to add a dataset without growing the package, and that
   registers of individual people stay out

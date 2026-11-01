@@ -79,8 +79,9 @@ Every dataset gets the same treatment, so users can rely on it:
 4. **Sources**: a `sources: [{ url, retrieved }]` on each record, and an entry in
    `datapackage.json` with the dataset's sources, licence, `lastReviewed` and
    `reviewEveryMonths`.
-5. **Types and helpers**: `src/<name>.ts`, exported from `src/index.ts`, plus an entry point in
-   `tsup.config.ts` and `package.json` `exports`.
+5. **Types and helpers**: `src/<name>.ts`, with its own entry point in
+   `tsup.config.ts` and `package.json` `exports`. Re-export it from `src/index.ts` only if it is
+   tiny ([below](#keeping-the-package-light)).
 6. **Schema**: a zod schema in `src/schemas/`, exported from `src/schemas/index.ts` with the
    file in `dataFileSchemas`. The record type is its `z.infer`; the JSON Schema is generated
    from it, with the JSDoc comments as descriptions.
@@ -107,7 +108,7 @@ package for everyone:
    the tabular data.
 5. **Check the size.** `pnpm test:package` reports the package size and fails over the limits in
    `test/smoke/package-size.mjs` (the whole package, the package without the boundaries, and any
-   single file), and `test/smoke/bundle-size.mjs` does the same for what a browser app ships. CI
+   single file outside the boundaries), and `test/smoke/bundle-size.mjs` does the same for what a browser app ships. CI
    shows the numbers in the job summary. Raise a limit on purpose, with the reason in the
    changelog.
 

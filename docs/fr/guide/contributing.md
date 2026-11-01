@@ -89,8 +89,9 @@ Chaque jeu de données reçoit le même traitement, pour que les utilisateurs pu
 4. **Sources** : un `sources: [{ url, retrieved }]` sur chaque enregistrement, et une entrée dans
    `datapackage.json` avec les sources du jeu de données, sa licence, `lastReviewed` et
    `reviewEveryMonths`.
-5. **Types et fonctions d'aide** : `src/<name>.ts`, exporté depuis `src/index.ts`, plus un point
-   d'entrée dans `tsup.config.ts` et dans les `exports` de `package.json`.
+5. **Types et fonctions d'aide** : `src/<name>.ts`, avec son propre point
+   d'entrée dans `tsup.config.ts` et dans les `exports` de `package.json`. Ne le réexportez depuis
+   `src/index.ts` que s'il est minuscule ([ci-dessous](#keeping-the-package-light)).
 6. **Schéma** : ajoutez le type de fichier à `scripts/schema-types.ts` et à
    `scripts/build-schemas.ts`.
 7. **Source et parser** : un parcours dans `scripts/sources/catalog.ts` qui récupère les pages
@@ -118,7 +119,7 @@ doit donc pas alourdir le package pour tout le monde.
    jamais à côté des données tabulaires.
 5. **Vérifiez la taille.** `pnpm test:package` affiche la taille du package et échoue au-delà des
    limites de `test/smoke/package-size.mjs` (le package entier, le package sans les limites, et
-   chaque fichier), et `test/smoke/bundle-size.mjs` fait de même pour ce qu'embarque une
+   chaque fichier hors des limites), et `test/smoke/bundle-size.mjs` fait de même pour ce qu'embarque une
    application web. La CI affiche les chiffres dans le résumé du job. Relevez une limite
    délibérément, avec la raison dans le changelog.
 
