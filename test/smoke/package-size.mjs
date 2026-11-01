@@ -1,13 +1,13 @@
 // Checks what `npm install belgica` downloads and unpacks, so a pull request that adds a dataset
 // shows what it costs, and one that grows the package by accident fails:
 //
-// 1. The whole package, unpacked. Almost all of it is the boundary geometry today (#81).
+// 1. The whole package, unpacked. Almost all of it is the boundary geometry, which stays the
+//    NGI's vertex for vertex: a simplified border would put addresses in the wrong canton.
 // 2. Everything but the geometry: the part every user installs, whatever they import.
 // 3. Any single file outside the geometry: above about 500 KB a dataset is split into an index
 //    and files loaded on demand (see "Adding a dataset" in docs/guide/contributing.md).
 //
-// Raise a limit on purpose, with the reason in the changelog. Lower the first one once the
-// geometry is simplified (#81).
+// Raise a limit on purpose, with the reason in the changelog.
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
 import { appendFileSync } from 'node:fs'
