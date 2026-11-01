@@ -20,7 +20,7 @@ import { data as stats } from '../.vitepress/stats.data'
 - **Contact labels are in the page's language**: for a bilingual court, the Dutch page's (the
   German page's in Eupen). The French page's names and hours are there too.
 - **Some values on the source pages can't be read**, and are left out: a phone number without
-  its area code (`+32 682 05 28`), a fax that is "désactivé". The weekly data pull request
+  its area code (`+32 682 05 28`), a fax that is "désactivé". The data pull request
   lists them, so they can be reported to the court.
 - **The French page of the justice of the peace of Tongeren-Borgloon** still calls it
   `Justice de paix de Tongres-Fourons`, its name before the 2025 municipal mergers. The data

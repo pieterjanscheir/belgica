@@ -61,12 +61,12 @@ d'État, ainsi que les juridictions disciplinaires.
 
 ## Source et mises à jour {#source-and-updates}
 
-|               |                                                                                                                                                   |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Source        | [tribunaux-rechtbanken.be](https://www.tribunaux-rechtbanken.be), le portail du Collège des cours et tribunaux                                    |
-| Construit par | `scripts/parse` à partir des instantanés hebdomadaires de la page et de la page de contact de chaque juridiction                                  |
-| Change quand  | Une juridiction déménage, change de coordonnées ou d'horaires, ou le portail ajoute ou renomme une juridiction                                    |
-| Vérifié       | Chaque semaine, par le [workflow des sources](/fr/guide/data-quality#how-the-data-is-built) ; les changements arrivent sous forme de pull request |
+|               |                                                                                                                                                          |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Source        | [tribunaux-rechtbanken.be](https://www.tribunaux-rechtbanken.be), le portail du Collège des cours et tribunaux                                           |
+| Construit par | `scripts/parse` à partir des instantanés de la page et de la page de contact de chaque juridiction                                                       |
+| Change quand  | Une juridiction déménage, change de coordonnées ou d'horaires, ou le portail ajoute ou renomme une juridiction                                           |
+| Vérifié       | Deux fois par semaine, par le [workflow des sources](/fr/guide/data-quality#how-the-data-is-built) ; les changements arrivent sous forme de pull request |
 
 Chaque enregistrement énumère les pages dont il a été lu et le jour où le contenu de chaque page a été vu
 pour la première fois (`sources`). Les coordonnées changent plus souvent que tout le reste dans ce
@@ -80,7 +80,7 @@ package : quand cela compte, vérifiez la page de la juridiction (`website`).
 | ------------------ | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`               | `CourtId`                             | Identifiant stable : le `type`, puis le lieu dans la langue de la juridiction : `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Voyez [Identifiants](/fr/guide/identifiers)         |
 | `validFrom`        | string?                               | Premier jour où l'enregistrement s'applique, `YYYY-MM-DD` : le jour où le portail l'a recensé pour la première fois. Absent : depuis le début de la couverture                                                                |
-| `validTo`          | string?                               | Dernier jour où l'enregistrement s'applique : la veille de la vérification hebdomadaire qui ne l'a plus trouvé sur le portail. Absent : toujours en vigueur                                                                   |
+| `validTo`          | string?                               | Dernier jour où l'enregistrement s'applique : la veille de la vérification qui ne l'a plus trouvé sur le portail. Absent : toujours en vigueur                                                                                |
 | `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                         |
 | `kind`             | `'court'` \| `'division'` \| `'seat'` | La juridiction elle-même, l'une de ses divisions (afdeling, division, Abteilung), ou l'un des lieux où siège une justice de paix                                                                                              |
 | `court`            | `CourtId`?                            | Pour une division ou un siège : la juridiction dont elle relève                                                                                                                                                               |
@@ -180,7 +180,7 @@ Il refuse d'écrire quoi que ce soit quand une page ne peut être située (un ty
 une justice de paix sans canton), qu'un canton n'a pas de juridiction, ou que la table de la loi et le
 portail ne s'accordent pas sur les juridictions qui existent. Ce qu'il ne peut lire (un numéro
 de téléphone sans indicatif de zone, une adresse rédigée en phrase) est signalé avec la pull request
-hebdomadaire, et laissé hors des données plutôt que deviné.
+des données, et laissé hors des données plutôt que deviné.
 
 ## Valeurs canoniques {#canonical-values}
 

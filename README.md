@@ -4,7 +4,7 @@ Belgian legal reference data for developers of legal software: every court with 
 registries' contacts, prisons, houses of justice, judicial cantons and arrondissements,
 municipalities and their postal codes, the legal and commercial interest rates, and the public
 holidays. As JSON and CSV, with typed lookups for TypeScript and Python. Every record says where
-it comes from, and the scraped data is rebuilt from the official sources every week.
+it comes from, and the scraped data is rebuilt from the official sources twice a week.
 
 It answers questions such as: which justice of the peace has jurisdiction over this address,
 what is this court's registry e-mail, which interest rate applied on that day, and on which day

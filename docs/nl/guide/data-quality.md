@@ -6,18 +6,18 @@ bijblijft, en hoe ver je elke dataset kunt vertrouwen.
 
 ## Waar elke dataset vandaan komt {#where-each-dataset-comes-from}
 
-| Dataset                          | Bron                                           | Hoe gebouwd                              | Verandert bij                                                     | Gecontroleerd    |
-| -------------------------------- | ---------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------- | ---------------- |
-| Rechtsgebieden, arrondissementen | Gerechtelijk Wetboek, bijlage art. 4–5         | Met de hand                              | Een wet hertekent de gerechtelijke kaart (zelden; laatst in 2014) | Om de 24 maanden |
-| Kantons                          | Gerechtelijk Wetboek, bijlage art. 1 (nl + fr) | Gegenereerd: `pnpm build:cantons`        | Een wet wijzigt de bijlage; gemeenten fuseren                     | Om de 12 maanden |
-| Kantongrenzen                    | NGI (geo.be)                                   | Wekelijks: snapshots + `pnpm build:data` | Het NGI publiceert een nieuwe versie                              | Wekelijks        |
-| Gemeenten                        | Open data van Statbel                          | Gegenereerd: `pnpm build:cantons`        | Gemeenten fuseren (2019, 2025)                                    | Om de 12 maanden |
-| Gewesten, provincies             | REFNIS-codelijst van Statbel                   | Wekelijks: snapshots + `pnpm build:data` | Statbel wijzigt zijn register (laatst in 1995)                    | Wekelijks        |
-| Hoven en rechtbanken             | tribunaux-rechtbanken.be                       | Wekelijks: snapshots + `pnpm build:data` | Een gerecht verhuist of wijzigt zijn contactgegevens of uren      | Wekelijks        |
-| Gevangenissen                    | justitie.belgium.be                            | Wekelijks: snapshots + `pnpm build:data` | Een gevangenis opent, sluit of wijzigt haar contactgegevens       | Wekelijks        |
-| Justitiehuizen                   | vlaanderen.be, maisonsdejustice.be             | Wekelijks: snapshots + `pnpm build:data` | Een justitiehuis verhuist of wijzigt zijn contactgegevens         | Wekelijks        |
-| Postcodes                        | Conversietabel van Statbel                     | Wekelijks: snapshots + `pnpm build:data` | Statbel publiceert een nieuwe tabel (fusies, nieuwe codes)        | Wekelijks        |
-| Rentevoeten                      | FOD Financiën, Belgisch Staatsblad             | Met de hand                              | Elk jaar (wettelijk) en elk semester (handelstransacties)         | Om de 6 maanden  |
+| Dataset                          | Bron                                           | Hoe gebouwd                                       | Verandert bij                                                     | Gecontroleerd    |
+| -------------------------------- | ---------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------- | ---------------- |
+| Rechtsgebieden, arrondissementen | Gerechtelijk Wetboek, bijlage art. 4–5         | Met de hand                                       | Een wet hertekent de gerechtelijke kaart (zelden; laatst in 2014) | Om de 24 maanden |
+| Kantons                          | Gerechtelijk Wetboek, bijlage art. 1 (nl + fr) | Gegenereerd: `pnpm build:cantons`                 | Een wet wijzigt de bijlage; gemeenten fuseren                     | Om de 12 maanden |
+| Kantongrenzen                    | NGI (geo.be)                                   | Twee keer per week: snapshots + `pnpm build:data` | Het NGI publiceert een nieuwe versie                              | Wekelijks        |
+| Gemeenten                        | Open data van Statbel                          | Gegenereerd: `pnpm build:cantons`                 | Gemeenten fuseren (2019, 2025)                                    | Om de 12 maanden |
+| Gewesten, provincies             | REFNIS-codelijst van Statbel                   | Twee keer per week: snapshots + `pnpm build:data` | Statbel wijzigt zijn register (laatst in 1995)                    | Wekelijks        |
+| Hoven en rechtbanken             | tribunaux-rechtbanken.be                       | Twee keer per week: snapshots + `pnpm build:data` | Een gerecht verhuist of wijzigt zijn contactgegevens of uren      | Wekelijks        |
+| Gevangenissen                    | justitie.belgium.be                            | Twee keer per week: snapshots + `pnpm build:data` | Een gevangenis opent, sluit of wijzigt haar contactgegevens       | Wekelijks        |
+| Justitiehuizen                   | vlaanderen.be, maisonsdejustice.be             | Twee keer per week: snapshots + `pnpm build:data` | Een justitiehuis verhuist of wijzigt zijn contactgegevens         | Wekelijks        |
+| Postcodes                        | Conversietabel van Statbel                     | Twee keer per week: snapshots + `pnpm build:data` | Statbel publiceert een nieuwe tabel (fusies, nieuwe codes)        | Wekelijks        |
+| Rentevoeten                      | FOD Financiën, Belgisch Staatsblad             | Met de hand                                       | Elk jaar (wettelijk) en elk semester (handelstransacties)         | Om de 6 maanden  |
 
 Gegenereerde datasets worden nooit met de hand bewerkt. `pnpm build:cantons` parst de officiële
 tekst en weigert iets te schrijven tenzij de Nederlandse en de Franse versie overeenstemmen en
@@ -30,7 +30,7 @@ kanton geen gerecht heeft of een kanton geen grens heeft in het bestand van het 
 official site ──fetch──> snapshots (sources branch) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Ophalen.** Elke maandag haalt de [sources-workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+1. **Ophalen.** Elke maandag en donderdag haalt de [sources-workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
    elke pagina van de bronnen op (`scripts/sources`), beleefd: één verzoek per seconde per
    site, met een user agent die het project noemt. Elke pagina wordt bewaard op de branch
    `sources`, met een index van wat is opgehaald, wanneer, en een hash van de inhoud. Een pagina

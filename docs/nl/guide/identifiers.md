@@ -162,7 +162,7 @@ De belofte wordt gecontroleerd, niet alleen gedaan. `ids.lock.json` somt elk id 
 gepubliceerd heeft, per dataset; `pnpm generate` voegt er nieuwe ids aan toe en verwijdert er nooit
 een, en `test/ids.test.ts` faalt wanneer een vergrendeld id in de data ontbreekt. Zo kan een scraper
 die een hernoemde pagina leest, een opnieuw gegenereerde kantonlijst of een handmatige bewerking geen
-id ongemerkt laten vallen of hernoemen: de wekelijkse data-pull-request faalt, en iemand mapt de
+id ongemerkt laten vallen of hernoemen: de data-pull-request faalt, en iemand mapt de
 nieuwe naam in de parser op het bestaande id, of beëindigt het record met een `validTo`. Een id uit
 de lock halen is een bewuste daad, voor een major-versie, met het id en zijn vervanger in het
 changelog.

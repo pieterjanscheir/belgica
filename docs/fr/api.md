@@ -576,7 +576,7 @@ depuis le jour où leurs sites ont été lus pour la première fois. Des version
 
 Les tableaux exportés (`courts`, `prisons`, …) contiennent chaque version de chaque enregistrement. Un enregistrement
 que la source cesse de recenser n'est pas supprimé : il garde son id et reçoit un `validTo`, la veille de la
-vérification hebdomadaire qui ne l'a plus trouvé. Un enregistrement que la source commence à recenser reçoit un
+vérification qui ne l'a plus trouvé. Un enregistrement que la source commence à recenser reçoit un
 `validFrom`. Une recherche par id sans jour renvoie donc la version d'aujourd'hui, ou la dernière version d'un
 enregistrement qui a pris fin : vérifiez `validTo` avant d'y déposer quoi que ce soit.
 

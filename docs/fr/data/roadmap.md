@@ -45,7 +45,7 @@ bienvenue : choisissez-en un et suivez les [conventions](/fr/guide/contributing#
 
 Un jeu de données juridiques n'est utile que si chaque valeur vient d'une source officielle ;
 rien n'est donc ajouté à la main, de mémoire. Chaque jeu de données est construit par un script
-à partir d'instantanés de sa source, et la plupart des sources sont récupérées chaque semaine par
+à partir d'instantanés de sa source, et la plupart des sources sont récupérées deux fois par semaine par
 GitHub Actions. Deux ne peuvent pas l'être, pour l'instant : le site du Moniteur belge
 (ejustice), d'où viennent les cantons, et police.be refusent tous deux les connexions depuis les
 serveurs de GitHub ; ils sont récupérés depuis une machine ordinaire à la place

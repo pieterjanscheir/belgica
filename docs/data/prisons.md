@@ -22,10 +22,10 @@ File: `data/prisons.json`. The {{ stats.prisons }} prisons and detention houses 
 |              |                                                                                                                                                                         |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Source       | [FPS Justice: Belgian prisons](https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen), each prison's page in Dutch, French and German |
-| Built by     | `scripts/parse` from the weekly snapshots                                                                                                                               |
+| Built by     | `scripts/parse` from the snapshots                                                                                                                                      |
 | Changes when | A prison opens or closes, or changes its contact details                                                                                                                |
 | Covers       | 20 October 2026 onwards, the day the site was first read: lookups for an earlier day throw a `RangeError` ([time](/guide/concepts#time))                                |
-| Checked      | Every week, by the [sources workflow](/guide/data-quality#how-the-data-is-built)                                                                                        |
+| Checked      | Twice a week, by the [sources workflow](/guide/data-quality#how-the-data-is-built)                                                                                      |
 | Licence      | CC BY 4.0                                                                                                                                                               |
 
 ## Fields

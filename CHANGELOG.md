@@ -18,6 +18,9 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   ([#83](https://github.com/pieterjanscheir/belgica/issues/83)).
 - The roadmap drops the registers of judicial experts and mediators, and plans the chambers of
   bailiffs and of notaries instead of a directory of every bailiff and notary.
+- The official sources are fetched twice a week (Monday and Thursday) instead of once, so a
+  source that changes or breaks is noticed within a few days. When the workflow can't open the
+  data pull request, it updates the open data-update issue instead of opening another one.
 
 ## [0.6.1] - 2026-10-22
 

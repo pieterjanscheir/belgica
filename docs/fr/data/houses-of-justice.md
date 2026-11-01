@@ -27,8 +27,8 @@ Communautés les gèrent depuis 2015.
 |               |                                                                                                                                                                                                                                                           |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Source        | [vlaanderen.be : Justitiehuizen](https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen) (Communauté flamande) et [maisonsdejustice.be](https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/) (Communauté française) |
-| Construit par | `scripts/parse` à partir des instantanés hebdomadaires                                                                                                                                                                                                    |
-| Vérifié       | Chaque semaine, par le [workflow des sources](/fr/guide/data-quality#how-the-data-is-built)                                                                                                                                                               |
+| Construit par | `scripts/parse` à partir des instantanés                                                                                                                                                                                                                  |
+| Vérifié       | Deux fois par semaine, par le [workflow des sources](/fr/guide/data-quality#how-the-data-is-built)                                                                                                                                                        |
 
 Pas encore dans les données : la maison de justice de la Communauté germanophone à Eupen
 ([#3](https://github.com/pieterjanscheir/belgica/issues/3)). Bruxelles a à la fois une
