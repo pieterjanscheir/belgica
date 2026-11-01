@@ -138,7 +138,7 @@
         "lint": "eslint . && prettier --check .",
         "format": "prettier --write .",
         "test:coverage": "pnpm build:data-files && vitest run --coverage",
-        "test:package": "node test/smoke/esm.mjs && node test/smoke/cjs.cjs && node test/smoke/courts-bundle.mjs && node test/smoke/bundle-size.mjs",
+        "test:package": "node test/smoke/esm.mjs && node test/smoke/cjs.cjs && node test/smoke/courts-bundle.mjs && node test/smoke/bundle-size.mjs && node test/smoke/package-size.mjs",
         "build:canton-names": "node scripts/build-canton-names.ts",
         "build:court-labels": "node scripts/build-court-labels.ts",
         "build:data-files": "node scripts/build-data-files.ts"

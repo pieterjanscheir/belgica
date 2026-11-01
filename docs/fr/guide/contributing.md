@@ -102,6 +102,31 @@ Chaque jeu de données reçoit le même traitement, pour que les utilisateurs pu
 9. **Docs** : une page sous `docs/data/` avec son utilité, sa source et ses mises à jour, et un
    tableau des champs.
 
+### Garder le package léger {#keeping-the-package-light}
+
+Chaque jeu de données est installé par chaque utilisateur, quoi qu'il importe : un nouveau jeu ne
+doit donc pas alourdir le package pour tout le monde.
+
+1. **Un jeu de données, un point d'entrée.** Son propre sous-chemin dans `tsup.config.ts` et dans
+   les `exports` de `package.json`. Ne le réexportez depuis `src/index.ts` que s'il est minuscule.
+2. **Les grosses données se chargent à la demande.** Au-delà d'environ 500 Ko, découpez-les en un
+   petit index et des fichiers chargés quand on les demande, comme `data/courts/` et
+   `belgica/courts/load` (`scripts/build-data-files.ts`).
+3. **Une seule copie.** Le fichier canonique est dans `data/` ; ne l'intégrez pas en plus dans
+   `dist/`.
+4. **La géométrie est optionnelle.** Les points et les limites ont leur propre point d'entrée,
+   jamais à côté des données tabulaires.
+5. **Vérifiez la taille.** `pnpm test:package` affiche la taille du package et échoue au-delà des
+   limites de `test/smoke/package-size.mjs` (le package entier, le package sans les limites, et
+   chaque fichier), et `test/smoke/bundle-size.mjs` fait de même pour ce qu'embarque une
+   application web. La CI affiche les chiffres dans le résumé du job. Relevez une limite
+   délibérément, avec la raison dans le changelog.
+
+Les données personnelles restent dehors. Un registre de personnes physiques (huissiers, notaires,
+experts, médiateurs pris individuellement) change sans cesse et chaque enregistrement est une
+donnée personnelle : renvoyez vers la recherche officielle, et gardez les études, les chambres et
+le territoire qu'elles couvrent.
+
 ## Contrôles {#checks}
 
 | Commande                    | Ce qu'elle fait                                                                                                                                                              |

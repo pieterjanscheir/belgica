@@ -17,8 +17,6 @@ eines aus und folgen Sie den [Konventionen](/de/guide/contributing#adding-a-data
 | **Kataster- und Rechtssicherheitsämter** (kadaster, ehemalige hypotheekkantoren)                          | Hypothekenbescheinigungen und Katasterauszüge beim zuständigen Amt anfordern                                                         | [#8](https://github.com/pieterjanscheir/belgica/issues/8)   |
 | **Notare und Notarkammern**                                                                               | Einen Notar finden, und die für eine Beschwerde zuständige Kammer                                                                    | [#56](https://github.com/pieterjanscheir/belgica/issues/56) |
 | **Rechtsanwaltskammern** (balies / barreaux) und ihre Büros für juristischen Beistand                     | Das Büro für juristischen Beistand für eine Adresse, und der Präsident der Rechtsanwaltskammer (bâtonnier) für deontologische Fragen | [#57](https://github.com/pieterjanscheir/belgica/issues/57) |
-| **Gerichtssachverständige und vereidigte Übersetzer und Dolmetscher** (nationales Register)               | Einen Sachverständigen nach Fachgebiet oder einen Übersetzer nach Sprachpaar finden, und prüfen, ob sie eingetragen sind             | [#64](https://github.com/pieterjanscheir/belgica/issues/64) |
-| **Zugelassene Mediatoren** (erkende bemiddelaars / médiateurs agréés)                                     | Einen zugelassenen Mediator nach Fachbereich und Region finden, und die Zulassung prüfen                                             | [#65](https://github.com/pieterjanscheir/belgica/issues/65) |
 
 ## Gebiet {#territory}
 

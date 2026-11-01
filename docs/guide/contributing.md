@@ -93,6 +93,28 @@ Every dataset gets the same treatment, so users can rely on it:
    checked, licence), the fields, and an example. Add its functions to the
    [API reference](/api), each with its signature, results, errors and an example.
 
+### Keeping the package light {#keeping-the-package-light}
+
+Every dataset ships to every user, whatever they import, so a new one shouldn't grow the
+package for everyone:
+
+1. **One dataset, one entry point.** Its own subpath in `tsup.config.ts` and `package.json`
+   `exports`. Re-export it from the root `src/index.ts` only if it is tiny.
+2. **Large data loads on demand.** Above about 500 KB, split it into a small index and files
+   loaded when asked for, as `data/courts/` and `belgica/courts/load` do (`scripts/build-data-files.ts`).
+3. **One copy.** The canonical file lives in `data/`; don't inline it into `dist/` as well.
+4. **Geometry is opt-in.** Points and boundaries get their own entry point, never sit next to
+   the tabular data.
+5. **Check the size.** `pnpm test:package` reports the package size and fails over the limits in
+   `test/smoke/package-size.mjs` (the whole package, the package without the boundaries, and any
+   single file), and `test/smoke/bundle-size.mjs` does the same for what a browser app ships. CI
+   shows the numbers in the job summary. Raise a limit on purpose, with the reason in the
+   changelog.
+
+Personal data stays out. A register of natural persons (individual bailiffs, notaries, experts,
+mediators) changes all the time and every record is personal data: link to the official search
+instead, and keep the offices, chambers and the areas they cover.
+
 ## Checks
 
 | Command                     | What it does                                                                                                                                                  |

@@ -12,13 +12,11 @@ bienvenue : choisissez-en un et suivez les [conventions](/fr/guide/contributing#
 | **La maison de justice d'Eupen** (Communauté germanophone)                                                           | La seule maison de justice que les données n'ont pas encore                                                           | [#3](https://github.com/pieterjanscheir/belgica/issues/3)   |
 | **Compétence par division de tribunal** (afdelingen / divisions)                                                     | Où déposer au sein d'un tribunal, et la mention RPM sur les documents des sociétés                                    | [#58](https://github.com/pieterjanscheir/belgica/issues/58) |
 | **Parquets** (parquets, auditorats du travail, parquets généraux, parquet fédéral)                                   | Où déposer une plainte pénale, et l'auditeur du travail dans les affaires de droit social                             | [#55](https://github.com/pieterjanscheir/belgica/issues/55) |
-| **Études d'huissiers de justice** (gerechtsdeurwaarders / huissiers de justice)                                      | Trouver un huissier dans un arrondissement pour une signification ou une exécution                                    | [#6](https://github.com/pieterjanscheir/belgica/issues/6)   |
+| **Chambres d'huissiers de justice** (gerechtsdeurwaarders / huissiers de justice) et leur territoire                 | Quelle chambre couvre un arrondissement, et un lien vers sa recherche d'huissier                                      | [#6](https://github.com/pieterjanscheir/belgica/issues/6)   |
 | **Zones de police** (politiezones / zones de police)                                                                 | Quelle zone couvre une commune : plaintes, copies de procès-verbaux                                                   | [#7](https://github.com/pieterjanscheir/belgica/issues/7)   |
 | **Cadastre et bureaux de la sécurité juridique** (kadaster, anciens hypotheekkantoren)                               | Demander des certificats hypothécaires et des extraits cadastraux au bureau compétent                                 | [#8](https://github.com/pieterjanscheir/belgica/issues/8)   |
-| **Notaires et chambres des notaires**                                                                                | Trouver un notaire, et la chambre compétente pour une plainte                                                         | [#56](https://github.com/pieterjanscheir/belgica/issues/56) |
+| **Chambres des notaires** et leur territoire                                                                         | La chambre compétente pour un bien ou une plainte, et un lien vers la recherche de notaire de Fednot                  | [#56](https://github.com/pieterjanscheir/belgica/issues/56) |
 | **Barreaux** (balies / barreaux) et leurs bureaux d'aide juridique                                                   | Le bureau d'aide juridique pour une adresse, et le bâtonnier pour les questions déontologiques                        | [#57](https://github.com/pieterjanscheir/belgica/issues/57) |
-| **Experts judiciaires et traducteurs et interprètes jurés** (registre national)                                      | Trouver un expert par spécialité ou un traducteur par combinaison de langues, et vérifier son inscription             | [#64](https://github.com/pieterjanscheir/belgica/issues/64) |
-| **Médiateurs agréés** (erkende bemiddelaars / médiateurs agréés)                                                     | Trouver un médiateur agréé par domaine et par région, et vérifier l'agrément                                          | [#65](https://github.com/pieterjanscheir/belgica/issues/65) |
 
 ## Territoire {#territory}
 
@@ -27,7 +25,7 @@ bienvenue : choisissez-en un et suivez les [conventions](/fr/guide/contributing#
 | **Historique** : quand les cantons, les communes et les juridictions ont changé                         | Le modèle a des périodes de validité et des recherches par jour ; les versions antérieures attendent encore les données | [#27](https://github.com/pieterjanscheir/belgica/issues/27) |
 | **Anciennes communes** et les fusions de 2019 et 2025                                                   | Faire correspondre un ancien code REFNIS ou un ancien nom à la commune d'aujourd'hui                                    | [#53](https://github.com/pieterjanscheir/belgica/issues/53) |
 | **Sections de commune** (deelgemeenten / sections de commune) par code postal                           | Les [codes postaux](./postal-codes) s'arrêtent à la commune ; les adresses nomment la localité                          | [#54](https://github.com/pieterjanscheir/belgica/issues/54) |
-| **Adresse → canton** avec BeST Address                                                                  | Les [limites des cantons](./canton-boundaries) trouvent le canton d'un point ; géocoder l'adresse est l'étape manquante | [#66](https://github.com/pieterjanscheir/belgica/issues/66) |
+| **Adresse → canton** dans le package lui-même                                                           | Les docs et l'explorateur géocodent déjà une adresse ; le package pas encore                                            | [#66](https://github.com/pieterjanscheir/belgica/issues/66) |
 | **Régions linguistiques et facilités linguistiques** par commune (taalgebieden / faciliteitengemeenten) | La langue de la procédure et des actes qui y sont signifiés                                                             | [#70](https://github.com/pieterjanscheir/belgica/issues/70) |
 
 ## Montants, taux et calendriers {#amounts-rates-and-calendars}
@@ -51,6 +49,9 @@ rien n'est donc ajouté à la main, de mémoire. Chaque jeu de données est cons
 GitHub Actions. Deux ne peuvent pas l'être, pour l'instant : le site du Moniteur belge
 (ejustice), d'où viennent les cantons, et police.be refusent tous deux les connexions depuis les
 serveurs de GitHub ; ils sont récupérés depuis une machine ordinaire à la place
-([#52](https://github.com/pieterjanscheir/belgica/issues/52)). L'annuaire des huissiers
-est construit dans le navigateur, il faut donc un navigateur pour le lire, ou les données de la
-Chambre nationale ([#6](https://github.com/pieterjanscheir/belgica/issues/6)).
+([#52](https://github.com/pieterjanscheir/belgica/issues/52)).
+
+Les registres de personnes (huissiers, notaires, experts judiciaires, médiateurs pris
+individuellement) ne sont pas prévus : ils changent sans cesse et chaque enregistrement est une
+donnée personnelle. Les docs renvoient donc vers la recherche officielle, et les données gardent
+les chambres et le territoire qu'elles couvrent.
