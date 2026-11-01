@@ -25,10 +25,10 @@ because {{ stats.postalCodes.shared }} postal codes belong to two municipalities
 |              |                                                                                                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Source       | Statbel's [conversion table from postal codes to REFNIS codes](https://statbel.fgov.be/nl/over-statbel/methodologie/classificaties/geografie), the table valid from 1 January 2025 (`…_va01012025.xlsx`)          |
-| Built by     | `scripts/parse/postal-codes.ts` from the weekly snapshots. The build fails when a code points at a REFNIS code that isn't in `municipalities.json`, or a municipality has no code                                 |
+| Built by     | `scripts/parse/postal-codes.ts` from the snapshots. The build fails when a code points at a REFNIS code that isn't in `municipalities.json`, or a municipality has no code                                        |
 | Changes when | Statbel publishes a new table: municipalities merge, bpost adds or retires a postal code                                                                                                                          |
 | Covers       | 1 January 2025 onwards: lookups for an earlier day throw a `RangeError` ([time](/api#time)). A later table gives the pairs it drops a `validTo` and the pairs it adds a `validFrom`, on the day the table applies |
-| Checked      | Every week, by the [sources workflow](/guide/data-quality#how-the-data-is-built)                                                                                                                                  |
+| Checked      | Twice a week, by the [sources workflow](/guide/data-quality#how-the-data-is-built)                                                                                                                                |
 | Licence      | © Statbel, [CC BY 4.0](https://statbel.fgov.be/en/cc-40)                                                                                                                                                          |
 
 Statbel builds the table from bpost's postal offices and the municipalities of the FPS Finance.

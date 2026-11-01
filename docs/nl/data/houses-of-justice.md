@@ -28,8 +28,8 @@ Gemeenschappen beheerd.
 |               |                                                                                                                                                                                                                                                        |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Bron          | [vlaanderen.be: Justitiehuizen](https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen) (Vlaamse Gemeenschap) en [maisonsdejustice.be](https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/) (Franse Gemeenschap) |
-| Gebouwd door  | `scripts/parse`, uit de wekelijkse snapshots                                                                                                                                                                                                           |
-| Gecontroleerd | Elke week, door de [sources-workflow](/nl/guide/data-quality#how-the-data-is-built)                                                                                                                                                                    |
+| Gebouwd door  | `scripts/parse`, uit de snapshots                                                                                                                                                                                                                      |
+| Gecontroleerd | Twee keer per week, door de [sources-workflow](/nl/guide/data-quality#how-the-data-is-built)                                                                                                                                                           |
 
 Nog niet in de data: het justitiehuis van de Duitstalige Gemeenschap in Eupen
 ([#3](https://github.com/pieterjanscheir/belgica/issues/3)). Brussel heeft zowel een

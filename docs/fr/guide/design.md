@@ -96,7 +96,7 @@ pose à des données juridiques.
 
 ## 7. Les données sont construites par des machines, à partir d'instantanés conservés {#_7-the-data-is-built-by-machines-from-kept-snapshots}
 
-**Décision.** Chaque semaine, un workflow récupère les sources officielles, conserve les pages
+**Décision.** Deux fois par semaine, un workflow récupère les sources officielles, conserve les pages
 sous forme d'instantanés sur la branche `sources`, en reconstruit les données avec les analyseurs
 de `scripts/parse`, les teste et ouvre une pull request lorsqu'elles ont changé. Rien n'est saisi
 à la main. Un job hebdomadaire distinct vérifie les taux d'intérêt manquants, les révisions en
@@ -204,7 +204,7 @@ les cantons se touchent. Un million de positions éclipserait tous les autres je
 personne ne doit les charger par accident.
 
 **Donc.** `findCantonsAt(lon, lat)` répond à partir de la géométrie et la documentation le dit ;
-un point proche d'une ligne est un cas pour le texte. Le build hebdomadaire échoue quand un canton
+un point proche d'une ligne est un cas pour le texte. Le build des sources échoue quand un canton
 n'a pas de limite ou qu'une entité ne correspond à aucun canton
 ([#29](https://github.com/pieterjanscheir/belgica/issues/29)).
 

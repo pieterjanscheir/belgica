@@ -90,7 +90,7 @@ waarop hun inhoud voor het eerst gezien werd (`sources: [{ url, retrieved }]`).
 
 ## 7. De data wordt door machines gebouwd, uit bewaarde snapshots {#_7-the-data-is-built-by-machines-from-kept-snapshots}
 
-**Beslissing.** Elke week haalt een workflow de officiële bronnen op, bewaart de pagina's als
+**Beslissing.** Twee keer per week haalt een workflow de officiële bronnen op, bewaart de pagina's als
 snapshots op de branch `sources`, bouwt de data daaruit opnieuw op met de parsers in
 `scripts/parse`, test ze en opent een pull request wanneer ze veranderd is. Niets wordt met de
 hand ingetypt. Een aparte wekelijkse job controleert op ontbrekende rentevoeten, achterstallige
@@ -193,7 +193,7 @@ tellen het meest waar kantons aan elkaar grenzen. Een miljoen posities zouden el
 overschaduwen, dus niemand mag ze per ongeluk laden.
 
 **Dus.** `findCantonsAt(lon, lat)` antwoordt uit de geometrie en de documentatie zegt dat; een
-punt vlak bij een lijn is een geval voor de tekst. De wekelijkse build faalt wanneer een kanton
+punt vlak bij een lijn is een geval voor de tekst. De build van de bronnen faalt wanneer een kanton
 geen grens heeft of een feature bij geen enkel kanton past
 ([#29](https://github.com/pieterjanscheir/belgica/issues/29)).
 

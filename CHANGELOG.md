@@ -7,6 +7,12 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Changed
+
+- The official sources are fetched twice a week (Monday and Thursday) instead of once, so a
+  source that changes or breaks is noticed within a few days. When the workflow can't open the
+  data pull request, it updates the open data-update issue instead of opening another one.
+
 ## [0.6.1] - 2026-10-22
 
 ### Changed

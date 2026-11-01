@@ -6,18 +6,18 @@ package reste à jour, et jusqu'où vous pouvez faire confiance à chaque jeu de
 
 ## D'où vient chaque jeu de données {#where-each-dataset-comes-from}
 
-| Jeu de données            | Source                                   | Construction                                   | Change quand                                                       | Vérification tous les |
-| ------------------------- | ---------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------ | --------------------- |
-| Ressorts, arrondissements | Code judiciaire, annexe art. 4–5         | À la main                                      | Une loi redessine la carte judiciaire (rare ; la dernière en 2014) | 24 mois               |
-| Cantons                   | Code judiciaire, annexe art. 1 (nl + fr) | Générés : `pnpm build:cantons`                 | Une loi modifie l'annexe ; des communes fusionnent                 | 12 mois               |
-| Limites des cantons       | IGN (geo.be)                             | Chaque semaine : snapshots + `pnpm build:data` | L'IGN publie une nouvelle version                                  | Semaine               |
-| Communes                  | Données ouvertes de Statbel              | Générées : `pnpm build:cantons`                | Des communes fusionnent (2019, 2025)                               | 12 mois               |
-| Régions, provinces        | Liste des codes REFNIS de Statbel        | Hebdomadaire : instantanés + `pnpm build:data` | Statbel modifie son registre (dernière fois en 1995)               | Hebdomadaire          |
-| Cours et tribunaux        | tribunaux-rechtbanken.be                 | Chaque semaine : snapshots + `pnpm build:data` | Un tribunal déménage ou change de contacts ou d'horaires           | Semaine               |
-| Prisons                   | justitie.belgium.be                      | Chaque semaine : snapshots + `pnpm build:data` | Une prison ouvre, ferme ou change de contacts                      | Semaine               |
-| Maisons de justice        | vlaanderen.be, maisonsdejustice.be       | Chaque semaine : snapshots + `pnpm build:data` | Une maison déménage ou change de contacts                          | Semaine               |
-| Codes postaux             | Table de conversion de Statbel           | Chaque semaine : snapshots + `pnpm build:data` | Statbel publie une nouvelle table (fusions, nouveaux codes)        | Semaine               |
-| Taux d'intérêt            | SPF Finances, Moniteur belge             | À la main                                      | Chaque année (légal) et chaque semestre (commercial)               | 6 mois                |
+| Jeu de données            | Source                                   | Construction                                            | Change quand                                                       | Vérification tous les |
+| ------------------------- | ---------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------ | --------------------- |
+| Ressorts, arrondissements | Code judiciaire, annexe art. 4–5         | À la main                                               | Une loi redessine la carte judiciaire (rare ; la dernière en 2014) | 24 mois               |
+| Cantons                   | Code judiciaire, annexe art. 1 (nl + fr) | Générés : `pnpm build:cantons`                          | Une loi modifie l'annexe ; des communes fusionnent                 | 12 mois               |
+| Limites des cantons       | IGN (geo.be)                             | Deux fois par semaine : instantanés + `pnpm build:data` | L'IGN publie une nouvelle version                                  | Semaine               |
+| Communes                  | Données ouvertes de Statbel              | Générées : `pnpm build:cantons`                         | Des communes fusionnent (2019, 2025)                               | 12 mois               |
+| Régions, provinces        | Liste des codes REFNIS de Statbel        | Deux fois par semaine : instantanés + `pnpm build:data` | Statbel modifie son registre (dernière fois en 1995)               | Hebdomadaire          |
+| Cours et tribunaux        | tribunaux-rechtbanken.be                 | Deux fois par semaine : instantanés + `pnpm build:data` | Un tribunal déménage ou change de contacts ou d'horaires           | Semaine               |
+| Prisons                   | justitie.belgium.be                      | Deux fois par semaine : instantanés + `pnpm build:data` | Une prison ouvre, ferme ou change de contacts                      | Semaine               |
+| Maisons de justice        | vlaanderen.be, maisonsdejustice.be       | Deux fois par semaine : instantanés + `pnpm build:data` | Une maison déménage ou change de contacts                          | Semaine               |
+| Codes postaux             | Table de conversion de Statbel           | Deux fois par semaine : instantanés + `pnpm build:data` | Statbel publie une nouvelle table (fusions, nouveaux codes)        | Semaine               |
+| Taux d'intérêt            | SPF Finances, Moniteur belge             | À la main                                               | Chaque année (légal) et chaque semestre (commercial)               | 6 mois                |
 
 Les jeux de données générés ne sont jamais modifiés à la main. `pnpm build:cantons` analyse le
 texte officiel et refuse d'écrire quoi que ce soit tant que les versions néerlandaise et
@@ -31,7 +31,7 @@ pas de limite dans le fichier de l'IGN.
 site officiel ──fetch──> snapshots (branche sources) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Récupération.** Chaque lundi, le [workflow sources](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+1. **Récupération.** Chaque lundi et chaque jeudi, le [workflow sources](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
    récupère chaque page des sources (`scripts/sources`), avec courtoisie : une requête par
    seconde et par site, avec un user agent qui nomme le projet. Il conserve chaque page sur la
    branche `sources`, avec un index de ce qui a été récupéré, quand, et un hachage de son

@@ -150,6 +150,6 @@ The promise is checked, not just made. `ids.lock.json` lists every id the packag
 published, per dataset; `pnpm generate` adds new ids to it and never removes one, and
 `test/ids.test.ts` fails when a locked id is missing from the data. So a scraper that reads a
 retitled page, a regenerated canton list or a hand edit can't drop or rename an id unnoticed:
-the weekly data pull request fails, and a person maps the new name to the existing id in the
+the data pull request fails, and a person maps the new name to the existing id in the
 parser, or ends the record with a `validTo`. Taking an id out of the lock is a deliberate act,
 for a major version, with the id and its replacement in the changelog.

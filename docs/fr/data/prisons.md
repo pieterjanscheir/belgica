@@ -22,9 +22,9 @@ Fichier : `data/prisons.json`. Les {{ stats.prisons }} prisons et maisons de dé
 |               |                                                                                                                                                                                                  |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Source        | [SPF Justice : les prisons belges](https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen), la page de chaque prison en néerlandais, en français et en allemand |
-| Construit par | `scripts/parse` à partir des instantanés hebdomadaires                                                                                                                                           |
+| Construit par | `scripts/parse` à partir des instantanés                                                                                                                                                         |
 | Change quand  | Une prison ouvre ou ferme, ou change de coordonnées                                                                                                                                              |
-| Vérifié       | Chaque semaine, par le [workflow des sources](/fr/guide/data-quality#how-the-data-is-built)                                                                                                      |
+| Vérifié       | Deux fois par semaine, par le [workflow des sources](/fr/guide/data-quality#how-the-data-is-built)                                                                                               |
 
 ## Champs {#fields}
 

@@ -170,7 +170,7 @@ package a publié, par jeu de données ; `pnpm generate` y ajoute les nouveaux i
 retire jamais aucun, et `test/ids.test.ts` échoue quand un identifiant verrouillé manque dans les
 données. Ainsi, un scraper qui lit une page retitrée, une liste de cantons régénérée ou une
 modification à la main ne peut pas supprimer ni renommer un identifiant sans qu'on s'en
-aperçoive : la pull request hebdomadaire des données échoue, et une personne fait correspondre
+aperçoive : la pull request des données échoue, et une personne fait correspondre
 le nouveau nom à l'identifiant existant dans le parser, ou clôture l'enregistrement avec un
 `validTo`. Retirer un identifiant du verrou est un acte délibéré, réservé à une version majeure,
 avec l'identifiant et son remplaçant dans le changelog.

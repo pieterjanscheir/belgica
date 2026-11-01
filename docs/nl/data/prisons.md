@@ -23,9 +23,9 @@ Bestand: `data/prisons.json`. De {{ stats.prisons }} gevangenissen en detentiehu
 |               |                                                                                                                                                                                                   |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Bron          | [FOD Justitie: Belgische gevangenissen](https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen), de pagina van elke gevangenis in het Nederlands, Frans en Duits |
-| Gebouwd door  | `scripts/parse`, uit de wekelijkse snapshots                                                                                                                                                      |
+| Gebouwd door  | `scripts/parse`, uit de snapshots                                                                                                                                                                 |
 | Verandert bij | Een gevangenis die opent of sluit, of haar contactgegevens wijzigt                                                                                                                                |
-| Gecontroleerd | Elke week, door de [sources-workflow](/nl/guide/data-quality#how-the-data-is-built)                                                                                                               |
+| Gecontroleerd | Twee keer per week, door de [sources-workflow](/nl/guide/data-quality#how-the-data-is-built)                                                                                                      |
 
 ## Velden {#fields}
 

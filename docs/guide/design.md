@@ -84,7 +84,7 @@ every scraped record lists the pages it was read from and the day their content 
 
 ## 7. The data is built by machines, from kept snapshots
 
-**Decision.** Every week a workflow fetches the official sources, keeps the pages as snapshots
+**Decision.** Twice a week a workflow fetches the official sources, keeps the pages as snapshots
 on the `sources` branch, rebuilds the data from them with the parsers in `scripts/parse`, tests
 it, and opens a pull request when it changed. Nothing is typed in by hand. A separate weekly
 job checks for missing interest rates, overdue reviews and dead sources.
@@ -178,7 +178,7 @@ Simplification would move the line, and the lines matter most where cantons meet
 positions would dwarf every other dataset, so nobody should load them by accident.
 
 **So.** `findCantonsAt(lon, lat)` answers from the geometry and the documentation says so;
-a point near a line is a case for the text. The weekly build fails when a canton has no
+a point near a line is a case for the text. The sources build fails when a canton has no
 boundary or a feature matches no canton ([#29](https://github.com/pieterjanscheir/belgica/issues/29)).
 
 ## Not decided yet
