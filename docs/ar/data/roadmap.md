@@ -17,8 +17,6 @@
 | **مكاتب السجل العقاري والأمن القانوني** (kadaster، والـhypotheekkantoren سابقًا)                                                                             | طلب شهادات الرهن ومستخرجات السجل العقاري من المكتب المختص                                                     | [#8](https://github.com/pieterjanscheir/belgica/issues/8)   |
 | **الموثقون والغرف التوثيقية**                                                                                                                                | إيجاد موثق، والغرفة المختصة بالنظر في شكوى                                                                    | [#56](https://github.com/pieterjanscheir/belgica/issues/56) |
 | **نقابات المحامين** (balies / barreaux) ومكاتب المساعدة القانونية التابعة لها                                                                                | مكتب المساعدة القانونية لعنوان ما، والنقيب (stafhouder / bâtonnier) للمسائل المتعلقة بأخلاقيات المهنة         | [#57](https://github.com/pieterjanscheir/belgica/issues/57) |
-| **الخبراء القضائيون والمترجمون والتراجمة المحلَّفون** (السجل الوطني)                                                                                         | إيجاد خبير حسب التخصص أو مترجم حسب زوج اللغات، والتحقق من تسجيلهم                                             | [#64](https://github.com/pieterjanscheir/belgica/issues/64) |
-| **الوسطاء المعتمدون** (erkende bemiddelaars / médiateurs agréés)                                                                                             | إيجاد وسيط معتمد حسب المجال والمنطقة، والتحقق من الاعتماد                                                     | [#65](https://github.com/pieterjanscheir/belgica/issues/65) |
 
 ## الإقليم {#territory}
 

@@ -79,8 +79,9 @@ Every dataset gets the same treatment, so users can rely on it:
 4. **Sources**: a `sources: [{ url, retrieved }]` on each record, and an entry in
    `datapackage.json` with the dataset's sources, licence, `lastReviewed` and
    `reviewEveryMonths`.
-5. **Types and helpers**: `src/<name>.ts`, exported from `src/index.ts`, plus an entry point in
-   `tsup.config.ts` and `package.json` `exports`.
+5. **Types and helpers**: `src/<name>.ts`, with its own entry point in
+   `tsup.config.ts` and `package.json` `exports`. Re-export it from `src/index.ts` only if it is
+   tiny ([below](#keeping-the-package-light)).
 6. **Schema**: a zod schema in `src/schemas/`, exported from `src/schemas/index.ts` with the
    file in `dataFileSchemas`. The record type is its `z.infer`; the JSON Schema is generated
    from it, with the JSDoc comments as descriptions.
@@ -92,6 +93,28 @@ Every dataset gets the same treatment, so users can rely on it:
    why it's useful, a "Source and updates" table (source, built by, changes when, covers,
    checked, licence), the fields, and an example. Add its functions to the
    [API reference](/api), each with its signature, results, errors and an example.
+
+### Keeping the package light {#keeping-the-package-light}
+
+Every dataset ships to every user, whatever they import, so a new one shouldn't grow the
+package for everyone:
+
+1. **One dataset, one entry point.** Its own subpath in `tsup.config.ts` and `package.json`
+   `exports`. Re-export it from the root `src/index.ts` only if it is tiny.
+2. **Large data loads on demand.** Above about 500 KB, split it into a small index and files
+   loaded when asked for, as `data/courts/` and `belgica/courts/load` do (`scripts/build-data-files.ts`).
+3. **One copy.** The canonical file lives in `data/`; don't inline it into `dist/` as well.
+4. **Geometry is opt-in.** Points and boundaries get their own entry point, never sit next to
+   the tabular data.
+5. **Check the size.** `pnpm test:package` reports the package size and fails over the limits in
+   `test/smoke/package-size.mjs` (the whole package, the package without the boundaries, and any
+   single file outside the boundaries), and `test/smoke/bundle-size.mjs` does the same for what a browser app ships. CI
+   shows the numbers in the job summary. Raise a limit on purpose, with the reason in the
+   changelog.
+
+Personal data stays out. A register of natural persons (individual bailiffs, notaries, experts,
+mediators) changes all the time and every record is personal data: link to the official search
+instead, and keep the offices, chambers and the areas they cover.
 
 ## Checks
 

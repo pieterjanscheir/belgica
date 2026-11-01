@@ -16,8 +16,6 @@
 | **土地登记和法律保障机构**（kadaster，原 hypotheekkantoren）                                                                                                                         | 向主管机构申请抵押证明和土地登记摘录                           | [#8](https://github.com/pieterjanscheir/belgica/issues/8)   |
 | **公证人和公证人公会**                                                                                                                                                               | 找一位公证人，以及受理投诉的公会                               | [#56](https://github.com/pieterjanscheir/belgica/issues/56) |
 | **律师公会**（balies / barreaux）及其法律援助办公室                                                                                                                                  | 某个地址对应的法律援助办公室，以及处理职业道德问题的 bâtonnier | [#57](https://github.com/pieterjanscheir/belgica/issues/57) |
-| **司法鉴定人和宣誓翻译、口译人员**（国家登记册）                                                                                                                                     | 按专业找鉴定人、按语言对找翻译，并核实其已登记                 | [#64](https://github.com/pieterjanscheir/belgica/issues/64) |
-| **认证调解员**（erkende bemiddelaars / médiateurs agréés）                                                                                                                           | 按领域和地区找认证调解员，并核实其认证                         | [#65](https://github.com/pieterjanscheir/belgica/issues/65) |
 
 ## 地域 {#territory}
 

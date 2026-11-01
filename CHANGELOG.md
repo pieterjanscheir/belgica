@@ -9,6 +9,15 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Changed
 
+- `pnpm test:package` checks the size of the package: the whole package unpacked (34.0 MB, limit
+  40 MB), the package without the boundary files (4.3 MB, limit 6 MB) and any single file
+  outside the boundaries (limit 1 MB), with the numbers in CI's job summary
+  ([#82](https://github.com/pieterjanscheir/belgica/issues/82)).
+- The contributing guide says how to add a dataset without growing the package, and that
+  registers of individual people stay out
+  ([#83](https://github.com/pieterjanscheir/belgica/issues/83)).
+- The roadmap drops the registers of judicial experts and mediators, and plans the chambers of
+  bailiffs and of notaries instead of a directory of every bailiff and notary.
 - The official sources are fetched twice a week (Monday and Thursday) instead of once, so a
   source that changes or breaks is noticed within a few days. When the workflow can't open the
   data pull request, it updates the open data-update issue instead of opening another one.

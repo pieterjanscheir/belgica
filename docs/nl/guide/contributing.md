@@ -85,8 +85,9 @@ Elke dataset krijgt dezelfde behandeling, zodat gebruikers erop kunnen rekenen:
 4. **Bronnen**: een `sources: [{ url, retrieved }]` op elk record, en een entry in
    `datapackage.json` met de bronnen van de dataset, de licentie, `lastReviewed` en
    `reviewEveryMonths`.
-5. **Types en helpers**: `src/<name>.ts`, geëxporteerd uit `src/index.ts`, plus een entry point
-   in `tsup.config.ts` en in de `exports` van `package.json`.
+5. **Types en helpers**: `src/<name>.ts`, met een eigen entry point
+   in `tsup.config.ts` en in de `exports` van `package.json`. Exporteer hem alleen opnieuw uit
+   `src/index.ts` als hij heel klein is ([hieronder](#keeping-the-package-light)).
 6. **Schema**: voeg het bestandstype toe aan `scripts/schema-types.ts` en
    `scripts/build-schemas.ts`.
 7. **Bron en parser**: een walk in `scripts/sources/catalog.ts` die de officiële pagina's
@@ -95,6 +96,30 @@ Elke dataset krijgt dezelfde behandeling, zodat gebruikers erop kunnen rekenen:
 8. **Tests**: unieke ids, verwijzingen die oplossen, en het aantal dat de officiële bron geeft.
 9. **Docs**: een pagina onder `docs/data/` met waarvoor het dient, bron en updates, en een
    veldentabel.
+
+### Het package licht houden {#keeping-the-package-light}
+
+Elke dataset gaat naar elke gebruiker, wat die ook importeert, dus een nieuwe dataset mag het
+package niet voor iedereen groter maken:
+
+1. **Eén dataset, één entry point.** Een eigen subpath in `tsup.config.ts` en in de `exports`
+   van `package.json`. Exporteer hem alleen opnieuw uit `src/index.ts` als hij heel klein is.
+2. **Grote data wordt op vraag geladen.** Boven ongeveer 500 KB splits je hem in een kleine index
+   en bestanden die pas geladen worden als ze gevraagd worden, zoals `data/courts/` en
+   `belgica/courts/load` (`scripts/build-data-files.ts`).
+3. **Eén kopie.** Het canonieke bestand staat in `data/`; zet het niet nog eens in `dist/`.
+4. **Geometrie is opt-in.** Punten en grenzen krijgen hun eigen entry point, nooit naast de
+   tabeldata.
+5. **Controleer de grootte.** `pnpm test:package` toont de grootte van het package en faalt boven
+   de limieten in `test/smoke/package-size.mjs` (het hele package, het package zonder de grenzen,
+   en elk afzonderlijk bestand buiten de grenzen), en `test/smoke/bundle-size.mjs` doet hetzelfde voor wat een
+   browserapp meelevert. CI zet de cijfers in de samenvatting van de job. Verhoog een limiet
+   bewust, met de reden in de changelog.
+
+Persoonsgegevens blijven erbuiten. Een register van natuurlijke personen (individuele
+gerechtsdeurwaarders, notarissen, deskundigen, bemiddelaars) verandert voortdurend en elk record
+is een persoonsgegeven: link naar de officiële zoekfunctie, en houd de kantoren, de kamers en het
+gebied dat ze dekken.
 
 ## Controles {#checks}
 
