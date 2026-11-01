@@ -52,7 +52,7 @@ were on this list and have shipped: see [public holidays](./public-holidays).
 
 A legal dataset is only useful if every value comes from an official source, so nothing is
 added by hand from memory. Each dataset is built by a script from snapshots of its source, and
-most sources are fetched every week by GitHub Actions. Two can't be, for now: the site of the
+most sources are fetched twice a week by GitHub Actions. Two can't be, for now: the site of the
 Belgian Official Journal (ejustice), which the cantons come from, and police.be both refuse
 connections from GitHub's servers; they're fetched from a regular machine instead
 ([#52](https://github.com/pieterjanscheir/belgica/issues/52)). The bailiffs' directory is

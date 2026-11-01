@@ -1,11 +1,12 @@
 name: Sources
 
-# Weekly: fetch the official sources, keep the snapshots on the `sources` branch, rebuild the
+# Twice a week: fetch the official sources, keep the snapshots on the `sources` branch, rebuild the
 # data from them, and open a pull request when the data changed. The data in main only changes
 # through a reviewed pull request.
 on:
     schedule:
-        - cron: '41 4 * * 1'
+        # Monday and Thursday, so a source that breaks is noticed within a few days
+        - cron: '41 4 * * 1,4'
     workflow_dispatch:
 
 concurrency:
@@ -107,7 +108,7 @@ jobs:
                   git commit -q -m "Update the data from the official sources ($(date -u +%F))"
                   git push -f "https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git" data/sources
                   {
-                    echo "The weekly fetch of the official sources changed the data: $RUN_URL"
+                    echo "The fetch of the official sources changed the data: $RUN_URL"
                     echo
                     echo '```'
                     git diff --stat HEAD~1 -- data
@@ -126,12 +127,25 @@ jobs:
                       echo "full CI, or set up the bot (docs/guide/contributing.md)."
                     fi
                   } > body.md
+                  # Without the bot, the workflow's token may not open pull requests: then an issue
+                  # says the branch is ready, and later runs update that issue instead of opening
+                  # another one
+                  open_issue() {
+                    export GH_TOKEN="$WORKFLOW_TOKEN"
+                    issue=$(gh issue list --label data-update --state open --json number --jq '.[0].number')
+                    if [ -n "$issue" ]; then
+                      gh issue edit "$issue" --body-file body.md
+                      gh issue comment "$issue" --body "Rebuilt from the sources again: $RUN_URL. The description shows the latest run."
+                    else
+                      gh issue create --title "Data update from the official sources is ready on branch data/sources" --label data-update --body-file body.md
+                    fi
+                  }
                   number=$(gh pr list --head data/sources --state open --json number --jq '.[0].number')
                   if [ -n "$number" ]; then
                     gh pr edit "$number" --body-file body.md
                   else
                     gh pr create --base main --head data/sources --title "Data update from the official sources" --body-file body.md --label data-update \
-                      || GH_TOKEN="$WORKFLOW_TOKEN" gh issue create --title "Data update from the official sources is ready on branch data/sources" --body-file body.md
+                      || open_issue
                   fi
 
             # A failed page, an interrupted walk or a page the parser can't place: nothing was
@@ -142,7 +156,7 @@ jobs:
                   GH_TOKEN: ${{ github.token }}
                   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
               run: |
-                  body="The weekly sources run failed, so the data wasn't rebuilt: $RUN_URL. A source page may have failed (its last good snapshot is kept), or the parser met a page it can't place."
+                  body="The sources run failed, so the data wasn't rebuilt: $RUN_URL. A source page may have failed (its last good snapshot is kept), or the parser met a page it can't place."
                   gh label create data-freshness --color FBCA04 --description "Data may be out of date" 2>/dev/null || true
                   number=$(gh issue list --label data-freshness --state open --json number --jq '.[0].number')
                   if [ -n "$number" ]; then

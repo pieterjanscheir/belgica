@@ -5,7 +5,7 @@
  *
  * - A record the source still lists is replaced by the fresh one, keeping its `validFrom`.
  * - A record the source no longer lists is kept, with `validTo` set to the day before the walk
- *   that missed it (the weekly check only narrows it to a week; see docs/guide/data-quality.md).
+ *   that missed it (the sources check only narrows it to the days between two runs; see docs/guide/data-quality.md).
  * - A record the source newly lists gets `validFrom` set to the day of the walk. In the very
  *   first build there is no previous data, and no record gets a `validFrom`.
  * - A record that returns after it was retired becomes a new version of the same id: the

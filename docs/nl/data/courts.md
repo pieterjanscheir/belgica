@@ -63,12 +63,12 @@ van State, en de tuchtrechtbanken.
 
 ## Bron en updates {#source-and-updates}
 
-|               |                                                                                                                         |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Bron          | [tribunaux-rechtbanken.be](https://www.tribunaux-rechtbanken.be), het portaal van het College van hoven en rechtbanken  |
-| Gebouwd door  | `scripts/parse`, uit wekelijkse snapshots van de pagina en de contactpagina van elk gerecht                             |
-| Verandert bij | Een gerecht dat verhuist of zijn contactgegevens of uren wijzigt, of het portaal dat een gerecht toevoegt of hernoemt   |
-| Gecontroleerd | Elke week, door de [sources-workflow](/nl/guide/data-quality#how-the-data-is-built); wijzigingen komen als pull request |
+|               |                                                                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Bron          | [tribunaux-rechtbanken.be](https://www.tribunaux-rechtbanken.be), het portaal van het College van hoven en rechtbanken           |
+| Gebouwd door  | `scripts/parse`, uit snapshots van de pagina en de contactpagina van elk gerecht                                                 |
+| Verandert bij | Een gerecht dat verhuist of zijn contactgegevens of uren wijzigt, of het portaal dat een gerecht toevoegt of hernoemt            |
+| Gecontroleerd | Twee keer per week, door de [sources-workflow](/nl/guide/data-quality#how-the-data-is-built); wijzigingen komen als pull request |
 
 Elk record somt de pagina's op waaruit het is gelezen en de dag waarop de inhoud van elke pagina
 voor het eerst is gezien (`sources`). Contactgegevens veranderen vaker dan wat ook in dit
@@ -82,7 +82,7 @@ package: als het ertoe doet, controleer dan de pagina van het gerecht (`website`
 | ------------------ | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`               | `CourtId`                             | Stabiele id: het `type`, dan de plaats in de taal van het gerecht: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Zie [identifiers](/nl/guide/identifiers)                  |
 | `validFrom`        | string?                               | Eerste dag waarop het record geldt, `YYYY-MM-DD`: de dag waarop het portaal het voor het eerst vermeldde. Geen: sinds het begin van de dekking                                                                         |
-| `validTo`          | string?                               | Laatste dag waarop het record geldt: de dag vóór de wekelijkse controle die het niet meer op het portaal vond. Geen: geldt nog steeds                                                                                  |
+| `validTo`          | string?                               | Laatste dag waarop het record geldt: de dag vóór de controle die het niet meer op het portaal vond. Geen: geldt nog steeds                                                                                             |
 | `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                  |
 | `kind`             | `'court'` \| `'division'` \| `'seat'` | Het gerecht zelf, een van zijn afdelingen (afdeling, division, Abteilung), of een van de plaatsen waar een vredegerecht zetelt                                                                                         |
 | `court`            | `CourtId`?                            | Voor een afdeling of zetel: het gerecht waar ze toe behoort                                                                                                                                                            |
@@ -182,7 +182,7 @@ in Eupen een in het Frans en een in het Duits. De parser:
 Hij weigert iets te schrijven als een pagina niet te plaatsen is (een onbekende soort gerecht,
 een vredegerecht zonder kanton), een kanton geen gerecht heeft, of de wettabel en het portaal het
 oneens zijn over welke gerechten bestaan. Wat hij niet kan lezen (een telefoonnummer zonder
-zonenummer, een adres geschreven als een zin) wordt gerapporteerd bij de wekelijkse pull request,
+zonenummer, een adres geschreven als een zin) wordt gerapporteerd bij de data-pull-request,
 en uit de data weggelaten in plaats van geraden.
 
 ## Canonieke waarden {#canonical-values}

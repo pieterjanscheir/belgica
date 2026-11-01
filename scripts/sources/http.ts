@@ -3,7 +3,7 @@
  * user agent, and retries with backoff for network errors and server errors.
  */
 const USER_AGENT =
-    'belgica (+https://github.com/pieterjanscheir/belgica; open data, weekly source check)'
+    'belgica (+https://github.com/pieterjanscheir/belgica; open data, source check twice a week)'
 const DELAY_MS = 1000
 const RETRIES = 3
 

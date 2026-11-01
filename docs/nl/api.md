@@ -577,7 +577,7 @@ zijn gepland ([#27](https://github.com/pieterjanscheir/belgica/issues/27)).
 
 De geëxporteerde arrays (`courts`, `prisons`, …) bevatten elke versie van elk record. Een record dat de
 bron niet langer vermeldt, wordt niet gewist: het behoudt zijn id en krijgt een `validTo`, de dag vóór de
-wekelijkse controle die het miste. Een record dat de bron begint te vermelden, krijgt een `validFrom`.
+controle die het miste. Een record dat de bron begint te vermelden, krijgt een `validFrom`.
 Een opzoeking op id zonder dag geeft dus de versie van vandaag, of de laatste versie van een record dat is
 beëindigd: controleer `validTo` voor je er iets neerlegt.
 

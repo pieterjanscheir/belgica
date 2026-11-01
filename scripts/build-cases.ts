@@ -3,7 +3,7 @@
  * and court, a grid of points and a run of days, as JSON: the cases another language's port is
  * tested against, so it gives the same answers as this package. `pnpm build:cases [file]`; the
  * Python tests read python/tests/.cases/parity.json. Not committed: the answers follow the data,
- * which changes every week.
+ * which changes twice a week.
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'

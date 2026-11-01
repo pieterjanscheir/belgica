@@ -3,8 +3,8 @@
 ## Updating data
 
 The courts, prisons, houses of justice and canton boundaries are built from the official
-sources every week ([how](./data-quality#how-the-data-is-built)): don't edit them by hand. Fix the parser in
-`scripts/parse`, or, if the source itself is wrong, report it to the court. The weekly pull
+sources twice a week ([how](./data-quality#how-the-data-is-built)): don't edit them by hand. Fix the parser in
+`scripts/parse`, or, if the source itself is wrong, report it to the court. The data pull
 request is reviewed like any other: compare the diff with the sources before merging.
 
 For the datasets kept by hand (judicial areas, arrondissements, interest rates):
@@ -132,7 +132,7 @@ doesn't use it, so merge main into the branch locally when GitHub reports a conf
 
 ### The bot
 
-The release pull request and the weekly data pull request are opened by a workflow. With the
+The release pull request and the data pull request are opened by a workflow. With the
 workflow's own token GitHub doesn't run CI on them, so they're opened with a token from a GitHub
 App when one is set up. Without it, close and reopen those pull requests to run CI. To set it up:
 

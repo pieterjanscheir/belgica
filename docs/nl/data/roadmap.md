@@ -47,7 +47,7 @@ volg de [conventies](/nl/guide/contributing#adding-a-dataset).
 
 Een juridische dataset is alleen nuttig als elke waarde uit een officiële bron komt, dus wordt
 niets uit het hoofd met de hand toegevoegd. Elke dataset wordt door een script gebouwd uit
-snapshots van zijn bron, en de meeste bronnen worden elke week door GitHub Actions opgehaald.
+snapshots van zijn bron, en de meeste bronnen worden twee keer per week door GitHub Actions opgehaald.
 Twee kunnen dat voorlopig niet: de site van het Belgisch Staatsblad (ejustice), waar de kantons
 uit komen, en police.be weigeren allebei verbindingen van de servers van GitHub; ze worden in
 de plaats daarvan vanaf een gewone machine opgehaald

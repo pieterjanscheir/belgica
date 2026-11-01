@@ -7,7 +7,7 @@
  * Dutch, French and German, the code of the unit above it (a province's region) and the period
  * the row applies (31/12/9999 is open-ended). The register is also the source of each record's
  * validity: a province that ended (Brabant, 20000, on 31 December 1994) stays listed with its end
- * date, so nothing is inferred from when a weekly walk stopped seeing it.
+ * date, so nothing is inferred from when a walk stopped seeing it.
  *
  * Only rows that still apply on the first day the territory data covers are written; the
  * history before that is https://github.com/pieterjanscheir/belgica/issues/27. Reading

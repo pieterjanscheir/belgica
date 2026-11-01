@@ -23,7 +23,7 @@ import { data as stats } from '../../.vitepress/stats.data'
   Nederlandse pagina (de Duitse in Eupen). De namen en uren van de Franse pagina zijn er ook.
 - **Sommige waarden op de bronpagina's zijn niet leesbaar**, en worden weggelaten: een
   telefoonnummer zonder zonenummer (`+32 682 05 28`), een fax die "désactivé" is. De
-  wekelijkse data-pull-request somt ze op, zodat ze aan het gerecht gemeld kunnen worden.
+  data-pull-request somt ze op, zodat ze aan het gerecht gemeld kunnen worden.
 - **De Franse pagina van het vredegerecht van Tongeren-Borgloon** noemt het nog altijd
   `Justice de paix de Tongres-Fourons`, zijn naam van vóór de gemeentefusies van 2025. De data
   bewaart de naam zoals gepubliceerd en koppelt hem aan het juiste kanton.

@@ -23,7 +23,7 @@ import { data as stats } from '../../.vitepress/stats.data'
   française y sont aussi.
 - **Certaines valeurs des pages sources sont illisibles** et sont omises : un numéro de téléphone
   sans son indicatif de zone (`+32 682 05 28`), un fax « désactivé ». La pull request
-  hebdomadaire des données les liste, pour qu'on puisse les signaler à la juridiction.
+  des données les liste, pour qu'on puisse les signaler à la juridiction.
 - **La page française de la justice de paix de Tongeren-Borgloon** l'appelle encore
   `Justice de paix de Tongres-Fourons`, son nom d'avant les fusions de communes de 2025. Les
   données gardent le nom tel que publié et le lient au bon canton.

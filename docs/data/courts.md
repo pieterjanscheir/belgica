@@ -52,10 +52,10 @@ Council of State, and the disciplinary courts.
 |              |                                                                                                                                                                                      |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Source       | [tribunaux-rechtbanken.be](https://www.tribunaux-rechtbanken.be), the portal of the College of Courts and Tribunals; the courts' areas from the annex to the Judicial Code, art. 3–5 |
-| Built by     | `scripts/parse` from weekly snapshots of every court's page and contact page                                                                                                         |
+| Built by     | `scripts/parse` from snapshots of every court's page and contact page                                                                                                                |
 | Changes when | A court moves, changes its contacts or hours, or the portal adds or renames a court                                                                                                  |
 | Covers       | 1 January 2025 onwards: lookups for an earlier day throw a `RangeError` ([time](/guide/concepts#time))                                                                               |
-| Checked      | Every week, by the [sources workflow](/guide/data-quality#how-the-data-is-built); changes arrive as a pull request                                                                   |
+| Checked      | Twice a week, by the [sources workflow](/guide/data-quality#how-the-data-is-built); changes arrive as a pull request                                                                 |
 | Licence      | CC BY 4.0                                                                                                                                                                            |
 
 Every record lists the pages it was read from and the day each page's content was first seen
@@ -70,7 +70,7 @@ matters, check the court's page (`website`).
 | ------------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`               | `CourtId`                             | Stable id: the `type`, then the place in the court's own language: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. See [identifiers](/guide/identifiers)                    |
 | `validFrom`        | string?                               | First day the record applies, `YYYY-MM-DD`: the day the portal first listed it. None: since the coverage starts                                                                                                       |
-| `validTo`          | string?                               | Last day the record applies: the day before the weekly check found it gone from the portal. None: still applies                                                                                                       |
+| `validTo`          | string?                               | Last day the record applies: the day before the check that found it gone from the portal. None: still applies                                                                                                         |
 | `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                 |
 | `kind`             | `'court'` \| `'division'` \| `'seat'` | The court itself, one of its divisions (afdeling, division, Abteilung), or one of the places a justice of the peace sits                                                                                              |
 | `court`            | `CourtId`?                            | For a division or seat: the court it belongs to                                                                                                                                                                       |
@@ -256,7 +256,7 @@ one in German. The parser:
 It refuses to write anything when a page can't be placed (an unknown kind of court, a justice
 of the peace without a canton), a canton has no court, or the law table and the portal
 disagree on which courts exist. What it can't read (a phone number
-without an area code, an address written as a sentence) is reported with the weekly pull
+without an area code, an address written as a sentence) is reported with the data pull
 request, and left out of the data rather than guessed.
 
 ## Canonical values

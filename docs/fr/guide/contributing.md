@@ -3,9 +3,9 @@
 ## Mettre à jour les données {#updating-data}
 
 Les cours et tribunaux, les prisons, les maisons de justice et les limites des cantons sont construits
-chaque semaine à partir des sources officielles ([comment](./data-quality#how-the-data-is-built)) : ne les modifiez
+deux fois par semaine à partir des sources officielles ([comment](./data-quality#how-the-data-is-built)) : ne les modifiez
 pas à la main. Corrigez le parser dans `scripts/parse` ou, si la source elle-même est erronée,
-signalez-le au tribunal. La pull request hebdomadaire est relue comme n'importe quelle autre :
+signalez-le au tribunal. La pull request des données est relue comme n'importe quelle autre :
 comparez le diff avec les sources avant de fusionner.
 
 Pour les jeux de données tenus à la main (ressorts, arrondissements, taux d'intérêt) :
