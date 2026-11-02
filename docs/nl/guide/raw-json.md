@@ -8,7 +8,7 @@ helpers toe. Je kunt ze vanuit elke taal lezen:
 - via een raw-URL die aan een releasetag vastgepind is.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data/cantons.json
 ```
 
 Pin een tag in plaats van `main`, zodat de data alleen verandert wanneer jij beslist te upgraden.
@@ -19,7 +19,7 @@ Pin een tag in plaats van `main`, zodat de data alleen verandert wanneer jij bes
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

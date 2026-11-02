@@ -8,7 +8,7 @@ Puoi leggerli da qualsiasi linguaggio:
 - da un URL raw fissato a un release tag.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data/cantons.json
 ```
 
 Fissa un tag invece di `main`, così i dati cambiano solo quando decidi tu di aggiornare.
@@ -19,7 +19,7 @@ Fissa un tag invece di `main`, così i dati cambiano solo quando decidi tu di ag
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

@@ -8,7 +8,7 @@ JSON-файли в `data/` — це джерело істини; TypeScript ли
 - за raw URL, закріпленим на release tag.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data/cantons.json
 ```
 
 Закріплюйтеся на тегу, а не на `main`, щоб дані змінювалися лише тоді, коли ви самі вирішите
@@ -20,7 +20,7 @@ https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data/cantons.js
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

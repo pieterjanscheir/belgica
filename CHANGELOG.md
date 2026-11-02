@@ -7,20 +7,35 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-11-02
+
+### Fixed
+
+- **Courts**: the contacts and hours of 14 courts, from the official sources on 2 November
+  2026 ([#127](https://github.com/pieterjanscheir/belgica/pull/127)). Several now give the
+  justice department's central `+32 2 682 …` numbers: the court of first instance of
+  Luxembourg in Arlon, the enterprise court of Walloon Brabant and of Liège in Arlon, the
+  justices of the peace of Brugge 1 to 4 and the police court of West Flanders in Brugge; the
+  labour court of Hainaut in La Louvière drops a number. The justice of the peace of
+  Sint-Pieters-Woluwe is closed on Fridays now. The justice of the peace of Sint-Genesius-Rode
+  has no structured `openingHours` for now: its Dutch and French pages give different hours,
+  and both texts are kept in `openingHoursText`.
+
 ### Changed
 
+- The official sources are fetched twice a week (Monday and Thursday) instead of once, so a
+  source that changes or breaks is noticed within a few days. When the workflow can't open the
+  data pull request, it updates the open data-update issue instead of opening another one.
+- A source that fails no longer holds back the others: the sources run rebuilds the data from
+  the rest, keeps the failed source's last good snapshots, and lists it in the data pull request
+  and the `data-freshness` issue. The houses of justice of the French Community are the first
+  case: maisonsdejustice.be no longer lists them on a page.
 - The French Community's houses of justice keep their 20 October 2026 data while
   maisonsdejustice.be no longer lists them: the sources run keeps their last snapshots instead
   of retiring them, and shows a warning rather than failing
   ([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
 - The sources run fetches the sites side by side, still one request per second to each: about
   14 minutes instead of 20.
-
-- A source that fails no longer holds back the others: the sources run rebuilds the data from
-  the rest, keeps the failed source's last good snapshots, and lists it in the data pull request
-  and the `data-freshness` issue. The houses of justice of the French Community are the first
-  case: maisonsdejustice.be no longer lists them on a page.
-
 - `pnpm test:package` checks the size of the package: the whole package unpacked (34.0 MB, limit
   40 MB), the package without the boundary files (4.3 MB, limit 6 MB) and any single file
   outside the boundaries (limit 1 MB), with the numbers in CI's job summary
@@ -30,9 +45,6 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   ([#83](https://github.com/pieterjanscheir/belgica/issues/83)).
 - The roadmap drops the registers of judicial experts and mediators, and plans the chambers of
   bailiffs and of notaries instead of a directory of every bailiff and notary.
-- The official sources are fetched twice a week (Monday and Thursday) instead of once, so a
-  source that changes or breaks is noticed within a few days. When the workflow can't open the
-  data pull request, it updates the open data-update issue instead of opening another one.
 
 ## [0.6.1] - 2026-10-22
 
@@ -423,7 +435,8 @@ OpenStreetMap `opening_hours` syntax (`Mo-Fr 08:30-12:30,13:30-16:00`).
 - Courts (justices of the peace in East and West Flanders, Ondernemingsrechtbank Gent) and the
   legal and commercial interest rates.
 
-[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.6.2...HEAD
+[0.6.2]: https://github.com/pieterjanscheir/belgica/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/pieterjanscheir/belgica/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/pieterjanscheir/belgica/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/pieterjanscheir/belgica/compare/v0.4.0...v0.5.0

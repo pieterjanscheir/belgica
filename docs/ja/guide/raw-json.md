@@ -8,7 +8,7 @@
 - release tag に固定した raw URL から
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data/cantons.json
 ```
 
 `main` ではなく tag に固定してください。そうすれば、データが変わるのは自分でアップグレードを
@@ -20,7 +20,7 @@ https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data/cantons.js
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.1/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 
