@@ -40,7 +40,12 @@ official site ──fetch──> snapshots (sources branch) ──parse──> d
    opsomt) laat de snapshots van zijn bron zoals ze waren. De run gaat verder met de andere
    bronnen, zodat één kapotte site niet elke update tegenhoudt: de records van de mislukte bron
    blijven zoals ze waren en worden nooit beëindigd op basis van een onvolledig beeld. De
-   data-pull-request somt de mislukte bronnen op, en de run faalt zodat ook een issue het meldt. Een pagina waar de bron niet langer naar linkt, valt weg uit
+   data-pull-request somt de mislukte bronnen op, en de run faalt zodat ook een issue het meldt.
+   Een deel van een bron waarvan bekend is dat het voorlopig niet leesbaar is (de justitiehuizen
+   van de Franse Gemeenschap sinds de nieuwe site van maisonsdejustice.be, [#125](https://github.com/pieterjanscheir/belgica/issues/125))
+   behoudt zijn laatste snapshots zonder de run te laten falen: het staat als waarschuwing bij
+   de run en in de data-pull-request. De sites worden naast elkaar opgehaald, elk nog steeds
+   met één verzoek per seconde. Een pagina waar de bron niet langer naar linkt, valt weg uit
    de snapshots; haar record blijft in de data, beëindigd met een `validTo` (de dag vóór de
    controle die ze miste), zodat haar id blijft werken en een opzoeking voor een vroegere dag ze
    nog vindt. Een pagina die verschijnt, krijgt een record met een `validFrom`.

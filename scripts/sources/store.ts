@@ -71,6 +71,8 @@ export class Store {
     readonly #dir: string
     readonly #index: Index
     readonly #byUrl = new Map<string, Entry>()
+    /** The index as this run found it, for keep() */
+    readonly #previous = new Map<string, Entry>()
     readonly #seen = new Set<string>()
     readonly #pending = new Map<string, Buffer>()
     readonly #today = new Date().toISOString().slice(0, 10)
@@ -82,7 +84,34 @@ export class Store {
             existsSync(path) ?
                 (JSON.parse(readFileSync(path, 'utf8')) as Index)
             :   { source, entries: [] }
-        for (const entry of this.#index.entries) this.#byUrl.set(entry.url, entry)
+        for (const entry of this.#index.entries) {
+            this.#byUrl.set(entry.url, entry)
+            this.#previous.set(entry.url, entry)
+        }
+    }
+
+    /**
+     * Keeps the last snapshots of every URL under `prefix` as they were, undoing what this run
+     * fetched there: for a part of a source that can't be read for now, so its records stay
+     * as they were instead of being retired. Returns how many good snapshots were kept: a URL
+     * whose last snapshot is an error has nothing to keep.
+     */
+    keep(prefix: string): number {
+        let kept = 0
+        for (const [url, entry] of [...this.#byUrl]) {
+            if (!url.startsWith(prefix)) continue
+            this.#pending.delete(entry.file)
+            const previous = this.#previous.get(url)
+            if (previous) {
+                this.#byUrl.set(url, previous)
+                this.#seen.add(url)
+                if (previous.status === 200) kept++
+            } else {
+                this.#byUrl.delete(url)
+                this.#seen.delete(url)
+            }
+        }
+        return kept
     }
 
     /** Records a response */

@@ -46,7 +46,11 @@ official site ──fetch──> snapshots (sources branch) ──parse──> d
    were. The run goes on with the other sources, so one broken site doesn't hold back every
    update: the failed source's records stay as they were, never retired from an incomplete
    picture. The data pull request lists the failed sources, and the run fails so an issue
-   says so too. A page the
+   says so too. A part of a source that is known to be unreadable for now (the French
+   Community's houses of justice since maisonsdejustice.be was redesigned, [#125](https://github.com/pieterjanscheir/belgica/issues/125))
+   keeps its last snapshots without failing the run: it shows as a warning on the run and in
+   the data pull request. The sites are fetched side by side, each still at one request per
+   second. A page the
    source no longer links to is dropped from the snapshots; its record stays in the data, retired
    with a `validTo` (the day before the check that missed it), so its id keeps working and a
    lookup for an earlier day still finds it. A page that appears gets a record with a `validFrom`.

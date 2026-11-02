@@ -7,7 +7,7 @@ const FRENCH = 'https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/'
 const houses = sources.find((s) => s.name === 'houses-of-justice')
 
 /** A get that answers every URL with the page `pages` gives it, and records what it fetched */
-function site(pages: Record<string, { url?: string; body: string }>) {
+function site(pages: Record<string, { url?: string; body: string }>, keeps = 14) {
     const fetched: string[] = []
     const get = (url: string): Promise<Response> => {
         fetched.push(url)
@@ -19,25 +19,51 @@ function site(pages: Record<string, { url?: string; body: string }>) {
             body: Buffer.from(page.body),
         })
     }
-    return { get, fetched }
+    const kept: string[] = []
+    const keep = (prefix: string) => {
+        kept.push(prefix)
+        return keeps
+    }
+    return { get, keep, fetched, kept }
 }
 
 describe('houses-of-justice source', () => {
     it('fetches every house the French list links to', async () => {
-        const { get, fetched } = site({
+        const { get, keep, fetched, kept } = site({
             [FRENCH]: {
                 body: `<a href="maison-justice-namur/">Namur</a><a href="maison-justice-arlon/">Arlon</a>`,
             },
         })
-        await houses?.fetch(get)
+        await houses?.fetch(get, keep)
         expect(fetched).toContain(FRENCH + 'maison-justice-arlon/')
         expect(fetched).toContain(FRENCH + 'maison-justice-namur/')
+        expect(kept).toEqual([])
     })
 
-    it('fails when the list is a maintenance page, so the snapshots stay as they were', async () => {
-        const { get } = site({
-            [FRENCH]: { url: 'https://maintenance.cfwb.be/', body: '<h1>Maintenance</h1>' },
-        })
-        await expect(houses?.fetch(get)).rejects.toThrow(/No houses of justice listed/)
+    it.each([
+        [
+            'a maintenance page',
+            { url: 'https://maintenance.cfwb.be/', body: '<h1>Maintenance</h1>' },
+        ],
+        [
+            'the contact form it redirects to',
+            {
+                url: 'https://www.maisonsdejustice.be/contact',
+                body: '<select id="maison"><option>Maison de justice de Namur</option></select>',
+            },
+        ],
+    ])('keeps the last snapshots of the French houses when the list is %s', async (_, page) => {
+        const { get, keep, fetched, kept } = site({ [FRENCH]: page })
+        await houses?.fetch(get, keep)
+        expect(kept).toEqual([FRENCH])
+        expect(fetched.filter((url) => url.startsWith(FRENCH + 'maison-justice-'))).toEqual([])
+    })
+
+    it('fails when the list is empty and there are no snapshots to keep', async () => {
+        const { get, keep } = site(
+            { [FRENCH]: { url: 'https://www.maisonsdejustice.be/contact', body: '' } },
+            0,
+        )
+        await expect(houses?.fetch(get, keep)).rejects.toThrow(/none to keep/)
     })
 })

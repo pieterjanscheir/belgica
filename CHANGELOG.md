@@ -9,6 +9,13 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Changed
 
+- The French Community's houses of justice keep their 20 October 2026 data while
+  maisonsdejustice.be no longer lists them: the sources run keeps their last snapshots instead
+  of retiring them, and shows a warning rather than failing
+  ([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
+- The sources run fetches the sites side by side, still one request per second to each: about
+  14 minutes instead of 20.
+
 - A source that fails no longer holds back the others: the sources run rebuilds the data from
   the rest, keeps the failed source's last good snapshots, and lists it in the data pull request
   and the `data-freshness` issue. The houses of justice of the French Community are the first

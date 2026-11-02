@@ -31,6 +31,10 @@ Gemeenschappen beheerd.
 | Gebouwd door  | `scripts/parse`, uit de snapshots                                                                                                                                                                                                                      |
 | Gecontroleerd | Twee keer per week, door de [sources-workflow](/nl/guide/data-quality#how-the-data-is-built)                                                                                                                                                           |
 
+De justitiehuizen van de Franse Gemeenschap komen voorlopig uit de snapshots van 20 oktober
+2026: sinds de nieuwe site van maisonsdejustice.be staan ze niet meer op een pagina, dus blijven ze
+zoals ze waren tot er een nieuwe bron is ([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
+
 Nog niet in de data: het justitiehuis van de Duitstalige Gemeenschap in Eupen
 ([#3](https://github.com/pieterjanscheir/belgica/issues/3)). Brussel heeft zowel een
 Vlaams (`justitiehuis-brussel`) als een Franstalig justitiehuis (`maison-justice-bruxelles`).

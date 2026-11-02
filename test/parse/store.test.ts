@@ -68,6 +68,42 @@ describe('Store', () => {
         expect(new Snapshots(root, 'test').text(B)).toContain('b')
     })
 
+    it('keeps the last snapshots under a prefix, undoing what this run fetched there', () => {
+        const C = 'https://example.org/c'
+        run([
+            [A, ok(A, page('a'))],
+            [B, ok(B, page('b'))],
+        ])
+        const store = new Store(root, 'test')
+        store.put(A, ok(A, page('a, changed')))
+        store.put(B, ok(B, page('a maintenance page')))
+        store.put(C, ok(C, page('new')))
+        expect(store.keep('https://example.org/b')).toBe(1)
+        expect(store.keep('https://example.org/c')).toBe(0)
+        store.save({ prune: true })
+        const snapshots = new Snapshots(root, 'test')
+        expect(snapshots.text(A)).toContain('a, changed')
+        expect(snapshots.text(B)).toContain('b')
+        expect(snapshots.entry(C)).toBeUndefined()
+    })
+
+    it('keeps an untouched snapshot under a prefix when the walk fetches nothing there', () => {
+        run([
+            [A, ok(A, page('a'))],
+            [B, ok(B, page('b'))],
+        ])
+        const store = new Store(root, 'test')
+        store.put(A, ok(A, page('a')))
+        expect(store.keep('https://example.org/b')).toBe(1)
+        store.save({ prune: true })
+        expect(new Snapshots(root, 'test').text(B)).toContain('b')
+    })
+
+    it("doesn't count a URL whose last snapshot is an error as kept", () => {
+        run([[B, { ...ok(B, page('Not Found')), status: 404 }]])
+        expect(new Store(root, 'test').keep('https://example.org/b')).toBe(0)
+    })
+
     it('writes nothing until it saves, so an interrupted walk changes nothing', () => {
         run([[A, ok(A, page('old'))]])
         const index = readFileSync(join(root, 'test', 'index.json'), 'utf8')

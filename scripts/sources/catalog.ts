@@ -6,10 +6,17 @@ import type { Response } from './http.ts'
 
 export type Get = (url: string) => Promise<Response>
 
+/**
+ * Keeps the last snapshots under a URL prefix as they were, for a part of a source that can't
+ * be read for now: its records stay as they are instead of being retired, and the run says why.
+ * Returns how many good snapshots were kept.
+ */
+export type Keep = (prefix: string, reason: string) => number
+
 export interface Source {
     name: string
     description: string
-    fetch: (get: Get) => Promise<void>
+    fetch: (get: Get, keep: Keep) => Promise<void>
 }
 
 const html = (res: Response) => (res.status === 200 ? res.body.toString('utf8') : '')
@@ -107,7 +114,7 @@ const housesOfJustice: Source = {
     name: 'houses-of-justice',
     description:
         'vlaanderen.be (Flemish Community) and maisonsdejustice.be (French Community): every house of justice',
-    async fetch(get) {
+    async fetch(get, keep) {
         await get(
             'https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen',
         )
@@ -116,8 +123,15 @@ const housesOfJustice: Source = {
         const pages = links(html(res), res.url).filter((url) =>
             url.startsWith(list + 'maison-justice-'),
         )
-        // A maintenance page answers 200 without the list; an empty walk would retire them all
-        if (pages.length === 0) throw new Error(`No houses of justice listed on ${res.url}`)
+        // A maintenance page answers 200 without the list, and since the 2026 redesign the list
+        // redirects to a contact form: an empty walk would retire them all, so the last
+        // snapshots stay until the houses can be read again (#125)
+        if (pages.length === 0) {
+            // With nothing to keep, an empty walk would still retire them: fail instead
+            if (keep(list, `no houses of justice listed on ${res.url}`) === 0)
+                throw new Error(`No houses of justice listed on ${res.url}, and none to keep`)
+            return
+        }
         for (const url of pages.sort()) await get(url)
     },
 }

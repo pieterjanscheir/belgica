@@ -58,6 +58,10 @@ jobs:
                     echo "failed=true" >> "$GITHUB_OUTPUT"
                     grep -E 'snapshots left as they were|: HTTP [0-9]+ ' fetch.log > fetch-failures.log || true
                   fi
+                  # A part of a source that can't be read for now keeps its last snapshots: a
+                  # warning on the run and a line in the data pull request, not a failure
+                  grep 'kept the last snapshots' fetch.log > fetch-kept.log || true
+                  while read -r line; do echo "::warning::$line"; done < fetch-kept.log
 
             - name: Commit the snapshots
               env:
@@ -130,6 +134,14 @@ jobs:
                     grep '^unreadable' build.log | head -40 || true
                     echo '```'
                     echo
+                    if [ -s fetch-kept.log ]; then
+                      echo "Not read this run, so their data is as it was in the last snapshots:"
+                      echo
+                      echo '```'
+                      cat fetch-kept.log
+                      echo '```'
+                      echo
+                    fi
                     if [ -s fetch-failures.log ]; then
                       echo "These sources failed, so their data is as it was in the last good snapshot:"
                       echo

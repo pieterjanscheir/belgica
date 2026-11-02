@@ -42,7 +42,12 @@ site officiel ──fetch──> snapshots (branche sources) ──parse──> 
    continue avec les autres sources, pour qu'un seul site en panne ne bloque pas toutes les mises
    à jour : les enregistrements de la source en échec restent tels quels, sans jamais être
    retirés à partir d'une image incomplète. La pull request des données liste les sources en
-   échec, et l'exécution échoue pour qu'une issue le signale aussi. Une page
+   échec, et l'exécution échoue pour qu'une issue le signale aussi.
+   Une partie d'une source que l'on sait illisible pour l'instant (les maisons de justice de la
+   Communauté française depuis la refonte de maisonsdejustice.be, [#125](https://github.com/pieterjanscheir/belgica/issues/125))
+   garde ses derniers snapshots sans faire échouer l'exécution : elle apparaît comme
+   avertissement sur l'exécution et dans la pull request des données. Les sites sont récupérés
+   en parallèle, chacun toujours à une requête par seconde. Une page
    vers laquelle la source ne renvoie plus est retirée des snapshots ; son enregistrement reste
    dans les données, clôturé par un `validTo` (la veille de la vérification qui ne l'a plus
    trouvée), de sorte que son identifiant continue de fonctionner et qu'une recherche pour un

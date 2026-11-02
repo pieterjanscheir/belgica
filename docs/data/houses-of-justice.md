@@ -32,6 +32,10 @@ studies for the family courts. The Communities run them since 2015.
 | Checked      | Twice a week, by the [sources workflow](/guide/data-quality#how-the-data-is-built)                                                                                                                                                                  |
 | Licence      | CC BY 4.0                                                                                                                                                                                                                                           |
 
+The French Community's houses come from the 20 October 2026 snapshots for now: since
+maisonsdejustice.be was redesigned, it no longer lists them on a page, so they stay as they were
+until a new source is found ([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
+
 Not in the data yet: the German-speaking Community's house of justice in Eupen
 ([#3](https://github.com/pieterjanscheir/belgica/issues/3)). Brussels has both a Flemish
 (`justitiehuis-brussel`) and a French-speaking house (`maison-justice-bruxelles`).
