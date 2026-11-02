@@ -11,6 +11,7 @@ import type {
 import type { CourtLocation as PublishedCourtLocation } from '../../src/court-locations.ts'
 import type { Court as PublishedCourt } from '../../src/courts.ts'
 import type { HouseOfJustice as PublishedHouseOfJustice } from '../../src/houses-of-justice.ts'
+import type { PoliceZone as PublishedPoliceZone } from '../../src/police-zones.ts'
 import type { PostalCode as PublishedPostalCode } from '../../src/postal-codes.ts'
 import type { Prison as PublishedPrison } from '../../src/prisons.ts'
 import type {
@@ -39,6 +40,10 @@ export type Prison = Omit<PublishedPrison, 'id' | 'address'> & { id: string; add
 export type HouseOfJustice = Omit<PublishedHouseOfJustice, 'id' | 'address'> & {
     id: string
     address: Address
+}
+export type PoliceZone = Omit<PublishedPoliceZone, 'id' | 'municipalities'> & {
+    id: string
+    municipalities: string[]
 }
 export type PostalCode = Omit<PublishedPostalCode, 'id' | 'municipality'> & {
     id: string

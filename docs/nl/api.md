@@ -25,6 +25,7 @@ import { getMunicipalitiesForPostalCode } from 'belgica/postal-codes'
 | `belgica/houses-of-justice`    | Justitiehuizen, en de helpers voor contactgegevens                         |
 | `belgica/interest-rates`       | Rentevoeten                                                                |
 | `belgica/postal-codes`         | Postcodes, met de gemeenten waartoe ze behoren                             |
+| `belgica/police-zones`         | [Politiezones](#police-zones), alleen hier: niet in de root                |
 | `belgica/data/*.json`          | De ruwe databestanden                                                      |
 | `belgica/schema/*.schema.json` | [JSON Schemas](/nl/guide/schema)                                           |
 | `belgica/datapackage.json`     | [Data package descriptor](/nl/guide/schema#datapackage-json)               |
@@ -424,6 +425,50 @@ voor een onbekende code.
 
 ```ts
 getPostalCodes('44021').map((p) => p.postalCode) // ['9000', '9030', '9031', …]
+```
+
+## Politiezones {#police-zones}
+
+Alleen uit `belgica/police-zones`: ze zitten niet in de root. Zie [politiezones](/nl/data/police-zones).
+
+### `getPoliceZone(id)` {#getpolicezone-id}
+
+```ts
+function getPoliceZone(id: PoliceZoneId): PoliceZone
+function getPoliceZone(id: string, options?: OnDay): PoliceZone | undefined
+```
+
+Een zone op haar officiële nummer. `undefined` voor een onbekend nummer of een dat die dag niet
+geldt.
+
+```ts
+getPoliceZone('5415').name // { nl: 'GENT', fr: 'GAND', de: 'GENT' }
+getPoliceZone('5403').alias // 'RODE'
+```
+
+### `findPoliceZone(municipalityId)` {#findpolicezone-municipalityid}
+
+```ts
+function findPoliceZone(municipalityId: string, options?: OnDay): PoliceZone | undefined
+```
+
+De zone van een gemeente, op REFNIS-code. Elke gemeente ligt in precies één zone; `undefined`
+voor een onbekende code.
+
+```ts
+findPoliceZone('44021')?.id // '5415': Gent
+```
+
+### `getPoliceZoneMunicipalities(id)` {#getpolicezonemunicipalities-id}
+
+```ts
+function getPoliceZoneMunicipalities(id: string, options?: OnDay): Municipality[]
+```
+
+De gemeenten die een zone dekt, in REFNIS-volgorde. Leeg voor een onbekend nummer.
+
+```ts
+getPoliceZoneMunicipalities('5349').map((m) => m.name.nl) // ['Aartselaar', 'Edegem', 'Hove', …]
 ```
 
 ## Bevoegdheid {#jurisdiction}

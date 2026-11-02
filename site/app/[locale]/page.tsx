@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import { use } from 'react'
 import { housesOfJustice, interestRates, prisons } from 'belgica'
+import { policeZones } from 'belgica/police-zones'
 import { CantonMap } from '@/components/CantonMap'
 import { Code } from '@/components/Code'
 import { Search } from '@/components/Search'
@@ -23,6 +24,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
         [currentCantons.length, t('statCantons'), '/cantons/'],
         [currentMunicipalities.length, t('statMunicipalities'), '/municipalities/'],
         [postalCodeList.length, t('statPostalCodes'), '/municipalities/'],
+        [policeZones.filter((z) => !z.validTo).length, t('statPoliceZones'), '/municipalities/'],
         [prisons.length + housesOfJustice.length, t('statPlaces'), '/places/'],
         [
             interestRates.legal.periods.length + interestRates.commercial.periods.length,

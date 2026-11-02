@@ -15,6 +15,7 @@ the date it was last checked against them.
 | [Regions](./territory#regions)                                             | 3        | The region of a municipality, by REFNIS code, named in three languages              |
 | [Provinces](./territory#provinces)                                         | 10       | The province of a municipality (none in Brussels), with its region                  |
 | [Postal codes](./postal-codes)                                             | 1 152    | From an address's postal code to its municipality, and on to its cantons and courts |
+| [Police zones](./police-zones)                                             | 175      | Which police zone handles a municipality, by its official zone number               |
 | [Courts](./courts)                                                         | 347      | Names, addresses and registries' contacts to write to, file with or pay any court   |
 | [Court locations](./courts#locations)                                      | 139      | The justices of the peace on a map (GeoJSON points)                                 |
 | [Prisons](./prisons)                                                       | 39       | Addresses and contacts of every prison and detention house                          |

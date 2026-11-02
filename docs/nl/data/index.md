@@ -14,6 +14,7 @@ licentie en de datum waarop hij voor het laatst tegen die bronnen is gecontrolee
 | [Gewesten](./territory#regions)                 | 3         | Het gewest van een gemeente, op REFNIS-code, in drie talen benoemd                                                  |
 | [Provincies](./territory#provinces)             | 10        | De provincie van een gemeente (geen in Brussel), met haar gewest                                                    |
 | [Postcodes](./postal-codes)                     | 1 152     | Van de postcode van een adres naar zijn gemeente, en verder naar haar kantons en gerechten                          |
+| [Politiezones](./police-zones)                  | 175       | Welke politiezone een gemeente behandelt, op haar officiële zonenummer                                              |
 | [Hoven en rechtbanken](./courts)                | 347       | Namen, adressen en contactgegevens van de griffies om elk gerecht aan te schrijven, er neer te leggen of te betalen |
 | [Gevangenissen](./prisons)                      | 39        | Adressen en contactgegevens van elke gevangenis en elk detentiehuis                                                 |
 | [Justitiehuizen](./houses-of-justice)           | 27        | Probatie, slachtofferonthaal en maatschappelijke onderzoeken voor de familierechtbanken                             |

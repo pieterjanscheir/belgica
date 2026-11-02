@@ -44,6 +44,7 @@ also has its own entry point, so an app loads only what it uses.
 | `belgica/prisons`                   | Prisons, and the contact helpers                                                |
 | `belgica/houses-of-justice`         | Houses of justice, and the contact helpers                                      |
 | `belgica/postal-codes`              | Postal codes                                                                    |
+| `belgica/police-zones`              | [Police zones](#police-zones), only here: not in the root                       |
 | `belgica/interest-rates`            | Interest rates                                                                  |
 | `belgica/calendar`                  | Public and judicial holidays                                                    |
 | `belgica/canton-boundaries`         | The cantons' geometry, and `findCantonsAt`                                      |
@@ -446,6 +447,50 @@ The postal codes of a municipality, by REFNIS code, in order. `[]` for an unknow
 
 ```ts
 getPostalCodes('44021').map((p) => p.postalCode) // ['9000', '9030', '9031', …]
+```
+
+## Police zones
+
+From `belgica/police-zones` only: they aren't in the root. See [police zones](/data/police-zones).
+
+### `getPoliceZone` {#getpolicezone}
+
+```ts
+function getPoliceZone(id: PoliceZoneId): PoliceZone
+function getPoliceZone(id: string, options?: OnDay): PoliceZone | undefined
+```
+
+A zone by its official number. `undefined` for an unknown number or one not in force that day.
+
+```ts
+getPoliceZone('5415').name // { nl: 'GENT', fr: 'GAND', de: 'GENT' }
+getPoliceZone('5403').alias // 'RODE'
+```
+
+### `findPoliceZone` {#findpolicezone}
+
+```ts
+function findPoliceZone(municipalityId: string, options?: OnDay): PoliceZone | undefined
+```
+
+The zone of a municipality, by REFNIS code. Every municipality is in exactly one zone;
+`undefined` for an unknown code.
+
+```ts
+findPoliceZone('44021')?.id // '5415': Gent
+findPoliceZone('11001')?.name.nl // 'AARTSELAAR/EDEGEM/HOVE/KONTICH/LINT'
+```
+
+### `getPoliceZoneMunicipalities` {#getpolicezonemunicipalities}
+
+```ts
+function getPoliceZoneMunicipalities(id: string, options?: OnDay): Municipality[]
+```
+
+The municipalities a zone covers, in REFNIS order. `[]` for an unknown number.
+
+```ts
+getPoliceZoneMunicipalities('5349').map((m) => m.name.nl) // ['Aartselaar', 'Edegem', 'Hove', …]
 ```
 
 ## Contacts
@@ -868,6 +913,7 @@ interface Coverage {
 | `cantonBoundariesCoverage`         | `'2026-10-21'` | `belgica/canton-boundaries`             |
 | `arrondissementBoundariesCoverage` | `'2026-10-21'` | `belgica/arrondissement-boundaries`     |
 | `courtLocationsCoverage`           | `'2026-10-21'` | `belgica/court-locations`               |
+| `policeZonesCoverage`              | `'2026-11-02'` | `belgica/police-zones`                  |
 
 Each is a `Coverage`, `{ from }`. The first five are also in the root. A lookup for a day before
 `from` throws a `RangeError`.

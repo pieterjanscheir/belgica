@@ -59,6 +59,7 @@ FILES = {
     'prisons': types.Prison,
     'houses-of-justice': types.HouseOfJustice,
     'postal-codes': types.PostalCode,
+    'police-zones': types.PoliceZone,
     'canton-boundaries': types.CantonBoundary,
     'arrondissement-boundaries': types.ArrondissementBoundary,
     'court-locations': types.CourtLocation,

@@ -58,6 +58,7 @@
         "statCantons": "司法カントン",
         "statMunicipalities": "自治体",
         "statPostalCodes": "郵便番号",
+        "statPoliceZones": "警察区域",
         "statPlaces": "刑務所と司法の家",
         "statRates": "1970年以降の利率期間",
         "featureAddressTitle": "住所から裁判所を探す",
@@ -100,6 +101,7 @@
         "province": "州",
         "arrondissement": "司法管区",
         "postalCodes": "郵便番号",
+        "policeZone": "警察区域",
         "courtsWithJurisdiction": "管轄の裁判所",
         "mapLabel": "{arrondissement} のカントン（{municipality} のカントンを強調表示）"
     },

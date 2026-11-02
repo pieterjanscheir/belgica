@@ -194,4 +194,40 @@ const ngi: Source = {
     },
 }
 
-export const sources: Source[] = [courts, prisons, housesOfJustice, statbel, postalCodes, ngi]
+/**
+ * The police zones: FOD Financiën's (AAPD) INSPIRE dataset "Police zones", the zones as the royal
+ * decrees of 28 April 2000 set them, CC BY 4.0. Its ATOM feed lists a zipped shapefile per
+ * reference date and projection; the walk fetches the latest one in Belgian Lambert 2008. The zip
+ * also holds the table of every municipality with its zone, which is what the parser reads.
+ */
+export const POLICE_ZONES_FEED =
+    'https://opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-en.xml'
+
+/** A zipped shapefile of the police zones, Belgian Lambert 2008, by its reference date */
+export const POLICE_ZONES_ZIP =
+    /\/6bcbdf8f-e89f-11ec-be04-9453308970f2_(\d{8})_shp_3812_01000\.zip$/
+
+const policeZones: Source = {
+    name: 'police-zones',
+    description: 'FOD Financiën (AAPD) open data: the police zones and their municipalities',
+    async fetch(get) {
+        const res = await get(POLICE_ZONES_FEED)
+        const zips = [...html(res).matchAll(/href="([^"]+)"/g)]
+            .map((m) => m[1] ?? '')
+            .filter((url) => POLICE_ZONES_ZIP.test(url))
+            .sort()
+        const latest = zips.at(-1)
+        if (!latest) throw new Error(`No police zones file listed on ${res.url}`)
+        await get(latest)
+    },
+}
+
+export const sources: Source[] = [
+    courts,
+    prisons,
+    housesOfJustice,
+    statbel,
+    postalCodes,
+    ngi,
+    policeZones,
+]

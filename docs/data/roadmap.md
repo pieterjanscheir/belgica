@@ -5,7 +5,8 @@ official sources, the proposed fields and what "done" means. Help is welcome: pi
 follow the [conventions](/guide/contributing#adding-a-dataset).
 
 The public and judicial holidays ([#61](https://github.com/pieterjanscheir/belgica/issues/61))
-were on this list and have shipped: see [public holidays](./public-holidays).
+were on this list and have shipped: see [public holidays](./public-holidays). So have the police
+zones ([#7](https://github.com/pieterjanscheir/belgica/issues/7)): see [police zones](./police-zones).
 
 ## Courts, offices and people
 
@@ -16,7 +17,6 @@ were on this list and have shipped: see [public holidays](./public-holidays).
 | **Jurisdiction per court division** (afdelingen / divisions)                                          | Where to file within a court, and the RPR / RPM mention on company documents                    | [#58](https://github.com/pieterjanscheir/belgica/issues/58) |
 | **Prosecutors' offices** (parketten, arbeidsauditoraten, parketten-generaal, federal prosecutor)      | Where to file a criminal complaint, and the labour prosecutor in social-law cases               | [#55](https://github.com/pieterjanscheir/belgica/issues/55) |
 | **Chambers of bailiffs** (gerechtsdeurwaarders / huissiers de justice) and the area each covers       | Which chamber covers an arrondissement, and a link to its search for a bailiff                  | [#6](https://github.com/pieterjanscheir/belgica/issues/6)   |
-| **Police zones** (politiezones / zones de police)                                                     | Which zone handles a municipality: complaints, copies of reports                                | [#7](https://github.com/pieterjanscheir/belgica/issues/7)   |
 | **Cadastre and legal-certainty offices** (kadaster, former hypotheekkantoren)                         | Request mortgage certificates and cadastral extracts from the competent office                  | [#8](https://github.com/pieterjanscheir/belgica/issues/8)   |
 | **Chambers of notaries** and the area each covers                                                     | The chamber competent for a property or a complaint, and a link to Fednot's search for a notary | [#56](https://github.com/pieterjanscheir/belgica/issues/56) |
 | **Bars** (balies / barreaux) and their legal aid offices                                              | The legal aid office for an address, and the bâtonnier for deontological questions              | [#57](https://github.com/pieterjanscheir/belgica/issues/57) |

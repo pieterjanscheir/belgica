@@ -58,6 +58,7 @@
         "statCantons": "司法区",
         "statMunicipalities": "市镇",
         "statPostalCodes": "邮政编码",
+        "statPoliceZones": "警察区",
         "statPlaces": "监狱与司法之家",
         "statRates": "1970 年以来的利率期间",
         "featureAddressTitle": "按地址查找法院",
@@ -100,6 +101,7 @@
         "province": "省",
         "arrondissement": "司法辖区",
         "postalCodes": "邮政编码",
+        "policeZone": "警察区",
         "courtsWithJurisdiction": "有管辖权的法院",
         "mapLabel": "{arrondissement} 的司法区，突出显示 {municipality} 所属的司法区"
     },

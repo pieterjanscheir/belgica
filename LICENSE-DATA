@@ -21,6 +21,8 @@ Sources:
 - Cantons, arrondissements and judicial areas: the annex to the Belgian
   Judicial Code, as consolidated on Justel (https://www.ejustice.just.fgov.be/).
   Official acts are not protected by copyright in Belgium (art. XI.172 §2 WER).
+- Police zones (data/police-zones.json): FOD Financiën (AAPD), "Police zones",
+  CC BY 4.0, https://opendata.fin.belgium.be/
 - Interest rates: FOD Financiën and the Belgisch Staatsblad.
 - Court addresses and contacts: the courts' own websites and just.fgov.be.
 

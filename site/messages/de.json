@@ -58,6 +58,7 @@
         "statCantons": "Gerichtskantone",
         "statMunicipalities": "Gemeinden",
         "statPostalCodes": "Postleitzahlen",
+        "statPoliceZones": "Polizeizonen",
         "statPlaces": "Gefängnisse und Justizhäuser",
         "statRates": "Zinsperioden seit 1970",
         "featureAddressTitle": "Gerichte für eine Adresse",
@@ -100,6 +101,7 @@
         "province": "Provinz",
         "arrondissement": "Gerichtsbezirk",
         "postalCodes": "Postleitzahlen",
+        "policeZone": "Polizeizone",
         "courtsWithJurisdiction": "Zuständige Gerichte",
         "mapLabel": "Kantone von {arrondissement}, die von {municipality} hervorgehoben"
     },

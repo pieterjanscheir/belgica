@@ -56,6 +56,7 @@ listent les identifiants valides, de sorte qu'un lien pendant échoue à la vali
 | Provinces           | `10000`, `40000`                                                                                                          | Code REFNIS               |
 | Régions             | `02000`, `03000`, `04000`                                                                                                 | Code REFNIS               |
 | Codes postaux       | `9000-44021`, `1040-21005`                                                                                                | Code postal + code REFNIS |
+| Zones de police     | `5415`, `5349`                                                                                                            | Numéro de zone officiel   |
 | Cours et tribunaux  | `justice-of-the-peace-gent-1`, `enterprise-court-gent-brugge`, `police-court-brussel-fr`, `police-court-eupen-sankt-vith` | Type + lieu               |
 | Prisons             | `gevangenis-gent`, `prison-lantin`, `detentiehuis-kortrijk`                                                               | Nom local                 |
 | Maisons de justice  | `justitiehuis-gent`, `maison-justice-arlon`                                                                               | Nom local                 |

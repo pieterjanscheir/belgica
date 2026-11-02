@@ -218,6 +218,16 @@ class HouseOfJustice(Validity):
     sources: list[SourceRef]
 
 
+class PoliceZone(Validity):
+    """A police zone (politiezone, zone de police): id is its official number, e.g. '5415'"""
+
+    id: str
+    name: Translated
+    alias: NotRequired[str]
+    municipalities: list[str]
+    sources: list[SourceRef]
+
+
 class PostalCode(Validity):
     """A postal code and one of the municipalities it belongs to: id '9000-44021'"""
 

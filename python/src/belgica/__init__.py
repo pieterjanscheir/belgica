@@ -1,5 +1,5 @@
 """Belgian legal reference data: courts, judicial cantons and arrondissements, municipalities and
-postal codes, prisons, houses of justice, and legal and commercial interest rates.
+postal codes, police zones, prisons, houses of justice, and legal and commercial interest rates.
 
 The records are the dicts from the JSON files, typed in `belgica.types`. Each data file is read
 on first use. Lookups take `on`, a day as a `date` or 'YYYY-MM-DD', and give today's answer
@@ -52,6 +52,13 @@ from ._places import (
     houses_of_justice,
     prisons,
 )
+from ._police_zones import (
+    POLICE_ZONES_COVERAGE_FROM,
+    find_police_zone,
+    get_police_zone,
+    get_police_zone_municipalities,
+    police_zones,
+)
 from ._postal_codes import (
     POSTAL_CODES_COVERAGE_FROM,
     get_municipalities_for_postal_code,
@@ -86,6 +93,7 @@ __all__ = [
     'COURTS_COVERAGE_FROM',
     'COURT_LOCATIONS_COVERAGE_FROM',
     'HOUSES_OF_JUSTICE_COVERAGE_FROM',
+    'POLICE_ZONES_COVERAGE_FROM',
     'POSTAL_CODES_COVERAGE_FROM',
     'PRISONS_COVERAGE_FROM',
     'TERRITORY_COVERAGE_FROM',
@@ -107,6 +115,7 @@ __all__ = [
     'find_courts_for_postal_code',
     'find_courts_with_jurisdiction',
     'find_justices_of_the_peace',
+    'find_police_zone',
     'format_court_name',
     'format_iban',
     'format_phone_number',
@@ -128,6 +137,8 @@ __all__ = [
     'get_latest_known_rate_date',
     'get_municipalities_for_postal_code',
     'get_municipality',
+    'get_police_zone',
+    'get_police_zone_municipalities',
     'get_postal_code',
     'get_postal_codes',
     'get_prison',
@@ -139,6 +150,7 @@ __all__ = [
     'interest_rates',
     'judicial_areas',
     'municipalities',
+    'police_zones',
     'postal_codes',
     'prisons',
     'provinces',
