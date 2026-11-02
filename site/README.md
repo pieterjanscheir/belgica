@@ -21,4 +21,6 @@ pnpm site:build     # out/; SITE_BASE for the path it's served under, if not the
 - `scripts/build-map.ts` simplifies the canton boundaries (23 MB) into `public/canton-map.json`
   (under 200 kB), which every map loads once. `app/[locale]/search-index.json/route.ts` writes
   each language's search index at build time.
-- Vercel builds with `site/vercel.json`: the package first, then the site.
+- Vercel builds with `site/vercel.json`: the package first, then the site. `scripts/ignore-build.sh`
+  skips the builds that can't change it: the `sources`, `data/*` and `dependabot/*` branches, and
+  any push that leaves the site, the package's source and its data as they were.
