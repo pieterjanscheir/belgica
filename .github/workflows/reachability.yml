@@ -1,0 +1,72 @@
+name: Source reachability
+
+# By hand only: which routes reach the sources that refuse GitHub's runners (#52)? Requests one
+# page of each source directly from the runner, through Jina Reader (a fetch API, free without
+# a key) and from the Internet Archive's latest copy, and writes a table to the run's summary.
+#
+# Pick another runner label to try a hosted-runner provider (Blacksmith, Ubicloud, …). Install
+# the provider's GitHub app first: without it no runner picks the job up, and the run waits
+# until it times out.
+on:
+    workflow_dispatch:
+        inputs:
+            runner:
+                description: "runs-on label: ubuntu-latest (GitHub's), or a provider's, e.g. blacksmith-2vcpu-ubuntu-2404 or ubicloud-standard-2"
+                type: string
+                default: ubuntu-latest
+
+permissions: {}
+
+jobs:
+    probe:
+        runs-on: ${{ inputs.runner }}
+        timeout-minutes: 10
+        steps:
+            - name: Request the sources
+              env:
+                  RUNNER_LABEL: ${{ inputs.runner }}
+              run: |
+                  ua='belgica (+https://github.com/pieterjanscheir/belgica; open data, source check twice a week)'
+                  # name, URL, a string the real page contains (an error or block page doesn't)
+                  sources=(
+                    "ejustice-eli|https://www.ejustice.just.fgov.be/eli/wet/1967/10/10/1967101058/justel|1967101058"
+                    "ejustice-annex|https://www.ejustice.just.fgov.be/cgi_loi/article.pl?language=nl&lg_txt=n&cn_search=1967101007&caller=list|1967101007"
+                    "police-be|https://www.police.be/nl|politiezone"
+                  )
+                  # What a request got: the page, a block or maintenance page, or something else
+                  probe() {
+                    local marker=$1; shift
+                    local code verdict
+                    code=$(curl -sS -L --max-time 60 -A "$ua" -o body -w '%{http_code}' "$@" 2>/dev/null) || code=error
+                    if grep -aqiE 'request rejected|access denied|maintenance|captcha|too many requests' body 2>/dev/null; then
+                      verdict='block page'
+                    elif grep -aqF "$marker" body 2>/dev/null; then
+                      verdict='**page**'
+                    else
+                      verdict='other'
+                    fi
+                    echo "$code, $(wc -c < body 2>/dev/null | tr -d ' ' || echo 0) bytes, $verdict"
+                    rm -f body
+                  }
+                  network=$(curl -sS --max-time 20 https://ipinfo.io/org 2>/dev/null || echo unknown)
+                  {
+                    echo "## Reachability from \`$RUNNER_LABEL\`"
+                    echo
+                    echo "Runner network: $network"
+                    echo
+                    echo '| Source | Direct | Jina Reader | Internet Archive (latest copy) |'
+                    echo '| --- | --- | --- | --- |'
+                    for entry in "${sources[@]}"; do
+                      IFS='|' read -r name url marker <<< "$entry"
+                      direct=$(probe "$marker" "$url")
+                      jina=$(probe "$marker" -H 'X-Return-Format: html' "https://r.jina.ai/$url")
+                      archive=$(curl -sS --max-time 30 -G --data-urlencode "url=${url#https://}" \
+                        --data-urlencode 'output=json' --data-urlencode 'fl=timestamp,statuscode' \
+                        --data-urlencode 'limit=-1' https://web.archive.org/cdx/search/cdx 2>/dev/null \
+                        | jq -r 'if length > 1 then "\(.[1][1]) on \(.[1][0][0:8])" else "none" end' 2>/dev/null || echo error)
+                      echo "| $name | $direct | $jina | $archive |"
+                      sleep 2
+                    done
+                    echo
+                    echo "**page**: the real page came back. A block or maintenance page can answer 200 too."
+                  } | tee -a "$GITHUB_STEP_SUMMARY"
