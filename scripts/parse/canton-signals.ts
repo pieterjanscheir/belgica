@@ -3,9 +3,11 @@
  *
  * The cantons and municipalities come from the annex to the Judicial Code on ejustice, which
  * refuses GitHub's runners, so `pnpm build:cantons` runs by hand (#52). They only change when a
- * law changes the annex or municipalities merge, and both show up elsewhere first: the NGI
+ * law changes the annex or municipalities merge, and both usually show up elsewhere: the NGI
  * redraws the canton's boundary, and Statbel's REFNIS register opens or closes a municipality.
- * The build reports each sign, and the sources run opens an issue that says to run it.
+ * The build reports each sign, and the sources run opens an issue that says to run it. The NGI
+ * may redraw a boundary weeks after the law changes, so this is a reminder, not a guarantee: a
+ * law that changes the annex is still worth a look by hand.
  *
  * A new or vanished canton already stops the build (a canton without a boundary or without a
  * court); these are the changes that keep every canton but move what it covers.

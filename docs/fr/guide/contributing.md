@@ -44,13 +44,14 @@ scindée entre plusieurs cantons). Les exonymes que l'annexe emploie mais pas St
 (`Gembloers`, `Saint-Nicolas`, …), les coquilles de l'annexe et les mentions de limites qu'il ne
 sait pas distinguer sont listés en tête du script.
 
-Relancez-le après qu'une loi a modifié l'annexe ou que des communes ont fusionné. Inutile de
-guetter ces changements : ejustice refuse les runners de GitHub ([#52](https://github.com/pieterjanscheir/belgica/issues/52)),
-l'exécution des sources regarde donc les limites des cantons de l'IGN et le registre REFNIS de
+Relancez-le après qu'une loi a modifié l'annexe ou que des communes ont fusionné. Pour vous aider à
+les repérer, comme ejustice refuse les runners de GitHub ([#52](https://github.com/pieterjanscheir/belgica/issues/52)),
+l'exécution des sources regarde les limites des cantons de l'IGN et le registre REFNIS de
 Statbel, et ouvre une issue avec le label
 [`cantons`](https://github.com/pieterjanscheir/belgica/issues?q=label%3Acantons) quand la limite
 d'un canton change ou que le registre ne correspond plus à `data/municipalities.json`
-(`scripts/parse/canton-signals.ts`). Les
+(`scripts/parse/canton-signals.ts`). L'IGN peut redessiner une limite des semaines après le
+changement de loi : cette issue est donc un rappel, pas une garantie. Les
 identifiants des cantons suivent la langue locale (le néerlandais en Flandre et à Bruxelles, le
 français en Wallonie, l'allemand autour d'Eupen) ; la justice de paix du canton `x` a
 l'identifiant `justice-of-the-peace-x` et y renvoie par son champ `canton`.

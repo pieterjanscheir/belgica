@@ -58,6 +58,21 @@ describe('cantonSignals', () => {
         ).toEqual(["canton gent-1: the NGI's boundary changed"])
     })
 
+    it("ignores municipalities of the data that don't apply today", () => {
+        expect(
+            cantonSignals({
+                previousBoundaries: [],
+                boundaries: [],
+                refnis: [],
+                municipalities: [
+                    { ...municipality('44019', 'Evergem'), validTo: '2025-12-31' },
+                    { ...municipality('44084', 'Lievegem'), validFrom: '2027-01-01' },
+                ],
+                today,
+            }),
+        ).toEqual([])
+    })
+
     it('reports municipalities that Statbel opened or closed and the data has not caught up with', () => {
         expect(
             cantonSignals({

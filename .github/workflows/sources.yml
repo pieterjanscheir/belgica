@@ -90,18 +90,20 @@ jobs:
             # The cantons come from ejustice, which refuses GitHub's runners (#52), so they're
             # rebuilt by hand. canton-signals.ts says when the other sources show they changed.
             - name: Open or update the cantons issue
-              if: github.ref == 'refs/heads/main'
+              # Also after a failed rebuild: the signals are printed before the build stops
+              if: always() && steps.build.outcome != 'skipped' && github.ref == 'refs/heads/main'
               env:
                   GH_TOKEN: ${{ github.token }}
                   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
               run: |
-                  sed -n 's/^canton signal: //p' build.log > canton-signals.log
+                  sed -n 's/^canton signal: //p' build.log > canton-signals.log 2>/dev/null || true
                   [ -s canton-signals.log ] || exit 0
-                  {
+                  # The issue body, or a comment with the signals the open issue doesn't mention yet
+                  write() {
                     echo "The sources show that the cantons may have changed: $RUN_URL"
                     echo
                     echo '```'
-                    cat canton-signals.log
+                    cat "$1"
                     echo '```'
                     echo
                     echo "The cantons and municipalities come from the annex to the Judicial Code on"
@@ -111,17 +113,19 @@ jobs:
                     echo '```'
                     echo 'pnpm build:cantons && pnpm generate'
                     echo '```'
-                  } > cantons.md
+                  }
                   gh label create cantons --color 1D76DB --description "The cantons need a rebuild by hand" 2>/dev/null || true
                   number=$(gh issue list --label cantons --state open --json number --jq '.[0].number')
                   if [ -n "$number" ]; then
                     # Only what the issue doesn't say yet: the same signals come back every run
                     # until the data catches up
                     gh issue view "$number" --comments --json body,comments --jq '.body, .comments[].body' > seen.txt
-                    if grep -vxF -f seen.txt canton-signals.log > /dev/null; then
+                    if grep -vxF -f seen.txt canton-signals.log > new-signals.log; then
+                      write new-signals.log > cantons.md
                       gh issue comment "$number" --body-file cantons.md
                     fi
                   else
+                    write canton-signals.log > cantons.md
                     gh issue create --title "The cantons may have changed: run pnpm build:cantons" --label cantons --body-file cantons.md
                   fi
 
