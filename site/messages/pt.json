@@ -58,6 +58,7 @@
         "statCantons": "cantões judiciais",
         "statMunicipalities": "municípios",
         "statPostalCodes": "códigos postais",
+        "statPoliceZones": "zonas de polícia",
         "statPlaces": "prisões e casas de justiça",
         "statRates": "períodos de taxas de juro desde 1970",
         "featureAddressTitle": "Tribunais para uma morada",
@@ -100,6 +101,7 @@
         "province": "Província",
         "arrondissement": "Distrito judicial",
         "postalCodes": "Códigos postais",
+        "policeZone": "Zona de polícia",
         "courtsWithJurisdiction": "Tribunais competentes",
         "mapLabel": "Cantões de {arrondissement}, com os de {municipality} destacados"
     },

@@ -9,6 +9,7 @@ import {
     getProvinceForMunicipality,
     getRegionForMunicipality,
 } from 'belgica'
+import { findPoliceZone } from 'belgica/police-zones'
 import { CantonMap } from '@/components/CantonMap'
 import { Code } from '@/components/Code'
 import { Jurisdiction } from '@/components/Jurisdiction'
@@ -38,6 +39,7 @@ export default async function MunicipalityPage({ params }: Props) {
     const province = getProvinceForMunicipality(id)
     const arrondissement = getArrondissementForMunicipality(id)
     const cantonIds = getCantonsForMunicipality(id).map((c) => c.id)
+    const policeZone = findPoliceZone(id)
     const nearby = currentCantons
         .filter((c) => c.arrondissement === arrondissement?.id)
         .map((c) => c.id)
@@ -91,6 +93,25 @@ export default async function MunicipalityPage({ params }: Props) {
                                 ))}
                             </dd>
                         </div>
+                        {policeZone && (
+                            <div>
+                                <dt>{t('policeZone')}</dt>
+                                <dd>
+                                    <span className="mono">{policeZone.id}</span>{' '}
+                                    {policeZone.alias ?? <Name value={policeZone.name} />}
+                                    {/* A zone of several municipalities: its official name lists them */}
+                                    {policeZone.alias && policeZone.name.nl.includes('/') && (
+                                        <div className="muted small">
+                                            <Name
+                                                value={(l) =>
+                                                    policeZone.name[l].replaceAll('/', ' / ')
+                                                }
+                                            />
+                                        </div>
+                                    )}
+                                </dd>
+                            </div>
+                        )}
                     </dl>
                     <Code>{`
 import { getCantonsForMunicipality, findJusticesOfThePeace } from 'belgica'

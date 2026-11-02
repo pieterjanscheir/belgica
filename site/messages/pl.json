@@ -58,6 +58,7 @@
         "statCantons": "kantony sądowe",
         "statMunicipalities": "gminy",
         "statPostalCodes": "kody pocztowe",
+        "statPoliceZones": "strefy policji",
         "statPlaces": "więzienia i domy sprawiedliwości",
         "statRates": "okresy stóp procentowych od 1970 r.",
         "featureAddressTitle": "Sądy dla adresu",
@@ -100,6 +101,7 @@
         "province": "Prowincja",
         "arrondissement": "Okręg sądowy",
         "postalCodes": "Kody pocztowe",
+        "policeZone": "Strefa policji",
         "courtsWithJurisdiction": "Właściwe sądy",
         "mapLabel": "Kantony okręgu {arrondissement}, z wyróżnionymi kantonami gminy {municipality}"
     },

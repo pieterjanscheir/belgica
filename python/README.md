@@ -2,7 +2,7 @@
 
 Belgian legal reference data for Python: every court with its registries' contacts, prisons,
 houses of justice, judicial cantons and arrondissements, municipalities and their postal codes,
-and the legal and commercial interest rates. Every record says where it comes from, and the
+the police zones, and the legal and commercial interest rates. Every record says where it comes from, and the
 scraped data is rebuilt from the official sources twice a week.
 
 The same data and lookups as the [`belgica` npm package](https://www.npmjs.com/package/belgica),
@@ -25,6 +25,7 @@ from belgica import (
     find_courts_with_jurisdiction,
     find_courts,
     find_courts_for_postal_code,
+    find_police_zone,
     get_cantons_for_municipality,
     get_contact,
     get_court,
@@ -45,6 +46,7 @@ find_arrondissements_at(3.7268, 51.053)  # [oost-vlaanderen]: and its arrondisse
 get_court_location('justice-of-the-peace-gent-1')['geometry']  # the court on the map, a GeoJSON Point
 find_courts_with_jurisdiction('23088', 'police-court')  # [police-court-vilvoorde]: which court, by REFNIS code
 find_courts_for_postal_code('1040', 'police-court')  # per municipality: Brussel and Etterbeek share the code
+find_police_zone('44021')['id']  # '5415': the police zone of Gent
 
 get_interest_rate('2024-06-15', 'legal')  # InterestRateResult(rate=5.75, period_from='2024-01-01', period_to='2024-12-31')
 ```
@@ -62,5 +64,6 @@ empty list.
 ## Licence
 
 Code MIT. Data CC BY 4.0: municipality, province, region and postal-code data © Statbel, canton and
-arrondissement boundaries and court locations © National Geographic Institute (NGI). See the
+arrondissement boundaries and court locations © National Geographic Institute (NGI), police zones ©
+FOD Financiën (AAPD). See the
 [repository](https://github.com/pieterjanscheir/belgica) for the sources of every dataset.

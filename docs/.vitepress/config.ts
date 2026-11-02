@@ -244,7 +244,11 @@ function themeConfig(prefix: string, t: Strings): DefaultTheme.Config {
                     { text: s.prisons, link: `${prefix}/data/prisons` },
                     { text: s.housesOfJustice, link: `${prefix}/data/houses-of-justice` },
                     { text: s.postalCodes, link: `${prefix}/data/postal-codes` },
-                    { text: s.policeZones, link: '/data/police-zones' },
+                    // In English, Dutch and French only so far
+                    {
+                        text: s.policeZones,
+                        link: `${prefix === '/nl' || prefix === '/fr' ? prefix : ''}/data/police-zones`,
+                    },
                     { text: s.interestRates, link: `${prefix}/data/interest-rates` },
                     { text: s.publicHolidays, link: '/data/public-holidays' },
                     { text: s.knownGaps, link: `${prefix}/data/known-gaps` },

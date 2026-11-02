@@ -54,6 +54,7 @@ doet falen.
 | Provincies       | `10000`, `40000`                                                                                                          | REFNIS-code            |
 | Gewesten         | `02000`, `03000`, `04000`                                                                                                 | REFNIS-code            |
 | Postcodes        | `9000-44021`, `1040-21005`                                                                                                | Postcode + REFNIS-code |
+| Politiezones     | `5415`, `5349`                                                                                                            | Officieel zonenummer   |
 | Rechtbanken      | `justice-of-the-peace-gent-1`, `enterprise-court-gent-brugge`, `police-court-brussel-fr`, `police-court-eupen-sankt-vith` | Type + plaats          |
 | Gevangenissen    | `gevangenis-gent`, `prison-lantin`, `detentiehuis-kortrijk`                                                               | Lokale naam            |
 | Justitiehuizen   | `justitiehuis-gent`, `maison-justice-arlon`                                                                               | Lokale naam            |

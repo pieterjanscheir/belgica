@@ -195,7 +195,7 @@ words of the theme and the interactive components in those other languages are i
 `docs/.vitepress/locales/`.
 
 Some pages are in English only for now, and every language's sidebar links to the English
-page: the introduction, core concepts, common tasks, entry points, Python, public holidays and police zones.
+page: the introduction, core concepts, common tasks, entry points, Python and public holidays.
 A new page can start that way too; give its sidebar label an English fallback in
 `docs/.vitepress/locales/types.ts`.
 

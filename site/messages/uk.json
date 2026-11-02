@@ -58,6 +58,7 @@
         "statCantons": "судові кантони",
         "statMunicipalities": "муніципалітети",
         "statPostalCodes": "поштові індекси",
+        "statPoliceZones": "поліцейські зони",
         "statPlaces": "в'язниці та будинки юстиції",
         "statRates": "періоди процентних ставок з 1970 року",
         "featureAddressTitle": "Суди для адреси",
@@ -100,6 +101,7 @@
         "province": "Провінція",
         "arrondissement": "Судовий округ",
         "postalCodes": "Поштові індекси",
+        "policeZone": "Поліцейська зона",
         "courtsWithJurisdiction": "Компетентні суди",
         "mapLabel": "Кантони округу {arrondissement}, кантони {municipality} виділено"
     },

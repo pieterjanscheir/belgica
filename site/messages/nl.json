@@ -58,6 +58,7 @@
         "statCantons": "gerechtelijke kantons",
         "statMunicipalities": "gemeenten",
         "statPostalCodes": "postcodes",
+        "statPoliceZones": "politiezones",
         "statPlaces": "gevangenissen en justitiehuizen",
         "statRates": "interestperiodes sinds 1970",
         "featureAddressTitle": "Rechtbanken voor een adres",
@@ -100,6 +101,7 @@
         "province": "Provincie",
         "arrondissement": "Gerechtelijk arrondissement",
         "postalCodes": "Postcodes",
+        "policeZone": "Politiezone",
         "courtsWithJurisdiction": "Bevoegde rechtbanken",
         "mapLabel": "Kantons van {arrondissement}, met die van {municipality} gemarkeerd"
     },

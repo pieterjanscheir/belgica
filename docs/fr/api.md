@@ -15,19 +15,20 @@ import { getHouseOfJustice } from 'belgica/houses-of-justice'
 import { getMunicipalitiesForPostalCode } from 'belgica/postal-codes'
 ```
 
-| Point d'entrée                 | Contenu                                                          |
-| ------------------------------ | ---------------------------------------------------------------- |
-| `belgica`                      | Tout ce qui suit, sauf les limites des cantons                   |
-| `belgica/territory`            | Ressorts, arrondissements, cantons, communes, provinces, régions |
-| `belgica/canton-boundaries`    | La géométrie des cantons, et `findCantonsAt`                     |
-| `belgica/courts`               | Cours et tribunaux, et les helpers de coordonnées                |
-| `belgica/prisons`              | Prisons, et les helpers de coordonnées                           |
-| `belgica/houses-of-justice`    | Maisons de justice, et les helpers de coordonnées                |
-| `belgica/interest-rates`       | Taux d'intérêt                                                   |
-| `belgica/postal-codes`         | Codes postaux, avec les communes auxquelles ils appartiennent    |
-| `belgica/data/*.json`          | Les fichiers de données bruts                                    |
-| `belgica/schema/*.schema.json` | [JSON Schemas](/fr/guide/schema)                                 |
-| `belgica/datapackage.json`     | [Descripteur de data package](/fr/guide/schema#datapackage-json) |
+| Point d'entrée                 | Contenu                                                           |
+| ------------------------------ | ----------------------------------------------------------------- |
+| `belgica`                      | Tout ce qui suit, sauf les limites des cantons                    |
+| `belgica/territory`            | Ressorts, arrondissements, cantons, communes, provinces, régions  |
+| `belgica/canton-boundaries`    | La géométrie des cantons, et `findCantonsAt`                      |
+| `belgica/courts`               | Cours et tribunaux, et les helpers de coordonnées                 |
+| `belgica/prisons`              | Prisons, et les helpers de coordonnées                            |
+| `belgica/houses-of-justice`    | Maisons de justice, et les helpers de coordonnées                 |
+| `belgica/interest-rates`       | Taux d'intérêt                                                    |
+| `belgica/postal-codes`         | Codes postaux, avec les communes auxquelles ils appartiennent     |
+| `belgica/police-zones`         | [Zones de police](#police-zones), seulement ici : pas à la racine |
+| `belgica/data/*.json`          | Les fichiers de données bruts                                     |
+| `belgica/schema/*.schema.json` | [JSON Schemas](/fr/guide/schema)                                  |
+| `belgica/datapackage.json`     | [Descripteur de data package](/fr/guide/schema#datapackage-json)  |
 
 Conventions :
 
@@ -424,6 +425,51 @@ l'ordre. Vide pour un code inconnu.
 
 ```ts
 getPostalCodes('44021').map((p) => p.postalCode) // ['9000', '9030', '9031', …]
+```
+
+## Zones de police {#police-zones}
+
+Seulement depuis `belgica/police-zones` : elles ne sont pas à la racine. Voir
+[zones de police](/fr/data/police-zones).
+
+### `getPoliceZone(id)` {#getpolicezone-id}
+
+```ts
+function getPoliceZone(id: PoliceZoneId): PoliceZone
+function getPoliceZone(id: string, options?: OnDay): PoliceZone | undefined
+```
+
+Une zone par son numéro officiel. `undefined` pour un numéro inconnu ou qui ne s'applique pas ce
+jour-là.
+
+```ts
+getPoliceZone('5415').name // { nl: 'GENT', fr: 'GAND', de: 'GENT' }
+getPoliceZone('5403').alias // 'RODE'
+```
+
+### `findPoliceZone(municipalityId)` {#findpolicezone-municipalityid}
+
+```ts
+function findPoliceZone(municipalityId: string, options?: OnDay): PoliceZone | undefined
+```
+
+La zone d'une commune, par code REFNIS. Chaque commune est dans exactement une zone ;
+`undefined` pour un code inconnu.
+
+```ts
+findPoliceZone('44021')?.id // '5415' : Gand
+```
+
+### `getPoliceZoneMunicipalities(id)` {#getpolicezonemunicipalities-id}
+
+```ts
+function getPoliceZoneMunicipalities(id: string, options?: OnDay): Municipality[]
+```
+
+Les communes qu'une zone couvre, dans l'ordre des codes REFNIS. Vide pour un numéro inconnu.
+
+```ts
+getPoliceZoneMunicipalities('5349').map((m) => m.name.nl) // ['Aartselaar', 'Edegem', 'Hove', …]
 ```
 
 ## Compétence {#jurisdiction}

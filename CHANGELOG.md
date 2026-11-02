@@ -16,6 +16,8 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   `getPoliceZoneMunicipalities`; the Python package has `get_police_zone`, `find_police_zone`
   and `get_police_zone_municipalities`. Addresses and contacts aren't in it: they're on police.be,
   which refuses GitHub's runners.
+- The explorer shows each municipality's police zone, and counts the zones on its home page.
+  The police zones page of the docs is in English, Dutch and French.
 
 ## [0.6.2] - 2026-11-02
 

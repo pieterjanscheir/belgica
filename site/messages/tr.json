@@ -58,6 +58,7 @@
         "statCantons": "adli kanton",
         "statMunicipalities": "belediye",
         "statPostalCodes": "posta kodu",
+        "statPoliceZones": "polis bölgesi",
         "statPlaces": "cezaevi ve adalet evi",
         "statRates": "1970'ten bu yana faiz oranı dönemi",
         "featureAddressTitle": "Bir adres için mahkemeler",
@@ -100,6 +101,7 @@
         "province": "İl",
         "arrondissement": "Adli çevre",
         "postalCodes": "Posta kodları",
+        "policeZone": "Polis bölgesi",
         "courtsWithJurisdiction": "Yetkili mahkemeler",
         "mapLabel": "{arrondissement} kantonları, {municipality} kantonları vurgulanmış"
     },

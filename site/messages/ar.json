@@ -58,6 +58,7 @@
         "statCantons": "كانتونات قضائية",
         "statMunicipalities": "بلديات",
         "statPostalCodes": "رموز بريدية",
+        "statPoliceZones": "مناطق شرطة",
         "statPlaces": "سجون ودور عدالة",
         "statRates": "فترات أسعار فائدة منذ 1970",
         "featureAddressTitle": "المحاكم المختصة بعنوان ما",
@@ -100,6 +101,7 @@
         "province": "المقاطعة",
         "arrondissement": "الدائرة القضائية",
         "postalCodes": "الرموز البريدية",
+        "policeZone": "منطقة الشرطة",
         "courtsWithJurisdiction": "المحاكم المختصة",
         "mapLabel": "كانتونات {arrondissement}، مع إبراز كانتونات {municipality}"
     },

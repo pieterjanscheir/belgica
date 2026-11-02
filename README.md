@@ -2,8 +2,8 @@
 
 Belgian legal reference data for developers of legal software: every court with its
 registries' contacts, prisons, houses of justice, judicial cantons and arrondissements,
-municipalities and their postal codes, the legal and commercial interest rates, and the public
-holidays. As JSON and CSV, with typed lookups for TypeScript and Python. Every record says where
+municipalities and their postal codes, the police zones, the legal and commercial interest
+rates, and the public holidays. As JSON and CSV, with typed lookups for TypeScript and Python. Every record says where
 it comes from, and the scraped data is rebuilt from the official sources twice a week.
 
 It answers questions such as: which justice of the peace has jurisdiction over this address,
@@ -13,7 +13,7 @@ does a deadline that ends on Easter Monday end instead.
 **Documentation: https://pieterjanscheir.github.io/belgica/**
 
 The [explorer](https://belgica.scheir.eu/) is a site built on the package, in 13 languages: a page for every
-court, canton, municipality and postal code, the canton map and an interest calculator. Its
+court, canton, municipality (with its police zone) and postal code, the canton map and an interest calculator. Its
 Next.js source is in [`site/`](site/).
 
 It's reference data, not legal advice: check the official sources before relying on it.
@@ -97,7 +97,8 @@ before a dataset's coverage.
 
 Import a single dataset to keep bundles small: `belgica/interest-rates`, `belgica/calendar`,
 `belgica/courts`, `belgica/prisons`, `belgica/houses-of-justice`,
-`belgica/territory`, `belgica/postal-codes`. The canton boundaries (a million
+`belgica/territory`, `belgica/postal-codes`, `belgica/police-zones` (only there, not in the
+root). The canton boundaries (a million
 positions of GeoJSON) are only in `belgica/canton-boundaries`, the arrondissement boundaries
 in `belgica/arrondissement-boundaries` and the court locations in `belgica/court-locations`;
 the root never loads them.
@@ -199,5 +200,6 @@ canton.
 The code is [MIT](LICENSE). The data in `data/` is [CC BY 4.0](LICENSE-DATA): reuse it freely,
 including commercially, with credit to this project and to the sources listed in
 `datapackage.json`. Municipality, province, region and postal-code data © Statbel; canton and
-arrondissement boundaries and court locations © National Geographic Institute (NGI), both
+arrondissement boundaries and court locations © National Geographic Institute (NGI); police
+zones © FOD Financiën (AAPD), all
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
