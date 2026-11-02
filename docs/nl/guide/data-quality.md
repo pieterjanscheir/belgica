@@ -36,8 +36,11 @@ official site ──fetch──> snapshots (sources branch) ──parse──> d
    `sources`, met een index van wat is opgehaald, wanneer, en een hash van de inhoud. Een pagina
    wordt pas opnieuw opgeslagen als haar inhoud verandert, zodat de geschiedenis van de branch
    toont wat op welke dag veranderde. Een pagina die mislukt (een serverfout, een 404) behoudt
-   haar laatste goede snapshot en stopt de run, wat een issue opent: de data wordt nooit
-   herbouwd uit een onvolledig beeld. Een pagina waar de bron niet langer naar linkt, valt weg uit
+   haar laatste goede snapshot, en een walk die afbreekt (een lijstpagina die niets meer
+   opsomt) laat de snapshots van zijn bron zoals ze waren. De run gaat verder met de andere
+   bronnen, zodat één kapotte site niet elke update tegenhoudt: de records van de mislukte bron
+   blijven zoals ze waren en worden nooit beëindigd op basis van een onvolledig beeld. De
+   data-pull-request somt de mislukte bronnen op, en de run faalt zodat ook een issue het meldt. Een pagina waar de bron niet langer naar linkt, valt weg uit
    de snapshots; haar record blijft in de data, beëindigd met een `validTo` (de dag vóór de
    controle die ze miste), zodat haar id blijft werken en een opzoeking voor een vroegere dag ze
    nog vindt. Een pagina die verschijnt, krijgt een record met een `validFrom`.

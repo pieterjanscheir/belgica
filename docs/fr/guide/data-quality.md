@@ -37,8 +37,12 @@ site officiel ──fetch──> snapshots (branche sources) ──parse──> 
    branche `sources`, avec un index de ce qui a été récupéré, quand, et un hachage de son
    contenu. Une page n'est enregistrée à nouveau que lorsque son contenu change, de sorte que
    l'historique de la branche montre ce qui a changé quel jour. Une page en échec (une erreur
-   serveur, une 404) garde son dernier snapshot valide et arrête l'exécution, ce qui ouvre une
-   issue : les données ne sont jamais reconstruites à partir d'une image incomplète. Une page
+   serveur, une 404) garde son dernier snapshot valide, et un parcours interrompu (une page de
+   liste qui ne liste plus rien) laisse les snapshots de sa source tels quels. L'exécution
+   continue avec les autres sources, pour qu'un seul site en panne ne bloque pas toutes les mises
+   à jour : les enregistrements de la source en échec restent tels quels, sans jamais être
+   retirés à partir d'une image incomplète. La pull request des données liste les sources en
+   échec, et l'exécution échoue pour qu'une issue le signale aussi. Une page
    vers laquelle la source ne renvoie plus est retirée des snapshots ; son enregistrement reste
    dans les données, clôturé par un `validTo` (la veille de la vérification qui ne l'a plus
    trouvée), de sorte que son identifiant continue de fonctionner et qu'une recherche pour un

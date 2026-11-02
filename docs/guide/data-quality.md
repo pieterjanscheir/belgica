@@ -41,8 +41,12 @@ official site ──fetch──> snapshots (sources branch) ──parse──> d
    site, with a user agent that names the project. It keeps each page on the `sources` branch,
    with an index of what was fetched, when, and a hash of its content. A page is only stored
    again when its content changes, so the branch's history shows what changed on which day.
-   A page that fails (a server error, a 404) keeps its last good snapshot and stops the run,
-   which opens an issue: the data is never rebuilt from an incomplete picture. A page the
+   A page that fails (a server error, a 404) keeps its last good snapshot, and a walk that
+   breaks off (a list page that no longer lists anything) leaves its source's snapshots as they
+   were. The run goes on with the other sources, so one broken site doesn't hold back every
+   update: the failed source's records stay as they were, never retired from an incomplete
+   picture. The data pull request lists the failed sources, and the run fails so an issue
+   says so too. A page the
    source no longer links to is dropped from the snapshots; its record stays in the data, retired
    with a `validTo` (the day before the check that missed it), so its id keeps working and a
    lookup for an earlier day still finds it. A page that appears gets a record with a `validFrom`.

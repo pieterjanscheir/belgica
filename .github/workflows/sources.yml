@@ -46,8 +46,18 @@ jobs:
                     git worktree add --orphan -b sources .sources
                   fi
 
+            # A failed page keeps its last good snapshot and an interrupted walk leaves its
+            # source's snapshots as they were, so the run goes on with the other sources: one
+            # broken site doesn't hold back every update. The failures are listed in the data
+            # pull request, and the last step fails the run so the sources issue says so too.
             - name: Fetch
-              run: pnpm fetch:sources
+              id: fetch
+              run: |
+                  set -o pipefail
+                  if ! pnpm fetch:sources 2>&1 | tee fetch.log; then
+                    echo "failed=true" >> "$GITHUB_OUTPUT"
+                    grep -E 'snapshots left as they were|: HTTP [0-9]+ ' fetch.log > fetch-failures.log || true
+                  fi
 
             - name: Commit the snapshots
               env:
@@ -120,6 +130,14 @@ jobs:
                     grep '^unreadable' build.log | head -40 || true
                     echo '```'
                     echo
+                    if [ -s fetch-failures.log ]; then
+                      echo "These sources failed, so their data is as it was in the last good snapshot:"
+                      echo
+                      echo '```'
+                      head -40 fetch-failures.log
+                      echo '```'
+                      echo
+                    fi
                     echo "Review the diff against the sources before merging."
                     if [ "$BOT" != true ]; then
                       echo "Pull requests opened with the workflow's own token don't start CI: the workflow"
@@ -148,19 +166,36 @@ jobs:
                       || open_issue
                   fi
 
-            # A failed page, an interrupted walk or a page the parser can't place: nothing was
-            # rebuilt, and a person needs to look
+            - name: Fail when a source failed
+              if: steps.fetch.outputs.failed == 'true'
+              run: |
+                  echo "::error::Some sources failed; the rest of the data was rebuilt without them"
+                  cat fetch-failures.log
+                  exit 1
+
+            # A source that failed, or a page the parser can't place: a person needs to look
             - name: Open or update the sources issue
               if: failure() && github.ref == 'refs/heads/main'
               env:
                   GH_TOKEN: ${{ github.token }}
                   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
               run: |
-                  body="The sources run failed, so the data wasn't rebuilt: $RUN_URL. A source page may have failed (its last good snapshot is kept), or the parser met a page it can't place."
+                  if [ -s fetch-failures.log ]; then
+                    {
+                      echo "Some sources failed in $RUN_URL. Their last good snapshots were kept, and the"
+                      echo "rest of the data was rebuilt without them:"
+                      echo
+                      echo '```'
+                      head -40 fetch-failures.log
+                      echo '```'
+                    } > issue.md
+                  else
+                    echo "The sources run failed, so the data wasn't rebuilt: $RUN_URL. The parser may have met a page it can't place, or the new data failed its tests." > issue.md
+                  fi
                   gh label create data-freshness --color FBCA04 --description "Data may be out of date" 2>/dev/null || true
                   number=$(gh issue list --label data-freshness --state open --json number --jq '.[0].number')
                   if [ -n "$number" ]; then
-                    gh issue comment "$number" --body "$body"
+                    gh issue comment "$number" --body-file issue.md
                   else
-                    gh issue create --title "Data freshness check needs attention" --label data-freshness --body "$body"
+                    gh issue create --title "Data freshness check needs attention" --label data-freshness --body-file issue.md
                   fi

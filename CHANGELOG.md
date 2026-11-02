@@ -9,6 +9,11 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Changed
 
+- A source that fails no longer holds back the others: the sources run rebuilds the data from
+  the rest, keeps the failed source's last good snapshots, and lists it in the data pull request
+  and the `data-freshness` issue. The houses of justice of the French Community are the first
+  case: maisonsdejustice.be no longer lists them on a page.
+
 - `pnpm test:package` checks the size of the package: the whole package unpacked (34.0 MB, limit
   40 MB), the package without the boundary files (4.3 MB, limit 6 MB) and any single file
   outside the boundaries (limit 1 MB), with the numbers in CI's job summary
