@@ -45,6 +45,7 @@ def test_coverage() -> None:
         'cantonBoundaries': belgica.CANTON_BOUNDARIES_COVERAGE_FROM,
         'arrondissementBoundaries': belgica.ARRONDISSEMENT_BOUNDARIES_COVERAGE_FROM,
         'courtLocations': belgica.COURT_LOCATIONS_COVERAGE_FROM,
+        'policeZones': belgica.POLICE_ZONES_COVERAGE_FROM,
     }
 
 
@@ -73,6 +74,12 @@ def test_municipalities() -> None:
             },
         }
         assert actual == case
+
+
+def test_police_zones() -> None:
+    for case in cases['policeZones']:
+        zone = belgica.find_police_zone(case['municipality'], cases['today'])
+        assert (zone['id'] if zone else None) == case['zone']
 
 
 def test_postal_codes() -> None:

@@ -7,6 +7,16 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Added
+
+- **Police zones** ([#7](https://github.com/pieterjanscheir/belgica/issues/7)): the 175 zones
+  with their official number, their names in Dutch, French and German, their short name and the
+  municipalities each covers, from FOD Financiën's open data (CC BY 4.0), rebuilt twice a week.
+  `belgica/police-zones` has `getPoliceZone`, `findPoliceZone` and
+  `getPoliceZoneMunicipalities`; the Python package has `get_police_zone`, `find_police_zone`
+  and `get_police_zone_municipalities`. Addresses and contacts aren't in it: they're on police.be,
+  which refuses GitHub's runners.
+
 ## [0.6.2] - 2026-11-02
 
 ### Fixed

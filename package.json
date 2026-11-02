@@ -97,6 +97,10 @@
             "types": "./dist/postal-codes.d.ts",
             "default": "./dist/postal-codes.js"
         },
+        "./police-zones": {
+            "types": "./dist/police-zones.d.ts",
+            "default": "./dist/police-zones.js"
+        },
         "./schemas": {
             "types": "./dist/schemas.d.ts",
             "default": "./dist/schemas.js"

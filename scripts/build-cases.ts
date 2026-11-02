@@ -14,6 +14,7 @@ import type * as CourtLocations from '../src/court-locations.ts'
 import type * as Courts from '../src/courts.ts'
 import type * as Houses from '../src/houses-of-justice.ts'
 import type * as Postal from '../src/postal-codes.ts'
+import type * as PoliceZones from '../src/police-zones.ts'
 import type * as Prisons from '../src/prisons.ts'
 import type * as Territory from '../src/territory.ts'
 
@@ -54,6 +55,7 @@ const { courtLocationsCoverage, getCourtLocation } =
 const { courtsCoverage } = await load<typeof Courts>('courts')
 const { housesOfJusticeCoverage } = await load<typeof Houses>('houses-of-justice')
 const { postalCodesCoverage } = await load<typeof Postal>('postal-codes')
+const { findPoliceZone, policeZonesCoverage } = await load<typeof PoliceZones>('police-zones')
 const { prisonsCoverage } = await load<typeof Prisons>('prisons')
 const { territoryCoverage } = await load<typeof Territory>('territory')
 type CourtType = Root.CourtType
@@ -77,6 +79,11 @@ const ids = (records: readonly { id: string }[]) => records.map((r) => r.id)
 
 const municipalityIds = [...new Set(municipalities.map((m) => m.id)), '00000']
 const postalCodeValues = [...new Set(postalCodes.map((p) => p.postalCode)), '0000']
+// The police zones start later than the territory: today only
+const policeZoneCases = municipalityIds.map((municipality) => ({
+    municipality,
+    zone: findPoliceZone(municipality, { on: today })?.id ?? null,
+}))
 const cantonIds = [...new Set(cantons.map((c) => c.id)), 'nowhere']
 const courtIds = [...new Set(courts.map((c) => c.id))]
 
@@ -230,9 +237,11 @@ writeFileSync(
             cantonBoundaries: cantonBoundariesCoverage.from,
             arrondissementBoundaries: arrondissementBoundariesCoverage.from,
             courtLocations: courtLocationsCoverage.from,
+            policeZones: policeZonesCoverage.from,
         },
         municipalities: municipalityCases,
         postalCodes: postalCodeCases,
+        policeZones: policeZoneCases,
         cantons: cantonCases,
         courts: courtCases,
         findCourts: filterCases,

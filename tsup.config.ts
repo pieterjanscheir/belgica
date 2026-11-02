@@ -47,6 +47,7 @@ export default defineConfig({
         'interest-rates': 'src/interest-rates.ts',
         calendar: 'src/calendar.ts',
         'postal-codes': 'src/postal-codes.ts',
+        'police-zones': 'src/police-zones.ts',
         schemas: 'src/schemas/index.ts',
     },
     format: ['esm'],

@@ -6,6 +6,7 @@ import { DATASETS, lockIds, readLock } from '../scripts/lock-ids'
 import { arrondissementBoundaries } from '../src/arrondissement-boundaries'
 import { cantonBoundaries } from '../src/canton-boundaries'
 import { courtLocations } from '../src/court-locations'
+import { policeZones } from '../src/police-zones'
 import {
     arrondissements,
     cantons,
@@ -111,6 +112,7 @@ describe('identifiers', () => {
             prisons: prisons.map((r) => r.id),
             'houses-of-justice': housesOfJustice.map((r) => r.id),
             'postal-codes': postalCodes.map((r) => r.id),
+            'police-zones': policeZones.map((r) => r.id),
         }
 
         it.each(DATASETS)('%s has every id it published before', (dataset) => {

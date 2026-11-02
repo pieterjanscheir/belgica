@@ -1,0 +1,3542 @@
+[
+  {
+    "id": "5267",
+    "name": {
+      "nl": "GENEPIEN/NIJVEL",
+      "fr": "GENAPPE/NIVELLES",
+      "de": "GENAPPE/NIVELLES"
+    },
+    "alias": "NIVELLE-GENAPPE",
+    "municipalities": [
+      "25031",
+      "25072"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5268",
+    "name": {
+      "nl": "ITTER/KASTEELBRAKEL/REBECQ/TUBEKE",
+      "fr": "BRAINE-LE-CHATEAU/ITTRE/REBECQ/TUBIZE",
+      "de": "BRAINE-LE-CHATEAU/ITTRE/REBECQ/TUBIZE"
+    },
+    "alias": "OUEST BRABANT WALLON",
+    "municipalities": [
+      "25015",
+      "25044",
+      "25105",
+      "25123"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5269",
+    "name": {
+      "nl": "LASNE/RIXENSART/TERHULPEN",
+      "fr": "LA HULPE/LASNE/RIXENSART",
+      "de": "LA HULPE/LASNE/RIXENSART"
+    },
+    "alias": "LA MAZERINE",
+    "municipalities": [
+      "25050",
+      "25091",
+      "25119"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5270",
+    "name": {
+      "nl": "CHASTRE/COURT-SAINT-ETIENNE/MONT-SAINT-GUIBERT/VILLERS-LA-VILLE/WALHAIN",
+      "fr": "CHASTRE/COURT-SAINT-ETIENNE/MONT-SAINT-GUIBERT/VILLERS-LA-VILLE/WALHAIN",
+      "de": "CHASTRE/COURT-SAINT-ETIENNE/MONT-SAINT-GUIBERT/VILLERS-LA-VILLE/WALHAIN"
+    },
+    "alias": "ORNE-THYLE",
+    "municipalities": [
+      "25023",
+      "25068",
+      "25107",
+      "25117",
+      "25124"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5271",
+    "name": {
+      "nl": "WAVER",
+      "fr": "WAVRE",
+      "de": "WAVRE"
+    },
+    "alias": "WAVRE",
+    "municipalities": [
+      "25112"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5272",
+    "name": {
+      "nl": "BEVEKOM/CHAUMONT-GISTOUX/GRAVEN/INCOURT",
+      "fr": "BEAUVECHAIN/CHAUMONT-GISTOUX/GREZ-DOICEAU/INCOURT",
+      "de": "BEAUVECHAIN/CHAUMONT-GISTOUX/GREZ-DOICEAU/INCOURT"
+    },
+    "alias": "ARDENNES BRABANCONNES",
+    "municipalities": [
+      "25005",
+      "25018",
+      "25037",
+      "25043"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5273",
+    "name": {
+      "nl": "EIGENBRAKEL",
+      "fr": "BRAINE-L'ALLEUD",
+      "de": "BRAINE-L'ALLEUD"
+    },
+    "alias": "BRAINE-L'ALLEUD",
+    "municipalities": [
+      "25014"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5274",
+    "name": {
+      "nl": "WATERLOO",
+      "fr": "WATERLOO",
+      "de": "WATERLOO"
+    },
+    "alias": "WATERLOO",
+    "municipalities": [
+      "25110"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5275",
+    "name": {
+      "nl": "OTTIGNIES-LOUVAIN-LA-NEUVE",
+      "fr": "OTTIGNIES-LOUVAIN-LA-NEUVE",
+      "de": "OTTIGNIES-LOUVAIN-LA-NEUVE"
+    },
+    "alias": "OTTIGNIES-LOUVAIN-LA-NEUVE",
+    "municipalities": [
+      "25121"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5276",
+    "name": {
+      "nl": "GELDENAKEN/HELECINE/ORP-JAUCHE/PERWIJS/RAMILLIES",
+      "fr": "HELECINE/JODOIGNE/ORP-JAUCHE/PERWEZ/RAMILLIES",
+      "de": "HELECINE/JODOIGNE/ORP-JAUCHE/PERWEZ/RAMILLIES"
+    },
+    "alias": "BRABANT WALLON EST",
+    "municipalities": [
+      "25048",
+      "25084",
+      "25118",
+      "25120",
+      "25122"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5277",
+    "name": {
+      "nl": "LUIK",
+      "fr": "LIÈGE",
+      "de": "LIEGE"
+    },
+    "alias": "LIEGE",
+    "municipalities": [
+      "62063"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5278",
+    "name": {
+      "nl": "NEUPRE/SERAING",
+      "fr": "NEUPRÉ/SERAING",
+      "de": "NEUPRE/SERAING"
+    },
+    "alias": "SERAING-NEUPRE",
+    "municipalities": [
+      "62096",
+      "62121"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5279",
+    "name": {
+      "nl": "HERSTAL",
+      "fr": "HERSTAL",
+      "de": "HERSTAL"
+    },
+    "alias": "HERSTAL",
+    "municipalities": [
+      "62051"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5280",
+    "name": {
+      "nl": "BEYNE-HEUSAY/FLERON/SOUMAGNE",
+      "fr": "BEYNE-HEUSAY/FLÉRON/SOUMAGNE",
+      "de": "BEYNE-HEUSAY/FLERON/SOUMAGNE"
+    },
+    "alias": "BEYNE-FLERON-SOUMAGNE",
+    "municipalities": [
+      "62015",
+      "62038",
+      "62099"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5281",
+    "name": {
+      "nl": "BITSINGEN/BLEGNY/DALHEM/JUPRELLE/OUPEYE/WEZET",
+      "fr": "BASSENGE/BLÉGNY/DALHEM/JUPRELLE/OUPEYE/VISÉ",
+      "de": "BASSENGE/BLEGNY/DALHEM/JUPRELLE/OUPEYE/VISE"
+    },
+    "alias": "BASSE MEUSE",
+    "municipalities": [
+      "62011",
+      "62027",
+      "62060",
+      "62079",
+      "62108",
+      "62119"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5282",
+    "name": {
+      "nl": "FLEMALLE",
+      "fr": "FLÉMALLE",
+      "de": "FLEMALLE"
+    },
+    "alias": "FLEMALLE",
+    "municipalities": [
+      "62120"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5283",
+    "name": {
+      "nl": "AYWAILLE/CHAUDFONTAINE/ESNEUX/SPRIMONT/TROOZ",
+      "fr": "AYWAILLE/CHAUDFONTAINE/ESNEUX/SPRIMONT/TROOZ",
+      "de": "AYWAILLE/CHAUDFONTAINE/ESNEUX/SPRIMONT/TROOZ"
+    },
+    "alias": "SECOVA",
+    "municipalities": [
+      "62009",
+      "62022",
+      "62032",
+      "62100",
+      "62122"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5284",
+    "name": {
+      "nl": "ANS/SAINT-NICOLAS",
+      "fr": "ANS/SAINT-NICOLAS",
+      "de": "ANS/SAINT-NICOLAS"
+    },
+    "alias": "ANS/SAINT-NICOLAS",
+    "municipalities": [
+      "62003",
+      "62093"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5285",
+    "name": {
+      "nl": "AWANS/GRACE-HOLLOGNE",
+      "fr": "AWANS/GRÂCE-HOLLOGNE",
+      "de": "AWANS/GRACE-HOLLOGNE"
+    },
+    "alias": "AWANS/GRÂCE-HOLLOGNE",
+    "municipalities": [
+      "62006",
+      "62118"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5286",
+    "name": {
+      "nl": "BERLOZ/BORGWORM/CRISNEE/DONCEEL/FAIMES/FEXHE-LE-HAUT-CLOCHER/GEER/OERLE/REMICOURT",
+      "fr": "BERLOZ/CRISNÉE/DONCEEL/FAIMES/FEXHE-LE-HAUT-CLOCHER/GEER/OREYE/REMICOURT/WAREMME",
+      "de": "BERLOZ/CRISNEE/DONCEEL/FAIMES/FEXHE-LE-HAUT-CLOCHER/GEER/OREYE/REMICOURT/WAREMME"
+    },
+    "alias": "HESBAYE",
+    "municipalities": [
+      "64008",
+      "64021",
+      "64023",
+      "64025",
+      "64029",
+      "64056",
+      "64063",
+      "64074",
+      "64076"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5287",
+    "name": {
+      "nl": "JALHAY/SPA/THEUX",
+      "fr": "JALHAY/SPA/THEUX",
+      "de": "JALHAY/SPA/THEUX"
+    },
+    "alias": "FAGNES",
+    "municipalities": [
+      "63038",
+      "63072",
+      "63076"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5288",
+    "name": {
+      "nl": "AUBEL/BAELEN/HERVE/LIMBURG/OLNE/PLOMBIERES/THIMISTER-CLERMONT/WELKENRAEDT",
+      "fr": "AUBEL/BAELEN/HERVE/LIMBOURG/OLNE/PLOMBIÈRES/THIMISTER-CLERMONT/WELKENRAEDT",
+      "de": "AUBEL/BAELEN/HERVE/LIMBOURG/OLNE/PLOMBIERES/THIMISTER-CLERMONT/WELKENRAEDT"
+    },
+    "alias": "PAYS DE HERVE",
+    "municipalities": [
+      "63003",
+      "63004",
+      "63035",
+      "63046",
+      "63057",
+      "63084",
+      "63088",
+      "63089"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5289",
+    "name": {
+      "nl": "DISON/PEPINSTER/VERVIERS",
+      "fr": "DISON/PÉPINSTER/VERVIERS",
+      "de": "DISON/PEPINSTER/VERVIERS"
+    },
+    "alias": "VESDRE",
+    "municipalities": [
+      "63020",
+      "63058",
+      "63079"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5290",
+    "name": {
+      "nl": "LIERNEUX/MALMEDY/STAVELOT/STOUMONT/TROIS-PONTS/WEISMES",
+      "fr": "LIERNEUX/MALMEDY/STAVELOT/STOUMONT/TROIS-PONTS/WAIMES",
+      "de": "LIERNEUX/MALMEDY/STAVELOT/STOUMONT/TROIS-PONTS/WAIMES"
+    },
+    "alias": "STAVELOT-MALMEDY",
+    "municipalities": [
+      "63045",
+      "63049",
+      "63073",
+      "63075",
+      "63080",
+      "63086"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5291",
+    "name": {
+      "nl": "AMEL/BUELLINGEN/BUETGENBACH/BURG-REULAND/SANKT VITH",
+      "fr": "AMBLÈVE/BULLANGE/BURG-REULAND/BUTGENBACH/SAINT-VITH",
+      "de": "AMEL/BUELLINGEN/BUETGENBACH/BURG-REULAND/SANKT VITH"
+    },
+    "alias": "EIFEL",
+    "municipalities": [
+      "63001",
+      "63012",
+      "63013",
+      "63067",
+      "63087"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5292",
+    "name": {
+      "nl": "EUPEN/KELMIS/LONTZEN/RAEREN",
+      "fr": "EUPEN/LA CALAMINE/LONTZEN/RAEREN",
+      "de": "EUPEN/KELMIS/LONTZEN/RAEREN"
+    },
+    "alias": "WESER-GÖHL",
+    "municipalities": [
+      "63023",
+      "63040",
+      "63048",
+      "63061"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5293",
+    "name": {
+      "nl": "BRAIVES/BURDINNE/HANNUIT/HERON/LIJSEM/WASSEIGES",
+      "fr": "BRAIVES/BURDINNE/HANNUT/HÉRON/LINCENT/WASSEIGES",
+      "de": "BRAIVES/BURDINNE/HANNUT/HERON/LINCENT/WASSEIGES"
+    },
+    "alias": "HESBAYE OUEST",
+    "municipalities": [
+      "61010",
+      "61028",
+      "64015",
+      "64034",
+      "64047",
+      "64075"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5294",
+    "name": {
+      "nl": "AMAY/ENGIS/SAINT-GEORGES-SUR-MEUSE/VERLAINE/VILLERS-LE-BOUILLET/WANZE",
+      "fr": "AMAY/ENGIS/SAINT-GEORGES-SUR-MEUSE/VERLAINE/VILLERS-LE-BOUILLET/WANZE",
+      "de": "AMAY/ENGIS/SAINT-GEORGES-SUR-MEUSE/VERLAINE/VILLERS-LE-BOUILLET/WANZE"
+    },
+    "alias": "MEUSE-HESBAYE",
+    "municipalities": [
+      "61003",
+      "61063",
+      "61068",
+      "61072",
+      "61080",
+      "64065"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5295",
+    "name": {
+      "nl": "HOEI",
+      "fr": "HUY",
+      "de": "HUY"
+    },
+    "alias": "HUY",
+    "municipalities": [
+      "61031"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5296",
+    "name": {
+      "nl": "ANTHISNES/CLAVIER/COMBLAIN-AU-PONT/FERRIERES/HAMOIR/MARCHIN/MODAVE/NANDRIN/OUFFET/TINLOT",
+      "fr": "ANTHISNES/CLAVIER/COMBLAIN-AU-PONT/FERRIÈRES/HAMOIR/MARCHIN/MODAVE/NANDRIN/OUFFET/TINLOT",
+      "de": "ANTHISNES/CLAVIER/COMBLAIN-AU-PONT/FERRIERES/HAMOIR/MARCHIN/MODAVE/NANDRIN/OUFFET/TINLOT"
+    },
+    "alias": "DU CONDROZ",
+    "municipalities": [
+      "61012",
+      "61019",
+      "61024",
+      "61039",
+      "61041",
+      "61043",
+      "61048",
+      "61079",
+      "61081",
+      "62026"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5297",
+    "name": {
+      "nl": "AARLEN/ATTERT/HABAY/MARTELANGE",
+      "fr": "ARLON/ATTERT/HABAY/MARTELANGE",
+      "de": "ARLON/ATTERT/HABAY/MARTELANGE"
+    },
+    "alias": "ARLON/ATTERT/HABAY/MARTELANGE",
+    "municipalities": [
+      "81001",
+      "81003",
+      "81013",
+      "85046"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5298",
+    "name": {
+      "nl": "AUBANGE/MESSANCY/MUSSON/SAINT-LEGER",
+      "fr": "AUBANGE/MESSANCY/MUSSON/SAINT-LEGER",
+      "de": "AUBANGE/MESSANCY/MUSSON/SAINT-LEGER"
+    },
+    "alias": "SUD-LUXEMBOURG",
+    "municipalities": [
+      "81004",
+      "81015",
+      "85026",
+      "85034"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5299",
+    "name": {
+      "nl": "CHINY/ETALLE/FLORENVILLE/MEIX-DEVANT-VIRTON/ROUVROY/TINTIGNY/VIRTON",
+      "fr": "CHINY/ETALLE/FLORENVILLE/MEIX-DEVANT-VIRTON/ROUVROY/TINTIGNY/VIRTON",
+      "de": "CHINY/ETALLE/FLORENVILLE/MEIX-DEVANT-VIRTON/ROUVROY/TINTIGNY/VIRTON"
+    },
+    "alias": "DE GAUME",
+    "municipalities": [
+      "85007",
+      "85009",
+      "85011",
+      "85024",
+      "85039",
+      "85045",
+      "85047"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5300",
+    "name": {
+      "nl": "DURBUY/EREZEE/GOUVY/HOTTON/HOUFFALIZE/LA ROCHE-EN-ARDENNE/MANHAY/MARCHE-EN-FAMENNE/NASSOGNE/RENDEUX/TENNEVILLE/VIELSALM",
+      "fr": "DURBUY/EREZEE/GOUVY/HOTTON/HOUFFALIZE/LA ROCHE-EN-ARDENNE/MANHAY/MARCHE-EN-FAMENNE/NASSOGNE/RENDEUX/TENNEVILLE/VIELSALM",
+      "de": "DURBUY/EREZEE/GOUVY/HOTTON/HOUFFALIZE/LA ROCHE-EN-ARDENNE/MANHAY/MARCHE-EN-FAMENNE/NASSOGNE/RENDEUX/TENNEVILLE/VIELSALM"
+    },
+    "alias": "FAMENNE-ARDENNE",
+    "municipalities": [
+      "82014",
+      "82032",
+      "82037",
+      "83012",
+      "83013",
+      "83028",
+      "83031",
+      "83034",
+      "83040",
+      "83044",
+      "83049",
+      "83055"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5301",
+    "name": {
+      "nl": "BASTENAKEN/BERTOGNE/FAUVILLERS/LEGLISE/LIBRAMONT-CHEVIGNY/NEUFCHATEAU/SAINTE-ODE/VAUX-SUR-SURE",
+      "fr": "BASTOGNE/BERTOGNE/FAUVILLERS/LEGLISE/LIBRAMONT-CHEVIGNY/NEUFCHATEAU/SAINTE-ODE/VAUX-SUR-SURE",
+      "de": "BASTOGNE/BERTOGNE/FAUVILLERS/LEGLISE/LIBRAMONT-CHEVIGNY/NEUFCHATEAU/SAINTE-ODE/VAUX-SUR-SURE"
+    },
+    "alias": "CENTRE ARDENNE",
+    "municipalities": [
+      "82009",
+      "82036",
+      "82038",
+      "82039",
+      "84033",
+      "84043",
+      "84077"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5302",
+    "name": {
+      "nl": "BERTRIX/BOUILLON/DAVERDISSE/HERBEUMONT/LIBIN/PALISEUL/SAINT-HUBERT/TELLIN/WELLIN",
+      "fr": "BERTRIX/BOUILLON/DAVERDISSE/HERBEUMONT/LIBIN/PALISEUL/SAINT-HUBERT/TELLIN/WELLIN",
+      "de": "BERTRIX/BOUILLON/DAVERDISSE/HERBEUMONT/LIBIN/PALISEUL/SAINT-HUBERT/TELLIN/WELLIN"
+    },
+    "alias": "SEMOIS ET LESSE",
+    "municipalities": [
+      "84009",
+      "84010",
+      "84016",
+      "84029",
+      "84035",
+      "84050",
+      "84059",
+      "84068",
+      "84075"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5303",
+    "name": {
+      "nl": "NAMEN",
+      "fr": "NAMUR",
+      "de": "NAMUR"
+    },
+    "alias": "NAMUR CAPITALE",
+    "municipalities": [
+      "92094"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5304",
+    "name": {
+      "nl": "EGHEZEE/GEMBLOUX/LA BRUYERE",
+      "fr": "GEMBLOUX/LA BRUYÈRE/ÉGHEZÉE",
+      "de": "EGHEZEE/GEMBLOUX/LA BRUYERE"
+    },
+    "alias": "ORNEAU-MEHAIGNE",
+    "municipalities": [
+      "92035",
+      "92141",
+      "92142"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5305",
+    "name": {
+      "nl": "ANDENNE/ASSESSE/FERNELMONT/GESVES/OHEY",
+      "fr": "ANDENNE/ASSESSE/FERNELMONT/GESVES/OHEY",
+      "de": "ANDENNE/ASSESSE/FERNELMONT/GESVES/OHEY"
+    },
+    "alias": "DES ARCHES",
+    "municipalities": [
+      "92003",
+      "92006",
+      "92054",
+      "92097",
+      "92138"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5306",
+    "name": {
+      "nl": "FLOREFFE/FOSSES-LA-VILLE/METTET/PROFONDEVILLE",
+      "fr": "FLOREFFE/FOSSES-LA-VILLE/METTET/PROFONDEVILLE",
+      "de": "FLOREFFE/FOSSES-LA-VILLE/METTET/PROFONDEVILLE"
+    },
+    "alias": "ENTRE SAMBRE ET MEUSE",
+    "municipalities": [
+      "92045",
+      "92048",
+      "92087",
+      "92101"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5307",
+    "name": {
+      "nl": "SAMBREVILLE/SOMBREFFE",
+      "fr": "SAMBREVILLE/SOMBREFFE",
+      "de": "SAMBREVILLE/SOMBREFFE"
+    },
+    "alias": "SAMSOM",
+    "municipalities": [
+      "92114",
+      "92137"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5308",
+    "name": {
+      "nl": "JEMEPPE-SUR-SAMBRE",
+      "fr": "JEMEPPE-SUR-SAMBRE",
+      "de": "JEMEPPE-SUR-SAMBRE"
+    },
+    "alias": "JEMEPPE-SUR-SAMBRE",
+    "municipalities": [
+      "92140"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5309",
+    "name": {
+      "nl": "FLORENNES/WALCOURT",
+      "fr": "FLORENNES/WALCOURT",
+      "de": "FLORENNES/WALCOURT"
+    },
+    "alias": "FLOWAL",
+    "municipalities": [
+      "93022",
+      "93088"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5310",
+    "name": {
+      "nl": "BEAURAING/BIEVRE/GEDINNE/VRESSE-SUR-SEMOIS",
+      "fr": "BEAURAING/BIÈVRE/GEDINNE/VRESSE-SUR-SEMOIS",
+      "de": "BEAURAING/BIEVRE/GEDINNE/VRESSE-SUR-SEMOIS"
+    },
+    "alias": "HOUILLE-SEMOIS",
+    "municipalities": [
+      "91013",
+      "91015",
+      "91054",
+      "91143"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5311",
+    "name": {
+      "nl": "COUVIN/VIROINVAL",
+      "fr": "COUVIN/VIROINVAL",
+      "de": "COUVIN/VIROINVAL"
+    },
+    "alias": "DES 3 VALLEES",
+    "municipalities": [
+      "93014",
+      "93090"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5312",
+    "name": {
+      "nl": "ANHEE/DINANT/HASTIERE/ONHAYE/YVOIR",
+      "fr": "ANHÉE/DINANT/HASTIÈRE/ONHAYE/YVOIR",
+      "de": "ANHEE/DINANT/HASTIERE/ONHAYE/YVOIR"
+    },
+    "alias": "HAUTE-MEUSE",
+    "municipalities": [
+      "91005",
+      "91034",
+      "91103",
+      "91141",
+      "91142"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5313",
+    "name": {
+      "nl": "HOUYET/ROCHEFORT",
+      "fr": "HOUYET/ROCHEFORT",
+      "de": "HOUYET/ROCHEFORT"
+    },
+    "alias": "LESSE ET LHOMME",
+    "municipalities": [
+      "91072",
+      "91114"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5314",
+    "name": {
+      "nl": "CINEY/HAMOIS/HAVELANGE/SOMME-LEUZE",
+      "fr": "CINEY/HAMOIS/HAVELANGE/SOMME-LEUZE",
+      "de": "CINEY/HAMOIS/HAVELANGE/SOMME-LEUZE"
+    },
+    "alias": "CONDROZ-FAMENNE",
+    "municipalities": [
+      "91030",
+      "91059",
+      "91064",
+      "91120"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5315",
+    "name": {
+      "nl": "CERFONTAINE/DOISCHE/PHILIPPEVILLE",
+      "fr": "CERFONTAINE/DOISCHE/PHILIPPEVILLE",
+      "de": "CERFONTAINE/DOISCHE/PHILIPPEVILLE"
+    },
+    "alias": "HERMETON ET HEURE",
+    "municipalities": [
+      "93010",
+      "93018",
+      "93056"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5316",
+    "name": {
+      "nl": "ANTOING/BRUNEHAUT/DOORNIK/RUMES",
+      "fr": "ANTOING/BRUNEHAUT/RUMES/TOURNAI",
+      "de": "ANTOING/BRUNEHAUT/RUMES/TOURNAI"
+    },
+    "alias": "DU TOURNAISIS",
+    "municipalities": [
+      "57003",
+      "57072",
+      "57081",
+      "57093"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5317",
+    "name": {
+      "nl": "MOESKROEN",
+      "fr": "MOUSCRON",
+      "de": "MOUSCRON"
+    },
+    "alias": "MOUSCRON",
+    "municipalities": [
+      "57096"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5318",
+    "name": {
+      "nl": "KOMEN-WAASTEN",
+      "fr": "COMINES-WARNETON",
+      "de": "COMINES-WARNETON"
+    },
+    "alias": "COMINES-WARNETON",
+    "municipalities": [
+      "57097"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5319",
+    "name": {
+      "nl": "BELOEIL/LEUZE-EN-HAINAUT",
+      "fr": "BELŒIL/LEUZE-EN-HAINAUT",
+      "de": "BELOEIL/LEUZE-EN-HAINAUT"
+    },
+    "alias": "BELOEIL/LEUZE-EN-HAINAUT",
+    "municipalities": [
+      "51008",
+      "57094"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5320",
+    "name": {
+      "nl": "CELLES/ESTAIMPUIS/MONT-DE-L'ENCLUS/PECQ",
+      "fr": "CELLES/ESTAIMPUIS/MONT-DE-L'ENCLUS/PECQ",
+      "de": "CELLES/ESTAIMPUIS/MONT-DE-L'ENCLUS/PECQ"
+    },
+    "alias": "VAL DE L'ESCAUT",
+    "municipalities": [
+      "57018",
+      "57027",
+      "57062",
+      "57095"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5321",
+    "name": {
+      "nl": "BERNISSART/PERUWELZ",
+      "fr": "BERNISSART/PÉRUWELZ",
+      "de": "BERNISSART/PERUWELZ"
+    },
+    "alias": "BERNISSART/PERUWELZ",
+    "municipalities": [
+      "51009",
+      "57064"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5322",
+    "name": {
+      "nl": "AAT",
+      "fr": "ATH",
+      "de": "ATH"
+    },
+    "alias": "ATH",
+    "municipalities": [
+      "51004"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5323",
+    "name": {
+      "nl": "ELZELE/FRASNES-LEZ-ANVAING/LESSEN/VLOESBERG",
+      "fr": "ELLEZELLES/FLOBECQ/FRASNES-LEZ-ANVAING/LESSINES",
+      "de": "ELLEZELLES/FLOBECQ/FRASNES-LEZ-ANVAING/LESSINES"
+    },
+    "alias": "DES COLLINES",
+    "municipalities": [
+      "51017",
+      "51019",
+      "51065",
+      "51069"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5324",
+    "name": {
+      "nl": "BERGEN/QUEVY",
+      "fr": "MONS/QUÉVY",
+      "de": "MONS/QUEVY"
+    },
+    "alias": "MONS-QUEVY",
+    "municipalities": [
+      "53053",
+      "53084"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5325",
+    "name": {
+      "nl": "LA LOUVIERE",
+      "fr": "LA LOUVIÈRE",
+      "de": "LA LOUVIERE"
+    },
+    "alias": "LA LOUVIERE",
+    "municipalities": [
+      "58001"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5326",
+    "name": {
+      "nl": "BRUGELETTE/CHIEVRES/EDINGEN/JURBEKE/LENS/OPZULLIK",
+      "fr": "BRUGELETTE/CHIÈVRES/ENGHIEN/JURBISE/LENS/SILLY",
+      "de": "BRUGELETTE/CHIEVRES/ENGHIEN/JURBISE/LENS/SILLY"
+    },
+    "alias": "DE SYLLE ET DENDRE",
+    "municipalities": [
+      "51012",
+      "51014",
+      "51067",
+      "51068",
+      "53044",
+      "53046"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5327",
+    "name": {
+      "nl": "BOUSSU/COLFONTAINE/FRAMERIES/QUAREGNON/SAINT-GHISLAIN",
+      "fr": "BOUSSU/COLFONTAINE/FRAMERIES/QUAREGNON/SAINT-GHISLAIN",
+      "de": "BOUSSU/COLFONTAINE/FRAMERIES/QUAREGNON/SAINT-GHISLAIN"
+    },
+    "alias": "BORAINE",
+    "municipalities": [
+      "53014",
+      "53028",
+      "53065",
+      "53070",
+      "53082"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5328",
+    "name": {
+      "nl": "'S GRAVENBRAKEL/ECAUSSINNES/LE ROEULX/ZINNIK",
+      "fr": "BRAINE-LE-COMTE/LE RŒULX/SOIGNIES/ÉCAUSSINNES",
+      "de": "BRAINE-LE-COMTE/ECAUSSINNES/LE ROEULX/SOIGNIES"
+    },
+    "alias": "HAUTE SENNE",
+    "municipalities": [
+      "55004",
+      "55035",
+      "55040",
+      "55050"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5329",
+    "name": {
+      "nl": "DOUR/HENSIES/HONNELLES/QUIEVRAIN",
+      "fr": "DOUR/HENSIES/HONNELLES/QUIÉVRAIN",
+      "de": "DOUR/HENSIES/HONNELLES/QUIEVRAIN"
+    },
+    "alias": "DES HAUTS-PAYS",
+    "municipalities": [
+      "53020",
+      "53039",
+      "53068",
+      "53083"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5330",
+    "name": {
+      "nl": "CHARLEROI",
+      "fr": "CHARLEROI",
+      "de": "CHARLEROI"
+    },
+    "alias": "CHARLEROI",
+    "municipalities": [
+      "52011"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5331",
+    "name": {
+      "nl": "AISEAU-PRESLES/CHATELET/FARCIENNES",
+      "fr": "AISEAU-PRESLES/CHÂTELET/FARCIENNES",
+      "de": "AISEAU-PRESLES/CHATELET/FARCIENNES"
+    },
+    "alias": "AISEAU-PRESLES/CHATELET/FARCIENNES",
+    "municipalities": [
+      "52012",
+      "52018",
+      "52074"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5334",
+    "name": {
+      "nl": "BEAUMONT/CHIMAY/FROIDCHAPELLE/MOMIGNIES/SIVRY-RANCE",
+      "fr": "BEAUMONT/CHIMAY/FROIDCHAPELLE/MOMIGNIES/SIVRY-RANCE",
+      "de": "BEAUMONT/CHIMAY/FROIDCHAPELLE/MOMIGNIES/SIVRY-RANCE"
+    },
+    "alias": "BOTTE DU HAINAUT",
+    "municipalities": [
+      "56005",
+      "56016",
+      "56029",
+      "56051",
+      "56088"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5335",
+    "name": {
+      "nl": "CHAPELLE-LEZ-HERLAIMONT/MANAGE/MORLANWELZ/SENEFFE",
+      "fr": "CHAPELLE-LEZ-HERLAIMONT/MANAGE/MORLANWELZ/SENEFFE",
+      "de": "CHAPELLE-LEZ-HERLAIMONT/MANAGE/MORLANWELZ/SENEFFE"
+    },
+    "alias": "DE MARIEMONT",
+    "municipalities": [
+      "52010",
+      "55085",
+      "55086",
+      "58004"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5336",
+    "name": {
+      "nl": "COURCELLES/FONTAINE-L'EVEQUE",
+      "fr": "COURCELLES/FONTAINE-L'ÉVÊQUE",
+      "de": "COURCELLES/FONTAINE-L'EVEQUE"
+    },
+    "alias": "DES TRIEUX",
+    "municipalities": [
+      "52015",
+      "52022"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5337",
+    "name": {
+      "nl": "FLEURUS/LES BONS VILLERS/PONT-A-CELLES",
+      "fr": "FLEURUS/LES BONS VILLERS/PONT-À-CELLES",
+      "de": "FLEURUS/LES BONS VILLERS/PONT-A-CELLES"
+    },
+    "alias": "BRUNAU",
+    "municipalities": [
+      "52021",
+      "52055",
+      "52075"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5338",
+    "name": {
+      "nl": "GERPINNES/HAM-SUR-HEURE-NALINNES/MONTIGNY-LE-TILLEUL/THUIN",
+      "fr": "GERPINNES/HAM-SUR-HEURE-NALINNES/MONTIGNY-LE-TILLEUL/THUIN",
+      "de": "GERPINNES/HAM-SUR-HEURE-NALINNES/MONTIGNY-LE-TILLEUL/THUIN"
+    },
+    "alias": "GERMINALT",
+    "municipalities": [
+      "52025",
+      "52048",
+      "56078",
+      "56086"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5339",
+    "name": {
+      "nl": "BRUSSEL/ELSENE",
+      "fr": "BRUXELLES/IXELLES",
+      "de": "BRUSSEL/ELSENE"
+    },
+    "alias": "BRUSSEL HOOFDSTAD ELSENE/BRUXELLES CAPITALE IXELLES",
+    "municipalities": [
+      "21004",
+      "21009"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5340",
+    "name": {
+      "nl": "GANSHOREN/JETTE/KOEKELBERG/SINT-AGATHA-BERCHEM/SINT-JANS-MOLENBEEK",
+      "fr": "BERCHEM-SAINTE-AGATHE/GANSHOREN/JETTE/KOEKELBERG/MOLENBEEK-SAINT-JEAN",
+      "de": "GANSHOREN/JETTE/KOEKELBERG/SINT-AGATHA-BERCHEM/SINT-JANS-MOLENBEEK"
+    },
+    "alias": "BRUSSEL-WEST/BRUXELLES-OUEST",
+    "municipalities": [
+      "21003",
+      "21008",
+      "21010",
+      "21011",
+      "21012"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5341",
+    "name": {
+      "nl": "ANDERLECHT/SINT-GILLIS/VORST",
+      "fr": "ANDERLECHT/FOREST/SAINT-GILLES",
+      "de": "ANDERLECHT/SINT-GILLIS/VORST"
+    },
+    "alias": "ZUID/MIDI",
+    "municipalities": [
+      "21001",
+      "21007",
+      "21013"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5342",
+    "name": {
+      "nl": "OUDERGHEM/UKKEL/WATERMAAL-BOSVOORDE",
+      "fr": "AUDERGHEM/UCCLE/WATERMAEL-BOITSFORT",
+      "de": "AUDERGHEM/UKKEL/WATERMAAL-BOSVOORDE"
+    },
+    "alias": "UKKEL/UCCLE",
+    "municipalities": [
+      "21002",
+      "21016",
+      "21017"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5343",
+    "name": {
+      "nl": "ETTERBEEK/SINT-LAMBRECHTS-WOLUWE/SINT-PIETERS-WOLUWE",
+      "fr": "ETTERBEEK/WOLUWE-SAINT-LAMBERT/WOLUWE-SAINT-PIERRE",
+      "de": "ETTERBEEK/SINT-LAMBRECHTS-WOLUWE/SINT-PIETERS-WOLUWE"
+    },
+    "alias": "MONTGOMERY",
+    "municipalities": [
+      "21005",
+      "21018",
+      "21019"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5344",
+    "name": {
+      "nl": "EVERE/SCHAARBEEK/SINT-JOOST-TEN-NODE",
+      "fr": "EVERE/SAINT-JOSSE-TEN-NOODE/SCHAERBEEK",
+      "de": "EVERE/SCHAARBEEK/SINT-JOOST-TEN-NODE"
+    },
+    "alias": "BRESSEL NOORD/BRUXELLES NORD",
+    "municipalities": [
+      "21006",
+      "21014",
+      "21015"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5345",
+    "name": {
+      "nl": "ANTWERPEN",
+      "fr": "ANVERS",
+      "de": "ANTWERPEN"
+    },
+    "alias": "ANTWERPEN",
+    "municipalities": [
+      "11002"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5347",
+    "name": {
+      "nl": "BOOM/HEMIKSEM/NIEL/RUMST/SCHELLE",
+      "fr": "BOOM/HEMIKSEM/NIEL/RUMST/SCHELLE",
+      "de": "BOOM/HEMIKSEM/NIEL/RUMST/SCHELLE"
+    },
+    "alias": "RUPEL",
+    "municipalities": [
+      "11005",
+      "11018",
+      "11030",
+      "11037",
+      "11038"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5348",
+    "name": {
+      "nl": "KAPELLEN/STABROEK",
+      "fr": "KAPELLEN/STABROEK",
+      "de": "KAPELLEN/STABROEK"
+    },
+    "alias": "NOORD",
+    "municipalities": [
+      "11023",
+      "11044"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5349",
+    "name": {
+      "nl": "AARTSELAAR/EDEGEM/HOVE/KONTICH/LINT",
+      "fr": "AARTSELAAR/EDEGEM/HOVE/KONTICH/LINT",
+      "de": "AARTSELAAR/EDEGEM/HOVE/KONTICH/LINT"
+    },
+    "alias": "HEKLA",
+    "municipalities": [
+      "11001",
+      "11013",
+      "11021",
+      "11024",
+      "11025"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5350",
+    "name": {
+      "nl": "ESSEN/KALMTHOUT/WUUSTWEZEL",
+      "fr": "ESSEN/KALMTHOUT/WUUSTWEZEL",
+      "de": "ESSEN/KALMTHOUT/WUUSTWEZEL"
+    },
+    "alias": "GRENS",
+    "municipalities": [
+      "11016",
+      "11022",
+      "11053"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5351",
+    "name": {
+      "nl": "BOECHOUT/BORSBEEK/MORTSEL/WIJNEGEM/WOMMELGEM",
+      "fr": "BOECHOUT/BORSBEEK/MORTSEL/WIJNEGEM/WOMMELGEM",
+      "de": "BOECHOUT/BORSBEEK/MORTSEL/WIJNEGEM/WOMMELGEM"
+    },
+    "alias": "MINOS",
+    "municipalities": [
+      "11004",
+      "11029",
+      "11050",
+      "11052"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5352",
+    "name": {
+      "nl": "BRASSCHAAT",
+      "fr": "BRASSCHAAT",
+      "de": "BRASSCHAAT"
+    },
+    "alias": "BRASSCHAAT",
+    "municipalities": [
+      "11008"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5353",
+    "name": {
+      "nl": "SCHOTEN",
+      "fr": "SCHOTEN",
+      "de": "SCHOTEN"
+    },
+    "alias": "SCHOTEN",
+    "municipalities": [
+      "11040"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5354",
+    "name": {
+      "nl": "RANST/ZANDHOVEN",
+      "fr": "RANST/ZANDHOVEN",
+      "de": "RANST/ZANDHOVEN"
+    },
+    "alias": "ZARA",
+    "municipalities": [
+      "11035",
+      "11054"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5355",
+    "name": {
+      "nl": "BRECHT/MALLE/SCHILDE/ZOERSEL",
+      "fr": "BRECHT/MALLE/SCHILDE/ZOERSEL",
+      "de": "BRECHT/MALLE/SCHILDE/ZOERSEL"
+    },
+    "alias": "VOORKEMPEN",
+    "municipalities": [
+      "11009",
+      "11039",
+      "11055",
+      "11057"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5359",
+    "name": {
+      "nl": "BONHEIDEN/DUFFEL/PUTTE/SINT-KATELIJNE-WAVER",
+      "fr": "BONHEIDEN/DUFFEL/PUTTE/WAVRE-SAINTE-CATHERINE",
+      "de": "BONHEIDEN/DUFFEL/PUTTE/SINT-KATELIJNE-WAVER"
+    },
+    "alias": "BODUKAP",
+    "municipalities": [
+      "12005",
+      "12009",
+      "12029",
+      "12035"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5360",
+    "name": {
+      "nl": "LIER",
+      "fr": "LIERRE",
+      "de": "LIER"
+    },
+    "alias": "LIER",
+    "municipalities": [
+      "12021"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5361",
+    "name": {
+      "nl": "BERLAAR/NIJLEN",
+      "fr": "BERLAAR/NIJLEN",
+      "de": "BERLAAR/NIJLEN"
+    },
+    "alias": "BERLAAR/NIJLEN",
+    "municipalities": [
+      "12002",
+      "12026"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5362",
+    "name": {
+      "nl": "HEIST-OP-DEN-BERG",
+      "fr": "HEIST-OP-DEN-BERG",
+      "de": "HEIST-OP-DEN-BERG"
+    },
+    "alias": "HEIST",
+    "municipalities": [
+      "12014"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5363",
+    "name": {
+      "nl": "HOOGSTRATEN/MERKSPLAS/RIJKEVORSEL",
+      "fr": "HOOGSTRATEN/MERKSPLAS/RIJKEVORSEL",
+      "de": "HOOGSTRATEN/MERKSPLAS/RIJKEVORSEL"
+    },
+    "alias": "NOORDERKEMPEN",
+    "municipalities": [
+      "13014",
+      "13023",
+      "13037"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5364",
+    "name": {
+      "nl": "BAARLE-HERTOG/BEERSE/KASTERLEE/LILLE/OUD-TURNHOUT/TURNHOUT/VOSSELAAR",
+      "fr": "BAERLE-DUC/BEERSE/KASTERLEE/LILLE/TURNHOUT/VIEUX-TURNHOUT/VOSSELAAR",
+      "de": "BAARLE-HERTOG/BEERSE/KASTERLEE/LILLE/OUD-TURNHOUT/TURNHOUT/VOSSELAAR"
+    },
+    "alias": "REGIO TURNHOUT",
+    "municipalities": [
+      "13002",
+      "13004",
+      "13017",
+      "13019",
+      "13031",
+      "13040",
+      "13046"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5365",
+    "name": {
+      "nl": "HERSELT/HULSHOUT/WESTERLO",
+      "fr": "HERSELT/HULSHOUT/WESTERLO",
+      "de": "HERSELT/HULSHOUT/WESTERLO"
+    },
+    "alias": "ZUIDERKEMPEN",
+    "municipalities": [
+      "13013",
+      "13016",
+      "13049"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5366",
+    "name": {
+      "nl": "GEEL/LAAKDAL/MEERHOUT",
+      "fr": "GEEL/LAAKDAL/MEERHOUT",
+      "de": "GEEL/LAAKDAL/MEERHOUT"
+    },
+    "alias": "GEEL/LAAKDAL/MEERHOUT",
+    "municipalities": [
+      "13008",
+      "13021",
+      "13053"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5367",
+    "name": {
+      "nl": "ARENDONK/RAVELS/RETIE",
+      "fr": "ARENDONK/RAVELS/RETIE",
+      "de": "ARENDONK/RAVELS/RETIE"
+    },
+    "alias": "KEMPEN N-O",
+    "municipalities": [
+      "13001",
+      "13035",
+      "13036"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5368",
+    "name": {
+      "nl": "BALEN/DESSEL/MOL",
+      "fr": "BALEN/DESSEL/MOL",
+      "de": "BALEN/DESSEL/MOL"
+    },
+    "alias": "BALEN-DESSEL-MOL",
+    "municipalities": [
+      "13003",
+      "13006",
+      "13025"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5369",
+    "name": {
+      "nl": "GROBBENDONK/HERENTALS/HERENTHOUT/OLEN/VORSELAAR",
+      "fr": "GROBBENDONK/HERENTALS/HERENTHOUT/OLEN/VORSELAAR",
+      "de": "GROBBENDONK/HERENTALS/HERENTHOUT/OLEN/VORSELAAR"
+    },
+    "alias": "NETELAND",
+    "municipalities": [
+      "13010",
+      "13011",
+      "13012",
+      "13029",
+      "13044"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5376",
+    "name": {
+      "nl": "GINGELOM/NIEUWERKERKEN/SINT-TRUIDEN",
+      "fr": "GINGELOM/NIEUWERKERKEN/SAINT-TROND",
+      "de": "GINGELOM/NIEUWERKERKEN/SINT-TRUIDEN"
+    },
+    "alias": "GINGELOM/NIEUWERKERKEN/SINT-TRUIDEN",
+    "municipalities": [
+      "71017",
+      "71045",
+      "71053"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5381",
+    "name": {
+      "nl": "BILZEN/HOESELT/RIEMST",
+      "fr": "BILZEN/HOESELT/RIEMST",
+      "de": "BILZEN/HOESELT/RIEMST"
+    },
+    "alias": "BILZEN/HOESELT/RIEMST",
+    "municipalities": [
+      "73066",
+      "73110"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5382",
+    "name": {
+      "nl": "VOEREN",
+      "fr": "FOURONS",
+      "de": "VOEREN"
+    },
+    "alias": "VOEREN",
+    "municipalities": [
+      "73109"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5383",
+    "name": {
+      "nl": "DILSEN-STOKKEM/MAASEIK",
+      "fr": "DILSEN-STOKKEM/MAASEIK",
+      "de": "DILSEN-STOKKEM/MAASEIK"
+    },
+    "alias": "MAASLAND",
+    "municipalities": [
+      "72021",
+      "72041"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5388",
+    "name": {
+      "nl": "LEUVEN",
+      "fr": "LOUVAIN",
+      "de": "LEUVEN"
+    },
+    "alias": "LEUVEN",
+    "municipalities": [
+      "24062"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5389",
+    "name": {
+      "nl": "BEKKEVOORT/GEETBETS/GLABBEEK/KORTENAKEN/TIELT-WINGE",
+      "fr": "BEKKEVOORT/GEETBETS/GLABBEEK/KORTENAKEN/TIELT-WINGE",
+      "de": "BEKKEVOORT/GEETBETS/GLABBEEK/KORTENAKEN/TIELT-WINGE"
+    },
+    "alias": "HAGELAND",
+    "municipalities": [
+      "24008",
+      "24028",
+      "24054",
+      "24135",
+      "24137"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5391",
+    "name": {
+      "nl": "BIERBEEK/BOUTERSEM/HOLSBEEK/LUBBEEK",
+      "fr": "BIERBEEK/BOUTERSEM/HOLSBEEK/LUBBEEK",
+      "de": "BIERBEEK/BOUTERSEM/HOLSBEEK/LUBBEEK"
+    },
+    "alias": "BIERBEEK/BOUTERSEM/HOLSBEEK/LUBBEEK",
+    "municipalities": [
+      "24011",
+      "24016",
+      "24043",
+      "24066"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5393",
+    "name": {
+      "nl": "HERENT/KORTENBERG",
+      "fr": "HERENT/KORTENBERG",
+      "de": "HERENT/KORTENBERG"
+    },
+    "alias": "HERKO",
+    "municipalities": [
+      "24038",
+      "24055"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5394",
+    "name": {
+      "nl": "AARSCHOT",
+      "fr": "AARSCHOT",
+      "de": "AARSCHOT"
+    },
+    "alias": "AARSCHOT",
+    "municipalities": [
+      "24001"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5395",
+    "name": {
+      "nl": "BOORTMEERBEEK/HAACHT/KEERBERGEN",
+      "fr": "BOORTMEERBEEK/HAECHT/KEERBERGEN",
+      "de": "BOORTMEERBEEK/HAACHT/KEERBERGEN"
+    },
+    "alias": "HAACHT",
+    "municipalities": [
+      "24014",
+      "24033",
+      "24048"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5396",
+    "name": {
+      "nl": "DIEST/SCHERPENHEUVEL-ZICHEM",
+      "fr": "DIEST/MONTAIGU-ZICHEM",
+      "de": "DIEST/SCHERPENHEUVEL-ZICHEM"
+    },
+    "alias": "DEMERDAL-DSZ",
+    "municipalities": [
+      "24020",
+      "24134"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5399",
+    "name": {
+      "nl": "BEGIJNENDIJK/ROTSELAAR/TREMELO",
+      "fr": "BEGIJNENDIJK/ROTSELAAR/TREMELO",
+      "de": "BEGIJNENDIJK/ROTSELAAR/TREMELO"
+    },
+    "alias": "BRT",
+    "municipalities": [
+      "24007",
+      "24094",
+      "24109"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5400",
+    "name": {
+      "nl": "ZAVENTEM",
+      "fr": "ZAVENTEM",
+      "de": "ZAVENTEM"
+    },
+    "alias": "ZAVENTEM",
+    "municipalities": [
+      "23094"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5401",
+    "name": {
+      "nl": "KRAAINEM/WEZEMBEEK-OPPEM",
+      "fr": "KRAAINEM/WEZEMBEEK-OPPEM",
+      "de": "KRAAINEM/WEZEMBEEK-OPPEM"
+    },
+    "alias": "WOKRA",
+    "municipalities": [
+      "23099",
+      "23103"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5402",
+    "name": {
+      "nl": "HOEILAART/OVERIJSE",
+      "fr": "HOEILAART/OVERIJSE",
+      "de": "HOEILAART/OVERIJSE"
+    },
+    "alias": "DRUIVENSTREEK",
+    "municipalities": [
+      "23033",
+      "23062"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5403",
+    "name": {
+      "nl": "DROGENBOS/LINKEBEEK/SINT-GENESIUS-RODE",
+      "fr": "DROGENBOS/LINKEBEEK/RHODE-SAINT-GENÈSE",
+      "de": "DROGENBOS/LINKEBEEK/SINT-GENESIUS-RODE"
+    },
+    "alias": "RODE",
+    "municipalities": [
+      "23098",
+      "23100",
+      "23101"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5405",
+    "name": {
+      "nl": "BEVER/GALMAARDEN/GOOIK/HERNE/LENNIK/PEPINGEN",
+      "fr": "BIÉVÈNE/GAMMERAGES/GOOIK/HERNE/LENNIK/PEPINGEN",
+      "de": "BEVER/GALMAARDEN/GOOIK/HERNE/LENNIK/PEPINGEN"
+    },
+    "alias": "PAJOTTENLAND",
+    "municipalities": [
+      "23009",
+      "23064",
+      "23104",
+      "23106"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5406",
+    "name": {
+      "nl": "DILBEEK",
+      "fr": "DILBEEK",
+      "de": "DILBEEK"
+    },
+    "alias": "DILBEEK",
+    "municipalities": [
+      "23016"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5407",
+    "name": {
+      "nl": "AFFLIGEM/LIEDEKERKE/ROOSDAAL/TERNAT",
+      "fr": "AFFLIGHEM/LIEDEKERKE/ROOSDAAL/TERNAT",
+      "de": "AFFLIGEM/LIEDEKERKE/ROOSDAAL/TERNAT"
+    },
+    "alias": "TARL",
+    "municipalities": [
+      "23044",
+      "23086",
+      "23097",
+      "23105"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5408",
+    "name": {
+      "nl": "ASSE/MERCHTEM/OPWIJK/WEMMEL",
+      "fr": "ASSE/MERCHTEM/OPWIJK/WEMMEL",
+      "de": "ASSE/MERCHTEM/OPWIJK/WEMMEL"
+    },
+    "alias": "AMOW",
+    "municipalities": [
+      "23002",
+      "23052",
+      "23060",
+      "23102"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5409",
+    "name": {
+      "nl": "KAPELLE-OP-DEN-BOS/LONDERZEEL/MEISE",
+      "fr": "KAPELLE-OP-DEN-BOS/LONDERZEEL/MEISE",
+      "de": "KAPELLE-OP-DEN-BOS/LONDERZEEL/MEISE"
+    },
+    "alias": "K-L-M",
+    "municipalities": [
+      "23039",
+      "23045",
+      "23050"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5410",
+    "name": {
+      "nl": "GRIMBERGEN",
+      "fr": "GRIMBERGEN",
+      "de": "GRIMBERGEN"
+    },
+    "alias": "GRIMBERGEN",
+    "municipalities": [
+      "23025"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5411",
+    "name": {
+      "nl": "MACHELEN/VILVOORDE",
+      "fr": "MACHELEN/VILVORDE",
+      "de": "MACHELEN/VILVOORDE"
+    },
+    "alias": "VILVOORDE-MACHELEN",
+    "municipalities": [
+      "23047",
+      "23088"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5412",
+    "name": {
+      "nl": "KAMPENHOUT/STEENOKKERZEEL/ZEMST",
+      "fr": "KAMPENHOUT/STEENOKKERZEEL/ZEMST",
+      "de": "KAMPENHOUT/STEENOKKERZEEL/ZEMST"
+    },
+    "alias": "KASTZE",
+    "municipalities": [
+      "23038",
+      "23081",
+      "23096"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5415",
+    "name": {
+      "nl": "GENT",
+      "fr": "GAND",
+      "de": "GENT"
+    },
+    "alias": "GENT",
+    "municipalities": [
+      "44021"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5416",
+    "name": {
+      "nl": "LOCHRISTI/MOERBEKE/WACHTEBEKE/ZELZATE",
+      "fr": "LOCHRISTI/MOERBEKE/WACHTEBEKE/ZELZATE",
+      "de": "LOCHRISTI/MOERBEKE/WACHTEBEKE/ZELZATE"
+    },
+    "alias": "REGIO PUYENBROECK",
+    "municipalities": [
+      "43018",
+      "44087"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5417",
+    "name": {
+      "nl": "EEKLO/KAPRIJKE/SINT-LAUREINS",
+      "fr": "EEKLO/KAPRIJKE/SAINT-LAURENT",
+      "de": "EEKLO/KAPRIJKE/SINT-LAUREINS"
+    },
+    "alias": "MEETJESLAND CENTRUM",
+    "municipalities": [
+      "43005",
+      "43007",
+      "43014"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5418",
+    "name": {
+      "nl": "DESTELBERGEN/MELLE/MERELBEKE/OOSTERZELE",
+      "fr": "DESTELBERGEN/MELLE/MERELBEKE/OOSTERZELE",
+      "de": "DESTELBERGEN/MELLE/MERELBEKE/OOSTERZELE"
+    },
+    "alias": "REGIO RHODE EN SCHELDE",
+    "municipalities": [
+      "44013",
+      "44052",
+      "44088"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5419",
+    "name": {
+      "nl": "DE PINTE/GAVERE/NAZARETH/SINT-MARTENS-LATEM",
+      "fr": "GAVERE/LA PINTE/LAETHEM-SAINT-MARTIN/NAZARETH",
+      "de": "DE PINTE/GAVERE/NAZARETH/SINT-MARTENS-LATEM"
+    },
+    "alias": "SCHELDE-LEIE",
+    "municipalities": [
+      "44020",
+      "44064",
+      "44086"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5421",
+    "name": {
+      "nl": "ASSENEDE/EVERGEM",
+      "fr": "ASSENEDE/EVERGHEM",
+      "de": "ASSENEDE/EVERGEM"
+    },
+    "alias": "ASSENEDE/EVERGEM",
+    "municipalities": [
+      "43002",
+      "44019"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5427",
+    "name": {
+      "nl": "RONSE",
+      "fr": "RENAIX",
+      "de": "RONSE"
+    },
+    "alias": "RONSE",
+    "municipalities": [
+      "45041"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5428",
+    "name": {
+      "nl": "GERAARDSBERGEN/LIERDE",
+      "fr": "GRAMMONT/LIERDE",
+      "de": "GERAARDSBERGEN/LIERDE"
+    },
+    "alias": "GERAARDSBERGEN-LIERDE",
+    "municipalities": [
+      "41018",
+      "45063"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5429",
+    "name": {
+      "nl": "HERZELE/SINT-LIEVENS-HOUTEM/ZOTTEGEM",
+      "fr": "HAUTEM-SAINT-LIÉVIN/HERZELE/ZOTTEGEM",
+      "de": "HERZELE/SINT-LIEVENS-HOUTEM/ZOTTEGEM"
+    },
+    "alias": "ZOTTEGEM/HERZELE/SINT-LIEVENS/HOUTEM",
+    "municipalities": [
+      "41027",
+      "41063",
+      "41081"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5432",
+    "name": {
+      "nl": "SINT-NIKLAAS",
+      "fr": "SINT-NIKLAAS",
+      "de": "SINT-NIKLAAS"
+    },
+    "alias": "SINT-NIKLAAS",
+    "municipalities": [
+      "46021"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5434",
+    "name": {
+      "nl": "LOKEREN",
+      "fr": "LOKEREN",
+      "de": "LOKEREN"
+    },
+    "alias": "LOKEREN",
+    "municipalities": [
+      "46029"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5435",
+    "name": {
+      "nl": "HAMME/WAASMUNSTER",
+      "fr": "HAMME/WAASMUNSTER",
+      "de": "HAMME/WAASMUNSTER"
+    },
+    "alias": "HAMME/WAASMUNSTER",
+    "municipalities": [
+      "42008",
+      "42023"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5436",
+    "name": {
+      "nl": "BERLARE/ZELE",
+      "fr": "BERLARE/ZELE",
+      "de": "BERLARE/ZELE"
+    },
+    "alias": "BERLARE/ZELE",
+    "municipalities": [
+      "42003",
+      "42028"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5437",
+    "name": {
+      "nl": "BUGGENHOUT/LEBBEKE",
+      "fr": "BUGGENHOUT/LEBBEKE",
+      "de": "BUGGENHOUT/LEBBEKE"
+    },
+    "alias": "BUGGENHOUT-LEBBEKE",
+    "municipalities": [
+      "42004",
+      "42011"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5438",
+    "name": {
+      "nl": "LAARNE/WETTEREN/WICHELEN",
+      "fr": "LAERNE/WETTEREN/WICHELEN",
+      "de": "LAARNE/WETTEREN/WICHELEN"
+    },
+    "alias": "WETTEREN LAARNE WICHELEN",
+    "municipalities": [
+      "42010",
+      "42025",
+      "42026"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5439",
+    "name": {
+      "nl": "DENDERLEEUW/HAALTERT",
+      "fr": "DENDERLEEUW/HAALTERT",
+      "de": "DENDERLEEUW/HAALTERT"
+    },
+    "alias": "DENDERLEEUW/HAALTERT",
+    "municipalities": [
+      "41011",
+      "41024"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5440",
+    "name": {
+      "nl": "AALST",
+      "fr": "ALOST",
+      "de": "AALST"
+    },
+    "alias": "AALST",
+    "municipalities": [
+      "41002"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5441",
+    "name": {
+      "nl": "ERPE-MERE/LEDE",
+      "fr": "ERPE-MERE/LEDE",
+      "de": "ERPE-MERE/LEDE"
+    },
+    "alias": "ERPE-MERE/LEDE",
+    "municipalities": [
+      "41034",
+      "41082"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5442",
+    "name": {
+      "nl": "NINOVE",
+      "fr": "NINOVE",
+      "de": "NINOVE"
+    },
+    "alias": "NINOVE",
+    "municipalities": [
+      "41048"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5443",
+    "name": {
+      "nl": "DENDERMONDE",
+      "fr": "TERMONDE",
+      "de": "DENDERMONDE"
+    },
+    "alias": "DENDERMONDE",
+    "municipalities": [
+      "42006"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5444",
+    "name": {
+      "nl": "BRUGGE",
+      "fr": "BRUGES",
+      "de": "BRUGGE"
+    },
+    "alias": "BRUGGE",
+    "municipalities": [
+      "31005"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5445",
+    "name": {
+      "nl": "BLANKENBERGE/ZUIENKERKE",
+      "fr": "BLANKENBERGHE/ZUYENKERQUE",
+      "de": "BLANKENBERGE/ZUIENKERKE"
+    },
+    "alias": "BLANKENBERGE/ZUIENKERKE",
+    "municipalities": [
+      "31004",
+      "31042"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5446",
+    "name": {
+      "nl": "DAMME/KNOKKE-HEIST",
+      "fr": "DAMME/KNOKKE-HEIST",
+      "de": "DAMME/KNOKKE-HEIST"
+    },
+    "alias": "DAMME/KNOKKE-HEIST",
+    "municipalities": [
+      "31006",
+      "31043"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5447",
+    "name": {
+      "nl": "BEERNEM/OOSTKAMP/ZEDELGEM",
+      "fr": "BEERNEM/OOSTKAMP/ZEDELGHEM",
+      "de": "BEERNEM/OOSTKAMP/ZEDELGEM"
+    },
+    "alias": "HET HOUTSCHE",
+    "municipalities": [
+      "31003",
+      "31022",
+      "31040"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5448",
+    "name": {
+      "nl": "ARDOOIE/LICHTERVELDE/PITTEM/RUISELEDE/TIELT/WINGENE",
+      "fr": "ARDOOIE/LICHTERVELDE/PITTEM/RUISELEDE/TIELT/WINGENE",
+      "de": "ARDOOIE/LICHTERVELDE/PITTEM/RUISELEDE/TIELT/WINGENE"
+    },
+    "alias": "REGIO TIELT",
+    "municipalities": [
+      "36011",
+      "37011",
+      "37020",
+      "37021",
+      "37022"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5449",
+    "name": {
+      "nl": "OOSTENDE",
+      "fr": "OSTENDE",
+      "de": "OOSTENDE"
+    },
+    "alias": "OOSTENDE",
+    "municipalities": [
+      "35013"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5450",
+    "name": {
+      "nl": "BREDENE/DE HAAN",
+      "fr": "BREDENE/LE COQ",
+      "de": "BREDENE/DE HAAN"
+    },
+    "alias": "BREDENE/DE HAAN",
+    "municipalities": [
+      "35002",
+      "35029"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5451",
+    "name": {
+      "nl": "MIDDELKERKE",
+      "fr": "MIDDELKERKE",
+      "de": "MIDDELKERKE"
+    },
+    "alias": "MIDDELKERKE",
+    "municipalities": [
+      "35011"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5452",
+    "name": {
+      "nl": "GISTEL/ICHTEGEM/JABBEKE/OUDENBURG/TORHOUT",
+      "fr": "GISTEL/ICHTEGEM/JABBEKE/OUDENBURG/THOUROUT",
+      "de": "GISTEL/ICHTEGEM/JABBEKE/OUDENBURG/TORHOUT"
+    },
+    "alias": "KOUTER",
+    "municipalities": [
+      "31012",
+      "31033",
+      "35005",
+      "35006",
+      "35014"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5453",
+    "name": {
+      "nl": "HOOGLEDE/IZEGEM/ROESELARE",
+      "fr": "HOOGLEDE/IZEGEM/ROULERS",
+      "de": "HOOGLEDE/IZEGEM/ROESELARE"
+    },
+    "alias": "RIHO",
+    "municipalities": [
+      "36006",
+      "36008",
+      "36015"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5454",
+    "name": {
+      "nl": "DENTERGEM/INGELMUNSTER/MEULEBEKE/OOSTROZEBEKE/WIELSBEKE",
+      "fr": "DENTERGEM/INGELMUNSTER/MEULEBEKE/OOSTROZEBEKE/WIELSBEKE",
+      "de": "DENTERGEM/INGELMUNSTER/MEULEBEKE/OOSTROZEBEKE/WIELSBEKE"
+    },
+    "alias": "MIDOW",
+    "municipalities": [
+      "36007",
+      "37002",
+      "37010",
+      "37017"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5455",
+    "name": {
+      "nl": "LEDEGEM/MENEN/WEVELGEM",
+      "fr": "LEDEGHEM/MENIN/WEVELGEM",
+      "de": "LEDEGEM/MENEN/WEVELGEM"
+    },
+    "alias": "GRENSLEIE",
+    "municipalities": [
+      "34027",
+      "34041",
+      "36010"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5456",
+    "name": {
+      "nl": "KORTRIJK/KUURNE/LENDELEDE",
+      "fr": "COURTRAI/KUURNE/LENDELEDE",
+      "de": "KORTRIJK/KUURNE/LENDELEDE"
+    },
+    "alias": "VLAS",
+    "municipalities": [
+      "34022",
+      "34023",
+      "34025"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5457",
+    "name": {
+      "nl": "ANZEGEM/AVELGEM/SPIERE-HELKIJN/WAREGEM/ZWEVEGEM",
+      "fr": "ANZEGEM/AVELGEM/ESPIERRES-HELCHIN/WAREGEM/ZWEVEGEM",
+      "de": "ANZEGEM/AVELGEM/SPIERE-HELKIJN/WAREGEM/ZWEVEGEM"
+    },
+    "alias": "MIRA",
+    "municipalities": [
+      "34002",
+      "34003",
+      "34040",
+      "34042",
+      "34043"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5458",
+    "name": {
+      "nl": "DEERLIJK/HARELBEKE",
+      "fr": "DEERLIJK/HARELBEKE",
+      "de": "DEERLIJK/HARELBEKE"
+    },
+    "alias": "GAVERS",
+    "municipalities": [
+      "34009",
+      "34013"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5459",
+    "name": {
+      "nl": "ALVERINGEM/LO-RENINGE/VEURNE",
+      "fr": "ALVERINGEM/FURNES/LO-RENINGE",
+      "de": "ALVERINGEM/LO-RENINGE/VEURNE"
+    },
+    "alias": "SPOORKIN",
+    "municipalities": [
+      "32030",
+      "38002",
+      "38025"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5460",
+    "name": {
+      "nl": "DIKSMUIDE/HOUTHULST/KOEKELARE/KORTEMARK",
+      "fr": "DIXMUDE/HOUTHULST/KOEKELARE/KORTEMARK",
+      "de": "DIKSMUIDE/HOUTHULST/KOEKELARE/KORTEMARK"
+    },
+    "alias": "POLDER",
+    "municipalities": [
+      "32003",
+      "32006",
+      "32010",
+      "32011"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5461",
+    "name": {
+      "nl": "DE PANNE/KOKSIJDE/NIEUWPOORT",
+      "fr": "COXYDE/LA PANNE/NIEUPORT",
+      "de": "DE PANNE/KOKSIJDE/NIEUWPOORT"
+    },
+    "alias": "WESTKUST",
+    "municipalities": [
+      "38008",
+      "38014",
+      "38016"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5462",
+    "name": {
+      "nl": "HEUVELLAND/IEPER/LANGEMARK-POELKAPELLE/MESEN/MOORSLEDE/POPERINGE/STADEN/VLETEREN/WERVIK/ZONNEBEKE",
+      "fr": "HEUVELLAND/LANGEMARK-POELKAPELLE/MESSINES/MOORSLEDE/POPERINGE/STADEN/VLETEREN/WERVIK/YPRES/ZONNEBEKE",
+      "de": "HEUVELLAND/IEPER/LANGEMARK-POELKAPELLE/MESEN/MOORSLEDE/POPERINGE/STADEN/VLETEREN/WERVIK/ZONNEBEKE"
+    },
+    "alias": "ARRO IEPER",
+    "municipalities": [
+      "33011",
+      "33016",
+      "33021",
+      "33029",
+      "33037",
+      "33039",
+      "33040",
+      "33041",
+      "36012",
+      "36019"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5853",
+    "name": {
+      "nl": "LANAKEN/MAASMECHELEN",
+      "fr": "LANAKEN/MAASMECHELEN",
+      "de": "LANAKEN/MAASMECHELEN"
+    },
+    "alias": "LANAKEN-MAASMECHELEN",
+    "municipalities": [
+      "73042",
+      "73107"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5905",
+    "name": {
+      "nl": "BEERSEL/HALLE/SINT-PIETERS-LEEUW",
+      "fr": "BEERSEL/HAL/LEEUW-SAINT-PIERRE",
+      "de": "BEERSEL/HALLE/SINT-PIETERS-LEEUW"
+    },
+    "alias": "ZENNEVALLEI",
+    "municipalities": [
+      "23003",
+      "23027",
+      "23077"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5907",
+    "name": {
+      "nl": "ALKEN/DIEPENBEEK/HALEN/HASSELT/HERK-DE-STAD/LUMMEN/ZONHOVEN",
+      "fr": "ALKEN/DIEPENBEEK/HALEN/HASSELT/HERK-DE-STAD/LUMMEN/ZONHOVEN",
+      "de": "ALKEN/DIEPENBEEK/HALEN/HASSELT/HERK-DE-STAD/LUMMEN/ZONHOVEN"
+    },
+    "alias": "LIMBURG REGIO HOOFDSTAD",
+    "municipalities": [
+      "71011",
+      "71020",
+      "71024",
+      "71037",
+      "71066",
+      "71072",
+      "73001"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5908",
+    "name": {
+      "nl": "BERTEM/HULDENBERG/OUD-HEVERLEE/TERVUREN",
+      "fr": "BERTEM/HULDENBERG/OUD-HEVERLEE/TERVUREN",
+      "de": "BERTEM/HULDENBERG/OUD-HEVERLEE/TERVUREN"
+    },
+    "alias": "VOER EN DIJLE",
+    "municipalities": [
+      "24009",
+      "24045",
+      "24086",
+      "24104"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5909",
+    "name": {
+      "nl": "AS/BOCHOLT/BREE/GENK/HOUTHALEN-HELCHTEREN/KINROOI/OUDSBERGEN/ZUTENDAAL",
+      "fr": "AS/BOCHOLT/BREE/GENK/HOUTHALEN-HELCHTEREN/KINROOI/OUDSBERGEN/ZUTENDAAL",
+      "de": "AS/BOCHOLT/BREE/GENK/HOUTHALEN-HELCHTEREN/KINROOI/OUDSBERGEN/ZUTENDAAL"
+    },
+    "alias": "CARMA",
+    "municipalities": [
+      "71002",
+      "71016",
+      "71067",
+      "72003",
+      "72004",
+      "72018",
+      "72039",
+      "72042"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5910",
+    "name": {
+      "nl": "HOEGAARDEN/LANDEN/LINTER/TIENEN/ZOUTLEEUW",
+      "fr": "HOEGAARDEN/LANDEN/LINTER/LÉAU/TIRLEMONT",
+      "de": "HOEGAARDEN/LANDEN/LINTER/TIENEN/ZOUTLEEUW"
+    },
+    "alias": "GETEVALLEI",
+    "municipalities": [
+      "24041",
+      "24059",
+      "24107",
+      "24130",
+      "24133"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5911",
+    "name": {
+      "nl": "DEINZE/LIEVEGEM/ZULTE",
+      "fr": "DEINZE/LIEVEGEM/ZULTE",
+      "de": "DEINZE/LIEVEGEM/ZULTE"
+    },
+    "alias": "DEINZE-ZULTE-LIEVEGEM",
+    "municipalities": [
+      "44081",
+      "44083",
+      "44085"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5912",
+    "name": {
+      "nl": "ANDERLUES/BINCHE/ERQUELINNES/ESTINNES/LOBBES/MERBES-LE-CHATEAU",
+      "fr": "ANDERLUES/BINCHE/ERQUELINNES/ESTINNES/LOBBES/MERBES-LE-CHÂTEAU",
+      "de": "ANDERLUES/BINCHE/ERQUELINNES/ESTINNES/LOBBES/MERBES-LE-CHATEAU"
+    },
+    "alias": "BINCHE-ANDERLUES-LERMES",
+    "municipalities": [
+      "56001",
+      "56022",
+      "56044",
+      "56049",
+      "58002",
+      "58003"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5913",
+    "name": {
+      "nl": "BORNEM/MECHELEN/PUURS-SINT-AMANDS/WILLEBROEK",
+      "fr": "BORNEM/MALINES/PUERS-SAINT-AMAND/WILLEBROECK",
+      "de": "BORNEM/MECHELEN/PUURS-SINT-AMANDS/WILLEBROEK"
+    },
+    "alias": "RIVIERENLAND",
+    "municipalities": [
+      "12007",
+      "12025",
+      "12040",
+      "12041"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5914",
+    "name": {
+      "nl": "AALTER/MALDEGEM",
+      "fr": "AALTER/MALDEGHEM",
+      "de": "AALTER/MALDEGEM"
+    },
+    "alias": "AALTER/MALDEGEM",
+    "municipalities": [
+      "43010",
+      "44084"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5915",
+    "name": {
+      "nl": "BRAKEL/HOREBEKE/KLUISBERGEN/KRUISEM/MAARKEDAL/OUDENAARDE/WORTEGEM-PETEGEM/ZWALM",
+      "fr": "BRAKEL/HOREBEKE/KLUISBERGEN/KRUISEM/MAARKEDAL/OUDENAARDE/WORTEGEM-PETEGEM/ZWALM",
+      "de": "BRAKEL/HOREBEKE/KLUISBERGEN/KRUISEM/MAARKEDAL/OUDENAARDE/WORTEGEM-PETEGEM/ZWALM"
+    },
+    "alias": "VLAAMSE ARDENNEN",
+    "municipalities": [
+      "45035",
+      "45059",
+      "45060",
+      "45061",
+      "45062",
+      "45064",
+      "45065",
+      "45068"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5962",
+    "name": {
+      "nl": "HEERS/HERSTAPPE/TONGRES-BORGLOON/WELLEN",
+      "fr": "HEERS/HERSTAPPE/TONGRES-BORGLOON/WELLEN",
+      "de": "HEERS/HERSTAPPE/TONGRES-BORGLOON/WELLEN"
+    },
+    "alias": "HASPENGOUW",
+    "municipalities": [
+      "73022",
+      "73028",
+      "73098",
+      "73111"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5964",
+    "name": {
+      "nl": "BEVEREN-KRUIBEKE-ZWIJNDRECHT/SINT-GILLIS-WAAS/STEKENE/TEMSE",
+      "fr": "BEVEREN-KRUIBEKE-ZWIJNDRECHT/SINT-GILLIS-WAAS/STEKENE/TEMSE",
+      "de": "BEVEREN-KRUIBEKE-ZWIJNDRECHT/SINT-GILLIS-WAAS/STEKENE/TEMSE"
+    },
+    "alias": "SCHELDEWAAS",
+    "municipalities": [
+      "46020",
+      "46024",
+      "46025",
+      "46030"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5965",
+    "name": {
+      "nl": "HAMONT-ACHEL/HECHTEL-EKSEL/LEOPOLDSBURG/LOMMEL/PEER/PELT",
+      "fr": "HAMONT-ACHEL/HECHTEL-EKSEL/LEOPOLDSBURG/LOMMEL/PEER/PELT",
+      "de": "HAMONT-ACHEL/HECHTEL-EKSEL/LEOPOLDSBURG/LOMMEL/PEER/PELT"
+    },
+    "alias": "NOORD LIMBURG",
+    "municipalities": [
+      "71034",
+      "72020",
+      "72030",
+      "72037",
+      "72038",
+      "72043"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "5966",
+    "name": {
+      "nl": "BERINGEN/HEUSDEN-ZOLDER/TESSENDERLO-HAM",
+      "fr": "BERINGEN/HEUSDEN-ZOLDER/TESSENDERLO-HAM",
+      "de": "BERINGEN/HEUSDEN-ZOLDER/TESSENDERLO-HAM"
+    },
+    "alias": "WEST LIMBURG",
+    "municipalities": [
+      "71004",
+      "71070",
+      "71071"
+    ],
+    "sources": [
+      {
+        "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
+        "retrieved": "2026-11-02"
+      }
+    ]
+  }
+]

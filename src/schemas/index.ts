@@ -17,6 +17,7 @@ import {
 import { courtSchema } from './courts.ts'
 import { houseOfJusticeSchema, prisonSchema } from './places.ts'
 import { postalCodeSchema } from './postal-codes.ts'
+import { policeZoneSchema } from './police-zones.ts'
 import { interestRateSeriesSchema } from './interest-rates.ts'
 import { publicHolidaysSchema } from './public-holidays.ts'
 
@@ -30,6 +31,7 @@ export * from './courts.ts'
 export * from './court-locations.ts'
 export * from './places.ts'
 export * from './postal-codes.ts'
+export * from './police-zones.ts'
 export * from './interest-rates.ts'
 export * from './public-holidays.ts'
 
@@ -48,6 +50,7 @@ export const dataFileSchemas = {
     prisons: z.array(prisonSchema),
     'houses-of-justice': z.array(houseOfJusticeSchema),
     'postal-codes': z.array(postalCodeSchema),
+    'police-zones': z.array(policeZoneSchema),
     'interest-rates': z.strictObject({
         legal: interestRateSeriesSchema,
         commercial: interestRateSeriesSchema,

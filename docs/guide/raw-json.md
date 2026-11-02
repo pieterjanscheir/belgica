@@ -75,6 +75,7 @@ Data > From Text/CSV.
 | `data/prisons.json`                   | The prisons and detention houses                                |
 | `data/houses-of-justice.json`         | The houses of justice of the Flemish and French Communities     |
 | `data/postal-codes.json`              | Every postal code with the municipality it belongs to           |
+| `data/police-zones.json`              | The 175 police zones and the municipalities each covers         |
 | `data/interest-rates.json`            | Legal and commercial-transaction interest rates                 |
 | `data/public-holidays.json`           | The rules for the ten legal public holidays                     |
 

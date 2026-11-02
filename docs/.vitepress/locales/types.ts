@@ -34,6 +34,7 @@ export interface Strings {
         concepts?: string
         commonTasks?: string
         entryPoints?: string
+        policeZones?: string
         usingTheData?: string
         project?: string
     }

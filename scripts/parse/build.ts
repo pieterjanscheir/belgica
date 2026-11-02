@@ -20,6 +20,7 @@ import {
 import { buildCourtLocations } from './court-locations.ts'
 import { buildCourts } from './courts.ts'
 import { buildHousesOfJustice, buildPrisons } from './places.ts'
+import { buildPoliceZones } from './police-zones.ts'
 import { buildPostalCodes, linkMunicipalities, municipalityResolver } from './postal-codes.ts'
 import { buildRegionsAndProvinces } from './refnis.ts'
 import { carryOver, walkDay, type Dated } from './retire.ts'
@@ -29,6 +30,7 @@ import type {
     Court,
     CourtLocation,
     HouseOfJustice,
+    PoliceZone,
     Prison,
 } from './types.ts'
 
@@ -65,6 +67,10 @@ const { locations: freshLocations, report: locationReport } = buildCourtLocation
     cantons,
     freshCourts,
 )
+const { zones: freshPoliceZones, problems: policeZoneProblems } = buildPoliceZones(
+    root,
+    municipalities.map((m) => m.id),
+)
 // Their validity comes from Statbel's register itself, so they aren't carried over below
 const { regions, provinces } = buildRegionsAndProvinces(root)
 
@@ -92,6 +98,11 @@ const arrondissementBoundaries = carryOver(
     day('ngi'),
 )
 const locations = carryOver(previous<CourtLocation>('court-locations'), freshLocations, day('ngi'))
+const policeZones = carryOver(
+    previous<PoliceZone>('police-zones'),
+    freshPoliceZones,
+    day('police-zones'),
+)
 for (const line of [...prisonProblems, ...houseProblems]) console.warn(`unreadable: ${line}`)
 for (const line of [...courtAddresses, ...prisonAddresses, ...houseAddresses])
     console.warn(`unreadable: ${line}`)
@@ -114,6 +125,7 @@ const problems = [
         (id) => `arrondissement ${id} has no boundary in the NGI's file`,
     ),
     ...locationReport.unmatched,
+    ...policeZoneProblems,
 ]
 for (const line of report.unreadable) console.warn(`unreadable: ${line}`)
 const withoutAddress = courts.filter((c) => !c.address).map((c) => c.id)
@@ -133,5 +145,6 @@ write('postal-codes', postalCodes)
 writeFileSync('data/canton-boundaries.json', stringifyBoundaries(boundaries))
 writeFileSync('data/arrondissement-boundaries.json', stringifyBoundaries(arrondissementBoundaries))
 write('court-locations', locations)
+write('police-zones', policeZones)
 write('regions', regions)
 write('provinces', provinces)

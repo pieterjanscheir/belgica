@@ -50,6 +50,7 @@ All of these are enforced by tests (`test/ids.test.ts`) and by the
 | Provinces         | `10000`, `40000`                                                                                                          | REFNIS code               |
 | Regions           | `02000`, `03000`, `04000`                                                                                                 | REFNIS code               |
 | Postal codes      | `9000-44021`, `1040-21005`                                                                                                | Postal code + REFNIS code |
+| Police zones      | `5415`, `5349`                                                                                                            | Official zone number      |
 | Courts            | `justice-of-the-peace-gent-1`, `enterprise-court-gent-brugge`, `police-court-brussel-fr`, `police-court-eupen-sankt-vith` | Type + place              |
 | Prisons           | `gevangenis-gent`, `prison-lantin`, `detentiehuis-kortrijk`                                                               | Local name                |
 | Houses of justice | `justitiehuis-gent`, `maison-justice-arlon`                                                                               | Local name                |
@@ -100,7 +101,7 @@ be followed in both directions.
 ## In TypeScript
 
 Every dataset has a generated id type (`CantonId`, `CourtId`, `MunicipalityId`, `ProvinceId`,
-`RegionId`, `ArrondissementId`, `JudicialAreaId`, `PrisonId`, `HouseOfJusticeId`, `PostalCodeId`), regenerated
+`RegionId`, `ArrondissementId`, `JudicialAreaId`, `PrisonId`, `HouseOfJusticeId`, `PostalCodeId`, `PoliceZoneId`), regenerated
 from the data by `pnpm build:ids`:
 
 ```ts

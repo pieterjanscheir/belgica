@@ -25,6 +25,7 @@ export const DATASETS = [
     'prisons',
     'houses-of-justice',
     'postal-codes',
+    'police-zones',
 ] as const
 
 export type Lock = Record<(typeof DATASETS)[number], string[]>
