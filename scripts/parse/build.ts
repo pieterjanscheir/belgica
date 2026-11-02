@@ -6,7 +6,8 @@
  * Prints what it couldn't read. Fails, and writes nothing, when a page can't be placed (a court
  * without a canton, an unknown kind of court), a canton or an arrondissement has no court or no
  * boundary in the NGI's file, a postal code points at an unknown municipality or a municipality has no postal
- * code: those need a person.
+ * code: those need a person. Signs that the cantons may have changed, which `pnpm build:cantons`
+ * has to pick up by hand, are printed as "canton signal:" lines (canton-signals.ts).
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 
@@ -17,11 +18,12 @@ import {
     buildCantonBoundaries,
     stringifyBoundaries,
 } from './boundaries.ts'
+import { cantonSignals } from './canton-signals.ts'
 import { buildCourtLocations } from './court-locations.ts'
 import { buildCourts } from './courts.ts'
 import { buildHousesOfJustice, buildPrisons } from './places.ts'
 import { buildPostalCodes, linkMunicipalities, municipalityResolver } from './postal-codes.ts'
-import { buildRegionsAndProvinces } from './refnis.ts'
+import { buildRegionsAndProvinces, readRefnisRows } from './refnis.ts'
 import { carryOver, walkDay, type Dated } from './retire.ts'
 import type {
     ArrondissementBoundary,
@@ -96,6 +98,13 @@ for (const line of [...prisonProblems, ...houseProblems]) console.warn(`unreadab
 for (const line of [...courtAddresses, ...prisonAddresses, ...houseAddresses])
     console.warn(`unreadable: ${line}`)
 for (const line of locationReport.moved) console.warn(`no location: ${line}`)
+for (const line of cantonSignals({
+    previousBoundaries: previous<CantonBoundary>('canton-boundaries'),
+    boundaries: freshBoundaries,
+    refnis: readRefnisRows(root).rows,
+    municipalities,
+}))
+    console.warn(`canton signal: ${line}`)
 
 const problems = [
     ...postalCodeProblems,

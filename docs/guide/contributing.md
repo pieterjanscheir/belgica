@@ -39,7 +39,13 @@ and every municipality is covered exactly once (or split over several cantons). 
 uses but Statbel doesn't (`Gembloers`, `Saint-Nicolas`, …), typos in the annex, and boundary
 mentions it can't tell apart are listed at the top of the script.
 
-Rerun it after a law changes the annex or municipalities merge. Canton ids follow the local
+Rerun it after a law changes the annex or municipalities merge. To help you notice: ejustice
+refuses GitHub's runners ([#52](https://github.com/pieterjanscheir/belgica/issues/52)), so the sources run looks at
+the NGI's canton boundaries and Statbel's REFNIS register instead, and opens an issue labelled
+[`cantons`](https://github.com/pieterjanscheir/belgica/issues?q=label%3Acantons) when a canton's
+boundary changes or the register no longer matches `data/municipalities.json`
+(`scripts/parse/canton-signals.ts`). The NGI may redraw a boundary weeks after the law changes,
+so that issue is a reminder, not a guarantee. Canton ids follow the local
 language (Dutch in Flanders and Brussels, French in Wallonia, German around Eupen); the justice of
 the peace of canton `x` has id `justice-of-the-peace-x` and links to it through its `canton` field.
 

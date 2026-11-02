@@ -7,6 +7,14 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Changed
+
+- The sources run says when the cantons need rebuilding by hand: it opens an issue labelled
+  `cantons` when the NGI redraws a canton's boundary, or Statbel's REFNIS register opens or
+  closes a municipality that `data/municipalities.json` doesn't reflect. The cantons themselves
+  still come from ejustice, which refuses GitHub's runners
+  ([#52](https://github.com/pieterjanscheir/belgica/issues/52)).
+
 ## [0.6.2] - 2026-11-02
 
 ### Fixed
