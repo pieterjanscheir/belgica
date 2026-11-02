@@ -154,11 +154,8 @@ export function toRecords(
     return { regions: regions.sort(byId), provinces: provinces.sort(byId) }
 }
 
-/** Regions and provinces from the statbel snapshots under `root` */
-export function buildRegionsAndProvinces(root: string): {
-    regions: Region[]
-    provinces: Province[]
-} {
+/** The rows of the latest REFNIS code list in the statbel snapshots under `root` */
+export function readRefnisRows(root: string): { rows: RefnisRow[]; source: Source } {
     const snapshots = new Snapshots(root, 'statbel')
     const entry = snapshots
         .entries()
@@ -168,5 +165,14 @@ export function buildRegionsAndProvinces(root: string): {
     const path = entry && snapshots.path(entry.url)
     if (!entry || !path) throw new Error('No snapshot of the REFNIS code list (TU_COM_REFNIS)')
     const text = decodeWindows1252(execFileSync('unzip', ['-p', path], { maxBuffer: 1 << 26 }))
-    return toRecords(parseRefnis(text), { url: entry.url, retrieved: entry.retrieved })
+    return { rows: parseRefnis(text), source: { url: entry.url, retrieved: entry.retrieved } }
+}
+
+/** Regions and provinces from the statbel snapshots under `root` */
+export function buildRegionsAndProvinces(root: string): {
+    regions: Region[]
+    provinces: Province[]
+} {
+    const { rows, source } = readRefnisRows(root)
+    return toRecords(rows, source)
 }

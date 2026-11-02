@@ -43,7 +43,14 @@ Exoniemen die de bijlage gebruikt maar Statbel niet (`Gembloers`, `Saint-Nicolas
 in de bijlage en grensvermeldingen die het niet uit elkaar kan houden, staan bovenaan het script
 opgesomd.
 
-Draai het opnieuw nadat een wet de bijlage wijzigt of gemeenten fuseren. Kanton-ids volgen de
+Draai het opnieuw nadat een wet de bijlage wijzigt of gemeenten fuseren. Om je daarbij te
+helpen, omdat ejustice de runners van GitHub ([#52](https://github.com/pieterjanscheir/belgica/issues/52)) weigert, kijkt
+de sources-run naar de kantongrenzen van het NGI en het REFNIS-register van Statbel, en opent hij
+een issue met het label
+[`cantons`](https://github.com/pieterjanscheir/belgica/issues?q=label%3Acantons) wanneer de grens
+van een kanton verandert of het register niet meer overeenkomt met `data/municipalities.json`
+(`scripts/parse/canton-signals.ts`). Het NGI kan een grens weken na de wetswijziging
+hertekenen, dus dat issue is een herinnering, geen garantie. Kanton-ids volgen de
 plaatselijke taal (Nederlands in Vlaanderen en Brussel, Frans in Wallonië, Duits rond Eupen); het
 vredegerecht van kanton `x` heeft id `justice-of-the-peace-x` en verwijst ernaar via zijn veld
 `canton`.
