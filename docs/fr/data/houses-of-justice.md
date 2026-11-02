@@ -30,6 +30,11 @@ Communautés les gèrent depuis 2015.
 | Construit par | `scripts/parse` à partir des instantanés                                                                                                                                                                                                                  |
 | Vérifié       | Deux fois par semaine, par le [workflow des sources](/fr/guide/data-quality#how-the-data-is-built)                                                                                                                                                        |
 
+Les maisons de justice de la Communauté française viennent pour l'instant des snapshots du
+20 octobre 2026 : depuis la refonte de maisonsdejustice.be, elles ne sont plus listées sur une
+page, elles restent donc telles quelles jusqu'à ce qu'une nouvelle source soit trouvée
+([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
+
 Pas encore dans les données : la maison de justice de la Communauté germanophone à Eupen
 ([#3](https://github.com/pieterjanscheir/belgica/issues/3)). Bruxelles a à la fois une
 maison flamande (`justitiehuis-brussel`) et une maison francophone (`maison-justice-bruxelles`).

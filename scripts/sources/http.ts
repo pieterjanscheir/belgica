@@ -8,6 +8,8 @@ const DELAY_MS = 1000
 const RETRIES = 3
 
 const lastRequest = new Map<string, number>()
+/** Each host's queue: sources walked side by side still take turns on a shared host */
+const queues = new Map<string, Promise<void>>()
 const sleep = (ms: number) =>
     new Promise<void>((resolve) => {
         setTimeout(resolve, ms)
@@ -21,10 +23,14 @@ export interface Response {
     body: Buffer
 }
 
-async function throttle(host: string): Promise<void> {
-    const wait = (lastRequest.get(host) ?? 0) + DELAY_MS - Date.now()
-    if (wait > 0) await sleep(wait)
-    lastRequest.set(host, Date.now())
+function throttle(host: string): Promise<void> {
+    const turn = (queues.get(host) ?? Promise.resolve()).then(async () => {
+        const wait = (lastRequest.get(host) ?? 0) + DELAY_MS - Date.now()
+        if (wait > 0) await sleep(wait)
+        lastRequest.set(host, Date.now())
+    })
+    queues.set(host, turn)
+    return turn
 }
 
 export async function get(url: string): Promise<Response> {
