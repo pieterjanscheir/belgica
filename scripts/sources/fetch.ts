@@ -37,6 +37,7 @@ async function walk(source: Source): Promise<boolean> {
                 console.log(
                     `${source.name}: kept the last snapshots of ${kept} pages under ${prefix}: ${reason}`,
                 )
+                return kept
             },
         )
     } catch (error) {

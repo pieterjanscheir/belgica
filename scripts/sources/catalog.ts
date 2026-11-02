@@ -8,9 +8,10 @@ export type Get = (url: string) => Promise<Response>
 
 /**
  * Keeps the last snapshots under a URL prefix as they were, for a part of a source that can't
- * be read for now: its records stay as they are instead of being retired, and the run says why
+ * be read for now: its records stay as they are instead of being retired, and the run says why.
+ * Returns how many good snapshots were kept.
  */
-export type Keep = (prefix: string, reason: string) => void
+export type Keep = (prefix: string, reason: string) => number
 
 export interface Source {
     name: string
@@ -126,7 +127,9 @@ const housesOfJustice: Source = {
         // redirects to a contact form: an empty walk would retire them all, so the last
         // snapshots stay until the houses can be read again (#125)
         if (pages.length === 0) {
-            keep(list, `no houses of justice listed on ${res.url}`)
+            // With nothing to keep, an empty walk would still retire them: fail instead
+            if (keep(list, `no houses of justice listed on ${res.url}`) === 0)
+                throw new Error(`No houses of justice listed on ${res.url}, and none to keep`)
             return
         }
         for (const url of pages.sort()) await get(url)

@@ -7,7 +7,7 @@ const FRENCH = 'https://www.maisonsdejustice.be/menu-de-droite/trouverunemj/'
 const houses = sources.find((s) => s.name === 'houses-of-justice')
 
 /** A get that answers every URL with the page `pages` gives it, and records what it fetched */
-function site(pages: Record<string, { url?: string; body: string }>) {
+function site(pages: Record<string, { url?: string; body: string }>, keeps = 14) {
     const fetched: string[] = []
     const get = (url: string): Promise<Response> => {
         fetched.push(url)
@@ -22,6 +22,7 @@ function site(pages: Record<string, { url?: string; body: string }>) {
     const kept: string[] = []
     const keep = (prefix: string) => {
         kept.push(prefix)
+        return keeps
     }
     return { get, keep, fetched, kept }
 }
@@ -56,5 +57,13 @@ describe('houses-of-justice source', () => {
         await houses?.fetch(get, keep)
         expect(kept).toEqual([FRENCH])
         expect(fetched.filter((url) => url.startsWith(FRENCH + 'maison-justice-'))).toEqual([])
+    })
+
+    it('fails when the list is empty and there are no snapshots to keep', async () => {
+        const { get, keep } = site(
+            { [FRENCH]: { url: 'https://www.maisonsdejustice.be/contact', body: '' } },
+            0,
+        )
+        await expect(houses?.fetch(get, keep)).rejects.toThrow(/none to keep/)
     })
 })

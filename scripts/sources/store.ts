@@ -93,7 +93,8 @@ export class Store {
     /**
      * Keeps the last snapshots of every URL under `prefix` as they were, undoing what this run
      * fetched there: for a part of a source that can't be read for now, so its records stay
-     * as they were instead of being retired. Returns how many snapshots were kept.
+     * as they were instead of being retired. Returns how many good snapshots were kept: a URL
+     * whose last snapshot is an error has nothing to keep.
      */
     keep(prefix: string): number {
         let kept = 0
@@ -104,7 +105,7 @@ export class Store {
             if (previous) {
                 this.#byUrl.set(url, previous)
                 this.#seen.add(url)
-                kept++
+                if (previous.status === 200) kept++
             } else {
                 this.#byUrl.delete(url)
                 this.#seen.delete(url)
