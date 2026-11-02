@@ -60,10 +60,12 @@ jobs:
                       IFS='|' read -r name url marker <<< "$entry"
                       direct=$(probe "$marker" "$url")
                       jina=$(probe "$marker" -H 'X-Return-Format: html' "https://r.jina.ai/$url")
-                      archive=$(curl -sS --max-time 30 -G --data-urlencode "url=${url#https://}" \
+                      # Its latest copy; an empty or unreadable answer from the Archive is an error
+                      cdx=$(curl -sS --max-time 30 -G --data-urlencode "url=${url#https://}" \
                         --data-urlencode 'output=json' --data-urlencode 'fl=timestamp,statuscode' \
-                        --data-urlencode 'limit=-1' https://web.archive.org/cdx/search/cdx 2>/dev/null \
-                        | jq -r 'if length > 1 then "\(.[1][1]) on \(.[1][0][0:8])" else "none" end' 2>/dev/null || echo error)
+                        --data-urlencode 'limit=-1' https://web.archive.org/cdx/search/cdx 2>/dev/null) || cdx=''
+                      archive=$(jq -er 'if length > 1 then "\(.[1][1]) on \(.[1][0][0:8])" else "none" end' \
+                        <<< "$cdx" 2>/dev/null) || archive=error
                       echo "| $name | $direct | $jina | $archive |"
                       sleep 2
                     done
