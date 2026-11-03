@@ -1,0 +1,37 @@
+        User-agent: GPTBot
+        Disallow: /
+
+        User-agent: CCbot
+        Disallow: /
+
+        User-agent: anthropic-ai
+        Disallow: /
+
+        User-agent: Claude-Web
+        Disallow: /
+
+        User-agent: ClaudeBot
+        Disallow: /
+
+        User-agent: Google-Extended
+        Disallow: /
+
+        User-agent: *
+        Crawl-delay: 10
+        Allow: /
+        Disallow: /typo3/
+        Disallow: /typo3temp/
+        Disallow: /vendor/
+
+        Allow: /typo3temp/assets/
+        Allow: /_assets/
+        Allow: /fileadmin/_processed_/
+
+        Allow: /fileadmin/portail_mj/css/
+        Allow: /fileadmin/portail_mj/Rapatriement/
+        Allow: /fileadmin/portail_mj/uploads/
+
+        Disallow: /*tx_solr
+        Disallow: /nc/
+
+        Sitemap: https://www.maisonsdejustice.be/sitemap.xml

@@ -21,6 +21,9 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Changed
 
+- The sources run follows each site's `robots.txt`: it doesn't fetch a page the site
+  disallows (the source fails and keeps its last snapshots), and waits as long as the site's
+  `Crawl-delay` asks, which slows maisonsdejustice.be to one request every 10 seconds.
 - The sources run says when the cantons need rebuilding by hand: it opens an issue labelled
   `cantons` when the NGI redraws a canton's boundary, or Statbel's REFNIS register opens or
   closes a municipality that `data/municipalities.json` doesn't reflect. The cantons themselves
