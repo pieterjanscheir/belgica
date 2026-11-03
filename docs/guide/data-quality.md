@@ -37,8 +37,10 @@ official site ──fetch──> snapshots (sources branch) ──parse──> d
 ```
 
 1. **Fetch.** Every Monday and Thursday the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   fetches every page of the sources (`scripts/sources`), politely: one request per second per
-   site, with a user agent that names the project. It keeps each page on the `sources` branch,
+   fetches every page of the sources (`scripts/sources`), politely: it follows each site's
+   `robots.txt` (a page it disallows isn't fetched, and the source fails instead), sends one
+   request per second per site or less often when the site's `Crawl-delay` asks for it, with a
+   user agent that names the project (`belgica`). It keeps each page on the `sources` branch,
    with an index of what was fetched, when, and a hash of its content. A page is only stored
    again when its content changes, so the branch's history shows what changed on which day.
    A page that fails (a server error, a 404) keeps its last good snapshot, and a walk that
