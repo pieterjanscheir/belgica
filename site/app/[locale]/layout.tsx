@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import { Analytics } from '@vercel/analytics/next'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -87,6 +88,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                         <p className="muted">{f('disclaimer')}</p>
                     </footer>
                 </ClientMessages>
+                <Analytics />
             </body>
         </html>
     )

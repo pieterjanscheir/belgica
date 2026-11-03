@@ -9,6 +9,7 @@
         "typecheck": "pnpm build:map && tsc --noEmit"
     },
     "dependencies": {
+        "@vercel/analytics": "^2.0.1",
         "belgica": "workspace:*",
         "next": "^16.4.2",
         "next-intl": "^4.14.9",
