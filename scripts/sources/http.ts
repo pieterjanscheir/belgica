@@ -42,22 +42,31 @@ function throttle(host: string, delay: number): Promise<void> {
     return turn
 }
 
-async function request(url: string, delay: number): Promise<Response> {
+/** A response, with where it redirects to when it's a redirect that wasn't followed */
+type Fetched = Response & { location?: string }
+
+async function request(
+    url: string,
+    delay: number,
+    redirect: 'follow' | 'manual',
+): Promise<Fetched> {
     for (let attempt = 0; ; attempt++) {
         await throttle(new URL(url).host, delay)
         try {
             const res = await fetch(url, {
                 headers: { 'user-agent': USER_AGENT },
-                redirect: 'follow',
+                redirect,
                 signal: AbortSignal.timeout(60_000),
             })
             const body = Buffer.from(await res.arrayBuffer())
             if (res.status >= 500 && attempt < RETRIES) throw new Error(`HTTP ${res.status}`)
+            const location = res.headers.get('location')
             return {
                 url: res.url,
                 status: res.status,
                 contentType: res.headers.get('content-type') ?? '',
                 body,
+                ...(res.status >= 300 && res.status < 400 && location !== null && { location }),
             }
         } catch (error) {
             if (attempt >= RETRIES) throw error
@@ -75,7 +84,7 @@ async function request(url: string, delay: number): Promise<Response> {
 function robotsFor(origin: string): Promise<Robots> {
     let robots = robotsByHost.get(origin)
     if (!robots) {
-        robots = request(`${origin}/robots.txt`, DELAY_MS).then((res) => {
+        robots = request(`${origin}/robots.txt`, DELAY_MS, 'follow').then((res) => {
             if (res.status >= 500) return DISALLOW_ALL
             if (res.status >= 400) return ALLOW_ALL
             return parseRobots(res.body.toString('utf8'), AGENT)
@@ -88,10 +97,23 @@ function robotsFor(origin: string): Promise<Robots> {
 /** Thrown for a URL the site's robots.txt doesn't let belgica fetch */
 export class DisallowedError extends Error {}
 
+/** How many redirects a page may go through, as browsers allow */
+const MAX_REDIRECTS = 20
+
+/**
+ * Fetches a URL, following its redirects one at a time so that every hop is checked against its
+ * own site's robots.txt (and waits that site's delay) before it's requested.
+ */
 export async function get(url: string): Promise<Response> {
-    const { origin } = new URL(url)
-    const robots = await robotsFor(origin)
-    if (!isAllowed(robots, url))
-        throw new DisallowedError(`${origin}/robots.txt doesn't allow ${url}`)
-    return request(url, delayFor(robots))
+    let current = url
+    for (let hops = 0; ; hops++) {
+        const { origin } = new URL(current)
+        const robots = await robotsFor(origin)
+        if (!isAllowed(robots, current))
+            throw new DisallowedError(`${origin}/robots.txt doesn't allow ${current}`)
+        const { location, ...res } = await request(current, delayFor(robots), 'manual')
+        if (location === undefined) return { ...res, url: current }
+        if (hops >= MAX_REDIRECTS) throw new Error(`Too many redirects from ${url}`)
+        current = new URL(location, current).href
+    }
 }

@@ -21,6 +21,9 @@ export const ALLOW_ALL: Robots = { rules: [] }
 /** Nothing allowed: RFC 9309 has a crawler assume this when robots.txt can't be read (5xx) */
 export const DISALLOW_ALL: Robots = { rules: [{ allow: false, pattern: '/' }] }
 
+/** A rule's non-ASCII characters, percent-encoded as in a URL's path (RFC 9309, 2.2.2) */
+const encodeNonAscii = (text: string) => text.replace(/\P{ASCII}+/gu, encodeURIComponent)
+
 interface Group {
     agents: string[]
     rules: Rule[]
@@ -54,7 +57,7 @@ export function parseRobots(text: string, agent: string): Robots {
         inAgents = false
         if (!current) continue
         if ((key === 'allow' || key === 'disallow') && value !== '')
-            current.rules.push({ allow: key === 'allow', pattern: value })
+            current.rules.push({ allow: key === 'allow', pattern: encodeNonAscii(value) })
         if (key === 'crawl-delay') {
             const seconds = Number(value)
             if (Number.isFinite(seconds) && seconds >= 0) current.crawlDelay = seconds
@@ -69,14 +72,25 @@ export function parseRobots(text: string, agent: string): Robots {
     }
 }
 
+/**
+ * Whether a rule's pattern matches a path, by finding the parts between its `*`s in order: no
+ * regular expression, so no backtracking on a pattern with many wildcards
+ */
 function matches(pattern: string, path: string): boolean {
     const anchored = pattern.endsWith('$')
-    const body = anchored ? pattern.slice(0, -1) : pattern
-    const regex = body
-        .split('*')
-        .map((part) => part.replace(/[.+?^${}()|[\]\\]/g, '\\$&'))
-        .join('.*')
-    return new RegExp(`^${regex}${anchored ? '$' : ''}`).test(path)
+    const parts = (anchored ? pattern.slice(0, -1) : pattern).split('*')
+    const first = parts[0] ?? ''
+    if (parts.length === 1) return anchored ? path === first : path.startsWith(first)
+    if (!path.startsWith(first)) return false
+    let pos = first.length
+    for (const part of parts.slice(1, -1)) {
+        const found = path.indexOf(part, pos)
+        if (found < 0) return false
+        pos = found + part.length
+    }
+    const last = parts.at(-1) ?? ''
+    if (anchored) return path.endsWith(last) && path.length - last.length >= pos
+    return path.includes(last, pos)
 }
 
 /**

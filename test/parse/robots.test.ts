@@ -96,6 +96,18 @@ describe('isAllowed', () => {
         expect(isAllowed(robots, 'https://example.com/x/y.pdf')).toBe(false)
         expect(isAllowed(robots, 'https://example.com/x/y.pdf?v=2')).toBe(true)
     })
+    it('matches many wildcards without backtracking', () => {
+        const many = parseRobots(`User-agent: *\nDisallow: /${'*a'.repeat(30)}*b$`, 'belgica')
+        const started = performance.now()
+        expect(isAllowed(many, `https://example.com/${'a'.repeat(5000)}`)).toBe(true)
+        expect(performance.now() - started).toBeLessThan(100)
+        expect(isAllowed(many, `https://example.com/${'a'.repeat(40)}b`)).toBe(false)
+    })
+    it('matches a rule with non-ASCII characters against the percent-encoded path', () => {
+        const accents = parseRobots('User-agent: *\nDisallow: /café', 'belgica')
+        expect(isAllowed(accents, 'https://example.com/café/menu')).toBe(false)
+        expect(isAllowed(accents, 'https://example.com/cafe')).toBe(true)
+    })
     it('always allows the robots.txt itself', () => {
         expect(isAllowed(DISALLOW_ALL, 'https://example.com/robots.txt')).toBe(true)
         expect(isAllowed(DISALLOW_ALL, 'https://example.com/')).toBe(false)
@@ -107,17 +119,22 @@ describe('get', () => {
         vi.unstubAllGlobals()
     })
 
-    /** A fetch that answers robots.txt with `robots` (a body, or a status) and anything else 200 */
-    function stubFetch(robots: string | number) {
-        const fetch = vi.fn((url: string) =>
-            Promise.resolve(
-                url.endsWith('/robots.txt') ?
-                    typeof robots === 'number' ?
-                        new Response('', { status: robots })
-                    :   new Response(robots)
-                :   new Response('page'),
-            ),
-        )
+    /**
+     * A fetch that answers robots.txt with `robots` (a body, or a status), the URLs in
+     * `redirects` with a redirect there, and anything else 200
+     */
+    function stubFetch(robots: string | number, redirects: Record<string, string> = {}) {
+        const fetch = vi.fn((url: string) => {
+            const location = redirects[url]
+            if (location !== undefined)
+                return Promise.resolve(new Response('', { status: 302, headers: { location } }))
+            if (!url.endsWith('/robots.txt')) return Promise.resolve(new Response('page'))
+            return Promise.resolve(
+                typeof robots === 'number' ?
+                    new Response('', { status: robots })
+                :   new Response(robots),
+            )
+        })
         vi.stubGlobal('fetch', fetch)
         return fetch
     }
@@ -136,5 +153,16 @@ describe('get', () => {
     it('fetches anything when the site has no robots.txt', async () => {
         stubFetch(404)
         expect((await get('https://b.example/x')).status).toBe(200)
+    })
+
+    it('checks every redirect against robots.txt before following it', async () => {
+        const fetch = stubFetch('User-agent: *\nDisallow: /private', {
+            'https://c.example/old': '/new',
+            'https://c.example/moved': 'https://c.example/private/x',
+        })
+        const res = await get('https://c.example/old')
+        expect(res).toMatchObject({ url: 'https://c.example/new', status: 200 })
+        await expect(get('https://c.example/moved')).rejects.toThrow(DisallowedError)
+        expect(fetch.mock.calls.map(([url]) => url)).not.toContain('https://c.example/private/x')
     })
 })
