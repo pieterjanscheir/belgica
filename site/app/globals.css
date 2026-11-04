@@ -390,7 +390,8 @@ code,
 }
 .tip {
     position: absolute;
-    transform: translate(12px, -110%);
+    left: 0;
+    top: 0;
     pointer-events: none;
     background: var(--bg-elev);
     border: 1px solid var(--line);

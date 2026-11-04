@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, type PointerEvent } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from 'react'
 import { Link } from '@/i18n/navigation'
 import { fetchJson } from '@/lib/fetch-json'
 
@@ -41,6 +41,27 @@ export function CantonMap({ only, highlight = [], label }: Props) {
     const [tip, setTip] = useState<{ x: number; y: number; name: string; court: string } | null>(
         null,
     )
+    const frameRef = useRef<HTMLDivElement>(null)
+    const tipRef = useRef<HTMLDivElement>(null)
+
+    // Place the tooltip beside the cursor, flipping and clamping it so it stays inside the map.
+    useLayoutEffect(() => {
+        const frame = frameRef.current
+        const el = tipRef.current
+        if (!tip || !frame || !el) return
+        const gap = 12
+        const { width: fw, height: fh } = frame.getBoundingClientRect()
+        const { width: tw, height: th } = el.getBoundingClientRect()
+        let left = tip.x + gap
+        if (left + tw > fw) left = tip.x - gap - tw
+        let top = tip.y - gap - th
+        if (top < 0) top = tip.y + gap
+        left = Math.max(0, Math.min(left, fw - tw))
+        top = Math.max(0, Math.min(top, fh - th))
+        el.style.left = `${left}px`
+        el.style.top = `${top}px`
+        el.style.visibility = 'visible'
+    }, [tip])
     useEffect(() => {
         fetchJson<MapData>('/canton-map.json').then(setData, () => {
             setData(null)
@@ -77,6 +98,7 @@ export function CantonMap({ only, highlight = [], label }: Props) {
 
     return (
         <div
+            ref={frameRef}
             className="map-frame"
             onPointerMove={move}
             onPointerLeave={() => {
@@ -106,7 +128,7 @@ export function CantonMap({ only, highlight = [], label }: Props) {
                 ))}
             </svg>
             {tip && (
-                <div className="tip" style={{ left: tip.x, top: tip.y }}>
+                <div ref={tipRef} className="tip" style={{ visibility: 'hidden' }}>
                     <strong>{tip.name}</strong>
                     <span>{tip.court}</span>
                 </div>
