@@ -37,7 +37,7 @@ from urllib.request import urlopen
 from jsonschema import validate  # pip install jsonschema
 
 # Pinned to a release, so the data and the schema match
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/"
 courts = json.load(urlopen(f"{BASE}data/courts.json"))
 schema = json.load(urlopen(f"{BASE}schema/courts.schema.json"))
 validate(courts, schema)
