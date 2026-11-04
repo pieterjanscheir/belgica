@@ -38,7 +38,8 @@ export const cantonBoundarySchema = z.strictObject({
     }),
     /**
      * The boundary as the NGI publishes it, without simplification: WGS 84, longitude first,
-     * coordinates rounded to 7 decimals (about a centimetre)
+     * coordinates rounded to 7 decimals (about a centimetre). Where a law moved an area the NGI
+     * hasn't redrawn yet, the area is moved, and `sources` cites the law.
      */
     geometry: multiPolygonSchema,
     sources: z.array(sourceRefSchema).min(1),

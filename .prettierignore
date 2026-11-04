@@ -21,6 +21,7 @@ data/court-locations.json
 data/prisons.json
 data/houses-of-justice.json
 data/police-zones.json
+scripts/parse/corrections/
 schema/
 test/fixtures/
 ids.lock.json
