@@ -7,6 +7,11 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Fixed
+
+- The explorer's canton map keeps its tooltip inside the map: near the right or top edge it
+  opens on the other side of the cursor instead of running off the map.
+
 ## [0.7.0] - 2026-11-04
 
 ### Added
