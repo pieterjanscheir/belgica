@@ -11,7 +11,6 @@ import {
 } from '../../scripts/parse/canton-corrections.ts'
 import { lambert2008ToWgs84 } from '../../scripts/parse/lambert.ts'
 import type { CantonBoundary, MultiPolygon } from '../../scripts/parse/types.ts'
-import { getCantonBoundary } from '../../src/canton-boundaries'
 
 const box = (x0: number, y0: number, x1: number, y1: number): MultiPolygon => ({
     type: 'MultiPolygon',
@@ -92,12 +91,39 @@ describe('applyCorrections', () => {
         expect(area(of(boundaries, 'b').geometry)).toBeCloseTo(2, 6)
     })
 
+    it('keeps a small piece of the from canton that doesn’t border the area', () => {
+        // An exclave of a, far from the outline and smaller than a sliver
+        const exclave = box(10, 10, 10.001, 10.001).coordinates[0]
+        const withExclave = boundary('a', {
+            type: 'MultiPolygon',
+            coordinates: [...box(0, 0, 2, 1).coordinates, ...(exclave ? [exclave] : [])],
+        })
+        const { boundaries } = applyCorrections([withExclave, b], [correction], () =>
+            box(1, 0, 2, 1),
+        )
+        expect(of(boundaries, 'a').geometry.coordinates).toHaveLength(2)
+        expect(area(of(boundaries, 'a').geometry)).toBeCloseTo(1 + 1e-6, 9)
+        expect(area(of(boundaries, 'b').geometry)).toBeCloseTo(2, 9)
+    })
+
     it('says when the NGI has caught up, and changes nothing', () => {
         const caughtUp = boundary('b', box(1, 0, 3, 1))
         const before = boundary('a', box(0, 0, 1, 1))
         const result = applyCorrections([before, caughtUp], [correction], () => box(1, 0, 2, 1))
         expect(result.boundaries).toEqual([before, caughtUp])
-        expect(result.notes).toEqual([expect.stringMatching(/remove the correction/)])
+        expect(result.problems).toEqual([])
+        expect(result.notes).toEqual([
+            expect.stringMatching(/now draws it in b \(100\.0%, 0\.0% left in a\); remove/),
+        ])
+    })
+
+    it('stops when the NGI moved the area out of the from canton, but not to the to canton', () => {
+        const before = boundary('a', box(0, 0, 1, 1))
+        const elsewhere = boundary('c', box(1, 0, 2, 1))
+        const result = applyCorrections([before, b, elsewhere], [correction], () => box(1, 0, 2, 1))
+        expect(result.boundaries).toEqual([before, b, elsewhere])
+        expect(result.notes).toEqual([])
+        expect(result.problems).toEqual([expect.stringMatching(/b holds only 0\.0% of it/)])
     })
 
     it('refuses to leave nothing of the from canton', () => {
@@ -126,14 +152,13 @@ describe('the corrections', () => {
         }
     })
 
-    it('put Mariakerke in Gent 3, as the law of 15 May 2024 does', () => {
+    // Whether the build or the NGI puts it in Gent 3, the lookups in canton-boundaries.test.ts
+    // check from both sides of the line
+    it('have the outline of Mariakerke, about its size', () => {
         // Mariakerke is about 8 km²; at Gent's latitude a square degree is about 7,800 km²
         const mariakerke = readCorrectionArea('44021L')
         expect(area(mariakerke) * 7800).toBeGreaterThan(6)
         expect(area(mariakerke) * 7800).toBeLessThan(10)
-        expect(getCantonBoundary('gent-3').sources.map((s) => s.url)).toContain(
-            'https://www.ejustice.just.fgov.be/eli/wet/2024/05/15/2024004698/justel',
-        )
     })
 })
 

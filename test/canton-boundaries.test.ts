@@ -83,17 +83,23 @@ describe('canton boundaries', () => {
     })
 
     it('cites the NGI file every record was read from, and the law and outline of a correction', () => {
-        const corrected = new Set(CANTON_CORRECTIONS.flatMap((c) => [c.from, c.to]))
+        // From the data, not the list: a correction the NGI has caught up with applies nowhere
+        const urls = new Map<string, string[]>(
+            cantonBoundaries.map((b) => [b.id, b.sources.map((s) => s.url)]),
+        )
         for (const b of cantonBoundaries) {
-            const law = CANTON_CORRECTIONS.find((c) => c.from === b.id || c.to === b.id)?.law
-            expect(
-                b.sources.map((s) => s.url),
-                b.id,
-            ).toEqual(
-                corrected.has(b.id) ? [NGI_CANTONS, law?.url, STATBEL_SECTORS] : [NGI_CANTONS],
+            const laws = CANTON_CORRECTIONS.filter((c) => c.from === b.id || c.to === b.id).map(
+                (c) => c.law.url,
             )
+            expect(
+                [[NGI_CANTONS], ...laws.map((law) => [NGI_CANTONS, law, STATBEL_SECTORS])],
+                b.id,
+            ).toContainEqual(urls.get(b.id))
             expect(b.sources[0]?.retrieved, b.id).toMatch(/^\d{4}-\d{2}-\d{2}$/)
         }
+        // Both cantons of a correction cite it, or neither does
+        for (const { from, to } of CANTON_CORRECTIONS)
+            expect(urls.get(from)?.length, `${from} → ${to}`).toBe(urls.get(to)?.length)
     })
 
     // A million positions: collected in plain loops, with one assertion at the end

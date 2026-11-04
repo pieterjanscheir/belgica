@@ -8,10 +8,11 @@
  * statistical sectors by `pnpm build:correction-areas`. The part of that outline that lies in the
  * `from` canton moves to the `to` canton, so the cantons still cover Belgium once, without gaps or
  * overlaps. Where the NGI's line and Statbel's differ by a few metres, the cut leaves slivers of
- * the `from` canton behind; those go along with the area.
+ * the `from` canton behind along the area; those go with it.
  *
- * Once the NGI's `from` canton no longer holds the area, the correction does nothing and the
- * build says it can be removed.
+ * Once the NGI's `from` canton no longer holds the area, the correction does nothing. When the
+ * `to` canton holds it, the build says the correction can be removed; when it doesn't, the NGI
+ * drew the area somewhere else, and the build stops.
  */
 import { readFileSync } from 'node:fs'
 import polygonClipping from 'polygon-clipping'
@@ -63,13 +64,25 @@ export function readCorrectionArea(code: string): MultiPolygon {
 }
 
 /**
- * A piece the cut leaves of the `from` canton is a sliver, and goes with the area, when it is
- * smaller than this fraction of the area that moved
+ * A piece the cut leaves of the `from` canton is a sliver, and goes with the area, when it
+ * borders the area that moved and is smaller than this fraction of it
  */
 const SLIVER = 0.01
 
-/** Below this fraction of the outline in the `from` canton, the NGI has caught up */
+/**
+ * Below this fraction of the outline in the `from` canton, the NGI may have caught up. Statbel's
+ * and the NGI's lines differ by a few metres: for Mariakerke, 0.7% of Statbel's outline lies
+ * outside the NGI's Gent 2 while the NGI still draws all of it there.
+ */
 const CAUGHT_UP = 0.01
+
+/**
+ * The fraction of the outline the `to` canton must hold before the build says the NGI has
+ * caught up; less, and the NGI drew the area somewhere else, which the build reports
+ */
+const ARRIVED = 1 - 5 * CAUGHT_UP
+
+const percent = (share: number) => `${(share * 100).toFixed(1)}%`
 
 const rings = (geometry: MultiPolygon) => geometry.coordinates as MultiPolygonRings
 const multiPolygon = (polygons: MultiPolygonRings): MultiPolygon => ({
@@ -98,18 +111,35 @@ export function applyCorrections(
         if (!source || !target) continue
         const outline = readArea(subMunicipality.code)
         const moved = polygonClipping.intersection(rings(source.geometry), rings(outline))
-        const share = area(multiPolygon(moved)) / area(outline)
+        const movedArea = area(multiPolygon(moved))
+        const share = movedArea / area(outline)
         if (share < CAUGHT_UP) {
-            notes.push(
-                `${label}: the NGI no longer draws it in ${from}; remove the correction from ` +
-                    'scripts/parse/canton-corrections.ts',
-            )
+            const arrived =
+                area(
+                    multiPolygon(
+                        polygonClipping.intersection(rings(target.geometry), rings(outline)),
+                    ),
+                ) / area(outline)
+            if (arrived < ARRIVED)
+                problems.push(
+                    `${label}: the NGI no longer draws it in ${from} (${percent(share)} left), ` +
+                        `but ${to} holds only ${percent(arrived)} of it; check where the NGI ` +
+                        'put it',
+                )
+            else
+                notes.push(
+                    `${label}: the NGI now draws it in ${to} (${percent(arrived)}, ` +
+                        `${percent(share)} left in ${from}); remove the correction from ` +
+                        'scripts/parse/canton-corrections.ts',
+                )
             continue
         }
-        const movedArea = area(multiPolygon(moved))
         const rest = polygonClipping.difference(rings(source.geometry), rings(outline))
+        // Bordering the area that moved: merged with it, the sliver adds no polygon of its own
+        const borders = (polygon: MultiPolygonRings[number]) =>
+            polygonClipping.union(moved, [polygon]).length <= moved.length
         const isSliver = (polygon: MultiPolygonRings[number]) =>
-            area(multiPolygon([polygon])) < SLIVER * movedArea
+            area(multiPolygon([polygon])) < SLIVER * movedArea && borders(polygon)
         const slivers = rest.filter(isSliver)
         const kept = rest.filter((polygon) => !isSliver(polygon))
         if (kept.length === 0) {
@@ -131,7 +161,7 @@ export function applyCorrections(
             sources: sources(target),
         })
         notes.push(
-            `${label}: moved ${(share * 100).toFixed(1)}% of the sub-municipality, ` +
+            `${label}: moved ${percent(share)} of the sub-municipality, ` +
                 `the NGI still draws it in ${from}`,
         )
     }

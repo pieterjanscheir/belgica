@@ -34,11 +34,13 @@ const res = await fetch(STATBEL_SECTORS)
 if (!res.ok) throw new Error(`${STATBEL_SECTORS}: HTTP ${res.status}`)
 const dir = mkdtempSync(join(tmpdir(), 'statbel-sectors-'))
 const zip = join(dir, 'sectors.zip')
-writeFileSync(zip, Buffer.from(await res.arrayBuffer()))
-const json = execFileSync('unzip', ['-p', zip, '*.geojson'], { maxBuffer: 1 << 30 }).toString(
-    'utf-8',
-)
-rmSync(dir, { recursive: true })
+let json: string
+try {
+    writeFileSync(zip, Buffer.from(await res.arrayBuffer()))
+    json = execFileSync('unzip', ['-p', zip, '*.geojson'], { maxBuffer: 1 << 30 }).toString('utf-8')
+} finally {
+    rmSync(dir, { recursive: true, force: true })
+}
 const { features } = JSON.parse(json) as { features: Sector[] }
 
 for (const { subMunicipality } of CANTON_CORRECTIONS) {
