@@ -109,6 +109,7 @@ for (const line of [...prisonProblems, ...houseProblems]) console.warn(`unreadab
 for (const line of [...courtAddresses, ...prisonAddresses, ...houseAddresses])
     console.warn(`unreadable: ${line}`)
 for (const line of locationReport.moved) console.warn(`no location: ${line}`)
+for (const line of boundaryReport.corrections ?? []) console.warn(`correction: ${line}`)
 for (const line of cantonSignals({
     previousBoundaries: previous<CantonBoundary>('canton-boundaries'),
     boundaries: freshBoundaries,

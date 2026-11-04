@@ -52,7 +52,7 @@ municipalities, the NGI's boundaries of those. The scale is 1:10 000.
 | `ngiId`                | string                 | The NGI's identifier of the object (its `tgid`), a GUID                                                                                                               |
 | `cantonCode`           | `{ nl, fr }`           | The canton code in the NGI's data: six digits (`248112` for Gent 1), with an `N` or `F` prefix per language in Brussels-Capital and in Sint-Genesius-Rode (`N238104`) |
 | `geometry`             | `MultiPolygon`         | GeoJSON ([RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)): WGS 84, longitude first, exterior rings counter-clockwise, holes clockwise                              |
-| `sources`              | `{ url, retrieved }[]` | The NGI file the record was read from                                                                                                                                 |
+| `sources`              | `{ url, retrieved }[]` | The NGI file the record was read from; for a [corrected](#where-the-ngi-is-behind-the-law) canton, then the law and Statbel's statistical sectors                     |
 
 ```ts
 interface CantonBoundary {
@@ -65,9 +65,24 @@ interface CantonBoundary {
 }
 ```
 
-The geometry is the NGI's, vertex for vertex: nothing is simplified. Coordinates are rounded to
+The geometry is the NGI's, vertex for vertex, apart from the [corrections](#where-the-ngi-is-behind-the-law): nothing is simplified. Coordinates are rounded to
 7 decimals, about a centimetre, below the source's own precision. Every boundary is one
 `MultiPolygon`, even when it has one polygon, so every record has the same shape.
+
+### Where the NGI is behind the law
+
+When a law moves an area to another canton and the NGI hasn't redrawn it yet, the build moves
+it, so a lookup follows the law in force. Each correction is listed in
+`scripts/parse/canton-corrections.ts` with the law that made it. It names a former municipality
+(deelgemeente), whose outline is the union of its statistical sectors in
+[Statbel's open data](https://statbel.fgov.be/nl/open-data/statistische-sectoren-2026) (CC BY
+4.0). The part of that outline in the old canton goes to the new one, so the cantons still
+cover Belgium once, without gaps or overlaps. Once the NGI redraws the area, the build says the
+correction can go.
+
+| Area       | NGI    | Law    | Since          | Law                                                                                                                                    |
+| ---------- | ------ | ------ | -------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Mariakerke | Gent 2 | Gent 3 | 1 January 2025 | [Law of 15 May 2024, art. 90](https://www.ejustice.just.fgov.be/eli/wet/2024/05/15/2024004698/justel) (annex, afdeling 6, 13° and 14°) |
 
 ### How cantons are matched to the NGI's features
 

@@ -10,6 +10,7 @@ import {
     type Ring,
 } from '../src/canton-boundaries'
 import { NGI_CANTONS } from '../scripts/sources/catalog'
+import { CANTON_CORRECTIONS, STATBEL_SECTORS } from '../scripts/parse/canton-corrections'
 import { appliesOn, cantons, getMunicipality, toDay } from '../src'
 
 const today = toDay(new Date())
@@ -81,12 +82,16 @@ describe('canton boundaries', () => {
         })
     })
 
-    it('cites the NGI file every record was read from', () => {
+    it('cites the NGI file every record was read from, and the law and outline of a correction', () => {
+        const corrected = new Set(CANTON_CORRECTIONS.flatMap((c) => [c.from, c.to]))
         for (const b of cantonBoundaries) {
+            const law = CANTON_CORRECTIONS.find((c) => c.from === b.id || c.to === b.id)?.law
             expect(
                 b.sources.map((s) => s.url),
                 b.id,
-            ).toEqual([NGI_CANTONS])
+            ).toEqual(
+                corrected.has(b.id) ? [NGI_CANTONS, law?.url, STATBEL_SECTORS] : [NGI_CANTONS],
+            )
             expect(b.sources[0]?.retrieved, b.id).toMatch(/^\d{4}-\d{2}-\d{2}$/)
         }
     })
@@ -182,6 +187,12 @@ describe('findCantonsAt', () => {
         // Gent 1: the centre, from the Rabot round to the Sint-Pietersnieuwstraat
         ['Sint-Baafskathedraal, Gent', 3.7268, 51.053, 'gent-1'],
         ['Korenmarkt, Gent', 3.7215, 51.0545, 'gent-1'],
+        // Gent 2: Drongen, across the canal Gent-Oostende from Mariakerke
+        ['Drongen', 3.66, 51.05, 'gent-2'],
+        // Gent 3: the sub-municipality of Mariakerke since 1 January 2025 (law of 15 May 2024),
+        // which the NGI still draws in Gent 2 (scripts/parse/canton-corrections.ts)
+        ['Weefselstraat, Mariakerke', 3.688262, 51.070005, 'gent-3'],
+        ['Mariakerke', 3.68, 51.073, 'gent-3'],
         // Gent 5: Destelbergen and the east of Gent, from the Dendermondsesteenweg
         ['Dampoort, Gent', 3.7404, 51.0564, 'gent-5'],
         // Brussel 1: between the Anspachlaan, the Grasmarkt and the Bergstraat

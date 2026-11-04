@@ -10,6 +10,8 @@
  * maps the feature's canton code to the id by hand. An arrondissement feature has a single name,
  * which matches when it gives the id or one of the arrondissement's names; otherwise
  * ARRONDISSEMENT_ALIASES maps it by hand.
+ *
+ * Where a law moved an area and the NGI hasn't drawn it yet, canton-corrections.ts moves it.
  */
 import { readFileSync } from 'node:fs'
 
@@ -17,6 +19,11 @@ import type { Arrondissement, Canton } from '../../src/territory.ts'
 import { toId } from '../id.ts'
 import { NGI_CANTONS } from '../sources/catalog.ts'
 import { Snapshots } from '../sources/store.ts'
+import {
+    applyCorrections,
+    CANTON_CORRECTIONS,
+    type CantonCorrection,
+} from './canton-corrections.ts'
 import {
     queryGeoPackage,
     readGeoPackageGeometry,
@@ -205,6 +212,8 @@ export interface BoundaryReport {
     unmatched: string[]
     /** Cantons the file has no feature for */
     missing: string[]
+    /** What the corrections of canton-corrections.ts did, or that one can go */
+    corrections?: string[]
 }
 
 const read = (path: string): unknown => JSON.parse(readFileSync(path, 'utf8'))
@@ -224,6 +233,8 @@ export function readNgiGeoPackage(root: string): { geopackage: Buffer; retrieved
 export function buildCantonBoundaries(
     root: string,
     dataDir = 'data',
+    corrections: readonly CantonCorrection[] = CANTON_CORRECTIONS,
+    readArea?: (code: string) => MultiPolygon,
 ): { boundaries: CantonBoundary[]; report: BoundaryReport } {
     const { geopackage, retrieved } = readNgiGeoPackage(root)
     const cantons = read(`${dataDir}/cantons.json`) as Canton[]
@@ -267,11 +278,25 @@ export function buildCantonBoundaries(
         })
     }
     report.missing = cantons.filter((c) => !boundaries.has(c.id)).map((c) => c.id)
+    const corrected = applyCorrections([...boundaries.values()], corrections, readArea)
+    report.unmatched.push(...corrected.problems)
+    report.corrections = corrected.notes
     return {
-        boundaries: [...boundaries.values()].sort((a, b) => a.id.localeCompare(b.id)),
+        boundaries: corrected.boundaries
+            .map((boundary) =>
+                boundary === boundaries.get(boundary.id) ?
+                    boundary
+                :   {
+                        ...boundary,
+                        geometry: toGeoJson(rings(boundary.geometry), boundary.id),
+                    },
+            )
+            .sort((a, b) => a.id.localeCompare(b.id)),
         report,
     }
 }
+
+const rings = (geometry: MultiPolygon) => geometry.coordinates as MultiPolygonRings
 
 /**
  * An arrondissement's area may differ this much from the sum of its cantons' (as a fraction):
@@ -356,19 +381,26 @@ export function buildArrondissementBoundaries(
 export function stringifyBoundaries(
     boundaries: readonly (CantonBoundary | ArrondissementBoundary)[],
 ): string {
-    const records = boundaries.map((boundary) => {
-        const rings = boundary.geometry.coordinates
-            .map(
-                (polygon) =>
-                    '        [\n' +
-                    polygon.map((ring) => `          ${JSON.stringify(ring)}`).join(',\n') +
-                    '\n        ]',
-            )
-            .join(',\n')
-        const geometry = `{\n      "type": "MultiPolygon",\n      "coordinates": [\n${rings}\n      ]\n    }`
-        return JSON.stringify({ ...boundary, geometry: '@geometry@' }, null, 2)
+    const records = boundaries.map((boundary) =>
+        JSON.stringify({ ...boundary, geometry: '@geometry@' }, null, 2)
             .replace(/^/gm, '  ')
-            .replace('"@geometry@"', geometry)
-    })
+            .replace('"@geometry@"', stringifyGeometry(boundary.geometry, '    ')),
+    )
     return `[\n${records.join(',\n')}\n]\n`
+}
+
+/**
+ * A multipolygon's JSON with each ring on one line, for a geometry whose opening brace sits
+ * after a key at `indent`
+ */
+export function stringifyGeometry(geometry: MultiPolygon, indent: string): string {
+    const rings = geometry.coordinates
+        .map(
+            (polygon) =>
+                `${indent}    [\n` +
+                polygon.map((ring) => `${indent}      ${JSON.stringify(ring)}`).join(',\n') +
+                `\n${indent}    ]`,
+        )
+        .join(',\n')
+    return `{\n${indent}  "type": "MultiPolygon",\n${indent}  "coordinates": [\n${rings}\n${indent}  ]\n${indent}}`
 }

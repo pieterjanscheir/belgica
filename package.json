@@ -120,6 +120,7 @@
     "scripts": {
         "build": "pnpm build:data-files && tsup",
         "build:cantons": "node scripts/build-cantons.ts",
+        "build:correction-areas": "node scripts/build-correction-areas.ts",
         "build:data": "node scripts/parse/build.ts",
         "build:csv": "node scripts/build-csv.ts",
         "build:cases": "node scripts/build-cases.ts",
@@ -160,6 +161,7 @@
         "globals": "^17.13.0",
         "node-html-parser": "^9.0.5",
         "pkg-pr-new": "0.0.92",
+        "polygon-clipping": "0.15.7",
         "prettier": "^3.9.10",
         "publint": "^0.3.25",
         "tsup": "^9.0.0",

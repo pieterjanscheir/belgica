@@ -27,6 +27,14 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   still come from ejustice, which refuses GitHub's runners
   ([#52](https://github.com/pieterjanscheir/belgica/issues/52)).
 
+### Fixed
+
+- **Canton boundaries**: Mariakerke is in Gent 3, not Gent 2. The law of 15 May 2024 (art. 90)
+  moved the sub-municipality on 1 January 2025, but the NGI still draws it in Gent 2, so
+  `findCantonsAt` gave Gent 2 for every address in Mariakerke (9030). The build now moves the
+  areas a law moved and the NGI hasn't redrawn yet, from Statbel's statistical sectors, and says
+  when the NGI has caught up.
+
 ## [0.6.2] - 2026-11-02
 
 ### Fixed
