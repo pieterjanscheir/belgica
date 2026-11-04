@@ -160,7 +160,7 @@ calendar functions aren't in Python yet. See
 ### Spreadsheets and anything else
 
 Read the JSON files in `data/` directly: from the npm package, a git submodule, or a raw URL
-pinned to a tag (`https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data/cantons.json`).
+pinned to a tag (`https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data/cantons.json`).
 For spreadsheets, take the CSV tables from a [release](https://github.com/pieterjanscheir/belgica/releases).
 
 ## How the data is kept up to date

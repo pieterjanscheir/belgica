@@ -8,7 +8,7 @@ Hilfsfunktionen hinzu. Sie können sie aus jeder Sprache lesen:
 - über eine Raw-URL, die auf einen Release-Tag festgelegt ist.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data/cantons.json
 ```
 
 Legen Sie sich auf einen Tag fest statt auf `main`, damit sich die Daten nur ändern, wenn Sie sich
@@ -20,7 +20,7 @@ für ein Upgrade entscheiden.
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

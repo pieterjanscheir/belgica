@@ -8,7 +8,7 @@ des fonctions utilitaires. Vous pouvez les lire depuis n'importe quel langage :
 - depuis une URL brute épinglée sur un tag de version.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data/cantons.json
 ```
 
 Épinglez un tag plutôt que `main`, pour que les données ne changent que lorsque vous choisissez
@@ -20,7 +20,7 @@ de mettre à jour.
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.6.2/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

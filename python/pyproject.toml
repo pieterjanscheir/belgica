@@ -1,7 +1,7 @@
 [project]
 name = "belgica"
 # The same version as the npm package: test_package.py checks it against ../package.json
-version = "0.6.2"
+version = "0.7.0"
 description = "Belgian legal reference data: courts, judicial cantons and arrondissements, municipalities and postal codes, and legal and commercial interest rates."
 readme = "README.md"
 license = "MIT AND CC-BY-4.0"
