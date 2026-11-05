@@ -13,10 +13,22 @@ on:
         - cron: '41 4 * * 0,2,3,5,6'
     workflow_dispatch:
         inputs:
+            # One source, or all of them. The options are the sources in scripts/sources/catalog.ts
+            # (test/parse/catalog.test.ts keeps them in step)
             sources:
-                description: The sources to fetch, separated by spaces (all when empty)
-                required: false
-                default: ''
+                description: Which sources to fetch
+                type: choice
+                default: all
+                options:
+                    - all
+                    - courts
+                    - prisons
+                    - houses-of-justice
+                    - statbel
+                    - postal-codes
+                    - ngi
+                    - police-zones
+                    - cpi
 
 concurrency:
     group: sources
@@ -62,10 +74,10 @@ jobs:
             - name: Fetch
               id: fetch
               env:
-                  ONLY: ${{ github.event.schedule == '41 4 * * 0,2,3,5,6' && 'cpi' || inputs.sources }}
+                  ONLY: ${{ github.event.schedule == '41 4 * * 0,2,3,5,6' && 'cpi' || inputs.sources != 'all' && inputs.sources || '' }}
               run: |
                   set -o pipefail
-                  # Word splitting on purpose: one argument per source, none for all of them
+                  # Unquoted on purpose: no argument at all fetches every source
                   # shellcheck disable=SC2086
                   if ! pnpm fetch:sources $ONLY 2>&1 | tee fetch.log; then
                     echo "failed=true" >> "$GITHUB_OUTPUT"

@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 import { sources } from '../../scripts/sources/catalog.ts'
@@ -65,5 +66,15 @@ describe('houses-of-justice source', () => {
             0,
         )
         await expect(houses?.fetch(get, keep)).rejects.toThrow(/none to keep/)
+    })
+})
+
+describe('the sources workflow', () => {
+    // The dropdown of a manual run: 'all', then every source in the catalog, in its order
+    it('offers every source in the catalog to a manual run', () => {
+        const workflow = readFileSync('.github/workflows/sources.yml', 'utf8')
+        const block = /^ {16}options:\n((?: {20}- .+\n)+)/m.exec(workflow)?.[1] ?? ''
+        const options = [...block.matchAll(/- (\S+)/g)].map((m) => m[1])
+        expect(options).toEqual(['all', ...sources.map((s) => s.name)])
     })
 })
