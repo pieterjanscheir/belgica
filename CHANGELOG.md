@@ -23,7 +23,8 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   ([#60](https://github.com/pieterjanscheir/belgica/issues/60)): the sources workflow fetches
   Statbel's consumer price index every day (the other sources stay twice a week). When a month's
   index reaches the next threshold, 10 points above or below the last one, it adds the indexation
-  from the first day of the next month and opens the data pull request with it.
+  from the first day of the next month and opens the data pull request with it. A manual run of
+  the workflow picks one source, or all of them, from a dropdown.
 
 ### Fixed
 
