@@ -28,7 +28,8 @@ These hold for every function below, and the entries don't repeat them.
 
 ## Entry points
 
-The package root exports everything except the boundaries and the court locations. Each dataset
+The package root exports everything except the boundaries, the court locations, the police
+zones and the procedural indemnity. Each dataset
 also has its own entry point, so an app loads only what it uses.
 [Entry points and bundle size](/guide/entry-points) has the measured sizes.
 

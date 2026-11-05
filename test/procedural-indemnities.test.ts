@@ -232,6 +232,9 @@ describe('getProceduralIndemnity', () => {
     })
 
     it('uses the indexation of the day', () => {
+        expect(getProceduralIndemnity(10_000, '2011-02-28')?.base).toBe(900)
+        expect(getProceduralIndemnity(10_000, '2011-03-01')?.base).toBe(990) // 900 × 1.1
+        expect(getProceduralIndemnity(10_000, '2016-05-31')?.base).toBe(990)
         expect(getProceduralIndemnity(10_000, '2022-11-01')?.base).toBe(1350) // 900 × 1.5
         expect(getProceduralIndemnity(10_000, '2025-03-01')?.base).toBe(1412.79)
         expect(getProceduralIndemnity(10_000, '2007-12-31')).toBeNull()

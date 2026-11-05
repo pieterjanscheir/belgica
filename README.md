@@ -156,7 +156,8 @@ The same data and lookups, in snake case, with the same version number:
 `get_cantons_for_municipality('44021', on='2025-09-15')`,
 `find_courts_with_jurisdiction('23088', 'police-court')`, `find_cantons_at(3.7268, 51.053)`.
 Python 3.11 or later, no dependencies; the tests check both packages give the same answers. The
-calendar functions aren't in Python yet. See
+calendar and procedural indemnity functions aren't in Python yet (the procedural indemnity
+data is, typed). See
 [Python](https://pieterjanscheir.github.io/belgica/guide/python) and [`python/`](python/).
 
 ### Spreadsheets and anything else
