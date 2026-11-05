@@ -222,6 +222,23 @@ const policeZones: Source = {
     },
 }
 
+/**
+ * Statbel's monthly consumer price index (base 2004), from its bestat view: what sets off each
+ * indexation of the procedural indemnity (art. 8 of the KB of 26 October 2007). Statbel publishes
+ * a month's index near its end, and an indexation takes effect on the first day of the next
+ * month, so the sources workflow fetches this one every day.
+ */
+export const STATBEL_CPI =
+    'https://bestat.statbel.fgov.be/bestat/api/views/59ce062b-c1d4-4347-bac5-d17440571068/result/JSON'
+
+const cpi: Source = {
+    name: 'cpi',
+    description: 'Statbel: the monthly consumer price index, for the procedural indemnity',
+    async fetch(get) {
+        await get(STATBEL_CPI)
+    },
+}
+
 export const sources: Source[] = [
     courts,
     prisons,
@@ -230,4 +247,5 @@ export const sources: Source[] = [
     postalCodes,
     ngi,
     policeZones,
+    cpi,
 ]

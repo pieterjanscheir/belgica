@@ -468,8 +468,8 @@
           "path": "https://www.rechtbanken-tribunaux.be/sites/default/files/media/tarifs/bedrag-van-de-rechtsplegingsvergoeding.pdf"
         },
         {
-          "title": "Statbel: consumer price index (base 2004), the index that sets off each indexation",
-          "path": "https://statbel.fgov.be/nl/themas/consumptieprijsindex/consumptieprijsindex"
+          "title": "Statbel: consumer price index (base 2004), fetched daily: it sets off each indexation",
+          "path": "https://bestat.statbel.fgov.be/bestat/api/views/59ce062b-c1d4-4347-bac5-d17440571068/result/JSON"
         }
       ],
       "lastReviewed": "2026-11-05",

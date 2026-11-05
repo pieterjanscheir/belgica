@@ -19,6 +19,11 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   and `getProceduralIndemnityTariff`. The amounts of 1 March 2025 match the table of the College
   van de hoven en rechtbanken to the cent. The CSV release has the tariffs and the indexations as
   two tables.
+- **A new indexation of the procedural indemnity comes in by itself**
+  ([#60](https://github.com/pieterjanscheir/belgica/issues/60)): the sources workflow fetches
+  Statbel's consumer price index every day (the other sources stay twice a week). When a month's
+  index reaches the next threshold, 10 points above or below the last one, it adds the indexation
+  from the first day of the next month and opens the data pull request with it.
 
 ### Fixed
 

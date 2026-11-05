@@ -11,6 +11,7 @@
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 
+import type { ProceduralIndemnities } from '../../src/procedural-indemnities.ts'
 import type { Canton, Municipality } from '../../src/territory.ts'
 import { Snapshots } from '../sources/store.ts'
 import {
@@ -20,6 +21,7 @@ import {
 } from './boundaries.ts'
 import { cantonSignals } from './canton-signals.ts'
 import { buildCourtLocations } from './court-locations.ts'
+import { addIndexations, buildIndexations } from './cpi.ts'
 import { buildCourts } from './courts.ts'
 import { buildHousesOfJustice, buildPrisons } from './places.ts'
 import { buildPoliceZones } from './police-zones.ts'
@@ -73,6 +75,14 @@ const { zones: freshPoliceZones, problems: policeZoneProblems } = buildPoliceZon
     root,
     municipalities.map((m) => m.id),
 )
+// The procedural indemnity is built by hand, but a new indexation follows from Statbel's index
+const indemnities = JSON.parse(
+    readFileSync('data/procedural-indemnities.json', 'utf8'),
+) as ProceduralIndemnities
+const indexations = buildIndexations(root, indemnities)
+for (const line of indexations.notes) console.warn(line)
+for (const i of indexations.due)
+    console.warn(`indexation: from ${i.from}, index ${i.index} reached ${i.threshold}`)
 // Their validity comes from Statbel's register itself, so they aren't carried over below
 const { regions, provinces } = buildRegionsAndProvinces(root)
 
@@ -136,6 +146,7 @@ const problems = [
     ),
     ...locationReport.unmatched,
     ...policeZoneProblems,
+    ...indexations.problems,
 ]
 for (const line of report.unreadable) console.warn(`unreadable: ${line}`)
 const withoutAddress = courts.filter((c) => !c.address).map((c) => c.id)
@@ -158,3 +169,7 @@ write('court-locations', locations)
 write('police-zones', policeZones)
 write('regions', regions)
 write('provinces', provinces)
+if (indexations.due.length > 0) {
+    const file = 'data/procedural-indemnities.json'
+    writeFileSync(file, await addIndexations(readFileSync(file, 'utf8'), indexations.due, file))
+}

@@ -27,8 +27,9 @@ functions give the three amounts, not the judge's choice.
 |              |                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Source       | [KB van 26 oktober 2007](https://www.ejustice.just.fgov.be/eli/besluit/2007/10/26/2007009900/justel), art. 2 to 4 and 8, as amended by the KB of 16 May 2024 (BS 5 June 2024); the amounts the [College van de hoven en rechtbanken](https://www.rechtbanken-tribunaux.be/sites/default/files/media/tarifs/bedrag-van-de-rechtsplegingsvergoeding.pdf) publishes check the result |
-| Built by     | Hand: the amounts of the KB, and an indexation when one takes effect                                                                                                                                                                                                                                                                                                              |
+| Built by     | Hand: the amounts of the KB. A new indexation is added by the sources workflow from Statbel's index, in a pull request                                                                                                                                                                                                                                                            |
 | Changes when | The consumer price index (base 2004) reaches a threshold of 105.78 plus a multiple of 10: the next is 175.78                                                                                                                                                                                                                                                                      |
+| Checked      | Daily: the [consumer price index](https://bestat.statbel.fgov.be/bestat/api/views/59ce062b-c1d4-4347-bac5-d17440571068/result/JSON) from Statbel                                                                                                                                                                                                                                  |
 | Covers       | From 1 January 2008, when the KB came into force: the functions return `null` for an earlier day                                                                                                                                                                                                                                                                                  |
 | Licence      | CC BY 4.0                                                                                                                                                                                                                                                                                                                                                                         |
 
@@ -60,6 +61,21 @@ index of February 2025 reached 165.78.
 
 Every amount is rounded to the cent, half a cent up. `indexProceduralIndemnity` computes in
 whole cents, so no floating-point error creeps in.
+
+### How a new indexation arrives
+
+Every day the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+fetches Statbel's monthly consumer price index. Statbel publishes a month's index near the end of
+that month, and an indexation takes effect on the first day of the next one, so a few days'
+wait matters; the rest of the sources are fetched twice a week. When a month's index is 10 points
+or more above or below the last indexation's threshold, the workflow adds the indexation to the
+data, from the first day of the next month, with that month's index, and opens the data pull
+request with it. A person checks the index and merges it, and the next release has the new
+amounts.
+
+The series must give February 2025 its 166.05: that's how the workflow knows it is in base 2004.
+If Statbel serves another base, the series is scaled to it and the pull request says so; without
+February 2025 the build stops.
 
 ## Look up an amount
 
@@ -112,8 +128,5 @@ type ProceduralIndemnityIndexation =
 
 ## Not in it yet
 
-- **A warning when an indexation is due.** The next one comes when the index reaches 175.78.
-  Until the freshness check watches Statbel's index
-  ([#60](https://github.com/pieterjanscheir/belgica/issues/60)), it's added by hand.
 - **The rules that depend on the case**, such as a defendant who pays before or after the case
   is enrolled (art. 1 of the KB): the functions give the tariff, not the outcome of a case.
