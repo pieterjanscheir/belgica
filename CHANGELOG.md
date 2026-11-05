@@ -27,6 +27,11 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Fixed
 
+- **Canton boundaries**: Gent 2 meets Oudenaarde point for point again. Moving Mariakerke to
+  Gent 3 in 0.7.0 dropped a point of Gent 2 that lies on a straight line, which Oudenaarde
+  keeps, so joining the two cantons left a sliver of about a metre near Deinze. The build now
+  puts back the points a correction's cut drops, and a test checks that corrected cantons meet
+  their neighbours point for point.
 - The explorer's canton map keeps its tooltip inside the map: near the right or top edge it
   opens on the other side of the cursor instead of running off the map.
 
