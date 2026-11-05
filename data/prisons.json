@@ -149,7 +149,7 @@
     "name": {
       "nl": "Detentiehuis Kortrijk",
       "fr": "Maison de détention de Courtrai",
-      "de": "Haftanstalt Kortrijk"
+      "de": "Hafthaus Kortrijk"
     },
     "address": {
       "street": "Sint-Denijseweg 1",
@@ -183,7 +183,7 @@
       },
       {
         "url": "https://justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalten/haftanstalt_kortrijk",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-11-05"
       }
     ]
   },
@@ -193,7 +193,7 @@
     "name": {
       "nl": "Detentiehuis Olen",
       "fr": "Maison de détention d'Olen",
-      "de": "Haftanstalt Olen"
+      "de": "Hafthaus Olen"
     },
     "address": {
       "street": "Sterrenwijzer 7/11 Olen",
@@ -227,7 +227,7 @@
       },
       {
         "url": "https://justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalten/haftanstalt_olen",
-        "retrieved": "2026-10-26"
+        "retrieved": "2026-11-05"
       }
     ]
   },
@@ -275,7 +275,7 @@
       },
       {
         "url": "https://justitie.belgium.be/de/themen/gefaengnisse/belgische_gefaengnisse/haftanstalt/haftanstalt_forest",
-        "retrieved": "2026-10-20"
+        "retrieved": "2026-11-05"
       }
     ]
   },
@@ -1619,15 +1619,15 @@
     "sources": [
       {
         "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_marche-en-famenne",
-        "retrieved": "2026-10-26"
+        "retrieved": "2026-11-05"
       },
       {
         "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_marche-en-famenne",
-        "retrieved": "2026-10-26"
+        "retrieved": "2026-11-05"
       },
       {
         "url": "https://justitie.belgium.be/de/themes_and_dossiers/gefaengnisse/belgische_gefaengnisse/adresse_gefaengnis_marche-en-famenne",
-        "retrieved": "2026-10-26"
+        "retrieved": "2026-11-05"
       }
     ]
   },
