@@ -10,6 +10,8 @@ export const AGENT = 'belgica'
 const USER_AGENT = `${AGENT} (+https://github.com/pieterjanscheir/belgica; open data, sources checked twice a week, the price index daily)`
 const DELAY_MS = 1000
 const RETRIES = 3
+/** The largest body read: the official downloads are tens of megabytes */
+export const MAX_BYTES = 256 * 1024 * 1024
 
 const lastRequest = new Map<string, number>()
 /** Each host's queue: sources walked side by side still take turns on a shared host */
@@ -42,6 +44,77 @@ function throttle(host: string, delay: number): Promise<void> {
     return turn
 }
 
+/**
+ * Throws for a URL the crawler must not request: anything but http(s), and hosts that name this
+ * machine or a private network. The catalog only lists public sites, so this guards the
+ * redirects they answer with, which could otherwise point the crawler at an internal service.
+ */
+export function assertPublicUrl(url: string): URL {
+    const u = new URL(url)
+    if (u.protocol !== 'https:' && u.protocol !== 'http:')
+        throw new Error(`Not an http(s) URL: ${url}`)
+    if (u.username || u.password) throw new Error(`URL with credentials: ${url}`)
+    const host = u.hostname
+        .toLowerCase()
+        .replace(/^\[|\]$/g, '')
+        .replace(/\.$/, '')
+    const v4 = /^(\d+)\.(\d+)\.\d+\.\d+$/.exec(host)
+    const [a, b] = v4 ? [Number(v4[1]), Number(v4[2])] : [-1, -1]
+    const privateV4 =
+        a === 0 ||
+        a === 10 ||
+        a === 127 ||
+        (a === 100 && b >= 64 && b < 128) ||
+        (a === 169 && b === 254) ||
+        (a === 172 && b >= 16 && b < 32) ||
+        (a === 192 && b === 168) ||
+        a >= 224
+    const privateV6 =
+        host.includes(':') &&
+        (host === '::' ||
+            host === '::1' ||
+            /^f[cd]/.test(host) ||
+            /^fe[89ab]/.test(host) ||
+            host.startsWith('::ffff:'))
+    if (
+        privateV4 ||
+        privateV6 ||
+        host === 'localhost' ||
+        host.endsWith('.localhost') ||
+        host.endsWith('.local') ||
+        host.endsWith('.internal') ||
+        !host.includes('.')
+    )
+        throw new Error(`Not a public host: ${url}`)
+    return u
+}
+
+/** The body, or an error once it passes MAX_BYTES, without holding more than that */
+async function readBody(res: globalThis.Response, url: string): Promise<Buffer> {
+    const declared = Number(res.headers.get('content-length'))
+    if (declared > MAX_BYTES) {
+        await res.body?.cancel()
+        throw new TooLargeError(`${url} is ${declared} bytes, more than ${MAX_BYTES}`)
+    }
+    const chunks: Uint8Array[] = []
+    let size = 0
+    const reader = (res.body as ReadableStream<Uint8Array> | null)?.getReader()
+    for (;;) {
+        const chunk = await reader?.read()
+        if (!chunk || chunk.done) break
+        size += chunk.value.byteLength
+        if (size > MAX_BYTES) {
+            await reader?.cancel()
+            throw new TooLargeError(`${url} is more than ${MAX_BYTES} bytes`)
+        }
+        chunks.push(chunk.value)
+    }
+    return Buffer.concat(chunks)
+}
+
+/** Thrown for a body larger than MAX_BYTES; not retried */
+export class TooLargeError extends Error {}
+
 /** A response, with where it redirects to when it's a redirect that wasn't followed */
 type Fetched = Response & { location?: string }
 
@@ -51,14 +124,14 @@ async function request(
     redirect: 'follow' | 'manual',
 ): Promise<Fetched> {
     for (let attempt = 0; ; attempt++) {
-        await throttle(new URL(url).host, delay)
+        await throttle(assertPublicUrl(url).host, delay)
         try {
             const res = await fetch(url, {
                 headers: { 'user-agent': USER_AGENT },
                 redirect,
                 signal: AbortSignal.timeout(60_000),
             })
-            const body = Buffer.from(await res.arrayBuffer())
+            const body = await readBody(res, url)
             if (res.status >= 500 && attempt < RETRIES) throw new Error(`HTTP ${res.status}`)
             const location = res.headers.get('location')
             return {
@@ -69,7 +142,7 @@ async function request(
                 ...(res.status >= 300 && res.status < 400 && location !== null && { location }),
             }
         } catch (error) {
-            if (attempt >= RETRIES) throw error
+            if (attempt >= RETRIES || error instanceof TooLargeError) throw error
             await sleep(2 ** attempt * 5000)
         }
     }
@@ -107,7 +180,7 @@ const MAX_REDIRECTS = 20
 export async function get(url: string): Promise<Response> {
     let current = url
     for (let hops = 0; ; hops++) {
-        const { origin } = new URL(current)
+        const { origin } = assertPublicUrl(current)
         const robots = await robotsFor(origin)
         if (!isAllowed(robots, current))
             throw new DisallowedError(`${origin}/robots.txt doesn't allow ${current}`)

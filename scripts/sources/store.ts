@@ -15,7 +15,7 @@
  */
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
 
 export interface Entry {
     url: string
@@ -43,12 +43,30 @@ export interface Index {
     entries: Entry[]
 }
 
+/**
+ * The path of `file` under `dir`, or an error when it would land outside it: a snapshot's file
+ * comes from a URL and from index.json, and neither may reach past the source's directory.
+ */
+export function within(dir: string, file: string): string {
+    const path = resolve(dir, file)
+    const rel = relative(resolve(dir), path)
+    if (rel === '' || rel.startsWith('..') || isAbsolute(rel))
+        throw new Error(`Snapshot path ${JSON.stringify(file)} is outside ${dir}`)
+    return path
+}
+
 /** The file a URL is stored in: host and path, with the query folded into the name */
 export function fileFor(url: string, contentType: string): string {
     const u = new URL(url)
     let path = decodeURIComponent(u.pathname).replace(/\/$/, '/index')
     if (u.search) path += '_' + u.search.slice(1).replace(/[^\w.-]+/g, '_')
     path = path.replace(/[^\w./-]+/g, '_')
+    // An encoded dot segment (%2e%2e) decodes to one the URL parser didn't resolve: no segment
+    // may be . or .., so the file stays under its host's directory
+    path = path
+        .split('/')
+        .map((segment) => (/^\.+$/.test(segment) ? segment.replaceAll('.', '_') : segment))
+        .join('/')
     const ext = contentType.includes('html') ? '.html' : ''
     return join(u.host, path.endsWith(ext) ? path : path + ext)
 }
@@ -78,7 +96,7 @@ export class Store {
     readonly #today = new Date().toISOString().slice(0, 10)
 
     constructor(root: string, source: string) {
-        this.#dir = join(root, source)
+        this.#dir = within(root, source)
         const path = join(this.#dir, 'index.json')
         this.#index =
             existsSync(path) ?
@@ -156,8 +174,9 @@ export class Store {
     save({ prune }: { prune: boolean }): void {
         mkdirSync(this.#dir, { recursive: true })
         for (const [file, body] of this.#pending) {
-            mkdirSync(dirname(join(this.#dir, file)), { recursive: true })
-            writeFileSync(join(this.#dir, file), body)
+            const path = within(this.#dir, file)
+            mkdirSync(dirname(path), { recursive: true })
+            writeFileSync(path, body)
         }
         const entries = [...this.#byUrl.values()]
             .filter((e) => !prune || this.#seen.has(e.url))
@@ -165,7 +184,7 @@ export class Store {
         const kept = new Set(entries.map((e) => e.file))
         for (const e of this.#byUrl.values())
             if (prune && !this.#seen.has(e.url) && !kept.has(e.file))
-                rmSync(join(this.#dir, e.file), { force: true })
+                rmSync(within(this.#dir, e.file), { force: true })
         writeFileSync(
             join(this.#dir, 'index.json'),
             JSON.stringify({ source: this.#index.source, entries }, null, 4) + '\n',
@@ -179,7 +198,7 @@ export class Snapshots {
     readonly #byUrl: Map<string, Entry>
 
     constructor(root: string, source: string) {
-        this.#dir = join(root, source)
+        this.#dir = within(root, source)
         const index = JSON.parse(readFileSync(join(this.#dir, 'index.json'), 'utf8')) as Index
         this.#byUrl = new Map(index.entries.map((e) => [e.url, e]))
     }
@@ -196,11 +215,11 @@ export class Snapshots {
     text(url: string): string | undefined {
         const entry = this.#byUrl.get(url)
         if (entry?.status !== 200) return undefined
-        return readFileSync(join(this.#dir, entry.file), 'utf8')
+        return readFileSync(within(this.#dir, entry.file), 'utf8')
     }
 
     path(url: string): string | undefined {
         const entry = this.#byUrl.get(url)
-        return entry?.status === 200 ? join(this.#dir, entry.file) : undefined
+        return entry?.status === 200 ? within(this.#dir, entry.file) : undefined
     }
 }

@@ -8,7 +8,7 @@
  * attaches the tables to each GitHub release.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { isAbsolute, join, relative, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 import type { ArrondissementBoundary } from '../src/arrondissement-boundaries.ts'
@@ -280,6 +280,12 @@ export const tables: Record<string, Row[]> = {
 // a hand-built file:// URL wouldn't.
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
     const dir = process.argv[2] ?? 'csv'
+    // Only a directory inside the checkout: the tables are build output, not files to put anywhere
+    const rel = relative(process.cwd(), resolve(dir))
+    if (rel === '' || rel.startsWith('..') || isAbsolute(rel)) {
+        console.error(`build-csv: ${dir} isn't a directory inside ${process.cwd()}`)
+        process.exit(1)
+    }
     mkdirSync(dir, { recursive: true })
     for (const [name, rows] of Object.entries(tables))
         writeFileSync(join(dir, `${name}.csv`), toCsv(rows))

@@ -24,6 +24,11 @@ for (const [type, file] of Object.entries(files)) {
     const records = JSON.parse(readFileSync(`data/${file}.json`, 'utf8')) as { id: string }[]
     // A record has several versions under one id
     const ids = [...new Set(records.map((record) => record.id))].sort()
+    // The ids are written into source code: only the plain ids the data uses, so a malformed
+    // record can't inject code into the generated module
+    for (const id of ids)
+        if (typeof id !== 'string' || !/^[\w.-]+$/.test(id))
+            throw new Error(`data/${file}.json: unexpected id ${JSON.stringify(id)}`)
     const schema = `${type.charAt(0).toLowerCase()}${type.slice(1)}Schema`
     const doc = `/** Id of a record in data/${file}.json */`
     out += `\n${doc}\nexport const ${schema} = z.enum([\n`

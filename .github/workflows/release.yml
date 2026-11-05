@@ -45,13 +45,14 @@ jobs:
                       echo "tag=$tag" >> "$GITHUB_OUTPUT"
                   fi
 
+    # npm. Holds the OIDC token but can't write to the repository: pnpm check runs the
+    # dependencies' code, so the job that does that gets nothing it doesn't need.
     publish:
         needs: version
         if: needs.version.outputs.tag != ''
         runs-on: ubuntu-latest
         permissions:
-            # write: create the tag and the GitHub release
-            contents: write
+            contents: read
             id-token: write
         env:
             TAG: ${{ needs.version.outputs.tag }}
@@ -79,6 +80,28 @@ jobs:
                   else
                       npm publish --provenance --access public
                   fi
+
+    # The tag and the GitHub release. Writes to the repository, so it has no OIDC token and
+    # runs no install scripts: only the repo's own CSV script and prettier.
+    github-release:
+        needs: [version, publish]
+        if: needs.version.outputs.tag != ''
+        runs-on: ubuntu-latest
+        permissions:
+            # write: create the tag and the GitHub release
+            contents: write
+        env:
+            TAG: ${{ needs.version.outputs.tag }}
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+            - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+              with:
+                  node-version: 24
+                  package-manager-cache: false
+            - run: pnpm install --frozen-lockfile --ignore-scripts
             # Through the API: a tag pushed with the workflow's token doesn't start this workflow
             # again
             - name: Tag the release commit
@@ -97,7 +120,7 @@ jobs:
               # The data as JSON and CSV, with the schemas and the data package descriptor, for
               # people who don't use npm
               run: |
-                  pnpm build:csv
+                  node scripts/build-csv.ts
                   name="belgica-data-$TAG"
                   mkdir "$name"
                   cp -r data schema datapackage.json LICENSE-DATA csv "$name"/
@@ -116,7 +139,7 @@ jobs:
     # The same version to PyPI. The npm job has run pnpm check on the same commit, and CI the
     # Python tests.
     pypi:
-        needs: [version, publish]
+        needs: [version, publish, github-release]
         if: needs.version.outputs.tag != ''
         runs-on: ubuntu-latest
         environment: pypi
