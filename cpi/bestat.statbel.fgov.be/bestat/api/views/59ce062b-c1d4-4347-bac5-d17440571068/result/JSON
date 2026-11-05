@@ -1,0 +1,4503 @@
+{
+  "facts" : [ {
+    "Jaar" : "1951",
+    "Maand" : "November 1951",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.300000000000058
+  }, {
+    "Jaar" : "1951",
+    "Maand" : "December 1951",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.360000000000056
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Januari 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.430000000000057
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Februari 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.440000000000058
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Maart 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.290000000000056
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "April 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.130000000000056
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Mei 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 15.960000000000058
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Juni 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.01000000000006
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Juli 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 15.940000000000056
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Augustus 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.0
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "September 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.040000000000056
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "Oktober 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.070000000000057
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "November 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.10000000000006
+  }, {
+    "Jaar" : "1952",
+    "Maand" : "December 1952",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.140000000000057
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Januari 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.10000000000006
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Februari 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 15.990000000000057
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Maart 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 15.950000000000056
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "April 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 15.940000000000056
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Mei 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 15.960000000000058
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Juni 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.020000000000056
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Juli 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.030000000000058
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Augustus 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.110000000000056
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "September 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.220000000000056
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "Oktober 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.200000000000056
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "November 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.240000000000055
+  }, {
+    "Jaar" : "1953",
+    "Maand" : "December 1953",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.210000000000058
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Januari 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.270000000000056
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Februari 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.410000000000057
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Maart 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.360000000000056
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "April 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.340000000000057
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Mei 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.390000000000057
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Juni 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.450000000000056
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Juli 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.360000000000056
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Augustus 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.410000000000057
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "September 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.380000000000056
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "Oktober 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.290000000000056
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "November 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.340000000000057
+  }, {
+    "Jaar" : "1954",
+    "Maand" : "December 1954",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.380000000000056
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Januari 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.410000000000057
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Februari 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.320000000000057
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Maart 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.26000000000006
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "April 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.130000000000056
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Mei 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.040000000000056
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Juni 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.110000000000056
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Juli 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.220000000000056
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Augustus 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.310000000000056
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "September 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.370000000000058
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "Oktober 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.370000000000058
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "November 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.42000000000006
+  }, {
+    "Jaar" : "1955",
+    "Maand" : "December 1955",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.430000000000057
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Januari 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.430000000000057
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Februari 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.470000000000056
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Maart 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.55000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "April 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.55000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Mei 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.61000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Juni 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.66000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Juli 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.68000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Augustus 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.70000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "September 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.74000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "Oktober 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.82000000000006
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "November 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.850000000000062
+  }, {
+    "Jaar" : "1956",
+    "Maand" : "December 1956",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 16.96000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Januari 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.03000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Februari 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.06000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Maart 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.03000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "April 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.07000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Mei 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.09000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Juni 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.12000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Juli 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.260000000000062
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Augustus 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.21000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "September 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.29000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "Oktober 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.31000000000006
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "November 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.420000000000062
+  }, {
+    "Jaar" : "1957",
+    "Maand" : "December 1957",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.45000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Januari 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.48000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Februari 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.420000000000062
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Maart 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.37000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "April 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.420000000000062
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Mei 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.420000000000062
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Juni 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.45000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Juli 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.38000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Augustus 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.38000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "September 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.38000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "Oktober 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.40000000000006
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "November 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.420000000000062
+  }, {
+    "Jaar" : "1958",
+    "Maand" : "December 1958",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.49000000000006
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Januari 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.48000000000006
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Februari 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.520000000000064
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Maart 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.500000000000064
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "April 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.520000000000064
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Mei 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.560000000000063
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Juni 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.620000000000065
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Juli 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.620000000000065
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Augustus 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.710000000000065
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "September 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.720000000000063
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "Oktober 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.750000000000064
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "November 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.790000000000063
+  }, {
+    "Jaar" : "1959",
+    "Maand" : "December 1959",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.770000000000064
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Januari 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.730000000000064
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Februari 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.720000000000063
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Maart 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.670000000000066
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "April 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.650000000000063
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Mei 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.650000000000063
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Juni 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.680000000000064
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Juli 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.630000000000063
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Augustus 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.620000000000065
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "September 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.650000000000063
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "Oktober 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.710000000000065
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "November 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.740000000000062
+  }, {
+    "Jaar" : "1960",
+    "Maand" : "December 1960",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.740000000000062
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Januari 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.760000000000066
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Februari 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.770000000000064
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Maart 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.770000000000064
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "April 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.780000000000065
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Mei 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.740000000000062
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Juni 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.860000000000063
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Juli 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.920000000000066
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Augustus 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.960000000000065
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "September 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.930000000000064
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "Oktober 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.900000000000063
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "November 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.930000000000064
+  }, {
+    "Jaar" : "1961",
+    "Maand" : "December 1961",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.920000000000066
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Januari 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.930000000000064
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Februari 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.930000000000064
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Maart 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 17.960000000000065
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "April 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.040000000000063
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Mei 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.270000000000064
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Juni 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.370000000000065
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Juli 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.280000000000065
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Augustus 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.050000000000065
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "September 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.080000000000062
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "Oktober 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.130000000000063
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "November 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.160000000000064
+  }, {
+    "Jaar" : "1962",
+    "Maand" : "December 1962",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.130000000000063
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Januari 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.200000000000063
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Februari 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.420000000000066
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Maart 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.430000000000064
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "April 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.400000000000063
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Mei 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.350000000000065
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Juni 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.370000000000065
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Juli 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.480000000000064
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Augustus 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.460000000000065
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "September 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.580000000000066
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "Oktober 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.660000000000068
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "November 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.740000000000066
+  }, {
+    "Jaar" : "1963",
+    "Maand" : "December 1963",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.900000000000066
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Januari 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.990000000000066
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Februari 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.970000000000066
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Maart 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 18.910000000000068
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "April 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.01000000000007
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Mei 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.050000000000068
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Juni 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.28000000000007
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Juli 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.430000000000067
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Augustus 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.430000000000067
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "September 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.450000000000067
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "Oktober 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.50000000000007
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "November 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.58000000000007
+  }, {
+    "Jaar" : "1964",
+    "Maand" : "December 1964",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.64000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Januari 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.70000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Februari 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.75000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Maart 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.760000000000073
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "April 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 19.80000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Mei 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.030000000000072
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Juni 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.08000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Juli 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.15000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Augustus 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.15000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "September 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.210000000000072
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "Oktober 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.24000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "November 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.33000000000007
+  }, {
+    "Jaar" : "1965",
+    "Maand" : "December 1965",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.45000000000007
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Januari 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.530000000000076
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Februari 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.590000000000074
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Maart 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.680000000000074
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "April 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.890000000000075
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Mei 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.990000000000073
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Juni 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.080000000000073
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Juli 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.890000000000075
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Augustus 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.880000000000074
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "September 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 20.970000000000073
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "Oktober 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.030000000000076
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "November 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.050000000000075
+  }, {
+    "Jaar" : "1966",
+    "Maand" : "December 1966",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.100000000000076
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Januari 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.130000000000074
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Februari 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.170000000000076
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Maart 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.280000000000076
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "April 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.430000000000074
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Mei 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.500000000000078
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Juni 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.520000000000078
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Juli 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.480000000000075
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Augustus 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.540000000000077
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "September 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.630000000000077
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "Oktober 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.67000000000008
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "November 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.73000000000008
+  }, {
+    "Jaar" : "1967",
+    "Maand" : "December 1967",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.76000000000008
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Januari 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.87000000000008
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Februari 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.880000000000077
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Maart 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.900000000000077
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "April 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.950000000000077
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Mei 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 21.970000000000077
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Juni 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.05000000000008
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Juli 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.090000000000078
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Augustus 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.110000000000078
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "September 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.220000000000077
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "Oktober 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.290000000000077
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "November 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.290000000000077
+  }, {
+    "Jaar" : "1968",
+    "Maand" : "December 1968",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.37000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Januari 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.470000000000077
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Februari 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.56000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Maart 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.68000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "April 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.75000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Mei 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.81000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Juni 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.870000000000083
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Juli 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.960000000000083
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Augustus 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 22.99000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "September 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.06000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "Oktober 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.15000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "November 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.25000000000008
+  }, {
+    "Jaar" : "1969",
+    "Maand" : "December 1969",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.350000000000083
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Januari 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.45000000000008
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Februari 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.520000000000085
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Maart 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.650000000000084
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "April 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.740000000000084
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Mei 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.750000000000085
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Juni 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.750000000000085
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Juli 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.880000000000084
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Augustus 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.930000000000085
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "September 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.920000000000087
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "Oktober 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 23.960000000000086
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "November 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.030000000000086
+  }, {
+    "Jaar" : "1970",
+    "Maand" : "December 1970",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.070000000000086
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Januari 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.200000000000085
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Februari 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.390000000000086
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Maart 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.490000000000084
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "April 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.62000000000009
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Mei 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.68000000000009
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Juni 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.73000000000009
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Juli 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.880000000000088
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Augustus 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 24.98000000000009
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "September 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.150000000000087
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "Oktober 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.220000000000088
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "November 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.310000000000088
+  }, {
+    "Jaar" : "1971",
+    "Maand" : "December 1971",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.42000000000009
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Januari 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.530000000000094
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Februari 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.670000000000094
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Maart 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.70000000000009
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "April 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.79000000000009
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Mei 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 25.840000000000092
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Juni 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 26.090000000000092
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Juli 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 26.280000000000094
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Augustus 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 26.33000000000009
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "September 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 26.510000000000097
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "Oktober 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 26.660000000000096
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "November 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 26.850000000000097
+  }, {
+    "Jaar" : "1972",
+    "Maand" : "December 1972",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 27.040000000000095
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Januari 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 27.280000000000097
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Februari 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 27.440000000000097
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Maart 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 27.5000000000001
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "April 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 27.650000000000098
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Mei 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 27.7700000000001
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Juni 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 27.900000000000098
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Juli 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 28.0200000000001
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Augustus 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 28.150000000000098
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "September 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 28.2900000000001
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "Oktober 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 28.4800000000001
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "November 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 28.660000000000103
+  }, {
+    "Jaar" : "1973",
+    "Maand" : "December 1973",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 29.010000000000105
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Januari 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 29.340000000000103
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Februari 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 29.720000000000105
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Maart 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 30.090000000000106
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "April 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 30.52000000000011
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Mei 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 30.97000000000011
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Juni 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 31.41000000000011
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Juli 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 31.860000000000113
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Augustus 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 32.27000000000012
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "September 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 32.70000000000012
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "Oktober 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 32.98000000000011
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "November 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 33.33000000000012
+  }, {
+    "Jaar" : "1974",
+    "Maand" : "December 1974",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 33.56000000000012
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Januari 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 33.93000000000012
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Februari 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 34.31000000000012
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Maart 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 34.53000000000012
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "April 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 34.92000000000012
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Mei 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 35.21000000000013
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Juni 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 35.34000000000013
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Juli 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 35.68000000000013
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Augustus 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 35.95000000000013
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "September 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 36.260000000000126
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "Oktober 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 36.67000000000013
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "November 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 37.070000000000135
+  }, {
+    "Jaar" : "1975",
+    "Maand" : "December 1975",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 37.26000000000013
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Januari 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 37.600000000000136
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Februari 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 37.73000000000013
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Maart 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 37.970000000000134
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "April 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 38.320000000000135
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Mei 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 38.600000000000136
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Juni 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 38.66000000000013
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Juli 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 38.970000000000134
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Augustus 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 39.12000000000014
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "September 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 39.630000000000145
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "Oktober 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 39.72000000000014
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "November 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 39.87000000000014
+  }, {
+    "Jaar" : "1976",
+    "Maand" : "December 1976",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 40.090000000000146
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Januari 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 40.50000000000014
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Februari 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 40.810000000000144
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Maart 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 40.770000000000145
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "April 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 40.990000000000144
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Mei 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 41.40000000000015
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Juni 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 41.660000000000146
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Juli 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 41.79000000000015
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Augustus 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 41.92000000000015
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "September 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 42.21000000000015
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "Oktober 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 42.300000000000146
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "November 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 42.46000000000015
+  }, {
+    "Jaar" : "1977",
+    "Maand" : "December 1977",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 42.62000000000015
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Januari 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 42.84000000000015
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Februari 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.010000000000154
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Maart 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.120000000000154
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "April 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.150000000000155
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Mei 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.21000000000016
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Juni 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.21000000000016
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Juli 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.45000000000016
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Augustus 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.650000000000155
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "September 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.84000000000016
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "Oktober 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 43.940000000000154
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "November 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 44.080000000000155
+  }, {
+    "Jaar" : "1978",
+    "Maand" : "December 1978",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 44.27000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Januari 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 44.53000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Februari 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 44.680000000000156
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Maart 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 44.71000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "April 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 44.81000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Mei 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 44.930000000000156
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Juni 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 45.170000000000165
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Juli 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 45.54000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Augustus 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 45.76000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "September 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 45.850000000000165
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "Oktober 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 46.18000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "November 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 46.37000000000016
+  }, {
+    "Jaar" : "1979",
+    "Maand" : "December 1979",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 46.54000000000016
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Januari 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 47.19000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Februari 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 47.55000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Maart 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 47.64000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "April 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 47.70000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Mei 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 47.840000000000174
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Juni 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 47.95000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Juli 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 48.51000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Augustus 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 48.64000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "September 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 48.94000000000017
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "Oktober 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 49.400000000000176
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "November 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 49.900000000000176
+  }, {
+    "Jaar" : "1980",
+    "Maand" : "December 1980",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 50.050000000000175
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Januari 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 50.480000000000175
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Februari 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 50.93000000000018
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Maart 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 51.26000000000018
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "April 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 51.23000000000018
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Mei 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 51.19000000000018
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Juni 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 51.470000000000184
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Juli 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 52.31000000000019
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Augustus 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 52.56000000000019
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "September 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 53.05000000000019
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "Oktober 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 53.26000000000019
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "November 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 53.79000000000019
+  }, {
+    "Jaar" : "1981",
+    "Maand" : "December 1981",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 54.130000000000194
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Januari 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 54.65000000000019
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Februari 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 54.78000000000019
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Maart 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 54.87000000000019
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "April 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 55.5400000000002
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Mei 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 56.0400000000002
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Juni 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 56.5400000000002
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Juli 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 56.9600000000002
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Augustus 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 57.3000000000002
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "September 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 58.010000000000204
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "Oktober 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 58.49000000000021
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "November 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 58.5500000000002
+  }, {
+    "Jaar" : "1982",
+    "Maand" : "December 1982",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 58.510000000000204
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Januari 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 59.23000000000021
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Februari 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 59.560000000000215
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Maart 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 59.770000000000216
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "April 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 59.960000000000214
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Mei 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 60.280000000000214
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Juni 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 60.670000000000215
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Juli 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 61.25000000000022
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Augustus 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 61.83000000000022
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "September 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 62.26000000000022
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "Oktober 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 62.27000000000022
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "November 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 62.590000000000224
+  }, {
+    "Jaar" : "1983",
+    "Maand" : "December 1983",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 62.70000000000022
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Januari 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 63.29000000000023
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Februari 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 63.77000000000023
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Maart 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 64.03000000000023
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "April 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 64.46000000000022
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Mei 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 64.60000000000022
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Juni 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 64.78000000000023
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Juli 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 65.13000000000022
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Augustus 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 65.39000000000023
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "September 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 65.58000000000023
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "Oktober 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 65.88000000000022
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "November 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 65.91000000000022
+  }, {
+    "Jaar" : "1984",
+    "Maand" : "December 1984",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 66.06000000000024
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Januari 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 66.48000000000025
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Februari 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 67.17000000000024
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Maart 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 67.71000000000024
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "April 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 67.98000000000025
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Mei 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.04000000000025
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Juni 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.05000000000024
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Juli 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.43000000000025
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Augustus 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.43000000000025
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "September 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.57000000000023
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "Oktober 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.53000000000024
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "November 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.69000000000024
+  }, {
+    "Jaar" : "1985",
+    "Maand" : "December 1985",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.71000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Januari 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.80000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Februari 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.85000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Maart 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.75000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "April 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.96000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Mei 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.80000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Juni 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.89000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Juli 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.89000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Augustus 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 68.95000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "September 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.19000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "Oktober 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.11000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "November 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.06000000000024
+  }, {
+    "Jaar" : "1986",
+    "Maand" : "December 1986",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.12000000000025
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Januari 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.41000000000024
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Februari 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.54000000000025
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Maart 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.62000000000025
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "April 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.94000000000024
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Mei 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 69.97000000000024
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Juni 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.05000000000025
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Juli 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.29000000000026
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Augustus 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.51000000000026
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "September 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.39000000000026
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "Oktober 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.31000000000026
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "November 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.10000000000025
+  }, {
+    "Jaar" : "1987",
+    "Maand" : "December 1987",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.12000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Januari 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.06000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Februari 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.26000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Maart 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.29000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "April 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.60000000000025
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Mei 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.67000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Juni 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 70.79000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Juli 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 71.01000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Augustus 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 71.16000000000025
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "September 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 71.24000000000025
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "Oktober 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 71.26000000000026
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "November 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 71.21000000000025
+  }, {
+    "Jaar" : "1988",
+    "Maand" : "December 1988",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 71.47000000000025
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Januari 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 71.74000000000025
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Februari 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 72.06000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Maart 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 72.23000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "April 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 72.71000000000025
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Mei 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 72.78000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Juni 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 72.92000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Juli 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 73.15000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Augustus 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 73.40000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "September 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 73.76000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "Oktober 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 73.85000000000025
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "November 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 73.76000000000026
+  }, {
+    "Jaar" : "1989",
+    "Maand" : "December 1989",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 74.04000000000028
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Januari 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 74.32000000000026
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Februari 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 74.50000000000027
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Maart 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 74.68000000000028
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "April 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 75.02000000000027
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Mei 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 75.04000000000028
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Juni 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 75.09000000000027
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Juli 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 75.36000000000027
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Augustus 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 75.79000000000028
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "September 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 76.48000000000027
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "Oktober 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 77.0
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "November 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 76.72000000000027
+  }, {
+    "Jaar" : "1990",
+    "Maand" : "December 1990",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 76.63000000000027
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Januari 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 77.20000000000027
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Februari 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 77.46000000000026
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Maart 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 77.14000000000027
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "April 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 77.18000000000028
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Mei 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 77.46000000000026
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Juni 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 77.81000000000027
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Juli 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 78.23000000000029
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Augustus 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 78.47000000000028
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "September 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 78.42000000000029
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "Oktober 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 78.71000000000028
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "November 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 78.90000000000029
+  }, {
+    "Jaar" : "1991",
+    "Maand" : "December 1991",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 78.76000000000029
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Januari 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 78.96000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Februari 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 79.21000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Maart 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 79.23000000000029
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "April 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 79.32000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Mei 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 79.61000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Juni 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 79.86000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Juli 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 80.23000000000029
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Augustus 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 80.10000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "September 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 80.24000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "Oktober 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 80.41000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "November 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 80.66000000000028
+  }, {
+    "Jaar" : "1992",
+    "Maand" : "December 1992",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 80.66000000000028
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Januari 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 81.20000000000029
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Februari 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 81.41000000000028
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Maart 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 81.55000000000028
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "April 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 81.62000000000029
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Mei 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 81.75000000000028
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Juni 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 81.76000000000029
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Juli 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 82.3000000000003
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Augustus 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 82.6500000000003
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "September 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 82.5000000000003
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "Oktober 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 82.60000000000029
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "November 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 82.7000000000003
+  }, {
+    "Jaar" : "1993",
+    "Maand" : "December 1993",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 82.8300000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Januari 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 83.1700000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Februari 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 83.4400000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Maart 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 83.4400000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "April 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 83.5900000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Mei 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 83.8400000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Juni 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.0200000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Juli 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.5300000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Augustus 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.6700000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "September 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.5300000000003
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "Oktober 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.35000000000029
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "November 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.35000000000029
+  }, {
+    "Jaar" : "1994",
+    "Maand" : "December 1994",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.3700000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Januari 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.7300000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Februari 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.96000000000029
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Maart 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.8900000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "April 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.0200000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Mei 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 84.9900000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Juni 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.0900000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Juli 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.5400000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Augustus 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.7500000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "September 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.5300000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "Oktober 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.3800000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "November 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.5900000000003
+  }, {
+    "Jaar" : "1995",
+    "Maand" : "December 1995",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 85.60000000000029
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Januari 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 86.38000000000031
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Februari 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 86.55000000000031
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Maart 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 86.61000000000031
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "April 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 86.76000000000032
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Mei 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 86.61000000000031
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Juni 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 86.62000000000032
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Juli 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.19000000000031
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Augustus 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.40000000000032
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "September 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.22000000000031
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "Oktober 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.48000000000032
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "November 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.61000000000031
+  }, {
+    "Jaar" : "1996",
+    "Maand" : "December 1996",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.77000000000031
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Januari 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.38000000000031
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Februari 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.27000000000031
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Maart 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.87000000000032
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "April 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.8500000000003
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Mei 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 87.98000000000032
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Juni 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.13000000000031
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Juli 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.84000000000032
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Augustus 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.01000000000032
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "September 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.63000000000031
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "Oktober 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.62000000000032
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "November 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.8500000000003
+  }, {
+    "Jaar" : "1997",
+    "Maand" : "December 1997",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.77000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Januari 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.74000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Februari 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.92000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Maart 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 88.77000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "April 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.17000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Mei 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.61000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Juni 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.52000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Juli 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.74000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Augustus 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.40000000000032
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "September 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.36000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "Oktober 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.38000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "November 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.36000000000031
+  }, {
+    "Jaar" : "1998",
+    "Maand" : "December 1998",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.29000000000032
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Januari 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.59000000000032
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Februari 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.79000000000032
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Maart 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 89.86000000000031
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "April 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.21000000000032
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Mei 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.37000000000033
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Juni 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.19000000000032
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Juli 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.33000000000033
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Augustus 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.22000000000033
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "September 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.42000000000033
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "Oktober 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.54000000000033
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "November 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 90.73000000000033
+  }, {
+    "Jaar" : "1999",
+    "Maand" : "December 1999",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 91.02000000000032
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Januari 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 91.19000000000032
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Februari 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 91.53000000000033
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Maart 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 91.88000000000032
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "April 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 92.06000000000033
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Mei 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 92.32000000000032
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Juni 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 92.67000000000033
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Juli 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 92.85000000000032
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Augustus 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 92.82000000000032
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "September 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 93.46000000000032
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "Oktober 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 93.23000000000033
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "November 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 93.54000000000033
+  }, {
+    "Jaar" : "2000",
+    "Maand" : "December 2000",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 93.29000000000033
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Januari 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 93.20000000000033
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Februari 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 93.60000000000032
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Maart 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 93.81000000000033
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "April 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 94.62000000000035
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Mei 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.22000000000034
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Juni 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.38000000000034
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Juli 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.31000000000034
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Augustus 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.30000000000034
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "September 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.57000000000033
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "Oktober 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.42000000000034
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "November 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.53000000000034
+  }, {
+    "Jaar" : "2001",
+    "Maand" : "December 2001",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.33000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Januari 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 95.90000000000035
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Februari 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.06000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Maart 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.31000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "April 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.34000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Mei 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.49000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Juni 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.22000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Juli 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.53000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Augustus 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.50000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "September 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.77000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "Oktober 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.66000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "November 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.58000000000034
+  }, {
+    "Jaar" : "2002",
+    "Maand" : "December 2002",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 96.63000000000034
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Januari 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 97.06000000000034
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Februari 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 97.73000000000035
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Maart 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.01000000000036
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "April 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 97.76000000000035
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Mei 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 97.49000000000034
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Juni 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 97.77000000000034
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Juli 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 97.96000000000033
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Augustus 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.23000000000036
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "September 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.51000000000036
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "Oktober 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.19000000000035
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "November 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.37000000000036
+  }, {
+    "Jaar" : "2003",
+    "Maand" : "December 2003",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.31000000000036
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Januari 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.60000000000035
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Februari 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 98.97000000000035
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Maart 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 99.11000000000035
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "April 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 99.64000000000036
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Mei 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 100.03000000000036
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Juni 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 99.98000000000036
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Juli 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 100.32000000000035
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Augustus 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 100.44000000000035
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "September 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 100.51000000000036
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "Oktober 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 101.0
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "November 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 100.88000000000035
+  }, {
+    "Jaar" : "2004",
+    "Maand" : "December 2004",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 100.55000000000035
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Januari 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 100.83000000000035
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Februari 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 101.51000000000036
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Maart 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 102.16000000000037
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "April 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 102.39000000000037
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Mei 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 102.54000000000038
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Juni 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 102.85000000000036
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Juli 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.47000000000037
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Augustus 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.57000000000036
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "September 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.69000000000037
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "Oktober 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.50000000000037
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "November 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.47000000000037
+  }, {
+    "Jaar" : "2005",
+    "Maand" : "December 2005",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.45000000000037
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Januari 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.48000000000037
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Februari 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.93000000000038
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Maart 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 103.89000000000037
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "April 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 104.40000000000038
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Mei 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 104.79000000000038
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Juni 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 104.77000000000037
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Juli 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 105.13000000000036
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Augustus 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 105.26000000000037
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "September 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 104.96000000000036
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "Oktober 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 104.75000000000037
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "November 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 105.01000000000037
+  }, {
+    "Jaar" : "2006",
+    "Maand" : "December 2006",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 105.15000000000038
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Januari 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 105.20000000000037
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Februari 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 105.77000000000037
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Maart 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 105.78000000000037
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "April 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 106.26000000000039
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Mei 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 106.13000000000038
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Juni 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 106.12000000000039
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Juli 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 106.57000000000038
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Augustus 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 106.44000000000038
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "September 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 106.54000000000039
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "Oktober 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 107.10000000000038
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "November 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 108.10000000000038
+  }, {
+    "Jaar" : "2007",
+    "Maand" : "December 2007",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 108.40000000000039
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Januari 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 108.84000000000039
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Februari 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 109.62000000000039
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Maart 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 110.4200000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "April 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 110.6700000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Mei 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.6600000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Juni 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.2800000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Juli 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.8700000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Augustus 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.1800000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "September 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.3600000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "Oktober 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.1600000000004
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "November 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.49000000000039
+  }, {
+    "Jaar" : "2008",
+    "Maand" : "December 2008",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.2500000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Januari 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.3600000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Februari 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.74000000000039
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Maart 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.10000000000039
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "April 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.3300000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Mei 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.2500000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Juni 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.0400000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Juli 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 110.9700000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Augustus 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.3100000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "September 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.0200000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "Oktober 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.07000000000039
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "November 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.3600000000004
+  }, {
+    "Jaar" : "2009",
+    "Maand" : "December 2009",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 111.5400000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Januari 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.0500000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Februari 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.5200000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Maart 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 112.9400000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "April 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 113.3300000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Mei 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 113.7800000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Juni 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 113.7700000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Juli 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 113.82000000000039
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Augustus 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 113.8900000000004
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "September 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 114.25000000000041
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "Oktober 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 114.41000000000041
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "November 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 114.55000000000041
+  }, {
+    "Jaar" : "2010",
+    "Maand" : "December 2010",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 115.0
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Januari 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 115.66000000000041
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Februari 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 116.33000000000041
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Maart 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 116.91000000000041
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "April 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 117.20000000000041
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Mei 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 117.59000000000042
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Juni 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 117.95000000000041
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Juli 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 118.09000000000043
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Augustus 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 117.9900000000004
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "September 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 118.31000000000043
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "Oktober 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 118.49000000000042
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "November 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 118.96000000000042
+  }, {
+    "Jaar" : "2011",
+    "Maand" : "December 2011",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 119.01000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Januari 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 119.88000000000042
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Februari 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 120.59000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Maart 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 120.85000000000042
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "April 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 120.93000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Mei 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 120.89000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Juni 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 120.61000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Juli 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 120.83000000000042
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Augustus 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 121.36000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "September 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 121.57000000000042
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "Oktober 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 121.79000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "November 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 121.65000000000043
+  }, {
+    "Jaar" : "2012",
+    "Maand" : "December 2012",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 121.66000000000042
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Januari 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 121.63000000000042
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Februari 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.02000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Maart 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.19000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "April 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.14000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Mei 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.32000000000043
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Juni 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.53000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Juli 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.66000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Augustus 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.58000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "September 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.65000000000045
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "Oktober 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.56000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "November 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.64000000000044
+  }, {
+    "Jaar" : "2013",
+    "Maand" : "December 2013",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.84000000000044
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Januari 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.01000000000045
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Februari 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.21000000000043
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Maart 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.28000000000044
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "April 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.90000000000045
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Mei 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.77000000000044
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Juni 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.87000000000045
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Juli 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.07000000000043
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Augustus 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.61000000000044
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "September 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.51000000000045
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "Oktober 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.67000000000044
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "November 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.51000000000045
+  }, {
+    "Jaar" : "2014",
+    "Maand" : "December 2014",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.38000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Januari 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.22000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Februari 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.72000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Maart 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 122.79000000000045
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "April 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.26000000000045
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Mei 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.45000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Juni 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.64000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Juli 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.64000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Augustus 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.72000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "September 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 123.81000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "Oktober 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 124.24000000000044
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "November 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 124.37000000000045
+  }, {
+    "Jaar" : "2015",
+    "Maand" : "December 2015",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 124.21000000000043
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Januari 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 124.35000000000043
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Februari 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 124.42000000000044
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Maart 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 125.55000000000044
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "April 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 125.77000000000044
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Mei 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.17000000000046
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Juni 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.30000000000045
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Juli 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.45000000000046
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Augustus 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.39000000000046
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "September 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.12000000000046
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "Oktober 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.49000000000045
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "November 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.57000000000045
+  }, {
+    "Jaar" : "2016",
+    "Maand" : "December 2016",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 126.73000000000046
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Januari 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 127.64000000000046
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Februari 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.12000000000046
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Maart 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.41000000000045
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "April 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.63000000000045
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Mei 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.52000000000046
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Juni 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.32000000000045
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Juli 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.70000000000044
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Augustus 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.79000000000045
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "September 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 128.65000000000046
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "Oktober 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 129.02000000000046
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "November 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 129.19000000000045
+  }, {
+    "Jaar" : "2017",
+    "Maand" : "December 2017",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 129.44000000000045
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Januari 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 129.82000000000045
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Februari 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 130.01000000000045
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Maart 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 130.20000000000044
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "April 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 130.59000000000046
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Mei 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 130.86000000000047
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Juni 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 130.99000000000046
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Juli 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 131.49000000000046
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Augustus 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 131.68000000000046
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "September 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 131.68000000000046
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "Oktober 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 132.57000000000048
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "November 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 132.78000000000048
+  }, {
+    "Jaar" : "2018",
+    "Maand" : "December 2018",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 132.4600000000005
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Januari 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 132.4000000000005
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Februari 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 132.8300000000005
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Maart 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.23000000000047
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "April 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.31000000000049
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Mei 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.3300000000005
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Juni 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.26000000000047
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Juli 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.3700000000005
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Augustus 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.3400000000005
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "September 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 132.73000000000047
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "Oktober 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.2100000000005
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "November 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.29000000000048
+  }, {
+    "Jaar" : "2019",
+    "Maand" : "December 2019",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.4600000000005
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Januari 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.26000000000047
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Februari 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.29000000000048
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Maart 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.06000000000049
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "April 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.06000000000049
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Mei 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.97000000000048
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Juni 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.0500000000005
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Juli 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.35000000000048
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Augustus 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.4300000000005
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "September 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.9300000000005
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "Oktober 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.20000000000047
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "November 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 133.98000000000047
+  }, {
+    "Jaar" : "2020",
+    "Maand" : "December 2020",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.0200000000005
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Januari 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.60000000000048
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Februari 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 134.9000000000005
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Maart 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 135.26000000000047
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "April 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 135.72000000000048
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Mei 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 135.9300000000005
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Juni 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 136.23000000000047
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Juli 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 137.39000000000047
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Augustus 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 138.10000000000048
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "September 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 137.76000000000047
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "Oktober 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 139.78000000000048
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "November 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 141.5300000000005
+  }, {
+    "Jaar" : "2021",
+    "Maand" : "December 2021",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 141.6700000000005
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Januari 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 144.8200000000005
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Februari 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 145.74000000000052
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Maart 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 146.5000000000005
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "April 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 146.99000000000052
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Mei 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 148.12000000000054
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Juni 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 149.38000000000054
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Juli 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 150.61000000000055
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Augustus 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 151.84000000000054
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "September 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 153.29000000000053
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "Oktober 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 156.93000000000058
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "November 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 156.57000000000056
+  }, {
+    "Jaar" : "2022",
+    "Maand" : "December 2022",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 156.33000000000058
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Januari 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 156.48000000000056
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Februari 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 155.39000000000053
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Maart 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 156.27000000000058
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "April 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 155.23000000000053
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Mei 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 155.82000000000053
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Juni 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 155.58000000000055
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Juli 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 156.84000000000057
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Augustus 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 158.04000000000056
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "September 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 156.95000000000056
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "Oktober 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 157.49000000000058
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "November 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 157.76000000000056
+  }, {
+    "Jaar" : "2023",
+    "Maand" : "December 2023",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 158.45000000000056
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Januari 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 159.22000000000057
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Februari 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 160.36000000000058
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Maart 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 161.24000000000058
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "April 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 160.47000000000057
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Mei 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 161.05000000000058
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Juni 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 161.41000000000057
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Juli 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 162.56000000000057
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Augustus 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 162.56000000000057
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "September 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 161.75000000000057
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "Oktober 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 162.53000000000057
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "November 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 162.80000000000058
+  }, {
+    "Jaar" : "2024",
+    "Maand" : "December 2024",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 163.45000000000056
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Januari 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 165.7200000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Februari 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 166.0500000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Maart 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 165.9300000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "April 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 164.5500000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Mei 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 164.3000000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Juni 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 164.8700000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Juli 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 165.6800000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Augustus 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 165.67000000000058
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "September 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 165.1800000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "Oktober 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 165.7800000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "November 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 166.7100000000006
+  }, {
+    "Jaar" : "2025",
+    "Maand" : "December 2025",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 166.8200000000006
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Januari 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 167.5500000000006
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Februari 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 168.4600000000006
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Maart 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 168.6600000000006
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "April 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 171.14000000000058
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Mei 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 171.0100000000006
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Juni 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 170.5000000000006
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Juli 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 171.5700000000006
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Augustus 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 172.25000000000063
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "September 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 172.93000000000063
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "Oktober 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 174.50000000000063
+  } ]
+}
