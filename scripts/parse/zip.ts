@@ -9,6 +9,11 @@ import { inflateRawSync } from 'node:zlib'
 const END_OF_CENTRAL_DIRECTORY = 0x06054b50
 const CENTRAL_FILE_HEADER = 0x02014b50
 const LOCAL_FILE_HEADER = 0x04034b50
+/**
+ * The most an entry may unpack to. The largest, the NGI's GeoPackage, is well under this; a
+ * crafted archive that claims or inflates to more is refused rather than filling memory.
+ */
+export const MAX_ENTRY_BYTES = 1024 * 1024 * 1024
 
 export interface ZipEntry {
     name: string
@@ -34,6 +39,7 @@ export function zipEntries(archive: Buffer): ZipEntry[] {
             throw new Error(`ZIP archive: bad central directory entry at ${offset}`)
         const method = archive.readUInt16LE(offset + 10)
         const compressed = archive.readUInt32LE(offset + 20)
+        const size = archive.readUInt32LE(offset + 24)
         const nameLength = archive.readUInt16LE(offset + 28)
         const extraLength = archive.readUInt16LE(offset + 30)
         const commentLength = archive.readUInt16LE(offset + 32)
@@ -46,9 +52,15 @@ export function zipEntries(archive: Buffer): ZipEntry[] {
                     throw new Error(`ZIP archive: bad local header for ${name}`)
                 const start =
                     local + 30 + archive.readUInt16LE(local + 26) + archive.readUInt16LE(local + 28)
+                if (start + compressed > archive.length)
+                    throw new Error(`ZIP archive: ${name} runs past the end of the archive`)
+                if (size > MAX_ENTRY_BYTES)
+                    throw new Error(`ZIP archive: ${name} is larger than ${MAX_ENTRY_BYTES} bytes`)
                 const raw = archive.subarray(start, start + compressed)
                 if (method === 0) return Buffer.from(raw)
-                if (method === 8) return inflateRawSync(raw)
+                // Never more than the size the directory gives: a lying header fails here
+                // instead of inflating without end
+                if (method === 8) return inflateRawSync(raw, { maxOutputLength: Math.max(size, 1) })
                 throw new Error(`ZIP archive: unsupported compression method ${method} for ${name}`)
             },
         })

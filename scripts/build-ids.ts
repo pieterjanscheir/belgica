@@ -5,6 +5,8 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs'
 
+import { assertId } from './id.ts'
+
 const files = {
     JudicialAreaId: 'judicial-areas',
     ArrondissementId: 'arrondissements',
@@ -24,6 +26,8 @@ for (const [type, file] of Object.entries(files)) {
     const records = JSON.parse(readFileSync(`data/${file}.json`, 'utf8')) as { id: string }[]
     // A record has several versions under one id
     const ids = [...new Set(records.map((record) => record.id))].sort()
+    // Written into the source below, so nothing but an id gets through
+    for (const id of ids) assertId(id, `${file} id`)
     const schema = `${type.charAt(0).toLowerCase()}${type.slice(1)}Schema`
     const doc = `/** Id of a record in data/${file}.json */`
     out += `\n${doc}\nexport const ${schema} = z.enum([\n`

@@ -9,6 +9,23 @@ describe('toCsv', () => {
         )
     })
 
+    it('opens text that would run as a formula as text, and leaves numbers and phone numbers be', () => {
+        expect(
+            toCsv([
+                {
+                    a: '=HYPERLINK("x")',
+                    b: '@SUM(A1)',
+                    c: '+1+cmd',
+                    d: '-2+3',
+                    e: '+3226820008',
+                    f: -1,
+                },
+            ]),
+        ).toBe(
+            '﻿a,b,c,d,e,f\r\n"\'=HYPERLINK(""x"")",\'@SUM(A1),\'+1+cmd,\'-2+3,+3226820008,-1\r\n',
+        )
+    })
+
     it('takes the columns of every row', () => {
         expect(toCsv([{ a: 1 }, { b: 2 }])).toBe('﻿a,b\r\n1,\r\n,2\r\n')
     })

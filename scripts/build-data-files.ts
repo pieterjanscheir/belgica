@@ -27,6 +27,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
 
+import { assertId } from './id.ts'
 import type { Canton } from '../src/schemas/territory.ts'
 import type { Court, CourtDetails, CourtSummary } from '../src/schemas/courts.ts'
 
@@ -67,8 +68,8 @@ const pick = (record: object, keys: readonly string[]) =>
 /** A court's building-block file, under data/courts/ and without .json */
 const blockOf = (court: Pick<Court, 'type' | 'arrondissement' | 'judicialArea'>) =>
     court.arrondissement === undefined ?
-        `${court.type}/judicial-area/${court.judicialArea}`
-    :   `${court.type}/${court.arrondissement}`
+        `${assertId(court.type, 'court type')}/judicial-area/${assertId(court.judicialArea, 'judicial area')}`
+    :   `${assertId(court.type, 'court type')}/${assertId(court.arrondissement, 'arrondissement')}`
 
 const files = new Map<string, unknown>()
 const add = (file: string, record: unknown) => {
@@ -79,6 +80,8 @@ const add = (file: string, record: unknown) => {
 
 const index: Record<string, string> = {}
 for (const court of courts) {
+    // The id names a file and is written into src/: nothing but an id gets through
+    assertId(court.id, 'court id')
     const block = blockOf(court)
     // All versions of a court share its file, so an id leads to one file
     if (index[court.id] !== undefined && index[court.id] !== block)

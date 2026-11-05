@@ -52,8 +52,22 @@ const publicHolidays = read('public-holidays') as PublicHolidays
 type Cell = string | number | boolean | undefined
 type Row = Record<string, Cell>
 
+/**
+ * Text a spreadsheet would run as a formula: one that starts with =, @, a tab or a carriage
+ * return, or with + or - and isn't just a number. The data comes from scraped pages, so such a
+ * cell gets a leading apostrophe and opens as text (OWASP's advice against CSV injection). Phone
+ * numbers, `+3226820008`, are numbers and stay as they are.
+ */
+const neutralize = (text: string) =>
+    /^[=@\t\r]/.test(text) || (/^[+-]/.test(text) && !/^[+-]\d+(\.\d+)?$/.test(text)) ?
+        `'${text}`
+    :   text
+
 const quote = (cell: Cell) => {
-    const text = cell === undefined ? '' : String(cell)
+    const text =
+        cell === undefined ? ''
+        : typeof cell === 'string' ? neutralize(cell)
+        : String(cell)
     return /[",\r\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text
 }
 
