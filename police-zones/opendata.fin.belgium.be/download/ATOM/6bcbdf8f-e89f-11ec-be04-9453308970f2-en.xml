@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0" xml:lang="en">
+<title>Police zones</title>
+
+<subtitle>Police zones corresponds to the dataset of the territorial delimitation of the police areas such as defined by the Royal Decrees of April 28th 2000 in accordance with the law of December 7th 1998 organising an integrated police service. This dataset is composed of two classes. The first class contains the identifiers, names and geometries of the various areas; the second is a class without geometry and corresponds to the table of Belgian municipalities with the police area for each of them. The dataset can be freely downloaded as a zipped shapefiles.</subtitle>
+<logo>https://opendata.fin.belgium.be/download/thumbnails/PoliceZones_20220101.png</logo>
+<link rel="self" hreflang="en" type="application/atom+xml" href="https://opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-en.xml"/> 
+<link rel="alt" hreflang="nl" type="application/atom+xml" href="https://opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-nl.xml"/> 
+<link rel="alt" hreflang="fr" type="application/atom+xml" href="https://opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-fr.xml"/> 
+<link rel="alt" hreflang="de" type="application/atom+xml" href="https://opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-de.xml"/> 
+<link rel="describedby" type="text/html" href="http://inspire.ec.europa.eu/featureconcept/AdministrativeBoundary"/> 
+<link rel="up" type="application/atom+xml" href="https://opendata.fin.belgium.be/download/ATOM/9bb31275-18bc-4bdc-96e9-55c9e1edd9eb-en.xml"/>
+<id>https://opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-en.xml</id>
+
+<rights>https://creativecommons.org/licenses/by/4.0/</rights>
+
+<updated>2026-10-18T20:01:23Z</updated>
+
+<author>
+	<name>FPS Finance - General Administration of Patrimonial Documentation (GAPD)</name>
+	<email>datadelivery@minfin.fed.be</email>
+</author>
+<entry>
+	<title>Police zones (EPSG code for projection system: 31370 - Distribution format: Esri Shapefile)</title>
+	<content>The dataset is available in different temporal versions and for different administrative units. The temporal versions are identifiable by the reference date, while the administrative units are identifiable by their NIScode.</content>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_31370_01000.zip" type="application/vnd.shp" time="2026-06-18T00:00:00Z" length="10615105" sectionID="01000" title="Belgium 2026-06-18"/>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20240101_shp_31370_01000.zip" type="application/vnd.shp" time="2024-01-01T00:00:00Z" length="10752006" sectionID="01000" title="Belgium 2024-01-01"/>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20230101_shp_31370_01000.zip" type="application/vnd.shp" time="2023-01-01T00:00:00Z" length="10773687" sectionID="01000" title="Belgium 2023-01-01"/>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20220101_shp_31370_01000.zip" type="application/vnd.shp" time="2022-01-01T00:00:00Z" length="10238933" sectionID="01000" title="Belgium 2022-01-01"/>
+	<rights>https://creativecommons.org/licenses/by/4.0/</rights>
+	<updated>2026-10-18T20:01:23Z</updated>
+	<category term="http://www.opengis.net/def/crs/EPSG/0/31370" label="Belgian Lambert 1972 (EPSG 31370)"/>
+	<georss:box>49.49 2.54 51.51 6.41</georss:box>
+	
+	
+</entry>
+
+
+
+<entry>
+	<title>Police zones (EPSG code for projection system: 3812 - Distribution format: Esri Shapefile)</title>
+	<content>The dataset is available in different temporal versions and for different administrative units. The temporal versions are identifiable by the reference date, while the administrative units are identifiable by their NIScode.</content>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip" type="application/vnd.shp" time="2026-06-18T00:00:00Z" length="7929817" sectionID="01000" title="Belgium 2026-06-18"/>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20240101_shp_3812_01000.zip" type="application/vnd.shp" time="2024-01-01T00:00:00Z" length="8004935" sectionID="01000" title="Belgium 2024-01-01"/>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20230101_shp_3812_01000.zip" type="application/vnd.shp" time="2023-01-01T00:00:00Z" length="8016826" sectionID="01000" title="Belgium 2023-01-01"/>
+	<link rel="section" href="https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20220101_shp_3812_01000.zip" type="application/vnd.shp" time="2022-01-01T00:00:00Z" length="7480729" sectionID="01000" title="Belgium 2022-01-01"/>
+	<rights>https://creativecommons.org/licenses/by/4.0/</rights>
+	<updated>2026-10-18T20:01:23Z</updated>
+	<category term="http://www.opengis.net/def/crs/EPSG/0/3812" label="Belgian Lambert 2008 (EPSG 3812)"/>
+	<georss:box>49.49 2.54 51.51 6.41</georss:box>
+	
+	
+</entry>
+
+
+
+</feed>
