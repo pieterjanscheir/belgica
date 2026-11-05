@@ -1,0 +1,261 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://pieterjanscheir.github.io/belgica/schema/procedural-indemnities.schema.json",
+  "title": "belgica: data/procedural-indemnities.json",
+  "$ref": "#/definitions/ProceduralIndemnities",
+  "definitions": {
+    "ProceduralIndemnities": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "legalBasis": {
+          "type": "string"
+        },
+        "startIndex": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "The index the amounts of the KB are linked to: March 2007, base 2004"
+        },
+        "tariffs": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProceduralIndemnityTariff"
+          }
+        },
+        "indexations": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProceduralIndemnityIndexation"
+          },
+          "description": "Every indexation since the KB came into force, oldest first"
+        }
+      },
+      "required": [
+        "description",
+        "legalBasis",
+        "startIndex",
+        "tariffs",
+        "indexations"
+      ],
+      "additionalProperties": false,
+      "description": "The procedural indemnities data file: the tariffs and every indexation"
+    },
+    "ProceduralIndemnityTariff": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/ProceduralIndemnityTariffId"
+        },
+        "name": {
+          "$ref": "#/definitions/Translated"
+        },
+        "article": {
+          "type": "string",
+          "description": "The article of the KB that sets it"
+        },
+        "brackets": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProceduralIndemnityBracket"
+          },
+          "description": "By the value of the claim, lowest first; only the last has no `upTo`"
+        },
+        "nonMonetary": {
+          "$ref": "#/definitions/ProceduralIndemnityAmounts",
+          "description": "For a claim that can't be valued in money"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "article",
+        "brackets",
+        "nonMonetary"
+      ],
+      "additionalProperties": false,
+      "description": "One tariff: its brackets and the amounts for a claim that can't be valued in money"
+    },
+    "ProceduralIndemnityTariffId": {
+      "type": "string",
+      "enum": [
+        "general",
+        "labour-court-president",
+        "labour-court",
+        "labour-court-of-appeal"
+      ],
+      "description": "The tariffs of the KB of 26 October 2007: 'general' (art. 2 and 3, every court), and for the proceedings of art. 579 and 1017, second paragraph, Judicial Code (occupational accidents and diseases, social security) the three of art. 4: the president of the labour court, the labour court and the labour court of appeal"
+    },
+    "Translated": {
+      "type": "object",
+      "properties": {
+        "nl": {
+          "type": "string"
+        },
+        "fr": {
+          "type": "string"
+        },
+        "de": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nl",
+        "fr",
+        "de"
+      ],
+      "additionalProperties": false,
+      "description": "A name in the three national languages"
+    },
+    "ProceduralIndemnityBracket": {
+      "type": "object",
+      "properties": {
+        "upTo": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Highest value of the claim in the bracket in euro, inclusive; `null` for the last bracket. The bracket starts just above the previous one's `upTo`, or at 0."
+        },
+        "min": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Minimum amount in euro"
+        },
+        "base": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Base amount in euro: what the judge awards unless a party asks for more or less"
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Maximum amount in euro"
+        }
+      },
+      "required": [
+        "upTo",
+        "min",
+        "base",
+        "max"
+      ],
+      "additionalProperties": false,
+      "description": "One bracket of a tariff, by the value of the claim, with its amounts as the KB sets them"
+    },
+    "ProceduralIndemnityAmounts": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Minimum amount in euro"
+        },
+        "base": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Base amount in euro: what the judge awards unless a party asks for more or less"
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Maximum amount in euro"
+        }
+      },
+      "required": [
+        "min",
+        "base",
+        "max"
+      ],
+      "additionalProperties": false,
+      "description": "The minimum, base and maximum amount in euro"
+    },
+    "ProceduralIndemnityIndexation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "method": {
+              "type": "string",
+              "const": "steps",
+              "description": "Art. 8 before the KB of 16 May 2024: 10 % more or less for every 10 index points"
+            },
+            "from": {
+              "$ref": "#/definitions/Day",
+              "description": "First day the indexed amounts apply, YYYY-MM-DD; they apply until the next indexation"
+            },
+            "threshold": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "The consumer price index (base 2004) that set off the indexation: 105.78 plus a multiple of 10"
+            },
+            "note": {
+              "type": "string"
+            },
+            "multiplier": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "What the amounts of the KB are multiplied by: 1, 1.1, 1.2, …"
+            }
+          },
+          "required": [
+            "method",
+            "from",
+            "threshold",
+            "multiplier"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "method": {
+              "type": "string",
+              "const": "formula",
+              "description": "Art. 8 as amended by the KB of 16 May 2024: the amount of the KB times the new index, divided by the start index, rounded to the cent"
+            },
+            "from": {
+              "$ref": "#/definitions/Day",
+              "description": "First day the indexed amounts apply, YYYY-MM-DD; they apply until the next indexation"
+            },
+            "threshold": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "The consumer price index (base 2004) that set off the indexation: 105.78 plus a multiple of 10"
+            },
+            "note": {
+              "type": "string"
+            },
+            "index": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "The new index: the consumer price index (base 2004) of the month the threshold was reached"
+            }
+          },
+          "required": [
+            "method",
+            "from",
+            "threshold",
+            "index"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "description": "An indexation of the amounts (art. 8 of the KB)"
+    },
+    "Day": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$",
+      "description": "A day as YYYY-MM-DD"
+    }
+  }
+}

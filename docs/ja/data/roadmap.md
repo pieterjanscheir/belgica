@@ -32,7 +32,6 @@
 | データセット                                                                               | 役立つ理由                                                           | Issue                                                       |
 | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- | ----------------------------------------------------------- |
 | **裁判所手数料**（rolrechten / droits de mise au rôle、griffierechten / droits de greffe） | 費用の見積もりと電子提出。手数料は提出日によって変わる               | [#59](https://github.com/pieterjanscheir/belgica/issues/59) |
-| **訴訟費用の補償額**（rechtsplegingsvergoeding / indemnité de procédure）                  | あらゆる費用の見積もりと判決のための、区分とその物価スライド         | [#60](https://github.com/pieterjanscheir/belgica/issues/60) |
 | **管轄と上訴の金額基準**（art. 590, 617 Ger.W.）                                           | どの裁判所が請求を審理するか、その判決に上訴できるか                 | [#69](https://github.com/pieterjanscheir/belgica/issues/69) |
 | **裁判所休廷期間と祝日**                                                                   | 手続き上の期限の計算                                                 | [#61](https://github.com/pieterjanscheir/belgica/issues/61) |
 | 月ごとの**健康指数**（gezondheidsindex / indice santé）                                    | 家賃と扶養料の物価スライド                                           | [#62](https://github.com/pieterjanscheir/belgica/issues/62) |

@@ -26,6 +26,7 @@ export default {
             housesOfJustice: 'Justitiehuizen / maisons de justice',
             interestRates: 'Stopy procentowe',
             publicHolidays: 'Dni ustawowo wolne',
+            proceduralIndemnity: 'Zwrot kosztów zastępstwa procesowego',
             postalCodes: 'Kody pocztowe',
             knownGaps: 'Znane luki',
             roadmap: 'Plan rozwoju',

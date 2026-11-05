@@ -25,6 +25,7 @@ export interface Strings {
         housesOfJustice: string
         interestRates: string
         publicHolidays: string
+        proceduralIndemnity: string
         postalCodes: string
         knownGaps: string
         roadmap: string

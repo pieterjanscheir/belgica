@@ -20,6 +20,7 @@ import { postalCodeSchema } from './postal-codes.ts'
 import { policeZoneSchema } from './police-zones.ts'
 import { interestRateSeriesSchema } from './interest-rates.ts'
 import { publicHolidaysSchema } from './public-holidays.ts'
+import { proceduralIndemnitiesSchema } from './procedural-indemnities.ts'
 
 export * from '../ids.generated.ts'
 export * from './common.ts'
@@ -34,6 +35,7 @@ export * from './postal-codes.ts'
 export * from './police-zones.ts'
 export * from './interest-rates.ts'
 export * from './public-holidays.ts'
+export * from './procedural-indemnities.ts'
 
 /** The schema of each file in data/, by file name */
 export const dataFileSchemas = {
@@ -56,4 +58,5 @@ export const dataFileSchemas = {
         commercial: interestRateSeriesSchema,
     }),
     'public-holidays': publicHolidaysSchema,
+    'procedural-indemnities': proceduralIndemnitiesSchema,
 }

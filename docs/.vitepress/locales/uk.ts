@@ -26,6 +26,7 @@ export default {
             housesOfJustice: 'Justitiehuizen / maisons de justice',
             interestRates: 'Процентні ставки',
             publicHolidays: 'Державні свята',
+            proceduralIndemnity: 'Процесуальне відшкодування',
             postalCodes: 'Поштові індекси',
             knownGaps: 'Відомі прогалини',
             roadmap: 'Дорожня карта',

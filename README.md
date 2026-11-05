@@ -3,12 +3,13 @@
 Belgian legal reference data for developers of legal software: every court with its
 registries' contacts, prisons, houses of justice, judicial cantons and arrondissements,
 municipalities and their postal codes, the police zones, the legal and commercial interest
-rates, and the public holidays. As JSON and CSV, with typed lookups for TypeScript and Python. Every record says where
+rates, the procedural indemnity, and the public holidays. As JSON and CSV, with typed lookups for TypeScript and Python. Every record says where
 it comes from, and the scraped data is rebuilt from the official sources twice a week.
 
 It answers questions such as: which justice of the peace has jurisdiction over this address,
-what is this court's registry e-mail, which interest rate applied on that day, and on which day
-does a deadline that ends on Easter Monday end instead.
+what is this court's registry e-mail, which interest rate applied on that day, what procedural
+indemnity a claim of € 10 000 gets, and on which day does a deadline that ends on Easter Monday
+end instead.
 
 **Documentation: https://pieterjanscheir.github.io/belgica/**
 
@@ -38,6 +39,7 @@ It's reference data, not legal advice: check the official sources before relying
 | [`data/police-zones.json`](data/police-zones.json)                           | The 175 police zones with their official number and the municipalities each covers                                                                                                                                                                                                                           | FOD Financiën (AAPD) open data (fetched twice a week) |
 | [`data/interest-rates.json`](data/interest-rates.json)                       | Legal interest rate (per year, since 1970) and commercial-transaction rate (per semester, since 2002)                                                                                                                                                                                                        | FOD Financiën / Belgisch Staatsblad                   |
 | [`data/public-holidays.json`](data/public-holidays.json)                     | The rules for the ten legal public holidays, three of them from Easter, for moving a deadline to the next working day                                                                                                                                                                                        | Wet 4 januari 1974, KB 18 april 1974                  |
+| [`data/procedural-indemnities.json`](data/procedural-indemnities.json)       | The procedural indemnity (rechtsplegingsvergoeding): the brackets of the general and the three labour tariffs, and every indexation since 2008                                                                                                                                                               | KB 26 oktober 2007, art. 2–4 and 8                    |
 
 The official sources are the truth; the files in `data/` are built from them. Every file has a
 [JSON Schema](schema/), and [`datapackage.json`](datapackage.json) lists each dataset's sources,
@@ -97,8 +99,8 @@ before a dataset's coverage.
 
 Import a single dataset to keep bundles small: `belgica/interest-rates`, `belgica/calendar`,
 `belgica/courts`, `belgica/prisons`, `belgica/houses-of-justice`,
-`belgica/territory`, `belgica/postal-codes`, `belgica/police-zones` (only there, not in the
-root). The canton boundaries (a million
+`belgica/territory`, `belgica/postal-codes`, and `belgica/police-zones` and
+`belgica/procedural-indemnities` (only there, not in the root). The canton boundaries (a million
 positions of GeoJSON) are only in `belgica/canton-boundaries`, the arrondissement boundaries
 in `belgica/arrondissement-boundaries` and the court locations in `belgica/court-locations`;
 the root never loads them.

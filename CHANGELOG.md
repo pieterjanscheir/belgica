@@ -7,6 +7,19 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Added
+
+- **Procedural indemnity** (rechtsplegingsvergoeding / indemnité de procédure, part of
+  [#60](https://github.com/pieterjanscheir/belgica/issues/60)): `data/procedural-indemnities.json`
+  has the brackets of the general tariff and the three labour tariffs of the KB of 26 October
+  2007 as the KB sets them, and every indexation since 1 January 2008: the steps of 10 % until
+  2022, and the formula of the KB of 16 May 2024 from 1 March 2025. The new entry point
+  `belgica/procedural-indemnities` (not in the root) has `getProceduralIndemnity(claim, date)`,
+  `getProceduralIndemnityTable`, `getProceduralIndemnityIndexation`, `indexProceduralIndemnity`
+  and `getProceduralIndemnityTariff`. The amounts of 1 March 2025 match the table of the College
+  van de hoven en rechtbanken to the cent. The CSV release has the tariffs and the indexations as
+  two tables.
+
 ### Fixed
 
 - The explorer's canton map keeps its tooltip inside the map: near the right or top edge it

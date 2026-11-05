@@ -29,6 +29,17 @@ describe('tables', () => {
         expect(appeal?.['label_nl']).toBeUndefined()
     })
 
+    it('has every bracket of every procedural indemnity tariff, and the indexations', () => {
+        const general = tables['procedural-indemnities']?.filter((r) => r['tariff'] === 'general')
+        expect(general).toHaveLength(14)
+        expect(general?.at(-1)).toMatchObject({ non_monetary: true, base: 1200 })
+        expect(tables['procedural-indemnity-indexations']?.at(-1)).toMatchObject({
+            from: '2025-03-01',
+            method: 'formula',
+            index: 166.05,
+        })
+    })
+
     it('has the years a holiday was moved, next to the rules', () => {
         expect(tables['public-holidays']).toHaveLength(10)
         expect(tables['public-holiday-replacements']).toContainEqual(

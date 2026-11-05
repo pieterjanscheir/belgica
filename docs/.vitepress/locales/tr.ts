@@ -26,6 +26,7 @@ export default {
             housesOfJustice: 'Justitiehuizen / maisons de justice',
             interestRates: 'Faiz oranları',
             publicHolidays: 'Resmî tatiller',
+            proceduralIndemnity: 'Yargılama tazminatı',
             postalCodes: 'Posta kodları',
             knownGaps: 'Bilinen eksikler',
             roadmap: 'Yol haritası',

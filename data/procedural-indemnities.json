@@ -1,0 +1,101 @@
+{
+  "description": "De rechtsplegingsvergoeding: de forfaitaire tegemoetkoming in de kosten en erelonen van de advocaat van de in het gelijk gestelde partij (art. 1022 Ger.W.). Per tarief de basis-, minimum- en maximumbedragen van de artikelen 2 tot en met 4 van het KB van 26 oktober 2007, ongeïndexeerd, en elke indexering sinds de inwerkingtreding op 1 januari 2008 (art. 8). De rechter bepaalt het bedrag tussen het minimum en het maximum.",
+  "legalBasis": "Gerechtelijk Wetboek, art. 1022; KB van 26 oktober 2007 tot vaststelling van het tarief van de rechtsplegingsvergoeding bedoeld in artikel 1022 van het Gerechtelijk Wetboek, gewijzigd bij KB van 16 mei 2024 (BS 5 juni 2024)",
+  "startIndex": 105.78,
+  "tariffs": [
+    {
+      "id": "general",
+      "name": {
+        "nl": "Algemeen tarief",
+        "fr": "Tarif général",
+        "de": "Allgemeiner Tarif"
+      },
+      "article": "art. 2 en 3",
+      "brackets": [
+        { "upTo": 250, "min": 75, "base": 150, "max": 300 },
+        { "upTo": 750, "min": 125, "base": 200, "max": 500 },
+        { "upTo": 2500, "min": 200, "base": 400, "max": 1000 },
+        { "upTo": 5000, "min": 375, "base": 650, "max": 1500 },
+        { "upTo": 10000, "min": 500, "base": 900, "max": 2000 },
+        { "upTo": 20000, "min": 625, "base": 1100, "max": 2500 },
+        { "upTo": 40000, "min": 1000, "base": 2000, "max": 4000 },
+        { "upTo": 60000, "min": 1000, "base": 2500, "max": 5000 },
+        { "upTo": 100000, "min": 1000, "base": 3000, "max": 6000 },
+        { "upTo": 250000, "min": 1000, "base": 5000, "max": 10000 },
+        { "upTo": 500000, "min": 1000, "base": 7000, "max": 14000 },
+        { "upTo": 1000000, "min": 1000, "base": 10000, "max": 20000 },
+        { "upTo": null, "min": 1000, "base": 15000, "max": 30000 }
+      ],
+      "nonMonetary": { "min": 75, "base": 1200, "max": 10000 }
+    },
+    {
+      "id": "labour-court-president",
+      "name": {
+        "nl": "Voorzitter van de arbeidsrechtbank",
+        "fr": "Président du tribunal du travail",
+        "de": "Präsident des Arbeitsgerichts"
+      },
+      "article": "art. 4",
+      "brackets": [
+        { "upTo": 249.99, "min": 26.46, "base": 36.46, "max": 46.46 },
+        { "upTo": 619.99, "min": 26.46, "base": 36.46, "max": 46.46 },
+        { "upTo": 2500, "min": 26.46, "base": 36.46, "max": 46.46 },
+        { "upTo": null, "min": 57.86, "base": 72.86, "max": 87.86 }
+      ],
+      "nonMonetary": { "min": 26.46, "base": 36.46, "max": 46.46 }
+    },
+    {
+      "id": "labour-court",
+      "name": {
+        "nl": "Arbeidsrechtbank",
+        "fr": "Tribunal du travail",
+        "de": "Arbeitsgericht"
+      },
+      "article": "art. 4",
+      "brackets": [
+        { "upTo": 249.99, "min": 26.46, "base": 36.46, "max": 46.46 },
+        { "upTo": 619.99, "min": 57.86, "base": 72.86, "max": 87.86 },
+        { "upTo": 2500, "min": 89.32, "base": 109.32, "max": 129.32 },
+        { "upTo": null, "min": 188.64, "base": 218.64, "max": 248.64 }
+      ],
+      "nonMonetary": { "min": 89.32, "base": 109.32, "max": 129.32 }
+    },
+    {
+      "id": "labour-court-of-appeal",
+      "name": {
+        "nl": "Arbeidshof",
+        "fr": "Cour du travail",
+        "de": "Arbeitsgerichtshof"
+      },
+      "article": "art. 4",
+      "brackets": [
+        { "upTo": 249.99, "min": 38.61, "base": 48.61, "max": 58.61 },
+        { "upTo": 619.99, "min": 82.17, "base": 97.17, "max": 112.17 },
+        { "upTo": 2500, "min": 120.78, "base": 145.78, "max": 160.78 },
+        { "upTo": null, "min": 251.5, "base": 291.5, "max": 331.5 }
+      ],
+      "nonMonetary": { "min": 120.78, "base": 145.78, "max": 160.78 }
+    }
+  ],
+  "indexations": [
+    {
+      "from": "2008-01-01",
+      "method": "steps",
+      "threshold": 105.78,
+      "multiplier": 1,
+      "note": "Inwerkingtreding van het KB van 26 oktober 2007 en van art. 1022 Ger.W. zoals gewijzigd bij de wet van 21 april 2007"
+    },
+    { "from": "2011-03-01", "method": "steps", "threshold": 115.78, "multiplier": 1.1 },
+    { "from": "2016-06-01", "method": "steps", "threshold": 125.78, "multiplier": 1.2 },
+    { "from": "2021-06-01", "method": "steps", "threshold": 135.78, "multiplier": 1.3 },
+    { "from": "2022-04-01", "method": "steps", "threshold": 145.78, "multiplier": 1.4 },
+    { "from": "2022-11-01", "method": "steps", "threshold": 155.78, "multiplier": 1.5 },
+    {
+      "from": "2025-03-01",
+      "method": "formula",
+      "threshold": 165.78,
+      "index": 166.05,
+      "note": "Eerste indexering volgens art. 8 zoals gewijzigd bij KB van 16 mei 2024 (overgangsbepaling art. 2): het indexcijfer van februari 2025 bereikte 165,78"
+    }
+  ]
+}
