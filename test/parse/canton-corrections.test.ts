@@ -91,6 +91,31 @@ describe('applyCorrections', () => {
         expect(area(of(boundaries, 'b').geometry)).toBeCloseTo(2, 6)
     })
 
+    it('keeps the points the neighbours share, where they lie on a straight line', () => {
+        // c is below a and has a corner at (0.5, 0), which a has too; on a's straight bottom
+        // edge, polygon-clipping would drop it, and a and c would no longer meet point for point
+        const withCorner = boundary('a', {
+            type: 'MultiPolygon',
+            coordinates: [
+                [
+                    [
+                        [0, 0],
+                        [0.5, 0],
+                        [2, 0],
+                        [2, 1],
+                        [0, 1],
+                        [0, 0],
+                    ],
+                ],
+            ],
+        })
+        const { boundaries } = applyCorrections([withCorner, b], [correction], () =>
+            box(1, 0, 2, 1),
+        )
+        expect(of(boundaries, 'a').geometry.coordinates[0]?.[0]).toContainEqual([0.5, 0])
+        expect(area(of(boundaries, 'a').geometry)).toBeCloseTo(1)
+    })
+
     it('keeps a small piece of the from canton that doesn’t border the area', () => {
         // An exclave of a, far from the outline and smaller than a sliver
         const exclave = box(10, 10, 10.001, 10.001).coordinates[0]
