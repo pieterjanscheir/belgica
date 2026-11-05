@@ -78,6 +78,7 @@ Data > From Text/CSV.
 | `data/police-zones.json`              | The 175 police zones and the municipalities each covers         |
 | `data/interest-rates.json`            | Legal and commercial-transaction interest rates                 |
 | `data/public-holidays.json`           | The rules for the ten legal public holidays                     |
+| `data/procedural-indemnities.json`    | The procedural indemnity tariffs and their indexations          |
 
 Generated from `data/courts.json` and `data/cantons.json`, for apps that need only part of them
 (see [only the courts you need](/data/courts#only-the-courts-you-need)):

@@ -26,6 +26,7 @@ export default {
             housesOfJustice: 'Justitiehuizen / maisons de justice',
             interestRates: "Tassi d'interesse",
             publicHolidays: 'Giorni festivi',
+            proceduralIndemnity: 'Indennità processuale',
             postalCodes: 'Codici postali',
             knownGaps: 'Lacune note',
             roadmap: 'Roadmap',

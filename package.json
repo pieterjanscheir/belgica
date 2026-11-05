@@ -1,7 +1,7 @@
 {
     "name": "belgica",
     "version": "0.7.0",
-    "description": "Belgian legal reference data: courts, judicial cantons and arrondissements, municipalities and postal codes, legal and commercial interest rates, and the public and judicial holidays.",
+    "description": "Belgian legal reference data: courts, judicial cantons and arrondissements, municipalities and postal codes, legal and commercial interest rates, the procedural indemnity, and the public and judicial holidays.",
     "keywords": [
         "belgium",
         "belgian",
@@ -14,6 +14,7 @@
         "postal-codes",
         "geojson",
         "interest-rates",
+        "rechtsplegingsvergoeding",
         "public-holidays",
         "deadlines",
         "vredegerecht",
@@ -100,6 +101,10 @@
         "./police-zones": {
             "types": "./dist/police-zones.d.ts",
             "default": "./dist/police-zones.js"
+        },
+        "./procedural-indemnities": {
+            "types": "./dist/procedural-indemnities.d.ts",
+            "default": "./dist/procedural-indemnities.js"
         },
         "./schemas": {
             "types": "./dist/schemas.d.ts",

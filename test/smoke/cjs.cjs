@@ -4,6 +4,7 @@ const { getCourt } = require('belgica')
 const { getCantonsForMunicipality } = require('belgica/territory')
 const { getJusticeOfThePeace } = require('belgica/courts')
 const { getInterestRate } = require('belgica/interest-rates')
+const { getProceduralIndemnity } = require('belgica/procedural-indemnities')
 const { nextWorkingDay } = require('belgica/calendar')
 const { getPostalCodes } = require('belgica/postal-codes')
 const { findCantonsAt } = require('belgica/canton-boundaries')
@@ -15,6 +16,7 @@ const { getCantonTerritory } = require('belgica/cantons/territory')
 
 assert.equal(getCourt('justice-of-the-peace-gent-1').name.nl, 'Vredegerecht Gent 1')
 assert.equal(getJusticeOfThePeace('gent-1').id, 'justice-of-the-peace-gent-1')
+assert.equal(getProceduralIndemnity(null, '2025-03-01').base, 1883.72)
 assert.deepEqual(
     getCantonsForMunicipality('44088').map((c) => c.id),
     ['merelbeke-melle'],

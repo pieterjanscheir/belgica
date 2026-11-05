@@ -28,7 +28,8 @@ These hold for every function below, and the entries don't repeat them.
 
 ## Entry points
 
-The package root exports everything except the boundaries and the court locations. Each dataset
+The package root exports everything except the boundaries, the court locations, the police
+zones and the procedural indemnity. Each dataset
 also has its own entry point, so an app loads only what it uses.
 [Entry points and bundle size](/guide/entry-points) has the measured sizes.
 
@@ -46,6 +47,7 @@ also has its own entry point, so an app loads only what it uses.
 | `belgica/postal-codes`              | Postal codes                                                                    |
 | `belgica/police-zones`              | [Police zones](#police-zones), only here: not in the root                       |
 | `belgica/interest-rates`            | Interest rates                                                                  |
+| `belgica/procedural-indemnities`    | [Procedural indemnity](#procedural-indemnity), only here: not in the root       |
 | `belgica/calendar`                  | Public and judicial holidays                                                    |
 | `belgica/canton-boundaries`         | The cantons' geometry, and `findCantonsAt`                                      |
 | `belgica/arrondissement-boundaries` | The arrondissements' geometry, and `findArrondissementsAt`                      |
@@ -621,6 +623,94 @@ The last day a rate is on file for, `YYYY-MM-DD`. Use it to say how far the data
 getLatestKnownRateDate('commercial') // '2026-12-31'
 ```
 
+## Procedural indemnity
+
+From `belgica/procedural-indemnities` only. See [procedural indemnity](/data/procedural-indemnities).
+The judge sets the amount between the minimum and the maximum: these functions give the three.
+
+### `getProceduralIndemnity` {#getproceduralindemnity}
+
+```ts
+function getProceduralIndemnity(
+    claim: number | null,
+    date: Date | string,
+    options?: { tariff?: ProceduralIndemnityTariffId },
+): ProceduralIndemnityResult | null
+
+interface ProceduralIndemnityResult {
+    tariff: ProceduralIndemnityTariffId
+    bracket: { above: number | null; upTo: number | null } | null // null: not valued in money
+    min: number
+    base: number
+    max: number
+    indexation: ProceduralIndemnityIndexation
+}
+```
+
+The minimum, base and maximum amount in euro for a claim of `claim` euro, or for a claim that
+can't be valued in money when `claim` is `null`, indexed for a day: usually the day of the
+judgment. The general tariff by default. `null` before 1 January 2008; a `RangeError` for a
+negative or non-finite claim, an invalid day or an unknown tariff.
+
+```ts
+getProceduralIndemnity(10_000, '2026-01-15') // { bracket: { above: 5000, upTo: 10000 }, min: 784.88, base: 1412.79, max: 3139.53, … }
+getProceduralIndemnity(null, '2026-01-15') // { bracket: null, min: 117.73, base: 1883.72, max: 15697.67, … }
+getProceduralIndemnity(1800, '2026-01-15', { tariff: 'labour-court' }) // { base: 171.61, … }
+getProceduralIndemnity(10_000, '2007-12-31') // null
+```
+
+### `getProceduralIndemnityTable` {#getproceduralindemnitytable}
+
+```ts
+function getProceduralIndemnityTable(
+    date: Date | string,
+    options?: { tariff?: ProceduralIndemnityTariffId },
+): ProceduralIndemnityTable | null
+
+interface ProceduralIndemnityTable {
+    tariff: ProceduralIndemnityTariffId
+    indexation: ProceduralIndemnityIndexation
+    brackets: {
+        above: number | null
+        upTo: number | null
+        min: number
+        base: number
+        max: number
+    }[]
+    nonMonetary: { min: number; base: number; max: number }
+}
+```
+
+Every bracket of a tariff, indexed for a day: the table to show next to a calculator.
+
+### `getProceduralIndemnityIndexation` {#getproceduralindemnityindexation}
+
+```ts
+function getProceduralIndemnityIndexation(date: Date | string): ProceduralIndemnityIndexation | null
+```
+
+The indexation in force on a day, or `null` before 1 January 2008.
+
+```ts
+getProceduralIndemnityIndexation('2026-01-15') // { from: '2025-03-01', method: 'formula', threshold: 165.78, index: 166.05, … }
+```
+
+### `indexProceduralIndemnity` {#indexproceduralindemnity}
+
+```ts
+function indexProceduralIndemnity(amount: number, indexation: ProceduralIndemnityIndexation): number
+```
+
+An amount of the KB, indexed and rounded to the cent (art. 8). The functions above use it.
+
+### `getProceduralIndemnityTariff` {#getproceduralindemnitytariff}
+
+```ts
+function getProceduralIndemnityTariff(id: ProceduralIndemnityTariffId): ProceduralIndemnityTariff
+```
+
+A tariff with the amounts as the KB sets them, not indexed; `undefined` for an unknown id.
+
 ## Calendar
 
 From `belgica/calendar` and the root. See [public holidays](/data/public-holidays) for the rules
@@ -964,11 +1054,12 @@ The full datasets, typed. Each array holds every version of every record; filter
 | `postalCodes`              | `readonly PostalCode[]`                              | `belgica/postal-codes`                   |
 | `interestRates`            | `Readonly<Record<InterestType, InterestRateSeries>>` | `belgica/interest-rates`                 |
 | `publicHolidays`           | `Readonly<PublicHolidays>`                           | `belgica/calendar`                       |
+| `proceduralIndemnities`    | `Readonly<ProceduralIndemnities>`                    | `belgica/procedural-indemnities` only    |
 | `cantonBoundaries`         | `readonly CantonBoundary[]`                          | `belgica/canton-boundaries` only         |
 | `arrondissementBoundaries` | `readonly ArrondissementBoundary[]`                  | `belgica/arrondissement-boundaries` only |
 | `courtLocations`           | `readonly CourtLocation[]`                           | `belgica/court-locations` only           |
 
-Every dataset except the last three is also in the root. `belgica/cantons` exports `cantons` as
+Every dataset not marked _only_ is also in the root. `belgica/cantons` exports `cantons` as
 `readonly CantonSummary[]`.
 
 ## Types

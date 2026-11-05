@@ -31,6 +31,7 @@ import type {
     Region,
     Validity,
 } from '../src/index.ts'
+import type { ProceduralIndemnities } from '../src/procedural-indemnities.ts'
 
 const read = (file: string): unknown => JSON.parse(readFileSync(`data/${file}.json`, 'utf8'))
 const judicialAreas = read('judicial-areas') as JudicialArea[]
@@ -48,6 +49,7 @@ const housesOfJustice = read('houses-of-justice') as HouseOfJustice[]
 const postalCodes = read('postal-codes') as PostalCode[]
 const interestRates = read('interest-rates') as Record<InterestType, InterestRateSeries>
 const publicHolidays = read('public-holidays') as PublicHolidays
+const proceduralIndemnities = read('procedural-indemnities') as ProceduralIndemnities
 
 type Cell = string | number | boolean | undefined
 type Row = Record<string, Cell>
@@ -250,6 +252,27 @@ export const tables: Record<string, Row[]> = {
         replaces: r.replaces,
         day: r.day,
         legal_basis: r.legalBasis,
+    })),
+    // The amounts as the KB sets them, not indexed: index them with the indexations table
+    'procedural-indemnities': proceduralIndemnities.tariffs.flatMap((t) => [
+        ...t.brackets.map((b, i) => ({
+            tariff: t.id,
+            above: t.brackets[i - 1]?.upTo ?? undefined,
+            up_to: b.upTo ?? undefined,
+            non_monetary: false,
+            min: b.min,
+            base: b.base,
+            max: b.max,
+        })),
+        { tariff: t.id, non_monetary: true, ...t.nonMonetary },
+    ]),
+    'procedural-indemnity-indexations': proceduralIndemnities.indexations.map((i) => ({
+        from: i.from,
+        method: i.method,
+        threshold: i.threshold,
+        multiplier: i.method === 'steps' ? i.multiplier : undefined,
+        index: i.method === 'formula' ? i.index : undefined,
+        start_index: proceduralIndemnities.startIndex,
     })),
 }
 
