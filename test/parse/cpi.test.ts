@@ -35,6 +35,38 @@ describe('readCpiSeries', () => {
         ])
     })
 
+    // Trimmed from the real response, as the sources run of 5 November 2026 stored it
+    it('reads Statbel’s view as it is served, and rounds away its float noise', () => {
+        const { series, unreadable } = readCpiSeries({
+            facts: [
+                {
+                    Jaar: '1951',
+                    Maand: 'November 1951',
+                    Basisjaar: '2004 = 100',
+                    Consumptieprijsindex: 16.300000000000058,
+                },
+                {
+                    Jaar: '2025',
+                    Maand: 'Februari 2025',
+                    Basisjaar: '2004 = 100',
+                    Consumptieprijsindex: 166.0500000000006,
+                },
+                {
+                    Jaar: '2026',
+                    Maand: 'Oktober 2026',
+                    Basisjaar: '2004 = 100',
+                    Consumptieprijsindex: 174.50000000000063,
+                },
+            ],
+        })
+        expect(series).toEqual([
+            { month: '1951-11', index: 16.3 },
+            { month: '2025-02', index: 166.05 },
+            { month: '2026-10', index: 174.5 },
+        ])
+        expect(unreadable).toBe(0)
+    })
+
     it('skips the health index and the inflation, and sorts the months', () => {
         const { series, unreadable } = readCpiSeries({
             facts: [

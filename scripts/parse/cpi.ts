@@ -152,7 +152,9 @@ export function readCpiSeries(data: unknown): { series: CpiMonth[]; unreadable: 
         const record =
             typeof fact === 'object' && fact !== null ? (fact as Record<string, unknown>) : {}
         const m = monthOf(record)
-        const index = indexOf(record)
+        // Statbel's values carry float noise (174.50000000000063): the index has two decimals
+        const raw = indexOf(record)
+        const index = raw === undefined ? undefined : Math.round(raw * 100) / 100
         if (m === undefined || index === undefined) {
             unreadable++
             continue
