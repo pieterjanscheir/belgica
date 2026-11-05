@@ -366,3 +366,68 @@ class PublicHolidays(TypedDict):
     fromYear: int
     holidays: list[PublicHolidayDefinition]
     replacements: list[PublicHolidayReplacement]
+
+
+ProceduralIndemnityTariffId: TypeAlias = Literal[
+    'general',
+    'labour-court-president',
+    'labour-court',
+    'labour-court-of-appeal',
+]
+
+
+class ProceduralIndemnityAmounts(TypedDict):
+    """The minimum, base and maximum amount in euro"""
+
+    min: float
+    base: float
+    max: float
+
+
+class ProceduralIndemnityBracket(ProceduralIndemnityAmounts):
+    """One bracket of a tariff, with its amounts as the KB sets them (not indexed)"""
+
+    upTo: float | None
+    """Highest value of the claim in the bracket in euro, inclusive; None for the last"""
+
+
+class ProceduralIndemnityTariff(TypedDict):
+    id: ProceduralIndemnityTariffId
+    name: Translated
+    article: str
+    brackets: list[ProceduralIndemnityBracket]
+    nonMonetary: ProceduralIndemnityAmounts
+
+
+ProceduralIndemnityStepsIndexation = TypedDict(
+    'ProceduralIndemnityStepsIndexation',
+    {
+        'from': str,
+        'method': Literal['steps'],
+        'threshold': float,
+        'multiplier': float,
+        'note': NotRequired[str],
+    },
+)
+"""Art. 8 before the KB of 16 May 2024: 10 % more or less for every 10 index points"""
+
+ProceduralIndemnityFormulaIndexation = TypedDict(
+    'ProceduralIndemnityFormulaIndexation',
+    {
+        'from': str,
+        'method': Literal['formula'],
+        'threshold': float,
+        'index': float,
+        'note': NotRequired[str],
+    },
+)
+"""Art. 8 as amended by the KB of 16 May 2024: the amount times the new index, divided by the
+start index"""
+
+
+class ProceduralIndemnities(TypedDict):
+    description: str
+    legalBasis: str
+    startIndex: float
+    tariffs: list[ProceduralIndemnityTariff]
+    indexations: list[ProceduralIndemnityStepsIndexation | ProceduralIndemnityFormulaIndexation]
