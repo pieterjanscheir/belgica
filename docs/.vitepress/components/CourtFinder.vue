@@ -483,7 +483,7 @@ onMounted(() => {
                             </article>
                         </div>
 
-                        <details v-if="splitMunicipality || nearby.length || cantons.length > 1">
+                        <details>
                             <summary>{{ t.legalText }}</summary>
                             <div v-for="c in cantons" :key="c.id">
                                 <h4>
