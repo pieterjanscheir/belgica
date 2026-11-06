@@ -7,6 +7,28 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Added
+
+- The explorer has a court finder, `/jurisdiction/`: pick a municipality or postal code and it
+  lists every court with jurisdiction there, from the justice of the peace to the court of
+  appeal and the court of assize, with what each one hears, its registry's address, phone,
+  e-mail and website, and the municipality's police zone. In a city split over cantons it asks
+  for the street and number, places them in the canton boundaries as the address lookup does,
+  and keeps only that canton's courts. An OpenStreetMap map (Leaflet) draws the municipality's
+  cantons and the address, and a click on it places a point there instead; in Brussels it says the language of the proceedings
+  picks between the Dutch- and the French-speaking court. The link holds the municipality and
+  the address, so a result can be shared. It reads only the package's data, written by the
+  site at build time to `jurisdiction.json`.
+- The explorer's header puts its links on their own row, which no longer wraps onto two lines,
+  and marks the page you're on.
+
+- The sources run reads the laws of the last 60 days in the Belgian Official Journal on
+  etaamb, a copy that GitHub's runners can reach, and opens the `cantons` issue for a law that
+  changes the annex to the Judicial Code, until `pnpm build:cantons` has read Justel's text with
+  that law in it. `pnpm build:cantons` records that text's date in
+  `scripts/parse/annex-version.json`. The issue also says when etaamb has published nothing
+  for 10 days.
+
 ## [0.8.0] - 2026-11-05
 
 ### Added

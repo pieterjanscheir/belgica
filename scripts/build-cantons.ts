@@ -16,7 +16,9 @@
  * Run with `pnpm build:cantons`, by hand on a regular machine: it needs network access and the
  * `unzip` command, and ejustice refuses connections from GitHub's runners
  * (https://github.com/pieterjanscheir/belgica/issues/52), so the sources workflow can't
- * run it. Rerun it after a law changes the annex or municipalities merge.
+ * run it. Rerun it after a law changes the annex or municipalities merge. It also records the
+ * date Justel's text of the annex is updated to in scripts/parse/annex-version.json, so the
+ * sources run can tell which laws on etaamb the cantons don't include yet.
  */
 import { execFileSync } from 'node:child_process'
 import { mkdtempSync, writeFileSync } from 'node:fs'
@@ -147,11 +149,20 @@ async function fetchText(url: string, encoding = 'utf-8'): Promise<string> {
     return new TextDecoder(encoding).decode(await res.arrayBuffer())
 }
 
-async function fetchAnnex(lang: Lang): Promise<string> {
+/**
+ * The annex's text in one language, with the last publication date that text includes
+ * ("tekstbijwerking tot", "mise à jour au") as an ISO date, read from the same page: the sources
+ * run compares the laws that change the annex against it (scripts/parse/annex-amendments.ts), so
+ * it has to be the date of the text the cantons are read from.
+ */
+async function fetchAnnex(lang: Lang): Promise<{ body: string; consolidatedTo: string }> {
     const url = `https://www.ejustice.just.fgov.be/cgi_loi/article.pl?language=${lang}&lg_txt=${lang[0]}&cn_search=${JUSTEL_ID}&caller=list`
     const html = await fetchText(url, 'windows-1252')
     if (html.includes('HTTP Request throttled'))
         throw new Error('Justel is throttling; try again in a minute')
+    const date =
+        /(?:tekstbijwerking tot|mise (?:à|&agrave;) jour au) (\d{2})-(\d{2})-(\d{4})/i.exec(html)
+    if (!date) throw new Error(`Annex text (${lang}): no "tekstbijwerking tot" date`)
     const text = html
         .replace(/<br\s*\/?>/gi, ' ')
         .replace(/<[^>]+>/g, '')
@@ -164,7 +175,7 @@ async function fetchAnnex(lang: Lang): Promise<string> {
     // The article text starts at the first fictive article; the table of contents doesn't list it
     const start = text.indexOf('Art. M1.')
     if (start === -1) throw new Error(`Annex text (${lang}) not found`)
-    return text.slice(start)
+    return { body: text.slice(start), consolidatedTo: `${date[3]}-${date[2]}-${date[1]}` }
 }
 
 async function fetchMunicipalities(): Promise<Municipality[]> {
@@ -377,9 +388,14 @@ function parseItem(item: Item, lang: Lang, municipalities: Municipality[]): Pars
 // ---------------------------------------------------------------------------------------------
 
 const municipalities = await fetchMunicipalities()
-const nlBody = await fetchAnnex('nl')
+const { body: nlBody, consolidatedTo } = await fetchAnnex('nl')
 await new Promise((r) => setTimeout(r, 2000))
-const frBody = await fetchAnnex('fr')
+const { body: frBody, consolidatedTo: frConsolidatedTo } = await fetchAnnex('fr')
+// The cantons are read from the two texts together, so they have to be the same revision
+if (consolidatedTo !== frConsolidatedTo)
+    throw new Error(
+        `Justel's Dutch text of the annex is updated to ${consolidatedTo}, the French one to ${frConsolidatedTo}: try again later`,
+    )
 
 const nlItems = splitItems(nlBody, 'nl')
 const frItems = splitItems(frBody, 'fr')
@@ -476,4 +492,10 @@ write(
     })),
 )
 write('cantons.json', parsed)
-console.log(`${parsed.length} cantons, ${municipalities.length} municipalities`)
+writeFileSync(
+    new URL('parse/annex-version.json', import.meta.url),
+    JSON.stringify({ eli: ANNEX_ELI, consolidatedTo }, null, 4) + '\n',
+)
+console.log(
+    `${parsed.length} cantons, ${municipalities.length} municipalities, from the annex as updated to ${consolidatedTo}`,
+)

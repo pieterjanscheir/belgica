@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { NamesLanguage, SiteLanguage } from '@/components/LanguageSwitch'
+import { MainNav } from '@/components/MainNav'
 import { namesLanguageScript } from '@/lib/names-language-script'
 import { Link } from '@/i18n/navigation'
 import { ClientMessages } from '@/lib/client-messages'
@@ -34,6 +35,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     const t = await getTranslations('nav')
     const f = await getTranslations('footer')
     const nav = [
+        ['/jurisdiction/', t('finder')],
         ['/courts/', t('courts')],
         ['/cantons/', t('cantons')],
         ['/municipalities/', t('municipalities')],
@@ -57,15 +59,9 @@ export default async function LocaleLayout({ children, params }: Props) {
                                 <Mark />
                                 belgica <span className="muted">explorer</span>
                             </Link>
-                            <nav aria-label={t('main')}>
-                                {nav.map(([href, label]) => (
-                                    <Link key={href} href={href}>
-                                        {label}
-                                    </Link>
-                                ))}
-                            </nav>
                             <NamesLanguage />
                             <SiteLanguage />
+                            <MainNav label={t('main')} links={nav} />
                         </div>
                     </header>
                     <main id="main" className="wrap">

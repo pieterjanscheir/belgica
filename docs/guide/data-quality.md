@@ -68,7 +68,9 @@ To run it yourself: `pnpm fetch:sources` (writes `.sources/`), then `pnpm build:
 
 The cantons and municipalities are rebuilt by hand with `pnpm build:cantons`: the Belgian
 Official Journal's site refuses GitHub's servers
-([#52](https://github.com/pieterjanscheir/belgica/issues/52)).
+([#52](https://github.com/pieterjanscheir/belgica/issues/52)). The sources run says when to: it
+reads the laws of the last 60 days on [etaamb](https://etaamb.openjustice.be/nl/), a copy of the
+Official Journal, and opens a `cantons` issue for one that changes the annex.
 
 ## Automatic checks
 

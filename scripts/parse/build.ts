@@ -7,7 +7,8 @@
  * without a canton, an unknown kind of court), a canton or an arrondissement has no court or no
  * boundary in the NGI's file, a postal code points at an unknown municipality or a municipality has no postal
  * code: those need a person. Signs that the cantons may have changed, which `pnpm build:cantons`
- * has to pick up by hand, are printed as "canton signal:" lines (canton-signals.ts).
+ * has to pick up by hand, are printed as "canton signal:" lines (canton-signals.ts, and
+ * annex-amendments.ts for the laws that change the annex).
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 
@@ -19,6 +20,7 @@ import {
     buildCantonBoundaries,
     stringifyBoundaries,
 } from './boundaries.ts'
+import { annexSignals, readAnnexAmendments, readAnnexVersion } from './annex-amendments.ts'
 import { cantonSignals } from './canton-signals.ts'
 import { buildCourtLocations } from './court-locations.ts'
 import { addIndexations, buildIndexations } from './cpi.ts'
@@ -39,6 +41,12 @@ import type {
 } from './types.ts'
 
 const root = process.env['SOURCES_DIR'] ?? '.sources'
+
+// First: the laws that change the annex need none of the builders below, so one of them
+// stopping the build doesn't keep them out of the cantons issue
+for (const line of annexSignals({ ...readAnnexAmendments(root), version: readAnnexVersion() }))
+    console.warn(`canton signal: ${line}`)
+
 const municipalities = JSON.parse(
     readFileSync('data/municipalities.json', 'utf8'),
 ) as Municipality[]
