@@ -284,7 +284,7 @@ describe('etaamb source', () => {
     // etaamb answers 200 for a month or a day it has nothing for: each list is held to what
     // the journal does, so one that comes back empty fails the walk and retires nothing
     const E = 'https://etaamb.openjustice.be/nl'
-    const walk = (pages: Record<string, string>) => {
+    const walk = (pages: Record<string, string>, kept = 0) => {
         vi.useFakeTimers({ toFake: ['Date'] })
         vi.setSystemTime(new Date('2026-11-05T05:00:00Z'))
         const get = (url: string): Promise<Response> =>
@@ -294,7 +294,7 @@ describe('etaamb source', () => {
                 contentType: 'text/html',
                 body: Buffer.from(pages[url] ?? ''),
             })
-        return sources.find((s) => s.name === 'etaamb')?.fetch(get, () => 0)
+        return sources.find((s) => s.name === 'etaamb')?.fetch(get, () => kept)
     }
     const monthPages = {
         [`${E}/pub/2026/09.html`]: `<a href="${E}/pub/2026/09/30.html">30</a>`,
@@ -336,5 +336,18 @@ describe('etaamb source', () => {
                 [`${E}/pub/2026/10/15.html`]: decree,
             }),
         ).resolves.toBeUndefined()
+    })
+
+    it('fails when the running month lists no days and listed some in the last snapshots', async () => {
+        await expect(
+            walk(
+                {
+                    ...monthPages,
+                    [`${E}/pub/2026/09/30.html`]: `<a href="${E}/wet-van-1-september-2026_n2026000001.html" class="doclink day_list">`,
+                    [`${E}/pub/2026/10/15.html`]: decree,
+                },
+                2,
+            ),
+        ).rejects.toThrow('etaamb lists no days for 2026/11, and listed some before')
     })
 })

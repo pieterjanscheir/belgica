@@ -289,7 +289,7 @@ const etaamb: Source = {
     name: 'etaamb',
     description:
         'etaamb.openjustice.be (a copy of the Belgian Official Journal): the laws of the last 60 days, to notice one that changes the annex to the Judicial Code',
-    async fetch(get) {
+    async fetch(get, keep) {
         const today = new Date().toISOString().slice(0, 10)
         const from = new Date(Date.now() - ANNEX_WINDOW_DAYS * 86_400_000)
             .toISOString()
@@ -304,9 +304,15 @@ const etaamb: Source = {
             const own = links(html(res), res.url).filter((url) =>
                 etaambDay(url)?.startsWith(month.replace('/', '-')),
             )
-            // A month that's over had publications; the running one may not have any yet
-            if (res.status === 200 && own.length === 0 && month !== months(today, today)[0])
-                throw new Error(`etaamb lists no days for ${month}`)
+            if (res.status === 200 && own.length === 0) {
+                // A month that's over had publications
+                if (month !== months(today, today)[0])
+                    throw new Error(`etaamb lists no days for ${month}`)
+                // The running one may not have any yet, unless its days were read before
+                const reason = `etaamb lists no days for ${month} yet`
+                if (keep(`${ETAAMB}/nl/pub/${month}/`, reason) > 0)
+                    throw new Error(`etaamb lists no days for ${month}, and listed some before`)
+            }
             for (const url of own) {
                 const day = etaambDay(url)
                 if (day !== undefined && day >= from && day <= today) days.add(url)
