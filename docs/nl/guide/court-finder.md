@@ -120,7 +120,7 @@ en de zoeker [`CourtFinder.vue`](https://github.com/pieterjanscheir/belgica/blob
 
 ## Gebouwd op het package {#built-on-the-package}
 
-- [**CourtMap**](https://courtmap.scheir.eu/) gaat verder: dezelfde kaart tot op het
+- [**CourtMap**](https://courtmap.be/) gaat verder: dezelfde kaart tot op het
   huis, de afdelingen die het adres bedienen, routes en openingsuren, termijnen en interest, in
   vier talen, met een MCP-server en een REST-API. De broncode staat op
   [GitHub](https://github.com/pieterjanscheir/courtfull).

@@ -122,7 +122,7 @@ et l'outil [`CourtFinder.vue`](https://github.com/pieterjanscheir/belgica/blob/m
 
 ## Construit sur le package {#built-on-the-package}
 
-- [**CourtMap**](https://courtmap.scheir.eu/) va plus loin : la même carte jusqu'à la
+- [**CourtMap**](https://courtmap.be/) va plus loin : la même carte jusqu'à la
   maison, les divisions qui desservent l'adresse, itinéraires et heures d'ouverture, délais et
   intérêts, en quatre langues, avec un serveur MCP et une API REST. Son code est sur
   [GitHub](https://github.com/pieterjanscheir/courtfull).
