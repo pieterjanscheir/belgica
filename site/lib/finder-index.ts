@@ -61,34 +61,12 @@ const registers: Record<string, GeocodeSource> = {
 }
 
 /**
- * The zones that go by the initials of their municipalities (HEKLA: Hove, Edegem, Kontich, Lint,
- * Aartselaar), which stay in capitals. The source writes every name in capitals, so it can't
- * tell them from a place name: a new one shows as 'Hekla' until it's added here.
+ * The zones whose name is initials that can't be read as a word (BRT: Begijnendijk, Rotselaar,
+ * Tremelo), which stay in capitals. The source writes every name in capitals, so it can't tell
+ * them from a place name; initials that read as a word (Hekla, Vlas, Mira) are written as one.
+ * A new one shows as 'Brt' until it's added here.
  */
-const ZONE_INITIALS = new Set([
-    'AMOW',
-    'BODUKAP',
-    'BRT',
-    'BRUNAU',
-    'CARMA',
-    'DSZ',
-    'FLOWAL',
-    'GERMINALT',
-    'HEKLA',
-    'HERKO',
-    'KASTZE',
-    'MIDOW',
-    'MINOS',
-    'MIRA',
-    'RIHO',
-    'SAMSOM',
-    'SECOVA',
-    'SPOORKIN',
-    'TARL',
-    'VLAS',
-    'WOKRA',
-    'ZARA',
-])
+const ZONE_INITIALS = new Set(['AMOW', 'BRT', 'DSZ', 'KASTZE', 'TARL', 'WOKRA'])
 
 /** 'AARTSELAAR/EDEGEM/HOVE' → 'Aartselaar/Edegem/Hove': the zones' names are in capitals */
 function titleCase(text: string): string {
