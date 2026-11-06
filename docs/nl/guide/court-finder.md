@@ -85,14 +85,17 @@ De kaart is [MapLibre GL](https://maplibre.org) op de vectortegels van
 erbovenop. Elke kaartbibliotheek neemt de grenzen zoals ze zijn:
 
 ```ts
+import { appliesOn, toDay } from 'belgica'
 import { cantonBoundaries } from 'belgica/canton-boundaries'
+
+const today = toDay(new Date())
 
 map.addSource('cantons', {
     type: 'geojson',
     data: {
         type: 'FeatureCollection',
         features: cantonBoundaries
-            .filter((b) => b.validTo === undefined) // de versies die nog gelden
+            .filter((b) => appliesOn(b, today)) // de versies die vandaag gelden
             .map((b) => ({ type: 'Feature', id: b.canton, properties: {}, geometry: b.geometry })),
     },
 })

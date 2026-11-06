@@ -13,6 +13,7 @@ import {
     getCanton,
     getContact,
     getCourtsForCanton,
+    getMunicipalitiesForPostalCode,
     getMunicipality,
     type Canton,
     type Court,
@@ -34,6 +35,7 @@ const t = useStrings('CourtFinder', {
         orClick: 'or click a point on the map',
         searching: 'Looking up the address…',
         placing: 'Placing the point in the cantons…',
+        placeFailed: 'Couldn’t load the canton boundaries: {error}. Try again.',
         none: 'No address found. Check the spelling, and give the postal code.',
         failed: "Couldn't reach {source}: {error}",
         match: 'Match',
@@ -69,6 +71,7 @@ const t = useStrings('CourtFinder', {
         orClick: 'of klik op een punt op de kaart',
         searching: 'Adres opzoeken…',
         placing: 'Punt in de kantons plaatsen…',
+        placeFailed: 'De kantongrenzen konden niet laden: {error}. Probeer opnieuw.',
         none: 'Geen adres gevonden. Controleer de spelling en geef de postcode.',
         failed: '{source} niet bereikbaar: {error}',
         match: 'Resultaat',
@@ -104,6 +107,7 @@ const t = useStrings('CourtFinder', {
         orClick: 'ou cliquez sur un point de la carte',
         searching: 'Recherche de l’adresse…',
         placing: 'Placement du point dans les cantons…',
+        placeFailed: 'Les limites des cantons n’ont pas pu se charger : {error}. Réessayez.',
         none: 'Aucune adresse trouvée. Vérifiez l’orthographe et indiquez le code postal.',
         failed: '{source} injoignable : {error}',
         match: 'Résultat',
@@ -167,12 +171,13 @@ const selected = ref(0)
 /** A point clicked on the map, instead of an address */
 const picked = ref<MapPoint | null>(null)
 const placed = shallowRef<Placed | null>(null)
+const placeError = ref('')
 const view = ref<MapView>('belgium')
 
 let controller: AbortController | undefined
 let placing_ = 0
 
-async function search(address = query.value) {
+async function search(address = query.value, match = 0) {
     query.value = address
     if (!address.trim()) return
     controller?.abort()
@@ -186,7 +191,7 @@ async function search(address = query.value) {
         if (controller !== current) return
         candidates.value = result.candidates
         failed.value = result.failed
-        selected.value = 0
+        selected.value = Math.min(Math.max(0, match), Math.max(0, result.candidates.length - 1))
         searched.value = true
         remember()
     } catch (error) {
@@ -226,12 +231,15 @@ const point = computed<MapPoint | null>(() => picked.value ?? candidate.value ??
 watch(point, async (p) => {
     const run = ++placing_
     placed.value = null
+    placeError.value = ''
     if (!p) return
     if (!picked.value) view.value = { longitude: p.longitude, latitude: p.latitude, zoom: 16 }
     placing.value = true
     try {
         const result = await place(p.longitude, p.latitude)
         if (run === placing_) placed.value = result
+    } catch (error) {
+        if (run === placing_) placeError.value = (error as Error).message
     } finally {
         if (run === placing_) placing.value = false
     }
@@ -253,8 +261,19 @@ const courts = computed(() => {
     )
 })
 
+// The municipalities of the address's postal code; none for a point picked on the map
+const addressMunicipalities = computed(() => {
+    const code = candidate.value?.label.match(/\b\d{4}\b/g)?.at(-1)
+    return code ? getMunicipalitiesForPostalCode(code).map((m) => m.id) : []
+})
+// A canton can hold whole municipalities next to part of a city: the note is for the city
 const splitMunicipality = computed(() =>
-    cantons.value[0]?.municipalities.find((m) => m.partial === true),
+    cantons.value[0]?.municipalities.find(
+        (m) =>
+            m.partial === true &&
+            (!addressMunicipalities.value.length ||
+                addressMunicipalities.value.includes(m.municipality)),
+    ),
 )
 
 /** 'Antwerpen 4': the name alone doesn't tell a city's cantons apart */
@@ -279,8 +298,8 @@ const hours = (court: Court) =>
 const code = computed(() => {
     const p = point.value
     if (!p) return ''
-    const lon = p.longitude.toFixed(4)
-    const lat = p.latitude.toFixed(4)
+    const lon = String(p.longitude)
+    const lat = String(p.latitude)
     const ids = cantonIds.value.map((id) => `'${id}'`).join(', ')
     const lines = [
         "import { findCantonsAt } from 'belgica/canton-boundaries'",
@@ -310,23 +329,32 @@ function remember() {
     const url = new URL(location.href)
     url.searchParams.delete('q')
     url.searchParams.delete('at')
+    url.searchParams.delete('match')
     if (picked.value)
         url.searchParams.set(
             'at',
             `${picked.value.latitude.toFixed(6)},${picked.value.longitude.toFixed(6)}`,
         )
-    else if (searched.value && query.value.trim()) url.searchParams.set('q', query.value.trim())
+    else if (searched.value && query.value.trim()) {
+        url.searchParams.set('q', query.value.trim())
+        if (selected.value > 0) url.searchParams.set('match', String(selected.value))
+    }
     history.replaceState(history.state, '', url)
 }
 
 onMounted(() => {
     const params = new URLSearchParams(location.search)
     const q = params.get('q')
-    const at = params.get('at')?.split(',').map(Number)
-    if (q) void search(q)
-    else if (at && at.length === 2 && at.every(Number.isFinite)) {
-        pickPoint(at[1]!, at[0]!)
-        view.value = { longitude: at[1]!, latitude: at[0]!, zoom: 16 }
+    const [lat, lon] = params.get('at')?.split(',').map(Number) ?? []
+    if (q) void search(q, Number(params.get('match')) || 0)
+    else if (
+        lat !== undefined &&
+        lon !== undefined &&
+        Math.abs(lat) <= 90 &&
+        Math.abs(lon) <= 180
+    ) {
+        pickPoint(lon, lat)
+        view.value = { longitude: lon, latitude: lat, zoom: 16 }
     }
 })
 </script>
@@ -365,7 +393,7 @@ onMounted(() => {
                 <div v-if="candidates.length > 1" class="bld-controls">
                     <label>
                         {{ t.match }}
-                        <select v-model="selected">
+                        <select v-model="selected" @change="remember">
                             <option v-for="(c, i) in candidates" :key="i" :value="i">
                                 {{ c.label }}
                             </option>
@@ -384,6 +412,9 @@ onMounted(() => {
                 </p>
 
                 <p v-if="placing" class="bld-muted">{{ t.placing }}</p>
+                <p v-else-if="placeError" class="bld-warning">
+                    {{ fmt(t.placeFailed, { error: placeError }) }}
+                </p>
                 <template v-else-if="placed">
                     <p v-if="!cantons.length" class="bld-warning">{{ t.outside }}</p>
                     <template v-else>

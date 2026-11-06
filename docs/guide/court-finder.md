@@ -83,14 +83,17 @@ vector tiles (OpenStreetMap data), with the cantons as a GeoJSON source on top. 
 takes the boundaries as they are:
 
 ```ts
+import { appliesOn, toDay } from 'belgica'
 import { cantonBoundaries } from 'belgica/canton-boundaries'
+
+const today = toDay(new Date())
 
 map.addSource('cantons', {
     type: 'geojson',
     data: {
         type: 'FeatureCollection',
         features: cantonBoundaries
-            .filter((b) => b.validTo === undefined) // the versions that still apply
+            .filter((b) => appliesOn(b, today)) // the versions in force today
             .map((b) => ({ type: 'Feature', id: b.canton, properties: {}, geometry: b.geometry })),
     },
 })

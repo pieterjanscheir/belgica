@@ -87,14 +87,17 @@ GeoJSON par-dessus. N'importe quelle bibliothèque cartographique prend les limi
 quelles :
 
 ```ts
+import { appliesOn, toDay } from 'belgica'
 import { cantonBoundaries } from 'belgica/canton-boundaries'
+
+const today = toDay(new Date())
 
 map.addSource('cantons', {
     type: 'geojson',
     data: {
         type: 'FeatureCollection',
         features: cantonBoundaries
-            .filter((b) => b.validTo === undefined) // les versions encore en vigueur
+            .filter((b) => appliesOn(b, today)) // les versions en vigueur aujourd’hui
             .map((b) => ({ type: 'Feature', id: b.canton, properties: {}, geometry: b.geometry })),
     },
 })

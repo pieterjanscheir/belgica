@@ -97,7 +97,15 @@ let marker: MapLibre.Marker | undefined
 let index: MapIndex | undefined
 let hovered: string | null = null
 let detail: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: [] }
+let detailRequest = 0
 let disposed = false
+
+/** The overview's layers leave out the cantons the detail source holds, and show the rest */
+const withoutDetail = (): MapLibre.FilterSpecification =>
+    [
+        '!',
+        ['in', ['get', 'id'], ['literal', detail.features.map((f) => f.id)]],
+    ] as unknown as MapLibre.FilterSpecification
 
 const { isDark } = useData()
 const reducedMotion = () =>
@@ -157,11 +165,14 @@ function courtPoints(): GeoJSON.FeatureCollection {
 
 onMounted(async () => {
     try {
-        const [maplibre, style, loaded] = await Promise.all([
+        const dark = isDark.value
+        const [maplibre, picked, loaded] = await Promise.all([
             import('maplibre-gl'),
-            pickStyle(isDark.value),
+            pickStyle(dark),
             loadIndex(),
         ])
+        // The theme can change while that loads: the style for the theme the page has now
+        const style = dark === isDark.value ? picked : await pickStyle(isDark.value)
         if (disposed || !container.value) return
         lib = maplibre
         index = loaded
@@ -192,6 +203,18 @@ onMounted(async () => {
             applyPoint(m, props.point)
         })
         m.on('moveend', () => void loadDetail(m))
+        // A source's features start without state: the selection and hover again once loaded
+        m.on('sourcedata', (e) => {
+            if (
+                (e.sourceId === 'bld-overview' || e.sourceId === 'bld-detail') &&
+                (e.sourceDataType === 'metadata' || e.sourceDataType === 'content')
+            ) {
+                applySelection(m)
+                const id = hovered
+                hovered = null
+                setHovered(m, id)
+            }
+        })
         m.on('mousemove', (e) => {
             const court =
                 m.getLayer('bld-courts') ?
@@ -248,12 +271,15 @@ onBeforeUnmount(() => {
     map.value = undefined
 })
 
-// Another colour scheme: the base style for it, and our layers again on style.load
+// Another colour scheme: the base style for it, and our layers again on style.load. Only the
+// latest switch sets the style: a slow probe for an earlier one would undo a later switch.
+let themeRequest = 0
 watch(isDark, (dark) => {
     const m = map.value
     if (!m) return
+    const request = ++themeRequest
     void pickStyle(dark).then((style) => {
-        if (!disposed) m.setStyle(style, { diff: false })
+        if (!disposed && request === themeRequest) m.setStyle(style, { diff: false })
     })
 })
 
@@ -280,9 +306,9 @@ function setHovered(m: MapLibre.Map, id: string | null) {
     hovered = id
 }
 
-/** The highlighted cantons, as feature state on both sources */
+/** The highlighted cantons, as feature state on both sources (kept for features still loading) */
 function applySelection(m: MapLibre.Map) {
-    if (!index || !m.isStyleLoaded()) return
+    if (!index) return
     const selected = new Set(props.highlight)
     for (const source of ['bld-overview', 'bld-detail']) {
         if (!m.getSource(source)) continue
@@ -342,7 +368,7 @@ function addOverlay(m: MapLibre.Map) {
             id: 'bld-overview-fill',
             type: 'fill',
             source: 'bld-overview',
-            maxzoom: DETAIL_ZOOM,
+            filter: withoutDetail(),
             paint: {
                 'fill-color': colourOf,
                 'fill-opacity': state(0.42, 0.3, 0.16),
@@ -386,7 +412,7 @@ function addOverlay(m: MapLibre.Map) {
             id: 'bld-overview-line',
             type: 'line',
             source: 'bld-overview',
-            maxzoom: DETAIL_ZOOM,
+            filter: withoutDetail(),
             paint: { 'line-color': colourOf, 'line-width': state(2.5, 1.5, 0.8) },
         },
         firstSymbol,
@@ -464,7 +490,10 @@ function addOverlay(m: MapLibre.Map) {
     void loadDetail(m)
 }
 
-/** The boundaries of the cantons in view at full precision, from DETAIL_ZOOM */
+/**
+ * The boundaries of the cantons in view at full precision, from DETAIL_ZOOM. Until they're
+ * there, and wherever they aren't (too many in view, a fetch that failed), the overview shows.
+ */
 async function loadDetail(m: MapLibre.Map) {
     if (!index || m.getZoom() < DETAIL_ZOOM) return
     const b = m.getBounds()
@@ -473,8 +502,15 @@ async function loadDetail(m: MapLibre.Map) {
     if (!inView.length || inView.length > MAX_DETAIL) return
     const have = new Set(detail.features.map((f) => f.id))
     if (inView.every((c) => have.has(c.id)) && have.size === inView.length) return
-    const files = await Promise.all(inView.map((c) => loadCanton(c.id)))
-    if (disposed) return
+    // Only the latest viewport's files are drawn: an earlier, slower request would replace them
+    const request = ++detailRequest
+    let files
+    try {
+        files = await Promise.all(inView.map((c) => loadCanton(c.id)))
+    } catch {
+        return
+    }
+    if (disposed || request !== detailRequest) return
     const colours = new Map(index.cantons.map((c) => [c.id, c.colour]))
     detail = {
         type: 'FeatureCollection',
@@ -487,13 +523,8 @@ async function loadDetail(m: MapLibre.Map) {
     }
     const source = m.getSource('bld-detail') as MapLibre.GeoJSONSource | undefined
     source?.setData(detail)
-    // The new features start without state: the selection and hover again once they're there
-    m.once('sourcedata', () => {
-        applySelection(m)
-        const id = hovered
-        hovered = null
-        setHovered(m, id)
-    })
+    for (const layer of ['bld-overview-fill', 'bld-overview-line'])
+        if (m.getLayer(layer)) m.setFilter(layer, withoutDetail())
 }
 </script>
 
