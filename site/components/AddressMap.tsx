@@ -21,6 +21,13 @@ interface Props {
 const token = (name: string) =>
     getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '#3d4fd1'
 
+/** Leaflet reads a tooltip's string as HTML: a canton's name or a register's address is text */
+function asText(value: string): HTMLElement {
+    const span = document.createElement('span')
+    span.textContent = value
+    return span
+}
+
 /**
  * The cantons on OpenStreetMap's map, with the address's point: Leaflet, loaded only in the
  * browser, with the canton boundaries the address lookup places the point in.
@@ -92,7 +99,7 @@ export function AddressMap({ cantons, highlight, point, onPick, label }: Props) 
                     interactive: true,
                 },
             )
-            shape.bindTooltip(c.name, { sticky: true })
+            shape.bindTooltip(asText(c.name), { sticky: true })
             shape.on('click', (e) => {
                 pick.current?.(e.latlng.lng, e.latlng.lat)
             })
@@ -106,7 +113,7 @@ export function AddressMap({ cantons, highlight, point, onPick, label }: Props) 
                 fillColor: token('--red'),
                 fillOpacity: 1,
             })
-                .bindTooltip(point.label)
+                .bindTooltip(asText(point.label))
                 .addTo(group)
             const at = `${point.latitude},${point.longitude}`
             if (at !== moved.current) {

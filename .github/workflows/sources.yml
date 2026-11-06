@@ -144,11 +144,13 @@ jobs:
                     # The annex lines aren't settled by a rebuild alone
                     if grep -q '^annex: ' "$1"; then
                       echo
-                      echo "An \`annex:\` line names a law that changes the annex. Justel adds a law to the"
-                      echo "annex's text weeks or months after it's published, and the rebuild prints the date"
-                      echo "its text is updated to: until that date reaches the law's publication date the"
-                      echo "rebuild changes nothing, so keep this issue open and run it again later. The law"
-                      echo "leaves the sources run after 60 days; this issue is what remembers it."
+                      echo "An \`annex:\` line names a law that writes about the annex. Read it first: a law"
+                      echo "that only cites the annex, or changes another code's, changes no canton. For one"
+                      echo "that does, Justel adds it to the annex's text weeks or months after it's published,"
+                      echo "and the rebuild prints the date its text is updated to: until that date reaches the"
+                      echo "law's publication date the rebuild changes nothing, so keep this issue open and run"
+                      echo "it again later. The law leaves the sources run after 60 days; this issue is what"
+                      echo "remembers it."
                       echo
                       echo "A line about etaamb itself (nothing published, a page that couldn't be read) needs"
                       echo "no rebuild: look at https://etaamb.openjustice.be/nl/ and at the law it names."

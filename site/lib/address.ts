@@ -48,7 +48,9 @@ export const loadAddressIndex = () => fetchJson<AddressIndex>('/address/index.js
 
 /**
  * The cantons the point lies in, and those whose boundary comes within NEAR_METRES of it.
- * `among` limits the search to these cantons, as the court finder does for a municipality's.
+ * `among` limits the cantons it can lie in to these, as the court finder does for a
+ * municipality's; a canton next to them still counts as near, since a point by a line is a case
+ * for the law's text whichever municipality the line runs along.
  */
 export async function place(
     at: AddressCandidate,
@@ -58,11 +60,12 @@ export async function place(
     const { longitude: lon, latitude: lat } = at
     const files = await Promise.all(
         index.cantons
-            .filter((c) => !among || among.includes(c.canton))
             .filter((c) => nearBox(c.box, lon, lat, BOX_MARGIN))
             .map((c) => fetchJson<CantonFile>(`/address/${c.canton}.json`)),
     )
-    const inside = files.filter((f) => contains(f.geometry, lon, lat))
+    const inside = files.filter(
+        (f) => (!among || among.includes(f.canton)) && contains(f.geometry, lon, lat),
+    )
     const near = files
         .filter((f) => !inside.includes(f))
         .map((canton) => ({ canton, metres: distanceToEdge(canton.geometry, lon, lat) }))

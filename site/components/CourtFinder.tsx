@@ -461,12 +461,20 @@ function StreetStep({
 
     const lookup = useCallback(
         async (address: string, code: string) => {
-            if (!address.trim()) return
             controller.current?.abort()
+            // The canton of the address before goes with it, also when the field was emptied:
+            // the courts below aren't "for this address" while another one is looked up
+            setResult(null)
+            setError(null)
+            setByMap(false)
+            if (!address.trim()) {
+                controller.current = null
+                setLoading(false)
+                return
+            }
             const current = new AbortController()
             controller.current = current
             setLoading(true)
-            setError(null)
             try {
                 // The name in the register's language: Dutch in Flanders, French in Wallonia
                 const name = pick(m.name, m.register === 'wallonia' ? 'fr' : 'nl')
@@ -478,7 +486,6 @@ function StreetStep({
                 if (controller.current !== current) return
                 setResult(found)
                 setSelected(0)
-                setByMap(false)
             } catch (e) {
                 if ((e as Error).name === 'AbortError') return
                 if (controller.current === current) setError(String(e))
@@ -492,7 +499,9 @@ function StreetStep({
     // A point clicked on the map: placed as it is, without the address register
     useEffect(() => {
         if (!picked) return
+        // A lookup under way is dropped, also one that has its answer already
         controller.current?.abort()
+        controller.current = null
         setLoading(false)
         setError(null)
         setText('')

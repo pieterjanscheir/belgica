@@ -41,6 +41,12 @@ import type {
 } from './types.ts'
 
 const root = process.env['SOURCES_DIR'] ?? '.sources'
+
+// First: the laws that change the annex need none of the builders below, so one of them
+// stopping the build doesn't keep them out of the cantons issue
+for (const line of annexSignals({ ...readAnnexAmendments(root), version: readAnnexVersion() }))
+    console.warn(`canton signal: ${line}`)
+
 const municipalities = JSON.parse(
     readFileSync('data/municipalities.json', 'utf8'),
 ) as Municipality[]
@@ -128,8 +134,6 @@ for (const line of cantonSignals({
     refnis: readRefnisRows(root).rows,
     municipalities,
 }))
-    console.warn(`canton signal: ${line}`)
-for (const line of annexSignals({ ...readAnnexAmendments(root), version: readAnnexVersion() }))
     console.warn(`canton signal: ${line}`)
 
 const problems = [

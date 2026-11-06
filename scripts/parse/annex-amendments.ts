@@ -33,10 +33,18 @@ export interface Amendment {
     /** Publication date in the Official Journal (ISO) */
     published: string
     url: string
+    /**
+     * The law names the Judicial Code and then the annex to "hetzelfde Wetboek": which code
+     * that is wasn't read, so it may be another one's
+     */
+    uncertain?: true
 }
 
 /** After this many days without a publication on etaamb, the signals say it may have stopped */
 export const QUIET_DAYS = 10
+
+/** Above this many law pages that can't be read, the signals name the layout, not each page */
+const MANY_UNREADABLE = 3
 
 const text = (html: string) =>
     html
@@ -52,27 +60,39 @@ const text = (html: string) =>
 /** dd/mm/yyyy → yyyy-mm-dd */
 const isoDate = (date: string) => date.split('/').reverse().join('-')
 
-/** A law's page on etaamb, when the law changes the annex */
+/**
+ * A law's page on etaamb, when the law changes the annex. Throws for a page that isn't laid out
+ * as a law's (an error page served as one, a new layout): whether that one changes the annex
+ * can't be said.
+ */
 export function readAmendment(html: string, url: string): Amendment | undefined {
     const main = /<main\b[\s\S]*<\/main>/i.exec(html)?.[0] ?? html
-    const body = text(main)
-    const cites =
-        /bijvoegsel bij het Gerechtelijk Wetboek/i.test(body) ||
-        (/bijvoegsel bij hetzelfde Wetboek/i.test(body) && /Gerechtelijk Wetboek/i.test(body))
-    if (!cites) return undefined
     const numac = /<dd class="numac">\s*(\d{10})\s*<\/dd>/.exec(main)?.[1]
     const published = /<dt>pub\.<\/dt>\s*<dd class="date">\s*(\d{2}\/\d{2}\/\d{4})/.exec(main)?.[1]
     const title = /<h1 class="doc_title">([\s\S]*?)<\/h1>/.exec(main)?.[1]
     if (numac === undefined || published === undefined || title === undefined)
-        throw new Error(`${url}: a law that changes the annex, without its numac, date or title`)
-    return { numac, title: text(title), published: isoDate(published), url }
+        throw new Error(`${url}: not a law's page as etaamb lays one out (no numac, date or title)`)
+    const body = text(main)
+    const names = /bijvoegsel bij het Gerechtelijk Wetboek/i.test(body)
+    const refers =
+        !names &&
+        /bijvoegsel bij hetzelfde Wetboek/i.test(body) &&
+        /Gerechtelijk Wetboek/i.test(body)
+    if (!names && !refers) return undefined
+    return {
+        numac,
+        title: text(title),
+        published: isoDate(published),
+        url,
+        ...(refers && { uncertain: true as const }),
+    }
 }
 
 export function readAnnexAmendments(root: string): {
     amendments: Amendment[]
     /** The last day etaamb published, or undefined when it wasn't read */
     lastPublication: string | undefined
-    /** Laws that change the annex, whose page couldn't be read: the reason, with the URL */
+    /** Law pages that couldn't be read: the reason, with the URL */
     unreadable: string[]
 } {
     if (!existsSync(join(root, 'etaamb', 'index.json')))
@@ -123,9 +143,18 @@ export function annexSignals({
         .filter((law) => law.published > version.consolidatedTo)
         .map(
             (law) =>
-                `annex: "${law.title}" (numac ${law.numac}, published ${law.published}) changes the annex to the Judicial Code, and the cantons were built from its text up to ${version.consolidatedTo}: ${law.url}`,
+                `annex: "${law.title}" (numac ${law.numac}, published ${law.published}) ${
+                    law.uncertain ?
+                        'names the Judicial Code and then the annex to "hetzelfde Wetboek", so it may change the annex to the Judicial Code'
+                    :   'changes the annex to the Judicial Code'
+                }, and the cantons were built from its text up to ${version.consolidatedTo}: ${law.url}`,
         )
-    for (const reason of unreadable) signals.push(`annex: ${reason}: read it by hand`)
+    // A page or two is named; more than that is etaamb's layout, and one line says so
+    if (unreadable.length > MANY_UNREADABLE)
+        signals.push(
+            "annex: etaamb's law pages could not be read (its layout may have changed), so a law that changes the annex may be missed",
+        )
+    else for (const reason of unreadable) signals.push(`annex: ${reason}: read it by hand`)
     if (lastPublication === undefined)
         signals.push(
             'annex: etaamb could not be read, so a law that changes the annex may be missed',

@@ -294,23 +294,35 @@ const etaamb: Source = {
         const from = new Date(Date.now() - ANNEX_WINDOW_DAYS * 86_400_000)
             .toISOString()
             .slice(0, 10)
+        // etaamb answers 200 for a month or a day it has nothing for, so a list that comes back
+        // empty looks like a quiet journal, and the laws it stopped listing would be retired
+        // without a word. Each list is held to what the journal does: it fails the walk, which
+        // leaves the snapshots as they were and says the copy can't be read.
         const days = new Set<string>()
         for (const month of months(from, today)) {
             const res = await get(`${ETAAMB}/nl/pub/${month}.html`)
-            for (const url of links(html(res), res.url)) {
+            const own = links(html(res), res.url).filter((url) =>
+                etaambDay(url)?.startsWith(month.replace('/', '-')),
+            )
+            // A month that's over had publications; the running one may not have any yet
+            if (res.status === 200 && own.length === 0 && month !== months(today, today)[0])
+                throw new Error(`etaamb lists no days for ${month}`)
+            for (const url of own) {
                 const day = etaambDay(url)
                 if (day !== undefined && day >= from && day <= today) days.add(url)
             }
         }
-        // An empty window would retire every law read so far and say nothing: fail instead, so
-        // the run says the copy can't be read
-        if (days.size === 0) throw new Error(`etaamb lists no publications since ${from}`)
         const laws = new Set<string>()
-        for (const day of [...days].sort())
-            for (const url of dayList(html(await get(day)), day))
-                if (isEtaambLaw(url)) laws.add(url)
-        // The journal publishes laws every week: none in the whole window means the day pages
-        // can't be read any more, which would retire every law just the same
+        for (const day of [...days].sort()) {
+            const res = await get(day)
+            const texts = dayList(html(res), day)
+            // The month's page only links the days the journal published something
+            if (res.status === 200 && texts.length === 0)
+                throw new Error(`etaamb lists no texts for ${etaambDay(day) ?? day}`)
+            for (const url of texts) if (isEtaambLaw(url)) laws.add(url)
+        }
+        // The journal publishes laws every week: none in the whole window means the lists
+        // can't be read any more
         if (laws.size === 0) throw new Error(`etaamb lists no laws since ${from}`)
         for (const law of [...laws].sort()) await get(law)
     },

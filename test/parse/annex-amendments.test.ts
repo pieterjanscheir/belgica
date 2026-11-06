@@ -54,7 +54,19 @@ describe('readAmendment', () => {
                 ),
                 url,
             ),
-        ).toEqual({ numac: '2026000009', title: 'Programmawet', published: '2026-10-30', url })
+        ).toEqual({
+            numac: '2026000009',
+            title: 'Programmawet',
+            published: '2026-10-30',
+            url,
+            uncertain: true,
+        })
+    })
+
+    it('throws for a page that is not laid out as a law, whatever it cites', () => {
+        expect(() => readAmendment('<main><h2>Unsupported Url Error</h2></main>', url)).toThrow(
+            /not a law's page/,
+        )
     })
 
     it("leaves a law that changes another code's annex", () => {
@@ -108,20 +120,43 @@ describe('annexSignals', () => {
         ])
     })
 
+    it('says "may" for a law that names the annex as that of "hetzelfde Wetboek"', () => {
+        expect(
+            annexSignals({
+                amendments: [{ ...law, uncertain: true }],
+                lastPublication: '2026-11-04',
+                version: { eli: '', consolidatedTo: '2023-01-12' },
+                today,
+            }),
+        ).toEqual([
+            `annex: "${law.title}" (numac 2024004698, published 2024-05-28) names the Judicial Code and then the annex to "hetzelfde Wetboek", so it may change the annex to the Judicial Code, and the cantons were built from its text up to 2023-01-12: ${LAW}`,
+        ])
+    })
+
+    it('says so once when many law pages could not be read', () => {
+        expect(
+            annexSignals({
+                amendments: [],
+                lastPublication: '2026-11-04',
+                unreadable: ['a', 'b', 'c', 'd'],
+                version: { eli: '', consolidatedTo: '2024-05-28' },
+                today,
+            }),
+        ).toEqual([
+            "annex: etaamb's law pages could not be read (its layout may have changed), so a law that changes the annex may be missed",
+        ])
+    })
+
     it('reports a law whose page it could not read, instead of stopping the build', () => {
         expect(
             annexSignals({
                 amendments: [],
                 lastPublication: '2026-11-04',
-                unreadable: [
-                    `${LAW}: a law that changes the annex, without its numac, date or title`,
-                ],
+                unreadable: [`${LAW}: not a law's page as etaamb lays one out`],
                 version: { eli: '', consolidatedTo: '2024-05-28' },
                 today,
             }),
-        ).toEqual([
-            `annex: ${LAW}: a law that changes the annex, without its numac, date or title: read it by hand`,
-        ])
+        ).toEqual([`annex: ${LAW}: not a law's page as etaamb lays one out: read it by hand`])
     })
 
     it('starts from the annex the cantons were built from', () => {
@@ -161,6 +196,8 @@ describe('etaamb source', () => {
         const E = 'https://etaamb.openjustice.be/nl'
         const pages: Record<string, string> = {
             [`${E}/pub/2026/11.html`]: `<a href="${E}/pub/2026/11/04.html">4</a>`,
+            [`${E}/pub/2026/10.html`]: `<a href="${E}/pub/2026/10/15.html">15</a>`,
+            [`${E}/pub/2026/10/15.html`]: `<a href="${E}/decreet-van-3-oktober-2026_n2026000004.html" class="doclink day_list">`,
             [`${E}/pub/2026/09.html`]: `<a href="${E}/pub/2026/09/01.html">1</a><a href="${E}/pub/2026/09/30.html">30</a>`,
             [`${E}/pub/2026/09/30.html`]: `<a href="${E}/wet-van-1-september-2026_n2026000001.html" class="doclink day_list"><a href="${E}/koninklijk-besluit-van-2-september-2026_n2026000002.html" class="doclink day_list">`,
             [`${E}/pub/2026/11/04.html`]: `<a href="${E}/wet-van-1-november-2026_n2026000003.html" class="doclink day_list">`,
@@ -182,37 +219,67 @@ describe('etaamb source', () => {
             `${E}/pub/2026/11.html`,
             // 1 September is more than 60 days ago
             `${E}/pub/2026/09/30.html`,
+            `${E}/pub/2026/10/15.html`,
             `${E}/pub/2026/11/04.html`,
             `${E}/wet-van-1-november-2026_n2026000003.html`,
             `${E}/wet-van-1-september-2026_n2026000001.html`,
         ])
     })
 
-    it('fails when the window has no publications, instead of retiring every law', async () => {
-        const get = (url: string): Promise<Response> =>
-            Promise.resolve({ url, status: 200, contentType: 'text/html', body: Buffer.from('') })
-        await expect(sources.find((s) => s.name === 'etaamb')?.fetch(get, () => 0)).rejects.toThrow(
-            /no publications/,
-        )
-    })
-
-    it("fails when the window's days list no law, as when their markup changed", async () => {
+    // etaamb answers 200 for a month or a day it has nothing for: each list is held to what
+    // the journal does, so one that comes back empty fails the walk and retires nothing
+    const E = 'https://etaamb.openjustice.be/nl'
+    const walk = (pages: Record<string, string>) => {
         vi.useFakeTimers({ toFake: ['Date'] })
         vi.setSystemTime(new Date('2026-11-05T05:00:00Z'))
-        const E = 'https://etaamb.openjustice.be/nl'
         const get = (url: string): Promise<Response> =>
             Promise.resolve({
                 url,
                 status: 200,
                 contentType: 'text/html',
-                body: Buffer.from(
-                    url === `${E}/pub/2026/11.html` ?
-                        `<a href="${E}/pub/2026/11/04.html">4</a>`
-                    :   `<a class="doc" href="${E}/wet-van-1-november-2026_n2026000003.html">`,
-                ),
+                body: Buffer.from(pages[url] ?? ''),
             })
-        await expect(sources.find((s) => s.name === 'etaamb')?.fetch(get, () => 0)).rejects.toThrow(
-            /no laws/,
-        )
+        return sources.find((s) => s.name === 'etaamb')?.fetch(get, () => 0)
+    }
+    const monthPages = {
+        [`${E}/pub/2026/09.html`]: `<a href="${E}/pub/2026/09/30.html">30</a>`,
+        [`${E}/pub/2026/10.html`]: `<a href="${E}/pub/2026/10/15.html">15</a>`,
+    }
+    const decree = `<a href="${E}/decreet-van-3-oktober-2026_n2026000004.html" class="doclink day_list">`
+
+    it('fails when a month that is over lists no days', async () => {
+        await expect(
+            walk({ [`${E}/pub/2026/09.html`]: `<a href="${E}/pub/2026/09/30.html">30</a>` }),
+        ).rejects.toThrow('etaamb lists no days for 2026/10')
+    })
+
+    it('fails when a day lists no texts, as when its markup changed', async () => {
+        await expect(
+            walk({
+                ...monthPages,
+                [`${E}/pub/2026/09/30.html`]: decree,
+                [`${E}/pub/2026/10/15.html`]: `<a class="doc" href="${E}/wet-van-1-oktober-2026_n2026000003.html">`,
+            }),
+        ).rejects.toThrow('etaamb lists no texts for 2026-10-15')
+    })
+
+    it('fails when the window lists no law at all', async () => {
+        await expect(
+            walk({
+                ...monthPages,
+                [`${E}/pub/2026/09/30.html`]: decree,
+                [`${E}/pub/2026/10/15.html`]: decree,
+            }),
+        ).rejects.toThrow(/no laws/)
+    })
+
+    it("goes on when the running month hasn't published yet", async () => {
+        await expect(
+            walk({
+                ...monthPages,
+                [`${E}/pub/2026/09/30.html`]: `<a href="${E}/wet-van-1-september-2026_n2026000001.html" class="doclink day_list">`,
+                [`${E}/pub/2026/10/15.html`]: decree,
+            }),
+        ).resolves.toBeUndefined()
     })
 })
