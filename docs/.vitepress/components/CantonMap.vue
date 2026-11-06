@@ -165,14 +165,19 @@ function courtPoints(): GeoJSON.FeatureCollection {
 
 onMounted(async () => {
     try {
-        const dark = isDark.value
+        let dark = isDark.value
         const [maplibre, picked, loaded] = await Promise.all([
             import('maplibre-gl'),
             pickStyle(dark),
             loadIndex(),
         ])
-        // The theme can change while that loads: the style for the theme the page has now
-        const style = dark === isDark.value ? picked : await pickStyle(isDark.value)
+        // The theme can change while that loads, and again while the style for the new one is
+        // probed: the style the map starts with is the one for the theme the page has now
+        let style = picked
+        while (dark !== isDark.value) {
+            dark = isDark.value
+            style = await pickStyle(dark)
+        }
         if (disposed || !container.value) return
         lib = maplibre
         index = loaded
@@ -495,7 +500,16 @@ function addOverlay(m: MapLibre.Map) {
  * there, and wherever they aren't (too many in view, a fetch that failed), the overview shows.
  */
 async function loadDetail(m: MapLibre.Map) {
-    if (!index || m.getZoom() < DETAIL_ZOOM) return
+    if (!index) return
+    if (m.getZoom() < DETAIL_ZOOM) {
+        // Zoomed out, the detail layers don't draw: the overview shows every canton again
+        if (detail.features.length) {
+            detail = { type: 'FeatureCollection', features: [] }
+            ;(m.getSource('bld-detail') as MapLibre.GeoJSONSource | undefined)?.setData(detail)
+            applyOverviewFilter(m)
+        }
+        return
+    }
     const b = m.getBounds()
     const view = [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()]
     const inView = index.cantons.filter((c) => intersects(c.box, view))
@@ -523,6 +537,11 @@ async function loadDetail(m: MapLibre.Map) {
     }
     const source = m.getSource('bld-detail') as MapLibre.GeoJSONSource | undefined
     source?.setData(detail)
+    applyOverviewFilter(m)
+}
+
+/** The overview's layers leave out the cantons the detail source holds */
+function applyOverviewFilter(m: MapLibre.Map) {
     for (const layer of ['bld-overview-fill', 'bld-overview-line'])
         if (m.getLayer(layer)) m.setFilter(layer, withoutDetail())
 }

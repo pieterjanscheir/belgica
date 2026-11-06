@@ -177,7 +177,8 @@ const view = ref<MapView>('belgium')
 let controller: AbortController | undefined
 let placing_ = 0
 
-async function search(address = query.value, match = 0) {
+/** `match`: the label of the candidate to select, from a shared link; the first otherwise */
+async function search(address = query.value, match = '') {
     query.value = address
     if (!address.trim()) return
     controller?.abort()
@@ -191,7 +192,10 @@ async function search(address = query.value, match = 0) {
         if (controller !== current) return
         candidates.value = result.candidates
         failed.value = result.failed
-        selected.value = Math.min(Math.max(0, match), Math.max(0, result.candidates.length - 1))
+        selected.value = Math.max(
+            0,
+            result.candidates.findIndex((c) => c.label === match),
+        )
         searched.value = true
         remember()
     } catch (error) {
@@ -335,7 +339,8 @@ function remember() {
         )
     else if (searched.value && query.value.trim()) {
         url.searchParams.set('q', query.value.trim())
-        if (selected.value > 0) url.searchParams.set('match', String(selected.value))
+        if (candidate.value && selected.value > 0)
+            url.searchParams.set('match', candidate.value.label)
     }
     history.replaceState(history.state, '', url)
 }
@@ -344,7 +349,7 @@ onMounted(() => {
     const params = new URLSearchParams(location.search)
     const q = params.get('q')
     const [lat, lon] = params.get('at')?.split(',').map(Number) ?? []
-    if (q) void search(q, Number(params.get('match')) || 0)
+    if (q) void search(q, params.get('match') ?? '')
     else if (
         lat !== undefined &&
         lon !== undefined &&
