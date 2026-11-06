@@ -39,6 +39,8 @@ const t = useStrings('CourtFinder', {
         none: 'No address found. Check the spelling, and give the postal code.',
         failed: "Couldn't reach {source}: {error}",
         match: 'Match',
+        matchMissing:
+            'The match this link was made for isn’t among the register’s results today: the first is shown. Check the match.',
         picked: 'A point picked on the map',
         streetOnly:
             'The register knows the street but not this house number: the point is somewhere on the street, which may itself be the boundary between two cantons. Check the number.',
@@ -75,6 +77,8 @@ const t = useStrings('CourtFinder', {
         none: 'Geen adres gevonden. Controleer de spelling en geef de postcode.',
         failed: '{source} niet bereikbaar: {error}',
         match: 'Resultaat',
+        matchMissing:
+            'Het resultaat waarvoor deze link gemaakt is, zit vandaag niet bij de resultaten van het register: het eerste wordt getoond. Controleer het resultaat.',
         picked: 'Een punt gekozen op de kaart',
         streetOnly:
             'Het register kent de straat maar niet dit huisnummer: het punt ligt ergens in de straat, die zelf de grens tussen twee kantons kan zijn. Controleer het nummer.',
@@ -111,6 +115,8 @@ const t = useStrings('CourtFinder', {
         none: 'Aucune adresse trouvée. Vérifiez l’orthographe et indiquez le code postal.',
         failed: '{source} injoignable : {error}',
         match: 'Résultat',
+        matchMissing:
+            'Le résultat pour lequel ce lien a été créé n’est pas parmi ceux du registre aujourd’hui : le premier est affiché. Vérifiez le résultat.',
         picked: 'Un point choisi sur la carte',
         streetOnly:
             'Le registre connaît la rue mais pas ce numéro : le point est quelque part dans la rue, qui peut elle-même être la limite entre deux cantons. Vérifiez le numéro.',
@@ -172,6 +178,8 @@ const selected = ref(0)
 const picked = ref<MapPoint | null>(null)
 const placed = shallowRef<Placed | null>(null)
 const placeError = ref('')
+/** A shared link named a match the register no longer returns */
+const matchMissing = ref(false)
 const view = ref<MapView>('belgium')
 
 let controller: AbortController | undefined
@@ -192,10 +200,9 @@ async function search(address = query.value, match = '') {
         if (controller !== current) return
         candidates.value = result.candidates
         failed.value = result.failed
-        selected.value = Math.max(
-            0,
-            result.candidates.findIndex((c) => c.label === match),
-        )
+        const found = result.candidates.findIndex((c) => c.label === match)
+        selected.value = Math.max(0, found)
+        matchMissing.value = match !== '' && found < 0 && result.candidates.length > 0
         searched.value = true
         remember()
     } catch (error) {
@@ -211,6 +218,7 @@ function pickPoint(longitude: number, latitude: number) {
     candidates.value = []
     failed.value = []
     searched.value = true
+    matchMissing.value = false
     picked.value = { longitude, latitude }
     remember()
 }
@@ -222,6 +230,7 @@ function clear() {
     candidates.value = []
     failed.value = []
     searched.value = false
+    matchMissing.value = false
     picked.value = null
     placed.value = null
     view.value = 'belgium'
@@ -339,7 +348,8 @@ function remember() {
         )
     else if (searched.value && query.value.trim()) {
         url.searchParams.set('q', query.value.trim())
-        if (candidate.value && selected.value > 0)
+        // The match, whenever there was a choice: the register may order its results otherwise
+        if (candidate.value && candidates.value.length > 1)
             url.searchParams.set('match', candidate.value.label)
     }
     history.replaceState(history.state, '', url)
@@ -396,13 +406,14 @@ onMounted(() => {
                 <div v-if="candidates.length > 1" class="bld-controls">
                     <label>
                         {{ t.match }}
-                        <select v-model="selected" @change="remember">
+                        <select v-model="selected" @change="((matchMissing = false), remember())">
                             <option v-for="(c, i) in candidates" :key="i" :value="i">
                                 {{ c.label }}
                             </option>
                         </select>
                     </label>
                 </div>
+                <p v-if="matchMissing" class="bld-warning">{{ t.matchMissing }}</p>
                 <p>
                     <strong>{{ candidate?.label ?? t.picked }}</strong>
                     <span class="bld-muted">
