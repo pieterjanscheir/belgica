@@ -11,7 +11,10 @@ what is this court's registry e-mail, which interest rate applied on that day, w
 indemnity a claim of € 10 000 gets, and on which day does a deadline that ends on Easter Monday
 end instead.
 
-**Documentation: https://pieterjanscheir.github.io/belgica/**
+**Documentation: https://pieterjanscheir.github.io/belgica/**, with a
+[court finder](https://pieterjanscheir.github.io/belgica/guide/court-finder): an address or a point
+on the map to the courts with jurisdiction there, every canton drawn down to the house, and the
+calls behind each result.
 
 The [explorer](https://belgica.scheir.eu/) is a site built on the package, in 13 languages: a page for every
 court, canton, municipality (with its police zone) and postal code, the canton map and an interest calculator. Its

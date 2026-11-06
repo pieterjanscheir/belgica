@@ -11,7 +11,7 @@ const base = process.env.DOCS_BASE ?? '/belgica/'
 
 const en: Strings = {
     description: pkg.description,
-    nav: { guide: 'Guide', data: 'Data', api: 'API', releases: 'Releases' },
+    nav: { guide: 'Guide', data: 'Data', api: 'API', releases: 'Releases', tryIt: 'Try it' },
     sidebar: {
         guide: 'Guide',
         gettingStarted: 'Getting started',
@@ -43,6 +43,7 @@ const en: Strings = {
         policeZones: 'Police zones',
         usingTheData: 'Using the data',
         project: 'Project',
+        courtFinder: 'Court finder',
     },
     editLink: 'Edit this page on GitHub',
     lastUpdated: 'Last updated',
@@ -78,7 +79,7 @@ const en: Strings = {
 const nl: Strings = {
     description:
         'Belgische juridische referentiedata: hoven en rechtbanken, gerechtelijke kantons en arrondissementen, gemeenten, en de wettelijke en commerciële rentevoeten.',
-    nav: { guide: 'Gids', data: 'Data', api: 'API', releases: 'Releases' },
+    nav: { guide: 'Gids', data: 'Data', api: 'API', releases: 'Releases', tryIt: 'Probeer' },
     sidebar: {
         guide: 'Gids',
         gettingStarted: 'Aan de slag',
@@ -104,6 +105,7 @@ const nl: Strings = {
         knownGaps: 'Bekende hiaten',
         roadmap: 'Roadmap',
         api: 'API-referentie',
+        courtFinder: 'Rechtbankzoeker',
     },
     editLink: 'Bewerk deze pagina op GitHub',
     lastUpdated: 'Laatst bijgewerkt',
@@ -139,7 +141,7 @@ const nl: Strings = {
 const fr: Strings = {
     description:
         "Données juridiques belges de référence : cours et tribunaux, cantons et arrondissements judiciaires, communes, et les taux d'intérêt légal et commercial.",
-    nav: { guide: 'Guide', data: 'Données', api: 'API', releases: 'Versions' },
+    nav: { guide: 'Guide', data: 'Données', api: 'API', releases: 'Versions', tryIt: 'Essayer' },
     sidebar: {
         guide: 'Guide',
         gettingStarted: 'Premiers pas',
@@ -165,6 +167,7 @@ const fr: Strings = {
         knownGaps: 'Lacunes connues',
         roadmap: 'Feuille de route',
         api: "Référence de l'API",
+        courtFinder: 'Trouver la juridiction',
     },
     editLink: 'Modifier cette page sur GitHub',
     lastUpdated: 'Dernière mise à jour',
@@ -200,12 +203,16 @@ const fr: Strings = {
 function themeConfig(prefix: string, t: Strings): DefaultTheme.Config {
     // Labels a language doesn't have yet are English
     const s = { ...en.sidebar, ...t.sidebar }
+    // Pages in English, Dutch and French only so far: the other languages read the English one
+    const enNlFr = prefix === '/nl' || prefix === '/fr' ? prefix : ''
     return {
         nav: [
             // The introduction is in English only; the other languages start at getting started
             { text: t.nav.guide, link: prefix ? `${prefix}/guide/getting-started` : '/guide/' },
             { text: t.nav.data, link: `${prefix}/data/` },
             { text: t.nav.api, link: `${prefix}/api` },
+            // The court finder: the package at work, with a map
+            { text: t.nav.tryIt ?? en.nav.tryIt ?? '', link: `${enNlFr}/guide/court-finder` },
             // The Next.js site in site/, deployed on Vercel
             { text: 'Explorer', link: 'https://belgica.scheir.eu/' },
             {
@@ -226,6 +233,7 @@ function themeConfig(prefix: string, t: Strings): DefaultTheme.Config {
                     { text: s.gettingStarted, link: `${prefix}/guide/getting-started` },
                     { text: s.concepts, link: '/guide/concepts' },
                     { text: s.commonTasks, link: '/guide/common-tasks' },
+                    { text: s.courtFinder, link: `${enNlFr}/guide/court-finder` },
                 ],
             },
             {
@@ -247,11 +255,7 @@ function themeConfig(prefix: string, t: Strings): DefaultTheme.Config {
                     { text: s.prisons, link: `${prefix}/data/prisons` },
                     { text: s.housesOfJustice, link: `${prefix}/data/houses-of-justice` },
                     { text: s.postalCodes, link: `${prefix}/data/postal-codes` },
-                    // In English, Dutch and French only so far
-                    {
-                        text: s.policeZones,
-                        link: `${prefix === '/nl' || prefix === '/fr' ? prefix : ''}/data/police-zones`,
-                    },
+                    { text: s.policeZones, link: `${enNlFr}/data/police-zones` },
                     { text: s.interestRates, link: `${prefix}/data/interest-rates` },
                     { text: s.publicHolidays, link: '/data/public-holidays' },
                     // In English only so far

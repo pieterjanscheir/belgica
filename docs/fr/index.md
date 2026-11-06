@@ -10,8 +10,8 @@ hero:
           text: Premiers pas
           link: /fr/guide/getting-started
         - theme: alt
-          text: Trouver un canton
-          link: /fr/data/territory#find-the-canton-for-a-municipality
+          text: Trouver la juridiction
+          link: /fr/guide/court-finder
         - theme: alt
           text: Taux d'intérêt
           link: /fr/data/interest-rates

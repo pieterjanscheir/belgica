@@ -10,8 +10,8 @@ hero:
           text: Get started
           link: /guide/getting-started
         - theme: alt
-          text: Common tasks
-          link: /guide/common-tasks
+          text: Try the court finder
+          link: /guide/court-finder
         - theme: alt
           text: Browse the data
           link: /data/
@@ -19,8 +19,8 @@ hero:
 features:
     - title: Courts and jurisdiction
       details: Every court, division and seat on the courts' portal, with names as published, addresses and each registry's contacts. Which court has jurisdiction over a municipality, a postal code or a point on the map.
-      link: /data/courts
-      linkText: Courts
+      link: /guide/court-finder
+      linkText: Try the court finder
     - title: The judicial map
       details: All 162 judicial cantons with the municipalities they cover and the law's text for split cities, the arrondissements, REFNIS codes, postal codes and the NGI's boundaries.
       link: /data/territory

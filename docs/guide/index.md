@@ -11,17 +11,17 @@ map.
 
 ## What it answers
 
-| Question                                                          | Where to start                                                           |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| Which justice of the peace has jurisdiction over this address?    | [Common tasks](./common-tasks#which-justice-of-the-peace-for-an-address) |
-| Which police court, labour court, … covers this municipality?     | [Common tasks](./common-tasks#which-court-of-a-type-for-a-municipality)  |
-| What is this court's official name, address and registry e-mail?  | [Courts](/data/courts)                                                   |
-| Which legal or commercial interest rate applied on a day?         | [Interest rates](/data/interest-rates)                                   |
-| When does a deadline that ends on a holiday end instead?          | [Public holidays](/data/public-holidays)                                 |
-| Which municipality does a postal code belong to?                  | [Postal codes](/data/postal-codes)                                       |
-| How do I reach a prison or a house of justice?                    | [Prisons](/data/prisons), [houses of justice](/data/houses-of-justice)   |
-| How do I draw the cantons or arrondissements on a map?            | [Canton boundaries](/data/canton-boundaries)                             |
-| How do I join my data, keyed by REFNIS code, to the judicial map? | [Territory](/data/territory#municipalities)                              |
+| Question                                                          | Where to start                                                                                                      |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Which justice of the peace has jurisdiction over this address?    | [Common tasks](./common-tasks#which-justice-of-the-peace-for-an-address), or try the [court finder](./court-finder) |
+| Which police court, labour court, … covers this municipality?     | [Common tasks](./common-tasks#which-court-of-a-type-for-a-municipality)                                             |
+| What is this court's official name, address and registry e-mail?  | [Courts](/data/courts)                                                                                              |
+| Which legal or commercial interest rate applied on a day?         | [Interest rates](/data/interest-rates)                                                                              |
+| When does a deadline that ends on a holiday end instead?          | [Public holidays](/data/public-holidays)                                                                            |
+| Which municipality does a postal code belong to?                  | [Postal codes](/data/postal-codes)                                                                                  |
+| How do I reach a prison or a house of justice?                    | [Prisons](/data/prisons), [houses of justice](/data/houses-of-justice)                                              |
+| How do I draw the cantons or arrondissements on a map?            | [Canton boundaries](/data/canton-boundaries)                                                                        |
+| How do I join my data, keyed by REFNIS code, to the judicial map? | [Territory](/data/territory#municipalities)                                                                         |
 
 The [data overview](/data/) lists every dataset with its record count and source.
 

@@ -68,7 +68,8 @@ getCantonsForMunicipality('44021').map((c) => c.id) // Gent: ['gent-1', 'gent-2'
 
 Each of these cantons has the law's description of its part of the city in `territory`. With the
 address's coordinates, `findCantonsAt` picks the canton for you. See
-[which justice of the peace for an address](./common-tasks#which-justice-of-the-peace-for-an-address).
+[which justice of the peace for an address](./common-tasks#which-justice-of-the-peace-for-an-address),
+or try it on the map in the [court finder](./court-finder).
 
 ## Look up by id
 
