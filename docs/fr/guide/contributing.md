@@ -51,7 +51,15 @@ Statbel, et ouvre une issue avec le label
 [`cantons`](https://github.com/pieterjanscheir/belgica/issues?q=label%3Acantons) quand la limite
 d'un canton change ou que le registre ne correspond plus à `data/municipalities.json`
 (`scripts/parse/canton-signals.ts`). L'IGN peut redessiner une limite des semaines après le
-changement de loi : cette issue est donc un rappel, pas une garantie. Les
+changement de loi : l'exécution lit donc aussi les 60 derniers jours du Moniteur belge sur
+[etaamb](https://etaamb.openjustice.be/fr/), une copie que les runners de GitHub atteignent, et
+ajoute à cette issue chaque loi qui modifie « het bijvoegsel bij het Gerechtelijk Wetboek »
+(l'annexe au Code judiciaire, cherchée dans le texte néerlandais), jusqu'à ce que
+`scripts/parse/annex-version.json` (écrit par `pnpm build:cantons`) indique que l'annexe dont
+viennent les cantons l'inclut (`scripts/parse/annex-amendments.ts`). etaamb est un projet
+bénévole, pas le Moniteur officiel, et Justel met à jour le texte de l'annexe des semaines ou des
+mois après la publication : l'issue reste un rappel, pas une garantie ; elle signale aussi
+quand etaamb n'a rien publié depuis 10 jours. Les
 identifiants des cantons suivent la langue locale (le néerlandais en Flandre et à Bruxelles, le
 français en Wallonie, l'allemand autour d'Eupen) ; la justice de paix du canton `x` a
 l'identifiant `justice-of-the-peace-x` et y renvoie par son champ `canton`.

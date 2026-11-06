@@ -29,6 +29,7 @@ on:
                     - ngi
                     - police-zones
                     - cpi
+                    - etaamb
 
 concurrency:
     group: sources
@@ -113,7 +114,9 @@ jobs:
                   git diff --quiet -- data src/ids.generated.ts schema ids.lock.json || echo "changed=true" >> "$GITHUB_OUTPUT"
 
             # The cantons come from ejustice, which refuses GitHub's runners (#52), so they're
-            # rebuilt by hand. canton-signals.ts says when the other sources show they changed.
+            # rebuilt by hand. canton-signals.ts says when the other sources show they changed,
+            # and annex-amendments.ts when etaamb's copy of the Official Journal has a law that
+            # changes the annex.
             - name: Open or update the cantons issue
               # Also after a failed rebuild: the signals are printed before the build stops
               if: always() && steps.build.outcome != 'skipped' && github.ref == 'refs/heads/main'
@@ -138,6 +141,18 @@ jobs:
                     echo '```'
                     echo 'pnpm build:cantons && pnpm generate'
                     echo '```'
+                    # The annex lines aren't settled by a rebuild alone
+                    if grep -q '^annex: ' "$1"; then
+                      echo
+                      echo "An \`annex:\` line names a law that changes the annex. Justel adds a law to the"
+                      echo "annex's text weeks or months after it's published, and the rebuild prints the date"
+                      echo "its text is updated to: until that date reaches the law's publication date the"
+                      echo "rebuild changes nothing, so keep this issue open and run it again later. The law"
+                      echo "leaves the sources run after 60 days; this issue is what remembers it."
+                      echo
+                      echo "A line about etaamb itself (nothing published, a page that couldn't be read) needs"
+                      echo "no rebuild: look at https://etaamb.openjustice.be/nl/ and at the law it names."
+                    fi
                   }
                   gh label create cantons --color 1D76DB --description "The cantons need a rebuild by hand" 2>/dev/null || true
                   number=$(gh issue list --label cantons --state open --json number --jq '.[0].number')

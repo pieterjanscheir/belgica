@@ -68,7 +68,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
             <section className="features">
                 <article>
                     <h2>
-                        <Link href="/postal-codes/9000/">{t('featureAddressTitle')}</Link>
+                        <Link href="/jurisdiction/">{t('featureAddressTitle')}</Link>
                     </h2>
                     <p>{t('featureAddress')}</p>
                     <Code>{`

@@ -16,7 +16,9 @@
  * Run with `pnpm build:cantons`, by hand on a regular machine: it needs network access and the
  * `unzip` command, and ejustice refuses connections from GitHub's runners
  * (https://github.com/pieterjanscheir/belgica/issues/52), so the sources workflow can't
- * run it. Rerun it after a law changes the annex or municipalities merge.
+ * run it. Rerun it after a law changes the annex or municipalities merge. It also records the
+ * date Justel's text of the annex is updated to in scripts/parse/annex-version.json, so the
+ * sources run can tell which laws on etaamb the cantons don't include yet.
  */
 import { execFileSync } from 'node:child_process'
 import { mkdtempSync, writeFileSync } from 'node:fs'
@@ -165,6 +167,19 @@ async function fetchAnnex(lang: Lang): Promise<string> {
     const start = text.indexOf('Art. M1.')
     if (start === -1) throw new Error(`Annex text (${lang}) not found`)
     return text.slice(start)
+}
+
+/**
+ * The last publication date Justel's text of the annex includes ("tekstbijwerking tot"), as an
+ * ISO date. The sources run compares the laws that change the annex against it
+ * (scripts/parse/annex-amendments.ts).
+ */
+async function fetchConsolidatedTo(): Promise<string> {
+    const html = await fetchText(ANNEX_ELI, 'windows-1252')
+    const date =
+        /(?:tekstbijwerking|mise à jour du texte) (?:tot|au) (\d{2})-(\d{2})-(\d{4})/i.exec(html)
+    if (!date) throw new Error(`${ANNEX_ELI}: no "tekstbijwerking tot" date`)
+    return `${date[3]}-${date[2]}-${date[1]}`
 }
 
 async function fetchMunicipalities(): Promise<Municipality[]> {
@@ -380,6 +395,8 @@ const municipalities = await fetchMunicipalities()
 const nlBody = await fetchAnnex('nl')
 await new Promise((r) => setTimeout(r, 2000))
 const frBody = await fetchAnnex('fr')
+await new Promise((r) => setTimeout(r, 2000))
+const consolidatedTo = await fetchConsolidatedTo()
 
 const nlItems = splitItems(nlBody, 'nl')
 const frItems = splitItems(frBody, 'fr')
@@ -476,4 +493,10 @@ write(
     })),
 )
 write('cantons.json', parsed)
-console.log(`${parsed.length} cantons, ${municipalities.length} municipalities`)
+writeFileSync(
+    new URL('parse/annex-version.json', import.meta.url),
+    JSON.stringify({ eli: ANNEX_ELI, consolidatedTo }, null, 4) + '\n',
+)
+console.log(
+    `${parsed.length} cantons, ${municipalities.length} municipalities, from the annex as updated to ${consolidatedTo}`,
+)
