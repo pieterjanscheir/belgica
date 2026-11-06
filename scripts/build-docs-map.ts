@@ -12,7 +12,7 @@
  *                                and what the court finder places a point in
  *     map/maplibre-gl-worker.mjs MapLibre's worker, which must be served next to the page
  *
- * The browser fetches only the cantons in view or around an address, the way the CourtFull app
+ * The browser fetches only the cantons in view or around an address, the way the CourtMap app
  * does (github.com/pieterjanscheir/courtfull).
  */
 import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
