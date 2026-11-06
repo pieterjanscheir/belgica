@@ -1,7 +1,11 @@
 // The laws that change the annex to the Judicial Code, on test/fixtures/sources/etaamb: a trimmed
 // copy of the real law of 15 May 2024 (chapter 8 changes the annex), and a made-up law of
 // October 2026 that cites the Judicial Code but not its annex
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+
+import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 
 import {
     annexSignals,
@@ -38,6 +42,57 @@ describe('readAnnexAmendments', () => {
             lastPublication: undefined,
             unreadable: [],
         })
+    })
+})
+
+describe('a law page that is not laid out as one', () => {
+    // An error page etaamb served with a 200, as a snapshot next to a day page
+    const BROKEN = 'https://etaamb.openjustice.be/nl/wet-van-1-november-2026_n2026000003.html'
+    const dir = mkdtempSync(join(tmpdir(), 'etaamb-'))
+    const entry = (url: string, file: string) => ({
+        url,
+        status: 200,
+        contentType: 'text/html; charset=utf-8',
+        file,
+        sha256: '',
+        retrieved: '2026-11-05',
+        checked: '2026-11-05',
+    })
+    mkdirSync(join(dir, 'etaamb'))
+    writeFileSync(join(dir, 'etaamb', 'day.html'), '<main></main>')
+    writeFileSync(join(dir, 'etaamb', 'law.html'), '<main><h2>Unsupported Url Error</h2></main>')
+    writeFileSync(
+        join(dir, 'etaamb', 'index.json'),
+        JSON.stringify({
+            source: 'etaamb',
+            entries: [
+                entry('https://etaamb.openjustice.be/nl/pub/2026/11/04.html', 'day.html'),
+                entry(BROKEN, 'law.html'),
+            ],
+        }),
+    )
+    afterAll(() => {
+        rmSync(dir, { recursive: true })
+    })
+
+    it('comes out of the reader as unreadable, and out of the signals as a line', () => {
+        const read = readAnnexAmendments(dir)
+        expect(read).toEqual({
+            amendments: [],
+            lastPublication: '2026-11-04',
+            unreadable: [
+                `${BROKEN}: not a law's page as etaamb lays one out (no numac, date or title)`,
+            ],
+        })
+        expect(
+            annexSignals({
+                ...read,
+                version: { eli: '', consolidatedTo: '2024-05-28' },
+                today: '2026-11-05',
+            }),
+        ).toEqual([
+            `annex: ${BROKEN}: not a law's page as etaamb lays one out (no numac, date or title): read it by hand`,
+        ])
     })
 })
 
