@@ -502,7 +502,9 @@ function addOverlay(m: MapLibre.Map) {
 async function loadDetail(m: MapLibre.Map) {
     if (!index) return
     if (m.getZoom() < DETAIL_ZOOM) {
-        // Zoomed out, the detail layers don't draw: the overview shows every canton again
+        // Zoomed out, the detail layers don't draw: the overview shows every canton again, and
+        // a request still on its way is dropped
+        detailRequest++
         if (detail.features.length) {
             detail = { type: 'FeatureCollection', features: [] }
             ;(m.getSource('bld-detail') as MapLibre.GeoJSONSource | undefined)?.setData(detail)
@@ -524,7 +526,7 @@ async function loadDetail(m: MapLibre.Map) {
     } catch {
         return
     }
-    if (disposed || request !== detailRequest) return
+    if (disposed || request !== detailRequest || m.getZoom() < DETAIL_ZOOM) return
     const colours = new Map(index.cantons.map((c) => [c.id, c.colour]))
     detail = {
         type: 'FeatureCollection',
