@@ -266,13 +266,11 @@ const addressMunicipalities = computed(() => {
     const code = candidate.value?.label.match(/\b\d{4}\b/g)?.at(-1)
     return code ? getMunicipalitiesForPostalCode(code).map((m) => m.id) : []
 })
-// A canton can hold whole municipalities next to part of a city: the note is for the city
+// A canton can hold whole municipalities next to part of a city: the note is for an address in
+// the city, and not shown when the municipality isn't known (a point picked on the map)
 const splitMunicipality = computed(() =>
     cantons.value[0]?.municipalities.find(
-        (m) =>
-            m.partial === true &&
-            (!addressMunicipalities.value.length ||
-                addressMunicipalities.value.includes(m.municipality)),
+        (m) => m.partial === true && addressMunicipalities.value.includes(m.municipality),
     ),
 )
 
