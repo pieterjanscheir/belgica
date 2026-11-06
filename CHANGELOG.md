@@ -7,26 +7,6 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
-## [0.8.0] - 2026-11-05
-
-### Added
-
-- **Procedural indemnity** (rechtsplegingsvergoeding / indemnité de procédure, part of
-  [#60](https://github.com/pieterjanscheir/belgica/issues/60)): `data/procedural-indemnities.json`
-  has the brackets of the general tariff and the three labour tariffs of the KB of 26 October
-  2007 as the KB sets them, and every indexation since 1 January 2008: the steps of 10 % until
-  2022, and the formula of the KB of 16 May 2024 from 1 March 2025. The new entry point
-  `belgica/procedural-indemnities` (not in the root) has `getProceduralIndemnity(claim, date)`,
-  `getProceduralIndemnityTable`, `getProceduralIndemnityIndexation`, `indexProceduralIndemnity`
-  and `getProceduralIndemnityTariff`. The amounts of 1 March 2025 match the table of the College
-  van de hoven en rechtbanken to the cent. The CSV release has the tariffs and the indexations as
-  two tables.
-- **A new indexation of the procedural indemnity comes in by itself**
-  ([#60](https://github.com/pieterjanscheir/belgica/issues/60)): the sources workflow fetches
-  Statbel's consumer price index every day (the other sources stay twice a week). When a month's
-  index reaches the next threshold, 10 points above or below the last one, it adds the indexation
-  from the first day of the next month and opens the data pull request with it. A manual run of
-  the workflow picks one source, or all of them, from a dropdown.
 ### Added
 
 - The explorer has a court finder, `/jurisdiction/`: pick a municipality or postal code and it
@@ -48,6 +28,27 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   that law in it. `pnpm build:cantons` records that text's date in
   `scripts/parse/annex-version.json`. The issue also says when etaamb has published nothing
   for 10 days.
+
+## [0.8.0] - 2026-11-05
+
+### Added
+
+- **Procedural indemnity** (rechtsplegingsvergoeding / indemnité de procédure, part of
+  [#60](https://github.com/pieterjanscheir/belgica/issues/60)): `data/procedural-indemnities.json`
+  has the brackets of the general tariff and the three labour tariffs of the KB of 26 October
+  2007 as the KB sets them, and every indexation since 1 January 2008: the steps of 10 % until
+  2022, and the formula of the KB of 16 May 2024 from 1 March 2025. The new entry point
+  `belgica/procedural-indemnities` (not in the root) has `getProceduralIndemnity(claim, date)`,
+  `getProceduralIndemnityTable`, `getProceduralIndemnityIndexation`, `indexProceduralIndemnity`
+  and `getProceduralIndemnityTariff`. The amounts of 1 March 2025 match the table of the College
+  van de hoven en rechtbanken to the cent. The CSV release has the tariffs and the indexations as
+  two tables.
+- **A new indexation of the procedural indemnity comes in by itself**
+  ([#60](https://github.com/pieterjanscheir/belgica/issues/60)): the sources workflow fetches
+  Statbel's consumer price index every day (the other sources stay twice a week). When a month's
+  index reaches the next threshold, 10 points above or below the last one, it adds the indexation
+  from the first day of the next month and opens the data pull request with it. A manual run of
+  the workflow picks one source, or all of them, from a dropdown.
 
 ### Fixed
 
