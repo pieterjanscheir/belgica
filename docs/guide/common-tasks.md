@@ -67,6 +67,9 @@ There are two ways to settle it:
 The boundaries are the National Geographic Institute's reading of the law. For an address
 close to a boundary line, the `territory` text decides.
 
+The [court finder](./court-finder) does all of this in the browser, on a map, and shows the
+calls behind each result.
+
 ## Which court of a type for a municipality?
 
 Every court other than a justice of the peace lists the cantons its area holds (`cantons`), as

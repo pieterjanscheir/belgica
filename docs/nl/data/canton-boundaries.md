@@ -122,6 +122,17 @@ geocoderen (straat en nummer naar coördinaten) is aan jou: de adresregisters va
 (het Adressenregister van Vlaanderen, UrbIS van Brussel, ICAR van Wallonië) en de federale
 adresdata BeSt op geo.be doen dat.
 
+## Van een adres naar de rechtbank {#from-an-address-to-the-court}
+
+Typ een adres, of klik op de kaart: het adresregister van het gewest geocodeert het (het
+Adressenregister in Vlaanderen, UrbIS in Brussel, ICAR in Wallonië), het punt gaat naar de
+grenzen, en het kanton naar `getCourtsForCanton`. De kaart tekent elk kanton, en vanaf zoom 11,5
+de grenzen op volle precisie over de gebouwen en huisnummers. Binnen 25 m van een ander kanton
+waarschuwt de zoeker en toont hij de wettekst van beide. Hoe het stap voor stap gebouwd is, staat
+op de pagina [rechtbankzoeker](/nl/guide/court-finder).
+
+<CourtFinder />
+
 ## In andere talen {#in-other-languages}
 
 Het bestand is gewone GeoJSON-geometrie per record, dus elk GIS leest het. In Python met Shapely:

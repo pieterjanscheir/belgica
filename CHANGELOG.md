@@ -9,6 +9,18 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Added
 
+- The documentation has a [court finder](https://pieterjanscheir.github.io/belgica/guide/court-finder),
+  in English, Dutch and French: an address (geocoded by the region's register) or a point clicked
+  on the map, placed in the canton boundaries, and every court with jurisdiction there as a card
+  with its address and registry contacts, the law's text where the point is within 25 m of
+  another canton, and the calls that gave the result. The map (MapLibre on OpenFreeMap's tiles)
+  tints every canton in one of six colours, never a neighbour's, draws the boundaries at full
+  precision over the buildings and house numbers when zoomed in, and marks the justices of the
+  peace. `pnpm build:docs-map` writes what it fetches: an overview simplified to 50 m and one
+  file per canton, so a page loads a few hundred kB rather than the 23 MB of boundaries. The
+  canton lookup on the territory page shows a municipality's cantons on the same map, and the
+  address lookup prototype on the canton boundaries page is the court finder now.
+
 - The explorer has a court finder, `/jurisdiction/`: pick a municipality or postal code and it
   lists every court with jurisdiction there, from the justice of the peace to the court of
   appeal and the court of assize, with what each one hears, its registry's address, phone,

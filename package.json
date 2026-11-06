@@ -134,8 +134,8 @@
         "typecheck": "pnpm build:data-files && tsc --noEmit",
         "check": "pnpm generate && pnpm typecheck && pnpm lint && pnpm build && pnpm test:coverage && pnpm test:package && pnpm lint:package && git diff --exit-code -- schema data/courts.json src/ids.generated.ts src/canton-names.generated.ts src/data-files.generated.ts src/court-details-files.generated.ts ids.lock.json",
         "prepublishOnly": "pnpm check",
-        "docs:dev": "vitepress dev docs",
-        "docs:build": "vitepress build docs",
+        "docs:dev": "pnpm build:docs-map && vitepress dev docs",
+        "docs:build": "pnpm build:docs-map && vitepress build docs",
         "docs:preview": "vitepress preview docs",
         "site:dev": "pnpm --filter belgica-site dev",
         "site:build": "pnpm --filter belgica-site build",
@@ -151,7 +151,8 @@
         "test:package": "node test/smoke/esm.mjs && node test/smoke/cjs.cjs && node test/smoke/courts-bundle.mjs && node test/smoke/bundle-size.mjs && node test/smoke/package-size.mjs",
         "build:canton-names": "node scripts/build-canton-names.ts",
         "build:court-labels": "node scripts/build-court-labels.ts",
-        "build:data-files": "node scripts/build-data-files.ts"
+        "build:data-files": "node scripts/build-data-files.ts",
+        "build:docs-map": "node scripts/build-docs-map.ts"
     },
     "devDependencies": {
         "@arethetypeswrong/cli": "^0.18.5",
@@ -164,6 +165,7 @@
         "eslint": "^10.13.0",
         "eslint-plugin-jsdoc": "^65.4.0",
         "globals": "^17.13.0",
+        "maplibre-gl": "^6.16.0",
         "node-html-parser": "^9.0.5",
         "pkg-pr-new": "0.0.92",
         "polygon-clipping": "0.15.7",
