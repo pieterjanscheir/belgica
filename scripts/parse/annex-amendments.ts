@@ -66,7 +66,11 @@ const isoDate = (date: string) => date.split('/').reverse().join('-')
  * can't be said.
  */
 export function readAmendment(html: string, url: string): Amendment | undefined {
-    const main = /<main\b[\s\S]*<\/main>/i.exec(html)?.[0] ?? html
+    // etaamb holds a law's text in one <main> element: without its end the page was cut off,
+    // and what's missing may be the article that changes the annex
+    const main = /<main\b[\s\S]*<\/main>/i.exec(html)?.[0]
+    if (main === undefined)
+        throw new Error(`${url}: cut off, or not a law's page as etaamb lays one out (no <main>)`)
     const numac = /<dd class="numac">\s*(\d{10})\s*<\/dd>/.exec(main)?.[1]
     const published = /<dt>pub\.<\/dt>\s*<dd class="date">\s*(\d{2}\/\d{2}\/\d{4})/.exec(main)?.[1]
     const title = /<h1 class="doc_title">([\s\S]*?)<\/h1>/.exec(main)?.[1]

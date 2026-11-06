@@ -118,6 +118,17 @@ describe('readAmendment', () => {
         })
     })
 
+    it('throws for a page cut off before the end of its text', () => {
+        const whole = page(
+            '<p>Art. 5. In artikel 1 van het bijvoegsel bij het Gerechtelijk Wetboek</p>',
+        )
+        expect(readAmendment(whole, url)?.numac).toBe('2026000009')
+        // The numac, the date and the title are there, the article that changes the annex isn't
+        expect(() => readAmendment(whole.slice(0, whole.indexOf('<p>Art. 5.')), url)).toThrow(
+            /cut off/,
+        )
+    })
+
     it('throws for a page that is not laid out as a law, whatever it cites', () => {
         expect(() => readAmendment('<main><h2>Unsupported Url Error</h2></main>', url)).toThrow(
             /not a law's page/,
