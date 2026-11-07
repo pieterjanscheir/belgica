@@ -17,6 +17,7 @@
  */
 import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 
+import { assertId } from './id.ts'
 import type { CantonBoundary } from '../src/schemas/canton-boundaries.ts'
 import type { CourtLocation } from '../src/schemas/court-locations.ts'
 import type { Canton } from '../src/schemas/territory.ts'
@@ -106,7 +107,8 @@ for (const boundary of boundaries) {
     entries.push({ id: canton.id, box: box(geometry), colour: 0, geometry })
     const file = JSON.stringify({ id: canton.id, geometry: boundary.geometry })
     bytes += file.length
-    writeFileSync(new URL(`cantons/${canton.id}.json`, dir), file)
+    // The id names the file: nothing but an id gets through
+    writeFileSync(new URL(`cantons/${assertId(canton.id, 'canton id')}.json`, dir), file)
 }
 
 // Neighbours: cantons sharing a boundary point. Greedy colouring, the most connected first.
