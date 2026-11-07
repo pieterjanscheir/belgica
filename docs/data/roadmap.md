@@ -6,7 +6,8 @@ follow the [conventions](/guide/contributing#adding-a-dataset).
 
 The public and judicial holidays ([#61](https://github.com/pieterjanscheir/belgica/issues/61))
 were on this list and have shipped: see [public holidays](./public-holidays). So have the police
-zones ([#7](https://github.com/pieterjanscheir/belgica/issues/7)): see [police zones](./police-zones).
+zones ([#7](https://github.com/pieterjanscheir/belgica/issues/7)): see [police zones](./police-zones), and the procedural
+indemnity ([#60](https://github.com/pieterjanscheir/belgica/issues/60)): see [procedural indemnity](./procedural-indemnities).
 
 ## Courts, offices and people
 
@@ -36,7 +37,6 @@ zones ([#7](https://github.com/pieterjanscheir/belgica/issues/7)): see [police z
 | Dataset                                                                                               | Why it's useful                                                                        | Issue                                                         |
 | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | **Court fees** (rolrechten / droits de mise au rôle, griffierechten / droits de greffe)               | Cost estimates and e-filing; the fee depends on the filing date                        | [#59](https://github.com/pieterjanscheir/belgica/issues/59)   |
-| **Procedural indemnity** (rechtsplegingsvergoeding / indemnité de procédure)                          | The brackets and their indexation, for every cost estimate and judgment                | [#60](https://github.com/pieterjanscheir/belgica/issues/60)   |
 | **Amount thresholds for competence and appeal** (art. 590, 617 Ger.W.)                                | Which court hears a claim, and whether its judgment can be appealed                    | [#69](https://github.com/pieterjanscheir/belgica/issues/69)   |
 | **Health index** (gezondheidsindex / indice santé) per month                                          | Rent and maintenance indexation                                                        | [#62](https://github.com/pieterjanscheir/belgica/issues/62)   |
 | **Damages and interest caps for consumer debts** (Book XIX WER / CDE)                                 | What can be charged to a consumer who pays late                                        | [#63](https://github.com/pieterjanscheir/belgica/issues/63)   |

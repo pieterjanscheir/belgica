@@ -5,7 +5,7 @@
  */
 export interface Strings {
     description: string
-    nav: { guide: string; data: string; api: string; releases: string }
+    nav: { guide: string; data: string; api: string; releases: string; tryIt?: string }
     sidebar: {
         guide: string
         gettingStarted: string
@@ -25,6 +25,7 @@ export interface Strings {
         housesOfJustice: string
         interestRates: string
         publicHolidays: string
+        proceduralIndemnity: string
         postalCodes: string
         knownGaps: string
         roadmap: string
@@ -37,6 +38,7 @@ export interface Strings {
         policeZones?: string
         usingTheData?: string
         project?: string
+        courtFinder?: string
     }
     editLink: string
     lastUpdated: string
@@ -66,7 +68,7 @@ export interface Strings {
 
 /** The interactive components that show words: each takes its strings from `useStrings(name, …)` */
 export type ComponentName =
-    'AddressLookup' | 'CantonLookup' | 'CourtList' | 'DataStats' | 'InterestRates'
+    'CantonLookup' | 'CantonMap' | 'CourtFinder' | 'CourtList' | 'DataStats' | 'InterestRates'
 
 /**
  * A language beyond English, Dutch and French: one file per language in this folder, next to its
@@ -82,10 +84,15 @@ export interface LocaleFile {
     dir?: 'ltr' | 'rtl'
     site: Strings
     /**
-     * Every key of the component's English (`root`) strings, translated. AddressLookup is a
-     * prototype: English, Dutch and French only until it settles.
+     * Every key of the component's English (`root`) strings, translated. The map and the court
+     * finder are in English, Dutch and French only so far: a language without their strings
+     * shows them in English.
      */
-    components: Record<Exclude<ComponentName, 'AddressLookup'>, Record<string, string>> & {
-        AddressLookup?: Record<string, string>
+    components: Record<
+        Exclude<ComponentName, 'CantonMap' | 'CourtFinder'>,
+        Record<string, string>
+    > & {
+        CantonMap?: Record<string, string>
+        CourtFinder?: Record<string, string>
     }
 }

@@ -4,24 +4,25 @@ Every dataset is a JSON file in `data/`, described by a [JSON Schema](/guide/sch
 in [`datapackage.json`](/guide/schema#datapackage-json) with its official sources, licence and
 the date it was last checked against them.
 
-| Dataset                                                                    | Records  | What you'd use it for                                                               |
-| -------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------- |
-| [Judicial areas](./territory#judicial-areas)                               | 5        | Which court of appeal (and labour court of appeal) hears an appeal                  |
-| [Arrondissements](./territory#arrondissements)                             | 12       | Grouping courts, prosecutors and bailiffs; the unit most jurisdiction rules use     |
-| [Cantons](./territory#cantons)                                             | 162      | Which justice of the peace has jurisdiction over an address                         |
-| [Canton boundaries](./canton-boundaries)                                   | 162      | The canton of a point in a split city; the cantons on a map (GeoJSON)               |
-| [Arrondissement boundaries](./canton-boundaries#arrondissement-boundaries) | 12       | The arrondissements on a map (GeoJSON)                                              |
-| [Municipalities](./territory#municipalities)                               | 565      | Joining any Belgian address or statistic to the judicial map by REFNIS code         |
-| [Regions](./territory#regions)                                             | 3        | The region of a municipality, by REFNIS code, named in three languages              |
-| [Provinces](./territory#provinces)                                         | 10       | The province of a municipality (none in Brussels), with its region                  |
-| [Postal codes](./postal-codes)                                             | 1 152    | From an address's postal code to its municipality, and on to its cantons and courts |
-| [Police zones](./police-zones)                                             | 175      | Which police zone handles a municipality, by its official zone number               |
-| [Courts](./courts)                                                         | 347      | Names, addresses and registries' contacts to write to, file with or pay any court   |
-| [Court locations](./courts#locations)                                      | 139      | The justices of the peace on a map (GeoJSON points)                                 |
-| [Prisons](./prisons)                                                       | 39       | Addresses and contacts of every prison and detention house                          |
-| [Houses of justice](./houses-of-justice)                                   | 27       | Probation, victim support and social studies for the family courts                  |
-| [Interest rates](./interest-rates)                                         | 2 series | Calculating late-payment interest on a claim                                        |
-| [Public holidays](./public-holidays)                                       | 10 rules | Moving the last day of a deadline to the next working day (art. 53 Ger.W.)          |
+| Dataset                                                                    | Records   | What you'd use it for                                                               |
+| -------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------- |
+| [Judicial areas](./territory#judicial-areas)                               | 5         | Which court of appeal (and labour court of appeal) hears an appeal                  |
+| [Arrondissements](./territory#arrondissements)                             | 12        | Grouping courts, prosecutors and bailiffs; the unit most jurisdiction rules use     |
+| [Cantons](./territory#cantons)                                             | 162       | Which justice of the peace has jurisdiction over an address                         |
+| [Canton boundaries](./canton-boundaries)                                   | 162       | The canton of a point in a split city; the cantons on a map (GeoJSON)               |
+| [Arrondissement boundaries](./canton-boundaries#arrondissement-boundaries) | 12        | The arrondissements on a map (GeoJSON)                                              |
+| [Municipalities](./territory#municipalities)                               | 565       | Joining any Belgian address or statistic to the judicial map by REFNIS code         |
+| [Regions](./territory#regions)                                             | 3         | The region of a municipality, by REFNIS code, named in three languages              |
+| [Provinces](./territory#provinces)                                         | 10        | The province of a municipality (none in Brussels), with its region                  |
+| [Postal codes](./postal-codes)                                             | 1 152     | From an address's postal code to its municipality, and on to its cantons and courts |
+| [Police zones](./police-zones)                                             | 175       | Which police zone handles a municipality, by its official zone number               |
+| [Courts](./courts)                                                         | 347       | Names, addresses and registries' contacts to write to, file with or pay any court   |
+| [Court locations](./courts#locations)                                      | 139       | The justices of the peace on a map (GeoJSON points)                                 |
+| [Prisons](./prisons)                                                       | 39        | Addresses and contacts of every prison and detention house                          |
+| [Houses of justice](./houses-of-justice)                                   | 27        | Probation, victim support and social studies for the family courts                  |
+| [Interest rates](./interest-rates)                                         | 2 series  | Calculating late-payment interest on a claim                                        |
+| [Public holidays](./public-holidays)                                       | 10 rules  | Moving the last day of a deadline to the next working day (art. 53 Ger.W.)          |
+| [Procedural indemnity](./procedural-indemnities)                           | 4 tariffs | The minimum, base and maximum indemnity for a claim on the day of the judgment      |
 
 ## How the datasets fit together
 

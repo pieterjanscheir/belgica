@@ -31,7 +31,6 @@
 | 数据集                                                                                 | 用途                                                           | Issue                                                       |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------- |
 | **诉讼费用**（rolrechten / droits de mise au rôle、griffierechten / droits de greffe） | 费用估算和电子立案；费用取决于立案日期                         | [#59](https://github.com/pieterjanscheir/belgica/issues/59) |
-| **诉讼费补偿**（rechtsplegingsvergoeding / indemnité de procédure）                    | 分档金额及其指数化调整，用于每一次费用估算和判决               | [#60](https://github.com/pieterjanscheir/belgica/issues/60) |
 | **管辖和上诉的金额门槛**（art. 590, 617 Ger.W.）                                       | 哪个法院审理某项请求，以及其判决能否上诉                       | [#69](https://github.com/pieterjanscheir/belgica/issues/69) |
 | **司法假期和公共假日**                                                                 | 计算诉讼期限                                                   | [#61](https://github.com/pieterjanscheir/belgica/issues/61) |
 | 每月的**健康指数**（gezondheidsindex / indice santé）                                  | 租金和抚养费的指数化                                           | [#62](https://github.com/pieterjanscheir/belgica/issues/62) |

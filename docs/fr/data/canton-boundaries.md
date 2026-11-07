@@ -123,6 +123,17 @@ l'adresse (rue et numéro vers des coordonnées) vous revient : les registres d'
 (Adressenregister de la Flandre, UrbIS de Bruxelles, ICAR de la Wallonie) et les données d'adresses
 fédérales BeSt sur geo.be le font.
 
+## De l'adresse à la juridiction {#from-an-address-to-the-court}
+
+Tapez une adresse, ou cliquez sur la carte : le registre d'adresses de la région la géocode
+(l'Adressenregister en Flandre, UrbIS à Bruxelles, ICAR en Wallonie), le point va aux limites, et
+le canton à `getCourtsForCanton`. La carte dessine chaque canton et, à partir du zoom 11,5, les
+limites en pleine précision sur les bâtiments et les numéros de maison. À moins de 25 m d'un autre
+canton, l'outil avertit et montre le texte de la loi pour les deux. Comment c'est construit, étape
+par étape, est sur la page [trouver la juridiction](/fr/guide/court-finder).
+
+<CourtFinder />
+
 ## Dans d'autres langages {#in-other-languages}
 
 Le fichier est de la simple géométrie GeoJSON par enregistrement, si bien que n'importe quel SIG le

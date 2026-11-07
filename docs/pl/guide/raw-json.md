@@ -8,7 +8,7 @@ Możesz je czytać z dowolnego języka:
 - z surowego URL-a przypiętego do release tagu.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data/cantons.json
 ```
 
 Przypinaj tag zamiast `main`, żeby dane zmieniały się tylko wtedy, gdy sam zdecydujesz się na
@@ -20,7 +20,7 @@ aktualizację.
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

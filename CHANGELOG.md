@@ -7,8 +7,68 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Added
+
+- The documentation has a [court finder](https://pieterjanscheir.github.io/belgica/guide/court-finder),
+  in English, Dutch and French: an address (geocoded by the region's register) or a point clicked
+  on the map, placed in the canton boundaries, and every court with jurisdiction there as a card
+  with its address and registry contacts, the law's text where the point is within 25 m of
+  another canton, and the calls that gave the result. The map (MapLibre on OpenFreeMap's tiles)
+  tints every canton in one of six colours, never a neighbour's, draws the boundaries at full
+  precision over the buildings and house numbers when zoomed in, and marks the justices of the
+  peace. `pnpm build:docs-map` writes what it fetches: an overview simplified to 50 m and one
+  file per canton, so a page loads a few hundred kB rather than the 23 MB of boundaries. The
+  canton lookup on the territory page shows a municipality's cantons on the same map, and the
+  address lookup prototype on the canton boundaries page is the court finder now.
+
+- The explorer has a court finder, `/jurisdiction/`: pick a municipality or postal code and it
+  lists every court with jurisdiction there, from the justice of the peace to the court of
+  appeal and the court of assize, with what each one hears, its registry's address, phone,
+  e-mail and website, and the municipality's police zone. In a city split over cantons it asks
+  for the street and number, places them in the canton boundaries as the address lookup does,
+  and keeps only that canton's courts. An OpenStreetMap map (Leaflet) draws the municipality's
+  cantons and the address, and a click on it places a point there instead; in Brussels it says the language of the proceedings
+  picks between the Dutch- and the French-speaking court. The link holds the municipality and
+  the address, so a result can be shared. It reads only the package's data, written by the
+  site at build time to `jurisdiction.json`.
+- The explorer's header puts its links on their own row, which no longer wraps onto two lines,
+  and marks the page you're on.
+
+- The sources run reads the laws of the last 60 days in the Belgian Official Journal on
+  etaamb, a copy that GitHub's runners can reach, and opens the `cantons` issue for a law that
+  changes the annex to the Judicial Code, until `pnpm build:cantons` has read Justel's text with
+  that law in it. `pnpm build:cantons` records that text's date in
+  `scripts/parse/annex-version.json`. The issue also says when etaamb has published nothing
+  for 10 days.
+
+## [0.8.0] - 2026-11-05
+
+### Added
+
+- **Procedural indemnity** (rechtsplegingsvergoeding / indemnité de procédure, part of
+  [#60](https://github.com/pieterjanscheir/belgica/issues/60)): `data/procedural-indemnities.json`
+  has the brackets of the general tariff and the three labour tariffs of the KB of 26 October
+  2007 as the KB sets them, and every indexation since 1 January 2008: the steps of 10 % until
+  2022, and the formula of the KB of 16 May 2024 from 1 March 2025. The new entry point
+  `belgica/procedural-indemnities` (not in the root) has `getProceduralIndemnity(claim, date)`,
+  `getProceduralIndemnityTable`, `getProceduralIndemnityIndexation`, `indexProceduralIndemnity`
+  and `getProceduralIndemnityTariff`. The amounts of 1 March 2025 match the table of the College
+  van de hoven en rechtbanken to the cent. The CSV release has the tariffs and the indexations as
+  two tables.
+- **A new indexation of the procedural indemnity comes in by itself**
+  ([#60](https://github.com/pieterjanscheir/belgica/issues/60)): the sources workflow fetches
+  Statbel's consumer price index every day (the other sources stay twice a week). When a month's
+  index reaches the next threshold, 10 points above or below the last one, it adds the indexation
+  from the first day of the next month and opens the data pull request with it. A manual run of
+  the workflow picks one source, or all of them, from a dropdown.
+
 ### Fixed
 
+- **Canton boundaries**: Gent 2 meets Oudenaarde point for point again. Moving Mariakerke to
+  Gent 3 in 0.7.0 dropped a point of Gent 2 that lies on a straight line, which Oudenaarde
+  keeps, so joining the two cantons left a sliver of about a metre near Deinze. The build now
+  puts back the points a correction's cut drops, and a test checks that corrected cantons meet
+  their neighbours point for point.
 - The explorer's canton map keeps its tooltip inside the map: near the right or top edge it
   opens on the other side of the cursor instead of running off the map.
 
@@ -473,7 +533,8 @@ OpenStreetMap `opening_hours` syntax (`Mo-Fr 08:30-12:30,13:30-16:00`).
 - Courts (justices of the peace in East and West Flanders, Ondernemingsrechtbank Gent) and the
   legal and commercial interest rates.
 
-[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/pieterjanscheir/belgica/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/pieterjanscheir/belgica/compare/v0.6.2...v0.7.0
 [0.6.2]: https://github.com/pieterjanscheir/belgica/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/pieterjanscheir/belgica/compare/v0.6.0...v0.6.1

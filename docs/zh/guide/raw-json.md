@@ -7,7 +7,7 @@
 - 通过固定到某个 release tag 的 raw URL 读取。
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data/cantons.json
 ```
 
 请固定到某个 tag 而不是 `main`，这样数据只会在你主动升级时才变化。
@@ -18,7 +18,7 @@ https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data/cantons.js
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

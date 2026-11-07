@@ -5,6 +5,7 @@ import { getCourt, getCanton, cantons as allCantons } from 'belgica'
 import { cantons, getCantonsForMunicipality } from 'belgica/territory'
 import { formatCourtName, getJusticeOfThePeace } from 'belgica/courts'
 import { getInterestRate } from 'belgica/interest-rates'
+import { getProceduralIndemnity } from 'belgica/procedural-indemnities'
 import { getPublicHolidays, nextWorkingDay } from 'belgica/calendar'
 import { getPrison } from 'belgica/prisons'
 import { getHouseOfJustice } from 'belgica/houses-of-justice'
@@ -23,6 +24,7 @@ import east from 'belgica/data/courts/justice-of-the-peace/oost-vlaanderen.json'
 import { statSync } from 'node:fs'
 
 assert.equal(getCourt('justice-of-the-peace-gent-1').name.nl, 'Vredegerecht Gent 1')
+assert.equal(getProceduralIndemnity(10_000, '2025-03-01').base, 1412.79)
 assert.equal(getJusticeOfThePeace('gent-1').id, 'justice-of-the-peace-gent-1')
 assert.equal(
     formatCourtName(getJusticeOfThePeace('gent-1'), 'fr', { style: 'canton' }),

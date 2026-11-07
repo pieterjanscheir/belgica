@@ -18,7 +18,7 @@ import { readFileSync } from 'node:fs'
 import polygonClipping from 'polygon-clipping'
 
 import { area } from './boundaries.ts'
-import type { MultiPolygonRings } from './geopackage.ts'
+import type { MultiPolygonRings, Position } from './geopackage.ts'
 import type { CantonBoundary, MultiPolygon } from './types.ts'
 
 /** Where the outlines of the sub-municipalities come from */
@@ -81,6 +81,71 @@ const CAUGHT_UP = 0.01
  * caught up; less, and the NGI drew the area somewhere else, which the build reports
  */
 const ARRIVED = 1 - 5 * CAUGHT_UP
+
+/** The size of a cell of the grid restoreVertices finds points with, in degrees */
+const CELL = 0.001
+
+/**
+ * How far from an edge a point may lie and still be on it, in degrees: far below the 7 decimals
+ * the coordinates are rounded to, so it only absorbs the error of the arithmetic
+ */
+const ON_EDGE = 1e-10
+
+/**
+ * Puts back the points of `originals` that lie on an edge of the cut polygons. polygon-clipping
+ * drops a point that lies exactly on the line between its neighbours, but the canton next door
+ * keeps it, and the two borders no longer meet point for point: joined, they leave a sliver
+ * (for Mariakerke, a metre at Gent 2's border with Oudenaarde). The coordinates are rounded to
+ * 7 decimals before the cut, so a dropped point lies on the edge to within ON_EDGE; a point next
+ * to an edge is no reason to bend it.
+ */
+export function restoreVertices(
+    originals: readonly MultiPolygon[],
+): (polygons: MultiPolygonRings) => MultiPolygonRings {
+    const grid = new Map<string, Position[]>()
+    const cell = (x: number, y: number) => `${Math.floor(x / CELL)},${Math.floor(y / CELL)}`
+    for (const geometry of originals)
+        for (const polygon of rings(geometry))
+            for (const ring of polygon)
+                for (const point of ring) {
+                    const key = cell(point[0], point[1])
+                    const points = grid.get(key)
+                    if (points) points.push(point)
+                    else grid.set(key, [point])
+                }
+    /** The points strictly inside the edge from p to q, from p to q */
+    const between = (p: Position, q: Position): Position[] => {
+        const found: { point: Position; t: number }[] = []
+        const seen = new Set<string>()
+        const [dx, dy] = [q[0] - p[0], q[1] - p[1]]
+        const length = dx * dx + dy * dy
+        if (length === 0) return []
+        const [x0, x1] = [Math.min(p[0], q[0]), Math.max(p[0], q[0])]
+        const [y0, y1] = [Math.min(p[1], q[1]), Math.max(p[1], q[1])]
+        for (let i = Math.floor(x0 / CELL); i <= Math.floor(x1 / CELL); i++)
+            for (let j = Math.floor(y0 / CELL); j <= Math.floor(y1 / CELL); j++)
+                for (const point of grid.get(`${i},${j}`) ?? []) {
+                    const [ex, ey] = [point[0] - p[0], point[1] - p[1]]
+                    const cross = dx * ey - dy * ex
+                    if (cross * cross > ON_EDGE * ON_EDGE * length) continue
+                    const t = (ex * dx + ey * dy) / length
+                    const key = `${point[0]},${point[1]}`
+                    if (t <= 0 || t >= 1 || seen.has(key)) continue
+                    seen.add(key)
+                    found.push({ point, t })
+                }
+        return found.sort((a, b) => a.t - b.t).map(({ point }) => point)
+    }
+    return (polygons) =>
+        polygons.map((polygon) =>
+            polygon.map((ring) =>
+                ring.flatMap((point, i) => {
+                    const next = ring[i + 1]
+                    return next ? [point, ...between(point, next)] : [point]
+                }),
+            ),
+        )
+}
 
 const percent = (share: number) => `${(share * 100).toFixed(1)}%`
 
@@ -152,11 +217,17 @@ export function applyCorrections(
             { url: correction.law.url, retrieved: STATBEL_SECTORS_RETRIEVED },
             { url: STATBEL_SECTORS, retrieved: STATBEL_SECTORS_RETRIEVED },
         ]
-        byId.set(from, { ...source, geometry: multiPolygon(kept), sources: sources(source) })
+        // The neighbours share the cantons' points, so the cut puts back those it dropped
+        const restore = restoreVertices([source.geometry, target.geometry])
+        byId.set(from, {
+            ...source,
+            geometry: multiPolygon(restore(kept)),
+            sources: sources(source),
+        })
         byId.set(to, {
             ...target,
             geometry: multiPolygon(
-                polygonClipping.union(rings(target.geometry), moved, ...slivers),
+                restore(polygonClipping.union(rings(target.geometry), moved, ...slivers)),
             ),
             sources: sources(target),
         })

@@ -8,7 +8,7 @@ funções auxiliares. Pode lê-los a partir de qualquer linguagem:
 - a partir de um URL raw fixado numa tag de release.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data/cantons.json
 ```
 
 Fixe uma tag em vez de `main`, para que os dados só mudem quando decidir atualizar.
@@ -19,7 +19,7 @@ Fixe uma tag em vez de `main`, para que os dados só mudem quando decidir atuali
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.7.0/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 

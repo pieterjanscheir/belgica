@@ -10,8 +10,8 @@ hero:
           text: Aan de slag
           link: /nl/guide/getting-started
         - theme: alt
-          text: Zoek een kanton
-          link: /nl/data/territory#find-the-canton-for-a-municipality
+          text: Zoek de rechtbank
+          link: /nl/guide/court-finder
         - theme: alt
           text: Rentevoeten
           link: /nl/data/interest-rates

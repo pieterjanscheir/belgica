@@ -155,15 +155,14 @@ build fails.
 
 ## From an address to the court
 
-A prototype: type an address, and the region's own address register geocodes it (the
-Adressenregister in Flanders, UrbIS in Brussels, ICAR in Wallonia). The point goes to
-`findCantonsAt`, and the canton to `getCourtsForCanton`. For an address the register knows down
-to the house number, the point is on the building, so the even and odd sides of a boundary
-street fall in the right canton. When it knows only the street, the point is somewhere on the
-street, and the lookup says so. Within 25 m of another canton the lookup warns and shows the
-law's text for both.
+Type an address, or click the map: the region's own address register geocodes it (the
+Adressenregister in Flanders, UrbIS in Brussels, ICAR in Wallonia), the point goes to the
+boundaries, and the canton to `getCourtsForCanton`. The map draws every canton, and from zoom
+11.5 the boundaries at full precision over the buildings and house numbers. Within 25 m of
+another canton the finder warns and shows the law's text for both. How it's built, step by
+step, is on the [court finder](/guide/court-finder) page.
 
-<AddressLookup />
+<CourtFinder />
 
 ## In other languages
 

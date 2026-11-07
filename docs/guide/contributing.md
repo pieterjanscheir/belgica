@@ -45,7 +45,14 @@ the NGI's canton boundaries and Statbel's REFNIS register instead, and opens an 
 [`cantons`](https://github.com/pieterjanscheir/belgica/issues?q=label%3Acantons) when a canton's
 boundary changes or the register no longer matches `data/municipalities.json`
 (`scripts/parse/canton-signals.ts`). The NGI may redraw a boundary weeks after the law changes,
-so that issue is a reminder, not a guarantee. Canton ids follow the local
+so the run also reads the last 60 days of the Belgian Official Journal on
+[etaamb](https://etaamb.openjustice.be/nl/), a copy that GitHub's runners can reach, and adds
+every law that changes "het bijvoegsel bij het Gerechtelijk Wetboek" to that issue, until
+`scripts/parse/annex-version.json` (written by `pnpm build:cantons`) says the annex the cantons
+were built from includes it (`scripts/parse/annex-amendments.ts`). etaamb is a volunteer project,
+not the official journal, and Justel updates the annex's text weeks or months after a law is
+published, so the issue is still a reminder, not a guarantee; it also says when etaamb has
+published nothing for 10 days. Canton ids follow the local
 language (Dutch in Flanders and Brussels, French in Wallonia, German around Eupen); the justice of
 the peace of canton `x` has id `justice-of-the-peace-x` and links to it through its `canton` field.
 

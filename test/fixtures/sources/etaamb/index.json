@@ -1,0 +1,32 @@
+{
+    "source": "etaamb",
+    "entries": [
+        {
+            "url": "https://etaamb.openjustice.be/nl/pub/2026/10/30.html",
+            "status": 200,
+            "contentType": "text/html; charset=utf-8",
+            "file": "etaamb.openjustice.be/nl/pub/2026/10/30.html",
+            "sha256": "ab148a4cf66674ee9d48699014e7501b27fc83d712892807aa4caa9d7c5ba046",
+            "retrieved": "2026-11-05",
+            "checked": "2026-11-05"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/wet-van-15-mei-2024_n2024004698.html",
+            "status": 200,
+            "contentType": "text/html; charset=utf-8",
+            "file": "etaamb.openjustice.be/nl/wet-van-15-mei-2024_n2024004698.html",
+            "sha256": "966279a152e66792eca53c595f9ab7dcf608ac4204c2d050512a25af6ab9c84a",
+            "retrieved": "2026-11-05",
+            "checked": "2026-11-05"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/wet-van-24-oktober-2026_n2026099999.html",
+            "status": 200,
+            "contentType": "text/html; charset=utf-8",
+            "file": "etaamb.openjustice.be/nl/wet-van-24-oktober-2026_n2026099999.html",
+            "sha256": "87db9cfea66c945a5c11b54b6140072480b184a7f8c4d7a1e7343107eec0ecff",
+            "retrieved": "2026-11-05",
+            "checked": "2026-11-05"
+        }
+    ]
+}

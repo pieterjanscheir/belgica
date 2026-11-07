@@ -153,6 +153,36 @@ describe('canton boundaries', () => {
         }
     })
 
+    it('meets its neighbours point for point where a correction moved an area', () => {
+        // A point of one canton inside the edge of another leaves a gap or sliver where they
+        // meet: the cut of a correction must keep the points the neighbours share
+        const corrected = new Set(CANTON_CORRECTIONS.flatMap((c) => [c.from, c.to]))
+        const points = new Set(
+            current.flatMap((b) =>
+                b.geometry.coordinates.flat(2).map(([lon, lat]) => `${lon},${lat}`),
+            ),
+        )
+        const onEdge: string[] = []
+        for (const b of current.filter((x) => corrected.has(x.canton)))
+            for (const ring of b.geometry.coordinates.flat())
+                for (let i = 1; i < ring.length; i++) {
+                    const [p, q] = [ring[i - 1], ring[i]]
+                    if (!p || !q) continue
+                    const [dx, dy] = [q[0] - p[0], q[1] - p[1]]
+                    const length = dx * dx + dy * dy
+                    // Points on the edge: rounded to 7 decimals, on a grid of 1e-7°
+                    const steps = Math.round(Math.max(Math.abs(dx), Math.abs(dy)) / 1e-7)
+                    for (let s = 1; s < steps; s++) {
+                        const x = Math.round((p[0] + (dx * s) / steps) * 1e7) / 1e7
+                        const y = Math.round((p[1] + (dy * s) / steps) * 1e7) / 1e7
+                        const cross = dx * (y - p[1]) - dy * (x - p[0])
+                        if (cross * cross > 1e-20 * length) continue
+                        if (points.has(`${x},${y}`)) onEdge.push(`${b.id}: ${x},${y}`)
+                    }
+                }
+        expect(onEdge).toEqual([])
+    })
+
     it('is only in its own entry point, not the package root', () => {
         expect('findCantonsAt' in root).toBe(false)
         expect('cantonBoundaries' in root).toBe(false)

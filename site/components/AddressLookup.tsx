@@ -2,44 +2,11 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useTranslations } from 'next-intl'
-import type { CourtType } from 'belgica'
 import { Link } from '@/i18n/navigation'
-import { fetchJson } from '@/lib/fetch-json'
-import {
-    geocode,
-    type AddressCandidate,
-    type GeocodeResult,
-    type GeocodeSource,
-} from '@/lib/geocode'
-import { contains, distanceToEdge, nearBox, type Polygons } from '@/lib/geometry'
-import { courtTypes, type PerLocale } from '@/lib/labels'
+import { geocode, type GeocodeResult } from '@/lib/geocode'
+import { loadAddressIndex, place, REGISTERS, type Placed } from '@/lib/address'
+import { courtTypes } from '@/lib/labels'
 import { Name } from './Name'
-
-/** public/address/index.json, from scripts/build-address.ts */
-interface Index {
-    cantons: { canton: string; box: number[] }[]
-    regions: Record<string, GeocodeSource | undefined>
-}
-
-/** public/address/<canton>.json */
-interface CantonFile {
-    canton: string
-    name: string
-    territory: PerLocale
-    split: PerLocale[]
-    courts: {
-        id: string
-        type: CourtType
-        name: PerLocale
-        address?: { street: string; postalCode: string; city: string }
-    }[]
-    geometry: Polygons
-}
-
-/** Within this distance of another canton, the boundary is too close to call from the map */
-const NEAR_METRES = 25
-/** About 50 m in degrees: the boxes of the cantons whose edge may be within NEAR_METRES */
-const BOX_MARGIN = 0.0007
 
 // One per region, each in a city split over several cantons
 const EXAMPLES = [
@@ -47,34 +14,6 @@ const EXAMPLES = [
     'Rue de la Loi 16, 1000 Bruxelles',
     'Place Saint-Lambert 18, 4000 Liège',
 ]
-
-const REGISTERS: Record<GeocodeSource, string> = {
-    flanders: 'Adressenregister (Digitaal Vlaanderen)',
-    brussels: 'UrbIS (paradigm.brussels)',
-    wallonia: 'ICAR (SPW)',
-}
-
-interface Placed {
-    inside: CantonFile[]
-    near: { canton: CantonFile; metres: number }[]
-}
-
-/** The cantons the point lies in, and those whose boundary comes within NEAR_METRES of it */
-async function place(at: AddressCandidate, index: Index): Promise<Placed> {
-    const { longitude: lon, latitude: lat } = at
-    const files = await Promise.all(
-        index.cantons
-            .filter((c) => nearBox(c.box, lon, lat, BOX_MARGIN))
-            .map((c) => fetchJson<CantonFile>(`/address/${c.canton}.json`)),
-    )
-    const inside = files.filter((f) => contains(f.geometry, lon, lat))
-    const near = files
-        .filter((f) => !inside.includes(f))
-        .map((canton) => ({ canton, metres: distanceToEdge(canton.geometry, lon, lat) }))
-        .filter((n) => n.metres <= NEAR_METRES)
-        .sort((a, b) => a.metres - b.metres)
-    return { inside, near }
-}
 
 /**
  * From a street address to its canton and courts: the region's own address register geocodes
@@ -102,7 +41,7 @@ export function AddressLookup() {
         setLoading(true)
         setError(null)
         try {
-            const index = await fetchJson<Index>('/address/index.json')
+            const index = await loadAddressIndex()
             const found = await geocode(address, index.regions, current.signal)
             if (controller.current !== current) return
             setResult(found)
@@ -121,7 +60,7 @@ export function AddressLookup() {
         setPlaced(null)
         if (!candidate) return
         let stale = false
-        fetchJson<Index>('/address/index.json')
+        loadAddressIndex()
             .then((index) => place(candidate, index))
             .then(
                 (p) => {

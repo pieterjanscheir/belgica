@@ -1,13 +1,35 @@
 name: Sources
 
 # Twice a week: fetch the official sources, keep the snapshots on the `sources` branch, rebuild the
-# data from them, and open a pull request when the data changed. The data in main only changes
-# through a reviewed pull request.
+# data from them, and open a pull request when the data changed. The other days, the consumer price
+# index alone. The data in main only changes through a reviewed pull request.
 on:
     schedule:
         # Monday and Thursday, so a source that breaks is noticed within a few days
         - cron: '41 4 * * 1,4'
+        # The other days, Statbel's consumer price index alone: a month's index comes out near its
+        # end and an indexation of the procedural indemnity takes effect on the first of the next
+        # month, so a few days' wait matters. One small request a day.
+        - cron: '41 4 * * 0,2,3,5,6'
     workflow_dispatch:
+        inputs:
+            # One source, or all of them. The options are the sources in scripts/sources/catalog.ts
+            # (test/parse/catalog.test.ts keeps them in step)
+            sources:
+                description: Which sources to fetch
+                type: choice
+                default: all
+                options:
+                    - all
+                    - courts
+                    - prisons
+                    - houses-of-justice
+                    - statbel
+                    - postal-codes
+                    - ngi
+                    - police-zones
+                    - cpi
+                    - etaamb
 
 concurrency:
     group: sources
@@ -52,9 +74,13 @@ jobs:
             # pull request, and the last step fails the run so the sources issue says so too.
             - name: Fetch
               id: fetch
+              env:
+                  ONLY: ${{ github.event.schedule == '41 4 * * 0,2,3,5,6' && 'cpi' || inputs.sources != 'all' && inputs.sources || '' }}
               run: |
                   set -o pipefail
-                  if ! pnpm fetch:sources 2>&1 | tee fetch.log; then
+                  # Unquoted on purpose: no argument at all fetches every source
+                  # shellcheck disable=SC2086
+                  if ! pnpm fetch:sources $ONLY 2>&1 | tee fetch.log; then
                     echo "failed=true" >> "$GITHUB_OUTPUT"
                     grep -E 'snapshots left as they were|: HTTP [0-9]+ ' fetch.log > fetch-failures.log || true
                   fi
@@ -88,7 +114,9 @@ jobs:
                   git diff --quiet -- data src/ids.generated.ts schema ids.lock.json || echo "changed=true" >> "$GITHUB_OUTPUT"
 
             # The cantons come from ejustice, which refuses GitHub's runners (#52), so they're
-            # rebuilt by hand. canton-signals.ts says when the other sources show they changed.
+            # rebuilt by hand. canton-signals.ts says when the other sources show they changed,
+            # and annex-amendments.ts when etaamb's copy of the Official Journal has a law that
+            # changes the annex.
             - name: Open or update the cantons issue
               # Also after a failed rebuild: the signals are printed before the build stops
               if: always() && steps.build.outcome != 'skipped' && github.ref == 'refs/heads/main'
@@ -113,6 +141,20 @@ jobs:
                     echo '```'
                     echo 'pnpm build:cantons && pnpm generate'
                     echo '```'
+                    # The annex lines aren't settled by a rebuild alone
+                    if grep -q '^annex: ' "$1"; then
+                      echo
+                      echo "An \`annex:\` line names a law that writes about the annex. Read it first: a law"
+                      echo "that only cites the annex, or changes another code's, changes no canton. For one"
+                      echo "that does, Justel adds it to the annex's text weeks or months after it's published,"
+                      echo "and the rebuild prints the date its text is updated to: until that date reaches the"
+                      echo "law's publication date the rebuild changes nothing, so keep this issue open and run"
+                      echo "it again later. The law leaves the sources run after 60 days; this issue is what"
+                      echo "remembers it."
+                      echo
+                      echo "A line about etaamb itself (nothing published, a page that couldn't be read) needs"
+                      echo "no rebuild: look at https://etaamb.openjustice.be/nl/ and at the law it names."
+                    fi
                   }
                   gh label create cantons --color 1D76DB --description "The cantons need a rebuild by hand" 2>/dev/null || true
                   number=$(gh issue list --label cantons --state open --json number --jq '.[0].number')
@@ -170,6 +212,16 @@ jobs:
                     git diff --stat HEAD~1 -- data
                     echo '```'
                     echo
+                    if grep -q '^indexation: ' build.log; then
+                      echo "**A new indexation of the procedural indemnity is due**, from Statbel's consumer"
+                      echo "price index (art. 8 of the KB of 26 October 2007). Check the index on statbel.fgov.be"
+                      echo "and the threshold before merging:"
+                      echo
+                      echo '```'
+                      grep -E '^(indexation|cpi): ' build.log
+                      echo '```'
+                      echo
+                    fi
                     echo "What the parsers couldn't read:"
                     echo
                     echo '```'

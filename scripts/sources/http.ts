@@ -9,7 +9,7 @@ import { ALLOW_ALL, DISALLOW_ALL, isAllowed, parseRobots, type Robots } from './
 
 /** The product token robots.txt files can address belgica's crawler by */
 export const AGENT = 'belgica'
-const USER_AGENT = `${AGENT} (+https://github.com/pieterjanscheir/belgica; open data, source check twice a week)`
+const USER_AGENT = `${AGENT} (+https://github.com/pieterjanscheir/belgica; open data, sources checked twice a week, the price index daily)`
 const DELAY_MS = 1000
 const RETRIES = 3
 /**

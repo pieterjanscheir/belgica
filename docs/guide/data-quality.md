@@ -37,7 +37,8 @@ official site ──fetch──> snapshots (sources branch) ──parse──> d
 ```
 
 1. **Fetch.** Every Monday and Thursday the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   fetches every page of the sources (`scripts/sources`), politely: it follows each site's
+   fetches every page of the sources (`scripts/sources`), and on the other days Statbel's consumer
+   price index alone, for the [procedural indemnity](../data/procedural-indemnities#how-a-new-indexation-arrives). It does so politely: it follows each site's
    `robots.txt` (a page it disallows isn't fetched, and the source fails instead), sends one
    request per second per site or less often when the site's `Crawl-delay` asks for it, with a
    user agent that names the project (`belgica`). It keeps each page on the `sources` branch,
@@ -67,7 +68,9 @@ To run it yourself: `pnpm fetch:sources` (writes `.sources/`), then `pnpm build:
 
 The cantons and municipalities are rebuilt by hand with `pnpm build:cantons`: the Belgian
 Official Journal's site refuses GitHub's servers
-([#52](https://github.com/pieterjanscheir/belgica/issues/52)).
+([#52](https://github.com/pieterjanscheir/belgica/issues/52)). The sources run says when to: it
+reads the laws of the last 60 days on [etaamb](https://etaamb.openjustice.be/nl/), a copy of the
+Official Journal, and opens a `cantons` issue for one that changes the annex.
 
 ## Automatic checks
 

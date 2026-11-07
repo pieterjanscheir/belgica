@@ -189,3 +189,15 @@
 .bld-more:hover {
     border-color: var(--vp-c-brand-1);
 }
+
+.bld-more:disabled {
+    opacity: 0.6;
+}
+
+.bld-warning {
+    border-left: 3px solid var(--vp-c-warning-1);
+    padding: 4px 10px;
+    background: var(--vp-c-warning-soft);
+    border-radius: 4px;
+    font-size: 14px;
+}

@@ -48,6 +48,7 @@ export default defineConfig({
         calendar: 'src/calendar.ts',
         'postal-codes': 'src/postal-codes.ts',
         'police-zones': 'src/police-zones.ts',
+        'procedural-indemnities': 'src/procedural-indemnities.ts',
         schemas: 'src/schemas/index.ts',
     },
     format: ['esm'],

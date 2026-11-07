@@ -2,7 +2,7 @@
   "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
   "name": "belgica",
   "title": "Belgian legal reference data",
-  "description": "Courts, prisons, houses of justice, judicial areas, arrondissements and cantons with their boundaries, regions, provinces, municipalities and postal codes, the legal and commercial interest rates and the public holidays of Belgium, with their official sources.",
+  "description": "Courts, prisons, houses of justice, judicial areas, arrondissements and cantons with their boundaries, regions, provinces, municipalities and postal codes, the legal and commercial interest rates, the procedural indemnity and the public holidays of Belgium, with their official sources.",
   "homepage": "https://pieterjanscheir.github.io/belgica/",
   "licenses": [
     {
@@ -445,6 +445,37 @@
       "reviewEveryMonths": 12,
       "temporalCoverage": {
         "start": "1975-01-01"
+      }
+    },
+    {
+      "name": "procedural-indemnities",
+      "path": "data/procedural-indemnities.json",
+      "title": "Procedural indemnity",
+      "description": "The tariffs of the procedural indemnity (rechtsplegingsvergoeding, art. 1022 Judicial Code): the base, minimum and maximum amounts of the KB of 26 October 2007 per bracket, for the general tariff and the three labour tariffs of art. 4, and every indexation since 1 January 2008.",
+      "format": "json",
+      "mediatype": "application/json",
+      "jsonSchema": "schema/procedural-indemnities.schema.json",
+      "sources": [
+        {
+          "title": "KB van 26 oktober 2007 tot vaststelling van het tarief van de rechtsplegingsvergoeding (numac 2007009900), art. 2 to 4 and 8",
+          "path": "https://www.ejustice.just.fgov.be/eli/besluit/2007/10/26/2007009900/justel"
+        },
+        {
+          "title": "KB van 16 mei 2024 (BS 5 juni 2024): the new indexation formula of art. 8 and its transitional provision"
+        },
+        {
+          "title": "College van de hoven en rechtbanken: bedrag van de rechtsplegingsvergoeding, the amounts from 1 March 2025 (the test fixtures)",
+          "path": "https://www.rechtbanken-tribunaux.be/sites/default/files/media/tarifs/bedrag-van-de-rechtsplegingsvergoeding.pdf"
+        },
+        {
+          "title": "Statbel: consumer price index (base 2004), fetched daily: it sets off each indexation",
+          "path": "https://bestat.statbel.fgov.be/bestat/api/views/59ce062b-c1d4-4347-bac5-d17440571068/result/JSON"
+        }
+      ],
+      "lastReviewed": "2026-11-05",
+      "reviewEveryMonths": 3,
+      "temporalCoverage": {
+        "start": "2008-01-01"
       }
     }
   ]

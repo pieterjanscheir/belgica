@@ -26,6 +26,7 @@ export default {
             housesOfJustice: 'Justizhäuser',
             interestRates: 'Zinssätze',
             publicHolidays: 'Feiertage',
+            proceduralIndemnity: 'Verfahrensentschädigung',
             postalCodes: 'Postleitzahlen',
             knownGaps: 'Bekannte Lücken',
             roadmap: 'Roadmap',

@@ -222,6 +222,118 @@ const policeZones: Source = {
     },
 }
 
+/**
+ * Statbel's monthly consumer price index (base 2004), from its bestat view: what sets off each
+ * indexation of the procedural indemnity (art. 8 of the KB of 26 October 2007). Statbel publishes
+ * a month's index near its end, and an indexation takes effect on the first day of the next
+ * month, so the sources workflow fetches this one every day.
+ */
+export const STATBEL_CPI =
+    'https://bestat.statbel.fgov.be/bestat/api/views/59ce062b-c1d4-4347-bac5-d17440571068/result/JSON'
+
+const cpi: Source = {
+    name: 'cpi',
+    description: 'Statbel: the monthly consumer price index, for the procedural indemnity',
+    async fetch(get) {
+        await get(STATBEL_CPI)
+    },
+}
+
+/** etaamb: a copy of the Belgian Official Journal, sorted by publication date */
+export const ETAAMB = 'https://etaamb.openjustice.be'
+
+/**
+ * How far back the walk reads the Official Journal. The sources run reads it twice a week, so a
+ * law stays in the window for many runs; the cantons issue keeps what it found after that.
+ */
+export const ANNEX_WINDOW_DAYS = 60
+
+/** A day's page on etaamb: everything the Official Journal published that day */
+export const etaambDay = (url: string) =>
+    /^https:\/\/etaamb\.openjustice\.be\/nl\/pub\/(\d{4})\/(\d{2})\/(\d{2})\.html$/
+        .exec(url)
+        ?.slice(1, 4)
+        .join('-')
+
+/**
+ * A law on etaamb, in Dutch: only a law can change the annex to the Judicial Code. etaamb names
+ * a page after the kind of text, so a programme law is 'programmawet-van-…' and a special law
+ * 'bijzondere-wet-van-…'.
+ */
+export const isEtaambLaw = (url: string) =>
+    /^https:\/\/etaamb\.openjustice\.be\/nl\/[a-z-]*wet-van-[\w-]+_n\d{10}\.html$/.test(url)
+
+/**
+ * What a day's page lists as published that day. Its texts link to the older laws they cite,
+ * which the walk leaves alone.
+ */
+export const dayList = (page: string, base: string) =>
+    [...page.matchAll(/<a href="([^"]+)" class="doclink day_list"/g)].map(
+        ([, href = '']) => new URL(href.replaceAll('&amp;', '&'), base).href,
+    )
+
+/** The months (`YYYY/MM`) from `from` to `to`, both ISO dates */
+export function months(from: string, to: string): string[] {
+    const out: string[] = []
+    let [year, month] = from.split('-').map(Number) as [number, number]
+    const [lastYear, lastMonth] = to.split('-').map(Number) as [number, number]
+    while (year < lastYear || (year === lastYear && month <= lastMonth)) {
+        out.push(`${year}/${String(month).padStart(2, '0')}`)
+        month++
+        if (month > 12) [year, month] = [year + 1, 1]
+    }
+    return out
+}
+
+const etaamb: Source = {
+    name: 'etaamb',
+    description:
+        'etaamb.openjustice.be (a copy of the Belgian Official Journal): the laws of the last 60 days, to notice one that changes the annex to the Judicial Code',
+    async fetch(get, keep) {
+        const today = new Date().toISOString().slice(0, 10)
+        const from = new Date(Date.now() - ANNEX_WINDOW_DAYS * 86_400_000)
+            .toISOString()
+            .slice(0, 10)
+        // etaamb answers 200 for a month or a day it has nothing for, so a list that comes back
+        // empty looks like a quiet journal, and the laws it stopped listing would be retired
+        // without a word. Each list is held to what the journal does: it fails the walk, which
+        // leaves the snapshots as they were and says the copy can't be read.
+        const days = new Set<string>()
+        for (const month of months(from, today)) {
+            const res = await get(`${ETAAMB}/nl/pub/${month}.html`)
+            const own = links(html(res), res.url).filter((url) =>
+                etaambDay(url)?.startsWith(month.replace('/', '-')),
+            )
+            if (res.status === 200 && own.length === 0) {
+                // A month that's over had publications
+                if (month !== months(today, today)[0])
+                    throw new Error(`etaamb lists no days for ${month}`)
+                // The running one may not have any yet, unless its days were read before
+                const reason = `etaamb lists no days for ${month} yet`
+                if (keep(`${ETAAMB}/nl/pub/${month}/`, reason) > 0)
+                    throw new Error(`etaamb lists no days for ${month}, and listed some before`)
+            }
+            for (const url of own) {
+                const day = etaambDay(url)
+                if (day !== undefined && day >= from && day <= today) days.add(url)
+            }
+        }
+        const laws = new Set<string>()
+        for (const day of [...days].sort()) {
+            const res = await get(day)
+            const texts = dayList(html(res), day)
+            // The month's page only links the days the journal published something
+            if (res.status === 200 && texts.length === 0)
+                throw new Error(`etaamb lists no texts for ${etaambDay(day) ?? day}`)
+            for (const url of texts) if (isEtaambLaw(url)) laws.add(url)
+        }
+        // The journal publishes laws every week: none in the whole window means the lists
+        // can't be read any more
+        if (laws.size === 0) throw new Error(`etaamb lists no laws since ${from}`)
+        for (const law of [...laws].sort()) await get(law)
+    },
+}
+
 export const sources: Source[] = [
     courts,
     prisons,
@@ -230,4 +342,6 @@ export const sources: Source[] = [
     postalCodes,
     ngi,
     policeZones,
+    cpi,
+    etaamb,
 ]

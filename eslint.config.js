@@ -11,6 +11,7 @@ export default tseslint.config(
             'coverage/',
             'docs/.vitepress/dist/',
             'docs/.vitepress/cache/',
+            'docs/public/map/',
             'src/ids.generated.ts',
             'src/canton-names.generated.ts',
             'src/data-files.generated.ts',

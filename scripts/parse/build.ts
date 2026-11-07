@@ -7,10 +7,12 @@
  * without a canton, an unknown kind of court), a canton or an arrondissement has no court or no
  * boundary in the NGI's file, a postal code points at an unknown municipality or a municipality has no postal
  * code: those need a person. Signs that the cantons may have changed, which `pnpm build:cantons`
- * has to pick up by hand, are printed as "canton signal:" lines (canton-signals.ts).
+ * has to pick up by hand, are printed as "canton signal:" lines (canton-signals.ts, and
+ * annex-amendments.ts for the laws that change the annex).
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 
+import type { ProceduralIndemnities } from '../../src/procedural-indemnities.ts'
 import type { Canton, Municipality } from '../../src/territory.ts'
 import { Snapshots } from '../sources/store.ts'
 import {
@@ -18,8 +20,10 @@ import {
     buildCantonBoundaries,
     stringifyBoundaries,
 } from './boundaries.ts'
+import { annexSignals, readAnnexAmendments, readAnnexVersion } from './annex-amendments.ts'
 import { cantonSignals } from './canton-signals.ts'
 import { buildCourtLocations } from './court-locations.ts'
+import { addIndexations, buildIndexations } from './cpi.ts'
 import { buildCourts } from './courts.ts'
 import { buildHousesOfJustice, buildPrisons } from './places.ts'
 import { buildPoliceZones } from './police-zones.ts'
@@ -37,6 +41,12 @@ import type {
 } from './types.ts'
 
 const root = process.env['SOURCES_DIR'] ?? '.sources'
+
+// First: the laws that change the annex need none of the builders below, so one of them
+// stopping the build doesn't keep them out of the cantons issue
+for (const line of annexSignals({ ...readAnnexAmendments(root), version: readAnnexVersion() }))
+    console.warn(`canton signal: ${line}`)
+
 const municipalities = JSON.parse(
     readFileSync('data/municipalities.json', 'utf8'),
 ) as Municipality[]
@@ -73,6 +83,14 @@ const { zones: freshPoliceZones, problems: policeZoneProblems } = buildPoliceZon
     root,
     municipalities.map((m) => m.id),
 )
+// The procedural indemnity is built by hand, but a new indexation follows from Statbel's index
+const indemnities = JSON.parse(
+    readFileSync('data/procedural-indemnities.json', 'utf8'),
+) as ProceduralIndemnities
+const indexations = buildIndexations(root, indemnities)
+for (const line of indexations.notes) console.warn(line)
+for (const i of indexations.due)
+    console.warn(`indexation: from ${i.from}, index ${i.index} reached ${i.threshold}`)
 // Their validity comes from Statbel's register itself, so they aren't carried over below
 const { regions, provinces } = buildRegionsAndProvinces(root)
 
@@ -136,6 +154,7 @@ const problems = [
     ),
     ...locationReport.unmatched,
     ...policeZoneProblems,
+    ...indexations.problems,
 ]
 for (const line of report.unreadable) console.warn(`unreadable: ${line}`)
 const withoutAddress = courts.filter((c) => !c.address).map((c) => c.id)
@@ -158,3 +177,7 @@ write('court-locations', locations)
 write('police-zones', policeZones)
 write('regions', regions)
 write('provinces', provinces)
+if (indexations.due.length > 0) {
+    const file = 'data/procedural-indemnities.json'
+    writeFileSync(file, await addIndexations(readFileSync(file, 'utf8'), indexations.due, file))
+}

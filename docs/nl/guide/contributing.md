@@ -50,7 +50,14 @@ een issue met het label
 [`cantons`](https://github.com/pieterjanscheir/belgica/issues?q=label%3Acantons) wanneer de grens
 van een kanton verandert of het register niet meer overeenkomt met `data/municipalities.json`
 (`scripts/parse/canton-signals.ts`). Het NGI kan een grens weken na de wetswijziging
-hertekenen, dus dat issue is een herinnering, geen garantie. Kanton-ids volgen de
+hertekenen, dus de run leest ook de laatste 60 dagen van het Belgisch Staatsblad op
+[etaamb](https://etaamb.openjustice.be/nl/), een kopie die de runners van GitHub wel bereiken, en
+zet elke wet die "het bijvoegsel bij het Gerechtelijk Wetboek" wijzigt in dat issue, tot
+`scripts/parse/annex-version.json` (geschreven door `pnpm build:cantons`) zegt dat de bijlage
+waaruit de kantons zijn opgebouwd die wet bevat (`scripts/parse/annex-amendments.ts`). etaamb is
+een vrijwilligersproject, niet het officiële Staatsblad, en Justel werkt de tekst van de bijlage
+weken of maanden na de publicatie bij, dus het issue blijft een herinnering, geen garantie; het
+zegt ook wanneer etaamb 10 dagen niets publiceerde. Kanton-ids volgen de
 plaatselijke taal (Nederlands in Vlaanderen en Brussel, Frans in Wallonië, Duits rond Eupen); het
 vredegerecht van kanton `x` heeft id `justice-of-the-peace-x` en verwijst ernaar via zijn veld
 `canton`.

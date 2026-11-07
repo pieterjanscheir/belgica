@@ -26,6 +26,7 @@ export default {
             housesOfJustice: 'Justitiehuizen / Maisons de justice',
             interestRates: '利率',
             publicHolidays: '祝日',
+            proceduralIndemnity: '訴訟補償金',
             postalCodes: '郵便番号',
             knownGaps: '既知の欠落',
             roadmap: 'ロードマップ',

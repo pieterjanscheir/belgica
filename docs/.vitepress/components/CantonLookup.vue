@@ -8,6 +8,7 @@ import {
     getContact,
 } from '../../../src'
 import { fmt, inLang, useLocale, useStrings } from '../i18n'
+import CantonMap from './CantonMap.vue'
 
 const { dataLang } = useLocale()
 const t = useStrings('CantonLookup', {
@@ -93,6 +94,7 @@ const municipality = computed(() => {
 const cantons = computed(() =>
     municipality.value ? getCantonsForMunicipality(municipality.value.id) : [],
 )
+const cantonIds = computed(() => cantons.value.map((c) => c.id))
 
 function label(m: { name: { nl: string; fr: string } }) {
     return m.name.nl === m.name.fr ? m.name.nl : `${m.name.nl} / ${m.name.fr}`
@@ -157,6 +159,7 @@ function label(m: { name: { nl: string; fr: string } }) {
                     </tr>
                 </tbody>
             </table>
+            <CantonMap :highlight="cantonIds" :view="cantonIds" height="360px" />
             <details v-if="cantons.length > 1">
                 <summary>{{ fmt(t.whichPart, { name: municipality.name[dataLang] }) }}</summary>
                 <div v-for="c in cantons" :key="c.id">
