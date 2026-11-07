@@ -23,6 +23,8 @@ export const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/
  * quote or a `../` must stop the build instead of ending up in code or outside data/.
  */
 export function assertId(value: string, what = 'id'): string {
-    if (!ID_PATTERN.test(value)) throw new Error(`Not a valid ${what}: ${JSON.stringify(value)}`)
+    // The value comes from parsed JSON, whatever its declared type: null or 12 isn't an id
+    if (typeof value !== 'string' || !ID_PATTERN.test(value))
+        throw new Error(`Not a valid ${what}: ${JSON.stringify(value)}`)
     return value
 }

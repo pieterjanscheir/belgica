@@ -73,17 +73,14 @@ async function readBody(res: globalThis.Response, url: string): Promise<Buffer> 
 /** A response, with where it redirects to when it's a redirect that wasn't followed */
 type Fetched = Response & { location?: string }
 
-async function request(
-    url: string,
-    delay: number,
-    redirect: 'follow' | 'manual',
-): Promise<Fetched> {
+/** One request, its redirect not followed: the callers check each hop before taking it */
+async function request(url: string, delay: number): Promise<Fetched> {
     for (let attempt = 0; ; attempt++) {
         await throttle(new URL(url).host, delay)
         try {
             const res = await fetch(url, {
                 headers: { 'user-agent': USER_AGENT },
-                redirect,
+                redirect: 'manual',
                 signal: AbortSignal.timeout(60_000),
             })
             const body = await readBody(res, url)
@@ -112,14 +109,33 @@ async function request(
 function robotsFor(origin: string): Promise<Robots> {
     let robots = robotsByHost.get(origin)
     if (!robots) {
-        robots = request(`${origin}/robots.txt`, DELAY_MS, 'follow').then((res) => {
-            if (res.status >= 500) return DISALLOW_ALL
-            if (res.status >= 400) return ALLOW_ALL
-            return parseRobots(res.body.toString('utf8'), AGENT)
-        })
+        robots = fetchRobots(origin)
+        // A failure isn't kept: the source fails now, and a later request asks again
+        robots.catch(() => robotsByHost.delete(origin))
         robotsByHost.set(origin, robots)
     }
     return robots
+}
+
+/** How many redirects robots.txt may go through; RFC 9309 asks for at least five */
+const MAX_ROBOTS_REDIRECTS = 5
+
+/** A robots.txt, its redirects followed one at a time, each checked the way get() checks pages */
+async function fetchRobots(origin: string): Promise<Robots> {
+    let url = `${origin}/robots.txt`
+    for (let hops = 0; ; hops++) {
+        if (!isPublicUrl(url)) throw new NotPublicError(`Not a public web address: ${url}`)
+        const res = await request(url, DELAY_MS)
+        if (res.location !== undefined) {
+            // Too many redirects: as if there were no robots.txt, as RFC 9309 says
+            if (hops >= MAX_ROBOTS_REDIRECTS) return ALLOW_ALL
+            url = new URL(res.location, url).href
+            continue
+        }
+        if (res.status >= 500) return DISALLOW_ALL
+        if (res.status >= 400) return ALLOW_ALL
+        return parseRobots(res.body.toString('utf8'), AGENT)
+    }
 }
 
 /** Thrown for a URL that isn't on the public web: another scheme, or a local or private host */
@@ -175,7 +191,7 @@ export async function get(url: string): Promise<Response> {
         const robots = await robotsFor(origin)
         if (!isAllowed(robots, current))
             throw new DisallowedError(`${origin}/robots.txt doesn't allow ${current}`)
-        const { location, ...res } = await request(current, delayFor(robots), 'manual')
+        const { location, ...res } = await request(current, delayFor(robots))
         if (location === undefined) return { ...res, url: current }
         if (hops >= MAX_REDIRECTS) throw new Error(`Too many redirects from ${url}`)
         current = new URL(location, current).href

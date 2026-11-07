@@ -88,6 +88,12 @@ function simplify(ring: Ring, tolerance: number): Position[] {
     return out.length >= 4 ? out.map(([x = 0, y = 0]) => [round(x), round(y)]) : [...ring]
 }
 
+// The ids name files: checked before the old map is removed, so a bad one leaves it whole
+for (const boundary of boundaries) {
+    const canton = cantons.get(boundary.canton)
+    if (canton) assertId(canton.id, 'canton id')
+}
+
 const dir = new URL('../docs/public/map/', import.meta.url)
 rmSync(dir, { recursive: true, force: true })
 mkdirSync(new URL('cantons/', dir), { recursive: true })
@@ -107,8 +113,7 @@ for (const boundary of boundaries) {
     entries.push({ id: canton.id, box: box(geometry), colour: 0, geometry })
     const file = JSON.stringify({ id: canton.id, geometry: boundary.geometry })
     bytes += file.length
-    // The id names the file: nothing but an id gets through
-    writeFileSync(new URL(`cantons/${assertId(canton.id, 'canton id')}.json`, dir), file)
+    writeFileSync(new URL(`cantons/${canton.id}.json`, dir), file)
 }
 
 // Neighbours: cantons sharing a boundary point. Greedy colouring, the most connected first.

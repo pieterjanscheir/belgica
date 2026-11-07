@@ -27,6 +27,12 @@ describe('toCsv', () => {
         )
     })
 
+    it('also after leading spaces, for a tab or a carriage return, and not for a signed decimal', () => {
+        expect(toCsv([{ a: ' =1+1', b: '\ttext', c: '\rtext', d: '-1.5', e: ' +32 2' }])).toBe(
+            "\ufeffa,b,c,d,e\r\n' =1+1,'\ttext,\"'\rtext\",-1.5,' +32 2\r\n",
+        )
+    })
+
     it('takes the columns of every row', () => {
         expect(toCsv([{ a: 1 }, { b: 2 }])).toBe('﻿a,b\r\n1,\r\n,2\r\n')
     })

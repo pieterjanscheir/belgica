@@ -56,14 +56,17 @@ type Row = Record<string, Cell>
 
 /**
  * Text a spreadsheet would run as a formula: one that starts with =, @, a tab or a carriage
- * return, or with + or - and isn't just a number. The data comes from scraped pages, so such a
+ * return, or with + or - and isn't just a number, also after leading spaces (some importers trim
+ * them). The data comes from scraped pages, so such a
  * cell gets a leading apostrophe and opens as text (OWASP's advice against CSV injection). Phone
  * numbers, `+3226820008`, are numbers and stay as they are.
  */
-const neutralize = (text: string) =>
-    /^[=@\t\r]/.test(text) || (/^[+-]/.test(text) && !/^[+-]\d+(\.\d+)?$/.test(text)) ?
-        `'${text}`
-    :   text
+const neutralize = (text: string) => {
+    const start = text.replace(/^ +/, '')
+    return /^[=@\t\r]/.test(start) || (/^[+-]/.test(start) && !/^[+-]\d+(\.\d+)?$/.test(start)) ?
+            `'${text}`
+        :   text
+}
 
 const quote = (cell: Cell) => {
     const text =

@@ -54,13 +54,22 @@ export function zipEntries(archive: Buffer): ZipEntry[] {
                     local + 30 + archive.readUInt16LE(local + 26) + archive.readUInt16LE(local + 28)
                 if (start + compressed > archive.length)
                     throw new Error(`ZIP archive: ${name} runs past the end of the archive`)
-                if (size > MAX_ENTRY_BYTES)
+                if (size > MAX_ENTRY_BYTES || compressed > MAX_ENTRY_BYTES)
                     throw new Error(`ZIP archive: ${name} is larger than ${MAX_ENTRY_BYTES} bytes`)
                 const raw = archive.subarray(start, start + compressed)
-                if (method === 0) return Buffer.from(raw)
-                // Never more than the size the directory gives: a lying header fails here
-                // instead of inflating without end
-                if (method === 8) return inflateRawSync(raw, { maxOutputLength: Math.max(size, 1) })
+                if (method === 0) {
+                    if (compressed !== size)
+                        throw new Error(`ZIP archive: ${name} isn't the size its directory gives`)
+                    return Buffer.from(raw)
+                }
+                if (method === 8) {
+                    // Never more than the size the directory gives: a lying header fails here
+                    // instead of inflating without end
+                    const data = inflateRawSync(raw, { maxOutputLength: Math.max(size, 1) })
+                    if (data.length !== size)
+                        throw new Error(`ZIP archive: ${name} isn't the size its directory gives`)
+                    return data
+                }
                 throw new Error(`ZIP archive: unsupported compression method ${method} for ${name}`)
             },
         })

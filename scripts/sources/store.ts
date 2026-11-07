@@ -15,7 +15,7 @@
  */
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
+import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 
 export interface Entry {
     url: string
@@ -68,7 +68,7 @@ export function fileFor(url: string, contentType: string): string {
  */
 function inside(dir: string, file: string): string {
     const rel = relative(resolve(dir), resolve(dir, file))
-    if (rel === '' || rel.startsWith('..') || isAbsolute(rel))
+    if (rel === '' || rel === '..' || rel.startsWith(`..${sep}`) || isAbsolute(rel))
         throw new Error(`Snapshot path outside ${dir}: ${JSON.stringify(file)}`)
     return join(dir, file)
 }
@@ -174,19 +174,25 @@ export class Store {
      * page hides every page it links to.
      */
     save({ prune }: { prune: boolean }): void {
-        mkdirSync(this.#dir, { recursive: true })
-        for (const [file, body] of this.#pending) {
-            const path = inside(this.#dir, file)
-            mkdirSync(dirname(path), { recursive: true })
-            writeFileSync(path, body)
-        }
+        // Every path is checked before anything is written or removed, so a bad one in the
+        // index stops the save without leaving it half done
+        const writes = [...this.#pending].map(
+            ([file, body]) => [inside(this.#dir, file), body] as const,
+        )
         const entries = [...this.#byUrl.values()]
             .filter((e) => !prune || this.#seen.has(e.url))
             .sort((a, b) => a.url.localeCompare(b.url))
         const kept = new Set(entries.map((e) => e.file))
-        for (const e of this.#byUrl.values())
-            if (prune && !this.#seen.has(e.url) && !kept.has(e.file))
-                rmSync(inside(this.#dir, e.file), { force: true })
+        const removals = [...this.#byUrl.values()]
+            .filter((e) => prune && !this.#seen.has(e.url) && !kept.has(e.file))
+            .map((e) => inside(this.#dir, e.file))
+        for (const e of entries) inside(this.#dir, e.file)
+        mkdirSync(this.#dir, { recursive: true })
+        for (const [path, body] of writes) {
+            mkdirSync(dirname(path), { recursive: true })
+            writeFileSync(path, body)
+        }
+        for (const path of removals) rmSync(path, { force: true })
         writeFileSync(
             join(this.#dir, 'index.json'),
             JSON.stringify({ source: this.#index.source, entries }, null, 4) + '\n',

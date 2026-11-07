@@ -128,6 +128,21 @@ describe('fileFor', () => {
 })
 
 describe('Snapshots', () => {
+    it('reads a path whose first segment only starts with two dots', () => {
+        mkdirSync(join(root, 'test', '..foo'), { recursive: true })
+        writeFileSync(join(root, 'test', '..foo', 'page.html'), 'content')
+        writeFileSync(
+            join(root, 'test', 'index.json'),
+            JSON.stringify({
+                source: 'test',
+                entries: [
+                    { url: A, status: 200, contentType: 'text/html', file: '..foo/page.html' },
+                ],
+            }),
+        )
+        expect(new Snapshots(root, 'test').text(A)).toBe('content')
+    })
+
     it('refuses an index path that leaves the source directory', () => {
         mkdirSync(join(root, 'test'), { recursive: true })
         writeFileSync(
