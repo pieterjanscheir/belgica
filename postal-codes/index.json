@@ -8,7 +8,7 @@
             "file": "statbel.fgov.be/nl/over-statbel/methodologie/classificaties/geografie.html",
             "sha256": "e979e9e4d9a1051912c7e2bad4b1b97bb371f6909f7cc147b4db0aa785c64aba",
             "retrieved": "2026-11-02",
-            "checked": "2026-11-05"
+            "checked": "2026-11-09"
         },
         {
             "url": "https://statbel.fgov.be/sites/default/files/files/documents/Over%20Statbel/Conversion%20Postal%20code_Refnis%20code_va01012019.xlsx",
@@ -17,7 +17,7 @@
             "file": "statbel.fgov.be/sites/default/files/files/documents/Over_Statbel/Conversion_Postal_code_Refnis_code_va01012019.xlsx",
             "sha256": "c23b23672b4892d0f38f6a0dd0da1fd24b47146442656dfdcf1357c55e4b6814",
             "retrieved": "2026-10-26",
-            "checked": "2026-11-05"
+            "checked": "2026-11-09"
         },
         {
             "url": "https://statbel.fgov.be/sites/default/files/Over_Statbel_FR/Nomenclaturen/Conversion%20Postal%20code_Refnis%20code_va01012025.xlsx",
@@ -26,7 +26,7 @@
             "file": "statbel.fgov.be/sites/default/files/Over_Statbel_FR/Nomenclaturen/Conversion_Postal_code_Refnis_code_va01012025.xlsx",
             "sha256": "4e412456b198cb928684d48c67e8cf70bd1180154227db3e79eb2001e6cf5574",
             "retrieved": "2026-10-26",
-            "checked": "2026-11-05"
+            "checked": "2026-11-09"
         }
     ]
 }
