@@ -294,7 +294,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/cour-dassises-de-larrondissement-administratif-de-bruxelles-capitale.html",
-            "sha256": "853b8eabd81389b242dbc73d26bc3133bb51c185b2e457e89d2215057449aab8",
+            "sha256": "851ef7f64b9ef35b3a143bf2372fe2f8175a9664a6705f5676d6418a12b3af00",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -501,7 +501,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/cour-du-travail-de-mons/contact.html",
-            "sha256": "f822f3ecf71a3b37b1506f6f55bcd2eab1be78f23fca897a2f68c04322b57798",
+            "sha256": "2a6a004da229019e3f86620b3502285b7b580d0fe9e8abc6b75ce10c29ed1ce4",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3120,7 +3120,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-arlon.html",
-            "sha256": "020a8f52c5298e505a50a8946da63d1b6397a51582f1932476bd1e31f6b326f6",
+            "sha256": "1ad5574f1ed98365f0d4e93c14531ad25091a4733be1c8c0da6de3b236a66c13",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3174,7 +3174,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-liege.html",
-            "sha256": "915f746ccda9b5d88554a5918bffdab0f8d90ae9ba101e79f5b5a1392d42b9b2",
+            "sha256": "a98f5d95e443709b1841a4b6b05e566c8b22f79c4d3849c9a343979ebdbd62ad",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3210,8 +3210,8 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-namur.html",
-            "sha256": "a2efac2d4a88f54111a424a754c4e3d52b585abf0cac0cbd53f5dd2e6251ddc3",
-            "retrieved": "2026-11-09",
+            "sha256": "99f631eb0e38e6354c4b453a68efe2de5f5474e07e9617eb76feb4f5d25b041e",
+            "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
         {
@@ -3246,8 +3246,8 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-verviers.html",
-            "sha256": "2556319d5a968387ae1c6f1680601a7976bd5ec34dc2b581201527cf6a2abf84",
-            "retrieved": "2026-11-09",
+            "sha256": "8fc23906e771fc2e94f2eb21caa3416163aaeb84bb3c765f822f3f2cf7a3b804",
+            "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
         {
@@ -3327,7 +3327,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-binche/contact.html",
-            "sha256": "fcf92863b59a730b9e02fd4190cf79e20b4967fd485d42a27faf933ec416238b",
+            "sha256": "609841067dd732cba808180ca0b50818885bc92e8ca15a4ebe7acc17e4e34bcb",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3345,7 +3345,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-charleroi/contact.html",
-            "sha256": "8661930bfcfab93a107fe1dd1cd3cc236f5f2767b6fa1f115d9544018f83a4cb",
+            "sha256": "ed4839882f77ab0249954c1e5d581aa696278b29fa4068e0474910b92829a909",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3363,7 +3363,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-la-louviere/contact.html",
-            "sha256": "3312996721e840561027263f363d932789ff210c69766b6ab857b408eb9bcb4e",
+            "sha256": "a814d9a8f5fe076b99fb63690c4534d28ff263836a9201f22b0fdaf89e392eca",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3381,7 +3381,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-mons/contact.html",
-            "sha256": "64d67d6df4356825899236098e81d3a07f44f77ca61bd5b833660bf004c50b04",
+            "sha256": "873b41f18ed429ab48b01b1e042564b80bd331ce2c4da2cf9aefeda633ce9ada",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3399,7 +3399,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-mouscron/contact.html",
-            "sha256": "6c926749ae2369d8de36c2fcc54e118e193399957e5d3589d332cb24960d5a83",
+            "sha256": "1c39708416807c4b24a889f87a3c3430bd596e6f29e022cf24c49eb2de274bf0",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3417,7 +3417,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-tournai/contact.html",
-            "sha256": "65d5e73b120be896379aa36a872d04c1b958d8edad7d7ac8748229a468f6e010",
+            "sha256": "2b38b8e1106839c6c17a9fee2cb4fd617bb64e7bbce59cf38a4dbb94f1c42d92",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3426,7 +3426,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut/contact.html",
-            "sha256": "038814b31f909ab07362f0ba8aa2bf4e97d39c1373a00e834aaef6a642e3c21c",
+            "sha256": "41cb8456b37a8ebea51cd7d463e95949e10980514ee985c06490ec9b6a9bf338",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3516,7 +3516,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/arbeidshof-antwerpen-afdeling-antwerpen/contact.html",
-            "sha256": "0112b7efe8c2840fb3cf5153169cfb89599c9c2bc0eb3cc1059ca7e248b08e35",
+            "sha256": "03d010d2dacfa6edbbed23425f68ed486854f451e99559de961d7c9f1f4e1a64",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3534,7 +3534,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/arbeidshof-antwerpen-afdeling-hasselt/contact.html",
-            "sha256": "6462c5fec066daf10d9a1ca8c2a407e05e5f0b0780f140bd16c5c2cc755d3643",
+            "sha256": "8a705074f2bae45a09b01e9f182ea6ad57c80ff12789296d74a24770abee7004",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3543,7 +3543,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/arbeidshof-antwerpen/contact.html",
-            "sha256": "abff33498e13765a095ecc4522ecaf77e851de37015d20feda603e1eb3eac575",
+            "sha256": "a673ef110b9615e48086e948b950072b09c449d139c611ed54dea1a57035672b",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -3723,7 +3723,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/arbeidsrechtbank-antwerpen/contact.html",
-            "sha256": "a7b56e47e4d7916450c5af9fe1ecf5bef7b52d3e50e3c9a3404ca31ed15608b7",
+            "sha256": "3ae8e0466e43ca9f8e4438a4bd09bd412ef307444d17e8e017ba9f39c62b7bbd",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -4065,7 +4065,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/hof-van-beroep-antwerpen/contact.html",
-            "sha256": "7bfff44cfafcc07cd9d934013e54931874471b60fc574c37033bb5cdc91b1d28",
+            "sha256": "5e9b07c8837089197dd74bd14d89154fed5bdc50804b8760c18db877a0d3e764",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -4101,7 +4101,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/hof-van-beroep-gent/contact.html",
-            "sha256": "ef50c3b0e494857ed88e30bcc5bcc06004271895818d3b52c43dbf5e817a9e96",
+            "sha256": "8950c27fe34100e88c9f19bb7052d6dffd8006b31e041a93cf99d64842e885a9",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -4479,7 +4479,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/ondernemingsrechtbank-leuven.html",
-            "sha256": "76409aa861730373a9e61312fadf84e923c6491a539add82bfac48d6b314e238",
+            "sha256": "377a3c37534984ee2c8cb67acf4cabbe07478a2f106b50d9dfe89190d4bf4d06",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -4605,8 +4605,8 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg.html",
-            "sha256": "eb9558c33829ed8e7a2dc7e13aa7d60e5c06ac279901e46490a1b42deb6589c8",
-            "retrieved": "2026-11-09",
+            "sha256": "dd8874cf421e9744222634b8a3e249a3c05690b78153a9090e62db0e9a282ac0",
+            "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
         {
@@ -4965,7 +4965,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen-afdeling-antwerpen/contact.html",
-            "sha256": "124d10f675ae0ed8da84b3417024bc645398facc8e4b695e64c96ca12a243adb",
+            "sha256": "ff6ea5343296e45b4c17aa3bb8d2e2e8d4ab51c8c02b7b21cd754ca22f72e383",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -4983,7 +4983,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen-afdeling-mechelen/contact.html",
-            "sha256": "18b36e2908092543398ee123a254466ec999d0e23900c4f6379e3c9fad4aa95d",
+            "sha256": "31cca48e0b3c459b272dc3cdd0e70e38839936524cde5e21c9464e7e1962ff14",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5001,7 +5001,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen-afdeling-turnhout/contact.html",
-            "sha256": "f2aadb2a0090b25a831880d4ebf34e6c16b1e81ed26c27d1a1d4f15dcec1c08d",
+            "sha256": "0ff3de7f3325008a12603e1e9e9942a2a0368ec51e96ffd6fc4162fadb2b7a21",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5010,7 +5010,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen/contact.html",
-            "sha256": "0ebc04e9657faf633255bf40822b1e0e533de41b5f7999c7c6a97ca1588c0505",
+            "sha256": "a6d51403ef778a2f80b30bc01eb60056f61b0ef2538af67ddd29628362d3b452",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5127,7 +5127,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-oost-vlaanderen-afdeling-gent/contact.html",
-            "sha256": "fd94bd6787b51bdbdc3082caebf4ddb15f47f6bfee0134bd830c7583bdf12e2e",
+            "sha256": "f1a03505882aa8db56b508fc14846d93da88ee9becbf5acabf67369f40020f4f",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5181,7 +5181,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-brugge/contact.html",
-            "sha256": "503378fc31b096c110879856d5f01a21692ef0f213a60e269f8040118c24d594",
+            "sha256": "c3230ace8720bb3b0407d73fa0a29debc8f4ef023d862afaa0ab437066da79ae",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5199,7 +5199,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-ieper/contact.html",
-            "sha256": "38d51b248917ba5d6a3e56a2e92d2ab0107abfc555ea0ca40a40968d9631f8ca",
+            "sha256": "20f6a67b5eebc4f3b436ed073d6b701414f52777e2fee4ab15038f3f141281de",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5217,7 +5217,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-kortrijk/contact.html",
-            "sha256": "1766dadf325a42ab5fff4dd8067ae52140dd853c962b614463f7f051da0afd28",
+            "sha256": "3ad8ae21292745bc60b97a967d5ea9be51b1ca005d4e095a07376cb715da9fa0",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5235,7 +5235,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-veurne/contact.html",
-            "sha256": "2fb3f8e93713d125283023aa2b1914e680a3920dae9c19f12acf8fabdd171c0f",
+            "sha256": "90ab8f13ea2581799bf1b5f047a8ecec87a7b32083d09c7136b679daa98be3aa",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
@@ -5244,7 +5244,7 @@
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen/contact.html",
-            "sha256": "7543334d78bf1a1bb2cf50abf538994f79876c56e6bbcf68949116a38fbc97b4",
+            "sha256": "41bec44545690cf08bf500ba485d2a0e2cee3cd3fc5eba9bb6529308a32d37fb",
             "retrieved": "2026-11-11",
             "checked": "2026-11-11"
         },
