@@ -29,6 +29,20 @@ export function localLanguage(postalCode: string): Lang {
 export const nameId = (name: string) =>
     toId(name.replace(/\b(?:van|de|du|des|het|la|le)\s+|\b[dl]'/gi, ' '))
 
+/**
+ * Ids kept when a prison is renamed, by the last segment of its Dutch page's URL. Ids are public
+ * API (scripts/lock-ids.ts): a new name on the same page is the same prison, so it keeps the id
+ * its old name gave it instead of retiring it for a new one.
+ */
+export const PINNED_PRISON_IDS: Readonly<Record<string, string>> = {
+    // 'Gevangenis van Antwerpen' became 'Gevangenis Antwerpen De Vest' in November 2026
+    adres_gevangenis_antwerpen_0: 'gevangenis-antwerpen',
+}
+
+/** A prison's id: the one pinned to its page, or else one from its local-language name */
+export const prisonId = (nlUrl: string, localName: string) =>
+    PINNED_PRISON_IDS[nlUrl.split('/').pop() ?? ''] ?? nameId(localName)
+
 const text = (el: HTMLElement | null | undefined) => (el ? clean(el.textContent) : '')
 
 function sourceRefs(snapshots: Snapshots, urls: string[]) {
@@ -98,7 +112,7 @@ export function buildPrisons(root: string): { prisons: Prison[]; problems: strin
         )
         for (const value of ibans) contacts.push({ type: 'bank-account', value })
         prisons.push({
-            id: nameId(localName),
+            id: prisonId(nl, localName),
             kind: nl.includes('/detentiehuizen/') ? 'detention-house' : 'prison',
             name,
             address,
