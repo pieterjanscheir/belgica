@@ -161,7 +161,7 @@ jobs:
                   if [ -n "$number" ]; then
                     # Only what the issue doesn't say yet: the same signals come back every run
                     # until the data catches up
-                    gh issue view "$number" --comments --json body,comments --jq '.body, .comments[].body' > seen.txt
+                    gh issue view "$number" --json body,comments --jq '.body, .comments[].body' > seen.txt
                     if grep -vxF -f seen.txt canton-signals.log > new-signals.log; then
                       write new-signals.log > cantons.md
                       gh issue comment "$number" --body-file cantons.md
