@@ -8,7 +8,7 @@
             "file": "statbel.fgov.be/nl/open-data/bevolkingscijfers-gerechtelijke-kantons-2.html",
             "sha256": "61205f938ab462fac34d53a83c3110736eede4a84a69fd0c4864c09f7993f0f1",
             "retrieved": "2026-11-02",
-            "checked": "2026-11-11"
+            "checked": "2026-11-12"
         },
         {
             "url": "https://statbel.fgov.be/nl/open-data/refnis-code-0",
@@ -17,7 +17,7 @@
             "file": "statbel.fgov.be/nl/open-data/refnis-code-0.html",
             "sha256": "beaf237ede96581d8f8a49e9a2db3669bac5627b9ad0a1cac3f332b8e9b954d4",
             "retrieved": "2026-11-02",
-            "checked": "2026-11-11"
+            "checked": "2026-11-12"
         },
         {
             "url": "https://statbel.fgov.be/sites/default/files/files/opendata/REFNIS%20code/TU_COM_REFNIS-20250101.zip",
@@ -26,7 +26,7 @@
             "file": "statbel.fgov.be/sites/default/files/files/opendata/REFNIS_code/TU_COM_REFNIS-20250101.zip",
             "sha256": "2b4fd9cce780ca1104495dd7e2c81401991bc035ee41024695ca9e91882ebceb",
             "retrieved": "2026-10-20",
-            "checked": "2026-11-11"
+            "checked": "2026-11-12"
         },
         {
             "url": "https://statbel.fgov.be/sites/default/files/files/opendata/TF_POP_Canton/TF_POP_CANTONS_2025.zip",
@@ -35,7 +35,7 @@
             "file": "statbel.fgov.be/sites/default/files/files/opendata/TF_POP_Canton/TF_POP_CANTONS_2025.zip",
             "sha256": "6f59a39da7bf95b9e4994b9fe9c27bcafb60ab010cd3096e5b5b19a33d78bb99",
             "retrieved": "2026-10-20",
-            "checked": "2026-11-11"
+            "checked": "2026-11-12"
         }
     ]
 }
