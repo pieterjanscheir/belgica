@@ -370,14 +370,41 @@ municipalities. In Brussels, the Dutch- and the French-speaking court. For a cit
 cantons and the type `justice-of-the-peace`, every justice of the peace that serves part of it.
 `[]` for an unknown code.
 
-It gives the court as a whole. Which of its divisions hears a case is set by royal decree and
-isn't in the data yet, so choose among [`getDivisions(court.id)`](#getdivisions).
+It gives the court as a whole: [`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction)
+gives the division.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction` {#finddivisionswithjurisdiction}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: OnDay,
+): Court[]
+```
+
+Where to file for a municipality, by REFNIS code: for each court that
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction) gives, the division whose area holds
+the municipality, as the royal decrees under art. 186 of the Judicial Code set it (see
+[divisions](/data/courts#divisions)). A municipality belongs to the division that names it in
+`municipalities`, or else to the one that has its canton in `cantons`. A court that isn't
+divided, or whose division areas aren't in the data (the police courts), gives itself. A city
+split over cantons that go to different divisions would give each, and the street address
+decides; no city is split that way today. `[]` for an unknown code.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']: Pont-à-Celles, though the rest of its canton goes to Binche
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']: not divided
 ```
 
 ### `findCourtsForPostalCode` {#findcourtsforpostalcode}

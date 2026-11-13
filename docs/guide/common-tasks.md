@@ -10,6 +10,7 @@ package root unless it says otherwise. See [entry points](./entry-points) to imp
 | A municipality (REFNIS code)        | Its cantons                                   | [`getCantonsForMunicipality`](/api#getcantonsformunicipality)                                |
 | A municipality                      | Its justices of the peace, with their cantons | [`findJusticesOfThePeace`](/api#findjusticesofthepeace)                                      |
 | A municipality and a court type     | The courts of that type with jurisdiction     | [`findCourtsWithJurisdiction`](/api#findcourtswithjurisdiction)                              |
+| A municipality and a court type     | The division to file with                     | [`findDivisionsWithJurisdiction`](/api#finddivisionswithjurisdiction)                        |
 | A postal code and a court type      | Both of the above, per municipality           | [`findCourtsForPostalCode`](/api#findcourtsforpostalcode)                                    |
 | A postal code                       | Its municipalities                            | [`getMunicipalitiesForPostalCode`](/api#getmunicipalitiesforpostalcode)                      |
 | Coordinates                         | The canton, or the arrondissement             | [`findCantonsAt`](/api#findcantonsat), [`findArrondissementsAt`](/api#findarrondissementsat) |
@@ -77,20 +78,25 @@ the law sets them. `findCourtsWithJurisdiction` finds the courts of a type whose
 of the municipality's cantons:
 
 ```ts
-import { findCourtsWithJurisdiction, getDivisions } from 'belgica'
+import { findCourtsWithJurisdiction, findDivisionsWithJurisdiction, getDivisions } from 'belgica'
 
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'labour-court').map((c) => c.id)
 // ['labour-court-brussel-fr', 'labour-court-brussel-nl']: one per language in Brussels
 ```
 
-The result is the court as a whole. Which division hears a case is set by royal decree and isn't
-in the data yet ([#58](https://github.com/pieterjanscheir/belgica/issues/58)), so list the
-divisions and let the user choose:
+The result is the court as a whole. `findDivisionsWithJurisdiction` gives the division to file
+with, from the areas the royal decrees set (see [divisions](/data/courts#divisions)). A court
+that isn't divided gives itself, and so does a police court, whose division areas aren't in the
+data yet:
 
 ```ts
-const [court] = findCourtsWithJurisdiction('44021', 'enterprise-court')
-getDivisions(court.id).map((d) => d.id) // ['enterprise-court-gent-brugge', …, 'enterprise-court-gent-veurne']
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((d) => d.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('64034', 'court-of-first-instance').map((d) => d.id) // ['court-of-first-instance-liege-huy']
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((d) => d.id) // ['court-of-first-instance-leuven']
+
+const [court] = findCourtsWithJurisdiction('44021', 'police-court')
+getDivisions(court.id).map((d) => d.id) // its divisions, to choose from
 ```
 
 The court types are `justice-of-the-peace`, `police-court`, `court-of-first-instance`,

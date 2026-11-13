@@ -10,6 +10,7 @@ import {
     type Prison,
     cantons,
     findCourtsWithJurisdiction,
+    findDivisionsWithJurisdiction,
     findCourts,
     findJusticesOfThePeace,
     getCanton,
@@ -109,6 +110,50 @@ describe('findCourtsWithJurisdiction', () => {
 
     it('returns an empty list for an unknown code', () => {
         expect(findCourtsWithJurisdiction('99999', 'police-court')).toEqual([])
+    })
+})
+
+describe('findDivisionsWithJurisdiction', () => {
+    const ids = (municipality: string, type: Parameters<typeof findDivisionsWithJurisdiction>[1]) =>
+        findDivisionsWithJurisdiction(municipality, type).map((c) => c.id)
+
+    it('finds the division by canton', () => {
+        expect(ids('31005', 'enterprise-court')).toEqual(['enterprise-court-gent-brugge'])
+        // Gent is split over five cantons, all in the same division
+        expect(ids('44021', 'labour-court')).toEqual(['labour-court-gent-gent'])
+        // The labour court of appeal of Liège: the province of Liège holds Eupen too
+        expect(ids('63023', 'labour-court-of-appeal')).toEqual([
+            'labour-court-of-appeal-liege-liege',
+        ])
+    })
+
+    it('finds a division that takes only part of a canton', () => {
+        // KB 14 March 2014, art. 16: Pont-à-Celles (canton Seneffe) goes to Charleroi, and
+        // Erquelinnes (canton Chimay) to Binche
+        expect(ids('52055', 'labour-court')).toEqual(['labour-court-hainaut-charleroi'])
+        expect(ids('56022', 'labour-court')).toEqual(['labour-court-hainaut-binche'])
+        expect(ids('56049', 'labour-court')).toEqual(['labour-court-hainaut-binche'])
+        // Seneffe stays with its canton, which goes to Binche
+        expect(ids('55085', 'labour-court')).toEqual(['labour-court-hainaut-binche'])
+        // The enterprise court keeps the whole canton Chimay together
+        expect(ids('56022', 'enterprise-court')).toEqual(['enterprise-court-hainaut-charleroi'])
+        // Since 2024 Hannut (canton Waremme) goes to Huy, Waremme itself to Liège
+        expect(ids('64034', 'court-of-first-instance')).toEqual([
+            'court-of-first-instance-liege-huy',
+        ])
+        expect(ids('64074', 'court-of-first-instance')).toEqual([
+            'court-of-first-instance-liege-liege',
+        ])
+    })
+
+    it('gives the court itself where the data has no divisions', () => {
+        expect(ids('24062', 'court-of-first-instance')).toEqual(['court-of-first-instance-leuven'])
+        // The police courts' division areas aren't in the data yet
+        expect(ids('44021', 'police-court')).toEqual(['police-court-oost-vlaanderen'])
+    })
+
+    it('is empty for an unknown municipality', () => {
+        expect(findDivisionsWithJurisdiction('99999', 'labour-court')).toEqual([])
     })
 })
 

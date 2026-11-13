@@ -74,6 +74,68 @@ describe('data integrity', () => {
         }
     })
 
+    it('gives every division of the divided courts its area, once', () => {
+        // A municipality belongs to the division that names it in `municipalities`, or else to
+        // the one that has its canton in `cantons`: each (canton, municipality) pair of a
+        // court's area must land in exactly one of its divisions
+        const divided = new Set([
+            'court-of-first-instance',
+            'enterprise-court',
+            'labour-court',
+            'labour-court-of-appeal',
+        ])
+        let checked = 0
+        for (const court of courts) {
+            if (court.kind !== 'court' || !divided.has(court.type)) continue
+            const divisions = getDivisions(court.id).filter((d) => d.kind === 'division')
+            if (divisions.length === 0) continue
+            checked++
+            for (const d of divisions)
+                expect(d.cantons ?? d.municipalities, `${d.id} has no area`).toBeDefined()
+            for (const id of court.cantons ?? []) {
+                const canton = cantons.find((c) => c.id === id)
+                expect(canton, id).toBeDefined()
+                for (const { municipality } of canton?.municipalities ?? []) {
+                    const named = divisions.filter((d) =>
+                        (d.municipalities as readonly string[] | undefined)?.includes(municipality),
+                    )
+                    const holders =
+                        named.length > 0 ? named : divisions.filter((d) => d.cantons?.includes(id))
+                    expect(
+                        holders.map((d) => d.id),
+                        `${court.id}: ${id} / ${municipality}`,
+                    ).toHaveLength(1)
+                }
+            }
+            // Nothing outside the court's area
+            const area = new Set(
+                (court.cantons ?? []).flatMap(
+                    (id) =>
+                        cantons
+                            .find((c) => c.id === id)
+                            ?.municipalities.map((m) => m.municipality) ?? [],
+                ),
+            )
+            for (const d of divisions) {
+                for (const id of d.cantons ?? [])
+                    expect(court.cantons, `${d.id}: ${id}`).toContain(id)
+                for (const m of d.municipalities ?? [])
+                    expect(area.has(m), `${d.id}: ${m}`).toBe(true)
+            }
+        }
+        // 3 labour courts of appeal, 8 courts of first instance, 4 enterprise and 4 labour courts
+        expect(checked).toBe(19)
+    })
+
+    it('gives no area to a seat, or to a division of a police court', () => {
+        for (const c of courts) {
+            if (c.kind === 'seat' || (c.kind === 'division' && c.type === 'police-court')) {
+                expect(c.cantons, c.id).toBeUndefined()
+                expect(c.municipalities, c.id).toBeUndefined()
+            }
+        }
+    })
+
     it('names every court in at least one language', () => {
         for (const c of courts) expect(Object.values(c.name).length, c.id).toBeGreaterThan(0)
     })
@@ -94,6 +156,10 @@ describe('data integrity', () => {
         for (const c of courts) {
             if (c.kind === 'court' && c.type !== 'justice-of-the-peace') {
                 expect(c.cantons?.length, c.id).toBeGreaterThan(0)
+                for (const id of c.cantons ?? []) expect(cantonIds, `${c.id}: ${id}`).toContain(id)
+            } else if (c.kind === 'division') {
+                // A division's area: see 'gives every division of the divided courts its area'
+                if (c.cantons) expect(c.cantons.length, c.id).toBeGreaterThan(0)
                 for (const id of c.cantons ?? []) expect(cantonIds, `${c.id}: ${id}`).toContain(id)
             } else expect(c.cantons, c.id).toBeUndefined()
         }

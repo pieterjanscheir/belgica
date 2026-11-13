@@ -4,6 +4,7 @@ import {
     cantonIdSchema,
     courtIdSchema,
     judicialAreaIdSchema,
+    municipalityIdSchema,
 } from '../ids.generated.ts'
 import {
     addressSchema,
@@ -65,9 +66,19 @@ export const courtSchema = z.strictObject({
     /**
      * For a court other than a justice of the peace: the cantons it covers, as the annex to the
      * Judicial Code (art. 3–5) and art. 114 of the Code set them. A justice of the peace covers
-     * its `canton`; a division or seat has neither: see `court`.
+     * its `canton`. For a division of a court of first instance, enterprise court, labour court
+     * or labour court of appeal: the cantons that lie wholly in its area, as the royal decrees
+     * under art. 186 of the Code set it; `municipalities` has the rest. A seat, and a division
+     * of a police court, has neither.
      */
     cantons: z.array(cantonIdSchema).exactOptional(),
+    /**
+     * For a division whose area takes only some municipalities of a canton (one it shares with
+     * another division of its court): those municipalities, by REFNIS code. A municipality
+     * belongs to the division that has it here, or else to the one that has its canton in
+     * `cantons`.
+     */
+    municipalities: z.array(municipalityIdSchema).exactOptional(),
     /**
      * The court's codes in European Case Law Identifiers (ECLI:BE:<code>:…), one per language
      * it judges in; only codes seen in published decisions
@@ -108,6 +119,7 @@ export const courtSummarySchema = courtSchema.pick({
     arrondissement: true,
     canton: true,
     cantons: true,
+    municipalities: true,
     address: true,
 })
 /** A court as the list files in data/courts/ hold it: who and where it is, without its contacts */

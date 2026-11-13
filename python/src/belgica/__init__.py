@@ -42,6 +42,7 @@ from ._jurisdiction import (
     find_competent_courts,
     find_courts_for_postal_code,
     find_courts_with_jurisdiction,
+    find_divisions_with_jurisdiction,
     find_justices_of_the_peace,
 )
 from ._places import (
@@ -114,6 +115,7 @@ __all__ = [
     'find_courts',
     'find_courts_for_postal_code',
     'find_courts_with_jurisdiction',
+    'find_divisions_with_jurisdiction',
     'find_justices_of_the_peace',
     'find_police_zone',
     'format_court_name',

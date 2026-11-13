@@ -12,6 +12,7 @@ import { toId } from '../id.ts'
 import { isCourtPage } from '../sources/catalog.ts'
 import { Snapshots } from '../sources/store.ts'
 import { dedupe, readCourtPage, type CourtPage } from './court-page.ts'
+import { applyDivisionAreas } from './division-areas.ts'
 import { JURISDICTIONS, cantonsIn, namedCantons } from './jurisdictions.ts'
 import { toOpeningHours } from './opening-hours.ts'
 import type { Court, CourtType, Locale } from './types.ts'
@@ -219,6 +220,8 @@ export interface Report {
     courtsWithoutJurisdiction: string[]
     /** Courts in the law table that the sources don't have */
     jurisdictionsWithoutCourt: string[]
+    /** Courts and divisions in the division areas (division-areas.ts) that the sources don't have */
+    divisionAreasWithoutCourt: string[]
 }
 
 export function buildCourts(root: string, dataDir = 'data'): { courts: Court[]; report: Report } {
@@ -233,6 +236,7 @@ export function buildCourts(root: string, dataDir = 'data'): { courts: Court[]; 
         eclisWithoutCourt: [],
         courtsWithoutJurisdiction: [],
         jurisdictionsWithoutCourt: [],
+        divisionAreasWithoutCourt: [],
     }
 
     const cantonByName = new Map<string, Canton>()
@@ -443,6 +447,11 @@ export function buildCourts(root: string, dataDir = 'data'): { courts: Court[]; 
         courts.push(court)
     }
 
+    // Which division of a court covers what, from the royal decrees (division-areas.ts)
+    const divisionAreas = applyDivisionAreas(courts, { cantons, municipalities })
+    report.conflicts.push(...divisionAreas.problems)
+    report.divisionAreasWithoutCourt = divisionAreas.missing
+
     const served = new Set(courts.map((c) => c.canton))
     report.cantonsWithoutCourt = cantons.filter((c) => !served.has(c.id)).map((c) => c.id)
     report.eclisWithoutCourt = Object.keys(ECLI).filter((id) => !drafts.has(id))
@@ -467,6 +476,7 @@ function ordered(c: Court): Court {
         ...(c.arrondissement ? { arrondissement: c.arrondissement } : {}),
         ...(c.canton ? { canton: c.canton } : {}),
         ...(c.cantons ? { cantons: c.cantons } : {}),
+        ...(c.municipalities ? { municipalities: c.municipalities } : {}),
         ...(c.ecli ? { ecli: c.ecli } : {}),
         ...(c.address ? { address: c.address } : {}),
         contacts: c.contacts,

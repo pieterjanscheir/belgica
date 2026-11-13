@@ -146,6 +146,9 @@ const problems = [
         (id) => `${id} is on the portal, but not in the law table`,
     ),
     ...report.jurisdictionsWithoutCourt.map((id) => `the law table has ${id}, the sources don't`),
+    ...report.divisionAreasWithoutCourt.map(
+        (id) => `the division areas have ${id}, the sources don't`,
+    ),
     ...boundaryReport.unmatched,
     ...boundaryReport.missing.map((id) => `canton ${id} has no boundary in the NGI's file`),
     ...arrondissementReport.unmatched,

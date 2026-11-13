@@ -130,8 +130,25 @@ describe('buildCourts', () => {
             cantons: ['eupen-sankt-vith-1', 'eupen-sankt-vith-2'],
             arrondissement: 'eupen',
         })
-        expect(court('enterprise-court-gent-brugge')?.cantons).toBeUndefined()
+        // A division: the cantons its decree gives it, and the decrees among its sources
+        expect(court('enterprise-court-gent-brugge')?.cantons).toEqual([
+            'brugge-1',
+            'brugge-2',
+            'brugge-3',
+            'brugge-4',
+            'tielt',
+        ])
+        expect(court('enterprise-court-gent-brugge')?.sources.map((s) => s.url)).toContain(
+            'https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad',
+        )
         expect(court('justice-of-the-peace-gent-1')?.cantons).toBeUndefined()
+    })
+
+    it('reports courts and divisions in the division areas that the sources lack', () => {
+        // The fixtures hold the enterprise court of Gent and some of its divisions only
+        expect(report.divisionAreasWithoutCourt).toContain('labour-court-gent')
+        expect(report.divisionAreasWithoutCourt).not.toContain('enterprise-court-gent')
+        expect(report.divisionAreasWithoutCourt).not.toContain('enterprise-court-gent-brugge')
     })
 
     it('reports courts in the law table that the sources lack', () => {
