@@ -7,6 +7,8 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-11-13
+
 ### Added
 
 - The documentation has a [court finder](https://pieterjanscheir.github.io/belgica/guide/court-finder),
@@ -552,7 +554,8 @@ OpenStreetMap `opening_hours` syntax (`Mo-Fr 08:30-12:30,13:30-16:00`).
 - Courts (justices of the peace in East and West Flanders, Ondernemingsrechtbank Gent) and the
   legal and commercial interest rates.
 
-[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/pieterjanscheir/belgica/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/pieterjanscheir/belgica/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/pieterjanscheir/belgica/compare/v0.6.2...v0.7.0
 [0.6.2]: https://github.com/pieterjanscheir/belgica/compare/v0.6.1...v0.6.2
