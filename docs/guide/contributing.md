@@ -170,7 +170,9 @@ doesn't use it, so merge main into the branch locally when GitHub reports a conf
 
 The release pull request and the data pull request are opened by a workflow. With the
 workflow's own token GitHub doesn't run CI on them, so they're opened with a token from a GitHub
-App when one is set up. Without it, close and reopen those pull requests to run CI. To set it up:
+App when one is set up. Without it, close and reopen those pull requests to run CI. The bot is
+optional at run time too: when it gives no token (the app isn't installed on the repository, or
+its key was revoked), the run warns and goes on with the workflow's own token. To set it up:
 
 1. Create a GitHub App under Settings → Developer settings → GitHub Apps → New GitHub App: any
    name, any homepage URL, webhook off, repository permissions **Contents: read and write** and

@@ -60,6 +60,19 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   no `arrondissement` any more. Its area is the province of Liège, which holds the arrondissement
   Eupen too, and a division's arrondissement now follows from its area, as a court's does.
 
+### Fixed
+
+- The release and the data pull request no longer depend on the bot: when the GitHub App gives
+  no token (`BOT_CLIENT_ID` is set but the app isn't installed on the repository), the Prepare
+  release and Sources workflows warn and use the workflow's own token instead of failing. A
+  release pull request that can't be opened says where to open it by hand, and the sources
+  issue says so when the data was rebuilt but its pull request couldn't be opened
+  ([#159](https://github.com/pieterjanscheir/belgica/issues/159)).
+- A data pull request carries every generated file that `pnpm check` verifies. It left
+  `src/court-details-files.generated.ts` and `src/data-files.generated.ts` out, so one that
+  added or removed a court made `pnpm check` fail on main. Both now read one list,
+  `scripts/generated-files.ts` ([#160](https://github.com/pieterjanscheir/belgica/issues/160)).
+
 ## [0.8.0] - 2026-11-05
 
 ### Added

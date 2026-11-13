@@ -132,7 +132,7 @@
         "fetch:sources": "node scripts/sources/fetch.ts",
         "test": "pnpm build:data-files && vitest run",
         "typecheck": "pnpm build:data-files && tsc --noEmit",
-        "check": "pnpm generate && pnpm typecheck && pnpm lint && pnpm build && pnpm test:coverage && pnpm test:package && pnpm lint:package && git diff --exit-code -- schema data/courts.json src/ids.generated.ts src/canton-names.generated.ts src/data-files.generated.ts src/court-details-files.generated.ts ids.lock.json",
+        "check": "pnpm generate && pnpm typecheck && pnpm lint && pnpm build && pnpm test:coverage && pnpm test:package && pnpm lint:package && node scripts/generated-files.ts --check",
         "prepublishOnly": "pnpm check",
         "docs:dev": "pnpm build:docs-map && vitepress dev docs",
         "docs:build": "pnpm build:docs-map && vitepress build docs",

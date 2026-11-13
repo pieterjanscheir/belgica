@@ -39,16 +39,22 @@ jobs:
               run: echo "version=$(node scripts/prepare-release.ts "$BUMP")" >> "$GITHUB_OUTPUT"
             # A token from the repository's GitHub App when it's set up (the BOT_CLIENT_ID variable
             # and the BOT_PRIVATE_KEY secret): a pull request it opens or pushes to starts CI, which
-            # one from the workflow's own token doesn't. Without the app, the workflow's token is used.
+            # one from the workflow's own token doesn't. Without the app, or when it gives no token
+            # (not installed on the repository, a key that was revoked), the workflow's token is used:
+            # the bot is a convenience, and a release isn't held up over it.
             - name: Get the bot's token
               id: bot
               if: vars.BOT_CLIENT_ID != ''
+              continue-on-error: true
               uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
               with:
                   client-id: ${{ vars.BOT_CLIENT_ID }}
                   private-key: ${{ secrets.BOT_PRIVATE_KEY }}
                   permission-contents: write
                   permission-pull-requests: write
+            - name: Say that the bot gave no token
+              if: steps.bot.outcome == 'failure'
+              run: echo "::warning::The bot gave no token (is the app installed on this repository?). Using the workflow's own token; see docs/guide/contributing.md#the-bot"
             - name: Open the release pull request
               env:
                   GH_TOKEN: ${{ steps.bot.outputs.token || github.token }}
@@ -69,4 +75,9 @@ jobs:
                       echo "reopen this one to run it, or set up the bot (docs/guide/contributing.md)."
                     fi
                   } > body.md
-                  gh pr create --base main --head "release/v$VERSION" --title "Release $VERSION" --body-file body.md
+                  # The branch is pushed by now: when the token may not open pull requests, say
+                  # where to open this one by hand instead of only failing
+                  if ! gh pr create --base main --head "release/v$VERSION" --title "Release $VERSION" --body-file body.md; then
+                    echo "::error::The branch release/v$VERSION is pushed, but the pull request couldn't be opened. Open it at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...release/v$VERSION?expand=1"
+                    exit 1
+                  fi

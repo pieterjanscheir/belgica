@@ -111,7 +111,10 @@ jobs:
                   set -o pipefail
                   pnpm build:data 2>&1 | tee build.log
                   pnpm generate
-                  git diff --quiet -- data src/ids.generated.ts schema ids.lock.json || echo "changed=true" >> "$GITHUB_OUTPUT"
+                  # The data, and every committed file pnpm generate writes: the list pnpm check
+                  # verifies, so the pull request leaves none of them behind
+                  # shellcheck disable=SC2046
+                  git diff --quiet -- data $(node scripts/generated-files.ts) || echo "changed=true" >> "$GITHUB_OUTPUT"
 
             # The cantons come from ejustice, which refuses GitHub's runners (#52), so they're
             # rebuilt by hand. canton-signals.ts says when the other sources show they changed,
@@ -180,17 +183,24 @@ jobs:
 
             # A token from the repository's GitHub App when it's set up (the BOT_CLIENT_ID variable
             # and the BOT_PRIVATE_KEY secret): a pull request it opens or pushes to starts CI, which
-            # one from the workflow's own token doesn't. Without the app, the workflow's token is used.
+            # one from the workflow's own token doesn't. Without the app, or when it gives no token
+            # (not installed on the repository, a key that was revoked), the workflow's token is used:
+            # the bot is a convenience, and a run doesn't fail over it.
             - name: Get the bot's token
               id: bot
               if: vars.BOT_CLIENT_ID != '' && steps.build.outputs.changed == 'true' && github.ref == 'refs/heads/main'
+              continue-on-error: true
               uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
               with:
                   client-id: ${{ vars.BOT_CLIENT_ID }}
                   private-key: ${{ secrets.BOT_PRIVATE_KEY }}
                   permission-contents: write
                   permission-pull-requests: write
+            - name: Say that the bot gave no token
+              if: steps.bot.outcome == 'failure'
+              run: echo "::warning::The bot gave no token (is the app installed on this repository?). Using the workflow's own token; see docs/guide/contributing.md#the-bot"
             - name: Open or update the data pull request
+              id: pr
               if: steps.build.outputs.changed == 'true' && github.ref == 'refs/heads/main'
               env:
                   GH_TOKEN: ${{ steps.bot.outputs.token || github.token }}
@@ -202,7 +212,8 @@ jobs:
                   git config user.name github-actions[bot]
                   git config user.email 41898282+github-actions[bot]@users.noreply.github.com
                   git switch -c data/sources
-                  git add data src/ids.generated.ts schema ids.lock.json
+                  # shellcheck disable=SC2046
+                  git add data $(node scripts/generated-files.ts)
                   git commit -q -m "Update the data from the official sources ($(date -u +%F))"
                   git push -f "https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git" data/sources
                   {
@@ -293,8 +304,12 @@ jobs:
               env:
                   GH_TOKEN: ${{ github.token }}
                   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+                  PR_OUTCOME: ${{ steps.pr.outcome }}
               run: |
-                  if [ -s fetch-failures.log ]; then
+                  if [ "$PR_OUTCOME" = failure ]; then
+                    # The data is fine; what failed is getting it to a pull request
+                    echo "The sources run rebuilt and tested the data, but couldn't push the data/sources branch or open its pull request: $RUN_URL. Look at the step \"Open or update the data pull request\"; the parsers and the data aren't the problem." > issue.md
+                  elif [ -s fetch-failures.log ]; then
                     {
                       echo "Some sources failed in $RUN_URL. Their last good snapshots were kept, and the"
                       echo "rest of the data was rebuilt without them:"
