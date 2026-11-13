@@ -8,7 +8,7 @@ You can read them from any language:
 - from a raw URL pinned to a release tag.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.9.0/data/cantons.json
 ```
 
 Pin a tag rather than `main`, so the data only changes when you choose to upgrade.
@@ -22,7 +22,7 @@ the files yourself instead:
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.8.0/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.9.0/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 
@@ -96,7 +96,7 @@ Generated from `data/courts.json` and `data/cantons.json`, for apps that need on
 These are built when the package is, so they're in the npm package and the release zip but not
 in the git repository: read them from `node_modules/belgica/data/` or from a CDN that serves
 the npm package, pinned to a version
-(`https://cdn.jsdelivr.net/npm/belgica@0.8.0/data/courts/index.json`).
+(`https://cdn.jsdelivr.net/npm/belgica@0.9.0/data/courts/index.json`).
 
 The shapes are described on the [data pages](/data/territory) and in the [API reference](/api#types).
 
