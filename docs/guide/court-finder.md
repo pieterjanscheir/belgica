@@ -117,7 +117,7 @@ and the finder [`CourtFinder.vue`](https://github.com/pieterjanscheir/belgica/bl
 
 ## Built on the package
 
-- [**CourtFull**](https://court-full-scheir.vercel.app/) takes this further: the same map down
+- [**CourtMap**](https://courtmap.be/) takes this further: the same map down
   to the house, the divisions that serve the address, routes and opening hours, deadlines and
   interest, in four languages, with an MCP server and a REST API. Its source is on
   [GitHub](https://github.com/pieterjanscheir/courtfull).
