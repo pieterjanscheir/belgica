@@ -60,6 +60,17 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   no `arrondissement` any more. Its area is the province of Liège, which holds the arrondissement
   Eupen too, and a division's arrondissement now follows from its area, as a court's does.
 
+### Fixed
+
+- The court data no longer holds a person's own e-mail address or name. Two records had a
+  clerk's address as the contact of a president's secretariat, and one contact label started
+  with a person's name (#179). The parsers now leave out an address shaped like `first.last`
+  that names no place or service, and a person's name in a label, and report what they left
+  out without repeating it; a test checks every contact in the data.
+- The explorer no longer sends a page's query string to its analytics. The court finder keeps
+  the street address in the URL, so a result can be shared as a link, and that address went
+  along with the page view (#186).
+
 ## [0.8.0] - 2026-11-05
 
 ### Added
