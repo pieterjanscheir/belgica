@@ -44,6 +44,13 @@ describe('withoutPersonName', () => {
         expect(withoutPersonName('Mme Dupont')).toBeUndefined()
     })
 
+    it('splits at a colon with or without a space before it, and never inside a time', () => {
+        expect(withoutPersonName('Jan Janssens: secretariaat')).toBe('secretariaat')
+        expect(withoutPersonName('Secretariaat : Jan Janssens')).toBe('Secretariaat')
+        expect(withoutPersonName('Onthaal 9:00 - 12:00')).toBe('Onthaal 9:00 - 12:00')
+        expect(withoutPersonName('Griffie: burgerlijke zaken')).toBe('Griffie: burgerlijke zaken')
+    })
+
     it('leaves a label that names a service, a role or a place', () => {
         for (const label of [
             'Greffe de la Famille',

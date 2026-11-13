@@ -100,7 +100,9 @@ const isPersonName = (part: string) =>
  * 'secretariaat'. `undefined` when nothing is left; the label as it is when it names no one.
  */
 export function withoutPersonName(label: string): string | undefined {
-    const parts = label.split(/\s+[-–|:]\s+/)
+    // A dash or a bar with spaces around it, or a colon with a space after it: 'Jan Janssens:
+    // secretariaat' is split, the time in 'Ma 9:00' is not
+    const parts = label.split(/\s+[-–|]\s+|\s*:\s+/)
     if (!parts.some(isPersonName)) return label
     const kept = parts.filter((part) => !isPersonName(part))
     return kept.length > 0 ? kept.join(' - ') : undefined
