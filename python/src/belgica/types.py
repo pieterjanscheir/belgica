@@ -182,7 +182,12 @@ class Court(Validity):
     canton: NotRequired[str]
     """For a justice of the peace: the canton it serves"""
     cantons: NotRequired[list[str]]
-    """For a court other than a justice of the peace: the cantons it covers"""
+    """For a court other than a justice of the peace: the cantons it covers. For a division of a
+    court of first instance, enterprise or labour court or labour court of appeal: the cantons
+    wholly in its area, as the royal decrees under art. 186 of the Judicial Code set it"""
+    municipalities: NotRequired[list[str]]
+    """For a division whose area takes only part of a canton: those municipalities, by REFNIS
+    code"""
     ecli: NotRequired[list[str]]
     address: NotRequired[Address]
     contacts: list[Contact]

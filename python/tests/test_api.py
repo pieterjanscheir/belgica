@@ -40,6 +40,18 @@ def test_readme_examples() -> None:
     assert [c['id'] for c in belgica.find_courts_with_jurisdiction('23088', 'police-court')] == [
         'police-court-vilvoorde'
     ]
+    divisions = belgica.find_divisions_with_jurisdiction
+    assert [c['id'] for c in divisions('31005', 'enterprise-court')] == [
+        'enterprise-court-gent-brugge'
+    ]
+    # Pont-à-Celles goes to Charleroi, though the rest of its canton (Seneffe) goes to Binche
+    assert [c['id'] for c in divisions('52055', 'labour-court')] == [
+        'labour-court-hainaut-charleroi'
+    ]
+    assert [c['id'] for c in divisions('55085', 'labour-court')] == ['labour-court-hainaut-binche']
+    assert [c['id'] for c in divisions('24062', 'court-of-first-instance')] == [
+        'court-of-first-instance-leuven'
+    ]
     assert [
         e.municipality['id'] for e in belgica.find_courts_for_postal_code('1040', 'police-court')
     ] == [

@@ -41,6 +41,25 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   `scripts/parse/annex-version.json`. The issue also says when etaamb has published nothing
   for 10 days.
 
+- The divisions (afdelingen, divisions) of the courts of first instance, the enterprise and
+  labour courts and the labour courts of appeal have their area: `cantons`, the cantons wholly
+  in the division, and `municipalities` (REFNIS codes) where a decree splits a canton between
+  divisions, as in the labour court of Hainaut and, since 2024, the court of first instance of
+  Liège. Each area is the text in force of the royal decrees under art. 186 of the Judicial
+  Code, consolidated from the decree of 14 March 2014, the courts' case-allocation decrees and
+  every decree that changed them, all cited in the division's `sources`. A test checks that a
+  court's divisions cover its area once. The police courts' divisions don't have theirs yet
+  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- `findDivisionsWithJurisdiction(municipalityId, type)`: the division to file with for a
+  municipality, or the court itself when it isn't divided or its division areas aren't in the
+  data.
+
+### Changed
+
+- The Liège division of the labour court of appeal (`labour-court-of-appeal-liege-liege`) has
+  no `arrondissement` any more. Its area is the province of Liège, which holds the arrondissement
+  Eupen too, and a division's arrondissement now follows from its area, as a court's does.
+
 ## [0.8.0] - 2026-11-05
 
 ### Added

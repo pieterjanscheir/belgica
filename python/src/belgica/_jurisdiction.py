@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from ._courts import get_courts_for_canton, get_justice_of_the_peace
+from ._courts import get_courts_for_canton, get_divisions, get_justice_of_the_peace
 from ._postal_codes import get_municipalities_for_postal_code
 from ._territory import get_cantons_for_municipality
 from ._time import Day
@@ -52,14 +52,41 @@ def find_courts_with_jurisdiction(
     REFNIS code: the courts whose area, as the law sets it, holds one of its cantons. One court
     for most municipalities; in Brussels the Dutch- and the French-speaking court; for a city split
     over cantons, every justice of the peace that serves one of them (the street address decides,
-    see `find_justices_of_the_peace`). The court as a whole: which of its divisions hears a case
-    is set by royal decree and isn't in the data; see `get_divisions`. Empty for an unknown code."""
+    see `find_justices_of_the_peace`). The court as a whole: `find_divisions_with_jurisdiction`
+    gives the division. Empty for an unknown code."""
     found: dict[int, Court] = {}
     for canton in get_cantons_for_municipality(municipality_id, on):
         for court in get_courts_for_canton(canton['id'], on):
             if court['type'] == type:
                 found.setdefault(id(court), court)
     return list(found.values())
+
+
+def find_divisions_with_jurisdiction(
+    municipality_id: str, type: CourtType, on: Day | None = None
+) -> list[Court]:
+    """Where to file for a municipality on a day (today by default), by REFNIS code: for each
+    court of the type that `find_courts_with_jurisdiction` gives, the division whose area holds
+    the municipality, as the royal decrees under art. 186 of the Judicial Code set it. A
+    municipality belongs to the division that names it in `municipalities`, or else to the one
+    that has its canton in `cantons`. A court that isn't divided, or whose division areas aren't
+    in the data (the police courts), gives itself. Empty for an unknown code."""
+    cantons = {canton['id'] for canton in get_cantons_for_municipality(municipality_id, on)}
+    found: list[Court] = []
+    for court in find_courts_with_jurisdiction(municipality_id, type, on):
+        divisions = [
+            d
+            for d in get_divisions(court['id'], on)
+            if d['kind'] == 'division' and ('cantons' in d or 'municipalities' in d)
+        ]
+        if not divisions:
+            found.append(court)
+            continue
+        named = [d for d in divisions if municipality_id in d.get('municipalities', [])]
+        found.extend(
+            named or [d for d in divisions if any(c in cantons for c in d.get('cantons', []))]
+        )
+    return found
 
 
 # Deprecated: renamed to `find_courts_with_jurisdiction`; it goes in 1.0

@@ -24,6 +24,7 @@ from belgica import (
     find_cantons_at,
     find_courts_with_jurisdiction,
     find_courts,
+    find_divisions_with_jurisdiction,
     find_courts_for_postal_code,
     find_police_zone,
     get_cantons_for_municipality,
@@ -45,6 +46,7 @@ find_cantons_at(3.7268, 51.053)  # [gent-1]: the canton of a point
 find_arrondissements_at(3.7268, 51.053)  # [oost-vlaanderen]: and its arrondissement
 get_court_location('justice-of-the-peace-gent-1')['geometry']  # the court on the map, a GeoJSON Point
 find_courts_with_jurisdiction('23088', 'police-court')  # [police-court-vilvoorde]: which court, by REFNIS code
+find_divisions_with_jurisdiction('31005', 'enterprise-court')  # [enterprise-court-gent-brugge]: which division
 find_courts_for_postal_code('1040', 'police-court')  # per municipality: Brussel and Etterbeek share the code
 find_police_zone('44021')['id']  # '5415': the police zone of Gent
 

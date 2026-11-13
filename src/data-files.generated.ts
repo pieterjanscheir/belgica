@@ -74,7 +74,6 @@ export const courtListFiles: Readonly<Record<string, Load>> = {
     'labour-court-of-appeal/judicial-area/brussel': () => import('../data/courts/labour-court-of-appeal/judicial-area/brussel.json', { with: { type: 'json' } }),
     'labour-court-of-appeal/judicial-area/gent': () => import('../data/courts/labour-court-of-appeal/judicial-area/gent.json', { with: { type: 'json' } }),
     'labour-court-of-appeal/judicial-area/liege': () => import('../data/courts/labour-court-of-appeal/judicial-area/liege.json', { with: { type: 'json' } }),
-    'labour-court-of-appeal/liege': () => import('../data/courts/labour-court-of-appeal/liege.json', { with: { type: 'json' } }),
     'labour-court-of-appeal/limburg': () => import('../data/courts/labour-court-of-appeal/limburg.json', { with: { type: 'json' } }),
     'labour-court-of-appeal/luxembourg': () => import('../data/courts/labour-court-of-appeal/luxembourg.json', { with: { type: 'json' } }),
     'labour-court-of-appeal/namur': () => import('../data/courts/labour-court-of-appeal/namur.json', { with: { type: 'json' } }),

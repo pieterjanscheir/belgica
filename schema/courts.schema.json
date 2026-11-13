@@ -85,7 +85,14 @@
           "items": {
             "$ref": "#/definitions/CantonId"
           },
-          "description": "For a court other than a justice of the peace: the cantons it covers, as the annex to the Judicial Code (art. 3–5) and art. 114 of the Code set them. A justice of the peace covers its `canton`; a division or seat has neither: see `court`."
+          "description": "For a court other than a justice of the peace: the cantons it covers, as the annex to the Judicial Code (art. 3–5) and art. 114 of the Code set them. A justice of the peace covers its `canton`. For a division of a court of first instance, enterprise court, labour court or labour court of appeal: the cantons that lie wholly in its area, as the royal decrees under art. 186 of the Code set it; `municipalities` has the rest. A seat, and a division of a police court, has neither."
+        },
+        "municipalities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MunicipalityId"
+          },
+          "description": "For a division whose area takes only some municipalities of a canton (one it shares with another division of its court): those municipalities, by REFNIS code. A municipality belongs to the division that has it here, or else to the one that has its canton in `cantons`."
         },
         "ecli": {
           "type": "array",
@@ -754,42 +761,6 @@
       ],
       "description": "Id of a record in data/cantons.json"
     },
-    "Address": {
-      "type": "object",
-      "properties": {
-        "building": {
-          "type": "string",
-          "description": "A building's name, when one is published: 'Gerechtsgebouw'"
-        },
-        "street": {
-          "type": "string",
-          "description": "The street line as published, with its number, box or floor: 'Kazernevest 3', 'Beverstraat 7B (eerste verdieping)'"
-        },
-        "postalCode": {
-          "type": "string",
-          "pattern": "^\\d{4}$",
-          "description": "The four-digit postal code"
-        },
-        "city": {
-          "type": "string"
-        },
-        "municipality": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/MunicipalityId"
-            }
-          ],
-          "description": "The municipality the postal code belongs to, by REFNIS code (data/postal-codes.json). Missing when the code is shared by two municipalities and the city line doesn't name one of them."
-        }
-      },
-      "required": [
-        "street",
-        "postalCode",
-        "city"
-      ],
-      "additionalProperties": false,
-      "description": "A postal address, as published"
-    },
     "MunicipalityId": {
       "type": "string",
       "enum": [
@@ -1360,6 +1331,42 @@
         "93090"
       ],
       "description": "Id of a record in data/municipalities.json"
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "building": {
+          "type": "string",
+          "description": "A building's name, when one is published: 'Gerechtsgebouw'"
+        },
+        "street": {
+          "type": "string",
+          "description": "The street line as published, with its number, box or floor: 'Kazernevest 3', 'Beverstraat 7B (eerste verdieping)'"
+        },
+        "postalCode": {
+          "type": "string",
+          "pattern": "^\\d{4}$",
+          "description": "The four-digit postal code"
+        },
+        "city": {
+          "type": "string"
+        },
+        "municipality": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/MunicipalityId"
+            }
+          ],
+          "description": "The municipality the postal code belongs to, by REFNIS code (data/postal-codes.json). Missing when the code is shared by two municipalities and the city line doesn't name one of them."
+        }
+      },
+      "required": [
+        "street",
+        "postalCode",
+        "city"
+      ],
+      "additionalProperties": false,
+      "description": "A postal address, as published"
     },
     "Contact": {
       "oneOf": [

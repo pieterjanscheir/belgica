@@ -26,7 +26,14 @@ export type { MultiPolygon }
 export type Address = Omit<PublishedAddress, 'municipality'> & { municipality?: string }
 export type Court = Omit<
     PublishedCourt,
-    'id' | 'court' | 'judicialArea' | 'arrondissement' | 'canton' | 'cantons' | 'address'
+    | 'id'
+    | 'court'
+    | 'judicialArea'
+    | 'arrondissement'
+    | 'canton'
+    | 'cantons'
+    | 'municipalities'
+    | 'address'
 > & {
     id: string
     court?: string
@@ -34,6 +41,7 @@ export type Court = Omit<
     arrondissement?: string
     canton?: string
     cantons?: string[]
+    municipalities?: string[]
     address?: Address
 }
 export type Prison = Omit<PublishedPrison, 'id' | 'address'> & { id: string; address: Address }

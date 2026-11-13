@@ -25,6 +25,7 @@ const {
     cantons,
     courts,
     findCourtsWithJurisdiction,
+    findDivisionsWithJurisdiction,
     findCourts,
     findCourtsForPostalCode,
     findJusticesOfThePeace,
@@ -103,6 +104,9 @@ const municipalityCases = days.flatMap((on) =>
         })),
         competentCourts: Object.fromEntries(
             types.map((type) => [type, ids(findCourtsWithJurisdiction(id, type, { on }))]),
+        ),
+        divisions: Object.fromEntries(
+            types.map((type) => [type, ids(findDivisionsWithJurisdiction(id, type, { on }))]),
         ),
     })),
 )

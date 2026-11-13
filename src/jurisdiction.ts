@@ -1,4 +1,10 @@
-import { getCourtsForCanton, getJusticeOfThePeace, type Court, type CourtType } from './courts'
+import {
+    getCourtsForCanton,
+    getDivisions,
+    getJusticeOfThePeace,
+    type Court,
+    type CourtType,
+} from './courts'
 import { getMunicipalitiesForPostalCode } from './postal-codes'
 import { getCantonsForMunicipality, type Canton, type Municipality } from './territory'
 import type { OnDay } from './time'
@@ -43,8 +49,8 @@ export function findJusticesOfThePeace(municipalityId: string, options: OnDay = 
  * REFNIS code: the courts whose area, as the law sets it, holds one of its cantons. One court
  * for most municipalities; in Brussels the Dutch- and the French-speaking court; for a city split
  * over cantons, every justice of the peace that serves one of them (the street address decides, see
- * `findJusticesOfThePeace`). The court as a whole: which of its divisions hears a case is set
- * by royal decree and isn't in the data; see `getDivisions`. Empty for an unknown code.
+ * `findJusticesOfThePeace`). The court as a whole: `findDivisionsWithJurisdiction` gives the
+ * division. Empty for an unknown code.
  */
 export function findCourtsWithJurisdiction(
     municipalityId: string,
@@ -57,6 +63,46 @@ export function findCourtsWithJurisdiction(
             if (court.type === type) found.add(court)
     }
     return [...found]
+}
+
+/**
+ * Where to file for a municipality on a day (today by default), by REFNIS code: for each court
+ * of the type that `findCourtsWithJurisdiction` gives, the division (afdeling, division) whose
+ * area holds the municipality, as the royal decrees under art. 186 of the Judicial Code set it.
+ * A court that isn't divided, or whose division areas aren't in the data (the police courts),
+ * gives itself. A city split over cantons that go to different divisions gives each of them,
+ * and the street address decides. Empty for an unknown code.
+ *
+ *     findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id)
+ *     // ['enterprise-court-gent-brugge']
+ */
+export function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options: OnDay = {},
+): Court[] {
+    const cantons = new Set(getCantonsForMunicipality(municipalityId, options).map((c) => c.id))
+    const found: Court[] = []
+    for (const court of findCourtsWithJurisdiction(municipalityId, type, options)) {
+        const divisions = getDivisions(court.id, options).filter(
+            (d) => d.kind === 'division' && (d.cantons ?? d.municipalities) !== undefined,
+        )
+        if (divisions.length === 0) {
+            found.push(court)
+            continue
+        }
+        // A municipality named in a division's `municipalities` belongs there, even when
+        // another division has the rest of its canton
+        const named = divisions.filter((d) =>
+            (d.municipalities as readonly string[] | undefined)?.includes(municipalityId),
+        )
+        found.push(
+            ...(named.length > 0 ?
+                named
+            :   divisions.filter((d) => d.cantons?.some((c) => cantons.has(c)))),
+        )
+    }
+    return found
 }
 
 /** @deprecated Renamed to `findCourtsWithJurisdiction`; it goes in 1.0. */
