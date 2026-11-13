@@ -10,6 +10,7 @@
 import { parse, type HTMLElement } from 'node-html-parser'
 
 import { clean, toAddress, toE164, toEmail, toIban } from './normalize.ts'
+import { withoutPeople } from './people.ts'
 import type { Address, Contact, ContactType } from './types.ts'
 
 export interface CourtPage {
@@ -155,7 +156,8 @@ export function readCourtPage(url: string, home: string, contact: string): Court
         lang,
         title,
         ...(address ? { address } : {}),
-        contacts: dedupe(contacts),
+        // Services only: a person's own address or name is left out, and reported
+        contacts: dedupe(withoutPeople(contacts, (line) => unreadable.push(line))),
         unreadable,
         ...(hours ? { openingHoursText: hours } : {}),
     }
