@@ -1,9 +1,16 @@
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'
+import {
+    existsSync,
+    mkdirSync,
+    mkdtempSync,
+    readdirSync,
+    readFileSync,
+    writeFileSync,
+} from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { fileFor, Snapshots, Store } from '../../scripts/sources/store.ts'
+import { fileFor, inside, Snapshots, Store } from '../../scripts/sources/store.ts'
 
 const page = (main: string, extra = '') =>
     Buffer.from(`<html><body>${extra}<main>${main}</main></body></html>`)
@@ -114,16 +121,87 @@ describe('Store', () => {
 })
 
 describe('fileFor', () => {
-    it('keeps a path that decodes to .. inside the snapshots', () => {
-        const file = fileFor('https://example.org/a/..%2f..%2F..%2fetc/passwd', 'text/html')
-        expect(file).toBe('example.org/a/__/__/__/etc/passwd.html')
-        expect(file.split('/')).not.toContain('..')
-    })
-
     it('names an ordinary page by its host and path', () => {
         expect(fileFor('https://example.org/nl/page?x=1', 'text/html')).toBe(
             'example.org/nl/page_x_1.html',
         )
+    })
+
+    it('stores a URL under its host, with the query folded into the name', () => {
+        expect(fileFor('https://example.org/nl/a', 'text/html; charset=utf-8')).toBe(
+            'example.org/nl/a.html',
+        )
+        expect(fileFor('https://example.org/nl/', 'text/html')).toBe('example.org/nl/index.html')
+        expect(fileFor('https://example.org/files/a%20b.zip?v=2&x=1', 'application/zip')).toBe(
+            'example.org/files/a_b.zip_v_2_x_1',
+        )
+        // The URL parser resolves these itself, inside the host
+        expect(fileFor('https://example.org/nl/../../a', 'text/plain')).toBe('example.org/a')
+        expect(fileFor('https://example.org/nl/%2e%2e/%2E%2E/a', 'text/plain')).toBe(
+            'example.org/a',
+        )
+    })
+
+    it.each([
+        [
+            'an encoded slash',
+            'https://example.org/nl/x%2F..%2F..%2F..%2Fscripts%2Fparse%2Fbuild.ts',
+        ],
+        [
+            'an encoded slash, in capitals or not',
+            'https://example.org/nl/x%2f..%2f..%2f..%2f..%2fa',
+        ],
+        ['a path that ends in one', 'https://example.org/nl/x%2F..'],
+        ['an encoded backslash', 'https://example.org/nl/x%5C..%5C..%5Ca'],
+        ['a host that is no name', 'https://../a'],
+    ])('refuses a path that leaves the host’s folder through %s', (_, url) => {
+        expect(() => fileFor(url, 'text/plain')).toThrow(/leaves the host's folder/)
+        // The message names the host, not the URL
+        expect(() => fileFor(url, 'text/plain')).not.toThrow(/scripts|%2F|%5C|\/nl\//i)
+    })
+})
+
+describe('snapshots stay inside their source’s directory', () => {
+    const OUT = 'https://example.org/nl/x%2F..%2F..%2F..%2F..%2Fout'
+    /** Everything under the temporary root, to see that nothing was written */
+    const files = () => readdirSync(root, { recursive: true }).map(String).sort()
+
+    it('holds a file to the directory', () => {
+        expect(inside(join(root, 'test'), 'example.org/a.html')).toBe(
+            join(root, 'test', 'example.org/a.html'),
+        )
+        for (const file of ['../out', 'example.org/../../out', '/etc/out', '..', ''])
+            expect(() => inside(join(root, 'test'), file), file).toThrow(/outside/)
+        // A neighbour whose name starts the same is outside too
+        expect(() => inside(join(root, 'test'), '../test-other/a')).toThrow(/outside/)
+    })
+
+    it('refuses a URL whose file would be outside, and writes nothing', () => {
+        const store = new Store(root, 'test')
+        store.put(A, ok(A, page('a')))
+        expect(() => store.put(OUT, ok(OUT, page('out')))).toThrow(/leaves the host's folder/)
+        expect(files()).toEqual([])
+    })
+
+    /** An index, as a run before this one could have left it, that names `file` for B */
+    function index(file: string) {
+        run([
+            [A, ok(A, page('a'))],
+            [B, ok(B, page('b'))],
+        ])
+        const path = join(root, 'test', 'index.json')
+        const index = JSON.parse(readFileSync(path, 'utf8')) as { entries: { file: string }[] }
+        ;(index.entries[1] as { file: string }).file = file
+        writeFileSync(path, JSON.stringify(index))
+        mkdirSync(join(root, 'other'))
+        writeFileSync(join(root, 'other', 'kept.txt'), 'kept')
+    }
+
+    it('refuses an index that names a file outside, to write, to prune or to read', () => {
+        index('../other/kept.txt')
+        expect(() => new Store(root, 'test')).toThrow(/outside/)
+        expect(() => new Snapshots(root, 'test')).toThrow(/outside/)
+        expect(readFileSync(join(root, 'other', 'kept.txt'), 'utf8')).toBe('kept')
     })
 })
 
