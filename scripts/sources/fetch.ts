@@ -21,12 +21,13 @@ if (unknown.length > 0) throw new Error(`Unknown source: ${unknown.join(', ')}`)
 
 /** Walks one source into its snapshots; false when a page failed or the walk broke off */
 async function walk(source: Source): Promise<boolean> {
-    const store = new Store(root, source.name)
     const count = { changed: 0, unchanged: 0, failed: 0 }
+    let store: Store
     try {
+        store = new Store(root, source.name)
         await source.fetch(
             async (url) => {
-                const res = await get(url)
+                const res = await get(url, source.hosts)
                 const result = store.put(url, res)
                 count[result]++
                 if (result === 'failed') console.error(`${source.name}: HTTP ${res.status} ${url}`)
