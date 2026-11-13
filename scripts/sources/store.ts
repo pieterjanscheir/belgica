@@ -15,7 +15,7 @@
  */
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 
 export interface Entry {
     url: string
@@ -43,14 +43,34 @@ export interface Index {
     entries: Entry[]
 }
 
-/** The file a URL is stored in: host and path, with the query folded into the name */
+/**
+ * The file a URL is stored in: host and path, with the query folded into the name. A segment
+ * that decodes to `.` or `..` (from `..%2f`: the URL parser doesn't resolve an encoded slash) is
+ * renamed, so a link can't put a file outside the snapshots.
+ */
 export function fileFor(url: string, contentType: string): string {
     const u = new URL(url)
     let path = decodeURIComponent(u.pathname).replace(/\/$/, '/index')
     if (u.search) path += '_' + u.search.slice(1).replace(/[^\w.-]+/g, '_')
-    path = path.replace(/[^\w./-]+/g, '_')
+    path = path
+        .replace(/[^\w./-]+/g, '_')
+        .split('/')
+        .map((segment) => (/^\.+$/.test(segment) ? segment.replaceAll('.', '_') : segment))
+        .join('/')
     const ext = contentType.includes('html') ? '.html' : ''
-    return join(u.host, path.endsWith(ext) ? path : path + ext)
+    const host = u.host.replace(/[^\w.-]+/g, '_')
+    return inside('.', join(host, path.endsWith(ext) ? path : path + ext))
+}
+
+/**
+ * `file` joined to `dir`, after checking it stays inside: index.json is read back from the
+ * sources branch, so a path in it is checked before anything is read, written or removed
+ */
+function inside(dir: string, file: string): string {
+    const rel = relative(resolve(dir), resolve(dir, file))
+    if (rel === '' || rel === '..' || rel.startsWith(`..${sep}`) || isAbsolute(rel))
+        throw new Error(`Snapshot path outside ${dir}: ${JSON.stringify(file)}`)
+    return join(dir, file)
 }
 
 /** Main content without volatile markup, for change detection */
@@ -154,18 +174,25 @@ export class Store {
      * page hides every page it links to.
      */
     save({ prune }: { prune: boolean }): void {
-        mkdirSync(this.#dir, { recursive: true })
-        for (const [file, body] of this.#pending) {
-            mkdirSync(dirname(join(this.#dir, file)), { recursive: true })
-            writeFileSync(join(this.#dir, file), body)
-        }
+        // Every path is checked before anything is written or removed, so a bad one in the
+        // index stops the save without leaving it half done
+        const writes = [...this.#pending].map(
+            ([file, body]) => [inside(this.#dir, file), body] as const,
+        )
         const entries = [...this.#byUrl.values()]
             .filter((e) => !prune || this.#seen.has(e.url))
             .sort((a, b) => a.url.localeCompare(b.url))
         const kept = new Set(entries.map((e) => e.file))
-        for (const e of this.#byUrl.values())
-            if (prune && !this.#seen.has(e.url) && !kept.has(e.file))
-                rmSync(join(this.#dir, e.file), { force: true })
+        const removals = [...this.#byUrl.values()]
+            .filter((e) => prune && !this.#seen.has(e.url) && !kept.has(e.file))
+            .map((e) => inside(this.#dir, e.file))
+        for (const e of entries) inside(this.#dir, e.file)
+        mkdirSync(this.#dir, { recursive: true })
+        for (const [path, body] of writes) {
+            mkdirSync(dirname(path), { recursive: true })
+            writeFileSync(path, body)
+        }
+        for (const path of removals) rmSync(path, { force: true })
         writeFileSync(
             join(this.#dir, 'index.json'),
             JSON.stringify({ source: this.#index.source, entries }, null, 4) + '\n',
@@ -196,11 +223,11 @@ export class Snapshots {
     text(url: string): string | undefined {
         const entry = this.#byUrl.get(url)
         if (entry?.status !== 200) return undefined
-        return readFileSync(join(this.#dir, entry.file), 'utf8')
+        return readFileSync(inside(this.#dir, entry.file), 'utf8')
     }
 
     path(url: string): string | undefined {
         const entry = this.#byUrl.get(url)
-        return entry?.status === 200 ? join(this.#dir, entry.file) : undefined
+        return entry?.status === 200 ? inside(this.#dir, entry.file) : undefined
     }
 }

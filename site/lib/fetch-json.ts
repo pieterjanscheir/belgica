@@ -4,6 +4,9 @@ const cache = new Map<string, Promise<unknown>>()
 
 /** A JSON file of the site, fetched once per page load and shared by every caller */
 export function fetchJson<T>(path: string): Promise<T> {
+    // Only a path on this site: `//host/…` or `https://…` would fetch from somewhere else
+    if (!path.startsWith('/') || path.startsWith('//') || path.includes('\\'))
+        return Promise.reject(new Error(`Not a path on this site: ${path}`))
     let promise = cache.get(path)
     if (!promise) {
         promise = fetch(`${base}${path}`).then((r) => {
