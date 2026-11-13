@@ -8,6 +8,7 @@ import { toId } from '../id.ts'
 import { links, translations } from '../sources/catalog.ts'
 import { Snapshots } from '../sources/store.ts'
 import { clean, toAddress, toE164, toEmail, toIban } from './normalize.ts'
+import { withoutPeople } from './people.ts'
 import type { Contact, HouseOfJustice, Locale, Prison } from './types.ts'
 
 type Lang = Locale
@@ -116,7 +117,7 @@ export function buildPrisons(root: string): { prisons: Prison[]; problems: strin
             kind: nl.includes('/detentiehuizen/') ? 'detention-house' : 'prison',
             name,
             address,
-            contacts,
+            contacts: withoutPeople(contacts, (line) => problems.push(`${nl}: ${line}`)),
             website: urls,
             sources: sourceRefs(snapshots, Object.values(urls)),
         })
@@ -167,10 +168,13 @@ export function buildHousesOfJustice(root: string): {
             name: { nl: name },
             ...(ovo ? { ovo } : {}),
             address,
-            contacts: [
-                ...(phone ? [{ type: 'phone' as const, value: phone }] : []),
-                ...(email ? [{ type: 'email' as const, value: email }] : []),
-            ],
+            contacts: withoutPeople(
+                [
+                    ...(phone ? [{ type: 'phone' as const, value: phone }] : []),
+                    ...(email ? [{ type: 'email' as const, value: email }] : []),
+                ],
+                (line) => problems.push(`${FLEMISH}: ${name}: ${line}`),
+            ),
             website: { nl: FLEMISH },
             sources: sourceRefs(snapshots, [FLEMISH]),
         })
@@ -224,12 +228,15 @@ export function buildHousesOfJustice(root: string): {
             community: 'french',
             name: { fr: name },
             address,
-            contacts: [
-                ...contactsOf(main.lines),
-                ...(victims ?
-                    contactsOf(victims.lines, victims.title.replace(/^Contacter le\s*/i, ''))
-                :   []),
-            ],
+            contacts: withoutPeople(
+                [
+                    ...contactsOf(main.lines),
+                    ...(victims ?
+                        contactsOf(victims.lines, victims.title.replace(/^Contacter le\s*/i, ''))
+                    :   []),
+                ],
+                (line) => problems.push(`${entry.url}: ${line}`),
+            ),
             website: { fr: entry.url },
             sources: sourceRefs(snapshots, [entry.url]),
         })
