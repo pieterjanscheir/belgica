@@ -2,7 +2,7 @@
  * The official sources and how to walk them. Each source fetches its pages through `get`,
  * which stores every response; the parsers in scripts/parse read the snapshots back.
  */
-import type { Response } from './http.ts'
+import { DisallowedError, type Response } from './http.ts'
 
 export type Get = (url: string) => Promise<Response>
 
@@ -12,6 +12,9 @@ export type Get = (url: string) => Promise<Response>
  * Returns how many good snapshots were kept.
  */
 export type Keep = (prefix: string, reason: string) => number
+
+/** The body of a page's last good snapshot from before this run, if it has one */
+export type Last = (url: string) => Buffer | undefined
 
 export interface Source {
     name: string
@@ -23,7 +26,7 @@ export interface Source {
      * or a file to another host fails until the list says so, instead of going stale unseen.
      */
     hosts: string[]
-    fetch: (get: Get, keep: Keep) => Promise<void>
+    fetch: (get: Get, keep: Keep, last?: Last) => Promise<void>
 }
 
 const html = (res: Response) => (res.status === 200 ? res.body.toString('utf8') : '')
@@ -207,8 +210,16 @@ const ngi: Source = {
     description:
         'geo.be (National Geographic Institute): the boundaries of the judicial cantons, as a GeoPackage',
     hosts: ['ac.ngi.be'],
-    async fetch(get) {
-        await get(NGI_CANTONS)
+    async fetch(get, keep) {
+        try {
+            await get(NGI_CANTONS)
+        } catch (error) {
+            // Since November 2026 ac.ngi.be's robots.txt allows only its catalogue (#195). That
+            // is known and waits on the NGI's answer: keep the last boundaries, with a warning,
+            // rather than fail every run. Anything else, or nothing to keep, still fails.
+            if (!(error instanceof DisallowedError)) throw error
+            if (keep(NGI_CANTONS, `${error.message} (#195)`) === 0) throw error
+        }
     },
 }
 
@@ -310,7 +321,7 @@ const etaamb: Source = {
     description:
         'etaamb.openjustice.be (a copy of the Belgian Official Journal): the laws of the last 60 days, to notice one that changes the annex to the Judicial Code',
     hosts: ['etaamb.openjustice.be'],
-    async fetch(get, keep) {
+    async fetch(get, keep, last) {
         const today = new Date().toISOString().slice(0, 10)
         const from = new Date(Date.now() - ANNEX_WINDOW_DAYS * 86_400_000)
             .toISOString()
@@ -340,14 +351,27 @@ const etaamb: Source = {
             }
         }
         const laws = new Set<string>()
+        const empty: string[] = []
         for (const day of [...days].sort()) {
             const res = await get(day)
             const texts = dayList(html(res), day)
-            // The month's page only links the days the journal published something
-            if (res.status === 200 && texts.length === 0)
-                throw new Error(`etaamb lists no texts for ${etaambDay(day) ?? day}`)
-            for (const url of texts) if (isEtaambLaw(url)) laws.add(url)
+            // The month's page only links the days the journal published something, so an empty
+            // day is a gap in etaamb's copy (15 September 2026 is one). One gap keeps that day's
+            // last snapshot with a warning, and the laws it listed are still read from it, or the
+            // walk would prune them; most days empty means the lists can't be read.
+            let listed = texts
+            if (res.status === 200 && texts.length === 0) {
+                empty.push(day)
+                keep(day, `etaamb lists no texts for ${etaambDay(day) ?? day}`)
+                const before = last?.(day)
+                listed = before ? dayList(before.toString('utf8'), day) : []
+            }
+            for (const url of listed) if (isEtaambLaw(url)) laws.add(url)
         }
+        if (empty.length > 0 && empty.length * 2 > days.size)
+            throw new Error(
+                `etaamb lists no texts for ${empty.length} of ${days.size} days since ${from}`,
+            )
         // The journal publishes laws every week: none in the whole window means the lists
         // can't be read any more
         if (laws.size === 0) throw new Error(`etaamb lists no laws since ${from}`)

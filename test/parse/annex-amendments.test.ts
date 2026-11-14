@@ -293,7 +293,8 @@ describe('etaamb source', () => {
     })
 
     // etaamb answers 200 for a month or a day it has nothing for: each list is held to what
-    // the journal does, so one that comes back empty fails the walk and retires nothing
+    // the journal does. A month that comes back empty, or most days, fails the walk and retires
+    // nothing; a single empty day is a gap in etaamb's copy and keeps its last snapshot
     const E = 'https://etaamb.openjustice.be/nl'
     const walk = (pages: Record<string, string>, kept = 0) => {
         vi.useFakeTimers({ toFake: ['Date'] })
@@ -319,14 +320,15 @@ describe('etaamb source', () => {
         ).rejects.toThrow('etaamb lists no days for 2026/10')
     })
 
-    it('fails when a day lists no texts, as when its markup changed', async () => {
+    it('fails when most days list no texts, as when its markup changed', async () => {
+        const changed = `<a class="doc" href="${E}/wet-van-1-oktober-2026_n2026000003.html">`
         await expect(
             walk({
                 ...monthPages,
-                [`${E}/pub/2026/09/30.html`]: decree,
-                [`${E}/pub/2026/10/15.html`]: `<a class="doc" href="${E}/wet-van-1-oktober-2026_n2026000003.html">`,
+                [`${E}/pub/2026/09/30.html`]: changed,
+                [`${E}/pub/2026/10/15.html`]: changed,
             }),
-        ).rejects.toThrow('etaamb lists no texts for 2026-10-15')
+        ).rejects.toThrow('etaamb lists no texts for 2 of 2 days since 2026-09-06')
     })
 
     it('fails when the window lists no law at all', async () => {

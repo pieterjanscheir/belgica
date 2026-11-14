@@ -27,6 +27,7 @@ export async function walk(source: Source, root: string, get = httpGet): Promise
                 )
                 return kept
             },
+            (url) => store.last(url),
         )
     } catch (error) {
         // An interrupted walk keeps the previous index whole, rather than drop what it missed

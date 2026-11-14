@@ -1,8 +1,9 @@
 import { readFileSync } from 'node:fs'
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { isCourtPage, type Source, sources } from '../../scripts/sources/catalog.ts'
 import {
+    DisallowedError,
     HostError,
     type Response,
     get as httpGet,
@@ -72,6 +73,107 @@ describe('houses-of-justice source', () => {
             0,
         )
         await expect(houses?.fetch(get, keep)).rejects.toThrow(/none to keep/)
+    })
+})
+
+describe('ngi source', () => {
+    const ngi = sources.find((s) => s.name === 'ngi')
+    const refuse = (error: Error) => () => Promise.reject(error)
+
+    it("keeps the last boundaries when robots.txt doesn't allow the download (#195)", async () => {
+        const { keep, kept } = site({})
+        await ngi?.fetch(refuse(new DisallowedError("robots.txt doesn't allow it")), keep)
+        expect(kept).toHaveLength(1)
+    })
+
+    it('fails when there are no boundaries to keep', async () => {
+        const { keep } = site({}, 0)
+        await expect(
+            ngi?.fetch(refuse(new DisallowedError("robots.txt doesn't allow it")), keep),
+        ).rejects.toThrow(/doesn't allow/)
+    })
+
+    it('fails on any other error', async () => {
+        const { keep, kept } = site({})
+        await expect(ngi?.fetch(refuse(new Error('connection reset')), keep)).rejects.toThrow(
+            /connection reset/,
+        )
+        expect(kept).toEqual([])
+    })
+})
+
+describe('etaamb source', () => {
+    const etaamb = sources.find((s) => s.name === 'etaamb')
+    const day = (date: string) =>
+        `https://etaamb.openjustice.be/nl/pub/${date.replaceAll('-', '/')}.html`
+    const law = (n: number) =>
+        `https://etaamb.openjustice.be/nl/wet-van-1-januari-2026_n202600000${n}.html`
+    const dayPage = (...urls: string[]) =>
+        urls.map((url) => `<a href="${url}" class="doclink day_list">x</a>`).join('')
+    // Today is 14 November 2026, so the window starts on 15 September
+    const days = ['2026-09-15', '2026-10-05', '2026-10-20', '2026-11-03']
+    const months = (bodies: Record<string, string>) => ({
+        'https://etaamb.openjustice.be/nl/pub/2026/09.html': {
+            body: `<a href="${day(days[0] ?? '')}">15</a>`,
+        },
+        'https://etaamb.openjustice.be/nl/pub/2026/10.html': {
+            body: `<a href="${day(days[1] ?? '')}">5</a><a href="${day(days[2] ?? '')}">20</a>`,
+        },
+        'https://etaamb.openjustice.be/nl/pub/2026/11.html': {
+            body: `<a href="${day(days[3] ?? '')}">3</a>`,
+        },
+        ...Object.fromEntries(Object.entries(bodies).map(([d, body]) => [day(d), { body }])),
+    })
+
+    beforeEach(() => {
+        vi.useFakeTimers({ toFake: ['Date'] })
+        vi.setSystemTime(new Date('2026-11-14T12:00:00Z'))
+    })
+    afterEach(() => {
+        vi.useRealTimers()
+    })
+
+    it('keeps the last snapshot of a day etaamb lists empty, and reads the others', async () => {
+        const { get, keep, fetched, kept } = site(
+            months({
+                '2026-09-15': '',
+                '2026-10-05': dayPage(law(1)),
+                '2026-10-20': dayPage(law(2)),
+                '2026-11-03': dayPage(law(3)),
+            }),
+        )
+        await etaamb?.fetch(get, keep)
+        expect(kept).toEqual([day('2026-09-15')])
+        expect(fetched).toEqual(expect.arrayContaining([law(1), law(2), law(3)]))
+    })
+
+    it('still reads the laws a kept day listed before, so they are not pruned', async () => {
+        const { get, keep, fetched } = site(
+            months({
+                '2026-09-15': '',
+                '2026-10-05': dayPage(law(1)),
+                '2026-10-20': dayPage(law(2)),
+                '2026-11-03': dayPage(law(3)),
+            }),
+        )
+        const before: Record<string, string> = { [day('2026-09-15')]: dayPage(law(4)) }
+        await etaamb?.fetch(get, keep, (url) => {
+            const body = before[url]
+            return body === undefined ? undefined : Buffer.from(body)
+        })
+        expect(fetched).toEqual(expect.arrayContaining([law(1), law(2), law(3), law(4)]))
+    })
+
+    it('fails when most days are empty', async () => {
+        const { get, keep } = site(
+            months({
+                '2026-09-15': '',
+                '2026-10-05': '',
+                '2026-10-20': '',
+                '2026-11-03': dayPage(law(3)),
+            }),
+        )
+        await expect(etaamb?.fetch(get, keep)).rejects.toThrow(/no texts for 3 of 4 days/)
     })
 })
 

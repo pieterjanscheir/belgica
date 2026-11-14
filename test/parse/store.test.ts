@@ -94,6 +94,14 @@ describe('Store', () => {
         expect(snapshots.entry(C)).toBeUndefined()
     })
 
+    it('reads the last good snapshot from before the run, not what the run fetched', () => {
+        run([[A, ok(A, page('a'))]])
+        const store = new Store(root, 'test')
+        store.put(A, ok(A, page('a, changed')))
+        expect(store.last(A)?.toString()).toContain('<main>a</main>')
+        expect(store.last(B)).toBeUndefined()
+    })
+
     it('keeps an untouched snapshot under a prefix when the walk fetches nothing there', () => {
         run([
             [A, ok(A, page('a'))],
