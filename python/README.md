@@ -3,7 +3,7 @@
 Belgian legal reference data for Python: every court with its registries' contacts, prisons,
 houses of justice, judicial cantons and arrondissements, municipalities and their postal codes,
 the police zones, and the legal and commercial interest rates. Every record says where it comes from, and the
-scraped data is rebuilt from the official sources twice a week.
+scraped data is rebuilt from the official sources every day.
 
 The same data and lookups as the [`belgica` npm package](https://www.npmjs.com/package/belgica),
 with the same version number. The tests check that both give the same answers. The calendar

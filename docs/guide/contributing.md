@@ -3,7 +3,7 @@
 ## Updating data
 
 The courts, prisons, houses of justice and canton boundaries are built from the official
-sources twice a week ([how](./data-quality#how-the-data-is-built)): don't edit them by hand. Fix the parser in
+sources by a workflow, every day or twice a week ([how](./data-quality#how-the-data-is-built)): don't edit them by hand. Fix the parser in
 `scripts/parse`, or, if the source itself is wrong, report it to the court. The data pull
 request is reviewed like any other: compare the diff with the sources before merging.
 

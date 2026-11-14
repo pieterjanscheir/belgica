@@ -13,9 +13,9 @@ package reste à jour, et jusqu'où vous pouvez faire confiance à chaque jeu de
 | Limites des cantons       | IGN (geo.be)                             | Deux fois par semaine : instantanés + `pnpm build:data` | L'IGN publie une nouvelle version                                  | Semaine               |
 | Communes                  | Données ouvertes de Statbel              | Générées : `pnpm build:cantons`                         | Des communes fusionnent (2019, 2025)                               | 12 mois               |
 | Régions, provinces        | Liste des codes REFNIS de Statbel        | Deux fois par semaine : instantanés + `pnpm build:data` | Statbel modifie son registre (dernière fois en 1995)               | Hebdomadaire          |
-| Cours et tribunaux        | tribunaux-rechtbanken.be                 | Deux fois par semaine : instantanés + `pnpm build:data` | Un tribunal déménage ou change de contacts ou d'horaires           | Semaine               |
-| Prisons                   | justitie.belgium.be                      | Deux fois par semaine : instantanés + `pnpm build:data` | Une prison ouvre, ferme ou change de contacts                      | Semaine               |
-| Maisons de justice        | vlaanderen.be, maisonsdejustice.be       | Deux fois par semaine : instantanés + `pnpm build:data` | Une maison déménage ou change de contacts                          | Semaine               |
+| Cours et tribunaux        | tribunaux-rechtbanken.be                 | Chaque jour : instantanés + `pnpm build:data`           | Un tribunal déménage ou change de contacts ou d'horaires           | Semaine               |
+| Prisons                   | justitie.belgium.be                      | Chaque jour : instantanés + `pnpm build:data`           | Une prison ouvre, ferme ou change de contacts                      | Semaine               |
+| Maisons de justice        | vlaanderen.be, maisonsdejustice.be       | Chaque jour : instantanés + `pnpm build:data`           | Une maison déménage ou change de contacts                          | Semaine               |
 | Codes postaux             | Table de conversion de Statbel           | Deux fois par semaine : instantanés + `pnpm build:data` | Statbel publie une nouvelle table (fusions, nouveaux codes)        | Semaine               |
 | Taux d'intérêt            | SPF Finances, Moniteur belge             | À la main                                               | Chaque année (légal) et chaque semestre (commercial)               | 6 mois                |
 
@@ -31,8 +31,10 @@ pas de limite dans le fichier de l'IGN.
 site officiel ──fetch──> snapshots (branche sources) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Récupération.** Chaque lundi et chaque jeudi, le [workflow sources](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   récupère chaque page des sources (`scripts/sources`), avec courtoisie : une requête par
+1. **Récupération.** Chaque jour, le [workflow sources](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+   récupère les pages des cours et tribunaux, des prisons et des maisons de justice
+   (`scripts/sources`), ainsi que l'indice des prix à la consommation de Statbel, et, chaque
+   lundi et chaque jeudi, les autres sources aussi. Il le fait avec courtoisie : une requête par
    seconde et par site, avec un user agent qui nomme le projet. Il conserve chaque page sur la
    branche `sources`, avec un index de ce qui a été récupéré, quand, et un hachage de son
    contenu. Une page n'est enregistrée à nouveau que lorsque son contenu change, de sorte que
