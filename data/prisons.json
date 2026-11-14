@@ -335,9 +335,9 @@
     "id": "gevangenis-antwerpen",
     "kind": "prison",
     "name": {
-      "nl": "Gevangenis van Antwerpen",
-      "fr": "Prison d'Anvers",
-      "de": "Gefängnis Antwerpen"
+      "nl": "Gevangenis Antwerpen De Vest",
+      "fr": "Prison d'Anvers De Vest",
+      "de": "Gefängnis Antwerpen De Vest"
     },
     "address": {
       "street": "Begijnenstraat 42",
@@ -359,15 +359,15 @@
     "sources": [
       {
         "url": "https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen/gevangenissen/adres_gevangenis_antwerpen_0",
-        "retrieved": "2026-10-26"
+        "retrieved": "2026-11-11"
       },
       {
         "url": "https://justitie.belgium.be/fr/themes_et_dossiers/prisons/prisons_belges/prisons/adres_gevangenis_antwerpen_0",
-        "retrieved": "2026-10-26"
+        "retrieved": "2026-11-11"
       },
       {
         "url": "https://justitie.belgium.be/de/themen_und_akten/gefaengnisse/belgische_gefaengnisse/gefaengnisse/adresse_gefaengnis_antwerpen_0",
-        "retrieved": "2026-10-26"
+        "retrieved": "2026-11-11"
       }
     ]
   },
