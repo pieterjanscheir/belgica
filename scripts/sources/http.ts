@@ -107,7 +107,9 @@ export function onHosts(url: string, hosts: readonly string[]): boolean {
 function assertOnHosts(url: string, hosts: readonly string[]): void {
     if (onHosts(url, hosts)) return
     const { protocol, host } = new URL(url)
-    throw new HostError(`${protocol}//${host} isn't one of this source's hosts`)
+    throw new HostError(
+        `${protocol}//${host} isn't one of this source's hosts, over HTTPS: ${hosts.join(', ')}`,
+    )
 }
 
 /** A response's body, read as it arrives so that one over MAX_BYTES is dropped, not held */

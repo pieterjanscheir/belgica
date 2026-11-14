@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
-import { isCourtPage, sources } from '../../scripts/sources/catalog.ts'
+import { isCourtPage, type Source, sources } from '../../scripts/sources/catalog.ts'
 import {
     HostError,
     type Response,
@@ -124,6 +124,46 @@ describe('every source', () => {
     })
 })
 
+/**
+ * A walk through the real client, on a site that answers each URL with the page `pages` gives
+ * it: what the walk comes to, and every request that was made
+ */
+async function through(source: Source | undefined, pages: Record<string, string>) {
+    if (!source) throw new Error('No such source')
+    vi.useFakeTimers()
+    const fetch = vi.fn((url: string) =>
+        Promise.resolve(
+            new globalThis.Response(pages[url] ?? '', { headers: { 'content-type': 'text/html' } }),
+        ),
+    )
+    vi.stubGlobal('fetch', fetch)
+    try {
+        // The walk, without the client's waits between requests
+        const state = { done: false }
+        const walk = source
+            .fetch(
+                (url) => httpGet(url, source.hosts),
+                () => 0,
+            )
+            .then(
+                () => undefined,
+                (error: unknown) => error,
+            )
+            .finally(() => {
+                state.done = true
+            })
+        while (!state.done) await vi.advanceTimersByTimeAsync(1000)
+        const requested = fetch.mock.calls.map(([url]) => url)
+        return {
+            error: await walk,
+            requested: requested.filter((url) => !url.endsWith('/robots.txt')),
+        }
+    } finally {
+        vi.useRealTimers()
+        vi.unstubAllGlobals()
+    }
+}
+
 describe('prisons source', () => {
     const LIST =
         'https://justitie.belgium.be/nl/themas_en_dossiers/gevangenissen/belgische_gevangenissen'
@@ -145,105 +185,93 @@ describe('prisons source', () => {
         ])
     })
 
-    it('leaves a link to another host, whatever its path says', async () => {
-        const elsewhere = [
-            'https://other.example/nl/gevangenissen/adres_gevangenis_gent',
-            'https://justitie.belgium.be.other.example/nl/gevangenissen/adres_gevangenis_gent',
-            'http://justitie.belgium.be/nl/gevangenissen/adres_gevangenis_gent',
-            // The pattern is the page's path, not something a link carries along
-            'https://justitie.belgium.be/nl/zoeken?q=/gevangenissen/adres_gevangenis_gent',
-        ]
+    it('goes by a link’s path, not by what it carries along', async () => {
         const { get, keep, fetched } = site({
             [LIST]: {
-                body: [GENT, ...elsewhere].map((url) => `<a href="${url}">Gent</a>`).join(''),
+                body: [
+                    GENT,
+                    'https://other.example/share?u=' + GENT,
+                    LIST + '?q=/gevangenissen/adres_x',
+                ]
+                    .map((url) => `<a href="${url}">Gent</a>`)
+                    .join(''),
             },
         })
         await prisons?.fetch(get, keep)
         expect(fetched).toEqual([LIST, GENT])
     })
 
-    describe('through the client', () => {
-        afterEach(() => {
-            vi.useRealTimers()
-            vi.unstubAllGlobals()
+    it.each([
+        ['on another host', 'https://other.example/nl/gevangenissen/adres_gevangenis_gent'],
+        [
+            'on a look-alike host',
+            'https://justitie.belgium.be.other.example/nl/gevangenissen/adres_gevangenis_gent',
+        ],
+        ['over plain HTTP', 'http://justitie.belgium.be/nl/gevangenissen/adres_gevangenis_gent'],
+    ])('stops at a prison’s page %s, without requesting it', async (_, link) => {
+        const { error, requested } = await through(prisons, {
+            [LIST]: `<a href="${link}">Gent</a>`,
         })
+        expect(error).toBeInstanceOf(HostError)
+        expect(requested).toEqual([LIST])
+    })
 
-        it('stops at a translation on another host, without requesting it', async () => {
-            vi.useFakeTimers()
-            const pages: Record<string, string> = {
-                [LIST]: `<a href="${GENT}">Gent</a>`,
-                [GENT]: `<a href="https://other.example/fr/prisons/adresse_prison_gand" hreflang="fr">FR</a>`,
-            }
-            const fetch = vi.fn((url: string) =>
-                Promise.resolve(
-                    new globalThis.Response(pages[url] ?? '', {
-                        headers: { 'content-type': 'text/html' },
-                    }),
-                ),
-            )
-            vi.stubGlobal('fetch', fetch)
-            // The walk, without the client's waits between requests
-            const state = { done: false }
-            const walk = (
-                prisons?.fetch(
-                    (url) => httpGet(url, prisons.hosts),
-                    () => 0,
-                ) ?? Promise.resolve()
-            ).finally(() => {
-                state.done = true
-            })
-            const outcome = expect(walk).rejects.toThrow(HostError)
-            while (!state.done) await vi.advanceTimersByTimeAsync(1000)
-            await outcome
-            expect(fetch.mock.calls.map(([url]) => url)).toEqual([
-                'https://justitie.belgium.be/robots.txt',
-                LIST,
-                GENT,
-            ])
+    it('stops at a translation on another host, without requesting it', async () => {
+        const { error, requested } = await through(prisons, {
+            [LIST]: `<a href="${GENT}">Gent</a>`,
+            [GENT]: `<a href="https://other.example/fr/prisons/adresse_prison_gand" hreflang="fr">FR</a>`,
         })
+        expect(error).toBeInstanceOf(HostError)
+        expect(requested).toEqual([LIST, GENT])
     })
 })
 
-describe('the Statbel and police zones sources', () => {
-    it('only download files from their own site', async () => {
+describe('a file a source moved to another host', () => {
+    // Left out, the walk would succeed and the data stay on the last file it has
+    it('stops the Statbel walk', async () => {
         const REFNIS = 'https://statbel.fgov.be/nl/open-data/refnis-code-0'
-        const OWN = 'https://statbel.fgov.be/sites/default/files/files/opendata/REFNIS.zip'
-        const statbel = site({
-            [REFNIS]: {
-                body: `<a href="${OWN}">zip</a><a href="https://other.example/REFNIS.zip">zip</a>`,
+        const OWN = 'https://statbel.fgov.be/sites/default/files/files/opendata/REFNIS-2025.zip'
+        const { error, requested } = await through(
+            sources.find((s) => s.name === 'statbel'),
+            {
+                [REFNIS]: `<a href="${OWN}">2025</a><a href="https://other.example/REFNIS-2026.zip">2026</a>`,
             },
-        })
-        await sources.find((s) => s.name === 'statbel')?.fetch(statbel.get, statbel.keep)
-        expect(statbel.fetched.filter((url) => url.endsWith('.zip'))).toEqual([OWN])
+        )
+        expect(error).toBeInstanceOf(HostError)
+        expect((error as Error).message).toContain('https://other.example')
+        expect(requested).toEqual([REFNIS, OWN])
+    })
 
+    it('stops the postal codes walk', async () => {
         const GEOGRAPHY =
             'https://statbel.fgov.be/nl/over-statbel/methodologie/classificaties/geografie'
-        const TABLE = '/files/Conversion%20Postal%20code_Refnis%20code_va01012025.xlsx'
-        const postalCodes = site({
-            [GEOGRAPHY]: {
-                body: `<a href="${TABLE}">xlsx</a><a href="https://other.example${TABLE}">xlsx</a>`,
-            },
-        })
-        await sources
-            .find((s) => s.name === 'postal-codes')
-            ?.fetch(postalCodes.get, postalCodes.keep)
-        expect(postalCodes.fetched).toEqual([GEOGRAPHY, 'https://statbel.fgov.be' + TABLE])
+        const TABLE = '/files/Conversion%20Postal%20code_Refnis%20code_va01012026.xlsx'
+        const { error, requested } = await through(
+            sources.find((s) => s.name === 'postal-codes'),
+            { [GEOGRAPHY]: `<a href="http://statbel.fgov.be${TABLE}">xlsx</a>` },
+        )
+        expect(error).toBeInstanceOf(HostError)
+        expect(requested).toEqual([GEOGRAPHY])
+    })
 
+    it('stops the police zones walk, rather than take an older file', async () => {
         const FEED =
             'https://opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-en.xml'
         const zip = (host: string, day: string) =>
             `https://${host}/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_${day}_shp_3812_01000.zip`
-        const policeZones = site({
-            [FEED]: {
-                body: [zip('opendata.fin.belgium.be', '20260618'), zip('other.example', '20270101')]
+        const { error, requested } = await through(
+            sources.find((s) => s.name === 'police-zones'),
+            {
+                [FEED]: [
+                    zip('opendata.fin.belgium.be', '20260618'),
+                    zip('other.example', '20270101'),
+                ]
                     .map((url) => `<link href="${url}"/>`)
                     .join(''),
             },
-        })
-        await sources
-            .find((s) => s.name === 'police-zones')
-            ?.fetch(policeZones.get, policeZones.keep)
-        expect(policeZones.fetched).toEqual([FEED, zip('opendata.fin.belgium.be', '20260618')])
+        )
+        expect(error).toBeInstanceOf(HostError)
+        expect(requested).toEqual([FEED])
     })
 })
 

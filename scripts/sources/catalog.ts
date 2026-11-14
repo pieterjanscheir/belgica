@@ -2,7 +2,7 @@
  * The official sources and how to walk them. Each source fetches its pages through `get`,
  * which stores every response; the parsers in scripts/parse read the snapshots back.
  */
-import { onHosts, type Response } from './http.ts'
+import type { Response } from './http.ts'
 
 export type Get = (url: string) => Promise<Response>
 
@@ -18,7 +18,9 @@ export interface Source {
     description: string
     /**
      * The only hosts the walk may request, over HTTPS: `get` refuses any other, for a page, a
-     * redirect or a robots.txt, and the walk is left as interrupted
+     * redirect or a robots.txt, and the walk is left as interrupted. So a walk doesn't leave
+     * out a link that looks like one of its pages but is elsewhere: a source that moves a page
+     * or a file to another host fails until the list says so, instead of going stale unseen.
      */
     hosts: string[]
     fetch: (get: Get, keep: Keep) => Promise<void>
@@ -108,11 +110,9 @@ const prisons: Source = {
     hosts: ['justitie.belgium.be', 'justice.belgium.be', 'justiz.belgium.be'],
     async fetch(get) {
         const res = await get(PRISONS)
-        // The site's own pages only, by their path: a link elsewhere isn't a prison's page
-        const pages = links(html(res), res.url).filter(
-            (url) =>
-                onHosts(url, prisons.hosts) &&
-                /\/(gevangenissen|detentiehuizen)\/adres_/.test(new URL(url).pathname),
+        // By the page's path, not by what a link to somewhere else carries along
+        const pages = links(html(res), res.url).filter((url) =>
+            /\/(gevangenissen|detentiehuizen)\/adres_/.test(new URL(url).pathname),
         )
         for (const url of pages.sort()) {
             const page = await get(url)
@@ -151,19 +151,16 @@ const housesOfJustice: Source = {
     },
 }
 
-const STATBEL_HOSTS = ['statbel.fgov.be']
-
-/** The download links on a Statbel open-data page, to files on Statbel's own site */
+/** The download links on a Statbel open-data page */
 async function statbelDownloads(get: Get, page: string, pattern: RegExp): Promise<void> {
     const res = await get(page)
-    for (const url of links(html(res), res.url))
-        if (onHosts(url, STATBEL_HOSTS) && pattern.test(url)) await get(url)
+    for (const url of links(html(res), res.url)) if (pattern.test(url)) await get(url)
 }
 
 const statbel: Source = {
     name: 'statbel',
     description: 'Statbel open data: REFNIS codes and the population per judicial canton',
-    hosts: STATBEL_HOSTS,
+    hosts: ['statbel.fgov.be'],
     async fetch(get) {
         await statbelDownloads(get, 'https://statbel.fgov.be/nl/open-data/refnis-code-0', /\.zip$/)
         await statbelDownloads(
@@ -188,11 +185,11 @@ export const isPostalCodeTable = (url: string) =>
 const postalCodes: Source = {
     name: 'postal-codes',
     description: 'Statbel: the conversion tables from postal codes to REFNIS codes',
-    hosts: STATBEL_HOSTS,
+    hosts: ['statbel.fgov.be'],
     async fetch(get) {
         const res = await get(STATBEL_GEOGRAPHY)
         for (const url of links(html(res), res.url).sort())
-            if (onHosts(url, STATBEL_HOSTS) && isPostalCodeTable(url)) await get(url)
+            if (isPostalCodeTable(url)) await get(url)
     },
 }
 
@@ -236,7 +233,7 @@ const policeZones: Source = {
         const res = await get(POLICE_ZONES_FEED)
         const zips = [...html(res).matchAll(/href="([^"]+)"/g)]
             .map((m) => m[1] ?? '')
-            .filter((url) => onHosts(url, policeZones.hosts) && POLICE_ZONES_ZIP.test(url))
+            .filter((url) => POLICE_ZONES_ZIP.test(url))
             .sort()
         const latest = zips.at(-1)
         if (!latest) throw new Error(`No police zones file listed on ${res.url}`)
