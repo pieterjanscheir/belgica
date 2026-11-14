@@ -2,7 +2,7 @@
 
 ## Data bijwerken {#updating-data}
 
-De hoven en rechtbanken, gevangenissen, justitiehuizen en kantongrenzen worden twee keer per week uit de
+De hoven en rechtbanken, gevangenissen, justitiehuizen en kantongrenzen worden elke dag of twee keer per week uit de
 officiële bronnen gebouwd ([hoe](./data-quality#how-the-data-is-built)): bewerk ze niet met de hand.
 Verbeter de parser in `scripts/parse`, of, als de bron zelf fout is, meld het aan het gerecht.
 De data-pull-request wordt nagekeken als elke andere: vergelijk de diff met de bronnen

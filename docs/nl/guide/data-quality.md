@@ -30,8 +30,9 @@ kanton geen gerecht heeft of een kanton geen grens heeft in het bestand van het 
 official site ──fetch──> snapshots (sources branch) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Ophalen.** Elke maandag en donderdag haalt de [sources-workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   elke pagina van de bronnen op (`scripts/sources`), beleefd: één verzoek per seconde per
+1. **Ophalen.** Elke dag haalt de [sources-workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+   de pagina's van de hoven en rechtbanken, de gevangenissen en de justitiehuizen op
+   (`scripts/sources`), en elke maandag en donderdag ook de andere bronnen. Dat gebeurt beleefd: één verzoek per seconde per
    site, met een user agent die het project noemt. Elke pagina wordt bewaard op de branch
    `sources`, met een index van wat is opgehaald, wanneer, en een hash van de inhoud. Een pagina
    wordt pas opnieuw opgeslagen als haar inhoud verandert, zodat de geschiedenis van de branch

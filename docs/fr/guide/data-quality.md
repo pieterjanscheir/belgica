@@ -31,8 +31,9 @@ pas de limite dans le fichier de l'IGN.
 site officiel ──fetch──> snapshots (branche sources) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Récupération.** Chaque lundi et chaque jeudi, le [workflow sources](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   récupère chaque page des sources (`scripts/sources`), avec courtoisie : une requête par
+1. **Récupération.** Chaque jour, le [workflow sources](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+   récupère les pages des cours et tribunaux, des prisons et des maisons de justice
+   (`scripts/sources`), et, chaque lundi et chaque jeudi, les autres sources aussi. Il le fait avec courtoisie : une requête par
    seconde et par site, avec un user agent qui nomme le projet. Il conserve chaque page sur la
    branche `sources`, avec un index de ce qui a été récupéré, quand, et un hachage de son
    contenu. Une page n'est enregistrée à nouveau que lorsque son contenu change, de sorte que

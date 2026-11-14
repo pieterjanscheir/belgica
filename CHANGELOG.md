@@ -7,6 +7,13 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Changed
+
+- The pages of the courts, the prisons and the houses of justice are fetched every day, not
+  twice a week: a registry's new phone number or address reaches the data pull request the
+  next morning. The large files (the boundaries, Statbel's municipalities and postal codes, the
+  police zones) and the Official Journal's new laws stay on Monday and Thursday.
+
 ## [0.9.0] - 2026-11-13
 
 ### Added

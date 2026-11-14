@@ -67,7 +67,7 @@ whole cents, so no floating-point error creeps in.
 Every day the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
 fetches Statbel's monthly consumer price index. Statbel publishes a month's index near the end of
 that month, and an indexation takes effect on the first day of the next one, so a few days'
-wait matters; the rest of the sources are fetched twice a week. When a month's index is 10 points
+wait matters; the large files among the sources are fetched twice a week. When a month's index is 10 points
 or more above or below the last indexation's threshold, the workflow adds the indexation to the
 data, from the first day of the next month, with that month's index, and opens the data pull
 request with it. A person checks the index and merges it, and the next release has the new

@@ -36,9 +36,10 @@ canton has no boundary in the NGI's file.
 official site ──fetch──> snapshots (sources branch) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Fetch.** Every Monday and Thursday the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   fetches every page of the sources (`scripts/sources`), and on the other days Statbel's consumer
-   price index alone, for the [procedural indemnity](../data/procedural-indemnities#how-a-new-indexation-arrives). It does so politely: it follows each site's
+1. **Fetch.** Every day the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+   fetches the pages of the courts, the prisons and the houses of justice (`scripts/sources`), and
+   Statbel's consumer price index, for the [procedural indemnity](../data/procedural-indemnities#how-a-new-indexation-arrives). Every Monday and Thursday it
+   fetches the other sources too: the large files, which change a few times a year. It does so politely: it follows each site's
    `robots.txt` (a page it disallows isn't fetched, and the source fails instead), sends one
    request per second per site or less often when the site's `Crawl-delay` asks for it, with a
    user agent that names the project (`belgica`). It keeps each page on the `sources` branch,
