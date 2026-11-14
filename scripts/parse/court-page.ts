@@ -6,6 +6,10 @@
  * secretariat holding their own contact blocks. A contact's label is the title of the card it
  * sits in; the text published with the value is kept as its note. A block's remark isn't used:
  * it may concern only one of the block's values.
+ *
+ * Some courts write their contacts as text instead: one number to call, then each service's
+ * choice in the phone menu and its mailbox. That one shape is read; any other text that holds a
+ * mailbox is reported and not guessed at.
  */
 import { parse, type HTMLElement } from 'node-html-parser'
 
@@ -112,6 +116,91 @@ function readBlock(block: HTMLElement, card: string | undefined, unreadable: str
     return out
 }
 
+/** The phone numbers in a line of text */
+const numbers = (raw: string) =>
+    (raw.replace(BETWEEN_NUMBERS, '$1 | ').match(PHONE) ?? []).flatMap(
+        (match) => toE164(match.replace(/\(0\)/, '')) ?? [],
+    )
+
+/** A line that is bold from start to end: a service's name over its list */
+const isBold = (el: HTMLElement) =>
+    text(el) !== '' &&
+    text(el) ===
+        clean(
+            el
+                .querySelectorAll('strong, b')
+                .map((b) => b.textContent)
+                .join(' '),
+        )
+
+/**
+ * The mailbox of a link in a text: the address the page shows, and the link's own where it shows
+ * a word. `differs` is set when the two aren't the same address: the Kortrijk and Veurne
+ * divisions' pages show their own mailboxes over links copied from the Ieper division's page.
+ */
+function mailbox(a: HTMLElement): { value: string | undefined; differs: boolean } {
+    const shown = toEmail(text(a))
+    const linked = toEmail(a.getAttribute('href') ?? '')
+    return { value: shown ?? linked, differs: !!shown && !!linked && shown !== linked }
+}
+
+/** The choice in a phone menu before a service's name: "Kies 1 - Jeugdrechtbank" */
+const MENU_CHOICE = /^(.*\d)\s+[-–]\s+(.+)$/
+
+/**
+ * The contacts of a phone menu written as text: the number to call, then per service a bold
+ * line ("Kies 1 - Burgerlijke en familierechtbank") over a list that holds its mailbox. Each
+ * service gets the number with its choice as the note, and its mailbox. A text without such
+ * services gives nothing.
+ */
+function readMenu(block: HTMLElement, unreadable: string[]): Contact[] {
+    const lines = block
+        .querySelectorAll('h1, h2, h3, h4, h5, h6, p, ul, ol')
+        .filter((el) => text(el) !== '' && !el.parentNode?.closest('ul, ol'))
+    const isList = (el: HTMLElement | undefined) => el?.tagName === 'UL' || el?.tagName === 'OL'
+    const phones: string[] = []
+    const services: Contact[] = []
+    /** The service the lines belong to: its name, when short enough for a label */
+    let service: { label?: string } | undefined
+    /** Mailboxes whose link goes to another address than the one shown */
+    let elsewhere = 0
+    lines.forEach((line, i) => {
+        if (isList(line)) {
+            if (!service) return
+            for (const a of line.querySelectorAll('a[href^="mailto:"]')) {
+                const { value, differs } = mailbox(a)
+                if (!value) continue
+                services.push({ type: 'email', value, ...service })
+                if (differs) elsewhere++
+            }
+        } else if (isBold(line) && isList(lines[i + 1])) {
+            const choice = MENU_CHOICE.exec(text(line))
+            const name = choice?.[2] ?? text(line)
+            service = name.length <= 80 ? { label: name } : {}
+            for (const value of phones)
+                services.push({
+                    type: 'phone',
+                    value,
+                    ...service,
+                    ...(choice?.[1] ? { note: choice[1] } : {}),
+                })
+        } else {
+            // The number to call comes before the first service; later lines are remarks
+            if (!service && services.length === 0) phones.push(...numbers(text(line)))
+            service = undefined
+        }
+    })
+    if (services.length === 0) return []
+    if (elsewhere > 0)
+        unreadable.push(
+            `email: ${elsewhere} of ${services.filter((c) => c.type === 'email').length} mailboxes are shown over a link to another address; the address shown is kept`,
+        )
+    return [
+        ...[...new Set(phones)].map((value) => ({ type: 'phone' as const, value })),
+        ...services,
+    ]
+}
+
 export function readCourtPage(url: string, home: string, contact: string): CourtPage {
     const lang = /^https:\/\/[^/]+\/(nl|fr|de)\//.exec(url)?.[1]
     if (lang !== 'nl' && lang !== 'fr' && lang !== 'de') throw new Error(`No language in ${url}`)
@@ -145,6 +234,21 @@ export function readCourtPage(url: string, home: string, contact: string): Court
     }
     for (const block of doc.querySelectorAll('.paragraph--type--contact')) {
         if (!seen.has(block)) contacts.push(...readBlock(block, undefined, unreadable))
+    }
+    // Contacts written as text in the contact tab: a phone menu is read, anything else that
+    // holds a mailbox is reported, so that a page that changes shape doesn't lose its contacts
+    // without a word
+    for (const block of doc.querySelectorAll('#list-contact .paragraph--type--text')) {
+        const read = readMenu(block, unreadable)
+        contacts.push(...read)
+        const published = new Set(
+            block.querySelectorAll('a[href^="mailto:"]').flatMap((a) => mailbox(a).value ?? []),
+        )
+        for (const c of read) published.delete(c.value)
+        if (published.size > 0)
+            unreadable.push(
+                `contact: ${published.size} e-mail ${published.size === 1 ? 'address' : 'addresses'} written as text ${published.size === 1 ? 'was' : 'were'} not read`,
+            )
     }
 
     const hours = text(doc.querySelector('#list-hours')).replace(
