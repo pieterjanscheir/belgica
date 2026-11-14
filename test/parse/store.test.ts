@@ -159,6 +159,20 @@ describe('fileFor', () => {
         // The message names the host, not the URL
         expect(() => fileFor(url, 'text/plain')).not.toThrow(/scripts|%2F|%5C|\/nl\//i)
     })
+
+    it('refuses a path that needs a name longer than a file system takes', () => {
+        const base = 'https://example.org/nl/'
+        // 250 characters and '.html' fit; the query and the folders count too
+        expect(fileFor(base + 'a'.repeat(250), 'text/html')).toHaveLength(
+            'example.org/nl/'.length + 255,
+        )
+        for (const url of [
+            base + 'a'.repeat(251),
+            base + 'a'.repeat(256) + '/b',
+            base + 'a?' + 'q'.repeat(254),
+        ])
+            expect(() => fileFor(url, 'text/html')).toThrow(/too long/)
+    })
 })
 
 describe('snapshots stay inside their source’s directory', () => {

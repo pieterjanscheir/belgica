@@ -43,11 +43,15 @@ export interface Index {
     entries: Entry[]
 }
 
+/** The longest name of a file or a folder, on the file systems the snapshots are kept on */
+const MAX_NAME_BYTES = 255
+
 /**
  * The file a URL is stored in: host and path, with the query folded into the name. Always a
  * file below the host's folder: the URL parser resolves the `..` segments it sees, but decoding
  * the path can bring out more (an encoded slash), so a URL whose decoded path has one is
- * refused, as is one with a backslash or a host that isn't a name.
+ * refused, as is one with a backslash or a host that isn't a name, and one that needs a name
+ * longer than a file system takes.
  */
 export function fileFor(url: string, contentType: string): string {
     const u = new URL(url)
@@ -58,7 +62,11 @@ export function fileFor(url: string, contentType: string): string {
     if (u.search) path += '_' + u.search.slice(1).replace(/[^\w.-]+/g, '_')
     path = path.replace(/[^\w./-]+/g, '_')
     const ext = contentType.includes('html') ? '.html' : ''
-    return join(u.host, path.endsWith(ext) ? path : path + ext)
+    const file = join(u.host, path.endsWith(ext) ? path : path + ext)
+    // A name the file system won't take would only fail once the snapshots are being saved
+    if (file.split(/[\\/]/).some((name) => Buffer.byteLength(name) > MAX_NAME_BYTES))
+        throw new Error(`No snapshot file for this path on ${u.host}: a name in it is too long`)
+    return file
 }
 
 /**
