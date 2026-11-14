@@ -91,9 +91,10 @@ jobs:
                   else
                       gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$TAG" -f sha="$GITHUB_SHA"
                   fi
-            - name: Create the GitHub release
-              env:
-                  GH_TOKEN: ${{ github.token }}
+            # The release assets and notes are built in a step of their own, without the token:
+            # the repository's scripts and tools run here, and the token is only handed to gh
+            # below
+            - name: Build the release assets
               # The data as JSON and CSV, with the schemas and the data package descriptor, for
               # people who don't use npm
               run: |
@@ -111,7 +112,10 @@ jobs:
                   ' CHANGELOG.md > notes.md
                   # One line per paragraph: a release keeps single line breaks
                   pnpm exec prettier --prose-wrap never --write notes.md
-                  gh release create "$TAG" --verify-tag --notes-file notes.md --generate-notes "$name.zip"
+            - name: Create the GitHub release
+              env:
+                  GH_TOKEN: ${{ github.token }}
+              run: gh release create "$TAG" --verify-tag --notes-file notes.md --generate-notes "belgica-data-$TAG.zip"
 
     # The same version to PyPI. The npm job has run pnpm check on the same commit, and CI the
     # Python tests.

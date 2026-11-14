@@ -3,6 +3,8 @@
  * request per second per host (or less often, when the site's Crawl-delay asks for it), with an
  * honest user agent, and retries with backoff for network errors and server errors.
  */
+import { isIP } from 'node:net'
+
 import { ALLOW_ALL, DISALLOW_ALL, isAllowed, parseRobots, type Robots } from './robots.ts'
 
 /** The product token robots.txt files can address belgica's crawler by */
@@ -10,6 +12,11 @@ export const AGENT = 'belgica'
 const USER_AGENT = `${AGENT} (+https://github.com/pieterjanscheir/belgica; open data, sources checked twice a week, the price index daily)`
 const DELAY_MS = 1000
 const RETRIES = 3
+/**
+ * The most a response may hold. The largest download, the NGI's canton GeoPackage, is about
+ * 16 MB; this leaves room for it to grow while a runaway response can't fill the runner.
+ */
+export const MAX_BYTES = 256 * 1024 * 1024
 
 const lastRequest = new Map<string, number>()
 /** Each host's queue: sources walked side by side still take turns on a shared host */
@@ -42,23 +49,41 @@ function throttle(host: string, delay: number): Promise<void> {
     return turn
 }
 
+/** Thrown for a response larger than MAX_BYTES */
+export class TooLargeError extends Error {}
+
+/** The body, read until MAX_BYTES and no further */
+async function readBody(res: globalThis.Response, url: string): Promise<Buffer> {
+    const tooLarge = () => new TooLargeError(`${url}: response larger than ${MAX_BYTES} bytes`)
+    if (Number(res.headers.get('content-length') ?? 0) > MAX_BYTES) {
+        await res.body?.cancel()
+        throw tooLarge()
+    }
+    if (!res.body) return Buffer.alloc(0)
+    const chunks: Uint8Array[] = []
+    let size = 0
+    for await (const chunk of res.body as AsyncIterable<Uint8Array>) {
+        size += chunk.byteLength
+        if (size > MAX_BYTES) throw tooLarge()
+        chunks.push(chunk)
+    }
+    return Buffer.concat(chunks)
+}
+
 /** A response, with where it redirects to when it's a redirect that wasn't followed */
 type Fetched = Response & { location?: string }
 
-async function request(
-    url: string,
-    delay: number,
-    redirect: 'follow' | 'manual',
-): Promise<Fetched> {
+/** One request, its redirect not followed: the callers check each hop before taking it */
+async function request(url: string, delay: number): Promise<Fetched> {
     for (let attempt = 0; ; attempt++) {
         await throttle(new URL(url).host, delay)
         try {
             const res = await fetch(url, {
                 headers: { 'user-agent': USER_AGENT },
-                redirect,
+                redirect: 'manual',
                 signal: AbortSignal.timeout(60_000),
             })
-            const body = Buffer.from(await res.arrayBuffer())
+            const body = await readBody(res, url)
             if (res.status >= 500 && attempt < RETRIES) throw new Error(`HTTP ${res.status}`)
             const location = res.headers.get('location')
             return {
@@ -69,7 +94,7 @@ async function request(
                 ...(res.status >= 300 && res.status < 400 && location !== null && { location }),
             }
         } catch (error) {
-            if (attempt >= RETRIES) throw error
+            if (attempt >= RETRIES || error instanceof TooLargeError) throw error
             await sleep(2 ** attempt * 5000)
         }
     }
@@ -84,14 +109,68 @@ async function request(
 function robotsFor(origin: string): Promise<Robots> {
     let robots = robotsByHost.get(origin)
     if (!robots) {
-        robots = request(`${origin}/robots.txt`, DELAY_MS, 'follow').then((res) => {
-            if (res.status >= 500) return DISALLOW_ALL
-            if (res.status >= 400) return ALLOW_ALL
-            return parseRobots(res.body.toString('utf8'), AGENT)
-        })
+        robots = fetchRobots(origin)
+        // A failure isn't kept: the source fails now, and a later request asks again
+        robots.catch(() => robotsByHost.delete(origin))
         robotsByHost.set(origin, robots)
     }
     return robots
+}
+
+/** How many redirects robots.txt may go through; RFC 9309 asks for at least five */
+const MAX_ROBOTS_REDIRECTS = 5
+
+/** A robots.txt, its redirects followed one at a time, each checked the way get() checks pages */
+async function fetchRobots(origin: string): Promise<Robots> {
+    let url = `${origin}/robots.txt`
+    for (let hops = 0; ; hops++) {
+        if (!isPublicUrl(url)) throw new NotPublicError(`Not a public web address: ${url}`)
+        const res = await request(url, DELAY_MS)
+        if (res.location !== undefined) {
+            // Too many redirects: as if there were no robots.txt, as RFC 9309 says
+            if (hops >= MAX_ROBOTS_REDIRECTS) return ALLOW_ALL
+            url = new URL(res.location, url).href
+            continue
+        }
+        if (res.status >= 500) return DISALLOW_ALL
+        if (res.status >= 400) return ALLOW_ALL
+        return parseRobots(res.body.toString('utf8'), AGENT)
+    }
+}
+
+/** Thrown for a URL that isn't on the public web: another scheme, or a local or private host */
+export class NotPublicError extends Error {}
+
+/**
+ * Whether a URL may be fetched: http or https, to a host name or a public IP address. The sources
+ * are public websites, so a link or a redirect to localhost, a private network or the cloud
+ * metadata address (169.254.169.254) is refused instead of being requested from the runner.
+ * It looks at the URL only, not at what a name resolves to.
+ */
+export function isPublicUrl(url: string): boolean {
+    const u = new URL(url)
+    if (u.protocol !== 'https:' && u.protocol !== 'http:') return false
+    const host = u.hostname.replace(/^\[|\]$/g, '').toLowerCase()
+    if (host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local')) return false
+    const version = isIP(host)
+    if (version === 4) {
+        const [a = 0, b = 0] = host.split('.').map(Number)
+        return !(
+            a === 0 ||
+            a === 10 ||
+            a === 127 ||
+            (a === 100 && b >= 64 && b <= 127) ||
+            (a === 169 && b === 254) ||
+            (a === 172 && b >= 16 && b <= 31) ||
+            (a === 192 && b === 168) ||
+            a >= 224
+        )
+    }
+    if (version === 6) {
+        // Loopback, unspecified, unique local, link local, and IPv4 written as IPv6
+        return !/^(::1?|f[cd][0-9a-f]*:.*|fe[89ab][0-9a-f]*:.*|::ffff:.*)$/.test(host)
+    }
+    return true
 }
 
 /** Thrown for a URL the site's robots.txt doesn't let belgica fetch */
@@ -107,11 +186,12 @@ const MAX_REDIRECTS = 20
 export async function get(url: string): Promise<Response> {
     let current = url
     for (let hops = 0; ; hops++) {
+        if (!isPublicUrl(current)) throw new NotPublicError(`Not a public web address: ${current}`)
         const { origin } = new URL(current)
         const robots = await robotsFor(origin)
         if (!isAllowed(robots, current))
             throw new DisallowedError(`${origin}/robots.txt doesn't allow ${current}`)
-        const { location, ...res } = await request(current, delayFor(robots), 'manual')
+        const { location, ...res } = await request(current, delayFor(robots))
         if (location === undefined) return { ...res, url: current }
         if (hops >= MAX_REDIRECTS) throw new Error(`Too many redirects from ${url}`)
         current = new URL(location, current).href

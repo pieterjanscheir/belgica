@@ -1,9 +1,9 @@
-import { existsSync, mkdtempSync, readFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { Snapshots, Store } from '../../scripts/sources/store.ts'
+import { fileFor, Snapshots, Store } from '../../scripts/sources/store.ts'
 
 const page = (main: string, extra = '') =>
     Buffer.from(`<html><body>${extra}<main>${main}</main></body></html>`)
@@ -110,5 +110,48 @@ describe('Store', () => {
         new Store(root, 'test').put(A, ok(A, page('new')))
         expect(new Snapshots(root, 'test').text(A)).toContain('old')
         expect(readFileSync(join(root, 'test', 'index.json'), 'utf8')).toBe(index)
+    })
+})
+
+describe('fileFor', () => {
+    it('keeps a path that decodes to .. inside the snapshots', () => {
+        const file = fileFor('https://example.org/a/..%2f..%2F..%2fetc/passwd', 'text/html')
+        expect(file).toBe('example.org/a/__/__/__/etc/passwd.html')
+        expect(file.split('/')).not.toContain('..')
+    })
+
+    it('names an ordinary page by its host and path', () => {
+        expect(fileFor('https://example.org/nl/page?x=1', 'text/html')).toBe(
+            'example.org/nl/page_x_1.html',
+        )
+    })
+})
+
+describe('Snapshots', () => {
+    it('reads a path whose first segment only starts with two dots', () => {
+        mkdirSync(join(root, 'test', '..foo'), { recursive: true })
+        writeFileSync(join(root, 'test', '..foo', 'page.html'), 'content')
+        writeFileSync(
+            join(root, 'test', 'index.json'),
+            JSON.stringify({
+                source: 'test',
+                entries: [
+                    { url: A, status: 200, contentType: 'text/html', file: '..foo/page.html' },
+                ],
+            }),
+        )
+        expect(new Snapshots(root, 'test').text(A)).toBe('content')
+    })
+
+    it('refuses an index path that leaves the source directory', () => {
+        mkdirSync(join(root, 'test'), { recursive: true })
+        writeFileSync(
+            join(root, 'test', 'index.json'),
+            JSON.stringify({
+                source: 'test',
+                entries: [{ url: A, status: 200, contentType: 'text/html', file: '../../secret' }],
+            }),
+        )
+        expect(() => new Snapshots(root, 'test').text(A)).toThrow(/outside/)
     })
 })

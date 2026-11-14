@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { DisallowedError, delayFor, get } from '../../scripts/sources/http.ts'
+import { DisallowedError, NotPublicError, delayFor, get } from '../../scripts/sources/http.ts'
 import { DISALLOW_ALL, isAllowed, parseRobots } from '../../scripts/sources/robots.ts'
 
 const fixture = (name: string) =>
@@ -164,5 +164,17 @@ describe('get', () => {
         expect(res).toMatchObject({ url: 'https://c.example/new', status: 200 })
         await expect(get('https://c.example/moved')).rejects.toThrow(DisallowedError)
         expect(fetch.mock.calls.map(([url]) => url)).not.toContain('https://c.example/private/x')
+    })
+
+    it('refuses a redirect to a private address, for a page or for robots.txt, without requesting it', async () => {
+        const fetch = stubFetch(404, {
+            'https://d.example/robots.txt': 'http://169.254.169.254/robots.txt',
+            'https://e.example/page': 'http://127.0.0.1/admin',
+        })
+        await expect(get('https://d.example/x')).rejects.toThrow(NotPublicError)
+        await expect(get('https://e.example/page')).rejects.toThrow(NotPublicError)
+        const requested = fetch.mock.calls.map(([url]) => url)
+        expect(requested).not.toContain('http://169.254.169.254/robots.txt')
+        expect(requested).not.toContain('http://127.0.0.1/admin')
     })
 })

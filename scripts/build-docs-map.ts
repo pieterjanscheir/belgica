@@ -17,6 +17,7 @@
  */
 import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 
+import { assertId } from './id.ts'
 import type { CantonBoundary } from '../src/schemas/canton-boundaries.ts'
 import type { CourtLocation } from '../src/schemas/court-locations.ts'
 import type { Canton } from '../src/schemas/territory.ts'
@@ -85,6 +86,12 @@ function simplify(ring: Ring, tolerance: number): Position[] {
     const out = ring.filter((_, i) => keep[i])
     // Keep at least a triangle; a ring that shrinks below it is drawn as it was
     return out.length >= 4 ? out.map(([x = 0, y = 0]) => [round(x), round(y)]) : [...ring]
+}
+
+// The ids name files: checked before the old map is removed, so a bad one leaves it whole
+for (const boundary of boundaries) {
+    const canton = cantons.get(boundary.canton)
+    if (canton) assertId(canton.id, 'canton id')
 }
 
 const dir = new URL('../docs/public/map/', import.meta.url)
