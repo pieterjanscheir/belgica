@@ -2,7 +2,7 @@
  * The official sources and how to walk them. Each source fetches its pages through `get`,
  * which stores every response; the parsers in scripts/parse read the snapshots back.
  */
-import type { Response } from './http.ts'
+import { DisallowedError, type Response } from './http.ts'
 
 export type Get = (url: string) => Promise<Response>
 
@@ -189,8 +189,16 @@ const ngi: Source = {
     name: 'ngi',
     description:
         'geo.be (National Geographic Institute): the boundaries of the judicial cantons, as a GeoPackage',
-    async fetch(get) {
-        await get(NGI_CANTONS)
+    async fetch(get, keep) {
+        try {
+            await get(NGI_CANTONS)
+        } catch (error) {
+            // Since November 2026 ac.ngi.be's robots.txt allows only its catalogue (#195). That
+            // is known and waits on the NGI's answer: keep the last boundaries, with a warning,
+            // rather than fail every run. Anything else, or nothing to keep, still fails.
+            if (!(error instanceof DisallowedError)) throw error
+            if (keep(NGI_CANTONS, `${error.message} (#195)`) === 0) throw error
+        }
     },
 }
 
@@ -319,14 +327,24 @@ const etaamb: Source = {
             }
         }
         const laws = new Set<string>()
+        const empty: string[] = []
         for (const day of [...days].sort()) {
             const res = await get(day)
             const texts = dayList(html(res), day)
-            // The month's page only links the days the journal published something
-            if (res.status === 200 && texts.length === 0)
-                throw new Error(`etaamb lists no texts for ${etaambDay(day) ?? day}`)
+            // The month's page only links the days the journal published something, so an empty
+            // day is a gap in etaamb's copy (15 September 2026 is one). One gap keeps that day's
+            // last snapshot with a warning; most days empty means the lists can't be read.
+            if (res.status === 200 && texts.length === 0) {
+                empty.push(day)
+                keep(day, `etaamb lists no texts for ${etaambDay(day) ?? day}`)
+                continue
+            }
             for (const url of texts) if (isEtaambLaw(url)) laws.add(url)
         }
+        if (empty.length > 0 && empty.length * 2 > days.size)
+            throw new Error(
+                `etaamb lists no texts for ${empty.length} of ${days.size} days since ${from}`,
+            )
         // The journal publishes laws every week: none in the whole window means the lists
         // can't be read any more
         if (laws.size === 0) throw new Error(`etaamb lists no laws since ${from}`)
