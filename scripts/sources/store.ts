@@ -134,6 +134,17 @@ export class Store {
         return kept
     }
 
+    /**
+     * The body of the last good snapshot of `url` from before this run, as the walk found it:
+     * for a page kept with keep(), so the walk can still follow the links it had
+     */
+    last(url: string): Buffer | undefined {
+        const previous = this.#previous.get(url)
+        if (previous?.status !== 200) return undefined
+        const path = inside(this.#dir, previous.file)
+        return existsSync(path) ? readFileSync(path) : undefined
+    }
+
     /** Records a response */
     put(
         url: string,

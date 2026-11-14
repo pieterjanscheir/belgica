@@ -13,10 +13,13 @@ export type Get = (url: string) => Promise<Response>
  */
 export type Keep = (prefix: string, reason: string) => number
 
+/** The body of a page's last good snapshot from before this run, if it has one */
+export type Last = (url: string) => Buffer | undefined
+
 export interface Source {
     name: string
     description: string
-    fetch: (get: Get, keep: Keep) => Promise<void>
+    fetch: (get: Get, keep: Keep, last?: Last) => Promise<void>
 }
 
 const html = (res: Response) => (res.status === 200 ? res.body.toString('utf8') : '')
@@ -297,7 +300,7 @@ const etaamb: Source = {
     name: 'etaamb',
     description:
         'etaamb.openjustice.be (a copy of the Belgian Official Journal): the laws of the last 60 days, to notice one that changes the annex to the Judicial Code',
-    async fetch(get, keep) {
+    async fetch(get, keep, last) {
         const today = new Date().toISOString().slice(0, 10)
         const from = new Date(Date.now() - ANNEX_WINDOW_DAYS * 86_400_000)
             .toISOString()
@@ -333,13 +336,16 @@ const etaamb: Source = {
             const texts = dayList(html(res), day)
             // The month's page only links the days the journal published something, so an empty
             // day is a gap in etaamb's copy (15 September 2026 is one). One gap keeps that day's
-            // last snapshot with a warning; most days empty means the lists can't be read.
+            // last snapshot with a warning, and the laws it listed are still read from it, or the
+            // walk would prune them; most days empty means the lists can't be read.
+            let listed = texts
             if (res.status === 200 && texts.length === 0) {
                 empty.push(day)
                 keep(day, `etaamb lists no texts for ${etaambDay(day) ?? day}`)
-                continue
+                const before = last?.(day)
+                listed = before ? dayList(before.toString('utf8'), day) : []
             }
-            for (const url of texts) if (isEtaambLaw(url)) laws.add(url)
+            for (const url of listed) if (isEtaambLaw(url)) laws.add(url)
         }
         if (empty.length > 0 && empty.length * 2 > days.size)
             throw new Error(

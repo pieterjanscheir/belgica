@@ -140,6 +140,23 @@ describe('etaamb source', () => {
         expect(fetched).toEqual(expect.arrayContaining([law(1), law(2), law(3)]))
     })
 
+    it('still reads the laws a kept day listed before, so they are not pruned', async () => {
+        const { get, keep, fetched } = site(
+            months({
+                '2026-09-15': '',
+                '2026-10-05': dayPage(law(1)),
+                '2026-10-20': dayPage(law(2)),
+                '2026-11-03': dayPage(law(3)),
+            }),
+        )
+        const before: Record<string, string> = { [day('2026-09-15')]: dayPage(law(4)) }
+        await etaamb?.fetch(get, keep, (url) => {
+            const body = before[url]
+            return body === undefined ? undefined : Buffer.from(body)
+        })
+        expect(fetched).toEqual(expect.arrayContaining([law(1), law(2), law(3), law(4)]))
+    })
+
     it('fails when most days are empty', async () => {
         const { get, keep } = site(
             months({
