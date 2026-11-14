@@ -135,6 +135,16 @@ async function read(res: Awaited<ReturnType<typeof fetch>>, url: string): Promis
 /** A response, with where it redirects to when it's a redirect */
 type Fetched = Response & { location?: string }
 
+/**
+ * A Location header as the server meant it. `fetch` reads a header's bytes as Latin-1, and
+ * sites that don't percent-encode a path send it as UTF-8: `é` arrives as `Ã©`, and the URL
+ * made from that is another page. A header that isn't UTF-8 is left as it was read.
+ */
+function locationOf(header: string): string {
+    const utf8 = Buffer.from(header, 'latin1').toString('utf8')
+    return utf8.includes('\uFFFD') ? header : utf8
+}
+
 /** One request, without following a redirect: the caller checks where it leads first */
 async function request(url: string, delay: number): Promise<Fetched> {
     for (let attempt = 0; ; attempt++) {
@@ -153,7 +163,9 @@ async function request(url: string, delay: number): Promise<Fetched> {
                 status: res.status,
                 contentType: res.headers.get('content-type') ?? '',
                 body,
-                ...(res.status >= 300 && res.status < 400 && location !== null && { location }),
+                ...(res.status >= 300 &&
+                    res.status < 400 &&
+                    location !== null && { location: locationOf(location) }),
             }
         } catch (error) {
             // Asking again wouldn't make it smaller

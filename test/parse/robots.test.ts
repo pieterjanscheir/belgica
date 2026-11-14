@@ -301,6 +301,26 @@ describe('get, held to a source’s hosts and to a size', () => {
         ])
     })
 
+    it('reads a redirect’s path as UTF-8, as the site sent it', async () => {
+        // What fetch gives for a Location of "/fr/maisons_de_détention/x" sent as UTF-8 bytes
+        const asReceived = Buffer.from('/fr/maisons_de_détention/x', 'utf8').toString('latin1')
+        const { requested } = stubFetch(
+            (url) =>
+                ({
+                    'https://l.example/utf8': asReceived,
+                    // A site that sends Latin-1 itself, and one that percent-encodes
+                    'https://l.example/latin1': '/fr/d\xE9tention',
+                    'https://l.example/encoded': '/fr/d%C3%A9tention?x=%E9',
+                })[url],
+        )
+        const to = async (path: string) =>
+            (await settle(get(`https://l.example/${path}`, ['l.example']))).url
+        expect(await to('utf8')).toBe('https://l.example/fr/maisons_de_d%C3%A9tention/x')
+        expect(await to('latin1')).toBe('https://l.example/fr/d%C3%A9tention')
+        expect(await to('encoded')).toBe('https://l.example/fr/d%C3%A9tention?x=%E9')
+        expect(requested()).toContain('https://l.example/fr/maisons_de_d%C3%A9tention/x')
+    })
+
     it('fails when a robots.txt redirects to a host the source doesn’t list', async () => {
         const { requested } = stubFetch((url) =>
             url === 'https://h.example/robots.txt' ? 'https://other.example/robots.txt' : undefined,
