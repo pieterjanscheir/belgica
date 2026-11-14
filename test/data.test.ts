@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { germanCantonNames } from '../scripts/german-canton-names.ts'
+import { isPersonalEmail, withoutPersonName } from '../scripts/parse/people.ts'
 
 import {
     appliesOn,
@@ -15,7 +16,9 @@ import {
     judicialAreas,
     getInterestRate,
     getLatestKnownRateDate,
+    housesOfJustice,
     interestRates,
+    prisons,
     toDay,
     type InterestType,
 } from '../src'
@@ -434,5 +437,28 @@ describe('court contact data', () => {
                 )
             }
         }
+    })
+})
+
+describe('people', () => {
+    // The data holds the contacts of services, never a person's own (scripts/parse/people.ts)
+    const records = [...courts, ...prisons, ...housesOfJustice]
+
+    it("has no e-mail address that looks like a person's own", () => {
+        const found = records.flatMap((record) =>
+            record.contacts
+                .filter((c) => c.type === 'email' && isPersonalEmail(c.value))
+                .map(() => record.id),
+        )
+        expect(found).toEqual([])
+    })
+
+    it("has no person's name in a contact label", () => {
+        const found = records.flatMap((record) =>
+            record.contacts
+                .filter((c) => c.label !== undefined && withoutPersonName(c.label) !== c.label)
+                .map(() => record.id),
+        )
+        expect(found).toEqual([])
     })
 })

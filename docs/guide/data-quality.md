@@ -124,6 +124,10 @@ Run them yourself with `pnpm test:freshness` (add `FRESHNESS_ONLINE=1` to check 
 - **Contact data is the least stable.** Phone numbers, e-mail addresses and opening hours
   change without notice. Every record says which pages it was read from and when (`sources`);
   check the court's page (`website`) when it matters.
+- **Services, not people.** A contact is a registry's or a service's own phone number or
+  address. Where a source publishes a person's own e-mail address or name as a service's
+  contact, it is left out and listed in the data pull request. Found one anyway? Report it as
+  a mistake, below: it is removed in the next release.
 - **Legal text wins.** For split municipalities, the canton's `territory` is the law's own
   text, verbatim. When a summary, or the NGI's [boundary](/data/canton-boundaries), and the
   text disagree, the text is right.

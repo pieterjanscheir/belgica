@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Analytics } from '@vercel/analytics/next'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { NamesLanguage, SiteLanguage } from '@/components/LanguageSwitch'
 import { MainNav } from '@/components/MainNav'
+import { PageAnalytics } from '@/components/PageAnalytics'
 import { namesLanguageScript } from '@/lib/names-language-script'
 import { Link } from '@/i18n/navigation'
 import { ClientMessages } from '@/lib/client-messages'
@@ -84,7 +84,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                         <p className="muted">{f('disclaimer')}</p>
                     </footer>
                 </ClientMessages>
-                <Analytics />
+                <PageAnalytics />
             </body>
         </html>
     )

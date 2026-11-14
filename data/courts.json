@@ -2348,11 +2348,6 @@
     "contacts": [
       {
         "type": "email",
-        "value": "stephane.cloes@just.fgov.be",
-        "label": "Secrétariat du Président"
-      },
-      {
-        "type": "email",
         "value": "secretariatgchef.tpi.liege@just.fgov.be",
         "label": "Secrétariat du Greffier en chef"
       },
@@ -2590,11 +2585,6 @@
         "type": "email",
         "value": "jap.tpi.liege@just.fgov.be",
         "label": "Greffes du TAP (Tribunal de l'Application des Peines)"
-      },
-      {
-        "type": "email",
-        "value": "stephane.cloes@just.fgov.be",
-        "label": "Greffier - Secrétaire du Président"
       },
       {
         "type": "email",
@@ -7138,12 +7128,12 @@
       {
         "type": "phone",
         "value": "+3226854605",
-        "label": "Vincianne Henken - secrétariat du Président"
+        "label": "secrétariat du Président"
       },
       {
         "type": "email",
         "value": "liege.secretariat.president.te@just.fgov.be",
-        "label": "Vincianne Henken - secrétariat du Président"
+        "label": "secrétariat du Président"
       },
       {
         "type": "phone",
