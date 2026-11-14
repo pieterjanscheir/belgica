@@ -16,6 +16,13 @@ export type Keep = (prefix: string, reason: string) => number
 export interface Source {
     name: string
     description: string
+    /**
+     * The only hosts the walk may request, over HTTPS: `get` refuses any other, for a page, a
+     * redirect or a robots.txt, and the walk is left as interrupted. So a walk doesn't leave
+     * out a link that looks like one of its pages but is elsewhere: a source that moves a page
+     * or a file to another host fails until the list says so, instead of going stale unseen.
+     */
+    hosts: string[]
     fetch: (get: Get, keep: Keep) => Promise<void>
 }
 
@@ -64,11 +71,12 @@ export const COURT_LISTS = [
 
 /** A court's own page on the portal: one path segment after the language */
 export const isCourtPage = (url: string) =>
-    url.startsWith(PORTAL) && /^\/(nl|fr|de)\/[^/]+$/.test(new URL(url).pathname)
+    url.startsWith(PORTAL + '/') && /^\/(nl|fr|de)\/[^/]+$/.test(new URL(url).pathname)
 
 const courts: Source = {
     name: 'courts',
     description: 'tribunaux-rechtbanken.be: every court and division, with its contact page',
+    hosts: ['www.tribunaux-rechtbanken.be'],
     async fetch(get) {
         const pages = new Set<string>()
         for (const list of COURT_LISTS) {
@@ -97,10 +105,14 @@ const prisons: Source = {
     name: 'prisons',
     description:
         'justitie.belgium.be: every prison and detention house, in Dutch, French and German',
+    // The French and German pages are linked on the Dutch host, which sends them on to the
+    // site's name in their language
+    hosts: ['justitie.belgium.be', 'justice.belgium.be', 'justiz.belgium.be'],
     async fetch(get) {
         const res = await get(PRISONS)
+        // By the page's path, not by what a link to somewhere else carries along
         const pages = links(html(res), res.url).filter((url) =>
-            /\/(gevangenissen|detentiehuizen)\/adres_/.test(url),
+            /\/(gevangenissen|detentiehuizen)\/adres_/.test(new URL(url).pathname),
         )
         for (const url of pages.sort()) {
             const page = await get(url)
@@ -114,6 +126,9 @@ const housesOfJustice: Source = {
     name: 'houses-of-justice',
     description:
         'vlaanderen.be (Flemish Community) and maisonsdejustice.be (French Community): every house of justice',
+    // maintenance.cfwb.be is where the French Community's sites send their visitors during
+    // maintenance: reading it is what tells the walk to keep the last snapshots (below)
+    hosts: ['www.vlaanderen.be', 'www.maisonsdejustice.be', 'maintenance.cfwb.be'],
     async fetch(get, keep) {
         await get(
             'https://www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen',
@@ -145,6 +160,7 @@ async function statbelDownloads(get: Get, page: string, pattern: RegExp): Promis
 const statbel: Source = {
     name: 'statbel',
     description: 'Statbel open data: REFNIS codes and the population per judicial canton',
+    hosts: ['statbel.fgov.be'],
     async fetch(get) {
         await statbelDownloads(get, 'https://statbel.fgov.be/nl/open-data/refnis-code-0', /\.zip$/)
         await statbelDownloads(
@@ -169,6 +185,7 @@ export const isPostalCodeTable = (url: string) =>
 const postalCodes: Source = {
     name: 'postal-codes',
     description: 'Statbel: the conversion tables from postal codes to REFNIS codes',
+    hosts: ['statbel.fgov.be'],
     async fetch(get) {
         const res = await get(STATBEL_GEOGRAPHY)
         for (const url of links(html(res), res.url).sort())
@@ -189,6 +206,7 @@ const ngi: Source = {
     name: 'ngi',
     description:
         'geo.be (National Geographic Institute): the boundaries of the judicial cantons, as a GeoPackage',
+    hosts: ['ac.ngi.be'],
     async fetch(get) {
         await get(NGI_CANTONS)
     },
@@ -210,6 +228,7 @@ export const POLICE_ZONES_ZIP =
 const policeZones: Source = {
     name: 'police-zones',
     description: 'FOD Financiën (AAPD) open data: the police zones and their municipalities',
+    hosts: ['opendata.fin.belgium.be'],
     async fetch(get) {
         const res = await get(POLICE_ZONES_FEED)
         const zips = [...html(res).matchAll(/href="([^"]+)"/g)]
@@ -234,6 +253,7 @@ export const STATBEL_CPI =
 const cpi: Source = {
     name: 'cpi',
     description: 'Statbel: the monthly consumer price index, for the procedural indemnity',
+    hosts: ['bestat.statbel.fgov.be'],
     async fetch(get) {
         await get(STATBEL_CPI)
     },
@@ -289,6 +309,7 @@ const etaamb: Source = {
     name: 'etaamb',
     description:
         'etaamb.openjustice.be (a copy of the Belgian Official Journal): the laws of the last 60 days, to notice one that changes the annex to the Judicial Code',
+    hosts: ['etaamb.openjustice.be'],
     async fetch(get, keep) {
         const today = new Date().toISOString().slice(0, 10)
         const from = new Date(Date.now() - ANNEX_WINDOW_DAYS * 86_400_000)

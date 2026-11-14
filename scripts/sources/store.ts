@@ -43,30 +43,37 @@ export interface Index {
     entries: Entry[]
 }
 
+/** The longest name of a file or a folder, on the file systems the snapshots are kept on */
+const MAX_NAME_BYTES = 255
+
 /**
- * The file a URL is stored in: host and path, with the query folded into the name. A segment
- * that decodes to `.` or `..` (from `..%2f`: the URL parser doesn't resolve an encoded slash) is
- * renamed, so a link can't put a file outside the snapshots.
+ * The file a URL is stored in: host and path, with the query folded into the name. Always a
+ * file below the host's folder: the URL parser resolves the `..` segments it sees, but decoding
+ * the path can bring out more (an encoded slash), so a URL whose decoded path has one is
+ * refused, as is one with a backslash or a host that isn't a name, and one that needs a name
+ * longer than a file system takes.
  */
 export function fileFor(url: string, contentType: string): string {
     const u = new URL(url)
-    let path = decodeURIComponent(u.pathname).replace(/\/$/, '/index')
+    const decoded = decodeURIComponent(u.pathname)
+    if (decoded.includes('\\') || decoded.split('/').includes('..') || /^\.*$/.test(u.host))
+        throw new Error(`No snapshot file for this path on ${u.host}: it leaves the host's folder`)
+    let path = decoded.replace(/\/$/, '/index')
     if (u.search) path += '_' + u.search.slice(1).replace(/[^\w.-]+/g, '_')
-    path = path
-        .replace(/[^\w./-]+/g, '_')
-        .split('/')
-        .map((segment) => (/^\.+$/.test(segment) ? segment.replaceAll('.', '_') : segment))
-        .join('/')
+    path = path.replace(/[^\w./-]+/g, '_')
     const ext = contentType.includes('html') ? '.html' : ''
-    const host = u.host.replace(/[^\w.-]+/g, '_')
-    return inside('.', join(host, path.endsWith(ext) ? path : path + ext))
+    const file = join(u.host, path.endsWith(ext) ? path : path + ext)
+    // A name the file system won't take would only fail once the snapshots are being saved
+    if (file.split(/[\\/]/).some((name) => Buffer.byteLength(name) > MAX_NAME_BYTES))
+        throw new Error(`No snapshot file for this path on ${u.host}: a name in it is too long`)
+    return file
 }
 
 /**
  * `file` joined to `dir`, after checking it stays inside: index.json is read back from the
  * sources branch, so a path in it is checked before anything is read, written or removed
  */
-function inside(dir: string, file: string): string {
+export function inside(dir: string, file: string): string {
     const rel = relative(resolve(dir), resolve(dir, file))
     if (rel === '' || rel === '..' || rel.startsWith(`..${sep}`) || isAbsolute(rel))
         throw new Error(`Snapshot path outside ${dir}: ${JSON.stringify(file)}`)
@@ -87,6 +94,13 @@ export function normalize(body: Buffer, contentType: string): Buffer {
     )
 }
 
+/** A source's index as it is on disk, with every file it names held to the source's directory */
+function readIndex(dir: string): Index {
+    const index = JSON.parse(readFileSync(join(dir, 'index.json'), 'utf8')) as Index
+    for (const entry of index.entries) inside(dir, entry.file)
+    return index
+}
+
 export class Store {
     readonly #dir: string
     readonly #index: Index
@@ -99,10 +113,9 @@ export class Store {
 
     constructor(root: string, source: string) {
         this.#dir = join(root, source)
-        const path = join(this.#dir, 'index.json')
         this.#index =
-            existsSync(path) ?
-                (JSON.parse(readFileSync(path, 'utf8')) as Index)
+            existsSync(join(this.#dir, 'index.json')) ?
+                readIndex(this.#dir)
             :   { source, entries: [] }
         for (const entry of this.#index.entries) {
             this.#byUrl.set(entry.url, entry)
@@ -207,8 +220,7 @@ export class Snapshots {
 
     constructor(root: string, source: string) {
         this.#dir = join(root, source)
-        const index = JSON.parse(readFileSync(join(this.#dir, 'index.json'), 'utf8')) as Index
-        this.#byUrl = new Map(index.entries.map((e) => [e.url, e]))
+        this.#byUrl = new Map(readIndex(this.#dir).entries.map((e) => [e.url, e]))
     }
 
     entries(): Entry[] {
