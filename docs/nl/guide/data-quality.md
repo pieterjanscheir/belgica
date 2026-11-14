@@ -13,9 +13,9 @@ bijblijft, en hoe ver je elke dataset kunt vertrouwen.
 | Kantongrenzen                    | NGI (geo.be)                                   | Twee keer per week: snapshots + `pnpm build:data` | Het NGI publiceert een nieuwe versie                              | Wekelijks        |
 | Gemeenten                        | Open data van Statbel                          | Gegenereerd: `pnpm build:cantons`                 | Gemeenten fuseren (2019, 2025)                                    | Om de 12 maanden |
 | Gewesten, provincies             | REFNIS-codelijst van Statbel                   | Twee keer per week: snapshots + `pnpm build:data` | Statbel wijzigt zijn register (laatst in 1995)                    | Wekelijks        |
-| Hoven en rechtbanken             | tribunaux-rechtbanken.be                       | Twee keer per week: snapshots + `pnpm build:data` | Een gerecht verhuist of wijzigt zijn contactgegevens of uren      | Wekelijks        |
-| Gevangenissen                    | justitie.belgium.be                            | Twee keer per week: snapshots + `pnpm build:data` | Een gevangenis opent, sluit of wijzigt haar contactgegevens       | Wekelijks        |
-| Justitiehuizen                   | vlaanderen.be, maisonsdejustice.be             | Twee keer per week: snapshots + `pnpm build:data` | Een justitiehuis verhuist of wijzigt zijn contactgegevens         | Wekelijks        |
+| Hoven en rechtbanken             | tribunaux-rechtbanken.be                       | Elke dag: snapshots + `pnpm build:data`           | Een gerecht verhuist of wijzigt zijn contactgegevens of uren      | Wekelijks        |
+| Gevangenissen                    | justitie.belgium.be                            | Elke dag: snapshots + `pnpm build:data`           | Een gevangenis opent, sluit of wijzigt haar contactgegevens       | Wekelijks        |
+| Justitiehuizen                   | vlaanderen.be, maisonsdejustice.be             | Elke dag: snapshots + `pnpm build:data`           | Een justitiehuis verhuist of wijzigt zijn contactgegevens         | Wekelijks        |
 | Postcodes                        | Conversietabel van Statbel                     | Twee keer per week: snapshots + `pnpm build:data` | Statbel publiceert een nieuwe tabel (fusies, nieuwe codes)        | Wekelijks        |
 | Rentevoeten                      | FOD Financiën, Belgisch Staatsblad             | Met de hand                                       | Elk jaar (wettelijk) en elk semester (handelstransacties)         | Om de 6 maanden  |
 
@@ -30,8 +30,10 @@ kanton geen gerecht heeft of een kanton geen grens heeft in het bestand van het 
 official site ──fetch──> snapshots (sources branch) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Ophalen.** Elke maandag en donderdag haalt de [sources-workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   elke pagina van de bronnen op (`scripts/sources`), beleefd: één verzoek per seconde per
+1. **Ophalen.** Elke dag haalt de [sources-workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+   de pagina's van de hoven en rechtbanken, de gevangenissen en de justitiehuizen op
+   (`scripts/sources`), samen met de consumptieprijsindex van Statbel, en elke maandag en
+   donderdag ook de andere bronnen. Dat gebeurt beleefd: één verzoek per seconde per
    site, met een user agent die het project noemt. Elke pagina wordt bewaard op de branch
    `sources`, met een index van wat is opgehaald, wanneer, en een hash van de inhoud. Een pagina
    wordt pas opnieuw opgeslagen als haar inhoud verandert, zodat de geschiedenis van de branch

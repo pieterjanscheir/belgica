@@ -14,6 +14,10 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   warning, until the NGI answers. A day etaamb lists empty, such as 15 September 2026, keeps its
   last snapshot with a warning, and the laws it listed are still read from that snapshot; the walk
   fails only when most days in the window are empty.
+- The pages of the courts, the prisons and the houses of justice are fetched every day, not
+  twice a week: a registry's new phone number or address reaches the data pull request the
+  next morning. The large files (the boundaries, Statbel's municipalities and postal codes, the
+  police zones) and the Official Journal's new laws stay on Monday and Thursday.
 
 ## [0.9.0] - 2026-11-13
 

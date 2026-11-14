@@ -1,6 +1,15 @@
 import { readFileSync } from 'node:fs'
-import { afterEach, describe, expect, it, vi } from 'vitest'
-import { DisallowedError, NotPublicError, delayFor, get } from '../../scripts/sources/http.ts'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import {
+    DisallowedError,
+    HostError,
+    MAX_BYTES,
+    NotPublicError,
+    TooLargeError,
+    delayFor,
+    get,
+    onHosts,
+} from '../../scripts/sources/http.ts'
 import { DISALLOW_ALL, isAllowed, parseRobots } from '../../scripts/sources/robots.ts'
 
 const fixture = (name: string) =>
@@ -141,8 +150,10 @@ describe('get', () => {
 
     it('refuses a URL the site disallows, without requesting it', async () => {
         const fetch = stubFetch('User-agent: *\nDisallow: /private')
-        await expect(get('https://a.example/private/x')).rejects.toThrow(DisallowedError)
-        expect((await get('https://a.example/public')).status).toBe(200)
+        await expect(get('https://a.example/private/x', ['a.example'])).rejects.toThrow(
+            DisallowedError,
+        )
+        expect((await get('https://a.example/public', ['a.example'])).status).toBe(200)
         // robots.txt is read once per host
         expect(fetch.mock.calls.map(([url]) => url)).toEqual([
             'https://a.example/robots.txt',
@@ -152,7 +163,7 @@ describe('get', () => {
 
     it('fetches anything when the site has no robots.txt', async () => {
         stubFetch(404)
-        expect((await get('https://b.example/x')).status).toBe(200)
+        expect((await get('https://b.example/x', ['b.example'])).status).toBe(200)
     })
 
     it('checks every redirect against robots.txt before following it', async () => {
@@ -160,21 +171,207 @@ describe('get', () => {
             'https://c.example/old': '/new',
             'https://c.example/moved': 'https://c.example/private/x',
         })
-        const res = await get('https://c.example/old')
+        const res = await get('https://c.example/old', ['c.example'])
         expect(res).toMatchObject({ url: 'https://c.example/new', status: 200 })
-        await expect(get('https://c.example/moved')).rejects.toThrow(DisallowedError)
+        await expect(get('https://c.example/moved', ['c.example'])).rejects.toThrow(DisallowedError)
         expect(fetch.mock.calls.map(([url]) => url)).not.toContain('https://c.example/private/x')
     })
 
     it('refuses a redirect to a private address, for a page or for robots.txt, without requesting it', async () => {
         const fetch = stubFetch(404, {
-            'https://d.example/robots.txt': 'http://169.254.169.254/robots.txt',
-            'https://e.example/page': 'http://127.0.0.1/admin',
+            'https://m.example/robots.txt': 'http://169.254.169.254/robots.txt',
+            'https://n.example/page': 'http://127.0.0.1/admin',
         })
-        await expect(get('https://d.example/x')).rejects.toThrow(NotPublicError)
-        await expect(get('https://e.example/page')).rejects.toThrow(NotPublicError)
+        await expect(get('https://m.example/x', ['m.example'])).rejects.toThrow(NotPublicError)
+        await expect(get('https://n.example/page', ['n.example'])).rejects.toThrow(NotPublicError)
         const requested = fetch.mock.calls.map(([url]) => url)
         expect(requested).not.toContain('http://169.254.169.254/robots.txt')
         expect(requested).not.toContain('http://127.0.0.1/admin')
+    })
+})
+
+describe('onHosts', () => {
+    it('takes a URL on a listed host, over HTTPS and on the default port', () => {
+        const hosts = ['www.example.be', 'example.be']
+        expect(onHosts('https://www.example.be/nl/x?y=1', hosts)).toBe(true)
+        expect(onHosts('https://EXAMPLE.be:443/', hosts)).toBe(true)
+        for (const url of [
+            'http://www.example.be/nl/x',
+            'https://www.example.be:8443/nl/x',
+            'https://www.example.be.other.example/nl/x',
+            'https://www.example.be@other.example/nl/x',
+            'https://other.example/www.example.be',
+            'https://sub.www.example.be/',
+            'https://www.example.be./',
+            'file:///www.example.be',
+            '/nl/x',
+        ])
+            expect(onHosts(url, hosts), url).toBe(false)
+    })
+})
+
+describe('get, held to a source’s hosts and to a size', () => {
+    beforeEach(() => {
+        vi.useFakeTimers()
+    })
+    afterEach(() => {
+        vi.useRealTimers()
+        vi.unstubAllGlobals()
+    })
+
+    /** A fetch that answers each URL with what `answer` gives it, or 200 */
+    function stubFetch(answer: (url: string) => Response | string | undefined) {
+        const fetch = vi.fn((url: string) => {
+            const res = answer(url)
+            if (res instanceof Response) return Promise.resolve(res)
+            if (res !== undefined)
+                return Promise.resolve(
+                    new Response('', { status: 302, headers: { location: res } }),
+                )
+            return Promise.resolve(new Response(url.endsWith('/robots.txt') ? '' : 'page'))
+        })
+        vi.stubGlobal('fetch', fetch)
+        return { requested: () => fetch.mock.calls.map(([url]) => url) }
+    }
+
+    /** The outcome of a request, without the client's waits between requests and retries */
+    async function settle<T>(promise: Promise<T>): Promise<T> {
+        const state = { done: false }
+        const settled = promise.finally(() => {
+            state.done = true
+        })
+        settled.catch(() => undefined)
+        while (!state.done) await vi.advanceTimersByTimeAsync(1000)
+        return settled
+    }
+
+    it('refuses a URL on another host, or not over HTTPS, without a request', async () => {
+        const { requested } = stubFetch(() => undefined)
+        for (const url of [
+            'https://d.example.other.example/x',
+            'https://d.example@other.example/x',
+            'http://d.example/x',
+            'https://d.example:8443/x',
+        ])
+            await expect(settle(get(url, ['d.example'])), url).rejects.toThrow(HostError)
+        expect(requested()).toEqual([])
+    })
+
+    it('follows a redirect to another host of the source', async () => {
+        const { requested } = stubFetch((url) =>
+            url === 'https://e.example/fr' ? 'https://e-fr.example/fr' : undefined,
+        )
+        const res = await settle(get('https://e.example/fr', ['e.example', 'e-fr.example']))
+        expect(res).toMatchObject({ url: 'https://e-fr.example/fr', status: 200 })
+        expect(requested()).toEqual([
+            'https://e.example/robots.txt',
+            'https://e.example/fr',
+            'https://e-fr.example/robots.txt',
+            'https://e-fr.example/fr',
+        ])
+    })
+
+    it.each([
+        ['another host', 'https://other.example/x'],
+        ['another host, by a URL without a scheme', '//other.example/x'],
+        ['plain HTTP', 'http://f.example/x'],
+        ['a look-alike host', 'https://f.example.other.example/x'],
+    ])('stops at a redirect to %s, without requesting it', async (_, location) => {
+        const { requested } = stubFetch((url) =>
+            url === 'https://f.example/old' ? location : undefined,
+        )
+        await expect(settle(get('https://f.example/old', ['f.example']))).rejects.toThrow(HostError)
+        // Neither the page nor that host's robots.txt
+        expect(requested().filter((url) => !url.startsWith('https://f.example/'))).toEqual([])
+    })
+
+    it('stops at a redirect off the source’s hosts further down the chain', async () => {
+        const { requested } = stubFetch(
+            (url) =>
+                ({
+                    'https://g.example/1': '/2',
+                    'https://g.example/2': 'https://other.example/3',
+                })[url],
+        )
+        await expect(settle(get('https://g.example/1', ['g.example']))).rejects.toThrow(HostError)
+        expect(requested()).toEqual([
+            'https://g.example/robots.txt',
+            'https://g.example/1',
+            'https://g.example/2',
+        ])
+    })
+
+    it('reads a redirect’s path as UTF-8, as the site sent it', async () => {
+        // What fetch gives for a Location of "/fr/maisons_de_détention/x" sent as UTF-8 bytes
+        const asReceived = Buffer.from('/fr/maisons_de_détention/x', 'utf8').toString('latin1')
+        const { requested } = stubFetch(
+            (url) =>
+                ({
+                    'https://l.example/utf8': asReceived,
+                    // A site that sends Latin-1 itself, and one that percent-encodes
+                    'https://l.example/latin1': '/fr/d\xE9tention',
+                    'https://l.example/encoded': '/fr/d%C3%A9tention?x=%E9',
+                })[url],
+        )
+        const to = async (path: string) =>
+            (await settle(get(`https://l.example/${path}`, ['l.example']))).url
+        expect(await to('utf8')).toBe('https://l.example/fr/maisons_de_d%C3%A9tention/x')
+        expect(await to('latin1')).toBe('https://l.example/fr/d%C3%A9tention')
+        expect(await to('encoded')).toBe('https://l.example/fr/d%C3%A9tention?x=%E9')
+        expect(requested()).toContain('https://l.example/fr/maisons_de_d%C3%A9tention/x')
+    })
+
+    it('fails when a robots.txt redirects to a host the source doesn’t list', async () => {
+        const { requested } = stubFetch((url) =>
+            url === 'https://h.example/robots.txt' ? 'https://other.example/robots.txt' : undefined,
+        )
+        await expect(settle(get('https://h.example/x', ['h.example']))).rejects.toThrow(HostError)
+        expect(requested()).toEqual(['https://h.example/robots.txt'])
+    })
+
+    it('refuses a response that says it is over the limit, without retrying', async () => {
+        const { requested } = stubFetch((url) =>
+            url.endsWith('/big') ?
+                new Response('x', { headers: { 'content-length': String(MAX_BYTES + 1) } })
+            :   undefined,
+        )
+        await expect(settle(get('https://i.example/big', ['i.example']))).rejects.toThrow(
+            TooLargeError,
+        )
+        expect(requested()).toEqual(['https://i.example/robots.txt', 'https://i.example/big'])
+    })
+
+    it('stops reading a response that grows over the limit', async () => {
+        const chunk = new Uint8Array(1024 * 1024)
+        let sent = 0
+        let cancelled = false
+        stubFetch((url) =>
+            url.endsWith('/endless') ?
+                new Response(
+                    new ReadableStream({
+                        pull(controller) {
+                            sent++
+                            controller.enqueue(chunk)
+                        },
+                        cancel() {
+                            cancelled = true
+                        },
+                    }),
+                )
+            :   undefined,
+        )
+        await expect(settle(get('https://j.example/endless', ['j.example']))).rejects.toThrow(
+            TooLargeError,
+        )
+        expect(cancelled).toBe(true)
+        expect(sent * chunk.length).toBeLessThan(MAX_BYTES + 3 * chunk.length)
+    })
+
+    it('reads a response up to the limit', async () => {
+        stubFetch((url) =>
+            url.endsWith('/file') ? new Response(new Uint8Array(3 * 1024 * 1024)) : undefined,
+        )
+        const res = await settle(get('https://k.example/file', ['k.example']))
+        expect(res.body.length).toBe(3 * 1024 * 1024)
     })
 })

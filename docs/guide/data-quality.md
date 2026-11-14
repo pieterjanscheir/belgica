@@ -13,10 +13,10 @@ each dataset.
 | Municipalities                    | Statbel open data                     | Generated: `pnpm build:cantons`             | Municipalities merge (2019, 2025)                   | 12 months    |
 | Regions, provinces                | Statbel REFNIS code list              | Twice a week: snapshots + `pnpm build:data` | Statbel changes its register (last in 1995)         | 12 months    |
 | Canton, arrondissement boundaries | NGI (geo.be)                          | Twice a week: snapshots + `pnpm build:data` | The NGI publishes a new version                     | 12 months    |
-| Courts                            | tribunaux-rechtbanken.be              | Twice a week: snapshots + `pnpm build:data` | A court moves or changes its contacts or hours      | 12 months    |
+| Courts                            | tribunaux-rechtbanken.be              | Every day: snapshots + `pnpm build:data`    | A court moves or changes its contacts or hours      | 12 months    |
 | Court locations                   | NGI (geo.be)                          | Twice a week: snapshots + `pnpm build:data` | The NGI moves a point                               | 12 months    |
-| Prisons                           | justitie.belgium.be                   | Twice a week: snapshots + `pnpm build:data` | A prison opens, closes or changes its contacts      | 12 months    |
-| Houses of justice                 | vlaanderen.be, maisonsdejustice.be    | Twice a week: snapshots + `pnpm build:data` | A house moves or changes its contacts               | 12 months    |
+| Prisons                           | justitie.belgium.be                   | Every day: snapshots + `pnpm build:data`    | A prison opens, closes or changes its contacts      | 12 months    |
+| Houses of justice                 | vlaanderen.be, maisonsdejustice.be    | Every day: snapshots + `pnpm build:data`    | A house moves or changes its contacts               | 12 months    |
 | Postal codes                      | Statbel's conversion table            | Twice a week: snapshots + `pnpm build:data` | Statbel publishes a new table (mergers, new codes)  | 12 months    |
 | Interest rates                    | FOD Financiën, Belgisch Staatsblad    | By hand                                     | Every year (legal) and every semester (commercial)  | 6 months     |
 | Public holidays                   | Wet 4 januari 1974, KB 18 april 1974  | By hand                                     | A law or decree changes the list or moves a holiday | 12 months    |
@@ -36,9 +36,10 @@ canton has no boundary in the NGI's file.
 official site ──fetch──> snapshots (sources branch) ──parse──> data/*.json ──> pull request
 ```
 
-1. **Fetch.** Every Monday and Thursday the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
-   fetches every page of the sources (`scripts/sources`), and on the other days Statbel's consumer
-   price index alone, for the [procedural indemnity](../data/procedural-indemnities#how-a-new-indexation-arrives). It does so politely: it follows each site's
+1. **Fetch.** Every day the [sources workflow](https://github.com/pieterjanscheir/belgica/actions/workflows/sources.yml)
+   fetches the pages of the courts, the prisons and the houses of justice (`scripts/sources`), and
+   Statbel's consumer price index, for the [procedural indemnity](../data/procedural-indemnities#how-a-new-indexation-arrives). Every Monday and Thursday it
+   fetches the other sources too: the large files, which change a few times a year. It does so politely: it follows each site's
    `robots.txt` (a page it disallows isn't fetched, and the source fails instead), sends one
    request per second per site or less often when the site's `Crawl-delay` asks for it, with a
    user agent that names the project (`belgica`). It keeps each page on the `sources` branch,

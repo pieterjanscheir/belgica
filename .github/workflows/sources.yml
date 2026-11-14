@@ -1,15 +1,20 @@
 name: Sources
 
-# Twice a week: fetch the official sources, keep the snapshots on the `sources` branch, rebuild the
-# data from them, and open a pull request when the data changed. The other days, the consumer price
-# index alone. The data in main only changes through a reviewed pull request.
+# Every day: fetch the official sources, keep the snapshots on the `sources` branch, rebuild the
+# data from them, and open a pull request when the data changed. The pages that change from week
+# to week every day, the large files twice a week. The data in main only changes through a reviewed
+# pull request.
 on:
     schedule:
-        # Monday and Thursday, so a source that breaks is noticed within a few days
+        # Monday and Thursday: every source, the large files included (the boundaries, Statbel's
+        # municipalities and postal codes, the police zones, the Official Journal's new laws).
+        # They change a few times a year, and a source that breaks is noticed within a few days
         - cron: '41 4 * * 1,4'
-        # The other days, Statbel's consumer price index alone: a month's index comes out near its
-        # end and an indexation of the procedural indemnity takes effect on the first of the next
-        # month, so a few days' wait matters. One small request a day.
+        # The other days: the pages that change from week to week (the courts, the prisons, the
+        # houses of justice: a registry's phone number, an address, opening hours), and Statbel's
+        # consumer price index: a month's index comes out near its end and an indexation of the
+        # procedural indemnity takes effect on the first of the next month, so a few days' wait
+        # matters
         - cron: '41 4 * * 0,2,3,5,6'
     workflow_dispatch:
         inputs:
@@ -75,10 +80,11 @@ jobs:
             - name: Fetch
               id: fetch
               env:
-                  ONLY: ${{ github.event.schedule == '41 4 * * 0,2,3,5,6' && 'cpi' || inputs.sources != 'all' && inputs.sources || '' }}
+                  ONLY: ${{ github.event.schedule == '41 4 * * 0,2,3,5,6' && 'courts prisons houses-of-justice cpi' || inputs.sources != 'all' && inputs.sources || '' }}
               run: |
                   set -o pipefail
-                  # Unquoted on purpose: no argument at all fetches every source
+                  # Unquoted on purpose: no argument at all fetches every source, and the daily
+                  # run's names are one argument each
                   # shellcheck disable=SC2086
                   if ! pnpm fetch:sources $ONLY 2>&1 | tee fetch.log; then
                     echo "failed=true" >> "$GITHUB_OUTPUT"
