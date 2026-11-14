@@ -30,7 +30,7 @@ features:
       link: /data/interest-rates
       linkText: Interest rates
     - title: Sourced and kept current
-      details: Every dataset names its official source and every scraped record the page it was read from. The courts, prisons and houses of justice are fetched every day and the other sources twice a week, and changes are reviewed before they're merged.
+      details: Every dataset names its official source and every scraped record the page it was read from. The courts, prisons, houses of justice and the consumer price index are fetched every day, the other scheduled sources twice a week, and changes are reviewed before they're merged.
       link: /guide/data-quality
       linkText: Data quality
     - title: Typed and dated
