@@ -7,6 +7,22 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Fixed
+
+- **Courts**: the Ieper, Kortrijk and Veurne divisions of the court of first instance of
+  West-Vlaanderen have their contacts again. 0.9.1 dropped them: Ieper and Veurne had none left
+  and Kortrijk one, where their pages list a phone number and five to seven mailboxes each. The
+  pages now write the contacts as a text (one number to call, then each service's choice in
+  the phone menu and its mailbox), which the parser didn't read and didn't report. It reads
+  that shape now: each service has the number with its choice as the note ("Kies 1") and its
+  mailbox. On the Kortrijk and Veurne pages the links behind the mailboxes go to Ieper's
+  addresses; the address a page shows is kept.
+- A contact page that holds mailboxes in a text the parser can't read is reported in the data
+  pull request, so that a page that changes shape no longer loses its contacts without a word.
+  Three more pages are reported that way today (the Dutch-speaking enterprise court of Brussels,
+  the enterprise court of Gent and the justices of the peace of Leuven); they had no contacts
+  in the data before either.
+
 ## [0.9.1] - 2026-11-14
 
 ### Changed

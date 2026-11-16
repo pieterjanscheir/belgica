@@ -4153,7 +4153,67 @@
       "city": "Ieper",
       "municipality": "33011"
     },
-    "contacts": [],
+    "contacts": [
+      {
+        "type": "phone",
+        "value": "+3226820504"
+      },
+      {
+        "type": "phone",
+        "value": "+3226820504",
+        "label": "Burgerlijke en familierechtbank",
+        "note": "Kies 1"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.iep.burgerlijk.familie@just.fgov.be",
+        "label": "Burgerlijke en familierechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226820504",
+        "label": "Jeugdrechtbank",
+        "note": "Kies 2"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.iep.jeugd@just.fgov.be",
+        "label": "Jeugdrechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226820504",
+        "label": "Correctionele rechtbank",
+        "note": "Kies 3"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.iep.correctioneel@just.fgov.be",
+        "label": "Correctionele rechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226820504",
+        "label": "Overtuigingsstukken",
+        "note": "Kies 3"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.iep.overtuigingsstukken@just.fgov.be",
+        "label": "Overtuigingsstukken"
+      },
+      {
+        "type": "phone",
+        "value": "+3226820504",
+        "label": "Onderzoeksrechter en raadkamer",
+        "note": "Kies 4"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.iep.onderzoek@just.fgov.be",
+        "label": "Onderzoeksrechter en raadkamer"
+      }
+    ],
     "openingHours": "Mo-Fr 08:30-12:30,13:30-16:00",
     "openingHoursText": {
       "nl": "De griffie is elke werkdag open van 8u30 tot 12u30 en van 13u30 tot 16u00."
@@ -4213,6 +4273,87 @@
         "type": "phone",
         "value": "+3256269461",
         "label": "Secretariaat afdelingsvoorzitter"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749",
+        "label": "Correctionele rechtbank",
+        "note": "Kies 1"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.kor.correctioneel@just.fgov.be",
+        "label": "Correctionele rechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749",
+        "label": "Onderzoeksrechter en raadkamer",
+        "note": "Kies 2"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.kor.onderzoek@just.fgov.be",
+        "label": "Onderzoeksrechter en raadkamer"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749",
+        "label": "Dienst overtuigingsstukken",
+        "note": "Kies 3"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.kor.overtuigingsstukken@just.fgov.be",
+        "label": "Dienst overtuigingsstukken"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749",
+        "label": "Familierechtbank",
+        "note": "Kies 4"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.kor.familie@just.fgov.be",
+        "label": "Familierechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749",
+        "label": "Jeugdrechtbank",
+        "note": "Kies 5"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.kor.jeugd@just.fgov.be",
+        "label": "Jeugdrechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749",
+        "label": "Burgerlijke rechtbank",
+        "note": "Kies 6"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.kor.burgerlijk@just.fgov.be",
+        "label": "Burgerlijke rechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821749",
+        "label": "Onthaal",
+        "note": "Kies 7"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.kor.onthaal@just.fgov.be",
+        "label": "Onthaal"
       }
     ],
     "openingHours": "Mo-Fr 08:30-12:30,13:30-16:00",
@@ -4264,7 +4405,67 @@
       "city": "Veurne",
       "municipality": "38025"
     },
-    "contacts": [],
+    "contacts": [
+      {
+        "type": "phone",
+        "value": "+3226821714"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821714",
+        "label": "Burgerlijke en familierechtbank",
+        "note": "Kies 1"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.veu.burgerlijk.familie@just.fgov.be",
+        "label": "Burgerlijke en familierechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821714",
+        "label": "Jeugdrechtbank",
+        "note": "Kies 2"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.veu.jeugd@just.fgov.be",
+        "label": "Jeugdrechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821714",
+        "label": "Correctionele rechtbank",
+        "note": "Kies 3"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.veu.correctioneel@just.fgov.be",
+        "label": "Correctionele rechtbank"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821714",
+        "label": "Overtuigingsstukken",
+        "note": "Kies 3"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.veu.overtuigingsstukken@just.fgov.be",
+        "label": "Overtuigingsstukken"
+      },
+      {
+        "type": "phone",
+        "value": "+3226821714",
+        "label": "Onderzoeksrechter en raadkamer",
+        "note": "Kies 4"
+      },
+      {
+        "type": "email",
+        "value": "wvl.rea.veu.onderzoek@just.fgov.be",
+        "label": "Onderzoeksrechter en raadkamer"
+      }
+    ],
     "openingHours": "Mo-Fr 08:30-12:30,13:30-16:00",
     "openingHoursText": {
       "nl": "De griffie is elke werkdag open van 8u30 tot 12u30 en van 13u30 tot 16u00."
