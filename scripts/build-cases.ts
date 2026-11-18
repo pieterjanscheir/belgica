@@ -17,6 +17,8 @@ import type * as Postal from '../src/postal-codes.ts'
 import type * as PoliceZones from '../src/police-zones.ts'
 import type * as Prisons from '../src/prisons.ts'
 import type * as Territory from '../src/territory.ts'
+// src/time.ts has only type imports, so Node can load it from src/ without the JSON imports below
+import { today as todayInBelgium } from '../src/time.ts'
 
 // The built package (pnpm build first), typed from src/: Node can't load src/ itself, which
 // imports JSON without import attributes, and typecheck runs before the build
@@ -45,7 +47,6 @@ const {
     municipalities,
     postalCodes,
     prisons,
-    toDay,
 } = await load<typeof Root>('index')
 const { cantonBoundaries, cantonBoundariesCoverage, findCantonsAt } =
     await load<typeof Boundaries>('canton-boundaries')
@@ -62,7 +63,7 @@ const { territoryCoverage } = await load<typeof Territory>('territory')
 type CourtType = Root.CourtType
 
 const out = process.argv[2] ?? 'python/tests/.cases/parity.json'
-const today = toDay(new Date())
+const today = todayInBelgium()
 // The first day of the coverage and today: the territory changes on neither, but a port that
 // ignores the day would pass a single-day test
 const days = [territoryCoverage.from, today]

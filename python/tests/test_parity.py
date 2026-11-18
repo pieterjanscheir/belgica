@@ -6,7 +6,6 @@ you do."""
 import json
 import os
 from collections.abc import Sequence
-from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -32,7 +31,7 @@ def ids(records: Sequence[Any]) -> list[str]:
 
 def test_the_cases_are_from_today() -> None:
     # The cases answer for the data of the day they were made, as the helpers do without `on`
-    assert cases['today'] == date.today().isoformat()
+    assert cases['today'] == belgica.today()
 
 
 def test_coverage() -> None:

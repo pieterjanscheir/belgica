@@ -10,9 +10,10 @@ import {
 } from '../src/arrondissement-boundaries'
 import { cantonBoundaries, type Ring } from '../src/canton-boundaries'
 import { NGI_CANTONS } from '../scripts/sources/catalog'
-import { appliesOn, arrondissements, cantons, toDay } from '../src'
+import { appliesOn, arrondissements, cantons } from '../src'
+import { today as todayInBelgium } from '../src/time'
 
-const today = toDay(new Date())
+const today = todayInBelgium()
 const current = arrondissementBoundaries.filter((b) => appliesOn(b, today))
 
 /**

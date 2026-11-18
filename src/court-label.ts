@@ -3,7 +3,7 @@
 // courts entry point uses it too, for a record without a stored label.
 import type { Locale, Translated } from './schemas/common.ts'
 import type { Court } from './schemas/courts.ts'
-import { currentVersion, toDay, type Validity } from './time.ts'
+import { currentVersion, today, type Validity } from './time.ts'
 
 /** The fields of a canton that a label uses */
 export interface CantonNameVersion extends Validity {
@@ -34,8 +34,7 @@ export function buildCourtLabel(
     cantonVersions: readonly CantonNameVersion[] | undefined,
 ): Translated | undefined {
     if (court.type !== 'justice-of-the-peace' || court.kind !== 'court') return undefined
-    const canton =
-        cantonVersions && currentVersion(cantonVersions, court.validTo ?? toDay(new Date()))
+    const canton = cantonVersions && currentVersion(cantonVersions, court.validTo ?? today())
     if (!canton) return undefined
     // Most cantons have no German name: then the one in the court's own language
     const ownLanguage = court.name.nl !== undefined && court.name.fr === undefined ? 'nl' : 'fr'

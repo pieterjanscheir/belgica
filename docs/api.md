@@ -12,7 +12,7 @@ These hold for every function below, and the entries don't repeat them.
 - **Days.** A day is a `Date`, read as a local calendar day, or a string that starts with
   `YYYY-MM-DD`. Anything else throws a `RangeError`. Days are returned as `YYYY-MM-DD`.
 - **`on`.** Every lookup takes an optional last argument `{ on }`, the day to answer for, and
-  answers for today without it. A day before the dataset's [coverage](#time) throws a
+  answers for today in Belgium (Europe/Brussels) without it, whatever the machine's time zone. A day before the dataset's [coverage](#time) throws a
   `RangeError`.
 - **Lookups by id.** A `get…` function returns `undefined` for an id that isn't in the data.
   With a known id (a literal like `'gent-1'`, or a value typed `CantonId`) it returns the record,
@@ -1010,7 +1010,7 @@ interface Validity {
 }
 
 interface OnDay {
-    on?: Date | string // today by default
+    on?: Date | string // today in Belgium by default
 }
 
 interface Coverage {
@@ -1042,10 +1042,10 @@ function appliesOn(record: Validity, day: string): boolean
 ```
 
 Whether a record applies on a day: `validFrom` and `validTo` both include their day. `day` must
-already be `YYYY-MM-DD`; use `toDay` to get one.
+already be `YYYY-MM-DD`; use `today` or `toDay` to get one.
 
 ```ts
-courts.filter((court) => appliesOn(court, toDay(new Date())))
+courts.filter((court) => appliesOn(court, today()))
 ```
 
 ### `toDay` {#today}
@@ -1060,6 +1060,22 @@ ten characters. Throws a `RangeError` for anything that isn't a valid day.
 ```ts
 toDay('2024-06-15T10:30:00Z') // '2024-06-15'
 toDay('2024-02-30') // RangeError
+```
+
+### `today` {#today-in-belgium}
+
+```ts
+function today(now?: Date): string
+```
+
+Today in Belgium (Europe/Brussels) as `YYYY-MM-DD`, whatever the time zone of the machine: the day
+every lookup answers for without `on`. Use it to filter the datasets for the same day as the
+lookups; `toDay(new Date())` gives the machine's day, which on a server in UTC is the day before
+between midnight and 01:00 (02:00 in summer). `now` is the instant to read, the current one by
+default.
+
+```ts
+today(new Date('2026-12-31T23:30:00Z')) // '2027-01-01': 00:30 in Belgium
 ```
 
 ## Datasets

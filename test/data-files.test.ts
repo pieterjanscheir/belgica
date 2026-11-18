@@ -17,7 +17,6 @@ import {
     formatCourtName,
     getCanton,
     getCourt,
-    toDay,
     type Court,
     type CourtDetails,
     type CourtSummary,
@@ -26,6 +25,7 @@ import {
 import { cantonSummarySchema, cantonTerritorySchema } from '../src/schemas'
 import { courtDetailsSchema, courtSummarySchema } from '../src/schemas/courts'
 import { cantonNames } from '../src/canton-names.generated'
+import { today as todayInBelgium } from '../src/time'
 
 const read = (path: string): unknown => JSON.parse(readFileSync(path, 'utf8'))
 const files = readdirSync('data/courts', { recursive: true, encoding: 'utf8' })
@@ -37,7 +37,7 @@ const typeFiles = lists.filter((f) => !f.includes('/'))
 const blocks = lists.filter((f) => f.includes('/'))
 const index = read('data/courts/index.json') as Record<string, string>
 const locales: Locale[] = ['nl', 'fr', 'de']
-const today = toDay(new Date())
+const today = todayInBelgium()
 
 describe('data/courts/', () => {
     it('has a file per court type, and only those', () => {

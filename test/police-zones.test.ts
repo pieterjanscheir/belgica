@@ -1,6 +1,6 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
 
-import { appliesOn, municipalities, toDay } from '../src'
+import { appliesOn, municipalities } from '../src'
 import {
     findPoliceZone,
     getPoliceZone,
@@ -9,8 +9,9 @@ import {
     policeZonesCoverage,
     type PoliceZone,
 } from '../src/police-zones'
+import { today as todayInBelgium } from '../src/time'
 
-const today = toDay(new Date())
+const today = todayInBelgium()
 const current = policeZones.filter((z) => appliesOn(z, today))
 
 describe('police zones', () => {

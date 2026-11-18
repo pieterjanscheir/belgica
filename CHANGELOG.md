@@ -7,6 +7,23 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Added
+
+- `today()` (Python: `belgica.today()`): today in Belgium as `YYYY-MM-DD`, the day the lookups
+  answer for without `on`. Filter the datasets with it to get the same day as the lookups:
+  `appliesOn(court, today())`.
+
+### Changed
+
+- Without `on`, the lookups answer for **today in Belgium** (Europe/Brussels), whatever the time
+  zone of the machine. They used the machine's own day, so on a server in UTC, such as most
+  hosting, a lookup between midnight and 01:00 Belgian time (02:00 in summer) answered for the
+  day before, and a court, canton or municipality that changes at midnight came out wrong for
+  that hour. Python does the same. The day comes from the EU summer-time rule (UTC+1, UTC+2 from
+  the last Sunday of March to the last Sunday of October, both at 01:00 UTC), so the Python
+  package still needs no time zone database; the tests check it against Europe/Brussels from
+  1996 to 2040. A `Date` passed as `on` is still read as the machine's local day.
+
 ### Fixed
 
 - **Courts**: the Ieper, Kortrijk and Veurne divisions of the court of first instance of

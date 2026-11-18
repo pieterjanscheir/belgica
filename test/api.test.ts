@@ -23,6 +23,7 @@ import {
     getInterestRate,
     getJusticeOfThePeace,
     getPrison,
+    today,
 } from '../src'
 
 describe('getInterestRate input validation', () => {
@@ -238,5 +239,12 @@ describe('id types', () => {
         // @ts-expect-error: not a canton id
         const typo: CantonId = 'gent1'
         expect(typo).toBe('gent1')
+    })
+})
+
+describe('today', () => {
+    it('is exported, and is the day the lookups answer for without on', () => {
+        expect(today(new Date('2026-12-31T23:30:00Z'))).toBe('2027-01-01')
+        expect(today()).toMatch(/^\d{4}-\d{2}-\d{2}$/)
     })
 })

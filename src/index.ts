@@ -1,5 +1,5 @@
 export * from './common'
-export { appliesOn, toDay, type Coverage, type OnDay, type Validity } from './time'
+export { appliesOn, today, toDay, type Coverage, type OnDay, type Validity } from './time'
 export * from './territory'
 export * from './courts'
 export * from './prisons'

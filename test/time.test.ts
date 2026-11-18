@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { appliesOn, currentVersion, lookupDay, toDay, versionsById } from '../src/time'
+import { appliesOn, currentVersion, lookupDay, today, versionsById } from '../src/time'
 
 describe('appliesOn', () => {
     const record = { validFrom: '2018-09-01', validTo: '2024-12-31' }
@@ -21,9 +21,69 @@ describe('appliesOn', () => {
     })
 })
 
+describe('today', () => {
+    it('is the day in Belgium, not in UTC or on the machine', () => {
+        // Winter (UTC+1): 23:30 UTC is already the next day
+        expect(today(new Date('2026-11-18T22:59:59Z'))).toBe('2026-11-18')
+        expect(today(new Date('2026-11-18T23:00:00Z'))).toBe('2026-11-19')
+        expect(today(new Date('2026-12-31T23:30:00Z'))).toBe('2027-01-01')
+        // Summer (UTC+2): from 22:00 UTC
+        expect(today(new Date('2026-06-30T21:59:59Z'))).toBe('2026-06-30')
+        expect(today(new Date('2026-06-30T22:00:00Z'))).toBe('2026-07-01')
+    })
+
+    it('gives the new day on the nights summer time starts and ends', () => {
+        // 2026: summer time from Sunday 29 March to Sunday 25 October
+        expect(today(new Date('2026-03-28T22:30:00Z'))).toBe('2026-03-28')
+        expect(today(new Date('2026-03-28T23:30:00Z'))).toBe('2026-03-29')
+        expect(today(new Date('2026-10-24T21:30:00Z'))).toBe('2026-10-24')
+        expect(today(new Date('2026-10-24T22:30:00Z'))).toBe('2026-10-25')
+    })
+
+    it("matches the Europe/Brussels time zone, hour by hour, around each year's changes", () => {
+        const brussels = new Intl.DateTimeFormat('en', {
+            timeZone: 'Europe/Brussels',
+            calendar: 'gregory',
+            numberingSystem: 'latn',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+        })
+        // From the parts: no locale's layout is guaranteed to be YYYY-MM-DD
+        const brusselsDay = (now: Date) => {
+            const parts = Object.fromEntries(
+                brussels.formatToParts(now).map((part) => [part.type, part.value]),
+            )
+            return `${parts['year']}-${parts['month']}-${parts['day']}`
+        }
+        for (let year = 1996; year <= 2040; year++) {
+            for (const [month, day] of [
+                [2, 24],
+                [9, 24],
+                [11, 31],
+            ] as const) {
+                const start = Date.UTC(year, month, day)
+                for (let hour = 0; hour < 9 * 24; hour++) {
+                    // Half past, and the last second before the hour
+                    for (const offset of [1_800_000, 3_599_000]) {
+                        const now = new Date(start + hour * 3_600_000 + offset)
+                        expect(today(now), now.toISOString()).toBe(brusselsDay(now))
+                    }
+                }
+            }
+        }
+    })
+})
+
 describe('lookupDay', () => {
-    it('defaults to today', () => {
-        expect(lookupDay({}, '2000-01-01', 'test')).toBe(toDay(new Date()))
+    afterEach(() => {
+        vi.useRealTimers()
+    })
+
+    it('defaults to today in Belgium', () => {
+        // One clock for the lookup and the expectation: 00:00 on 1 July in Belgium
+        vi.useFakeTimers({ now: new Date('2026-06-30T22:00:00Z') })
+        expect(lookupDay({}, '2000-01-01', 'test')).toBe('2026-07-01')
     })
 
     it('names the dataset and its coverage when the day is too early', () => {
