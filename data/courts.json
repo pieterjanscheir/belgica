@@ -86,7 +86,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/hof-van-beroep-antwerpen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -406,11 +406,11 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/hof-van-beroep-gent",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/hof-van-beroep-gent/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -826,7 +826,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/hof-van-assisen-van-het-administratief-arrondissement-brussel-hoofdstad",
-        "retrieved": "2026-11-12"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/hof-van-assisen-van-het-administratief-arrondissement-brussel-hoofdstad/contact",
@@ -834,7 +834,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/cour-dassises-de-larrondissement-administratif-de-bruxelles-capitale",
-        "retrieved": "2026-11-12"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/cour-dassises-de-larrondissement-administratif-de-bruxelles-capitale/contact",
@@ -1349,7 +1349,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -1405,11 +1405,11 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen-afdeling-antwerpen",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen-afdeling-antwerpen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2016/02/16/2016009074/staatsblad",
@@ -1462,7 +1462,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen-afdeling-mechelen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2016/02/16/2016009074/staatsblad",
@@ -1521,7 +1521,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-antwerpen-afdeling-turnhout/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2016/02/16/2016009074/staatsblad",
@@ -2300,7 +2300,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-leuven",
-        "retrieved": "2026-11-09"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-leuven/contact",
@@ -3604,7 +3604,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-oost-vlaanderen",
-        "retrieved": "2026-11-09"
+        "retrieved": "2026-11-16"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-oost-vlaanderen/contact",
@@ -3733,7 +3733,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-oost-vlaanderen-afdeling-dendermonde",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-oost-vlaanderen-afdeling-dendermonde/contact",
@@ -3807,7 +3807,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-oost-vlaanderen-afdeling-gent/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2016/02/16/2016009073/staatsblad",
@@ -3977,11 +3977,11 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen",
-        "retrieved": "2026-11-09"
+        "retrieved": "2026-11-16"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -4089,7 +4089,7 @@
       },
       {
         "type": "email",
-        "value": "wvl.rea.bru.rollen@just.fgov.be",
+        "value": "wvl.rea.bru.familie@just.fgov.be",
         "label": "Griffie rollen"
       },
       {
@@ -4113,11 +4113,11 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-brugge",
-        "retrieved": "2026-11-09"
+        "retrieved": "2026-11-16"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-brugge/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/01/14/2017040887/staatsblad",
@@ -4228,7 +4228,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-ieper/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/01/14/2017040887/staatsblad",
@@ -4370,7 +4370,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-kortrijk/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/01/14/2017040887/staatsblad",
@@ -4480,7 +4480,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/rechtbank-eerste-aanleg-west-vlaanderen-afdeling-veurne/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/01/14/2017040887/staatsblad",
@@ -5382,7 +5382,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-lentreprise-francophone-de-bruxelles",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-lentreprise-francophone-de-bruxelles/contact",
@@ -7045,7 +7045,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/ondernemingsrechtbank-leuven",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-17"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/ondernemingsrechtbank-leuven/contact",
@@ -9244,7 +9244,7 @@
     "contacts": [
       {
         "type": "phone",
-        "value": "+3265803007"
+        "value": "+3226822227"
       },
       {
         "type": "fax",
@@ -9269,7 +9269,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-boussu-colfontaine-i/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-16"
       }
     ]
   },
@@ -9297,7 +9297,7 @@
     "contacts": [
       {
         "type": "phone",
-        "value": "+3265803007"
+        "value": "+3226822227"
       },
       {
         "type": "fax",
@@ -9326,7 +9326,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-boussu-colfontaine-ii/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-16"
       }
     ]
   },
@@ -9806,7 +9806,7 @@
     "contacts": [
       {
         "type": "phone",
-        "value": "+3225086541"
+        "value": "+3226822079"
       },
       {
         "type": "email",
@@ -9833,7 +9833,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/vredegerecht-brussel-1e-kanton/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-bruxelles-1er-canton",
@@ -9841,7 +9841,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-bruxelles-1er-canton/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -9870,7 +9870,7 @@
     "contacts": [
       {
         "type": "phone",
-        "value": "+3225577950"
+        "value": "+3226822079"
       },
       {
         "type": "email",
@@ -9897,7 +9897,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/vredegerecht-brussel-2e-kanton/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-bruxelles-2ieme-canton",
@@ -9905,7 +9905,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-bruxelles-2ieme-canton/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -10722,7 +10722,7 @@
     "contacts": [
       {
         "type": "phone",
-        "value": "+3225086541"
+        "value": "+3226822079"
       },
       {
         "type": "email",
@@ -10749,7 +10749,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/vredegerecht-elsene/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-dixelles",
@@ -10757,7 +10757,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-dixelles/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -12166,7 +12166,7 @@
     "contacts": [
       {
         "type": "phone",
-        "value": "+3224255315"
+        "value": "+3226820410"
       },
       {
         "type": "email",
@@ -12193,7 +12193,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/vredegerecht-jette/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-jette",
@@ -12201,7 +12201,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-jette/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -15170,7 +15170,7 @@
     "contacts": [
       {
         "type": "phone",
-        "value": "+3267346840"
+        "value": "+3226820423"
       },
       {
         "type": "fax",
@@ -15195,7 +15195,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/justice-de-paix-de-soignies/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-16"
       }
     ]
   },
@@ -16800,11 +16800,11 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/arbeidsrechtbank-antwerpen",
-        "retrieved": "2026-11-09"
+        "retrieved": "2026-11-16"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/arbeidsrechtbank-antwerpen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -16967,7 +16967,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/arbeidsrechtbank-antwerpen-afdeling-mechelen",
-        "retrieved": "2026-11-09"
+        "retrieved": "2026-11-16"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/arbeidsrechtbank-antwerpen-afdeling-mechelen/contact",
@@ -18193,7 +18193,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -18243,7 +18243,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-binche/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -18334,7 +18334,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-charleroi/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -18399,7 +18399,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-la-louviere/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -18471,7 +18471,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-mons/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -18549,7 +18549,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-mouscron/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -18630,7 +18630,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-du-hainaut-division-tournai/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -18786,7 +18786,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege/contact",
@@ -18834,7 +18834,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-arlon",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-17"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-arlon/contact",
@@ -18903,7 +18903,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-dinant",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-dinant/contact",
@@ -19048,7 +19048,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-liege",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-liege/contact",
@@ -19115,7 +19115,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-marche-en-famenne",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-marche-en-famenne/contact",
@@ -19186,7 +19186,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-namur",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-namur/contact",
@@ -19254,7 +19254,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-neufchateau",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-15"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-neufchateau/contact",
@@ -19324,7 +19324,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-verviers",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-du-travail-de-liege-division-verviers/contact",
@@ -19414,7 +19414,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/arbeidshof-antwerpen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -19489,7 +19489,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/arbeidshof-antwerpen-afdeling-antwerpen/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -19556,7 +19556,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/arbeidshof-antwerpen-afdeling-hasselt/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
@@ -20224,7 +20224,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/cour-du-travail-de-mons/contact",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       }
     ]
   },
@@ -21577,7 +21577,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg",
-        "retrieved": "2026-11-12"
+        "retrieved": "2026-11-16"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg/contact",
@@ -21618,7 +21618,7 @@
     "sources": [
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-beringen",
-        "retrieved": "2026-11-14"
+        "retrieved": "2026-11-18"
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-beringen/contact",
@@ -21796,7 +21796,7 @@
       },
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-maaseik/contact",
-        "retrieved": "2026-11-11"
+        "retrieved": "2026-11-16"
       }
     ]
   },
