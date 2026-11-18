@@ -8,7 +8,6 @@ from pathlib import Path
 import pytest
 
 import belgica
-from belgica._time import today
 
 ROOT = Path(__file__).parent.parent
 
@@ -98,13 +97,13 @@ def test_today_is_the_day_in_belgium() -> None:
     def utc(text: str) -> datetime:
         return datetime.fromisoformat(text).replace(tzinfo=UTC)
 
-    assert today(utc('2026-11-18T22:59:59')) == '2026-11-18'
-    assert today(utc('2026-11-18T23:00:00')) == '2026-11-19'
-    assert today(utc('2026-12-31T23:30:00')) == '2027-01-01'
-    assert today(utc('2026-06-30T21:59:59')) == '2026-06-30'
-    assert today(utc('2026-06-30T22:00:00')) == '2026-07-01'
-    assert today(utc('2026-03-28T23:30:00')) == '2026-03-29'
-    assert today(utc('2026-10-24T22:30:00')) == '2026-10-25'
+    assert belgica.today(utc('2026-11-18T22:59:59')) == '2026-11-18'
+    assert belgica.today(utc('2026-11-18T23:00:00')) == '2026-11-19'
+    assert belgica.today(utc('2026-12-31T23:30:00')) == '2027-01-01'
+    assert belgica.today(utc('2026-06-30T21:59:59')) == '2026-06-30'
+    assert belgica.today(utc('2026-06-30T22:00:00')) == '2026-07-01'
+    assert belgica.today(utc('2026-03-28T23:30:00')) == '2026-03-29'
+    assert belgica.today(utc('2026-10-24T22:30:00')) == '2026-10-25'
 
 
 def test_today_matches_europe_brussels() -> None:
@@ -120,7 +119,7 @@ def test_today_matches_europe_brussels() -> None:
             for hour in range(9 * 24):
                 for offset in (timedelta(minutes=30), timedelta(minutes=59, seconds=59)):
                     now = start + timedelta(hours=hour) + offset
-                    assert today(now) == now.astimezone(brussels).date().isoformat(), now
+                    assert belgica.today(now) == now.astimezone(brussels).date().isoformat(), now
 
 
 def test_a_day_before_the_coverage_raises() -> None:

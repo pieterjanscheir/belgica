@@ -7,6 +7,12 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Added
+
+- `today()` (Python: `belgica.today()`): today in Belgium as `YYYY-MM-DD`, the day the lookups
+  answer for without `on`. Filter the datasets with it to get the same day as the lookups:
+  `appliesOn(court, today())`.
+
 ### Changed
 
 - Without `on`, the lookups answer for **today in Belgium** (Europe/Brussels), whatever the time

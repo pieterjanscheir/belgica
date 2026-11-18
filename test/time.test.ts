@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { appliesOn, currentVersion, lookupDay, today, versionsById } from '../src/time'
 
@@ -32,7 +32,7 @@ describe('today', () => {
         expect(today(new Date('2026-06-30T22:00:00Z'))).toBe('2026-07-01')
     })
 
-    it('switches at 01:00 UTC on the last Sunday of March and of October', () => {
+    it('gives the new day on the nights summer time starts and ends', () => {
         // 2026: summer time from Sunday 29 March to Sunday 25 October
         expect(today(new Date('2026-03-28T22:30:00Z'))).toBe('2026-03-28')
         expect(today(new Date('2026-03-28T23:30:00Z'))).toBe('2026-03-29')
@@ -41,7 +41,21 @@ describe('today', () => {
     })
 
     it("matches the Europe/Brussels time zone, hour by hour, around each year's changes", () => {
-        const brussels = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' })
+        const brussels = new Intl.DateTimeFormat('en', {
+            timeZone: 'Europe/Brussels',
+            calendar: 'gregory',
+            numberingSystem: 'latn',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+        })
+        // From the parts: no locale's layout is guaranteed to be YYYY-MM-DD
+        const brusselsDay = (now: Date) => {
+            const parts = Object.fromEntries(
+                brussels.formatToParts(now).map((part) => [part.type, part.value]),
+            )
+            return `${parts['year']}-${parts['month']}-${parts['day']}`
+        }
         for (let year = 1996; year <= 2040; year++) {
             for (const [month, day] of [
                 [2, 24],
@@ -53,7 +67,7 @@ describe('today', () => {
                     // Half past, and the last second before the hour
                     for (const offset of [1_800_000, 3_599_000]) {
                         const now = new Date(start + hour * 3_600_000 + offset)
-                        expect(today(now), now.toISOString()).toBe(brussels.format(now))
+                        expect(today(now), now.toISOString()).toBe(brusselsDay(now))
                     }
                 }
             }
@@ -62,8 +76,14 @@ describe('today', () => {
 })
 
 describe('lookupDay', () => {
-    it('defaults to today', () => {
-        expect(lookupDay({}, '2000-01-01', 'test')).toBe(today())
+    afterEach(() => {
+        vi.useRealTimers()
+    })
+
+    it('defaults to today in Belgium', () => {
+        // One clock for the lookup and the expectation: 00:00 on 1 July in Belgium
+        vi.useFakeTimers({ now: new Date('2026-06-30T22:00:00Z') })
+        expect(lookupDay({}, '2000-01-01', 'test')).toBe('2026-07-01')
     })
 
     it('names the dataset and its coverage when the day is too early', () => {

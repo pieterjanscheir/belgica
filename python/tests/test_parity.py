@@ -12,7 +12,6 @@ from typing import Any
 import pytest
 
 import belgica
-from belgica._time import today
 
 CASES = Path(__file__).parent / '.cases' / 'parity.json'
 
@@ -32,7 +31,7 @@ def ids(records: Sequence[Any]) -> list[str]:
 
 def test_the_cases_are_from_today() -> None:
     # The cases answer for the data of the day they were made, as the helpers do without `on`
-    assert cases['today'] == today()
+    assert cases['today'] == belgica.today()
 
 
 def test_coverage() -> None:

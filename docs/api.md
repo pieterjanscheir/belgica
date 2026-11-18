@@ -1042,10 +1042,10 @@ function appliesOn(record: Validity, day: string): boolean
 ```
 
 Whether a record applies on a day: `validFrom` and `validTo` both include their day. `day` must
-already be `YYYY-MM-DD`; use `toDay` to get one.
+already be `YYYY-MM-DD`; use `today` or `toDay` to get one.
 
 ```ts
-courts.filter((court) => appliesOn(court, toDay(new Date())))
+courts.filter((court) => appliesOn(court, today()))
 ```
 
 ### `toDay` {#today}
@@ -1060,6 +1060,22 @@ ten characters. Throws a `RangeError` for anything that isn't a valid day.
 ```ts
 toDay('2024-06-15T10:30:00Z') // '2024-06-15'
 toDay('2024-02-30') // RangeError
+```
+
+### `today` {#today-in-belgium}
+
+```ts
+function today(now?: Date): string
+```
+
+Today in Belgium (Europe/Brussels) as `YYYY-MM-DD`, whatever the time zone of the machine: the day
+every lookup answers for without `on`. Use it to filter the datasets for the same day as the
+lookups; `toDay(new Date())` gives the machine's day, which on a server in UTC is the day before
+between midnight and 01:00 (02:00 in summer). `now` is the instant to read, the current one by
+default.
+
+```ts
+today(new Date('2026-12-31T23:30:00Z')) // '2027-01-01': 00:30 in Belgium
 ```
 
 ## Datasets

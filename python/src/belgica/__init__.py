@@ -86,7 +86,7 @@ from ._territory import (
     provinces,
     regions,
 )
-from ._time import Day, applies_on, to_day
+from ._time import Day, applies_on, to_day, today
 
 __all__ = [
     'ARRONDISSEMENT_BOUNDARIES_COVERAGE_FROM',
@@ -158,4 +158,5 @@ __all__ = [
     'provinces',
     'regions',
     'to_day',
+    'today',
 ]

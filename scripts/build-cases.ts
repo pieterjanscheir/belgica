@@ -17,7 +17,7 @@ import type * as Postal from '../src/postal-codes.ts'
 import type * as PoliceZones from '../src/police-zones.ts'
 import type * as Prisons from '../src/prisons.ts'
 import type * as Territory from '../src/territory.ts'
-// Imports types only, so Node can load it from src/
+// src/time.ts has only type imports, so Node can load it from src/ without the JSON imports below
 import { today as todayInBelgium } from '../src/time.ts'
 
 // The built package (pnpm build first), typed from src/: Node can't load src/ itself, which
