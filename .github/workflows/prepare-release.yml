@@ -42,6 +42,9 @@ jobs:
             # one from the workflow's own token doesn't. Without the app, the workflow's token is used.
             - name: Get the bot's token
               id: bot
+              # The app may be set up but not installed on the repository (a 404): fall back to the
+              # workflow's token instead of stopping the run
+              continue-on-error: true
               if: vars.BOT_CLIENT_ID != ''
               uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
               with:

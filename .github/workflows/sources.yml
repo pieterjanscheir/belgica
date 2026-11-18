@@ -117,7 +117,7 @@ jobs:
                   set -o pipefail
                   pnpm build:data 2>&1 | tee build.log
                   pnpm generate
-                  git diff --quiet -- data src/ids.generated.ts schema ids.lock.json || echo "changed=true" >> "$GITHUB_OUTPUT"
+                  git diff --quiet -- data schema src/ids.generated.ts src/canton-names.generated.ts src/data-files.generated.ts src/court-details-files.generated.ts ids.lock.json || echo "changed=true" >> "$GITHUB_OUTPUT"
 
             # The cantons come from ejustice, which refuses GitHub's runners (#52), so they're
             # rebuilt by hand. canton-signals.ts says when the other sources show they changed,
@@ -189,6 +189,9 @@ jobs:
             # one from the workflow's own token doesn't. Without the app, the workflow's token is used.
             - name: Get the bot's token
               id: bot
+              # The app may be set up but not installed on the repository (a 404): fall back to the
+              # workflow's token instead of stopping the run
+              continue-on-error: true
               if: vars.BOT_CLIENT_ID != '' && steps.build.outputs.changed == 'true' && github.ref == 'refs/heads/main'
               uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
               with:
@@ -208,7 +211,7 @@ jobs:
                   git config user.name github-actions[bot]
                   git config user.email 41898282+github-actions[bot]@users.noreply.github.com
                   git switch -c data/sources
-                  git add data src/ids.generated.ts schema ids.lock.json
+                  git add data schema src/ids.generated.ts src/canton-names.generated.ts src/data-files.generated.ts src/court-details-files.generated.ts ids.lock.json
                   git commit -q -m "Update the data from the official sources ($(date -u +%F))"
                   git push -f "https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git" data/sources
                   {

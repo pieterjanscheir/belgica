@@ -88,19 +88,19 @@ Node؛ وحين يعيد NGI تسمية كانتون، اربط رمزه بال�
 
 ## الفحوص {#checks}
 
-| الأمر                       | ما يفعله                                                                                                                                              |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| الأمر                       | ما يفعله                                                                                                                                           |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `pnpm check`                | كل ما يشغّله CI: `generate`، `typecheck`، `lint`، `build`، `test:coverage`، `test:package`، `lint:package`، وفحص أن الملفات المولَّدة مضافة في commit |
-| `pnpm test`                 | اختبارات الوحدات والسلامة والمخططات والأنواع على الكود المصدري (لا حاجة إلى بناء)                                                                     |
-| `pnpm test:package`         | اختبارات smoke للحزمة المبنية بـ`import` و`require()`: شغّل `pnpm build` أولًا                                                                        |
-| `pnpm test:coverage`        | الشيء نفسه، ويفشل إذا قلّت تغطية `src/` عن 100 %                                                                                                      |
-| `pnpm lint` / `pnpm format` | ESLint وPrettier: فحص / إصلاح                                                                                                                         |
-| `pnpm generate`             | يعيد توليد `src/ids.generated.ts` (أنواع المعرّفات) و`schema/` من البيانات والأنواع، ويضيف المعرّفات الجديدة إلى `ids.lock.json`                      |
-| `pnpm lint:package`         | `publint` و`arethetypeswrong` على الحزمة المحزومة                                                                                                     |
-| `pnpm test:freshness`       | فحوص قائمة على التاريخ: أسعار ناقصة، مراجعات متأخرة. ليست جزءًا من `check`؛ و`FRESHNESS_ONLINE=1` يفحص أيضًا روابط المصادر                            |
-| `pnpm fetch:sources`        | يجلب المصادر الرسمية إلى `.sources/`                                                                                                                  |
-| `pnpm build:data`           | يعيد بناء المحاكم والسجون والـjustitiehuizen / maisons de justice والرموز البريدية والأقاليم والمقاطعات وحدود الكانتونات من `.sources/`               |
-| `pnpm build:csv`            | يكتب البيانات بوصفها جداول CSV في `csv/`                                                                                                              |
+| `pnpm test`                 | اختبارات الوحدات والسلامة والمخططات والأنواع على الكود المصدري (لا حاجة إلى بناء)                                                                  |
+| `pnpm test:package`         | اختبارات smoke للحزمة المبنية بـ`import` و`require()`: شغّل `pnpm build` أولًا                                                                       |
+| `pnpm test:coverage`        | الشيء نفسه، ويفشل إذا قلّت تغطية `src/` عن 100 %                                                                                                    |
+| `pnpm lint` / `pnpm format` | ESLint وPrettier: فحص / إصلاح                                                                                                                      |
+| `pnpm generate`             | يعيد توليد `src/ids.generated.ts` (أنواع المعرّفات) و`schema/` من البيانات والأنواع، ويضيف المعرّفات الجديدة إلى `ids.lock.json`                     |
+| `pnpm lint:package`         | `publint` و`arethetypeswrong` على الحزمة المحزومة                                                                                                  |
+| `pnpm test:freshness`       | فحوص قائمة على التاريخ: أسعار ناقصة، مراجعات متأخرة. ليست جزءًا من `check`؛ و`FRESHNESS_ONLINE=1` يفحص أيضًا روابط المصادر                           |
+| `pnpm fetch:sources`        | يجلب المصادر الرسمية إلى `.sources/`                                                                                                               |
+| `pnpm build:data`           | يعيد بناء المحاكم والسجون والـjustitiehuizen / maisons de justice والرموز البريدية والأقاليم والمقاطعات وحدود الكانتونات من `.sources/`            |
+| `pnpm build:csv`            | يكتب البيانات بوصفها جداول CSV في `csv/`                                                                                                           |
 
 ## الإصدار {#releasing}
 
