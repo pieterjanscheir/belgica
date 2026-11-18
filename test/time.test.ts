@@ -40,6 +40,14 @@ describe('today', () => {
         expect(today(new Date('2026-10-24T22:30:00Z'))).toBe('2026-10-25')
     })
 
+    it('uses the summer time rules of the year (1977–1995 ended in September)', () => {
+        // 1995: summer time ended on 24 September, so 1 October is on UTC+1
+        expect(today(new Date('1995-10-01T22:30:00Z'))).toBe('1995-10-01')
+        expect(today(new Date('1995-09-23T22:30:00Z'))).toBe('1995-09-24')
+        // 1976: no summer time
+        expect(today(new Date('1976-07-01T22:30:00Z'))).toBe('1976-07-01')
+    })
+
     it("matches the Europe/Brussels time zone, hour by hour, around each year's changes", () => {
         const brussels = new Intl.DateTimeFormat('en', {
             timeZone: 'Europe/Brussels',
@@ -56,9 +64,13 @@ describe('today', () => {
             )
             return `${parts['year']}-${parts['month']}-${parts['day']}`
         }
-        for (let year = 1996; year <= 2040; year++) {
+        for (let year = 1947; year <= 2040; year++) {
             for (const [month, day] of [
+                // Summer time from late March (since 1981) or early April (1977–1980), to late
+                // September or 1 October (1977–1995) or late October (since 1996)
                 [2, 24],
+                [2, 31],
+                [8, 22],
                 [9, 24],
                 [11, 31],
             ] as const) {
@@ -101,6 +113,8 @@ describe('toDay', () => {
             '2024-12-31T23:30:00+01',
             '2024-12-31T23:30:00z',
             '2024-12-31T99:99Z',
+            '2025-01-01T00:30:00+01:60',
+            '2025-01-01T00:30:00+24:00',
         ]) {
             expect(() => toDay(bad), bad).toThrow(RangeError)
         }

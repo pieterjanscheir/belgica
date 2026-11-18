@@ -1077,9 +1077,9 @@ function today(now?: Date): string
 
 Today in Belgium (Europe/Brussels) as `YYYY-MM-DD`, whatever the time zone of the machine: the day
 every lookup answers for without `on`. Use it to filter the datasets for the same day as the
-lookups; `toDay(new Date())` gives the machine's day, which on a server in UTC is the day before
-between midnight and 01:00 (02:00 in summer). `now` is the instant to read, the current one by
-default.
+lookups. `now` is the instant to read, the current one by default. Summer time follows the EU
+rules Belgium has used since 1977; from 1947 to 1976 Belgium had none, and before 1947 UTC+1 is
+assumed.
 
 ```ts
 today(new Date('2026-12-31T23:30:00Z')) // '2027-01-01': 00:30 in Belgium

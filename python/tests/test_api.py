@@ -110,6 +110,8 @@ def test_an_instant_is_read_as_its_day_in_belgium() -> None:
         '2024-12-31T23:30:00+01',
         '2024-12-31T23:30:00z',
         '2024-12-31T99:99Z',
+        '2025-01-01T00:30:00+01:60',
+        '2025-01-01T00:30:00+24:00',
     ):
         with pytest.raises(ValueError):
             belgica.to_day(bad)
@@ -126,6 +128,10 @@ def test_today_is_the_day_in_belgium() -> None:
     assert belgica.today(utc('2026-06-30T22:00:00')) == '2026-07-01'
     assert belgica.today(utc('2026-03-28T23:30:00')) == '2026-03-29'
     assert belgica.today(utc('2026-10-24T22:30:00')) == '2026-10-25'
+    # 1995: summer time ended on 24 September; 1976: none
+    assert belgica.today(utc('1995-10-01T22:30:00')) == '1995-10-01'
+    assert belgica.today(utc('1995-09-23T22:30:00')) == '1995-09-24'
+    assert belgica.today(utc('1976-07-01T22:30:00')) == '1976-07-01'
 
 
 def test_today_matches_europe_brussels() -> None:
@@ -135,8 +141,8 @@ def test_today_matches_europe_brussels() -> None:
         brussels = ZoneInfo('Europe/Brussels')
     except ZoneInfoNotFoundError:
         pytest.skip('no time zone database (tzdata) on this machine')
-    for year in range(1996, 2041):
-        for month, day in ((3, 25), (10, 25), (12, 31)):
+    for year in range(1947, 2041):
+        for month, day in ((3, 25), (4, 1), (9, 23), (10, 25), (12, 31)):
             start = datetime(year, month, day, tzinfo=UTC)
             for hour in range(9 * 24):
                 for offset in (timedelta(minutes=30), timedelta(minutes=59, seconds=59)):

@@ -12,7 +12,7 @@ export interface OnDay {
 }
 
 // A time with an offset after the day: 'T10:30:00Z', 'T00:30:00+01:00'
-const OFFSET = /(?:Z|[+-]\d{2}:\d{2})$/
+const OFFSET = /(?:Z|[+-](\d{2}):(\d{2}))$/
 // Any other offset spelling ('+0100', '+01', a lowercase 'z'): JavaScript and Python
 // don't parse those alike
 const OTHER_OFFSET = /(?:z|[+-]\d{2}\d{0,2})$/
@@ -34,9 +34,12 @@ export function toDay(date: Date | string): string {
             throw new RangeError(`Expected a day as YYYY-MM-DD, got '${date}'`)
         }
         const time = date.slice(10)
-        if (OFFSET.test(time)) {
+        const offset = OFFSET.exec(time)
+        if (offset) {
             const instant = new Date(date)
-            if (Number.isNaN(instant.getTime())) {
+            // Checked here too: Python's parser lets '+01:60' through as '+02:00'
+            const [, hours = '00', minutes = '00'] = offset
+            if (Number.isNaN(instant.getTime()) || Number(hours) > 23 || Number(minutes) > 59) {
                 throw new RangeError(`Expected a valid time after the day, got '${date}'`)
             }
             return today(instant)
@@ -51,24 +54,47 @@ export function toDay(date: Date | string): string {
 }
 
 const HOUR = 3_600_000
+const DAY = 24 * HOUR
 
-/** 01:00 UTC on the last Sunday of a month (0-based), when EU summer time starts or ends */
+/** 01:00 UTC on the first Sunday of a month (0-based) */
+function firstSundayAt1Utc(year: number, month: number): number {
+    const first = new Date(Date.UTC(year, month, 1, 1))
+    return first.getTime() + ((7 - first.getUTCDay()) % 7) * DAY
+}
+
+/** 01:00 UTC on the last Sunday of a month (0-based) */
 function lastSundayAt1Utc(year: number, month: number): number {
     const lastDay = new Date(Date.UTC(year, month + 1, 0, 1))
-    return lastDay.getTime() - lastDay.getUTCDay() * 24 * HOUR
+    return lastDay.getTime() - lastDay.getUTCDay() * DAY
+}
+
+/**
+ * Belgian summer time of a year, as [start, end) in UTC milliseconds, or undefined for a year
+ * without it. The EU rules Belgium has followed since 1977 (tzdb's "EU" rules, the last set by
+ * Directive 2000/84/EC); from 1947 to 1976 Belgium had no summer time.
+ */
+function summerTime(year: number): [number, number] | undefined {
+    if (year < 1977) return undefined
+    const start = year <= 1980 ? firstSundayAt1Utc(year, 3) : lastSundayAt1Utc(year, 2)
+    let end = lastSundayAt1Utc(year, 8)
+    if (year >= 1996) end = lastSundayAt1Utc(year, 9)
+    else if (year === 1978) end = Date.UTC(1978, 9, 1, 1)
+    return [start, end]
 }
 
 /**
  * Today in Belgium as YYYY-MM-DD, whatever the machine's time zone: the day the lookups default
- * to. With `now`, the day in Belgium of that instant. Belgian legal time is UTC+1, and UTC+2 from 01:00 UTC on the last Sunday of March to 01:00
- * UTC on the last Sunday of October (EU Directive 2000/84/EC), computed here so that the Python
- * package, which has no dependencies, can do the same without a time zone database.
+ * to. With `now`, the day in Belgium of that instant. Belgian legal time is UTC+1, and UTC+2 in
+ * summer: since 1996 from 01:00 UTC on the last Sunday of March to 01:00 UTC on the last Sunday
+ * of October (EU Directive 2000/84/EC), with the earlier EU dates from 1977 to 1995 and none from
+ * 1947 to 1976 (before 1947, UTC+1 is assumed). Computed here so that the Python package, which
+ * has no dependencies, can do the same without a time zone database.
  */
 export function today(now: Date = new Date()): string {
     const time = now.getTime()
-    const year = now.getUTCFullYear()
-    const summer = time >= lastSundayAt1Utc(year, 2) && time < lastSundayAt1Utc(year, 9)
-    return new Date(time + (summer ? 2 : 1) * HOUR).toISOString().slice(0, 10)
+    const summer = summerTime(now.getUTCFullYear())
+    const offset = summer && time >= summer[0] && time < summer[1] ? 2 : 1
+    return new Date(time + offset * HOUR).toISOString().slice(0, 10)
 }
 
 /** Whether a record is in force on a day (YYYY-MM-DD): both validity bounds are inclusive */

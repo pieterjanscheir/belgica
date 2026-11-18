@@ -14,7 +14,7 @@ R = TypeVar('R', bound=Mapping[str, object])
 
 _DAY = re.compile(r'^(\d{4})-(\d{2})-(\d{2})(?:$|T)')
 # A time with an offset after the day: 'T10:30:00Z', 'T00:30:00+01:00'
-_OFFSET = re.compile(r'(?:Z|[+-]\d{2}:\d{2})$')
+_OFFSET = re.compile(r'(?:Z|[+-](\d{2}):(\d{2}))$')
 # Any other offset spelling ('+0100', '+01', a lowercase 'z'): JavaScript and Python
 # don't parse those alike
 _OTHER_OFFSET = re.compile(r'(?:z|[+-]\d{2}\d{0,2})$')
@@ -39,8 +39,12 @@ def to_day(day: Day) -> str:
     except ValueError:
         raise ValueError(f"Expected a day as YYYY-MM-DD, got '{day}'") from None
     time = day[10:]
-    if _OFFSET.search(time):
+    offset = _OFFSET.search(time)
+    if offset:
         try:
+            # fromisoformat lets '+01:60' through as '+02:00'
+            if int(offset.group(1) or 0) > 23 or int(offset.group(2) or 0) > 59:
+                raise ValueError
             instant = datetime.fromisoformat(day)
         except ValueError:
             raise ValueError(f"Expected a valid time after the day, got '{day}'") from None
@@ -50,23 +54,46 @@ def to_day(day: Day) -> str:
     return day[:10]
 
 
+def _first_sunday_at_1_utc(year: int, month: int) -> datetime:
+    """01:00 UTC on the first Sunday of a month"""
+    first = datetime(year, month, 1, 1, tzinfo=UTC)
+    # weekday(): Monday is 0, Sunday 6
+    return first + timedelta(days=(6 - first.weekday()) % 7)
+
+
 def _last_sunday_at_1_utc(year: int, month: int) -> datetime:
-    """01:00 UTC on the last Sunday of a month, when EU summer time starts or ends"""
+    """01:00 UTC on the last Sunday of a month"""
     first_of_next = datetime(year + month // 12, month % 12 + 1, 1, 1, tzinfo=UTC)
     last_day = first_of_next - timedelta(days=1)
-    # weekday(): Monday is 0, Sunday 6
     return last_day - timedelta(days=(last_day.weekday() + 1) % 7)
+
+
+def _summer_time(year: int) -> tuple[datetime, datetime] | None:
+    """Belgian summer time of a year as (start, end) in UTC, or None for a year without it. The
+    EU rules Belgium has followed since 1977 (tzdb's "EU" rules, the last set by Directive
+    2000/84/EC); from 1947 to 1976 Belgium had no summer time."""
+    if year < 1977:
+        return None
+    start = _first_sunday_at_1_utc(year, 4) if year <= 1980 else _last_sunday_at_1_utc(year, 3)
+    end = _last_sunday_at_1_utc(year, 9)
+    if year >= 1996:
+        end = _last_sunday_at_1_utc(year, 10)
+    elif year == 1978:
+        end = datetime(1978, 10, 1, 1, tzinfo=UTC)
+    return start, end
 
 
 def today(now: datetime | None = None) -> str:
     """Today in Belgium as YYYY-MM-DD, whatever the machine's time zone: the day the lookups
-    default to. Belgian legal time is UTC+1, and UTC+2 from 01:00 UTC on the last Sunday of March
-    to 01:00 UTC on the last Sunday of October (EU Directive 2000/84/EC), computed here rather
-    than with zoneinfo, which needs the tzdata package on Windows. With `now`, which must be
-    aware, the day in Belgium of that instant."""
+    default to. With `now`, which must be aware, the day in Belgium of that instant. Belgian
+    legal time is UTC+1, and UTC+2 in summer: since 1996 from 01:00 UTC on the last Sunday of
+    March to 01:00 UTC on the last Sunday of October (EU Directive 2000/84/EC), with the earlier
+    EU dates from 1977 to 1995 and none from 1947 to 1976 (before 1947, UTC+1 is assumed).
+    Computed here rather than with zoneinfo, which needs the tzdata package on Windows."""
     now = datetime.now(UTC) if now is None else now.astimezone(UTC)
-    summer = _last_sunday_at_1_utc(now.year, 3) <= now < _last_sunday_at_1_utc(now.year, 10)
-    return (now + timedelta(hours=2 if summer else 1)).date().isoformat()
+    summer = _summer_time(now.year)
+    offset = 2 if summer and summer[0] <= now < summer[1] else 1
+    return (now + timedelta(hours=offset)).date().isoformat()
 
 
 def _day(record: Mapping[str, object], key: str) -> str | None:
