@@ -13,9 +13,9 @@ export interface OnDay {
 
 // A time with an offset after the day: 'T10:30:00Z', 'T00:30:00+01:00'
 const OFFSET = /(?:Z|[+-](\d{2}):(\d{2}))$/
-// Any other offset spelling ('+0100', '+01', a lowercase 'z'): JavaScript and Python
-// don't parse those alike
-const OTHER_OFFSET = /(?:z|[+-]\d{2}\d{0,2})$/
+// Anything else that looks like an offset ('+0100', '+01', '+1:00', '+01:00:00', a lowercase
+// 'z'): JavaScript and Python don't parse those alike
+const OTHER_OFFSET = /(?:z|[+-][\d:]*)$/
 
 /**
  * A day as YYYY-MM-DD, in Belgium. A `Date` is an instant: its day in Belgium (Europe/Brussels),

@@ -112,6 +112,9 @@ def test_an_instant_is_read_as_its_day_in_belgium() -> None:
         '2024-12-31T99:99Z',
         '2025-01-01T00:30:00+01:60',
         '2025-01-01T00:30:00+24:00',
+        '2024-12-31T23:30:00+01:00:00',
+        '2024-12-31T23:30:00+1:00',
+        '2024-12-31T23:30:00+01:0',
     ):
         with pytest.raises(ValueError):
             belgica.to_day(bad)

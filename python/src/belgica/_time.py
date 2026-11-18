@@ -15,9 +15,9 @@ R = TypeVar('R', bound=Mapping[str, object])
 _DAY = re.compile(r'^(\d{4})-(\d{2})-(\d{2})(?:$|T)')
 # A time with an offset after the day: 'T10:30:00Z', 'T00:30:00+01:00'
 _OFFSET = re.compile(r'(?:Z|[+-](\d{2}):(\d{2}))$')
-# Any other offset spelling ('+0100', '+01', a lowercase 'z'): JavaScript and Python
-# don't parse those alike
-_OTHER_OFFSET = re.compile(r'(?:z|[+-]\d{2}\d{0,2})$')
+# Anything else that looks like an offset ('+0100', '+01', '+1:00', '+01:00:00', a lowercase
+# 'z'): JavaScript and Python don't parse those alike
+_OTHER_OFFSET = re.compile(r'(?:z|[+-][\d:]*)$')
 
 
 def to_day(day: Day) -> str:
