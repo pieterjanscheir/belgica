@@ -94,9 +94,10 @@ the days a source was first read. Earlier history is planned
 
 Wherever a function takes a day, it accepts a `Date` or a string:
 
-- A `Date` is read as a calendar day in the local time zone.
-- A string must start with a valid `YYYY-MM-DD` day. A time after it, as in an ISO timestamp, is
-  ignored.
+- A `Date` is read as its day in Belgium (Europe/Brussels), whatever the machine's time zone.
+- A string must start with a valid `YYYY-MM-DD` day. A time after it with an offset (`Z` or
+  `±hh:mm`, as in an ISO timestamp) is read as that instant's day in Belgium; a time without an
+  offset is a time in Belgium, so the day is the one written.
 - Anything else, such as `'2024-6-1'`, `'15/01/2024'`, `'2024-02-30'` or an invalid `Date`,
   throws a `RangeError`.
 

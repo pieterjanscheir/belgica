@@ -22,7 +22,14 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   that hour. Python does the same. The day comes from the EU summer-time rule (UTC+1, UTC+2 from
   the last Sunday of March to the last Sunday of October, both at 01:00 UTC), so the Python
   package still needs no time zone database; the tests check it against Europe/Brussels from
-  1996 to 2040. A `Date` passed as `on` is still read as the machine's local day.
+  1996 to 2040.
+- A day given as a `Date` (Python: an aware `datetime`) is its **day in Belgium**, not the
+  machine's local day, and so is a string with a time and an offset (`Z` or `±hh:mm`), which was
+  cut to its first ten characters. The same instant now gives the same answer however it is
+  written: `getInterestRate('2024-12-31T23:30:00Z', 'legal')` is 2025's rate, as for
+  `'2025-01-01T00:30:00+01:00'`, where it was 2024's (#164). A string without an offset, a
+  `date` and a naive `datetime` keep the day written. An offset written another way (`+0100`,
+  `+01`, a lowercase `z`) is refused rather than ignored.
 
 ### Fixed
 

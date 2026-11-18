@@ -106,9 +106,10 @@ The results the helpers build are frozen dataclasses: `CantonCourt` (`canton`, `
 
 ## Days
 
-`on` takes a `datetime.date`, a `datetime` (its calendar day) or a `'YYYY-MM-DD'` string, and is
-today in Belgium (Europe/Brussels) without it, whatever the machine's time zone; `today()` gives
-that day as `'YYYY-MM-DD'`. A lookup by id without `on` always finds a known record, as it is
+`on` takes a `datetime.date`, a `datetime` (an aware one as its day in Belgium, a naive one as
+its calendar day) or a `'YYYY-MM-DD'` string (with an offset, as that instant's day in Belgium).
+Without it, `on` is today in Belgium (Europe/Brussels), whatever the machine's time zone;
+`today()` gives that day as `'YYYY-MM-DD'`. A lookup by id without `on` always finds a known record, as it is
 today; with `on`, the version of that day, or `None`. A day before a dataset's coverage raises a
 `ValueError`, as does a string that isn't a valid day: the data can't answer for a day before it
 starts, and a guess would look like an answer. The coverage is in `TERRITORY_COVERAGE_FROM`,

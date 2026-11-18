@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { appliesOn, currentVersion, lookupDay, today, versionsById } from '../src/time'
+import { appliesOn, currentVersion, lookupDay, today, toDay, versionsById } from '../src/time'
 
 describe('appliesOn', () => {
     const record = { validFrom: '2018-09-01', validTo: '2024-12-31' }
@@ -71,6 +71,44 @@ describe('today', () => {
                     }
                 }
             }
+        }
+    })
+})
+
+describe('toDay', () => {
+    it('reads a Date as its day in Belgium (#164)', () => {
+        // 00:30 on 1 January in Belgium, whatever the machine's time zone
+        expect(toDay(new Date('2024-12-31T23:30:00Z'))).toBe('2025-01-01')
+        expect(toDay(new Date('2026-06-30T21:59:59Z'))).toBe('2026-06-30')
+        expect(() => toDay(new Date('nonsense'))).toThrow(RangeError)
+    })
+
+    it('reads a string with an offset as the same instant, however it is written (#164)', () => {
+        expect(toDay('2024-12-31T23:30:00Z')).toBe('2025-01-01')
+        expect(toDay('2025-01-01T00:30:00+01:00')).toBe('2025-01-01')
+        expect(toDay('2024-06-15T10:30:00Z')).toBe('2024-06-15')
+        expect(toDay('2024-06-15T23:30:00-05:00')).toBe('2024-06-16')
+    })
+
+    it('keeps the day written for a string without an offset', () => {
+        expect(toDay('2024-12-31')).toBe('2024-12-31')
+        expect(toDay('2024-12-31T23:30:00')).toBe('2024-12-31')
+    })
+
+    it('refuses an offset written another way, and an invalid time', () => {
+        for (const bad of [
+            '2024-12-31T23:30:00+0100',
+            '2024-12-31T23:30:00+01',
+            '2024-12-31T23:30:00z',
+            '2024-12-31T99:99Z',
+        ]) {
+            expect(() => toDay(bad), bad).toThrow(RangeError)
+        }
+    })
+
+    it('still refuses a day that is not YYYY-MM-DD', () => {
+        for (const bad of ['2013-1-15', '2013-02-30', 'yesterday', '']) {
+            expect(() => toDay(bad), bad).toThrow(RangeError)
         }
     })
 })

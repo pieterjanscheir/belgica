@@ -6,20 +6,29 @@ from datetime import UTC, date, datetime, timedelta
 from typing import TypeAlias, TypeVar, cast
 
 Day: TypeAlias = date | str
-"""A day: a `date` (a `datetime` is read as its calendar day) or a 'YYYY-MM-DD' string"""
+"""A day: a `date`, a `datetime` (an aware one is read as its day in Belgium, a naive one as its
+calendar day) or a 'YYYY-MM-DD' string"""
 
 # A record: a TypedDict, with a `validFrom` and a `validTo` or not
 R = TypeVar('R', bound=Mapping[str, object])
 
 _DAY = re.compile(r'^(\d{4})-(\d{2})-(\d{2})(?:$|T)')
+# A time with an offset after the day: 'T10:30:00Z', 'T00:30:00+01:00'
+_OFFSET = re.compile(r'(?:Z|[+-]\d{2}:\d{2})$')
+# Any other offset spelling ('+0100', '+01', a lowercase 'z'): JavaScript and Python
+# don't parse those alike
+_OTHER_OFFSET = re.compile(r'(?:z|[+-]\d{2}\d{0,2})$')
 
 
 def to_day(day: Day) -> str:
-    """A day as YYYY-MM-DD. A string must start with a valid YYYY-MM-DD day (a time after it is
-    ignored): days are compared as strings, so '2013-1-15' would silently fall in the wrong
-    period. Raises `ValueError` otherwise."""
+    """A day as YYYY-MM-DD, in Belgium. An aware `datetime` is an instant: its day in Belgium
+    (Europe/Brussels), whatever the machine's time zone; a naive one is a time in Belgium, so its
+    calendar day. A string must start with a valid YYYY-MM-DD day: days are compared as strings,
+    so '2013-1-15' would silently fall in the wrong period. A time after it with an offset (`Z` or
+    `±hh:mm`) is an instant too, read the same way; a time without one gives the day written.
+    Raises `ValueError` otherwise."""
     if isinstance(day, datetime):
-        return day.date().isoformat()
+        return day.date().isoformat() if day.utcoffset() is None else today(day)
     if isinstance(day, date):
         return day.isoformat()
     match = _DAY.match(day)
@@ -29,6 +38,15 @@ def to_day(day: Day) -> str:
         date(*(int(part) for part in match.groups()))
     except ValueError:
         raise ValueError(f"Expected a day as YYYY-MM-DD, got '{day}'") from None
+    time = day[10:]
+    if _OFFSET.search(time):
+        try:
+            instant = datetime.fromisoformat(day)
+        except ValueError:
+            raise ValueError(f"Expected a valid time after the day, got '{day}'") from None
+        return today(instant)
+    if _OTHER_OFFSET.search(time):
+        raise ValueError(f"Write the offset as Z or ±hh:mm, got '{day}'")
     return day[:10]
 
 
@@ -44,7 +62,8 @@ def today(now: datetime | None = None) -> str:
     """Today in Belgium as YYYY-MM-DD, whatever the machine's time zone: the day the lookups
     default to. Belgian legal time is UTC+1, and UTC+2 from 01:00 UTC on the last Sunday of March
     to 01:00 UTC on the last Sunday of October (EU Directive 2000/84/EC), computed here rather
-    than with zoneinfo, which needs the tzdata package on Windows. `now` must be aware."""
+    than with zoneinfo, which needs the tzdata package on Windows. With `now`, which must be
+    aware, the day in Belgium of that instant."""
     now = datetime.now(UTC) if now is None else now.astimezone(UTC)
     summer = _last_sunday_at_1_utc(now.year, 3) <= now < _last_sunday_at_1_utc(now.year, 10)
     return (now + timedelta(hours=2 if summer else 1)).date().isoformat()

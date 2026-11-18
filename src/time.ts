@@ -6,15 +6,23 @@ export type { Validity } from './schemas/common'
 /** Options for a lookup on a given day */
 export interface OnDay {
     /**
-     * The day to look up; today in Belgium by default. A `Date` is read as a local calendar day.
+     * The day to look up; today in Belgium by default. A `Date` is read as its day in Belgium.
      */
     on?: Date | string
 }
 
+// A time with an offset after the day: 'T10:30:00Z', 'T00:30:00+01:00'
+const OFFSET = /(?:Z|[+-]\d{2}:\d{2})$/
+// Any other offset spelling ('+0100', '+01', a lowercase 'z'): JavaScript and Python
+// don't parse those alike
+const OTHER_OFFSET = /(?:z|[+-]\d{2}\d{0,2})$/
+
 /**
- * Local calendar day as YYYY-MM-DD. Strings must start with a valid YYYY-MM-DD day (a time
- * after it is ignored): days are compared as strings, so '2013-1-15' would otherwise silently
- * fall in the wrong period.
+ * A day as YYYY-MM-DD, in Belgium. A `Date` is an instant: its day in Belgium (Europe/Brussels),
+ * whatever the machine's time zone. A string must start with a valid YYYY-MM-DD day: days are
+ * compared as strings, so '2013-1-15' would otherwise silently fall in the wrong period. A time
+ * after it with an offset (`Z` or `±hh:mm`) is an instant too, read the same way; a time without
+ * one is a time in Belgium, so the day is the one written.
  */
 export function toDay(date: Date | string): string {
     if (typeof date === 'string') {
@@ -25,12 +33,21 @@ export function toDay(date: Date | string): string {
         if (check.getUTCMonth() !== m - 1 || check.getUTCDate() !== d) {
             throw new RangeError(`Expected a day as YYYY-MM-DD, got '${date}'`)
         }
+        const time = date.slice(10)
+        if (OFFSET.test(time)) {
+            const instant = new Date(date)
+            if (Number.isNaN(instant.getTime())) {
+                throw new RangeError(`Expected a valid time after the day, got '${date}'`)
+            }
+            return today(instant)
+        }
+        if (OTHER_OFFSET.test(time)) {
+            throw new RangeError(`Write the offset as Z or ±hh:mm, got '${date}'`)
+        }
         return date.slice(0, 10)
     }
     if (Number.isNaN(date.getTime())) throw new RangeError('Invalid Date')
-    const m = String(date.getMonth() + 1).padStart(2, '0')
-    const d = String(date.getDate()).padStart(2, '0')
-    return `${date.getFullYear()}-${m}-${d}`
+    return today(date)
 }
 
 const HOUR = 3_600_000
@@ -43,7 +60,7 @@ function lastSundayAt1Utc(year: number, month: number): number {
 
 /**
  * Today in Belgium as YYYY-MM-DD, whatever the machine's time zone: the day the lookups default
- * to. Belgian legal time is UTC+1, and UTC+2 from 01:00 UTC on the last Sunday of March to 01:00
+ * to. With `now`, the day in Belgium of that instant. Belgian legal time is UTC+1, and UTC+2 from 01:00 UTC on the last Sunday of March to 01:00
  * UTC on the last Sunday of October (EU Directive 2000/84/EC), computed here so that the Python
  * package, which has no dependencies, can do the same without a time zone database.
  */

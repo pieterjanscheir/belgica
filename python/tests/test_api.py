@@ -2,7 +2,7 @@
 
 import json
 import tomllib
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -86,9 +86,31 @@ def test_contacts() -> None:
 
 def test_days() -> None:
     assert belgica.to_day(date(2025, 3, 1)) == '2025-03-01'
+    # Naive: a time in Belgium, so its calendar day
     assert belgica.to_day(datetime(2025, 3, 1, 23, 59)) == '2025-03-01'
     assert belgica.to_day('2025-03-01T10:00:00Z') == '2025-03-01'
+    assert belgica.to_day('2024-12-31T23:30:00') == '2024-12-31'
     for bad in ('2013-1-15', '2013-02-30', 'yesterday', ''):
+        with pytest.raises(ValueError):
+            belgica.to_day(bad)
+
+
+def test_an_instant_is_read_as_its_day_in_belgium() -> None:
+    # #164: an aware datetime, or a string with an offset, is the same instant however written
+    assert belgica.to_day(datetime(2024, 12, 31, 23, 30, tzinfo=UTC)) == '2025-01-01'
+    assert belgica.to_day(datetime(2026, 6, 30, 21, 59, 59, tzinfo=UTC)) == '2026-06-30'
+    eastern = timezone(timedelta(hours=-5))
+    assert belgica.to_day(datetime(2024, 6, 15, 23, 30, tzinfo=eastern)) == '2024-06-16'
+    assert belgica.to_day('2024-12-31T23:30:00Z') == '2025-01-01'
+    assert belgica.to_day('2025-01-01T00:30:00+01:00') == '2025-01-01'
+    assert belgica.to_day('2024-06-15T10:30:00Z') == '2024-06-15'
+    assert belgica.to_day('2024-06-15T23:30:00-05:00') == '2024-06-16'
+    for bad in (
+        '2024-12-31T23:30:00+0100',
+        '2024-12-31T23:30:00+01',
+        '2024-12-31T23:30:00z',
+        '2024-12-31T99:99Z',
+    ):
         with pytest.raises(ValueError):
             belgica.to_day(bad)
 
