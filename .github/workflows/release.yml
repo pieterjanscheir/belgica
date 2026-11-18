@@ -57,9 +57,20 @@ jobs:
                   fi
                   # A tag made by an earlier, failed run is the release commit: build from it, not
                   # from whatever was pushed since
-                  if ! sha=$(gh api "repos/$GITHUB_REPOSITORY/commits/$tag" --jq .sha 2> /dev/null) ||
-                      ! [[ "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+                  # Only a 404 means "no tag yet"; any other error stops the run rather than
+                  # fall back to the pushed commit
+                  if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" > /dev/null 2> lookup.err; then
+                      sha=$(gh api "repos/$GITHUB_REPOSITORY/commits/$tag" --jq .sha)
+                      if ! [[ "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+                          echo "Couldn't resolve $tag to a commit: $sha"
+                          exit 1
+                      fi
+                  elif grep -q 'HTTP 404' lookup.err; then
                       sha=$GITHUB_SHA
+                  else
+                      echo "Couldn't look up $tag:"
+                      cat lookup.err
+                      exit 1
                   fi
                   if [ "$sha" != "$GITHUB_SHA" ]; then
                       git fetch -q --depth=1 origin "$sha"
@@ -97,7 +108,13 @@ jobs:
                   SHA: ${{ needs.version.outputs.sha }}
               run: |
                   if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" > /dev/null 2>&1; then
-                      echo "$TAG already exists"
+                      # It must still point at the commit the version job checked
+                      tagged=$(gh api "repos/$GITHUB_REPOSITORY/commits/$TAG" --jq .sha)
+                      if [ "$tagged" != "$SHA" ]; then
+                          echo "$TAG points at $tagged, not at the checked commit $SHA"
+                          exit 1
+                      fi
+                      echo "$TAG already exists, at $SHA"
                   else
                       gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$TAG" -f sha="$SHA"
                   fi
