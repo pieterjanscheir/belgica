@@ -165,11 +165,9 @@ const rows = computed(() => {
                 <tr v-for="c in rows.slice(0, limit)" :key="c.id">
                     <td>
                         <template v-for="(n, lang) in c.name" :key="lang">
-                            <a :href="c.website[lang]">{{ n }}</a
-                            ><br />
+                            <a :href="c.website[lang]">{{ n }}</a><br />
                         </template>
-                        <code>{{ c.id }}</code
-                        ><br />
+                        <code>{{ c.id }}</code><br />
                         <span class="bld-muted">{{ where(c) }}</span>
                     </td>
                     <td>

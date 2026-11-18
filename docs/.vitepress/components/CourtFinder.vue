@@ -387,8 +387,11 @@ onMounted(() => {
         <p class="bld-muted">
             {{ t.examples }}:
             <template v-for="(example, i) in EXAMPLES" :key="example">
-                <a href="#" @click.prevent="search(example)">{{ example }}</a
-                ><span v-if="i < EXAMPLES.length - 1"> · </span>
+                <a href="#" @click.prevent="search(example)">{{ example }}</a><span
+                    v-if="i < EXAMPLES.length - 1"
+                >
+                    ·
+                </span>
             </template>
             <span class="bld-or">· {{ t.orClick }}</span>
         </p>
