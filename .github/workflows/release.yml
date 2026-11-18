@@ -2,10 +2,17 @@ name: Release
 
 # Publishes to npm and PyPI when a push to main changes the version in package.json (merging the pull
 # request from the Prepare release workflow, or a version bump by hand), or when a version tag is
-# pushed. It tags the release commit, publishes, and creates the GitHub release. Uses trusted
-# publishing (OIDC) on both, so no token is stored: link this workflow to the package under its
-# settings on npmjs.com, and add it as a trusted publisher on pypi.org (workflow release.yml,
-# environment pypi).
+# pushed. Uses trusted publishing (OIDC) on both, so no token is stored: link this workflow to the
+# package under its settings on npmjs.com, and add it as a trusted publisher on pypi.org (workflow
+# release.yml, environment pypi).
+#
+# The order makes a failed run safe to rerun, with "Re-run all jobs" or by the next push:
+# 1. version: both version files agree, and the version has no GitHub release yet.
+# 2. tag: the release commit is tagged first. Every later job checks out the tag, so npm, PyPI and
+#    the release zip come from the same commit even when a later push reruns the workflow.
+# 3. npm and pypi: each skips a version that's already published.
+# 4. release: the GitHub release is created last, so "has a GitHub release" means "is out on npm
+#    and PyPI".
 on:
     push:
         branches: [main]
@@ -18,46 +25,80 @@ concurrency:
     cancel-in-progress: false
 
 jobs:
-    # Which tag to release, if any: on main, the package.json version until it has a GitHub
-    # release. Every step below skips what's already done, so a failed run can be rerun.
     version:
         runs-on: ubuntu-latest
         permissions:
             contents: read
         outputs:
             tag: ${{ steps.version.outputs.tag }}
+            sha: ${{ steps.version.outputs.sha }}
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
               with:
                   persist-credentials: false
+            - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+              with:
+                  enable-cache: false
             - id: version
               env:
                   GH_TOKEN: ${{ github.token }}
               run: |
-                  tag="v$(node -p "require('./package.json').version")"
+                  version=$(node -p "require('./package.json').version")
+                  tag="v$version"
                   if [ "$GITHUB_REF_TYPE" = tag ] && [ "$tag" != "$GITHUB_REF_NAME" ]; then
                       echo "Tag $GITHUB_REF_NAME doesn't match package.json ($tag)"
                       exit 1
                   fi
+                  # Before anything is published, not after npm has gone out
+                  python_version=$(uv version --short --project python)
+                  if [ "$python_version" != "$version" ]; then
+                      echo "python/pyproject.toml has $python_version, package.json $version"
+                      exit 1
+                  fi
                   if gh release view "$tag" > /dev/null 2>&1; then
                       echo "$tag is already released"
-                  else
-                      echo "tag=$tag" >> "$GITHUB_OUTPUT"
+                      exit 0
                   fi
+                  # A tag made by an earlier, failed run is the release commit: build from it, not
+                  # from whatever was pushed since
+                  sha=$(gh api "repos/$GITHUB_REPOSITORY/commits/$tag" --jq .sha 2> /dev/null || true)
+                  echo "tag=$tag" >> "$GITHUB_OUTPUT"
+                  echo "sha=${sha:-$GITHUB_SHA}" >> "$GITHUB_OUTPUT"
 
-    publish:
+    tag:
         needs: version
         if: needs.version.outputs.tag != ''
         runs-on: ubuntu-latest
         permissions:
-            # write: create the tag and the GitHub release
+            # write: create the tag
             contents: write
+        steps:
+            # Through the API: a tag pushed with the workflow's token doesn't start this workflow
+            # again
+            - name: Tag the release commit
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  TAG: ${{ needs.version.outputs.tag }}
+                  SHA: ${{ needs.version.outputs.sha }}
+              run: |
+                  if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" > /dev/null 2>&1; then
+                      echo "$TAG already exists"
+                  else
+                      gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$TAG" -f sha="$SHA"
+                  fi
+
+    npm:
+        needs: [version, tag]
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
             id-token: write
         env:
             TAG: ${{ needs.version.outputs.tag }}
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
               with:
+                  ref: ${{ needs.version.outputs.tag }}
                   persist-credentials: false
             - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
             - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -70,7 +111,7 @@ jobs:
                   package-manager-cache: false
             - run: pnpm install --frozen-lockfile
             # prepublishOnly runs pnpm check. A version that's already on npm (published by hand,
-            # or a rerun) is skipped, so the tag and the GitHub release below still get made.
+            # or a rerun) is skipped.
             - name: Publish to npm
               run: |
                   spec="$(node -p "require('./package.json').name")@${TAG#v}"
@@ -79,25 +120,63 @@ jobs:
                   else
                       npm publish --provenance --access public
                   fi
-            # Through the API: a tag pushed with the workflow's token doesn't start this workflow
-            # again
-            - name: Tag the release commit
-              if: github.ref_type == 'branch'
-              env:
-                  GH_TOKEN: ${{ github.token }}
-              run: |
-                  if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" > /dev/null 2>&1; then
-                      echo "$TAG already exists"
-                  else
-                      gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$TAG" -f sha="$GITHUB_SHA"
-                  fi
+
+    # The same version to PyPI, from the same tag. The npm job runs pnpm check on that commit, and
+    # CI the Python tests.
+    pypi:
+        needs: [version, tag]
+        runs-on: ubuntu-latest
+        environment: pypi
+        permissions:
+            contents: read
+            id-token: write
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ needs.version.outputs.tag }}
+                  persist-credentials: false
+            # No cache: a release build shouldn't restore what another run saved
+            - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+              with:
+                  enable-cache: false
+            # The build copies data/ in
+            - run: uv build
+              working-directory: python
+            # skip-existing: a rerun doesn't fail on a version that's already on PyPI
+            - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+              with:
+                  packages-dir: python/dist
+                  skip-existing: true
+
+    # Last: only once npm and PyPI both have the version
+    release:
+        needs: [version, npm, pypi]
+        runs-on: ubuntu-latest
+        permissions:
+            # write: create the GitHub release
+            contents: write
+        env:
+            TAG: ${{ needs.version.outputs.tag }}
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ needs.version.outputs.tag }}
+                  persist-credentials: false
+            - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+              with:
+                  node-version: 24
+                  package-manager-cache: false
+            - run: pnpm install --frozen-lockfile
             # The release assets and notes are built in a step of their own, without the token:
             # the repository's scripts and tools run here, and the token is only handed to gh
             # below
             - name: Build the release assets
               # The data as JSON and CSV, with the schemas and the data package descriptor, for
-              # people who don't use npm
+              # people who don't use npm. build:data-files writes the generated data/courts/ and
+              # data/cantons/ files, which are only there after a build.
               run: |
+                  pnpm build:data-files
                   pnpm build:csv
                   name="belgica-data-$TAG"
                   mkdir "$name"
@@ -116,39 +195,3 @@ jobs:
               env:
                   GH_TOKEN: ${{ github.token }}
               run: gh release create "$TAG" --verify-tag --notes-file notes.md --generate-notes "belgica-data-$TAG.zip"
-
-    # The same version to PyPI. The npm job has run pnpm check on the same commit, and CI the
-    # Python tests.
-    pypi:
-        needs: [version, publish]
-        if: needs.version.outputs.tag != ''
-        runs-on: ubuntu-latest
-        environment: pypi
-        permissions:
-            contents: read
-            id-token: write
-        env:
-            TAG: ${{ needs.version.outputs.tag }}
-        steps:
-            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-              with:
-                  persist-credentials: false
-            # No cache: a release build shouldn't restore what another run saved
-            - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
-              with:
-                  enable-cache: false
-            - name: Check the tag matches pyproject.toml
-              run: |
-                  version=$(uv version --short --project python)
-                  if [ "v$version" != "$TAG" ]; then
-                      echo "Tag $TAG doesn't match version $version in python/pyproject.toml"
-                      exit 1
-                  fi
-            # The build copies data/ in
-            - run: uv build
-              working-directory: python
-            # skip-existing: a rerun doesn't fail on a version that's already on PyPI
-            - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
-              with:
-                  packages-dir: python/dist
-                  skip-existing: true
