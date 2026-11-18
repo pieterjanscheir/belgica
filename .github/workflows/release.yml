@@ -125,15 +125,20 @@ jobs:
                   # can write to
                   package-manager-cache: false
             - run: pnpm install --frozen-lockfile
-            # prepublishOnly runs pnpm check. A version that's already on npm (published by hand,
-            # or a rerun) is skipped.
+            # On every run, also when the version is already on npm: pypi waits for this job, so
+            # the data it publishes has always passed the checks
+            - name: Check (what prepublishOnly runs)
+              run: pnpm check
+            # A version that's already on npm (published by hand, or a rerun) is skipped.
+            # --ignore-scripts: prepublishOnly would run pnpm check a second time; the build is
+            # part of the check above, and there's no other publish script.
             - name: Publish to npm
               run: |
                   spec="$(node -p "require('./package.json').name")@${TAG#v}"
                   if npm view "$spec" version > /dev/null 2>&1; then
                       echo "$spec is already on npm; not publishing it again"
                   else
-                      npm publish --provenance --access public
+                      npm publish --provenance --access public --ignore-scripts
                   fi
 
     # The same version to PyPI, from the same commit, once npm is out: the npm job runs pnpm check
