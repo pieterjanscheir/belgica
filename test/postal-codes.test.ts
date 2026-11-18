@@ -17,12 +17,12 @@ import {
     postalCodes,
     postalCodesCoverage,
     prisons,
-    toDay,
     type Address,
     type PostalCode,
 } from '../src'
+import { today as todayInBelgium } from '../src/time'
 
-const today = toDay(new Date())
+const today = todayInBelgium()
 const current = postalCodes.filter((p) => appliesOn(p, today))
 
 describe('postal codes', () => {

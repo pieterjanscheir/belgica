@@ -2,12 +2,13 @@
 
 import json
 import tomllib
-from datetime import date, datetime
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 import pytest
 
 import belgica
+from belgica._time import today
 
 ROOT = Path(__file__).parent.parent
 
@@ -91,6 +92,35 @@ def test_days() -> None:
     for bad in ('2013-1-15', '2013-02-30', 'yesterday', ''):
         with pytest.raises(ValueError):
             belgica.to_day(bad)
+
+
+def test_today_is_the_day_in_belgium() -> None:
+    def utc(text: str) -> datetime:
+        return datetime.fromisoformat(text).replace(tzinfo=UTC)
+
+    assert today(utc('2026-11-18T22:59:59')) == '2026-11-18'
+    assert today(utc('2026-11-18T23:00:00')) == '2026-11-19'
+    assert today(utc('2026-12-31T23:30:00')) == '2027-01-01'
+    assert today(utc('2026-06-30T21:59:59')) == '2026-06-30'
+    assert today(utc('2026-06-30T22:00:00')) == '2026-07-01'
+    assert today(utc('2026-03-28T23:30:00')) == '2026-03-29'
+    assert today(utc('2026-10-24T22:30:00')) == '2026-10-25'
+
+
+def test_today_matches_europe_brussels() -> None:
+    try:
+        from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+        brussels = ZoneInfo('Europe/Brussels')
+    except ZoneInfoNotFoundError:
+        pytest.skip('no time zone database (tzdata) on this machine')
+    for year in range(1996, 2041):
+        for month, day in ((3, 25), (10, 25), (12, 31)):
+            start = datetime(year, month, day, tzinfo=UTC)
+            for hour in range(9 * 24):
+                for offset in (timedelta(minutes=30), timedelta(minutes=59, seconds=59)):
+                    now = start + timedelta(hours=hour) + offset
+                    assert today(now) == now.astimezone(brussels).date().isoformat(), now
 
 
 def test_a_day_before_the_coverage_raises() -> None:

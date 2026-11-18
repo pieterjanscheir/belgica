@@ -5,7 +5,9 @@ export type { Validity } from './schemas/common'
 
 /** Options for a lookup on a given day */
 export interface OnDay {
-    /** The day to look up; today by default. A `Date` is read as a local calendar day. */
+    /**
+     * The day to look up; today in Belgium by default. A `Date` is read as a local calendar day.
+     */
     on?: Date | string
 }
 
@@ -29,6 +31,27 @@ export function toDay(date: Date | string): string {
     const m = String(date.getMonth() + 1).padStart(2, '0')
     const d = String(date.getDate()).padStart(2, '0')
     return `${date.getFullYear()}-${m}-${d}`
+}
+
+const HOUR = 3_600_000
+
+/** 01:00 UTC on the last Sunday of a month (0-based), when EU summer time starts or ends */
+function lastSundayAt1Utc(year: number, month: number): number {
+    const lastDay = new Date(Date.UTC(year, month + 1, 0, 1))
+    return lastDay.getTime() - lastDay.getUTCDay() * 24 * HOUR
+}
+
+/**
+ * Today in Belgium as YYYY-MM-DD, whatever the machine's time zone: the day the lookups default
+ * to. Belgian legal time is UTC+1, and UTC+2 from 01:00 UTC on the last Sunday of March to 01:00
+ * UTC on the last Sunday of October (EU Directive 2000/84/EC), computed here so that the Python
+ * package, which has no dependencies, can do the same without a time zone database.
+ */
+export function today(now: Date = new Date()): string {
+    const time = now.getTime()
+    const year = now.getUTCFullYear()
+    const summer = time >= lastSundayAt1Utc(year, 2) && time < lastSundayAt1Utc(year, 9)
+    return new Date(time + (summer ? 2 : 1) * HOUR).toISOString().slice(0, 10)
 }
 
 /** Whether a record is in force on a day (YYYY-MM-DD): both validity bounds are inclusive */
@@ -80,7 +103,7 @@ export function pickVersion<T extends Validity>(
         const day = lookupDay(options, coverage.from, dataset)
         return versions?.find((record) => appliesOn(record, day))
     }
-    return versions && currentVersion(versions, toDay(new Date()))
+    return versions && currentVersion(versions, today())
 }
 
 /** The records that apply on the day asked for, today by default */
@@ -111,7 +134,7 @@ export function currentVersion<T extends Validity>(
  * can't say, and a guess would look like an answer.
  */
 export function lookupDay(options: OnDay, coverageFrom: string, dataset: string): string {
-    const day = toDay(options.on ?? new Date())
+    const day = options.on === undefined ? today() : toDay(options.on)
     if (day < coverageFrom) {
         throw new RangeError(
             `The ${dataset} data describes ${coverageFrom} onwards; ${day} is before that`,

@@ -6,15 +6,15 @@ import {
     formatCourtName,
     getCanton,
     getCourt,
-    toDay,
     type Court,
     type CantonId,
     type CourtId,
     type Locale,
 } from '../src'
+import { today as todayInBelgium } from '../src/time'
 
 const locales: Locale[] = ['nl', 'fr', 'de']
-const today = toDay(new Date())
+const today = todayInBelgium()
 const justicesOfThePeace = courts.filter(
     (c) => c.type === 'justice-of-the-peace' && c.kind === 'court' && appliesOn(c, today),
 )

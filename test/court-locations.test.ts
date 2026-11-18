@@ -4,9 +4,10 @@ import * as root from '../src'
 import { findCantonsAt } from '../src/canton-boundaries'
 import { courtLocations, courtLocationsCoverage, getCourtLocation } from '../src/court-locations'
 import { NGI_CANTONS } from '../scripts/sources/catalog'
-import { appliesOn, courts, getCourt, toDay } from '../src'
+import { appliesOn, courts, getCourt } from '../src'
+import { today as todayInBelgium } from '../src/time'
 
-const today = toDay(new Date())
+const today = todayInBelgium()
 const current = courtLocations.filter((l) => appliesOn(l, today))
 
 describe('court locations', () => {

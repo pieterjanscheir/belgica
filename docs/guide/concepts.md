@@ -54,7 +54,8 @@ version.
 
 ### Looking up a day
 
-Every lookup answers for today, or for the day you pass as `on`:
+Every lookup answers for today, or for the day you pass as `on`. Today is the day in Belgium
+(Europe/Brussels), whatever the time zone of the machine the code runs on:
 
 ```ts
 getCantonsForMunicipality('44021') // today

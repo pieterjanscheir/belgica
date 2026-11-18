@@ -19,9 +19,9 @@ import {
     housesOfJustice,
     interestRates,
     prisons,
-    toDay,
     type InterestType,
 } from '../src'
+import { today as todayInBelgium } from '../src/time'
 
 /** Each item paired with the one after it */
 const consecutive = <T>(items: readonly T[]): [T, T][] =>
@@ -31,7 +31,7 @@ const consecutive = <T>(items: readonly T[]): [T, T][] =>
     })
 
 // The records that apply today; the files hold every version (validFrom, validTo)
-const today = toDay(new Date())
+const today = todayInBelgium()
 const current = courts.filter((c) => appliesOn(c, today))
 
 describe('data integrity', () => {

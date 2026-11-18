@@ -12,7 +12,7 @@ These hold for every function below, and the entries don't repeat them.
 - **Days.** A day is a `Date`, read as a local calendar day, or a string that starts with
   `YYYY-MM-DD`. Anything else throws a `RangeError`. Days are returned as `YYYY-MM-DD`.
 - **`on`.** Every lookup takes an optional last argument `{ on }`, the day to answer for, and
-  answers for today without it. A day before the dataset's [coverage](#time) throws a
+  answers for today in Belgium (Europe/Brussels) without it, whatever the machine's time zone. A day before the dataset's [coverage](#time) throws a
   `RangeError`.
 - **Lookups by id.** A `get…` function returns `undefined` for an id that isn't in the data.
   With a known id (a literal like `'gent-1'`, or a value typed `CantonId`) it returns the record,
@@ -1010,7 +1010,7 @@ interface Validity {
 }
 
 interface OnDay {
-    on?: Date | string // today by default
+    on?: Date | string // today in Belgium by default
 }
 
 interface Coverage {

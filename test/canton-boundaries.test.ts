@@ -11,9 +11,10 @@ import {
 } from '../src/canton-boundaries'
 import { NGI_CANTONS } from '../scripts/sources/catalog'
 import { CANTON_CORRECTIONS, STATBEL_SECTORS } from '../scripts/parse/canton-corrections'
-import { appliesOn, cantons, getMunicipality, toDay } from '../src'
+import { appliesOn, cantons, getMunicipality } from '../src'
+import { today as todayInBelgium } from '../src/time'
 
-const today = toDay(new Date())
+const today = todayInBelgium()
 const current = cantonBoundaries.filter((b) => appliesOn(b, today))
 
 /** Twice the signed area of a ring: positive when counter-clockwise */

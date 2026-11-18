@@ -2,7 +2,7 @@
 
 import re
 from collections.abc import Callable, Iterable, Mapping, Sequence
-from datetime import date, datetime
+from datetime import UTC, date, datetime, timedelta
 from typing import TypeAlias, TypeVar, cast
 
 Day: TypeAlias = date | str
@@ -32,8 +32,22 @@ def to_day(day: Day) -> str:
     return day[:10]
 
 
-def today() -> str:
-    return date.today().isoformat()
+def _last_sunday_at_1_utc(year: int, month: int) -> datetime:
+    """01:00 UTC on the last Sunday of a month, when EU summer time starts or ends"""
+    first_of_next = datetime(year + month // 12, month % 12 + 1, 1, 1, tzinfo=UTC)
+    last_day = first_of_next - timedelta(days=1)
+    # weekday(): Monday is 0, Sunday 6
+    return last_day - timedelta(days=(last_day.weekday() + 1) % 7)
+
+
+def today(now: datetime | None = None) -> str:
+    """Today in Belgium as YYYY-MM-DD, whatever the machine's time zone: the day the lookups
+    default to. Belgian legal time is UTC+1, and UTC+2 from 01:00 UTC on the last Sunday of March
+    to 01:00 UTC on the last Sunday of October (EU Directive 2000/84/EC), computed here rather
+    than with zoneinfo, which needs the tzdata package on Windows. `now` must be aware."""
+    now = datetime.now(UTC) if now is None else now.astimezone(UTC)
+    summer = _last_sunday_at_1_utc(now.year, 3) <= now < _last_sunday_at_1_utc(now.year, 10)
+    return (now + timedelta(hours=2 if summer else 1)).date().isoformat()
 
 
 def _day(record: Mapping[str, object], key: str) -> str | None:
