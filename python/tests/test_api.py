@@ -2,7 +2,7 @@
 
 import json
 import tomllib
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -86,9 +86,36 @@ def test_contacts() -> None:
 
 def test_days() -> None:
     assert belgica.to_day(date(2025, 3, 1)) == '2025-03-01'
+    # Naive: a time in Belgium, so its calendar day
     assert belgica.to_day(datetime(2025, 3, 1, 23, 59)) == '2025-03-01'
     assert belgica.to_day('2025-03-01T10:00:00Z') == '2025-03-01'
+    assert belgica.to_day('2024-12-31T23:30:00') == '2024-12-31'
     for bad in ('2013-1-15', '2013-02-30', 'yesterday', ''):
+        with pytest.raises(ValueError):
+            belgica.to_day(bad)
+
+
+def test_an_instant_is_read_as_its_day_in_belgium() -> None:
+    # #164: an aware datetime, or a string with an offset, is the same instant however written
+    assert belgica.to_day(datetime(2024, 12, 31, 23, 30, tzinfo=UTC)) == '2025-01-01'
+    assert belgica.to_day(datetime(2026, 6, 30, 21, 59, 59, tzinfo=UTC)) == '2026-06-30'
+    eastern = timezone(timedelta(hours=-5))
+    assert belgica.to_day(datetime(2024, 6, 15, 23, 30, tzinfo=eastern)) == '2024-06-16'
+    assert belgica.to_day('2024-12-31T23:30:00Z') == '2025-01-01'
+    assert belgica.to_day('2025-01-01T00:30:00+01:00') == '2025-01-01'
+    assert belgica.to_day('2024-06-15T10:30:00Z') == '2024-06-15'
+    assert belgica.to_day('2024-06-15T23:30:00-05:00') == '2024-06-16'
+    for bad in (
+        '2024-12-31T23:30:00+0100',
+        '2024-12-31T23:30:00+01',
+        '2024-12-31T23:30:00z',
+        '2024-12-31T99:99Z',
+        '2025-01-01T00:30:00+01:60',
+        '2025-01-01T00:30:00+24:00',
+        '2024-12-31T23:30:00+01:00:00',
+        '2024-12-31T23:30:00+1:00',
+        '2024-12-31T23:30:00+01:0',
+    ):
         with pytest.raises(ValueError):
             belgica.to_day(bad)
 
@@ -104,6 +131,10 @@ def test_today_is_the_day_in_belgium() -> None:
     assert belgica.today(utc('2026-06-30T22:00:00')) == '2026-07-01'
     assert belgica.today(utc('2026-03-28T23:30:00')) == '2026-03-29'
     assert belgica.today(utc('2026-10-24T22:30:00')) == '2026-10-25'
+    # 1995: summer time ended on 24 September; 1976: none
+    assert belgica.today(utc('1995-10-01T22:30:00')) == '1995-10-01'
+    assert belgica.today(utc('1995-09-23T22:30:00')) == '1995-09-24'
+    assert belgica.today(utc('1976-07-01T22:30:00')) == '1976-07-01'
 
 
 def test_today_matches_europe_brussels() -> None:
@@ -113,8 +144,8 @@ def test_today_matches_europe_brussels() -> None:
         brussels = ZoneInfo('Europe/Brussels')
     except ZoneInfoNotFoundError:
         pytest.skip('no time zone database (tzdata) on this machine')
-    for year in range(1996, 2041):
-        for month, day in ((3, 25), (10, 25), (12, 31)):
+    for year in range(1947, 2041):
+        for month, day in ((3, 25), (4, 1), (9, 23), (10, 25), (12, 31)):
             start = datetime(year, month, day, tzinfo=UTC)
             for hour in range(9 * 24):
                 for offset in (timedelta(minutes=30), timedelta(minutes=59, seconds=59)):

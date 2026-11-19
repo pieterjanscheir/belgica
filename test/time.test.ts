@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { appliesOn, currentVersion, lookupDay, today, versionsById } from '../src/time'
+import { appliesOn, currentVersion, lookupDay, today, toDay, versionsById } from '../src/time'
 
 describe('appliesOn', () => {
     const record = { validFrom: '2018-09-01', validTo: '2024-12-31' }
@@ -40,6 +40,14 @@ describe('today', () => {
         expect(today(new Date('2026-10-24T22:30:00Z'))).toBe('2026-10-25')
     })
 
+    it('uses the summer time rules of the year (1977–1995 ended in September)', () => {
+        // 1995: summer time ended on 24 September, so 1 October is on UTC+1
+        expect(today(new Date('1995-10-01T22:30:00Z'))).toBe('1995-10-01')
+        expect(today(new Date('1995-09-23T22:30:00Z'))).toBe('1995-09-24')
+        // 1976: no summer time
+        expect(today(new Date('1976-07-01T22:30:00Z'))).toBe('1976-07-01')
+    })
+
     it("matches the Europe/Brussels time zone, hour by hour, around each year's changes", () => {
         const brussels = new Intl.DateTimeFormat('en', {
             timeZone: 'Europe/Brussels',
@@ -56,9 +64,13 @@ describe('today', () => {
             )
             return `${parts['year']}-${parts['month']}-${parts['day']}`
         }
-        for (let year = 1996; year <= 2040; year++) {
+        for (let year = 1947; year <= 2040; year++) {
             for (const [month, day] of [
+                // Summer time from late March (since 1981) or early April (1977–1980), to late
+                // September or 1 October (1977–1995) or late October (since 1996)
                 [2, 24],
+                [2, 31],
+                [8, 22],
                 [9, 24],
                 [11, 31],
             ] as const) {
@@ -71,6 +83,49 @@ describe('today', () => {
                     }
                 }
             }
+        }
+    })
+})
+
+describe('toDay', () => {
+    it('reads a Date as its day in Belgium (#164)', () => {
+        // 00:30 on 1 January in Belgium, whatever the machine's time zone
+        expect(toDay(new Date('2024-12-31T23:30:00Z'))).toBe('2025-01-01')
+        expect(toDay(new Date('2026-06-30T21:59:59Z'))).toBe('2026-06-30')
+        expect(() => toDay(new Date('nonsense'))).toThrow(RangeError)
+    })
+
+    it('reads a string with an offset as the same instant, however it is written (#164)', () => {
+        expect(toDay('2024-12-31T23:30:00Z')).toBe('2025-01-01')
+        expect(toDay('2025-01-01T00:30:00+01:00')).toBe('2025-01-01')
+        expect(toDay('2024-06-15T10:30:00Z')).toBe('2024-06-15')
+        expect(toDay('2024-06-15T23:30:00-05:00')).toBe('2024-06-16')
+    })
+
+    it('keeps the day written for a string without an offset', () => {
+        expect(toDay('2024-12-31')).toBe('2024-12-31')
+        expect(toDay('2024-12-31T23:30:00')).toBe('2024-12-31')
+    })
+
+    it('refuses an offset written another way, and an invalid time', () => {
+        for (const bad of [
+            '2024-12-31T23:30:00+0100',
+            '2024-12-31T23:30:00+01',
+            '2024-12-31T23:30:00z',
+            '2024-12-31T99:99Z',
+            '2025-01-01T00:30:00+01:60',
+            '2025-01-01T00:30:00+24:00',
+            '2024-12-31T23:30:00+01:00:00',
+            '2024-12-31T23:30:00+1:00',
+            '2024-12-31T23:30:00+01:0',
+        ]) {
+            expect(() => toDay(bad), bad).toThrow(RangeError)
+        }
+    })
+
+    it('still refuses a day that is not YYYY-MM-DD', () => {
+        for (const bad of ['2013-1-15', '2013-02-30', 'yesterday', '']) {
+            expect(() => toDay(bad), bad).toThrow(RangeError)
         }
     })
 })

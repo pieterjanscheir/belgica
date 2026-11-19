@@ -9,11 +9,12 @@ functions in snake case. To find the function for a question, start with
 
 These hold for every function below, and the entries don't repeat them.
 
-- **Days.** A day is a `Date`, read as a local calendar day, or a string that starts with
-  `YYYY-MM-DD`. Anything else throws a `RangeError`. Days are returned as `YYYY-MM-DD`.
+- **Days.** A day is a `Date`, read as its day in Belgium (Europe/Brussels), or a string that
+  starts with `YYYY-MM-DD`; a time after it with an offset (`Z` or `±hh:mm`) is read the same
+  way. Anything else throws a `RangeError`. Days are returned as `YYYY-MM-DD`.
 - **`on`.** Every lookup takes an optional last argument `{ on }`, the day to answer for, and
-  answers for today in Belgium (Europe/Brussels) without it, whatever the machine's time zone. A day before the dataset's [coverage](#time) throws a
-  `RangeError`.
+  answers for today in Belgium (Europe/Brussels) without it, whatever the machine's time zone.
+  A day before the dataset's [coverage](#time) throws a `RangeError`.
 - **Lookups by id.** A `get…` function returns `undefined` for an id that isn't in the data.
   With a known id (a literal like `'gent-1'`, or a value typed `CantonId`) it returns the record,
   and its type says so. Without `on` it always finds a known record: today's version, or the last
@@ -1054,11 +1055,17 @@ courts.filter((court) => appliesOn(court, today()))
 function toDay(date: Date | string): string
 ```
 
-A day as `YYYY-MM-DD`: a `Date` as its local calendar day, a string checked and cut to its first
-ten characters. Throws a `RangeError` for anything that isn't a valid day.
+A day as `YYYY-MM-DD`, in Belgium. A `Date` is an instant, read as its day in Belgium
+(Europe/Brussels) whatever the machine's time zone. A string must start with a valid day; a time
+after it with an offset (`Z` or `±hh:mm`) is an instant too, read the same way, and a time
+without one gives the day written. Throws a `RangeError` for anything that isn't a valid day, and
+for an offset written another way (`+0100`, `+01`, a lowercase `z`).
 
 ```ts
 toDay('2024-06-15T10:30:00Z') // '2024-06-15'
+toDay('2024-12-31T23:30:00Z') // '2025-01-01': 00:30 in Belgium
+toDay(new Date('2024-12-31T23:30:00Z')) // '2025-01-01', on any machine
+toDay('2024-12-31T23:30:00') // '2024-12-31': no offset, the day written
 toDay('2024-02-30') // RangeError
 ```
 
@@ -1070,9 +1077,9 @@ function today(now?: Date): string
 
 Today in Belgium (Europe/Brussels) as `YYYY-MM-DD`, whatever the time zone of the machine: the day
 every lookup answers for without `on`. Use it to filter the datasets for the same day as the
-lookups; `toDay(new Date())` gives the machine's day, which on a server in UTC is the day before
-between midnight and 01:00 (02:00 in summer). `now` is the instant to read, the current one by
-default.
+lookups. `now` is the instant to read, the current one by default. Summer time follows the EU
+rules Belgium has used since 1977; from 1947 to 1976 Belgium had none, and before 1947 UTC+1 is
+assumed.
 
 ```ts
 today(new Date('2026-12-31T23:30:00Z')) // '2027-01-01': 00:30 in Belgium
