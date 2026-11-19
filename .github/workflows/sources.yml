@@ -279,7 +279,7 @@ jobs:
                         return 0
                       fi
                       cat gh.err >&2
-                      grep -qE 'HTTP 5[0-9][0-9]|dial tcp|connection (reset|refused)|i/o timeout|TLS handshake timeout|unexpected EOF|deadline exceeded|Client\.Timeout' gh.err || return 1
+                      grep -qE 'HTTP 5[0-9][0-9]|dial tcp|connection (reset|refused)|i/o timeout|TLS handshake timeout|EOF|deadline exceeded|Client\.Timeout' gh.err || return 1
                       if [ "$attempt" = 3 ]; then
                         touch gh-unreachable
                         return 1
@@ -289,15 +289,25 @@ jobs:
                     done
                   }
                   # The branch is pushed, but neither a pull request nor the issue says so: the run
-                  # does, and the sources issue below (written to pr-by-hand.md)
+                  # does, and the sources issue below (written to pr-by-hand.md). With a number, the
+                  # pull request is open but still has the last run's description
                   ready_by_hand() {
+                    if [ -n "${1:-}" ]; then
+                      why="pull request #$1 still has the last run's description"
+                      what="update its description by hand"
+                      link="https://github.com/$GITHUB_REPOSITORY/pull/$1"
+                    else
+                      why="no pull request or issue says so"
+                      what="open the pull request by hand"
+                      link="https://github.com/$GITHUB_REPOSITORY/compare/main...data/sources?expand=1"
+                    fi
                     {
                       echo "The data was rebuilt and pushed to the branch \`data/sources\`, ready for review,"
-                      echo "but GitHub's API failed (see the run's log), so no pull request or issue says so. Open"
-                      echo "the pull request by hand, with the description in the run's summary ($RUN_URL):"
-                      echo "https://github.com/$GITHUB_REPOSITORY/compare/main...data/sources?expand=1"
+                      echo "but GitHub's API failed (see the run's log), so $why."
+                      echo "To review it, $what, with the description in the run's summary ($RUN_URL):"
+                      echo "$link"
                     } > pr-by-hand.md
-                    echo "::error::The data is pushed to the branch data/sources and ready, but GitHub's API failed: open the pull request by hand (https://github.com/$GITHUB_REPOSITORY/compare/main...data/sources?expand=1)"
+                    echo "::error::The data is pushed to the branch data/sources and ready, but GitHub's API failed, so $why: $what ($link)"
                     { cat pr-by-hand.md; echo; cat body.md; } >> "$GITHUB_STEP_SUMMARY"
                     exit 1
                   }
@@ -317,7 +327,7 @@ jobs:
                   }
                   number=$(gh_retry pr list --head data/sources --state open --json number --jq '.[0].number') || ready_by_hand
                   if [ -n "$number" ]; then
-                    gh_retry pr edit "$number" --body-file body.md || ready_by_hand
+                    gh_retry pr edit "$number" --body-file body.md || ready_by_hand "$number"
                   elif ! gh_retry pr create --base main --head data/sources --title "Data update from the official sources" --body-file body.md --label data-update; then
                     [ ! -e gh-unreachable ] || ready_by_hand
                     # A 504 can come after the pull request was opened, and the next try is refused
