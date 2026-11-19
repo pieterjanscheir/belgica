@@ -7,6 +7,8 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-11-19
+
 ### Added
 
 - `today()` (Python: `belgica.today()`): today in Belgium as `YYYY-MM-DD`, the day the lookups
@@ -32,6 +34,12 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   `+01`, a lowercase `z`) is refused rather than ignored.
 
 ### Fixed
+
+- **Courts, prisons, houses of justice**: the contacts from the official sources on 18 November
+  2026 ([#214](https://github.com/pieterjanscheir/belgica/pull/214)): about ten phone numbers
+  and one mailbox of the courts changed, and every record has its new `retrieved` date. The
+  French Community's houses of justice keep their last snapshots
+  ([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
 
 - **Courts**: the Ieper, Kortrijk and Veurne divisions of the court of first instance of
   West-Vlaanderen have their contacts again. 0.9.1 dropped them: Ieper and Veurne had none left
@@ -619,7 +627,8 @@ OpenStreetMap `opening_hours` syntax (`Mo-Fr 08:30-12:30,13:30-16:00`).
 - Courts (justices of the peace in East and West Flanders, Ondernemingsrechtbank Gent) and the
   legal and commercial interest rates.
 
-[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.9.1...HEAD
+[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/pieterjanscheir/belgica/compare/v0.9.1...v0.10.0
 [0.9.1]: https://github.com/pieterjanscheir/belgica/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/pieterjanscheir/belgica/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/pieterjanscheir/belgica/compare/v0.7.0...v0.8.0

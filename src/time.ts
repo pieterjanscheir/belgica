@@ -22,7 +22,8 @@ const OTHER_OFFSET = /(?:z|[+-][\d:]*)$/
  * whatever the machine's time zone. A string must start with a valid YYYY-MM-DD day: days are
  * compared as strings, so '2013-1-15' would otherwise silently fall in the wrong period. A time
  * after it with an offset (`Z` or `±hh:mm`) is an instant too, read the same way; a time without
- * one is a time in Belgium, so the day is the one written.
+ * one is a time in Belgium, so the day is the one written. Belgian summer time is exact from 1947
+ * on (see `today`); for an instant before 1947, UTC+1 is assumed.
  */
 export function toDay(date: Date | string): string {
     if (typeof date === 'string') {

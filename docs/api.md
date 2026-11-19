@@ -1059,7 +1059,8 @@ A day as `YYYY-MM-DD`, in Belgium. A `Date` is an instant, read as its day in Be
 (Europe/Brussels) whatever the machine's time zone. A string must start with a valid day; a time
 after it with an offset (`Z` or `±hh:mm`) is an instant too, read the same way, and a time
 without one gives the day written. Throws a `RangeError` for anything that isn't a valid day, and
-for an offset written another way (`+0100`, `+01`, a lowercase `z`).
+for an offset written another way (`+0100`, `+01`, a lowercase `z`). Summer time follows the
+Belgian rules from 1947 on; for an instant before 1947, UTC+1 is assumed.
 
 ```ts
 toDay('2024-06-15T10:30:00Z') // '2024-06-15'
