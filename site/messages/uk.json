@@ -132,8 +132,12 @@
         "filterLabel": "Фільтр за назвою або містом",
         "typeLabel": "Тип суду",
         "everyType": "Усі типи",
+        "areaLabel": "Судовий округ",
+        "everyArea": "Усі судові округи",
         "divisions": "Відділення та місця засідань",
-        "count": "{shown} з {total}"
+        "count": "{shown} з {total}",
+        "jumpLabel": "Перейти до типу суду",
+        "none": "Жоден суд не відповідає цим фільтрам."
     },
     "court": {
         "kindOf": "{kind} суду <link>{name}</link>",

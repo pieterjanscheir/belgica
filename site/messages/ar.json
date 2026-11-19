@@ -132,8 +132,12 @@
         "filterLabel": "التصفية حسب الاسم أو المدينة",
         "typeLabel": "نوع المحكمة",
         "everyType": "جميع الأنواع",
+        "areaLabel": "الدائرة القضائية",
+        "everyArea": "كل الدوائر القضائية",
         "divisions": "الأقسام والمقرات",
-        "count": "{shown} من {total}"
+        "count": "{shown} من {total}",
+        "jumpLabel": "الانتقال إلى نوع المحكمة",
+        "none": "لا توجد محكمة تطابق هذه المرشحات."
     },
     "court": {
         "kindOf": "{kind} في <link>{name}</link>",

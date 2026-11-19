@@ -132,8 +132,12 @@
         "filterLabel": "Filtrer par nom ou ville",
         "typeLabel": "Type de juridiction",
         "everyType": "Tous les types",
+        "areaLabel": "Arrondissement judiciaire",
+        "everyArea": "Tous les arrondissements",
         "divisions": "Divisions et sièges",
-        "count": "{shown} sur {total}"
+        "count": "{shown} sur {total}",
+        "jumpLabel": "Aller à un type de juridiction",
+        "none": "Aucune juridiction ne correspond à ces filtres."
     },
     "court": {
         "kindOf": "{kind} de <link>{name}</link>",

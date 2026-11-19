@@ -132,8 +132,12 @@
         "filterLabel": "Filter by name or city",
         "typeLabel": "Court type",
         "everyType": "Every type",
+        "areaLabel": "Judicial arrondissement",
+        "everyArea": "Every arrondissement",
         "divisions": "Divisions and seats",
-        "count": "{shown} of {total}"
+        "count": "{shown} of {total}",
+        "jumpLabel": "Go to a type of court",
+        "none": "No court matches these filters."
     },
     "court": {
         "kindOf": "{kind} of <link>{name}</link>",

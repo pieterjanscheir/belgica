@@ -132,8 +132,12 @@
         "filterLabel": "Nach Name oder Stadt filtern",
         "typeLabel": "Gerichtsart",
         "everyType": "Alle Arten",
+        "areaLabel": "Gerichtsbezirk",
+        "everyArea": "Alle Gerichtsbezirke",
         "divisions": "Abteilungen und Sitze",
-        "count": "{shown} von {total}"
+        "count": "{shown} von {total}",
+        "jumpLabel": "Zu einer Gerichtsart",
+        "none": "Kein Gericht passt zu diesen Filtern."
     },
     "court": {
         "kindOf": "{kind} des <link>{name}</link>",
