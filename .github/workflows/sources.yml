@@ -268,25 +268,62 @@ jobs:
                       echo "full CI, or set up the bot (docs/guide/contributing.md)."
                     fi
                   } > body.md
+                  # GitHub's API sometimes answers a 502 or 504, or the connection drops (run #28):
+                  # try a call three times, 10 and 40 seconds apart. Any other error, such as a
+                  # refusal, is final at once. After the last 5xx, gh-unreachable says so
+                  gh_retry() {
+                    rm -f gh-unreachable
+                    for attempt in 1 2 3; do
+                      if gh "$@" 2> gh.err; then
+                        cat gh.err >&2
+                        return 0
+                      fi
+                      cat gh.err >&2
+                      grep -qE 'HTTP 5[0-9][0-9]|dial tcp|connection (reset|refused)|i/o timeout|TLS handshake timeout|unexpected EOF|deadline exceeded|Client\.Timeout' gh.err || return 1
+                      if [ "$attempt" = 3 ]; then
+                        touch gh-unreachable
+                        return 1
+                      fi
+                      echo "::warning::gh $1 $2 failed, trying again in $((attempt * attempt * 10)) seconds" >&2
+                      sleep $((attempt * attempt * 10))
+                    done
+                  }
+                  # The branch is pushed, but neither a pull request nor the issue says so: the run
+                  # does, and the sources issue below (written to pr-by-hand.md)
+                  ready_by_hand() {
+                    {
+                      echo "The data was rebuilt and pushed to the branch \`data/sources\`, ready for review,"
+                      echo "but GitHub's API failed (see the run's log), so no pull request or issue says so. Open"
+                      echo "the pull request by hand, with the description in the run's summary ($RUN_URL):"
+                      echo "https://github.com/$GITHUB_REPOSITORY/compare/main...data/sources?expand=1"
+                    } > pr-by-hand.md
+                    echo "::error::The data is pushed to the branch data/sources and ready, but GitHub's API failed: open the pull request by hand (https://github.com/$GITHUB_REPOSITORY/compare/main...data/sources?expand=1)"
+                    { cat pr-by-hand.md; echo; cat body.md; } >> "$GITHUB_STEP_SUMMARY"
+                    exit 1
+                  }
                   # Without the bot, the workflow's token may not open pull requests: then an issue
                   # says the branch is ready, and later runs update that issue instead of opening
-                  # another one
+                  # another one. Called after ||, where bash -e doesn't stop it: each call returns
+                  # its own failure
                   open_issue() {
                     export GH_TOKEN="$WORKFLOW_TOKEN"
-                    issue=$(gh issue list --label data-update --state open --json number --jq '.[0].number')
+                    issue=$(gh_retry issue list --label data-update --state open --json number --jq '.[0].number') || return 1
                     if [ -n "$issue" ]; then
-                      gh issue edit "$issue" --body-file body.md
-                      gh issue comment "$issue" --body "Rebuilt from the sources again: $RUN_URL. The description shows the latest run."
+                      gh_retry issue edit "$issue" --body-file body.md || return 1
+                      gh_retry issue comment "$issue" --body "Rebuilt from the sources again: $RUN_URL. The description shows the latest run." || return 1
                     else
-                      gh issue create --title "Data update from the official sources is ready on branch data/sources" --label data-update --body-file body.md
+                      gh_retry issue create --title "Data update from the official sources is ready on branch data/sources" --label data-update --body-file body.md || return 1
                     fi
                   }
-                  number=$(gh pr list --head data/sources --state open --json number --jq '.[0].number')
+                  number=$(gh_retry pr list --head data/sources --state open --json number --jq '.[0].number') || ready_by_hand
                   if [ -n "$number" ]; then
-                    gh pr edit "$number" --body-file body.md
-                  else
-                    gh pr create --base main --head data/sources --title "Data update from the official sources" --body-file body.md --label data-update \
-                      || open_issue
+                    gh_retry pr edit "$number" --body-file body.md || ready_by_hand
+                  elif ! gh_retry pr create --base main --head data/sources --title "Data update from the official sources" --body-file body.md --label data-update; then
+                    [ ! -e gh-unreachable ] || ready_by_hand
+                    # A 504 can come after the pull request was opened, and the next try is refused
+                    # as a duplicate: then it's there. Otherwise the token may not open one
+                    number=$(gh_retry pr list --head data/sources --state open --json number --jq '.[0].number') || ready_by_hand
+                    [ -n "$number" ] || open_issue || ready_by_hand
                   fi
 
             - name: Fail when a source failed
@@ -312,6 +349,12 @@ jobs:
                       head -40 fetch-failures.log
                       echo '```'
                     } > issue.md
+                    # The data was also pushed, but its pull request couldn't be opened
+                    if [ -s pr-by-hand.md ]; then
+                      { echo; cat pr-by-hand.md; } >> issue.md
+                    fi
+                  elif [ -s pr-by-hand.md ]; then
+                    cp pr-by-hand.md issue.md
                   else
                     echo "The sources run failed, so the data wasn't rebuilt: $RUN_URL. The parser may have met a page it can't place, or the new data failed its tests." > issue.md
                   fi
