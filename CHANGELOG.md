@@ -37,10 +37,9 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 - **Courts, prisons, houses of justice**: the contacts from the official sources on 18 November
   2026 ([#214](https://github.com/pieterjanscheir/belgica/pull/214)): about ten phone numbers
-  and one mailbox of the courts changed, and every record has its new `retrieved` date. The
-  French Community's houses of justice keep their last snapshots
-  ([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
-
+  and one mailbox of the courts changed, and the records whose page changed have a new
+  `retrieved` date. The French Community's houses of justice keep their last snapshots, of 20
+  October 2026 ([#125](https://github.com/pieterjanscheir/belgica/issues/125)).
 - **Courts**: the Ieper, Kortrijk and Veurne divisions of the court of first instance of
   West-Vlaanderen have their contacts again. 0.9.1 dropped them: Ieper and Veurne had none left
   and Kortrijk one, where their pages list a phone number and five to seven mailboxes each. The
