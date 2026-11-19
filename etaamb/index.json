@@ -8,322 +8,349 @@
             "file": "etaamb.openjustice.be/nl/programmawet-van-18-juli-2025_n2026007093.html",
             "sha256": "b2155722f4c5e5701068c20225641f3cef287533586e66b1c3a948d997566b34",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/09.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/09.html",
-            "sha256": "c6f1871beab3cfc28ec3e553c6fe75ae538375b65d6eb3d9361af8013a9bfb45",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "633c788f4d3578894fcac28b753274d60b0f4b19978b9bf9067c6423961768c0",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/09/30.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/09/30.html",
-            "sha256": "3130dbb5e6d7b21fc6cd7946baabd4a10afb652e0d8f16dc0c097818bbc3be06",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "6ea778a63882e8c994a0a7520bdfa1ef8c9970319908f85427f497b1436cf0c5",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10.html",
-            "sha256": "545bd4b23da1bf3ab89dd0f4a0088da839868f7b0bca34abc5e57e3671afadcb",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "4ff4ae9ad21ffd54ef8c96bb08d75ff0c1423ee7324a1325d6b277455193b607",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/01.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/01.html",
-            "sha256": "914cf252b374496fc0c5139bbb51b87aee61e254df8a8c835844e1ccb39c4aea",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "9b4fb1a93f755784c0a8694d6c99ec5fd88c6b42caaa0bb2e25f28ac7bc3664d",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/02.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/02.html",
-            "sha256": "78b671df8d85a07f3dded2d5e5fec754e13f8e2f5de47e458a51aba8aeef6d72",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "b13c97a15ca6f7b6a0b471789f0d6ff5d41cc167d76f99164937e5ab23048960",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/05.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/05.html",
-            "sha256": "90ec3cd357dbe1e529951df733b7ab3594b61068833dee92b9574e08137b87e9",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "7d469f9b8ebd9cd15c5c5f204c61161fc33888c54739de89bd721f7fcdb6035f",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/06.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/06.html",
-            "sha256": "e460e8261315d401ac247b19a73a5e26580b2acddda02817710456b414e8a178",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "2191bb610fb4020381f864797e07c618a8e441b1134eecc45c044da68a812c01",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/07.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/07.html",
-            "sha256": "4a36dd322157f32cc0b402f555d0acdaf64868db623448d0d8dd2531fad14bda",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "66bcffb7351c65c29f63f4138d614e19fd0b3f4ca63f62b63102edbaa430ae4b",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/08.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/08.html",
-            "sha256": "0132fcb454c2833577978bcf359e4cc32e8ab64050046dc22f142ad13a5068c9",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "492c591db51d9738b0430573b0a85a41570a1e7f9be64e4bcb606fdb27bf844b",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/09.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/09.html",
-            "sha256": "0ee39ec3c31de4d8132aeae946e236601097dfa807ad9f39304707987163bdc4",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "2c5e8b555d96fbcc4f8a38e7193be429aa3f72a9134dc07cb24e88a84bd4ef46",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/12.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/12.html",
-            "sha256": "eb393b6bc777b52bdbd78801b07ac5faec0db6cef40edfdef0346bdbb89e5832",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "22d6695bf3849fcffd45d358c435f308f6b4ce37354f30c47783df0c8ee10fd1",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/13.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/13.html",
-            "sha256": "dd7696d2e0a4cb376d38d449b150abbdb3df13d84a7f0cffa059642c46bae618",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "8089cad07e1a0d508cbfdf40cd243e112a71b96331a17b419f41373ea9f0fbfb",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/14.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/14.html",
-            "sha256": "46334e3e51816a405a440211ccccbdd9a3990a0b32d96544ee9d618269a6327c",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "3435cfccf910bcb5e0037cd95d5a63b7f621c976366a44397d194353348ce5b2",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/15.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/15.html",
-            "sha256": "dd3a4f6327728fe41f8d1553347472c03f10c8172e464881e664b030e7af88ec",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "08012a91082c9086f0ef4bc286a5e72bea02b44357b90f18460614b967f4a56a",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/16.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/16.html",
-            "sha256": "1284ac4b7dd64638bb80825ac0dfe34548ed56a29df97189e14fba8e44192f96",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "0e03b1857ff09232b2ac5364e7a4a296e008ab0e527a97f07f4cd98af397a571",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/19.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/19.html",
-            "sha256": "b5ad19938791df66033fe2d3b441c7aa45abb29110122d0f7775c4d6b12b2b05",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "f44b12d42c7612c28f38074025a14d4923708f7cc44542aaa1d5adc821640f52",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/20.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/20.html",
-            "sha256": "093e688c45e24d14f4706bcf04594f1744c25605307280e457b8272fce341c0c",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "8b01b277d4f3d37e75852a3de89f8f53645a022bbe2bf04850fd879c2da4b177",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/21.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/21.html",
-            "sha256": "efbe0138e410420ac2c3fe57764c612488bc177e64b9c019a0287c6f9364ab0d",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "61839aff4a4450f3349700312a754de3dc6ffd42a8b0e630ec7eabdbb38e2f1b",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/22.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/22.html",
-            "sha256": "82dcf2c0964456122070b21613295377571a650ebb1fdce19b4f6070084a1090",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "b60f6d08caf13b3a745619cfb423561456b9e4a404a3b14b49607f18f5c0cb38",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/23.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/23.html",
-            "sha256": "960fe79872d542f2b15dc856c3c410e19658865817b1f06547a4ede135544470",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "3e674441470bb98b12ce7ee071e4fe31914044b46d9a9ac43c145e5a2f7914ff",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/26.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/26.html",
-            "sha256": "3942481b2172da2ee5ed98cf44f8c4d88e539e942a6d72fec650967be172e26e",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "ea03455d222a0fd0c6b59d1bfe4a694ab4f8599880f3279a96b7da68283560c2",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/27.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/27.html",
-            "sha256": "5c991f434a9647f771ebb077722e6dc2fd75cff3231f2bd80fbcefe7e3d47daf",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "b01190a672d2be51fbd0eb4e2ba05f6dc6afeda3f433fd9ff7360edf17a7a4c6",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/28.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/28.html",
-            "sha256": "7a2d5ece348b1f7bbe771633884d4e1b88b6863ac3b2c8c61ee171b86402d961",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "28ca90614e0e0053d28b3e059df1db583f28545752b29e765084526de8104042",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/29.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/29.html",
-            "sha256": "80548f01117c46063d8024eb1890510055b319a07518ac60527029cc6bb67d8c",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "897ffaad6fbef532b47cb8c8e3da2a572a9ba8b849ffb0a12184c59f23c5d211",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/10/30.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/10/30.html",
-            "sha256": "830a211be4c6c5ffddb93c1d9759660febfcf858201d6ce68579b3918ee8c220",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "f2337462888abfc5152cb72e38552001d6996ac652d9c00f5320350d72913c89",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11.html",
-            "sha256": "34ee9bc5019b7913bc85681367be7e01589f046bd97d37a25abf102546aab1d0",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "3122f0d020fe08ba4aefe79c49a5e8240cbd304d14e0a479364e3b535f31c79d",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/03.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/03.html",
-            "sha256": "3e7a558a183bb4f1ba4f50b653bf0f3faa08e3e761746883f0cc2eefc4301e6d",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "6219299e4a02d2ac56fed2e72f851c83b1d125ef733c598d14c2592de34d9623",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/04.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/04.html",
-            "sha256": "5344e4fb9db36b39345f98ad6e655c28442a783356f97da04aea896ff1b3316a",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "8de43deb0d1d8fc0b4d11f0a3b8e57fd5d4f3a3b5b102ba61cbf159ff6356943",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/05.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/05.html",
-            "sha256": "40d13a1ac27e1fdc704364da64a264964f729838a5834da728a8670d0dc2625a",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "80db809678e323da5cd5ea31a74a5b462259097b705e3b8b45ca7712fcd6f137",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/06.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/06.html",
-            "sha256": "6b2e59a06da01c8b29243abc9e1f4dff21b58aace3a1f61c2086aa4855dd5229",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "031925eb5a3368ba479712a9318e85e3db204f51164cdd7e0aeb5e2d33a70bb1",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/09.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/09.html",
-            "sha256": "842cf86faa70f14842290128a2db9ebe62e598b4b17bc182decc20da7c0e78bd",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "02fe02315c5b31bddf11ee33385fcc83d73ac9ead50f80f143d7813bac3ea362",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/10.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/10.html",
-            "sha256": "984afa0d6edb8e037ccf7888389648265b96d97ced5014315b646f67f2d11527",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "666c573f194cbf556fde0b88ae8301227b3664d1045d28c7d2b64550348956b9",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/12.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/12.html",
-            "sha256": "528e3f8b69f6a126af7fe7d888a0f301715be9aebafea0b0b15ca155e1555cd7",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "03d2376cbb3ce2313aecae034e1f09a2bc2b1924818efe75551f595eedbcb762",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/13.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/13.html",
-            "sha256": "4f764611000816e95613e4aff6e595400aeb9bff7721a4c4b0ff8a222d7783cd",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "d24fe865823a248d82b2d29e0b8a360bcf65ad15434c21ec4f5e0a9ac374c318",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/pub/2026/11/16.html",
             "status": 200,
             "contentType": "text/html; charset=UTF-8",
             "file": "etaamb.openjustice.be/nl/pub/2026/11/16.html",
-            "sha256": "a68b1d00b3ce007ec21c1d829115358daa7326163f4c57b29c70e993783c1905",
-            "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "sha256": "cf2e6dbab1c90d727fb4cfa38ef8485a4ca18682e6984f87e7416494286bbc95",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/pub/2026/11/17.html",
+            "status": 200,
+            "contentType": "text/html; charset=UTF-8",
+            "file": "etaamb.openjustice.be/nl/pub/2026/11/17.html",
+            "sha256": "b1738ea7f384ad881cd67a6b1b04a2d5b2fedb625004f64a5a0f1a0b87e1c9ab",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/pub/2026/11/18.html",
+            "status": 200,
+            "contentType": "text/html; charset=UTF-8",
+            "file": "etaamb.openjustice.be/nl/pub/2026/11/18.html",
+            "sha256": "be36304e5ffadfa75c360bbbb01121a033edf03e0e8f7439ce4eb59e98acd9fe",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/pub/2026/11/19.html",
+            "status": 200,
+            "contentType": "text/html; charset=UTF-8",
+            "file": "etaamb.openjustice.be/nl/pub/2026/11/19.html",
+            "sha256": "eeebabab96831097a62beab440555444f34c234472142899582d6a9b5fe29a6f",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-03-maart-2026_n2026007304.html",
@@ -332,7 +359,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-03-maart-2026_n2026007304.html",
             "sha256": "3c3438eb76fd97c202f09b7bf7b5eeffe5d2908c33c34bed1763d3754a01bacb",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-03-mei-2024_n2026007467.html",
@@ -341,7 +368,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-03-mei-2024_n2026007467.html",
             "sha256": "91b258c2054b1863bfd1922442b39c9778dccec748ff3cefae93092bfc1fc2a2",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-07-mei-2026_n2026007092.html",
@@ -350,7 +377,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-07-mei-2026_n2026007092.html",
             "sha256": "3868ed47536f96578a4f91d1a0acf7f3c739678da2fff24abc74bf93d6b419bb",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-08-oktober-2026_n2026007652.html",
@@ -359,7 +386,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-08-oktober-2026_n2026007652.html",
             "sha256": "ce4da12798ae709da1bc2e45efde32d0b93b552cabfd0d878ac0be30b7ba1f44",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-10-februari-2026_n2026006940.html",
@@ -368,7 +395,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-10-februari-2026_n2026006940.html",
             "sha256": "a880721bb73db3b281031fcab815783f6bb52eca1b45f1ba145fe90b1f53dc3c",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-11-december-2025_n2026007509.html",
@@ -377,7 +404,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-11-december-2025_n2026007509.html",
             "sha256": "5a65797982b1c90b5246a607f33c30c29f9f830fd5336cc2a5ea236b118b7de8",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-12-juni-2026_n2026007629.html",
@@ -386,7 +413,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-12-juni-2026_n2026007629.html",
             "sha256": "90d4dc896911cd496732c3523cee252563d26edc308ebbf0e262fb3dd23c71aa",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-13-mei-2026_n2026007471.html",
@@ -395,7 +422,16 @@
             "file": "etaamb.openjustice.be/nl/wet-van-13-mei-2026_n2026007471.html",
             "sha256": "1e94db1273f22b119ad7d4f701daacc77d6ed4830f8421cef8ee48acb2afe2d9",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/wet-van-13-november-2026_n2026008400.html",
+            "status": 200,
+            "contentType": "text/html; charset=UTF-8",
+            "file": "etaamb.openjustice.be/nl/wet-van-13-november-2026_n2026008400.html",
+            "sha256": "e5ddd3bbd762e96af02eae2e00434ff0ea52a52a53d5acfef27c53ad554fa9ff",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-15-juli-2026_n2026007508.html",
@@ -404,7 +440,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-15-juli-2026_n2026007508.html",
             "sha256": "cb70517c0d301fc1a0f6d6e3c9c708bdef366e36f1c356961b405dc58d55ace1",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-15-oktober-2026_n2026007869.html",
@@ -413,7 +449,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-15-oktober-2026_n2026007869.html",
             "sha256": "bdc2e1b3f250c235fb01c9da0c71b92effd8da338261b936c36566c18fed208f",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-15-oktober-2026_n2026008029.html",
@@ -422,7 +458,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-15-oktober-2026_n2026008029.html",
             "sha256": "bcad1def0205c719e47bcaf5ca40eef59c520931856671c0ffef03738cc0854f",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-16-oktober-2025_n2026007492.html",
@@ -431,7 +467,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-16-oktober-2025_n2026007492.html",
             "sha256": "427a5226818eebe78a372ee54a8bbeecd66853adc3fa4b8d049d6aa9cdbb1020",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-18-mei-2024_n2026007568.html",
@@ -440,7 +476,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-18-mei-2024_n2026007568.html",
             "sha256": "fdc2500e83487ad47a0a3afde21ada4f51dffff76467fe061c770be728b306d8",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-19-december-2025_n2026007755.html",
@@ -449,7 +485,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-19-december-2025_n2026007755.html",
             "sha256": "fe7902c65c7dee026896c5561a6ca1b4ba1c81df42afb3f21ba24e21293525a4",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-19-oktober-2026_n2026007940.html",
@@ -458,7 +494,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-19-oktober-2026_n2026007940.html",
             "sha256": "6deff24c2ad879ed3c8eb51c5e438b1e9744931b0b25d39d4e51384105fa4b62",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-20-april-2026_n2026007091.html",
@@ -467,7 +503,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-20-april-2026_n2026007091.html",
             "sha256": "d534123df26eeb783ec93038b9cf1a31e82736b7d4d595034bc83ca80c5e8ce7",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-20-december-2023_n2026007090.html",
@@ -476,7 +512,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-20-december-2023_n2026007090.html",
             "sha256": "c23155424f89db09772b0244ea91c671c72b6da71a5b4dbd18fba1018001a370",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-20-juli-2026_n2026007037.html",
@@ -485,7 +521,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-20-juli-2026_n2026007037.html",
             "sha256": "7028b8dae25d886c60808771be09b7522d1f03d40f04c232c7180c37537118d9",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-20-juli-2026_n2026007893.html",
@@ -494,7 +530,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-20-juli-2026_n2026007893.html",
             "sha256": "570ae730b2190c36704fd0ec9340368cff686ebf6197c26aaaf34836af2e658c",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-22-mei-2019_n2019014333.html",
@@ -503,7 +539,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-22-mei-2019_n2019014333.html",
             "sha256": "a55935374718980b7e199e9d2c16e2bd5863bad1e8e5ec850246d9df13014eb0",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-23-april-2026_n2026007682.html",
@@ -512,7 +548,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-23-april-2026_n2026007682.html",
             "sha256": "3be86a6ebefce9f81cb3783c67c11e232d1ca31617ce4cb86a20f69b50f827c7",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-23-september-2026_n2026007237.html",
@@ -521,7 +557,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-23-september-2026_n2026007237.html",
             "sha256": "33ef928048649853fcb96dbd5fe87ce1e26bb1eca8ac15da4fedd3896e634458",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-24-juli-2026_n2026006730.html",
@@ -530,7 +566,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-24-juli-2026_n2026006730.html",
             "sha256": "f51a0e556eec16f3aa1e45a2a9c0ee35d6e7b608b77cb8f5cae9ad6948919a91",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007968.html",
@@ -539,7 +575,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007968.html",
             "sha256": "853bbc0106f417855fee68f1d022b73471c8da06ddac764840965b2cf6e4b439",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007970.html",
@@ -548,7 +584,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007970.html",
             "sha256": "7a979233468fe884fb23b9cdf1e0f32a4ccd266fce139aa3361110b02e3a04a9",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007979.html",
@@ -557,7 +593,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007979.html",
             "sha256": "0b4138d7cadd22a93b6765568febef4dafae4bcdecd801a7e13518a8cda10f4a",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007980.html",
@@ -566,7 +602,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-25-oktober-2026_n2026007980.html",
             "sha256": "0adf4e2d4943d676597e3e2208f001da1e31477177f4d00b77f086ae25349ec6",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-26-april-2024_n2026007305.html",
@@ -575,7 +611,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-26-april-2024_n2026007305.html",
             "sha256": "225c041cae8699b7f999228aabe37ed80efc49ca78be7cc249c935dba290725c",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-27-oktober-2026_n2026007801.html",
@@ -584,7 +620,7 @@
             "file": "etaamb.openjustice.be/nl/wet-van-27-oktober-2026_n2026007801.html",
             "sha256": "628b295c9a300e64dcec307196d2c618db0bd06a91a9fef6579b9ae5ee83fd5f",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-27-september-2026_n2026007560.html",
@@ -593,7 +629,25 @@
             "file": "etaamb.openjustice.be/nl/wet-van-27-september-2026_n2026007560.html",
             "sha256": "4664dcaf5cc7e5ac24bea4fff5f2b20b5f04c8a5175378d7135058edb17110aa",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/wet-van-28-juni-2026_n2026008298.html",
+            "status": 200,
+            "contentType": "text/html; charset=UTF-8",
+            "file": "etaamb.openjustice.be/nl/wet-van-28-juni-2026_n2026008298.html",
+            "sha256": "d00935cb0dc701bc1e9ce55464cb6d8e37a7c77d47ccf6881c76502d615ad5a2",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/wet-van-29-oktober-1846_n2026008209.html",
+            "status": 200,
+            "contentType": "text/html; charset=UTF-8",
+            "file": "etaamb.openjustice.be/nl/wet-van-29-oktober-1846_n2026008209.html",
+            "sha256": "98c97ddfdfd41d13edcdac3f7fb002d23de40e7e83753b663fb5f021f19e459a",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         },
         {
             "url": "https://etaamb.openjustice.be/nl/wet-van-30-april-2026_n2026007799.html",
@@ -602,7 +656,16 @@
             "file": "etaamb.openjustice.be/nl/wet-van-30-april-2026_n2026007799.html",
             "sha256": "36643b6e96a50dae1566cd686d735ef56ef7d1324dabcefa24b427c2e17777c0",
             "retrieved": "2026-11-16",
-            "checked": "2026-11-16"
+            "checked": "2026-11-19"
+        },
+        {
+            "url": "https://etaamb.openjustice.be/nl/wet-van-30-mei-2026_n2026008148.html",
+            "status": 200,
+            "contentType": "text/html; charset=UTF-8",
+            "file": "etaamb.openjustice.be/nl/wet-van-30-mei-2026_n2026008148.html",
+            "sha256": "5e806a56001cc611a70abab375411363872837c76d84ceb84af6fbc0819fda90",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         }
     ]
 }

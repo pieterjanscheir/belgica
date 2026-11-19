@@ -132,9 +132,9 @@
             "status": 200,
             "contentType": "text/html;charset=UTF-8",
             "file": "www.vlaanderen.be/agentschap-justitie-en-handhaving/justitie/justitiehuizen.html",
-            "sha256": "e978ada4113d0705d715c8ddcaf3a5538079a90bce773492c392bcbe0e0a421a",
-            "retrieved": "2026-11-18",
-            "checked": "2026-11-18"
+            "sha256": "4d3fb09a40da2def172871f5c842b994208f73f942c67b22ad23544a4d1ff210",
+            "retrieved": "2026-11-19",
+            "checked": "2026-11-19"
         }
     ]
 }
