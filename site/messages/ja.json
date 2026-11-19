@@ -132,8 +132,12 @@
         "filterLabel": "名称または都市で絞り込む",
         "typeLabel": "裁判所の種類",
         "everyType": "すべての種類",
+        "areaLabel": "司法管区",
+        "everyArea": "すべての司法管区",
         "divisions": "支部と開廷地",
-        "count": "{total} 件中 {shown} 件"
+        "count": "{total} 件中 {shown} 件",
+        "jumpLabel": "裁判所の種類へ移動",
+        "none": "この条件に合う裁判所はありません。"
     },
     "court": {
         "kindOf": "<link>{name}</link> の{kind}",

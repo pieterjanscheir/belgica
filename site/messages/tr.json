@@ -132,8 +132,12 @@
         "filterLabel": "Ada veya şehre göre filtrele",
         "typeLabel": "Mahkeme türü",
         "everyType": "Tüm türler",
+        "areaLabel": "Adli bölge",
+        "everyArea": "Tüm adli bölgeler",
         "divisions": "Şubeler ve duruşma yerleri",
-        "count": "{shown} / {total}"
+        "count": "{shown} / {total}",
+        "jumpLabel": "Bir mahkeme türüne git",
+        "none": "Bu filtrelere uyan mahkeme yok."
     },
     "court": {
         "kindOf": "<link>{name}</link> bünyesinde {kind}",

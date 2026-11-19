@@ -132,8 +132,12 @@
         "filterLabel": "Filtra per nome o città",
         "typeLabel": "Tipo di tribunale",
         "everyType": "Tutti i tipi",
+        "areaLabel": "Circondario giudiziario",
+        "everyArea": "Tutti i circondari",
         "divisions": "Sezioni e sedi",
-        "count": "{shown} di {total}"
+        "count": "{shown} di {total}",
+        "jumpLabel": "Vai a un tipo di tribunale",
+        "none": "Nessun tribunale corrisponde a questi filtri."
     },
     "court": {
         "kindOf": "{kind} di <link>{name}</link>",

@@ -132,8 +132,12 @@
         "filterLabel": "按名称或城市筛选",
         "typeLabel": "法院类型",
         "everyType": "所有类型",
+        "areaLabel": "司法区",
+        "everyArea": "所有司法区",
         "divisions": "分庭和驻地",
-        "count": "{shown} / {total}"
+        "count": "{shown} / {total}",
+        "jumpLabel": "跳转到法院类型",
+        "none": "没有符合这些筛选条件的法院。"
     },
     "court": {
         "kindOf": "<link>{name}</link> 的{kind}",

@@ -132,8 +132,12 @@
         "filterLabel": "Filtruj według nazwy lub miejscowości",
         "typeLabel": "Rodzaj sądu",
         "everyType": "Wszystkie rodzaje",
+        "areaLabel": "Okręg sądowy",
+        "everyArea": "Wszystkie okręgi",
         "divisions": "Wydziały i siedziby",
-        "count": "{shown} z {total}"
+        "count": "{shown} z {total}",
+        "jumpLabel": "Przejdź do rodzaju sądu",
+        "none": "Żaden sąd nie pasuje do tych filtrów."
     },
     "court": {
         "kindOf": "{kind}: <link>{name}</link>",

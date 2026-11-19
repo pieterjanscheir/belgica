@@ -132,8 +132,12 @@
         "filterLabel": "Filteren op naam of stad",
         "typeLabel": "Soort rechtbank",
         "everyType": "Alle soorten",
+        "areaLabel": "Gerechtelijk arrondissement",
+        "everyArea": "Alle arrondissementen",
         "divisions": "Afdelingen en zetels",
-        "count": "{shown} van {total}"
+        "count": "{shown} van {total}",
+        "jumpLabel": "Naar een soort rechtbank",
+        "none": "Geen rechtbank past bij deze filters."
     },
     "court": {
         "kindOf": "{kind} van <link>{name}</link>",

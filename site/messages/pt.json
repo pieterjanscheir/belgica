@@ -132,8 +132,12 @@
         "filterLabel": "Filtrar por nome ou cidade",
         "typeLabel": "Tipo de tribunal",
         "everyType": "Todos os tipos",
+        "areaLabel": "Distrito judicial",
+        "everyArea": "Todos os distritos",
         "divisions": "Secções e sedes",
-        "count": "{shown} de {total}"
+        "count": "{shown} de {total}",
+        "jumpLabel": "Ir para um tipo de tribunal",
+        "none": "Nenhum tribunal corresponde a estes filtros."
     },
     "court": {
         "kindOf": "{kind} de <link>{name}</link>",
