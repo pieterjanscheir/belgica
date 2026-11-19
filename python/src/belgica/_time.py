@@ -26,7 +26,8 @@ def to_day(day: Day) -> str:
     calendar day. A string must start with a valid YYYY-MM-DD day: days are compared as strings,
     so '2013-1-15' would silently fall in the wrong period. A time after it with an offset (`Z` or
     `±hh:mm`) is an instant too, read the same way; a time without one gives the day written.
-    Raises `ValueError` otherwise."""
+    Belgian summer time is exact from 1947 on (see `today`); for an instant before 1947, UTC+1 is
+    assumed. Raises `ValueError` otherwise."""
     if isinstance(day, datetime):
         return day.date().isoformat() if day.utcoffset() is None else today(day)
     if isinstance(day, date):
