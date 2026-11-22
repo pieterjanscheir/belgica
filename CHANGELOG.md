@@ -17,6 +17,13 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Fixed
 
+- **Courts**: the data from the official sources on 22 November 2026
+  ([#218](https://github.com/pieterjanscheir/belgica/pull/218)). The court of first instance of
+  West-Vlaanderen now writes its address as a sentence on its page, so the court's record has no
+  `address` any more; its four divisions keep theirs. Its division of Brugge has one phone
+  number with a menu, `+32 2 682 21 64`, where each registry had its own, and keeps the
+  registries' mailboxes. The justice of the peace of Soignies has a new phone number. The
+  records whose page changed have a new `retrieved` date.
 - The Prepare release workflow says what to do when it may not open the release pull request.
   It pushed the branch and then failed on GitHub's "GitHub Actions is not permitted to create or
   approve pull requests", as it did for 0.11.0. The run now ends with a link that opens the pull
