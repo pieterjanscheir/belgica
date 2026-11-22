@@ -18,6 +18,7 @@ export default {
             dataQuality: 'جودة البيانات وحداثتها',
             contributing: 'المساهمة',
             changelog: 'سجل التغييرات',
+            upgrading: 'الترقية',
             data: 'البيانات',
             overview: 'نظرة عامة',
             territory: 'الإقليم والكانتونات',

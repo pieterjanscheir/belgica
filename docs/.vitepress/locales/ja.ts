@@ -17,6 +17,7 @@ export default {
             dataQuality: 'データの品質と鮮度',
             contributing: 'コントリビュート',
             changelog: '変更履歴',
+            upgrading: 'アップグレード',
             data: 'データ',
             overview: '概要',
             territory: '領域と canton',

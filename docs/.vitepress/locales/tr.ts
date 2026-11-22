@@ -17,6 +17,7 @@ export default {
             dataQuality: 'Veri kalitesi ve güncelliği',
             contributing: 'Katkıda bulunma',
             changelog: 'Değişiklik günlüğü',
+            upgrading: 'Yükseltme',
             data: 'Veriler',
             overview: 'Genel bakış',
             territory: 'Coğrafya ve kantonlar',
