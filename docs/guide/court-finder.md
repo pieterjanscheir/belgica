@@ -73,8 +73,9 @@ for (const court of getCourtsForCanton('antwerpen-4')) {
 }
 ```
 
-Which division of a court hears the case is set by royal decree and isn't in the data yet
-([#58](https://github.com/pieterjanscheir/belgica/issues/58)): `getDivisions` lists them.
+Which division of a court hears the case is set by royal decree:
+[`findDivisionsWithJurisdiction`](/api#finddivisionswithjurisdiction) gives it for a
+municipality, and `getDivisions` lists a court's divisions.
 
 ## The map
 

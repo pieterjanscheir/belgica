@@ -491,14 +491,56 @@ Les juridictions d'un type compétentes pour une commune un jour donné (aujourd
 juridictions dont le ressort, tel que la loi le fixe (`cantons`), comprend l'un des cantons de la commune. Une seule
 juridiction pour la plupart des communes ; à Bruxelles, la juridiction néerlandophone et la francophone ; pour une
 ville scindée en cantons, chaque justice de paix qui dessert l'un d'eux. La fonction renvoie la juridiction dans son
-ensemble : la division qui connaît d'une affaire est fixée par arrêté royal et ne figure pas encore dans les données ;
-choisissez donc parmi `getDivisions(court.id)`. Vide pour un code inconnu.
+ensemble : [`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type) donne la
+division. Vide pour un code inconnu.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // le type d'affaire : 'civil' | 'criminal'
+}
+```
+
+Où déposer pour une commune, par code REFNIS : pour chaque juridiction que renvoie
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type), la division dont le territoire comprend la commune, tel que
+le fixent les arrêtés royaux pris en vertu de l'art. 186 du Code judiciaire (voyez
+[divisions](/fr/data/courts#divisions)). Une commune relève de la division qui la nomme dans
+`municipalities`, ou à défaut de celle qui a son canton dans `cantons`. Une juridiction qui n'est
+pas répartie en divisions se renvoie elle-même. Une ville scindée en cantons qui vont à des
+divisions différentes les donnerait toutes, et c'est l'adresse qui trancherait ; aucune ville n'est
+scindée de la sorte aujourd'hui. Vide pour un code inconnu.
+
+Le tribunal de première instance et le tribunal de police d'Anvers ont un territoire en matière
+civile et un autre en matière pénale (le
+[`criminalArea`](/fr/data/courts#civil-and-criminal-cases) d'une division) : Hulshout et Herenthout
+vont à Malines en matière civile et à Turnhout en matière pénale. `matter` dit de quelle matière il
+s'agit. Sans `matter`, ces deux communes obtiennent les deux divisions, la civile d'abord ; toute
+autre commune obtient la même réponse quel que soit le type d'affaire.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi'] : Pont-à-Celles, bien que le reste de son canton aille à Binche
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven'] : pas réparti en divisions
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout'] : Hulshout, qui va à Malines en matière civile
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

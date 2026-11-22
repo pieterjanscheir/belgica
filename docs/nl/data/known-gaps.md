@@ -7,10 +7,11 @@ import { data as stats } from '../../.vitepress/stats.data'
 - **Gerechten die niet op het portaal staan** zitten niet in de data: het Hof van Cassatie, het
   Grondwettelijk Hof, de Raad van State en de tuchtrechtbanken
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **De bevoegdheid stopt bij het gerecht.** `cantons` en `findCourtsWithJurisdiction` zeggen welk gerecht
-  een gemeente bestrijkt, niet welke van zijn afdelingen: het gebied van een afdeling wordt bij
-  koninklijk besluit bepaald en zit nog niet in de data
-  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **Regels die één soort zaak naar één afdeling sturen, zitten niet in de data.** Elke afdeling
+  heeft haar gebied, en haar gebied in strafzaken waar het besluit een ander bepaalt
+  ([afdelingen](/nl/data/courts#divisions)). Een besluit kan ook één soort zaak voor het hele gerecht
+  naar één afdeling sturen, zoals de collectieve schuldenregelingen van de arbeidsrechtbank
+  Henegouwen: die kent `findDivisionsWithJurisdiction` niet.
 - **{{ stats.courts.withoutAddress }} gerechten hebben geen enkel adres**: een gerecht waarvan elke
   afdeling haar eigen adres heeft (het adres staat op de afdeling), of een dat zijn adressen als
   een zin publiceert. Hun `address` ontbreekt in plaats van geraden te zijn; de afdelingen hebben

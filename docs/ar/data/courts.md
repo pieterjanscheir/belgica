@@ -75,26 +75,28 @@ d'État (مجلس الدولة)، والمحاكم التأديبية.
 
 ## الحقول {#fields}
 
-| الحقل              | النوع                                 | الوصف                                                                                                                                                                                    |
-| ------------------ | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`               | `CourtId`                             | معرّف ثابت: الـ`type`، ثم المكان بلغة المحكمة: `justice-of-the-peace-gent-1`، `police-court-brussel-fr`، `enterprise-court-gent-brugge`. انظر [المعرّفات](/ar/guide/identifiers)           |
-| `validFrom`        | string?                               | أول يوم يسري فيه السجل، `YYYY-MM-DD`: اليوم الذي أدرجته فيه البوابة أول مرة. غيابه: منذ بداية التغطية                                                                                    |
-| `validTo`          | string?                               | آخر يوم يسري فيه السجل: اليوم السابق للفحص الأسبوعي الذي وجده غائبًا عن البوابة. غيابه: لا يزال ساريًا                                                                                     |
-| `type`             | `CourtType`                           | `justice-of-the-peace`، `police-court`، `court-of-first-instance`، `enterprise-court`، `labour-court`، `court-of-appeal`، `labour-court-of-appeal`، `court-of-assize`                    |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | المحكمة نفسها، أو أحد أقسامها (afdeling / division / Abteilung)، أو أحد الأماكن التي يجلس فيها vredegerecht / justice de paix                                                            |
-| `court`            | `CourtId`?                            | للقسم أو المقر: المحكمة التي ينتمي إليها                                                                                                                                                 |
-| `name`             | `{ nl?, fr?, de? }`                   | الاسم كما تنشره المحكمة، بكل لغة لها فيها صفحة: `Vredegerecht Gent 1`، `Tribunal de l'entreprise du Hainaut - division Mons`                                                             |
-| `judicialArea`     | `JudicialAreaId`                      | المنطقة القضائية                                                                                                                                                                         |
-| `arrondissement`   | `ArrondissementId`?                   | الدائرة القضائية، للمحكمة أو القسم الذي يكون نطاقه دائرة قضائية واحدة أو يقع داخلها                                                                                                      |
-| `canton`           | `CantonId`?                           | للـvredegerecht / justice de paix: الكانتون الذي يخدمه                                                                                                                                   |
-| `cantons`          | `CantonId[]`?                         | لكل محكمة أخرى (لا لأقسامها): الكانتونات التي تغطيها، كما يحددها ملحق Gerechtelijk Wetboek / Code judiciaire (المواد 3–5) والمادة 114 منه                                                |
-| `ecli`             | `string[]`?                           | رموز ECLI للمحكمة، واحد لكل لغة تقضي بها؛ ولا يشمل إلا الرموز التي رُئيت في أحكام منشورة                                                                                                  |
-| `address`          | `Address`?                            | مكان قلم المحكمة، مع البلدية التي ينتمي إليها رمزه البريدي (`municipality`، برمز REFNIS). يغيب حين لا تنشر المحكمة عنوانًا واحدًا (محكمة لكل قسم من أقسامها عنوانه الخاص)                  |
-| `contacts`         | `Contact[]`                           | الهاتف والفاكس والبريد الإلكتروني والحساب المصرفي، كل منها مع القلم الذي ينتمي إليه (`label`) والنص المنشور معه (`note`)                                                                 |
-| `openingHours`     | string?                               | مواعيد عمل القلم بصياغة [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) في OpenStreetMap: `Mo-Fr 08:30-12:30,13:30-16:00`، فقط حين يقول النص المنشور ذلك بالضبط |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | مواعيد العمل كما نُشرت، لكل لغة                                                                                                                                                           |
-| `website`          | `{ nl?, fr?, de? }`                   | صفحة المحكمة على البوابة، لكل لغة                                                                                                                                                        |
-| `sources`          | `{ url, retrieved }[]`                | الصفحات التي قُرئ منها السجل، ومتى رُئي محتواها أول مرة                                                                                                                                    |
+| الحقل              | النوع                                 | الوصف                                                                                                                                                                                                                                                                                                                                  |
+| ------------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`               | `CourtId`                             | معرّف ثابت: الـ`type`، ثم المكان بلغة المحكمة: `justice-of-the-peace-gent-1`، `police-court-brussel-fr`، `enterprise-court-gent-brugge`. انظر [المعرّفات](/ar/guide/identifiers)                                                                                                                                                         |
+| `validFrom`        | string?                               | أول يوم يسري فيه السجل، `YYYY-MM-DD`: اليوم الذي أدرجته فيه البوابة أول مرة. غيابه: منذ بداية التغطية                                                                                                                                                                                                                                  |
+| `validTo`          | string?                               | آخر يوم يسري فيه السجل: اليوم السابق للفحص الأسبوعي الذي وجده غائبًا عن البوابة. غيابه: لا يزال ساريًا                                                                                                                                                                                                                                   |
+| `type`             | `CourtType`                           | `justice-of-the-peace`، `police-court`، `court-of-first-instance`، `enterprise-court`، `labour-court`، `court-of-appeal`، `labour-court-of-appeal`، `court-of-assize`                                                                                                                                                                  |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | المحكمة نفسها، أو أحد أقسامها (afdeling / division / Abteilung)، أو أحد الأماكن التي يجلس فيها vredegerecht / justice de paix                                                                                                                                                                                                          |
+| `court`            | `CourtId`?                            | للقسم أو المقر: المحكمة التي ينتمي إليها                                                                                                                                                                                                                                                                                               |
+| `name`             | `{ nl?, fr?, de? }`                   | الاسم كما تنشره المحكمة، بكل لغة لها فيها صفحة: `Vredegerecht Gent 1`، `Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                                                           |
+| `judicialArea`     | `JudicialAreaId`                      | المنطقة القضائية                                                                                                                                                                                                                                                                                                                       |
+| `arrondissement`   | `ArrondissementId`?                   | الدائرة القضائية، للمحكمة أو القسم الذي يكون نطاقه دائرة قضائية واحدة أو يقع داخلها                                                                                                                                                                                                                                                    |
+| `canton`           | `CantonId`?                           | للـvredegerecht / justice de paix: الكانتون الذي يخدمه                                                                                                                                                                                                                                                                                 |
+| `cantons`          | `CantonId[]`?                         | لكل محكمة أخرى: الكانتونات التي تغطيها، كما يحددها ملحق Gerechtelijk Wetboek / Code judiciaire (المواد 3–5) والمادة 114 منه. وللقسم: الكانتونات الواقعة كلها في نطاقه، كما تحدده المراسيم الملكية الصادرة بموجب المادة 186 منه (انظر [الأقسام](#divisions))؛ وهو النطاق في القضايا المدنية حين يحدد المرسوم نطاقًا آخر للقضايا الجزائية |
+| `municipalities`   | `MunicipalityId[]`?                   | للقسم الذي لا يأخذ نطاقه إلا جزءًا من كانتون: تلك البلديات، برمز REFNIS                                                                                                                                                                                                                                                                 |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | للقسم الذي يحدد مرسومه للقضايا الجزائية نطاقًا غير نطاق القضايا المدنية: نطاقه في القضايا الجزائية، ويُقرأ كما يُقرأ `cantons` و`municipalities`. يغيب حين يكون للقسم نطاق واحد لكليهما                                                                                                                                                   |
+| `ecli`             | `string[]`?                           | رموز ECLI للمحكمة، واحد لكل لغة تقضي بها؛ ولا يشمل إلا الرموز التي رُئيت في أحكام منشورة                                                                                                                                                                                                                                                |
+| `address`          | `Address`?                            | مكان قلم المحكمة، مع البلدية التي ينتمي إليها رمزه البريدي (`municipality`، برمز REFNIS). يغيب حين لا تنشر المحكمة عنوانًا واحدًا (محكمة لكل قسم من أقسامها عنوانه الخاص)                                                                                                                                                                |
+| `contacts`         | `Contact[]`                           | الهاتف والفاكس والبريد الإلكتروني والحساب المصرفي، كل منها مع القلم الذي ينتمي إليه (`label`) والنص المنشور معه (`note`)                                                                                                                                                                                                               |
+| `openingHours`     | string?                               | مواعيد عمل القلم بصياغة [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) في OpenStreetMap: `Mo-Fr 08:30-12:30,13:30-16:00`، فقط حين يقول النص المنشور ذلك بالضبط                                                                                                                                               |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | مواعيد العمل كما نُشرت، لكل لغة                                                                                                                                                                                                                                                                                                         |
+| `website`          | `{ nl?, fr?, de? }`                   | صفحة المحكمة على البوابة، لكل لغة                                                                                                                                                                                                                                                                                                      |
+| `sources`          | `{ url, retrieved }[]`                | الصفحات التي قُرئ منها السجل، ومتى رُئي محتواها أول مرة                                                                                                                                                                                                                                                                                  |
 
 ::: tip أنواع محاكم جديدة
 قد تُضاف قيم إلى `type` (مثل Hof van Cassatie / Cour de cassation). إذا استخدمت `switch` عليه،
@@ -116,6 +118,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -141,6 +145,68 @@ interface Contact {
 }
 ```
 
+## الأقسام {#divisions}
+
+يمكن أن تُقسَّم محكمة من نوع rechtbank van eerste aanleg / tribunal de première instance أو
+ondernemingsrechtbank / tribunal de l'entreprise أو arbeidsrechtbank / tribunal du travail أو
+arbeidshof / cour du travail أو politierechtbank / tribunal de police إلى أقسام (afdelingen /
+divisions): حيث يُودَع الطلب، وحيث تُعقد الجلسة. وقسم الـondernemingsrechtbank / tribunal de
+l'entreprise هو أيضًا القسم المذكور في بيان سجل الأشخاص الاعتباريين على وثائق الشركات («RPR Gent,
+afdeling Brugge»). يحدد نطاقَ كل قسم مرسومٌ ملكي صادر بموجب المادة 186 من Gerechtelijk Wetboek /
+Code judiciaire: مرسوم 14 مارس 2014، أو، لمحاكم كثيرة منذ ذلك الحين، مرسوم توزيع القضايا الخاص
+بالمحكمة (zaakverdelingsreglement). وقد غيّرت إصلاحات الكانتونات في 2017–2019 واندماجات البلديات في
+2025 كليهما.
+
+لكل قسم نطاقه في `cantons`: الكانتونات الواقعة كلها فيه. وحين يقسّم مرسومٌ كانتونًا، يسرد القسم في
+`municipalities` البلديات التي يأخذها منه. فمحكمة الـarbeidsrechtbank / tribunal du travail في
+Hainaut تُسند Pont-à-Celles (كانتون Seneffe) إلى Charleroi، وErquelinnes وMerbes-le-Château
+(كانتون Chimay) إلى Binche. ومحكمة الـrechtbank van eerste aanleg / tribunal de première instance
+في Liège (منذ 2024) ومحكمتا الـpolitierechtbank / tribunal de police في Limburg وLiège تعطي أقسامها
+قوائم بلديات بدلًا من كانتونات. تنتمي البلدية إلى القسم الذي يذكرها في `municipalities`، وإلا فإلى
+القسم الذي له كانتونها. و`findDivisionsWithJurisdiction` تجري هذا البحث.
+
+### القضايا المدنية والجزائية {#civil-and-criminal-cases}
+
+يمكن أن يحدد مرسومٌ نطاقًا للقضايا المدنية وآخر للقضايا الجزائية. وهذا ما تفعله محكمة الـrechtbank
+van eerste aanleg / tribunal de première instance ومحكمة الـpolitierechtbank / tribunal de police
+في Antwerpen، في مرسومَيهما المؤرخين 16 ديسمبر 2020: في القضايا المدنية يذهب كانتون
+Heist-op-den-Berg كله إلى قسم Mechelen، وفي القضايا الجزائية (مع الدعاوى المدنية التي تُنظر فيها)
+تذهب بلديتاه Hulshout وHerenthout إلى Turnhout.
+
+وعندها يكون `cantons` و`municipalities` النطاقَ في القضايا المدنية، ويكون نطاق القسم في القضايا
+الجزائية في `criminalArea`، بالحقلين نفسيهما:
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout وHulshout
+```
+
+لا يكون `criminalArea` إلا لقسم يختلف نطاقاه: أربعة أقسام اليوم، Mechelen وTurnhout في كلتا
+المحكمتين. ولكل قسم آخر يسري النطاق الواحد على كليهما. وتأخذ `findDivisionsWithJurisdiction` نوع
+القضية في `matter`:
+
+```ts
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
+ids() // كلاهما، والمدني أولًا: نوع القضية هو الفيصل
+```
+
+### المصادر {#sources}
+
+النطاقات هي النص الساري، موحَّدًا يدويًا من المنشورات في Belgisch Staatsblad / Moniteur belge
+(الجريدة الرسمية البلجيكية) التي يذكرها كل قسم في `sources`: المرسوم الذي يحدد النطاق وكل مرسوم
+لاحق غيّره. وقد قُرئت نطاقات محاكم الـpolitierechtbank / tribunal de police من النصوص الموحدة في
+Justel. ويتحقق اختبار من أن أقسام المحكمة تغطي نطاقها مرة واحدة، في القضايا المدنية وفي القضايا
+الجزائية.
+
+ويمكن أن يُسند مرسومٌ أيضًا نوعًا واحدًا من القضايا إلى قسم واحد للمحكمة كلها: التسويات الجماعية
+للديون لدى محكمة الـarbeidsrechtbank / tribunal du travail في Hainaut، أو المخالفات الداخلة في
+اختصاص محاكم الـarbeidsrechtbank / tribunal du travail لدى محكمة الـpolitierechtbank / tribunal de
+police في Liège. هذه القواعد ليست في البيانات.
+
 ## الدوال المساعدة {#helpers}
 
 ```ts
@@ -149,6 +215,8 @@ getJusticeOfThePeace('gent-1') // المحكمة نفسها، بمعرّف ال�
 getDivisions('enterprise-court-gent') // أقسامها الثمانية
 getCourtsForCanton('gent-1') // الـvredegerecht الخاص به، ومحكمة واحدة من كل نوع آخر
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde]، برمز REFNIS
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // قيمة أول جهة اتصال مطابقة
 formatPhoneNumber('+3253820701') // '053 82 07 01'

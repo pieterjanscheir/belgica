@@ -7,10 +7,12 @@ import { data as stats } from '../../.vitepress/stats.data'
 - **Portalda bulunmayan mahkemeler** verilerde yok: Hof van Cassatie / Cour de cassation,
   Grondwettelijk Hof / Cour constitutionnelle, Raad van State / Conseil d'État ve disiplin
   mahkemeleri ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **Yetki mahkeme düzeyinde durur.** `cantons` ve `findCourtsWithJurisdiction` bir belediyeyi hangi
-  mahkemenin kapsadığını söyler, mahkemenin hangi bölümünün (afdeling / division) kapsadığını
-  değil: bir bölümün alanı kraliyet kararnamesiyle belirlenir ve henüz verilerde yoktur
-  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **Belirli bir dava türünü tek bir bölüme gönderen kurallar verilerde yok.** Her bölümün
+  (afdeling / division) yetki alanı ve, kararname başka bir yetki alanı belirliyorsa, ceza
+  davalarındaki yetki alanı verilerdedir ([bölümler](/tr/data/courts#divisions)). Bir kararname,
+  Hainaut tribunal du travail'indeki toplu borç yapılandırması (règlement collectif de dettes)
+  davaları gibi, belirli bir dava türünü mahkemenin tamamı için tek bir bölüme de gönderebilir:
+  `findDivisionsWithJurisdiction` bunları bilmez.
 - **{{ stats.courts.withoutAddress }} mahkemenin tek bir adresi yok**: bölümlerinin her birinin
   kendi adresi olan bir mahkeme (adres bölümdedir) ya da adreslerini bir cümle olarak yayımlayan
   bir mahkeme. Bunların `address` alanı tahmin edilmek yerine boş bırakılır; bölümlerin kendi

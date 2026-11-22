@@ -78,26 +78,28 @@ State / Conseil d'État (Державна рада) і дисциплінарн�
 
 ## Поля {#fields}
 
-| Поле               | Тип                                   | Опис                                                                                                                                                                                                      |
-| ------------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`               | `CourtId`                             | Стабільний id: `type`, потім місце мовою самого суду: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Див. [Ідентифікатори](/uk/guide/identifiers)              |
-| `validFrom`        | string?                               | Перший день, коли запис чинний, `YYYY-MM-DD`: день, коли портал уперше його навів. Якщо немає — від початку охоплення                                                                                     |
-| `validTo`          | string?                               | Останній день, коли запис чинний: день перед тим, як щотижнева перевірка виявила, що його на порталі немає. Якщо немає — досі чинний                                                                      |
-| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                     |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | Сам суд, одне з його відділень (afdeling, division, Abteilung) або одне з місць, де засідає vredegerecht / justice de paix                                                                                |
-| `court`            | `CourtId`?                            | Для відділення чи місця засідань: суд, до якого воно належить                                                                                                                                             |
-| `name`             | `{ nl?, fr?, de? }`                   | Назва, як її публікує суд, кожною мовою, якою він має сторінку: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                              |
-| `judicialArea`     | `JudicialAreaId`                      | Апеляційний округ                                                                                                                                                                                         |
-| `arrondissement`   | `ArrondissementId`?                   | Судовий округ, для суду чи відділення, чия територія — один судовий округ або лежить у межах одного                                                                                                       |
-| `canton`           | `CantonId`?                           | Для vredegerecht / justice de paix: кантон, який він обслуговує                                                                                                                                           |
-| `cantons`          | `CantonId[]`?                         | Для кожного іншого суду (не його відділень): кантони, які він охоплює, як їх визначають додаток до Gerechtelijk Wetboek / Code judiciaire (ст. 3–5) і ст. 114 Кодексу                                     |
-| `ecli`             | `string[]`?                           | Коди ECLI суду, по одному на кожну мову, якою він судить; лише коди, побачені в опублікованих рішеннях                                                                                                    |
-| `address`          | `Address`?                            | Де розташована канцелярія, з громадою, до якої належить її поштовий індекс (`municipality`, за кодом REFNIS). Відсутня, коли суд не публікує єдиної адреси (суд, кожне відділення якого має власну)       |
-| `contacts`         | `Contact[]`                           | Телефон, факс, електронна пошта і банківський рахунок, кожен із канцелярією, до якої він належить (`label`), і текстом, опублікованим разом із ним (`note`)                                               |
-| `openingHours`     | string?                               | Години роботи канцелярії в синтаксисі OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours): `Mo-Fr 08:30-12:30,13:30-16:00`, лише коли опублікований текст каже саме це |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Години роботи, як їх опубліковано, кожною мовою                                                                                                                                                           |
-| `website`          | `{ nl?, fr?, de? }`                   | Сторінка суду на порталі, кожною мовою                                                                                                                                                                    |
-| `sources`          | `{ url, retrieved }[]`                | Сторінки, з яких прочитано запис, і коли їхній вміст було вперше побачено                                                                                                                                 |
+| Поле               | Тип                                   | Опис                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`               | `CourtId`                             | Стабільний id: `type`, потім місце мовою самого суду: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Див. [Ідентифікатори](/uk/guide/identifiers)                                                                                                                                                                                                     |
+| `validFrom`        | string?                               | Перший день, коли запис чинний, `YYYY-MM-DD`: день, коли портал уперше його навів. Якщо немає — від початку охоплення                                                                                                                                                                                                                                                                            |
+| `validTo`          | string?                               | Останній день, коли запис чинний: день перед тим, як щотижнева перевірка виявила, що його на порталі немає. Якщо немає — досі чинний                                                                                                                                                                                                                                                             |
+| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                                                                                                                                                                                            |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | Сам суд, одне з його відділень (afdeling, division, Abteilung) або одне з місць, де засідає vredegerecht / justice de paix                                                                                                                                                                                                                                                                       |
+| `court`            | `CourtId`?                            | Для відділення чи місця засідань: суд, до якого воно належить                                                                                                                                                                                                                                                                                                                                    |
+| `name`             | `{ nl?, fr?, de? }`                   | Назва, як її публікує суд, кожною мовою, якою він має сторінку: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                                                                                                     |
+| `judicialArea`     | `JudicialAreaId`                      | Апеляційний округ                                                                                                                                                                                                                                                                                                                                                                                |
+| `arrondissement`   | `ArrondissementId`?                   | Судовий округ, для суду чи відділення, чия територія — один судовий округ або лежить у межах одного                                                                                                                                                                                                                                                                                              |
+| `canton`           | `CantonId`?                           | Для vredegerecht / justice de paix: кантон, який він обслуговує                                                                                                                                                                                                                                                                                                                                  |
+| `cantons`          | `CantonId[]`?                         | Для кожного іншого суду: кантони, які він охоплює, як їх визначають додаток до Gerechtelijk Wetboek / Code judiciaire (ст. 3–5) і ст. 114 Кодексу. Для відділення: кантони, що повністю лежать у його території, як її визначають королівські укази, видані на підставі ст. 186 Кодексу (див. [Відділення](#divisions)); територія для цивільних справ, якщо указ визначає іншу для кримінальних |
+| `municipalities`   | `MunicipalityId[]`?                   | Для відділення, територія якого охоплює лише частину кантону: ці громади, за кодом REFNIS                                                                                                                                                                                                                                                                                                        |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | Для відділення, якому указ визначає для кримінальних справ іншу територію, ніж для цивільних: його територія в кримінальних справах, що читається так само, як `cantons` і `municipalities`. Відсутнє, якщо відділення має одну територію для обох видів справ                                                                                                                                   |
+| `ecli`             | `string[]`?                           | Коди ECLI суду, по одному на кожну мову, якою він судить; лише коди, побачені в опублікованих рішеннях                                                                                                                                                                                                                                                                                           |
+| `address`          | `Address`?                            | Де розташована канцелярія, з громадою, до якої належить її поштовий індекс (`municipality`, за кодом REFNIS). Відсутня, коли суд не публікує єдиної адреси (суд, кожне відділення якого має власну)                                                                                                                                                                                              |
+| `contacts`         | `Contact[]`                           | Телефон, факс, електронна пошта і банківський рахунок, кожен із канцелярією, до якої він належить (`label`), і текстом, опублікованим разом із ним (`note`)                                                                                                                                                                                                                                      |
+| `openingHours`     | string?                               | Години роботи канцелярії в синтаксисі OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours): `Mo-Fr 08:30-12:30,13:30-16:00`, лише коли опублікований текст каже саме це                                                                                                                                                                                        |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Години роботи, як їх опубліковано, кожною мовою                                                                                                                                                                                                                                                                                                                                                  |
+| `website`          | `{ nl?, fr?, de? }`                   | Сторінка суду на порталі, кожною мовою                                                                                                                                                                                                                                                                                                                                                           |
+| `sources`          | `{ url, retrieved }[]`                | Сторінки, з яких прочитано запис, і коли їхній вміст було вперше побачено                                                                                                                                                                                                                                                                                                                        |
 
 ::: tip Нові типи судів
 `type` може отримати нові значення (наприклад, Hof van Cassatie / Cour de cassation). Якщо ви
@@ -119,6 +121,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -144,6 +148,70 @@ interface Contact {
 }
 ```
 
+## Відділення {#divisions}
+
+Rechtbank van eerste aanleg / tribunal de première instance, ondernemingsrechtbank / tribunal de
+l'entreprise, arbeidsrechtbank / tribunal du travail, arbeidshof / cour du travail або
+politierechtbank / tribunal de police може бути поділений на відділення (afdelingen, divisions):
+саме до відділення подають документи, і саме там відбувається засідання. Відділення
+ondernemingsrechtbank / tribunal de l'entreprise — це ще й те, яке вказують у позначці реєстру
+юридичних осіб на документах компаній («RPR Gent, afdeling Brugge»). Територію кожного
+відділення визначає королівський указ, виданий на підставі ст. 186 Gerechtelijk Wetboek / Code
+judiciaire: указ від 14 березня 2014 року або, відтоді для багатьох судів, власний указ суду про
+розподіл справ (zaakverdelingsreglement). Реформи кантонів 2017–2019 років і об'єднання громад
+2025 року змінили і перший, і другі.
+
+Кожне відділення має свою територію в `cantons`: це кантони, що повністю лежать у ній. Якщо указ
+ділить кантон, відділення перелічує в `municipalities` громади, які воно з нього бере. Tribunal
+du travail du Hainaut відносить Pont-à-Celles (кантон Seneffe) до Charleroi, а Erquelinnes і
+Merbes-le-Château (кантон Chimay) — до Binche. Tribunal de première instance de Liège (з 2024
+року), а також politierechtbank Limburg і tribunal de police de Liège дають своїм відділенням
+переліки громад замість кантонів. Громада належить до відділення, яке називає її в
+`municipalities`, а інакше — до того, що має її кантон. Цей пошук виконує
+`findDivisionsWithJurisdiction`.
+
+### Цивільні та кримінальні справи {#civil-and-criminal-cases}
+
+Указ може визначити одну територію для цивільних справ і іншу — для кримінальних. Так роблять
+rechtbank van eerste aanleg Antwerpen і politierechtbank Antwerpen у своїх указах від 16 грудня
+2020 року: у цивільних справах увесь кантон Heist-op-den-Berg відходить до відділення Mechelen, а
+в кримінальних (разом із цивільними позовами, що розглядаються в них) його громади Hulshout і
+Herenthout відходять до Turnhout.
+
+`cantons` і `municipalities` тоді є територією в цивільних справах, а свою територію в
+кримінальних справах відділення має в `criminalArea`, з тими самими двома полями:
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout і Hulshout
+```
+
+Лише відділення, дві території якого різняться, має `criminalArea`: сьогодні таких чотири —
+Mechelen і Turnhout обох судів. Для кожного іншого відділення одна територія чинна для обох видів
+справ. `findDivisionsWithJurisdiction` приймає вид справи як `matter`:
+
+```ts
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
+ids() // обидва, цивільне першим: вирішує вид справи
+```
+
+### Джерела {#sources}
+
+Території — це чинний текст, вручну консолідований із публікацій у Belgisch Staatsblad / Moniteur
+belge, на які кожне відділення посилається в `sources`: указ, що визначає територію, і кожен
+пізніший, що її змінив. Території politierechtbanken / tribunaux de police прочитано з
+консолідованих текстів Justel. Тест перевіряє, що відділення суду покривають його територію рівно
+один раз — і в цивільних, і в кримінальних справах.
+
+Указ може також спрямувати один вид справ до одного відділення для всього суду: колективне
+врегулювання боргів (règlement collectif de dettes) у tribunal du travail du Hainaut або
+правопорушення, що належать до компетенції tribunaux du travail, у tribunal de police de Liège.
+Цих правил у даних немає.
+
 ## Допоміжні функції {#helpers}
 
 ```ts
@@ -152,6 +220,8 @@ getJusticeOfThePeace('gent-1') // той самий суд, за id кантон
 getDivisions('enterprise-court-gent') // його вісім відділень
 getCourtsForCanton('gent-1') // його vredegerecht і по одному суду кожного іншого типу
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde], за кодом REFNIS
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // значення першого відповідного контакту
 formatPhoneNumber('+3253820701') // '053 82 07 01'

@@ -380,13 +380,43 @@ function findCourtsWithJurisdiction(
 ): Court[]
 ```
 
-按 REFNIS 代码返回某一天（默认今天）对某个市镇有管辖权的某类型法院：即依法律规定（`cantons`）其管辖范围包含该市镇某个 canton 的法院。大多数市镇只有一个法院；在布鲁塞尔是荷兰语法院和法语法院；对于被分割到多个 canton 的城市，则是服务其中任一 canton 的每个治安法院。返回的是法院整体：由哪个分部审理案件由王室法令规定，目前尚未收入数据，所以请自行从 `getDivisions(court.id)` 中选择。未知代码返回空数组。
+按 REFNIS 代码返回某一天（默认今天）对某个市镇有管辖权的某类型法院：即依法律规定（`cantons`）其管辖范围包含该市镇某个 canton 的法院。大多数市镇只有一个法院；在布鲁塞尔是荷兰语法院和法语法院；对于被分割到多个 canton 的城市，则是服务其中任一 canton 的每个治安法院。返回的是法院整体：分部由 [`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type) 给出。未知代码返回空数组。
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // 案件类型：'civil' | 'criminal'
+}
+```
+
+按 REFNIS 代码返回某个市镇应向哪里提交材料：对于 [`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type) 返回的每个法院，给出管辖范围包含该市镇的分部，其管辖范围由依据 Gerechtelijk Wetboek / Code judiciaire（司法法典）第 186 条颁布的王室法令确定（参见[分部](/zh/data/courts#divisions)）。一个市镇属于在 `municipalities` 中列出它的分部，否则属于在 `cantons` 中拥有其 canton 的分部。没有划分分部的法院返回它自身。如果一个城市被分割到归属不同分部的多个 canton，就会返回其中每个分部，由街道地址决定；目前没有城市被这样分割。未知代码返回 `[]`。
+
+Antwerpen 的 rechtbank van eerste aanleg / tribunal de première instance（初审法院）和 politierechtbank / tribunal de police（违警法院）在民事案件和刑事案件中的管辖范围不同（分部的 [`criminalArea`](/zh/data/courts#civil-and-criminal-cases)）：Hulshout 和 Herenthout 在民事案件中归 Mechelen，在刑事案件中归 Turnhout。`matter` 指明是哪一类。不传时，这两个市镇会得到两个分部，民事的在前；其他所有市镇无论案件类型如何，结果都相同。
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']：Pont-à-Celles，尽管其 canton 的其余部分归 Binche
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']：没有划分分部
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']：Hulshout，在民事案件中归 Mechelen
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

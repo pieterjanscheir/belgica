@@ -80,38 +80,24 @@ describe('data integrity', () => {
     it('gives every division of the divided courts its area, once', () => {
         // A municipality belongs to the division that names it in `municipalities`, or else to
         // the one that has its canton in `cantons`: each (canton, municipality) pair of a
-        // court's area must land in exactly one of its divisions
+        // court's area must land in exactly one of its divisions. In criminal cases too, where
+        // a division's `criminalArea` takes the place of its area.
         const divided = new Set([
             'court-of-first-instance',
             'enterprise-court',
             'labour-court',
             'labour-court-of-appeal',
+            'police-court',
         ])
         let checked = 0
+        const withCriminalArea: string[] = []
         for (const court of courts) {
             if (court.kind !== 'court' || !divided.has(court.type)) continue
             const divisions = getDivisions(court.id).filter((d) => d.kind === 'division')
             if (divisions.length === 0) continue
             checked++
-            for (const d of divisions)
-                expect(d.cantons ?? d.municipalities, `${d.id} has no area`).toBeDefined()
-            for (const id of court.cantons ?? []) {
-                const canton = cantons.find((c) => c.id === id)
-                expect(canton, id).toBeDefined()
-                for (const { municipality } of canton?.municipalities ?? []) {
-                    const named = divisions.filter((d) =>
-                        (d.municipalities as readonly string[] | undefined)?.includes(municipality),
-                    )
-                    const holders =
-                        named.length > 0 ? named : divisions.filter((d) => d.cantons?.includes(id))
-                    expect(
-                        holders.map((d) => d.id),
-                        `${court.id}: ${id} / ${municipality}`,
-                    ).toHaveLength(1)
-                }
-            }
             // Nothing outside the court's area
-            const area = new Set(
+            const inCourt = new Set(
                 (court.cantons ?? []).flatMap(
                     (id) =>
                         cantons
@@ -120,22 +106,74 @@ describe('data integrity', () => {
                 ),
             )
             for (const d of divisions) {
-                for (const id of d.cantons ?? [])
-                    expect(court.cantons, `${d.id}: ${id}`).toContain(id)
-                for (const m of d.municipalities ?? [])
-                    expect(area.has(m), `${d.id}: ${m}`).toBe(true)
+                expect(d.cantons ?? d.municipalities, `${d.id} has no area`).toBeDefined()
+                if (d.criminalArea) {
+                    withCriminalArea.push(d.id)
+                    expect(
+                        d.criminalArea.cantons ?? d.criminalArea.municipalities,
+                        `${d.id} has an empty criminal area`,
+                    ).toBeDefined()
+                    // Only where it differs from the area in civil cases
+                    expect(d.criminalArea, d.id).not.toEqual({
+                        ...(d.cantons ? { cantons: d.cantons } : {}),
+                        ...(d.municipalities ? { municipalities: d.municipalities } : {}),
+                    })
+                }
+            }
+            for (const matter of ['civil', 'criminal'] as const) {
+                const areas = divisions.map((d) => ({
+                    id: d.id,
+                    area: (matter === 'criminal' ? d.criminalArea : undefined) ?? d,
+                }))
+                for (const id of court.cantons ?? []) {
+                    const canton = cantons.find((c) => c.id === id)
+                    expect(canton, id).toBeDefined()
+                    for (const { municipality } of canton?.municipalities ?? []) {
+                        const named = areas.filter(({ area }) =>
+                            (area.municipalities as readonly string[] | undefined)?.includes(
+                                municipality,
+                            ),
+                        )
+                        const holders =
+                            named.length > 0 ?
+                                named
+                            :   areas.filter(({ area }) =>
+                                    (area.cantons as readonly string[] | undefined)?.includes(id),
+                                )
+                        expect(
+                            holders.map((d) => d.id),
+                            `${court.id}, ${matter}: ${id} / ${municipality}`,
+                        ).toHaveLength(1)
+                    }
+                }
+                for (const { id, area } of areas) {
+                    for (const canton of area.cantons ?? [])
+                        expect(court.cantons, `${id}, ${matter}: ${canton}`).toContain(canton)
+                    for (const m of area.municipalities ?? [])
+                        expect(inCourt.has(m), `${id}, ${matter}: ${m}`).toBe(true)
+                }
             }
         }
-        // 3 labour courts of appeal, 8 courts of first instance, 4 enterprise and 4 labour courts
-        expect(checked).toBe(19)
+        // 3 labour courts of appeal, 8 courts of first instance, 4 enterprise, 4 labour and 10
+        // police courts
+        expect(checked).toBe(29)
+        // The decrees of 16 December 2020 for the court of first instance and the police court
+        // of Antwerp: Hulshout and Herenthout go to Turnhout in criminal cases
+        expect(withCriminalArea.sort()).toEqual([
+            'court-of-first-instance-antwerpen-mechelen',
+            'court-of-first-instance-antwerpen-turnhout',
+            'police-court-antwerpen-mechelen',
+            'police-court-antwerpen-turnhout',
+        ])
     })
 
-    it('gives no area to a seat, or to a division of a police court', () => {
+    it('gives no area to a seat, and an area in criminal cases only to a division', () => {
         for (const c of courts) {
-            if (c.kind === 'seat' || (c.kind === 'division' && c.type === 'police-court')) {
+            if (c.kind === 'seat') {
                 expect(c.cantons, c.id).toBeUndefined()
                 expect(c.municipalities, c.id).toBeUndefined()
             }
+            if (c.kind !== 'division') expect(c.criminalArea, c.id).toBeUndefined()
         }
     })
 

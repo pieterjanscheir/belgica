@@ -85,26 +85,28 @@ mahkemenin sayfasını (`website`) kontrol edin.
 
 ## Alanlar {#fields}
 
-| Alan               | Tür                                   | Açıklama                                                                                                                                                                                                             |
-| ------------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`               | `CourtId`                             | Kararlı id: `type`, ardından mahkemenin kendi dilinde yer adı: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Bkz. [tanımlayıcılar](/tr/guide/identifiers)                |
-| `validFrom`        | string?                               | Kaydın geçerli olduğu ilk gün, `YYYY-MM-DD`: portalın onu ilk listelediği gün. Yoksa: kapsamın başladığı günden beri                                                                                                 |
-| `validTo`          | string?                               | Kaydın geçerli olduğu son gün: haftalık kontrolün onu portalda bulamadığı günden bir önceki gün. Yoksa: hâlâ geçerli                                                                                                 |
-| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | Mahkemenin kendisi, bölümlerinden biri (afdeling, division, Abteilung) ya da bir vredegerecht'in duruşma yaptığı yerlerden biri                                                                                      |
-| `court`            | `CourtId`?                            | Bir bölüm veya duruşma yeri için: ait olduğu mahkeme                                                                                                                                                                 |
-| `name`             | `{ nl?, fr?, de? }`                   | Mahkemenin yayımladığı haliyle adı, sayfası olan her dilde: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                                             |
-| `judicialArea`     | `JudicialAreaId`                      | Yargı çevresi                                                                                                                                                                                                        |
-| `arrondissement`   | `ArrondissementId`?                   | Alanı tek bir arrondissement olan veya bir arrondissement içinde kalan bir mahkeme ya da bölüm için o arrondissement                                                                                                 |
-| `canton`           | `CantonId`?                           | Bir vredegerecht için: hizmet verdiği kanton                                                                                                                                                                         |
-| `cantons`          | `CantonId[]`?                         | Diğer her mahkeme için (bölümleri hariç): Gerechtelijk Wetboek / Code judiciaire'in eki (md. 3–5) ve Kanun'un 114. maddesinin belirlediği şekilde kapsadığı kantonlar                                                |
-| `ecli`             | `string[]`?                           | Mahkemenin ECLI kodları, yargılama yaptığı her dil için bir tane; yalnızca yayımlanmış kararlarda görülen kodlar                                                                                                     |
-| `address`          | `Address`?                            | Kalemin bulunduğu yer, posta kodunun ait olduğu belediyeyle birlikte (`municipality`, REFNIS koduyla). Mahkeme tek bir adres yayımlamıyorsa (her bölümünün kendi adresi olan bir mahkeme) yoktur                     |
-| `contacts`         | `Contact[]`                           | Telefon, faks, e-posta ve banka hesabı; her biri ait olduğu kalemle (`label`) ve onunla birlikte yayımlanan metinle (`note`)                                                                                         |
-| `openingHours`     | string?                               | Kalemin çalışma saatleri, OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) sözdiziminde: `Mo-Fr 08:30-12:30,13:30-16:00`; yalnızca yayımlanan metin tam olarak bunu söylüyorsa |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Yayımlandığı haliyle çalışma saatleri, dil başına                                                                                                                                                                    |
-| `website`          | `{ nl?, fr?, de? }`                   | Mahkemenin portaldaki sayfası, dil başına                                                                                                                                                                            |
-| `sources`          | `{ url, retrieved }[]`                | Kaydın okunduğu sayfalar ve içeriklerinin ilk görüldüğü tarih                                                                                                                                                        |
+| Alan               | Tür                                   | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`               | `CourtId`                             | Kararlı id: `type`, ardından mahkemenin kendi dilinde yer adı: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Bkz. [tanımlayıcılar](/tr/guide/identifiers)                                                                                                                                                                                                                                         |
+| `validFrom`        | string?                               | Kaydın geçerli olduğu ilk gün, `YYYY-MM-DD`: portalın onu ilk listelediği gün. Yoksa: kapsamın başladığı günden beri                                                                                                                                                                                                                                                                                                                          |
+| `validTo`          | string?                               | Kaydın geçerli olduğu son gün: haftalık kontrolün onu portalda bulamadığı günden bir önceki gün. Yoksa: hâlâ geçerli                                                                                                                                                                                                                                                                                                                          |
+| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                                                                                                                                                                                                                                         |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | Mahkemenin kendisi, bölümlerinden biri (afdeling, division, Abteilung) ya da bir vredegerecht'in duruşma yaptığı yerlerden biri                                                                                                                                                                                                                                                                                                               |
+| `court`            | `CourtId`?                            | Bir bölüm veya duruşma yeri için: ait olduğu mahkeme                                                                                                                                                                                                                                                                                                                                                                                          |
+| `name`             | `{ nl?, fr?, de? }`                   | Mahkemenin yayımladığı haliyle adı, sayfası olan her dilde: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                                                                                                                                                      |
+| `judicialArea`     | `JudicialAreaId`                      | Yargı çevresi                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `arrondissement`   | `ArrondissementId`?                   | Alanı tek bir arrondissement olan veya bir arrondissement içinde kalan bir mahkeme ya da bölüm için o arrondissement                                                                                                                                                                                                                                                                                                                          |
+| `canton`           | `CantonId`?                           | Bir vredegerecht için: hizmet verdiği kanton                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `cantons`          | `CantonId[]`?                         | Diğer her mahkeme için: Gerechtelijk Wetboek / Code judiciaire'in eki (md. 3–5) ve Kanun'un 114. maddesinin belirlediği şekilde kapsadığı kantonlar. Bir bölüm için: tamamı bölümün yetki alanında kalan kantonlar; bu yetki alanını Kanun'un 186. maddesi uyarınca çıkarılan kraliyet kararnameleri belirler (bkz. [bölümler](#divisions)). Kararname ceza davaları için başka bir yetki alanı belirliyorsa, hukuk davalarındaki yetki alanı |
+| `municipalities`   | `MunicipalityId[]`?                   | Yetki alanı bir kantonun yalnızca bir kısmını içine alan bir bölüm için: o belediyeler, REFNIS koduyla                                                                                                                                                                                                                                                                                                                                        |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | Kararnamesi ceza davaları için hukuk davalarındakinden farklı bir yetki alanı belirleyen bir bölüm için: ceza davalarındaki yetki alanı; `cantons` ve `municipalities` gibi okunur. Bölümün her iki dava türü için tek bir yetki alanı varsa yoktur                                                                                                                                                                                           |
+| `ecli`             | `string[]`?                           | Mahkemenin ECLI kodları, yargılama yaptığı her dil için bir tane; yalnızca yayımlanmış kararlarda görülen kodlar                                                                                                                                                                                                                                                                                                                              |
+| `address`          | `Address`?                            | Kalemin bulunduğu yer, posta kodunun ait olduğu belediyeyle birlikte (`municipality`, REFNIS koduyla). Mahkeme tek bir adres yayımlamıyorsa (her bölümünün kendi adresi olan bir mahkeme) yoktur                                                                                                                                                                                                                                              |
+| `contacts`         | `Contact[]`                           | Telefon, faks, e-posta ve banka hesabı; her biri ait olduğu kalemle (`label`) ve onunla birlikte yayımlanan metinle (`note`)                                                                                                                                                                                                                                                                                                                  |
+| `openingHours`     | string?                               | Kalemin çalışma saatleri, OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) sözdiziminde: `Mo-Fr 08:30-12:30,13:30-16:00`; yalnızca yayımlanan metin tam olarak bunu söylüyorsa                                                                                                                                                                                                                          |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Yayımlandığı haliyle çalışma saatleri, dil başına                                                                                                                                                                                                                                                                                                                                                                                             |
+| `website`          | `{ nl?, fr?, de? }`                   | Mahkemenin portaldaki sayfası, dil başına                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `sources`          | `{ url, retrieved }[]`                | Kaydın okunduğu sayfalar ve içeriklerinin ilk görüldüğü tarih                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ::: tip Yeni mahkeme türleri
 `type` yeni değerler kazanabilir (örneğin Hof van Cassatie / Cour de cassation). Üzerinde
@@ -126,6 +128,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -151,6 +155,72 @@ interface Contact {
 }
 ```
 
+## Bölümler {#divisions}
+
+Bir rechtbank van eerste aanleg / tribunal de première instance, ondernemingsrechtbank / tribunal
+de l'entreprise, arbeidsrechtbank / tribunal du travail, arbeidshof / cour du travail veya
+politierechtbank / tribunal de police bölümlere (afdelingen, divisions) ayrılabilir: başvuru
+bölüme yapılır, duruşma da orada görülür. Bir ondernemingsrechtbank / tribunal de l'entreprise
+bölümü, aynı zamanda şirket belgelerindeki tüzel kişiler sicili ibaresinde yer alan bölümdür
+("RPR Gent, afdeling Brugge"). Her bölümün yetki alanını, Gerechtelijk Wetboek / Code
+judiciaire'in 186. maddesi uyarınca çıkarılan bir kraliyet kararnamesi belirler: 14 Mart 2014
+tarihli kararname ya da o tarihten sonra birçok mahkeme için mahkemenin kendi dava dağılımı
+kararnamesi (zaakverdelingsreglement). 2017–2019 kanton reformları ve 2025 belediye birleşmeleri
+her ikisini de değiştirdi.
+
+Her bölümün yetki alanı `cantons` içindedir: tamamı o yetki alanında kalan kantonlar. Bir
+kararname bir kantonu böldüğünde bölüm, o kantondan aldığı belediyeleri `municipalities` içinde
+listeler. Hainaut tribunal du travail'i Pont-à-Celles'i (Seneffe kantonu) Charleroi'ya,
+Erquelinnes ile Merbes-le-Château'yu (Chimay kantonu) Binche'e gönderir. Liège tribunal de
+première instance'ı (2024'ten beri) ile Limburg politierechtbank'ı ve Liège tribunal de police'i
+bölümlerine kanton yerine belediye listeleri verir. Bir belediye, onu `municipalities` içinde
+anan bölüme, böyle bir bölüm yoksa kantonuna sahip olan bölüme aittir. Bu aramayı
+`findDivisionsWithJurisdiction` yapar.
+
+### Hukuk ve ceza davaları {#civil-and-criminal-cases}
+
+Bir kararname hukuk davaları için bir yetki alanı, ceza davaları için başka bir yetki alanı
+belirleyebilir. Antwerpen rechtbank van eerste aanleg'i ve politierechtbank'ı, 16 Aralık 2020
+tarihli kararnamelerinde böyle yapar: hukuk davalarında Heist-op-den-Berg kantonunun tamamı
+Mechelen bölümüne gider; ceza davalarında ise (bu davalarda görülen özel hukuk talepleriyle
+birlikte) kantonun Hulshout ve Herenthout belediyeleri Turnhout'a gider.
+
+Bu durumda `cantons` ve `municipalities` hukuk davalarındaki yetki alanıdır; bölümün ceza
+davalarındaki yetki alanı ise aynı iki alanla `criminalArea` içinde yer alır:
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout ve Hulshout
+```
+
+Yalnızca iki yetki alanı birbirinden farklı olan bir bölümün `criminalArea` alanı vardır: bugün
+dört tane, her iki mahkemenin Mechelen ve Turnhout bölümleri. Diğer her bölüm için tek yetki
+alanı her iki dava türünde de geçerlidir. `findDivisionsWithJurisdiction` dava türünü `matter`
+olarak alır:
+
+```ts
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
+ids() // ikisi de, önce hukuk davalarındaki: dava türü belirler
+```
+
+### Kaynaklar {#sources}
+
+Yetki alanları yürürlükteki metindir; her bölümün `sources` içinde atıf yaptığı Belgisch
+Staatsblad / Moniteur belge yayınlarından elle konsolide edilmiştir: yetki alanını belirleyen
+kararname ve onu sonradan değiştiren her kararname. Politierechtbanken / tribunaux de police'in
+yetki alanları Justel'in konsolide metinlerinden okunmuştur. Bir test, bir mahkemenin
+bölümlerinin mahkemenin yetki alanını hem hukuk hem de ceza davalarında tam bir kez kapsadığını
+denetler.
+
+Bir kararname, belirli bir dava türünü mahkemenin tamamı için tek bir bölüme de gönderebilir:
+Hainaut tribunal du travail'indeki toplu borç yapılandırması (règlement collectif de dettes)
+davaları ya da Liège tribunal de police'inde tribunaux du travail'in görev alanına giren suçlar.
+Bu kurallar verilerde yoktur.
+
 ## Yardımcılar {#helpers}
 
 ```ts
@@ -159,6 +229,8 @@ getJusticeOfThePeace('gent-1') // aynı mahkeme, kanton id'siyle
 getDivisions('enterprise-court-gent') // sekiz bölümü
 getCourtsForCanton('gent-1') // vredegerecht'i ve diğer her türden birer mahkeme
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde], REFNIS koduyla
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // eşleşen ilk iletişim kaydının değeri
 formatPhoneNumber('+3253820701') // '053 82 07 01'

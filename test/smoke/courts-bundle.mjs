@@ -7,9 +7,10 @@ import { readFileSync } from 'node:fs'
 import { gzipSync } from 'node:zlib'
 
 const dist = new URL('../../dist/', import.meta.url)
-// 52.1 KB in 0.4.0; 55.0 KB in 0.5.0, which stores each justice of the peace's canton label.
+// 52.1 KB in 0.4.0; 55.0 KB in 0.5.0, which stores each justice of the peace's canton label;
+// 57.8 KB with the areas of the police courts' 33 divisions and the decrees they cite.
 // Raise it on purpose, with the reason in the changelog
-const LIMIT = 57_000
+const LIMIT = 58_500
 
 const files = new Set()
 const visit = (file) => {

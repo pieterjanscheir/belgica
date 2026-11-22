@@ -405,14 +405,54 @@ function findCourtsWithJurisdiction(
 محاكم نوعٍ ما المختصة ببلدية في يوم ما (اليوم الحالي افتراضيًا)، برمز REFNIS: المحاكم التي يحوي
 نطاقها، كما يحدده القانون (`cantons`)، أحد كانتونات البلدية. محكمة واحدة لمعظم البلديات؛ وفي Brussel
 المحكمة الناطقة بالهولندية والمحكمة الناطقة بالفرنسية؛ ولمدينة مقسّمة على كانتونات، كل
-vredegerecht / justice de paix يخدم أحدها. وهي تعطي المحكمة ككل: أي أقسامها ينظر في القضية يحدده
-مرسوم ملكي وليس في البيانات بعد، فاختر من بين `getDivisions(court.id)`. وفارغة لرمز مجهول.
+vredegerecht / justice de paix يخدم أحدها. وهي تعطي المحكمة ككل: أما القسم فتعطيه
+[`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type). وفارغة لرمز مجهول.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // نوع القضية: 'civil' | 'criminal'
+}
+```
+
+أين يُودَع الطلب لبلدية ما، برمز REFNIS: لكل محكمة تعطيها
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type)، القسم الذي يحوي
+نطاقُه البلدية، كما تحدده المراسيم الملكية الصادرة بموجب المادة 186 من Gerechtelijk Wetboek / Code
+judiciaire (انظر [الأقسام](/ar/data/courts#divisions)). تنتمي البلدية إلى القسم الذي يذكرها في
+`municipalities`، وإلا فإلى القسم الذي له كانتونها في `cantons`. والمحكمة غير المقسّمة تعطي نفسها.
+ومدينة مقسّمة على كانتونات تذهب إلى أقسام مختلفة كانت ستعطي كلًّا منها، ويكون عنوان الشارع هو الفيصل؛
+ولا توجد اليوم مدينة مقسّمة على هذا النحو. و`[]` لرمز مجهول.
+
+لمحكمة الـrechtbank van eerste aanleg / tribunal de première instance ومحكمة الـpolitierechtbank /
+tribunal de police في Antwerpen نطاق للقضايا المدنية وآخر للقضايا الجزائية
+([`criminalArea`](/ar/data/courts#civil-and-criminal-cases) الخاص بالقسم): Hulshout وHerenthout
+تذهبان إلى Mechelen في الأولى وإلى Turnhout في الثانية. ويقول `matter` أيهما. ومن دونه تحصل هاتان
+البلديتان على القسمين كليهما، والمدني أولًا؛ وكل بلدية أخرى تحصل على الجواب نفسه أيًّا كان نوع القضية.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']: Pont-à-Celles، مع أن بقية كانتونها تذهب إلى Binche
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']: غير مقسّمة
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']: Hulshout، التي تذهب إلى Mechelen في القضايا المدنية
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

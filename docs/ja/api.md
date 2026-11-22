@@ -413,15 +413,57 @@ function findCourtsWithJurisdiction(
 ある日（デフォルトは今日）に、自治体（REFNIS コードで指定）を管轄する指定した種類の裁判所：法律が
 定める管轄区域（`cantons`）がその自治体の canton のいずれかを含む裁判所です。ほとんどの自治体では
 一つ、ブリュッセルではオランダ語とフランス語の裁判所、canton に分かれた都市ではそのいずれかを担当
-するすべての vredegerecht / justice de paix になります。返すのは裁判所全体です。どの部が事件を
-審理するかは勅令で定められており、まだデータにないので、`getDivisions(court.id)` から選んで
-ください。未知のコードでは空です。
+するすべての vredegerecht / justice de paix になります。返すのは裁判所全体です。部は
+[`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type) が返します。
+未知のコードでは空です。
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // 事件の種類：'civil' | 'criminal'
+}
+```
+
+自治体（REFNIS コードで指定）についてどこに提出するか：
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type) が返す各裁判所に
+ついて、Gerechtelijk Wetboek / Code judiciaire 第 186 条に基づく勅令が定める管轄区域
+（[部](/ja/data/courts#divisions)を参照）にその自治体を含む部を返します。自治体は、`municipalities`
+にその自治体を挙げている部に属し、そのような部がなければ、`cantons` にその自治体の canton を持つ
+部に属します。部に分かれていない裁判所では、その裁判所自体を返します。別々の部に属する canton に
+分かれた都市があれば、それぞれの部を返し、通りの住所で決まることになりますが、現在そのように
+分かれた都市はありません。未知のコードでは `[]` です。
+
+Antwerpen の rechtbank van eerste aanleg / tribunal de première instance と politierechtbank /
+tribunal de police は、民事事件と刑事事件とで管轄区域が異なります（部の
+[`criminalArea`](/ja/data/courts#civil-and-criminal-cases)）。Hulshout と Herenthout は、民事事件
+では Mechelen に、刑事事件では Turnhout に属します。どちらかは `matter` で指定します。指定
+しなければ、この二つの自治体については両方の部を、民事の部を先にして返します。それ以外の自治体
+では、事件の種類にかかわらず答えは同じです。
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']：Pont-à-Celles。その canton の残りは Binche に属する
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']：部に分かれていない
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']：Hulshout。民事事件では Mechelen に属する
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

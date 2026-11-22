@@ -7,9 +7,11 @@ import { data as stats } from '../../.vitepress/stats.data'
 - **المحاكم غير الموجودة على البوابة** ليست في البيانات: Hof van Cassatie / Cour de cassation،
   وGrondwettelijk Hof / Cour constitutionnelle، وRaad van State / Conseil d'État، والمحاكم
   التأديبية ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **الاختصاص يتوقف عند المحكمة.** يقول `cantons` و`findCourtsWithJurisdiction` أي محكمة تغطي بلدية ما،
-  لا أي قسم من أقسامها: نطاق القسم يحدده مرسوم ملكي وليس في البيانات بعد
-  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **القواعد التي تُسند نوعًا واحدًا من القضايا إلى قسم واحد ليست في البيانات.** لكل قسم نطاقه، ونطاقه
+  في القضايا الجزائية حين يحدد المرسوم نطاقًا آخر ([الأقسام](/ar/data/courts#divisions)). ويمكن أن
+  يُسند مرسومٌ أيضًا نوعًا واحدًا من القضايا إلى قسم واحد للمحكمة كلها، مثل التسويات الجماعية للديون
+  لدى محكمة الـarbeidsrechtbank / tribunal du travail في Hainaut: و`findDivisionsWithJurisdiction` لا
+  تعرف هذه القواعد.
 - **{{ stats.courts.withoutAddress }} محكمة بلا عنوان واحد**: محكمة لكل قسم من أقسامها عنوانه الخاص
   (العنوان على القسم)، أو محكمة تنشر عناوينها على شكل جملة. يغيب حقل `address` فيها بدلًا من
   تخمينه؛ وللأقسام عناوينها.

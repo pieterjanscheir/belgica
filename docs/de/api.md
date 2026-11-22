@@ -416,16 +416,57 @@ Die Gerichte eines Typs, die an einem Tag (standardmäßig heute) für eine Geme
 per REFNIS-Code: die Gerichte, deren Gebiet, wie das Gesetz es festlegt (`cantons`), einen der
 Kantone der Gemeinde enthält. Ein Gericht für die meisten Gemeinden; in Brüssel das
 niederländischsprachige und das französischsprachige Gericht; für eine auf Kantone aufgeteilte
-Stadt jedes Friedensgericht, das einen davon bedient. Es liefert das Gericht als Ganzes: Welche
-seiner Abteilungen eine Sache verhandelt, wird durch Königlichen Erlass festgelegt und ist noch
-nicht in den Daten; wählen Sie also unter `getDivisions(court.id)`. Leer für einen unbekannten
-Code.
+Stadt jedes Friedensgericht, das einen davon bedient. Es liefert das Gericht als Ganzes:
+[`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type) liefert die
+Abteilung. Leer für einen unbekannten Code.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // die Art der Sache: 'civil' | 'criminal'
+}
+```
+
+Wo für eine Gemeinde einzureichen ist, per REFNIS-Code: für jedes Gericht, das
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type) liefert, die Abteilung, deren Gebiet die Gemeinde enthält,
+wie die Königlichen Erlasse aufgrund von Art. 186 des Gerichtsgesetzbuchs es festlegen (siehe
+[Abteilungen](/de/data/courts#divisions)). Eine Gemeinde gehört zu der Abteilung, die sie in
+`municipalities` nennt, andernfalls zu der, die ihren Kanton in `cantons` hat. Ein Gericht, das
+nicht in Abteilungen aufgeteilt ist, liefert sich selbst. Eine Stadt, die auf Kantone aufgeteilt
+ist, die an verschiedene Abteilungen gehen, würde jede davon liefern, und die Adresse entscheidet;
+heute ist keine Stadt so aufgeteilt. Leer für einen unbekannten Code.
+
+Das Gericht erster Instanz und das Polizeigericht Antwerpen haben ein Gebiet für Zivilsachen und
+ein anderes für Strafsachen (das [`criminalArea`](/de/data/courts#civil-and-criminal-cases) einer
+Abteilung): Hulshout und Herenthout gehen in Zivilsachen an Mecheln und in Strafsachen an Turnhout.
+`matter` gibt an, um welche Art von Sache es geht. Ohne `matter` erhalten diese beiden Gemeinden
+beide Abteilungen, die für Zivilsachen zuerst; jede andere Gemeinde erhält unabhängig von der Art
+der Sache dieselbe Antwort.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']: Pont-à-Celles, obwohl der Rest seines Kantons an Binche geht
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']: nicht in Abteilungen aufgeteilt
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']: Hulshout, das in Zivilsachen an Mecheln geht
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

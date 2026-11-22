@@ -7,10 +7,11 @@ import { data as stats } from '../../.vitepress/stats.data'
 - **Les juridictions absentes du portail** ne sont pas dans les données : la Cour de cassation,
   la Cour constitutionnelle, le Conseil d'État et les juridictions disciplinaires
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **La compétence s'arrête à la juridiction.** `cantons` et `findCourtsWithJurisdiction` disent quelle
-  juridiction couvre une commune, pas laquelle de ses divisions : le territoire d'une division est
-  fixé par arrêté royal et n'est pas encore dans les données
-  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **Les règles qui envoient un type d'affaire à une seule division ne sont pas dans les données.**
+  Chaque division a son territoire, et son territoire en matière pénale là où l'arrêté en fixe un
+  autre ([divisions](/fr/data/courts#divisions)). Un arrêté peut aussi envoyer un type d'affaire à une
+  seule division pour toute la juridiction, comme les règlements collectifs de dettes du tribunal
+  du travail du Hainaut : `findDivisionsWithJurisdiction` ne les connaît pas.
 - **{{ stats.courts.withoutAddress }} juridictions n'ont pas d'adresse unique** : une juridiction
   dont chaque division a la sienne (l'adresse est sur la division), ou qui publie ses adresses
   sous forme de phrase. Leur `address` est absente plutôt que devinée ; les divisions ont la leur.

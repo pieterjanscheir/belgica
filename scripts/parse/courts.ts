@@ -477,6 +477,7 @@ function ordered(c: Court): Court {
         ...(c.canton ? { canton: c.canton } : {}),
         ...(c.cantons ? { cantons: c.cantons } : {}),
         ...(c.municipalities ? { municipalities: c.municipalities } : {}),
+        ...(c.criminalArea ? { criminalArea: c.criminalArea } : {}),
         ...(c.ecli ? { ecli: c.ecli } : {}),
         ...(c.address ? { address: c.address } : {}),
         contacts: c.contacts,

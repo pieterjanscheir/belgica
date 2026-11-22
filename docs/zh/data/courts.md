@@ -73,26 +73,28 @@ Cour constitutionnelle（宪法法院）、Raad van State / Conseil d'État（�
 
 ## 字段 {#fields}
 
-| 字段               | 类型                                  | 说明                                                                                                                                                                                |
-| ------------------ | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`               | `CourtId`                             | 稳定的 id：先是 `type`，再是法院自身语言中的地名：`justice-of-the-peace-gent-1`、`police-court-brussel-fr`、`enterprise-court-gent-brugge`。参见[标识符](/zh/guide/identifiers)     |
-| `validFrom`        | string?                               | 记录开始适用的第一天，`YYYY-MM-DD`：门户网站首次列出它的那一天。缺省：自数据覆盖开始起                                                                                              |
-| `validTo`          | string?                               | 记录适用的最后一天：每周检查发现它从门户网站消失的前一天。缺省：至今仍适用                                                                                                          |
-| `type`             | `CourtType`                           | `justice-of-the-peace`、`police-court`、`court-of-first-instance`、`enterprise-court`、`labour-court`、`court-of-appeal`、`labour-court-of-appeal`、`court-of-assize`               |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | 法院本身、其某个分部（afdeling、division、Abteilung），或治安法院的某个开庭地点                                                                                                     |
-| `court`            | `CourtId`?                            | 对于分部或开庭地点：它所属的法院                                                                                                                                                    |
-| `name`             | `{ nl?, fr?, de? }`                   | 法院公布的名称，按其有页面的每种语言提供：`Vredegerecht Gent 1`、`Tribunal de l'entreprise du Hainaut - division Mons`                                                              |
-| `judicialArea`     | `JudicialAreaId`                      | 司法辖区                                                                                                                                                                            |
-| `arrondissement`   | `ArrondissementId`?                   | arrondissement，适用于辖区恰为一个 arrondissement 或位于一个 arrondissement 之内的法院或分部                                                                                        |
-| `canton`           | `CantonId`?                           | 对于治安法院：它所服务的 canton                                                                                                                                                     |
-| `cantons`          | `CantonId[]`?                         | 对于其他所有法院（不含其分部）：它所覆盖的 canton，依据 Gerechtelijk Wetboek / Code judiciaire（司法法典）附件（第 3–5 条）及该法典第 114 条确定                                    |
-| `ecli`             | `string[]`?                           | 法院的 ECLI 代码，每种审判语言一个；仅包括在已公布判决中出现过的代码                                                                                                                |
-| `address`          | `Address`?                            | 书记处所在地，附带其邮政编码所属的市镇（`municipality`，以 REFNIS 代码表示）。法院未公布单一地址时缺省（例如各分部各有地址的法院）                                                  |
-| `contacts`         | `Contact[]`                           | 电话、传真、电子邮件和银行账户，每项都带有所属书记处（`label`）和随之公布的文字（`note`）                                                                                           |
-| `openingHours`     | string?                               | 书记处办公时间，采用 OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) 语法：`Mo-Fr 08:30-12:30,13:30-16:00`，仅当公布的文字恰好表达此意时提供 |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | 按语言提供的、原样公布的办公时间                                                                                                                                                    |
-| `website`          | `{ nl?, fr?, de? }`                   | 法院在门户网站上的页面，按语言提供                                                                                                                                                  |
-| `sources`          | `{ url, retrieved }[]`                | 读取该记录的页面，以及其内容首次被看到的时间                                                                                                                                        |
+| 字段               | 类型                                  | 说明                                                                                                                                                                                                                                                                                           |
+| ------------------ | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`               | `CourtId`                             | 稳定的 id：先是 `type`，再是法院自身语言中的地名：`justice-of-the-peace-gent-1`、`police-court-brussel-fr`、`enterprise-court-gent-brugge`。参见[标识符](/zh/guide/identifiers)                                                                                                                |
+| `validFrom`        | string?                               | 记录开始适用的第一天，`YYYY-MM-DD`：门户网站首次列出它的那一天。缺省：自数据覆盖开始起                                                                                                                                                                                                         |
+| `validTo`          | string?                               | 记录适用的最后一天：每周检查发现它从门户网站消失的前一天。缺省：至今仍适用                                                                                                                                                                                                                     |
+| `type`             | `CourtType`                           | `justice-of-the-peace`、`police-court`、`court-of-first-instance`、`enterprise-court`、`labour-court`、`court-of-appeal`、`labour-court-of-appeal`、`court-of-assize`                                                                                                                          |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | 法院本身、其某个分部（afdeling、division、Abteilung），或治安法院的某个开庭地点                                                                                                                                                                                                                |
+| `court`            | `CourtId`?                            | 对于分部或开庭地点：它所属的法院                                                                                                                                                                                                                                                               |
+| `name`             | `{ nl?, fr?, de? }`                   | 法院公布的名称，按其有页面的每种语言提供：`Vredegerecht Gent 1`、`Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                         |
+| `judicialArea`     | `JudicialAreaId`                      | 司法辖区                                                                                                                                                                                                                                                                                       |
+| `arrondissement`   | `ArrondissementId`?                   | arrondissement，适用于辖区恰为一个 arrondissement 或位于一个 arrondissement 之内的法院或分部                                                                                                                                                                                                   |
+| `canton`           | `CantonId`?                           | 对于治安法院：它所服务的 canton                                                                                                                                                                                                                                                                |
+| `cantons`          | `CantonId[]`?                         | 对于其他所有法院：它所覆盖的 canton，依据 Gerechtelijk Wetboek / Code judiciaire（司法法典）附件（第 3–5 条）及该法典第 114 条确定。对于分部：完全位于其辖区内的 canton，辖区由依据该法典第 186 条颁布的王室法令确定（参见[分部](#divisions)）；法令为刑事案件另定辖区的，此处为民事案件的辖区 |
+| `municipalities`   | `MunicipalityId[]`?                   | 对于辖区只包含某个 canton 一部分的分部：这些市镇，以 REFNIS 代码表示                                                                                                                                                                                                                           |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | 对于法令为刑事案件规定了不同于民事案件的辖区的分部：它在刑事案件中的辖区，读法与 `cantons` 和 `municipalities` 相同。分部只有一个辖区、两类案件通用时缺省                                                                                                                                      |
+| `ecli`             | `string[]`?                           | 法院的 ECLI 代码，每种审判语言一个；仅包括在已公布判决中出现过的代码                                                                                                                                                                                                                           |
+| `address`          | `Address`?                            | 书记处所在地，附带其邮政编码所属的市镇（`municipality`，以 REFNIS 代码表示）。法院未公布单一地址时缺省（例如各分部各有地址的法院）                                                                                                                                                             |
+| `contacts`         | `Contact[]`                           | 电话、传真、电子邮件和银行账户，每项都带有所属书记处（`label`）和随之公布的文字（`note`）                                                                                                                                                                                                      |
+| `openingHours`     | string?                               | 书记处办公时间，采用 OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) 语法：`Mo-Fr 08:30-12:30,13:30-16:00`，仅当公布的文字恰好表达此意时提供                                                                                                            |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | 按语言提供的、原样公布的办公时间                                                                                                                                                                                                                                                               |
+| `website`          | `{ nl?, fr?, de? }`                   | 法院在门户网站上的页面，按语言提供                                                                                                                                                                                                                                                             |
+| `sources`          | `{ url, retrieved }[]`                | 读取该记录的页面，以及其内容首次被看到的时间                                                                                                                                                                                                                                                   |
 
 ::: tip 新的法院类型
 `type` 可能会增加新值（例如 Hof van Cassatie / Cour de cassation）。如果你对它使用 `switch`，请保留一个
@@ -114,6 +116,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -139,6 +143,54 @@ interface Contact {
 }
 ```
 
+## 分部 {#divisions}
+
+初审法院、企业法院、劳动法院、劳动上诉法院或违警法院可以划分为若干分部（afdelingen、divisions）：分部决定你向哪里提交材料、
+在哪里开庭。企业法院的分部也是公司文件上法人登记册标注（"RPR Gent, afdeling Brugge"）中的那个分部。每个分部的辖区由依据
+Gerechtelijk Wetboek / Code judiciaire（司法法典）第 186 条颁布的王室法令确定：2014 年 3 月 14 日的法令，或者像此后许多法院
+那样，由该法院自己的案件分配法令（zaakverdelingsreglement）确定。2017–2019 年的 canton 改革和 2025 年的市镇合并使两者都
+发生了变化。
+
+每个分部的辖区记录在 `cantons` 中：即完全位于其辖区内的 canton。法令把某个 canton 拆开时，分部在 `municipalities` 中列出
+它从该 canton 取得的市镇。Hainaut 劳动法院把 Pont-à-Celles（canton Seneffe）划给 Charleroi，把 Erquelinnes 和
+Merbes-le-Château（canton Chimay）划给 Binche。Liège 初审法院（自 2024 年起）以及 Limburg 和 Liège 的违警法院为其分部
+给出的是市镇列表，而不是 canton。一个市镇属于在 `municipalities` 中列出它的分部，否则属于拥有其 canton 的分部。
+`findDivisionsWithJurisdiction` 执行的就是这一查找。
+
+### 民事案件与刑事案件 {#civil-and-criminal-cases}
+
+法令可以为民事案件规定一个辖区，为刑事案件规定另一个辖区。Antwerpen 的初审法院和违警法院就是如此，依据的是各自
+2020 年 12 月 16 日的法令：在民事案件中，整个 canton Heist-op-den-Berg 归 Mechelen 分部；在刑事案件（以及其中一并审理的
+民事请求）中，该 canton 的市镇 Hulshout 和 Herenthout 归 Turnhout。
+
+这时 `cantons` 和 `municipalities` 是民事案件的辖区，分部在刑事案件中的辖区则放在 `criminalArea` 中，包含同样的两个字段：
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout 和 Hulshout
+```
+
+只有两个辖区不同的分部才有 `criminalArea`：目前有四个，即这两个法院的 Mechelen 分部和 Turnhout 分部。其他所有分部只有
+一个辖区，对两类案件都适用。`findDivisionsWithJurisdiction` 通过 `matter` 接收案件类型：
+
+```ts
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
+ids() // 两者都返回，民事的在前：由案件类型决定
+```
+
+### 来源 {#sources}
+
+这些辖区是现行有效的文本，根据每个分部在 `sources` 中引用的 Belgisch Staatsblad / Moniteur belge（比利时政府公报）公布文本
+手工合并整理而成：确定辖区的法令，以及此后每一项修改它的法令。违警法院的辖区读取自 Justel 经过合并整理的文本。有一项测试
+检查一个法院的各分部恰好覆盖其辖区一次，民事案件和刑事案件都是如此。
+
+法令还可以把某一类案件在整个法院范围内交给一个分部：Hainaut 劳动法院的集体债务清理案件，或 Liège 违警法院中属于劳动法院
+管辖的违法行为。这些规则不在数据中。
+
 ## 辅助函数 {#helpers}
 
 ```ts
@@ -147,6 +199,8 @@ getJusticeOfThePeace('gent-1') // 同一个法院，通过 canton id 获取
 getDivisions('enterprise-court-gent') // 它的八个分部
 getCourtsForCanton('gent-1') // 它的治安法院，以及其他每种类型各一个法院
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde]，按 REFNIS 代码
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // 第一个匹配联系方式的值
 formatPhoneNumber('+3253820701') // '053 82 07 01'

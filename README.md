@@ -74,6 +74,7 @@ import {
     getJusticeOfThePeace,
     getCantonsForMunicipality,
     findCourtsWithJurisdiction,
+    findDivisionsWithJurisdiction,
     findCourtsForPostalCode,
     getInterestRate,
     nextWorkingDay,
@@ -89,6 +90,7 @@ getJusticeOfThePeace(canton.id).address // where to file
 getCantonsForMunicipality('44021', { on: '2025-09-15' }) // Gent 1–5 on that day: a split city
 findCantonsAt(3.7268, 51.053) // [gent-1]: the canton of a point
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde]: which court, by REFNIS code
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]: and which division
 findCourtsForPostalCode('1040', 'police-court') // per municipality: Brussel and Etterbeek share the code
 
 getInterestRate('2024-06-15', 'legal') // { rate: 5.75, period: { from: '2024-01-01', to: '2024-12-31' } }

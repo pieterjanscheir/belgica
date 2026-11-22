@@ -66,10 +66,10 @@ export const courtSchema = z.strictObject({
     /**
      * For a court other than a justice of the peace: the cantons it covers, as the annex to the
      * Judicial Code (art. 3–5) and art. 114 of the Code set them. A justice of the peace covers
-     * its `canton`. For a division of a court of first instance, enterprise court, labour court
-     * or labour court of appeal: the cantons that lie wholly in its area, as the royal decrees
-     * under art. 186 of the Code set it; `municipalities` has the rest. A seat, and a division
-     * of a police court, has neither.
+     * its `canton`. For a division (afdeling, division): the cantons that lie wholly in its
+     * area, as the royal decrees under art. 186 of the Code set it; `municipalities` has the
+     * rest. Where the decree sets one area for civil and another for criminal cases, this is
+     * the one for civil cases, and `criminalArea` has the other. A seat has neither.
      */
     cantons: z.array(cantonIdSchema).exactOptional(),
     /**
@@ -79,6 +79,20 @@ export const courtSchema = z.strictObject({
      * `cantons`.
      */
     municipalities: z.array(municipalityIdSchema).exactOptional(),
+    /**
+     * For a division whose decree sets another area for criminal cases (strafzaken, with the
+     * civil claims heard in them) than for civil ones: its area in criminal cases, read as
+     * `cantons` and `municipalities` are. Missing where the division has one area for both, as
+     * almost every division does.
+     */
+    criminalArea: z
+        .strictObject({
+            /** The cantons that lie wholly in the division's area in criminal cases */
+            cantons: z.array(cantonIdSchema).exactOptional(),
+            /** The municipalities it takes from a canton it shares, by REFNIS code */
+            municipalities: z.array(municipalityIdSchema).exactOptional(),
+        })
+        .exactOptional(),
     /**
      * The court's codes in European Case Law Identifiers (ECLI:BE:<code>:…), one per language
      * it judges in; only codes seen in published decisions
@@ -120,6 +134,7 @@ export const courtSummarySchema = courtSchema.pick({
     canton: true,
     cantons: true,
     municipalities: true,
+    criminalArea: true,
     address: true,
 })
 /** A court as the list files in data/courts/ hold it: who and where it is, without its contacts */
