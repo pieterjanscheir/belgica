@@ -17,6 +17,7 @@ export default {
             dataQuality: 'Якість і актуальність даних',
             contributing: 'Як долучитися',
             changelog: 'Changelog',
+            upgrading: 'Оновлення',
             data: 'Дані',
             overview: 'Огляд',
             territory: 'Територія і кантони',

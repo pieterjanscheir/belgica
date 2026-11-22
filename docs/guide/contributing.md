@@ -153,8 +153,11 @@ instead, and keep the offices, chambers and the areas they cover.
    version, bumps `version` in `package.json` and the Python package (`python/pyproject.toml`
    and `python/uv.lock`), points the raw data links in the docs at the new
    tag (`scripts/prepare-release.ts`), and opens the release pull request.
-2. Tidy the version's section if it needs it (two branches can each add an `### Added`), check
-   the pull request, and merge it.
+2. Tidy the version's section if it needs it (two branches can each add an `### Added`).
+3. If the version changes an answer, a field's meaning or the shape of the data, add a section
+   to [Upgrading](./upgrading) in the same pull request: what changes for code that already
+   uses the package, with the answer before and after, and what to do.
+4. Check the pull request, and merge it.
 
 Merging a new `version` into main starts the release workflow: it runs `pnpm check`, publishes
 to npm with provenance and to PyPI, tags the commit, and creates a GitHub release with the data, schemas and
@@ -168,9 +171,15 @@ doesn't use it, so merge main into the branch locally when GitHub reports a conf
 
 ### The bot
 
-The release pull request and the data pull request are opened by a workflow. With the
-workflow's own token GitHub doesn't run CI on them, so they're opened with a token from a GitHub
-App when one is set up. Without it, close and reopen those pull requests to run CI. To set it up:
+The release pull request and the data pull request are opened by a workflow. A workflow's own
+token may only open a pull request when the repository allows it: Settings → Actions → General →
+Workflow permissions → **Allow GitHub Actions to create and approve pull requests**. With that
+off, the branch is still pushed: the release run ends with a link that opens the pull request in
+one click, and the sources run opens an issue that says the branch is ready.
+
+With the workflow's own token GitHub doesn't run CI on those pull requests either, so they're
+opened with a token from a GitHub App when one is set up, which needs neither the setting nor a
+close and reopen to run CI. To set it up:
 
 1. Create a GitHub App under Settings → Developer settings → GitHub Apps → New GitHub App: any
    name, any homepage URL, webhook off, repository permissions **Contents: read and write** and

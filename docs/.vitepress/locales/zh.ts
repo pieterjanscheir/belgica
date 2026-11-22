@@ -17,6 +17,7 @@ export default {
             dataQuality: '数据质量与时效',
             contributing: '参与贡献',
             changelog: '更新日志',
+            upgrading: '升级',
             data: '数据',
             overview: '概览',
             territory: '地域与 canton',

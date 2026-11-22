@@ -4,6 +4,10 @@ name: Prepare release
 # CHANGELOG.md under it (scripts/prepare-release.ts) and opens the release pull request. Merging
 # that pull request publishes the release (release.yml). The changelog stays hand-written: add
 # to Unreleased as changes land.
+#
+# Opening the pull request needs the bot's token (docs/guide/contributing.md) or the repository
+# setting "Allow GitHub Actions to create and approve pull requests". With neither, the branch
+# is still pushed and the run ends with a link that opens the pull request in one click.
 on:
     workflow_dispatch:
         inputs:
@@ -72,4 +76,29 @@ jobs:
                       echo "reopen this one to run it, or set up the bot (docs/guide/contributing.md)."
                     fi
                   } > body.md
-                  gh pr create --base main --head "release/v$VERSION" --title "Release $VERSION" --body-file body.md
+                  if gh pr create --base main --head "release/v$VERSION" --title "Release $VERSION" --body-file body.md 2> pr.err; then
+                    exit 0
+                  fi
+                  cat pr.err >&2
+                  # The branch is pushed either way. The workflow's own token may only open a pull
+                  # request when the repository allows it: say so, and give the link that opens it
+                  # with one click, instead of a bare failure
+                  if grep -q 'not permitted to create or approve pull requests' pr.err; then
+                    link="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...release/v$VERSION?quick_pull=1&title=Release%20$VERSION"
+                    echo "::error title=The release branch is pushed, but this workflow may not open its pull request::Open it yourself: $link . To let the workflow open it, turn on Settings > Actions > General > Workflow permissions > Allow GitHub Actions to create and approve pull requests, or set up the bot (docs/guide/contributing.md)."
+                    {
+                      echo "## The branch \`release/v$VERSION\` is pushed, but the pull request isn't open"
+                      echo
+                      echo "This repository doesn't let GitHub Actions open pull requests."
+                      echo
+                      echo "- **Now**: [open the pull request]($link) and merge it to publish $VERSION."
+                      echo "  Opened by you, it starts CI."
+                      echo "- **For next time**, one of:"
+                      echo "  - Settings → Actions → General → Workflow permissions → **Allow GitHub Actions to"
+                      echo "    create and approve pull requests**. The pull request then opens by itself, but"
+                      echo "    without CI: close and reopen it to run CI."
+                      echo "  - Set up the bot (\`docs/guide/contributing.md\`). The pull request opens by itself"
+                      echo "    and CI runs."
+                    } >> "$GITHUB_STEP_SUMMARY"
+                  fi
+                  exit 1

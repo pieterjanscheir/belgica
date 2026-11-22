@@ -17,6 +17,7 @@ export default {
             dataQuality: 'Qualidade e atualidade dos dados',
             contributing: 'Contribuir',
             changelog: 'Changelog',
+            upgrading: 'Atualização',
             data: 'Dados',
             overview: 'Visão geral',
             territory: 'Território e cantões',

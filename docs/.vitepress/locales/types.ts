@@ -16,6 +16,7 @@ export interface Strings {
         dataQuality: string
         contributing: string
         changelog: string
+        upgrading: string
         data: string
         overview: string
         territory: string
