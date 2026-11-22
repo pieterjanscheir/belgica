@@ -7,9 +7,11 @@ import { data as stats } from '../../.vitepress/stats.data'
 - **Sądów spoza portalu** nie ma w danych: Hof van Cassatie / Cour de cassation, Grondwettelijk
   Hof / Cour constitutionnelle, Raad van State / Conseil d'État i sądów dyscyplinarnych
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **Właściwość kończy się na sądzie.** `cantons` i `findCourtsWithJurisdiction` mówią, który sąd
-  obejmuje gminę, a nie który z jego wydziałów: obszar wydziału ustala dekret królewski, którego
-  jeszcze nie ma w danych ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **Reguł kierujących jeden rodzaj spraw do jednego wydziału nie ma w danych.** Każdy wydział ma
+  swój obszar, a także obszar w sprawach karnych, gdy dekret określa dla nich inny
+  ([wydziały](/pl/data/courts#divisions)). Dekret może też skierować jeden rodzaj spraw do
+  jednego wydziału dla całego sądu, jak zbiorowe uregulowanie długów (règlement collectif de
+  dettes) w tribunal du travail du Hainaut: `findDivisionsWithJurisdiction` tych reguł nie zna.
 - **{{ stats.courts.withoutAddress }} sądów nie ma jednego adresu**: sąd, którego wydziały mają
   każdy własny (adres jest przy wydziale), albo sąd, który publikuje swoje adresy w postaci
   zdania. Ich `address` jest nieobecny, a nie zgadywany; wydziały mają swoje.

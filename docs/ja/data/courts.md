@@ -76,26 +76,28 @@ Grondwettelijk Hof / Cour constitutionnelle、Raad van State / Conseil d'État�
 
 ## フィールド {#fields}
 
-| フィールド         | 型                                    | 説明                                                                                                                                                                                                |
-| ------------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`               | `CourtId`                             | 安定した id：`type` の後に裁判所自身の言語での地名：`justice-of-the-peace-gent-1`、`police-court-brussel-fr`、`enterprise-court-gent-brugge`。[識別子](/ja/guide/identifiers)を参照                 |
-| `validFrom`        | string?                               | レコードが適用される最初の日、`YYYY-MM-DD`：ポータルに最初に掲載された日。なければ対象期間の開始時から                                                                                              |
-| `validTo`          | string?                               | レコードが適用される最後の日：週次チェックでポータルから消えたことがわかった日の前日。なければまだ適用中                                                                                            |
-| `type`             | `CourtType`                           | `justice-of-the-peace`、`police-court`、`court-of-first-instance`、`enterprise-court`、`labour-court`、`court-of-appeal`、`labour-court-of-appeal`、`court-of-assize`                               |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | 裁判所そのもの、その部（afdeling / division / Abteilung）、または vredegerecht / justice de paix の所在地の一つ                                                                                     |
-| `court`            | `CourtId`?                            | 部または所在地の場合：それが属する裁判所                                                                                                                                                            |
-| `name`             | `{ nl?, fr?, de? }`                   | 裁判所が公表している名称。ページのある各言語で：`Vredegerecht Gent 1`、`Tribunal de l'entreprise du Hainaut - division Mons`                                                                        |
-| `judicialArea`     | `JudicialAreaId`                      | 管轄区域                                                                                                                                                                                            |
-| `arrondissement`   | `ArrondissementId`?                   | 管轄が一つの arrondissement であるか、その中に収まる裁判所または部の場合：その arrondissement                                                                                                       |
-| `canton`           | `CantonId`?                           | vredegerecht / justice de paix の場合：担当する canton                                                                                                                                              |
-| `cantons`          | `CantonId[]`?                         | その他すべての裁判所（部は除く）の場合：Gerechtelijk Wetboek / Code judiciaire の附属書（第 3〜5 条）と同法典第 114 条が定める、管轄する canton                                                     |
-| `ecli`             | `string[]`?                           | 裁判所の ECLI コード。判決を下す言語ごとに一つ。公表された判決で確認できたコードのみ                                                                                                                |
-| `address`          | `Address`?                            | 書記課の所在地と、その郵便番号が属する自治体（`municipality`、REFNIS コード）。裁判所が単一の住所を公表していない場合（部ごとに住所がある裁判所）はなし                                             |
-| `contacts`         | `Contact[]`                           | 電話、ファクス、メール、銀行口座。それぞれが属する書記課（`label`）と、一緒に公表されているテキスト（`note`）つき                                                                                   |
-| `openingHours`     | string?                               | OpenStreetMap の [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) 構文による書記課の開庁時間：`Mo-Fr 08:30-12:30,13:30-16:00`。公表されたテキストが正確にそれを表す場合のみ |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | 公表されたとおりの開庁時間。言語ごと                                                                                                                                                                |
-| `website`          | `{ nl?, fr?, de? }`                   | ポータル上の裁判所のページ。言語ごと                                                                                                                                                                |
-| `sources`          | `{ url, retrieved }[]`                | レコードを読み取ったページと、その内容を最初に確認した日                                                                                                                                            |
+| フィールド         | 型                                    | 説明                                                                                                                                                                                                                                                                                                                  |
+| ------------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`               | `CourtId`                             | 安定した id：`type` の後に裁判所自身の言語での地名：`justice-of-the-peace-gent-1`、`police-court-brussel-fr`、`enterprise-court-gent-brugge`。[識別子](/ja/guide/identifiers)を参照                                                                                                                                   |
+| `validFrom`        | string?                               | レコードが適用される最初の日、`YYYY-MM-DD`：ポータルに最初に掲載された日。なければ対象期間の開始時から                                                                                                                                                                                                                |
+| `validTo`          | string?                               | レコードが適用される最後の日：週次チェックでポータルから消えたことがわかった日の前日。なければまだ適用中                                                                                                                                                                                                              |
+| `type`             | `CourtType`                           | `justice-of-the-peace`、`police-court`、`court-of-first-instance`、`enterprise-court`、`labour-court`、`court-of-appeal`、`labour-court-of-appeal`、`court-of-assize`                                                                                                                                                 |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | 裁判所そのもの、その部（afdeling / division / Abteilung）、または vredegerecht / justice de paix の所在地の一つ                                                                                                                                                                                                       |
+| `court`            | `CourtId`?                            | 部または所在地の場合：それが属する裁判所                                                                                                                                                                                                                                                                              |
+| `name`             | `{ nl?, fr?, de? }`                   | 裁判所が公表している名称。ページのある各言語で：`Vredegerecht Gent 1`、`Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                                          |
+| `judicialArea`     | `JudicialAreaId`                      | 管轄区域                                                                                                                                                                                                                                                                                                              |
+| `arrondissement`   | `ArrondissementId`?                   | 管轄が一つの arrondissement であるか、その中に収まる裁判所または部の場合：その arrondissement                                                                                                                                                                                                                         |
+| `canton`           | `CantonId`?                           | vredegerecht / justice de paix の場合：担当する canton                                                                                                                                                                                                                                                                |
+| `cantons`          | `CantonId[]`?                         | その他すべての裁判所の場合：Gerechtelijk Wetboek / Code judiciaire の附属書（第 3〜5 条）と同法典第 114 条が定める、管轄する canton。部の場合：同法典第 186 条に基づく勅令が定める管轄区域（[部](#divisions)を参照）に全体が含まれる canton。勅令が刑事事件について別の管轄区域を定めている場合は、民事事件の管轄区域 |
+| `municipalities`   | `MunicipalityId[]`?                   | 管轄区域が canton の一部だけを含む部の場合：その自治体（REFNIS コード）                                                                                                                                                                                                                                               |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | 勅令が刑事事件について民事事件とは別の管轄区域を定めている部の場合：刑事事件における管轄区域。`cantons` および `municipalities` と同じように読みます。部の管轄区域が両方に共通の一つである場合はなし                                                                                                                  |
+| `ecli`             | `string[]`?                           | 裁判所の ECLI コード。判決を下す言語ごとに一つ。公表された判決で確認できたコードのみ                                                                                                                                                                                                                                  |
+| `address`          | `Address`?                            | 書記課の所在地と、その郵便番号が属する自治体（`municipality`、REFNIS コード）。裁判所が単一の住所を公表していない場合（部ごとに住所がある裁判所）はなし                                                                                                                                                               |
+| `contacts`         | `Contact[]`                           | 電話、ファクス、メール、銀行口座。それぞれが属する書記課（`label`）と、一緒に公表されているテキスト（`note`）つき                                                                                                                                                                                                     |
+| `openingHours`     | string?                               | OpenStreetMap の [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) 構文による書記課の開庁時間：`Mo-Fr 08:30-12:30,13:30-16:00`。公表されたテキストが正確にそれを表す場合のみ                                                                                                                   |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | 公表されたとおりの開庁時間。言語ごと                                                                                                                                                                                                                                                                                  |
+| `website`          | `{ nl?, fr?, de? }`                   | ポータル上の裁判所のページ。言語ごと                                                                                                                                                                                                                                                                                  |
+| `sources`          | `{ url, retrieved }[]`                | レコードを読み取ったページと、その内容を最初に確認した日                                                                                                                                                                                                                                                              |
 
 ::: tip 新しい種類の裁判所
 `type` には値が追加される可能性があります（たとえば Hof van Cassatie / Cour de cassation）。
@@ -117,6 +119,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -142,6 +146,69 @@ interface Contact {
 }
 ```
 
+## 部 {#divisions}
+
+rechtbank van eerste aanleg / tribunal de première instance、ondernemingsrechtbank / tribunal de
+l'entreprise、arbeidsrechtbank / tribunal du travail、arbeidshof / cour du travail、politierechtbank /
+tribunal de police は、部（afdelingen / divisions）に分かれていることがあります。部は、書類を提出する
+先であり、審理が行われる場所です。ondernemingsrechtbank / tribunal de l'entreprise の部は、会社の
+書類に記載する法人登記簿の表記（「RPR Gent, afdeling Brugge」）に入る部でもあります。各部の
+管轄区域は、Gerechtelijk Wetboek / Code judiciaire 第 186 条に基づく勅令が定めます。2014 年 3 月
+14 日の勅令、または、その後多くの裁判所については、その裁判所独自の事件配分規則
+（zaakverdelingsreglement）の勅令です。2017〜2019 年の canton 改革と 2025 年の自治体合併により、
+どちらも変更されました。
+
+各部の管轄区域は `cantons` にあります。その区域に全体が含まれる canton です。勅令が canton を
+分割している場合、部はその canton から受け持つ自治体を `municipalities` に列挙します。Hainaut の
+arbeidsrechtbank / tribunal du travail では、Pont-à-Celles（canton Seneffe）は Charleroi に、
+Erquelinnes と Merbes-le-Château（canton Chimay）は Binche に割り当てられています。Liège の
+rechtbank van eerste aanleg / tribunal de première instance（2024 年以降）と、Limburg および Liège の
+politierechtbank / tribunal de police は、部の管轄区域を canton ではなく自治体の一覧で定めて
+います。自治体は、`municipalities` にその自治体を挙げている部に属し、そのような部がなければ、
+その自治体の canton を持つ部に属します。この検索を行うのが `findDivisionsWithJurisdiction` です。
+
+### 民事事件と刑事事件 {#civil-and-criminal-cases}
+
+勅令は、民事事件と刑事事件とで別々の管轄区域を定めることができます。Antwerpen の rechtbank van
+eerste aanleg / tribunal de première instance と politierechtbank / tribunal de police がそうで、
+2020 年 12 月 16 日のそれぞれの勅令によります。民事事件では canton Heist-op-den-Berg の全体が
+Mechelen の部に属し、刑事事件（およびその中で審理される民事上の請求）では、その canton の自治体
+Hulshout と Herenthout が Turnhout に属します。
+
+この場合、`cantons` と `municipalities` は民事事件の管轄区域であり、刑事事件の管轄区域は、同じ
+二つのフィールドを持つ `criminalArea` に入ります。
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout と Hulshout
+```
+
+`criminalArea` を持つのは、二つの管轄区域が異なる部だけです。現在は四つ、両裁判所の Mechelen と
+Turnhout です。それ以外の部では、一つの管轄区域が両方に適用されます。
+`findDivisionsWithJurisdiction` は、事件の種類を `matter` として受け取ります。
+
+```ts
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
+ids() // 両方。民事の部が先：事件の種類で決まる
+```
+
+### 出典 {#sources}
+
+管轄区域は現行の条文です。各部が `sources` に挙げている Belgisch Staatsblad / Moniteur belge
+（官報）の公布文、すなわち管轄区域を定めた勅令と、それを後に改正したすべての勅令から、手作業で
+統合しました。politierechtbank / tribunal de police の管轄区域は、Justel の統合された条文から
+読み取りました。裁判所の各部が、民事事件でも刑事事件でも、その裁判所の管轄区域を過不足なく
+一度ずつ覆っていることを、テストで確認しています。
+
+勅令は、ある種類の事件を裁判所全体について一つの部に割り当てることもあります。Hainaut の
+arbeidsrechtbank / tribunal du travail の集団的債務整理や、Liège の politierechtbank / tribunal de
+police における arbeidsrechtbank / tribunal du travail の所管に属する違反行為がその例です。
+こうした規則はデータに入っていません。
+
 ## ヘルパー {#helpers}
 
 ```ts
@@ -150,6 +217,8 @@ getJusticeOfThePeace('gent-1') // 同じ裁判所を canton の id で
 getDivisions('enterprise-court-gent') // その 8 つの部
 getCourtsForCanton('gent-1') // その vredegerecht と、他の各種類の裁判所を一つずつ
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde]、REFNIS コードで
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // 最初に一致した連絡先の値
 formatPhoneNumber('+3253820701') // '053 82 07 01'

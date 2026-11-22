@@ -7,10 +7,11 @@ import { data as stats } from '../../.vitepress/stats.data'
 - **Le giurisdizioni che non sono sul portale** non sono nei dati: l'Hof van Cassatie / Cour de
   cassation, il Grondwettelijk Hof / Cour constitutionnelle, il Raad van State / Conseil d'État
   e i tribunali disciplinari ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **La competenza si ferma al tribunale.** `cantons` e `findCourtsWithJurisdiction` dicono quale
-  tribunale copre un comune, non quale delle sue sezioni: l'area di una sezione è stabilita da un
-  regio decreto e non è ancora nei dati
-  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **Le regole che mandano un tipo di causa a un'unica sezione non sono nei dati.** Ogni sezione
+  ha la sua area, e la sua area nelle cause penali quando il decreto ne stabilisce un'altra
+  ([sezioni](/it/data/courts#divisions)). Un decreto può anche mandare un tipo di causa a
+  un'unica sezione per tutto il tribunale, come le procedure di regolamento collettivo dei debiti
+  del tribunal du travail dell'Hainaut: `findDivisionsWithJurisdiction` non le conosce.
 - **{{ stats.courts.withoutAddress }} tribunali non hanno un indirizzo unico**: un tribunale le
   cui sezioni hanno ciascuna il proprio (l'indirizzo è sulla sezione), oppure uno che pubblica i
   suoi indirizzi sotto forma di frase. Il loro `address` manca invece di essere indovinato; le

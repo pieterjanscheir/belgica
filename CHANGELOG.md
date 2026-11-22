@@ -34,7 +34,9 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 - Without `matter`, `findDivisionsWithJurisdiction` gives **both** divisions for a municipality
   that the civil and the criminal area send to different ones, the civil one first. That is
   Hulshout (13016) and Herenthout (13012) for the court of first instance of Antwerp, which
-  gave only Mechelen. Every other municipality gets the answer it got.
+  gave only Mechelen. For every other municipality and for the other courts that already had
+  division areas, the answer is the one it was; a police court now gives its division, as said
+  above.
 
 ## [0.10.0] - 2026-11-19
 

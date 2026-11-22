@@ -191,10 +191,10 @@ Mecheln und Turnhout bei beiden Gerichten. Für jede andere Abteilung gilt das e
 beides. `findDivisionsWithJurisdiction` nimmt die Art der Sache als `matter` entgegen:
 
 ```ts
-const ids = (matter) =>
-    findDivisionsWithJurisdiction('13016', 'police-court', { matter }).map((d) => d.id)
-ids('civil') // ['police-court-antwerpen-mechelen']
-ids('criminal') // ['police-court-antwerpen-turnhout']
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
 ids() // beide, die für Zivilsachen zuerst: Die Art der Sache entscheidet
 ```
 

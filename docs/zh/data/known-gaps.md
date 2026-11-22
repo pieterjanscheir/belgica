@@ -7,8 +7,9 @@ import { data as stats } from '../../.vitepress/stats.data'
 - **不在门户网站上的法院**不包含在数据中：Hof van Cassatie / Cour de cassation（最高法院）、Grondwettelijk Hof / Cour
   constitutionnelle（宪法法院）、Raad van State / Conseil d'État（国务委员会）以及各纪律审判机构
   （[#4](https://github.com/pieterjanscheir/belgica/issues/4)）。
-- **管辖权只确定到法院这一级。** `cantons` 和 `findCourtsWithJurisdiction` 告诉你哪个法院管辖某个市镇，但不告诉你是其中哪个分部：
-  分部的辖区由王室法令规定，目前尚未纳入数据（[#58](https://github.com/pieterjanscheir/belgica/issues/58)）。
+- **把某一类案件交给一个分部的规则不在数据中。** 每个分部都有自己的辖区；法令为刑事案件另定辖区的，还有它在刑事案件中的辖区
+  （[分部](/zh/data/courts#divisions)）。法令还可以把某一类案件在整个法院范围内交给一个分部，例如 Hainaut
+  劳动法院（arbeidsrechtbank / tribunal du travail）的集体债务清理案件：`findDivisionsWithJurisdiction` 不了解这些规则。
 - **{{ stats.courts.withoutAddress }} 个法院没有统一地址**：要么法院的每个分部都有自己的地址（地址记录在分部上），要么法院以一句话的形式发布其地址。
   这些法院的 `address` 缺省，而不是猜测填写；各分部有自己的地址。
 - **开放时间**：在发布开放时间的 {{ stats.courts.hoursParsed + stats.courts.hoursTextOnly }} 个法院中，有

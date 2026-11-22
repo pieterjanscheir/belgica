@@ -78,26 +78,28 @@ innego w tym pakiecie: gdy to ważne, sprawdź stronę sądu (`website`).
 
 ## Pola {#fields}
 
-| Pole               | Typ                                   | Opis                                                                                                                                                                                                   |
-| ------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`               | `CourtId`                             | Stabilne id: `type`, a potem miejscowość w języku sądu: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Zobacz [identyfikatory](/pl/guide/identifiers)       |
-| `validFrom`        | string?                               | Pierwszy dzień obowiązywania rekordu, `YYYY-MM-DD`: dzień, w którym portal wymienił go po raz pierwszy. Brak: od początku zakresu                                                                      |
-| `validTo`          | string?                               | Ostatni dzień obowiązywania rekordu: dzień przed cotygodniową kontrolą, która stwierdziła, że zniknął z portalu. Brak: nadal obowiązuje                                                                |
-| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                  |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | Sam sąd, jeden z jego wydziałów (afdeling, division, Abteilung) albo jedno z miejsc, w których zasiada vredegerecht / justice de paix                                                                  |
-| `court`            | `CourtId`?                            | Dla wydziału lub siedziby: sąd, do którego należy                                                                                                                                                      |
-| `name`             | `{ nl?, fr?, de? }`                   | Nazwa w brzmieniu publikowanym przez sąd, w każdym języku, w którym ma stronę: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                            |
-| `judicialArea`     | `JudicialAreaId`                      | Obszar sądowy                                                                                                                                                                                          |
-| `arrondissement`   | `ArrondissementId`?                   | Okręg sądowy, dla sądu lub wydziału, którego obszarem jest jeden okręg sądowy albo który leży w jednym                                                                                                 |
-| `canton`           | `CantonId`?                           | Dla vredegerecht / justice de paix: kanton, który obsługuje                                                                                                                                            |
-| `cantons`          | `CantonId[]`?                         | Dla każdego innego sądu (nie jego wydziałów): kantony, które obejmuje, zgodnie z załącznikiem do Gerechtelijk Wetboek / Code judiciaire (art. 3–5) i art. 114 tego kodeksu                             |
-| `ecli`             | `string[]`?                           | Kody ECLI sądu, po jednym na każdy język, w którym orzeka; tylko kody widziane w opublikowanych orzeczeniach                                                                                           |
-| `address`          | `Address`?                            | Gdzie mieści się sekretariat, z gminą, do której należy jego kod pocztowy (`municipality`, po kodzie REFNIS). Brak, gdy sąd nie publikuje jednego adresu (sąd, którego wydziały mają każdy własny)     |
-| `contacts`         | `Contact[]`                           | Telefon, faks, e-mail i rachunek bankowy, każdy z sekretariatem, do którego należy (`label`), i tekstem opublikowanym razem z nim (`note`)                                                             |
-| `openingHours`     | string?                               | Godziny sekretariatu w składni OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours): `Mo-Fr 08:30-12:30,13:30-16:00`, tylko gdy opublikowany tekst mówi dokładnie to |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Godziny otwarcia w opublikowanej formie, dla każdego języka                                                                                                                                            |
-| `website`          | `{ nl?, fr?, de? }`                   | Strona sądu na portalu, dla każdego języka                                                                                                                                                             |
-| `sources`          | `{ url, retrieved }[]`                | Strony, z których odczytano rekord, i kiedy ich treść pojawiła się po raz pierwszy                                                                                                                     |
+| Pole               | Typ                                   | Opis                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`               | `CourtId`                             | Stabilne id: `type`, a potem miejscowość w języku sądu: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Zobacz [identyfikatory](/pl/guide/identifiers)                                                                                                                                                                                                         |
+| `validFrom`        | string?                               | Pierwszy dzień obowiązywania rekordu, `YYYY-MM-DD`: dzień, w którym portal wymienił go po raz pierwszy. Brak: od początku zakresu                                                                                                                                                                                                                                                                        |
+| `validTo`          | string?                               | Ostatni dzień obowiązywania rekordu: dzień przed cotygodniową kontrolą, która stwierdziła, że zniknął z portalu. Brak: nadal obowiązuje                                                                                                                                                                                                                                                                  |
+| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                                                                                                                                                                                                    |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | Sam sąd, jeden z jego wydziałów (afdeling, division, Abteilung) albo jedno z miejsc, w których zasiada vredegerecht / justice de paix                                                                                                                                                                                                                                                                    |
+| `court`            | `CourtId`?                            | Dla wydziału lub siedziby: sąd, do którego należy                                                                                                                                                                                                                                                                                                                                                        |
+| `name`             | `{ nl?, fr?, de? }`                   | Nazwa w brzmieniu publikowanym przez sąd, w każdym języku, w którym ma stronę: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                                                                                              |
+| `judicialArea`     | `JudicialAreaId`                      | Obszar sądowy                                                                                                                                                                                                                                                                                                                                                                                            |
+| `arrondissement`   | `ArrondissementId`?                   | Okręg sądowy, dla sądu lub wydziału, którego obszarem jest jeden okręg sądowy albo który leży w jednym                                                                                                                                                                                                                                                                                                   |
+| `canton`           | `CantonId`?                           | Dla vredegerecht / justice de paix: kanton, który obsługuje                                                                                                                                                                                                                                                                                                                                              |
+| `cantons`          | `CantonId[]`?                         | Dla każdego innego sądu: kantony, które obejmuje, zgodnie z załącznikiem do Gerechtelijk Wetboek / Code judiciaire (art. 3–5) i art. 114 tego kodeksu. Dla wydziału: kantony leżące w całości w jego obszarze, tak jak określają go dekrety królewskie wydane na podstawie art. 186 tego kodeksu (zobacz [wydziały](#divisions)); obszar w sprawach cywilnych, gdy dekret określa inny dla spraw karnych |
+| `municipalities`   | `MunicipalityId[]`?                   | Dla wydziału, którego obszar obejmuje tylko część kantonu: te gminy, po kodzie REFNIS                                                                                                                                                                                                                                                                                                                    |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | Dla wydziału, któremu dekret wyznacza w sprawach karnych inny obszar niż w cywilnych: jego obszar w sprawach karnych, odczytywany tak samo jak `cantons` i `municipalities`. Brak, gdy wydział ma jeden obszar dla obu rodzajów spraw                                                                                                                                                                    |
+| `ecli`             | `string[]`?                           | Kody ECLI sądu, po jednym na każdy język, w którym orzeka; tylko kody widziane w opublikowanych orzeczeniach                                                                                                                                                                                                                                                                                             |
+| `address`          | `Address`?                            | Gdzie mieści się sekretariat, z gminą, do której należy jego kod pocztowy (`municipality`, po kodzie REFNIS). Brak, gdy sąd nie publikuje jednego adresu (sąd, którego wydziały mają każdy własny)                                                                                                                                                                                                       |
+| `contacts`         | `Contact[]`                           | Telefon, faks, e-mail i rachunek bankowy, każdy z sekretariatem, do którego należy (`label`), i tekstem opublikowanym razem z nim (`note`)                                                                                                                                                                                                                                                               |
+| `openingHours`     | string?                               | Godziny sekretariatu w składni OpenStreetMap [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours): `Mo-Fr 08:30-12:30,13:30-16:00`, tylko gdy opublikowany tekst mówi dokładnie to                                                                                                                                                                                                   |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Godziny otwarcia w opublikowanej formie, dla każdego języka                                                                                                                                                                                                                                                                                                                                              |
+| `website`          | `{ nl?, fr?, de? }`                   | Strona sądu na portalu, dla każdego języka                                                                                                                                                                                                                                                                                                                                                               |
+| `sources`          | `{ url, retrieved }[]`                | Strony, z których odczytano rekord, i kiedy ich treść pojawiła się po raz pierwszy                                                                                                                                                                                                                                                                                                                       |
 
 ::: tip Nowe typy sądów
 `type` może zyskać nowe wartości (na przykład Hof van Cassatie / Cour de cassation). Jeśli
@@ -119,6 +121,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -144,6 +148,69 @@ interface Contact {
 }
 ```
 
+## Wydziały {#divisions}
+
+Rechtbank van eerste aanleg / tribunal de première instance, ondernemingsrechtbank / tribunal de
+l'entreprise, arbeidsrechtbank / tribunal du travail, arbeidshof / cour du travail albo
+politierechtbank / tribunal de police może być podzielony na wydziały (afdelingen, divisions): to
+w wydziale składa się pisma i tam odbywa się rozprawa. Wydział ondernemingsrechtbank / tribunal
+de l'entreprise to także ten, który podaje wzmianka o rejestrze osób prawnych na dokumentach
+spółek („RPR Gent, afdeling Brugge”). Obszar każdego wydziału określa dekret królewski wydany na
+podstawie art. 186 Gerechtelijk Wetboek / Code judiciaire: dekret z 14 marca 2014 r. albo, od
+tego czasu dla wielu sądów, własny dekret sądu o podziale spraw (zaakverdelingsreglement).
+Reformy kantonów z lat 2017–2019 i połączenia gmin w 2025 roku zmieniły jedne i drugie.
+
+Każdy wydział ma swój obszar w `cantons`: to kantony leżące w nim w całości. Gdy dekret dzieli
+kanton, wydział wymienia w `municipalities` gminy, które z niego przejmuje. Tribunal du travail
+du Hainaut kieruje Pont-à-Celles (kanton Seneffe) do Charleroi, a Erquelinnes i
+Merbes-le-Château (kanton Chimay) do Binche. Tribunal de première instance de Liège (od 2024
+roku) oraz politierechtbank Limburg i tribunal de police de Liège wyznaczają swoim wydziałom
+listy gmin zamiast kantonów. Gmina należy do wydziału, który wymienia ją w `municipalities`, a w
+przeciwnym razie do tego, który ma jej kanton. To wyszukiwanie wykonuje
+`findDivisionsWithJurisdiction`.
+
+### Sprawy cywilne i karne {#civil-and-criminal-cases}
+
+Dekret może określić jeden obszar dla spraw cywilnych, a inny dla karnych. Robią tak rechtbank
+van eerste aanleg Antwerpen i politierechtbank Antwerpen w swoich dekretach z 16 grudnia 2020 r.:
+w sprawach cywilnych cały kanton Heist-op-den-Berg trafia do wydziału Mechelen, a w sprawach
+karnych (wraz z rozpoznawanymi w nich powództwami cywilnymi) jego gminy Hulshout i Herenthout
+trafiają do Turnhout.
+
+`cantons` i `municipalities` to wtedy obszar w sprawach cywilnych, a swój obszar w sprawach
+karnych wydział ma w `criminalArea`, z tymi samymi dwoma polami:
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout i Hulshout
+```
+
+Tylko wydział, którego dwa obszary się różnią, ma `criminalArea`: dziś są cztery, Mechelen i
+Turnhout obu sądów. Dla każdego innego wydziału jeden obszar obowiązuje w obu rodzajach spraw.
+`findDivisionsWithJurisdiction` przyjmuje rodzaj sprawy jako `matter`:
+
+```ts
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
+ids() // oba, najpierw cywilny: rozstrzyga rodzaj sprawy
+```
+
+### Źródła {#sources}
+
+Obszary to tekst obowiązujący, skonsolidowany ręcznie z publikacji w Belgisch Staatsblad /
+Moniteur belge, które każdy wydział przytacza w `sources`: dekretu określającego obszar i każdego
+późniejszego, który go zmienił. Obszary politierechtbanken / tribunaux de police odczytano ze
+skonsolidowanych tekstów Justel. Test sprawdza, czy wydziały sądu pokrywają jego obszar dokładnie
+raz, w sprawach cywilnych i w karnych.
+
+Dekret może też skierować jeden rodzaj spraw do jednego wydziału dla całego sądu: zbiorowe
+uregulowanie długów (règlement collectif de dettes) w tribunal du travail du Hainaut albo, w
+tribunal de police de Liège, czyny zabronione należące do właściwości tribunaux du travail. Tych
+reguł nie ma w danych.
+
 ## Funkcje pomocnicze {#helpers}
 
 ```ts
@@ -152,6 +219,8 @@ getJusticeOfThePeace('gent-1') // ten sam sąd, po id kantonu
 getDivisions('enterprise-court-gent') // jego osiem wydziałów
 getCourtsForCanton('gent-1') // jego vredegerecht i po jednym sądzie każdego innego typu
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde], po kodzie REFNIS
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // wartość pierwszego pasującego kontaktu
 formatPhoneNumber('+3253820701') // '053 82 07 01'

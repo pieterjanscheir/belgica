@@ -189,10 +189,10 @@ Mechelen en Turnhout van beide gerechten. Voor elke andere afdeling geldt het en
 beide. `findDivisionsWithJurisdiction` neemt de soort zaak aan als `matter`:
 
 ```ts
-const ids = (matter) =>
-    findDivisionsWithJurisdiction('13016', 'police-court', { matter }).map((d) => d.id)
-ids('civil') // ['police-court-antwerpen-mechelen']
-ids('criminal') // ['police-court-antwerpen-turnhout']
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
 ids() // beide, de burgerlijke eerst: de soort zaak beslist
 ```
 

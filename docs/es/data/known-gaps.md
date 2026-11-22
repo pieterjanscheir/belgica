@@ -8,9 +8,11 @@ import { data as stats } from '../../.vitepress/stats.data'
   van Cassatie), la Cour constitutionnelle (Grondwettelijk Hof), el Conseil d'État (Raad van
   State) y los tribunales disciplinarios
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **La competencia se detiene en el tribunal.** `cantons` y `findCourtsWithJurisdiction` dicen qué
-  tribunal cubre un municipio, no cuál de sus divisiones: el área de una división la fija un real
-  decreto y aún no está en los datos ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **Las reglas que envían un tipo de asunto a una sola división no están en los datos.** Cada
+  división tiene su área, y su área en los asuntos penales cuando el decreto fija otra
+  ([divisiones](/es/data/courts#divisions)). Un decreto también puede enviar un tipo de asunto a
+  una sola división para todo el tribunal, como los procedimientos de liquidación colectiva de
+  deudas del tribunal du travail de Hainaut: `findDivisionsWithJurisdiction` no las conoce.
 - **{{ stats.courts.withoutAddress }} tribunales no tienen una dirección única**: un tribunal
   cuyas divisiones tienen cada una la suya (la dirección está en la división), o uno que publica
   sus direcciones como una frase. Su `address` falta en lugar de adivinarse; las divisiones tienen

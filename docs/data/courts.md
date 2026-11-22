@@ -209,10 +209,10 @@ of both courts. For every other division the one area holds for both.
 `findDivisionsWithJurisdiction` takes the kind of case as `matter`:
 
 ```ts
-const ids = (matter) =>
-    findDivisionsWithJurisdiction('13016', 'police-court', { matter }).map((d) => d.id)
-ids('civil') // ['police-court-antwerpen-mechelen']
-ids('criminal') // ['police-court-antwerpen-turnhout']
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
 ids() // both, the civil one first: the kind of case decides
 ```
 

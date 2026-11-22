@@ -74,6 +74,7 @@ import {
     getJusticeOfThePeace,
     getCantonsForMunicipality,
     findCourtsWithJurisdiction,
+    findDivisionsWithJurisdiction,
     findCourtsForPostalCode,
     getInterestRate,
     nextWorkingDay,

@@ -417,15 +417,58 @@ Belirli bir günde (varsayılan olarak bugün) bir belediye için yetkili olan, 
 mahkemeler, REFNIS koduna göre: yasanın belirlediği yetki alanı (`cantons`) belediyenin
 kantonlarından birini içeren mahkemeler. Belediyelerin çoğu için tek bir mahkeme; Brüksel'de
 Hollandaca ve Fransızca konuşan mahkeme; kantonlara bölünmüş bir şehir için bu kantonlardan
-birine hizmet veren her vredegerecht. Mahkemeyi bir bütün olarak verir: bir davaya hangi bölümün
-bakacağı kraliyet kararnamesiyle (koninklijk besluit / arrêté royal) belirlenir ve henüz verilerde
-yoktur; bu yüzden `getDivisions(court.id)` arasından seçin. Bilinmeyen bir kod için boş.
+birine hizmet veren her vredegerecht. Mahkemeyi bir bütün olarak verir: bölümü
+[`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type) verir.
+Bilinmeyen bir kod için boş.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // dava türü: 'civil' | 'criminal'
+}
+```
+
+Bir belediye için nereye başvurulacağı, REFNIS koduna göre:
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type)'ın verdiği her
+mahkeme için, yetki alanı belediyeyi içeren bölüm; bu yetki alanını Gerechtelijk Wetboek / Code
+judiciaire'in 186. maddesi uyarınca çıkarılan kraliyet kararnameleri belirler (bkz.
+[bölümler](/tr/data/courts#divisions)). Bir belediye, onu `municipalities` içinde anan bölüme,
+böyle bir bölüm yoksa kantonunu `cantons` içinde bulunduran bölüme aittir. Bölümlere ayrılmamış
+bir mahkeme için sonuç mahkemenin kendisidir. Farklı bölümlere giden kantonlara bölünmüş bir
+şehir bu bölümlerin her birini verirdi ve sokak adresi belirleyici olurdu; bugün hiçbir şehir bu
+şekilde bölünmüş değildir. Bilinmeyen bir kod için boş.
+
+Antwerpen rechtbank van eerste aanleg'i ile politierechtbank'ının hukuk davaları için bir, ceza
+davaları için başka bir yetki alanı vardır (bir bölümün
+[`criminalArea`](/tr/data/courts#civil-and-criminal-cases) alanı): Hulshout ve Herenthout hukuk
+davalarında Mechelen'e, ceza davalarında Turnhout'a gider. Hangisinin söz konusu olduğunu
+`matter` belirtir. O olmadan bu iki belediye için her iki bölüm de döner, önce hukuk
+davalarındaki; diğer her belediye, dava türü ne olursa olsun aynı yanıtı alır.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']: Pont-à-Celles; kantonunun geri kalanı ise Binche'e gider
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']: bölümlere ayrılmamış
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']: Hulshout; hukuk davalarında Mechelen'e gider
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

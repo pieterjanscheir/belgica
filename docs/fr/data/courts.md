@@ -188,10 +188,10 @@ Malines et Turnhout dans les deux juridictions. Pour toute autre division, l'uni
 pour les deux. `findDivisionsWithJurisdiction` prend le type d'affaire dans `matter` :
 
 ```ts
-const ids = (matter) =>
-    findDivisionsWithJurisdiction('13016', 'police-court', { matter }).map((d) => d.id)
-ids('civil') // ['police-court-antwerpen-mechelen']
-ids('criminal') // ['police-court-antwerpen-turnhout']
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
 ids() // les deux, la civile d'abord : c'est le type d'affaire qui décide
 ```
 
