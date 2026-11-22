@@ -52,6 +52,20 @@ def test_readme_examples() -> None:
     assert [c['id'] for c in divisions('24062', 'court-of-first-instance')] == [
         'court-of-first-instance-leuven'
     ]
+    assert [c['id'] for c in divisions('44021', 'police-court')] == [
+        'police-court-oost-vlaanderen-gent'
+    ]
+    # Hulshout: Mechelen in civil cases, Turnhout in criminal ones, and both when it isn't said
+    assert [c['id'] for c in divisions('13016', 'police-court', matter='civil')] == [
+        'police-court-antwerpen-mechelen'
+    ]
+    assert [c['id'] for c in divisions('13016', 'police-court', matter='criminal')] == [
+        'police-court-antwerpen-turnhout'
+    ]
+    assert [c['id'] for c in divisions('13016', 'court-of-first-instance')] == [
+        'court-of-first-instance-antwerpen-mechelen',
+        'court-of-first-instance-antwerpen-turnhout',
+    ]
     assert [
         e.municipality['id'] for e in belgica.find_courts_for_postal_code('1040', 'police-court')
     ] == [

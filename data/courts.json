@@ -1437,6 +1437,17 @@
       "mechelen",
       "willebroek"
     ],
+    "criminalArea": {
+      "cantons": [
+        "lier",
+        "mechelen",
+        "willebroek"
+      ],
+      "municipalities": [
+        "12014",
+        "12029"
+      ]
+    },
     "address": {
       "street": "Keizerstraat 20",
       "postalCode": "2800",
@@ -1491,6 +1502,19 @@
       "turnhout-2",
       "westerlo"
     ],
+    "criminalArea": {
+      "cantons": [
+        "mol-geel-1",
+        "mol-geel-2",
+        "turnhout-1",
+        "turnhout-2",
+        "westerlo"
+      ],
+      "municipalities": [
+        "13012",
+        "13016"
+      ]
+    },
     "address": {
       "street": "Kasteelplein 1",
       "postalCode": "2300",
@@ -20297,6 +20321,22 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "antwerpen",
+    "cantons": [
+      "antwerpen-1",
+      "antwerpen-2",
+      "antwerpen-3",
+      "antwerpen-4",
+      "antwerpen-5",
+      "antwerpen-6",
+      "antwerpen-7",
+      "merksem",
+      "deurne",
+      "boom",
+      "brasschaat",
+      "kapellen",
+      "kontich",
+      "zandhoven"
+    ],
     "address": {
       "street": "Bolivarplaats 20/3",
       "postalCode": "2000",
@@ -20328,6 +20368,10 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-antwerpen-afdeling-antwerpen/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2020/12/16/2020016203/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -20341,6 +20385,23 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "antwerpen",
+    "cantons": [
+      "heist-op-den-berg",
+      "lier",
+      "mechelen",
+      "willebroek"
+    ],
+    "criminalArea": {
+      "cantons": [
+        "lier",
+        "mechelen",
+        "willebroek"
+      ],
+      "municipalities": [
+        "12014",
+        "12029"
+      ]
+    },
     "address": {
       "street": "Keizerstraat 20",
       "postalCode": "2800",
@@ -20372,6 +20433,10 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-antwerpen-afdeling-mechelen/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2020/12/16/2020016203/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -20385,6 +20450,26 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "antwerpen",
+    "cantons": [
+      "mol-geel-1",
+      "mol-geel-2",
+      "turnhout-1",
+      "turnhout-2",
+      "westerlo"
+    ],
+    "criminalArea": {
+      "cantons": [
+        "mol-geel-1",
+        "mol-geel-2",
+        "turnhout-1",
+        "turnhout-2",
+        "westerlo"
+      ],
+      "municipalities": [
+        "13012",
+        "13016"
+      ]
+    },
     "address": {
       "street": "Kasteelstraat 2",
       "postalCode": "2300",
@@ -20416,6 +20501,10 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-antwerpen-afdeling-turnhout/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2020/12/16/2020016203/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -20484,6 +20573,10 @@
     },
     "judicialArea": "brussel",
     "arrondissement": "brabant-wallon",
+    "cantons": [
+      "braine-l-alleud",
+      "nivelles"
+    ],
     "address": {
       "street": "Rue Clarisse, 115",
       "postalCode": "1400",
@@ -20516,6 +20609,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-brabant-wallon-division-nivelles/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/05/23/2019030426/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -20529,6 +20634,11 @@
     },
     "judicialArea": "brussel",
     "arrondissement": "brabant-wallon",
+    "cantons": [
+      "jodoigne",
+      "wavre-1",
+      "wavre-2"
+    ],
     "address": {
       "street": "Place de l'Hôtel de ville",
       "postalCode": "1300",
@@ -20561,6 +20671,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-brabant-wallon-division-wavre/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/05/23/2019030426/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -20818,6 +20940,9 @@
     },
     "judicialArea": "liege",
     "arrondissement": "eupen",
+    "cantons": [
+      "eupen-sankt-vith-1"
+    ],
     "address": {
       "street": "Rathausplatz 4",
       "postalCode": "4700",
@@ -20862,6 +20987,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-deupen-division-eupen/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/05/23/2019030426/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -20876,6 +21009,9 @@
     },
     "judicialArea": "liege",
     "arrondissement": "eupen",
+    "cantons": [
+      "eupen-sankt-vith-2"
+    ],
     "address": {
       "street": "Rathausplatz 4",
       "postalCode": "4700",
@@ -20920,6 +21056,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-deupen-division-saint-vith/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/05/23/2019030426/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21020,6 +21164,17 @@
     },
     "judicialArea": "mons",
     "arrondissement": "hainaut",
+    "cantons": [
+      "chimay",
+      "binche",
+      "charleroi-1",
+      "charleroi-2",
+      "charleroi-3",
+      "charleroi-4",
+      "chatelet",
+      "seneffe",
+      "thuin"
+    ],
     "address": {
       "street": "Avenue Général Michel 2 boîte 4",
       "postalCode": "6000",
@@ -21102,6 +21257,22 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-hainaut-division-charleroi/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/01/20/2019010269/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/05/23/2019030426/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21115,6 +21286,14 @@
     },
     "judicialArea": "mons",
     "arrondissement": "hainaut",
+    "cantons": [
+      "boussu-colfontaine-1",
+      "boussu-colfontaine-2",
+      "la-louviere",
+      "mons-1",
+      "mons-2",
+      "soignies"
+    ],
     "address": {
       "street": "Rue de Nimy 28",
       "postalCode": "7000",
@@ -21193,6 +21372,22 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-hainaut-division-mons/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/01/20/2019010269/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/05/23/2019030426/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21206,6 +21401,13 @@
     },
     "judicialArea": "mons",
     "arrondissement": "hainaut",
+    "cantons": [
+      "ath",
+      "mouscron",
+      "leuze-en-hainaut",
+      "tournai-1",
+      "tournai-2"
+    ],
     "address": {
       "street": "Rue Childéric 22",
       "postalCode": "7500",
@@ -21257,6 +21459,22 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-hainaut-division-tournai/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/01/20/2019010269/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2019/05/23/2019030426/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21418,6 +21636,18 @@
     },
     "judicialArea": "liege",
     "arrondissement": "liege",
+    "cantons": [
+      "huy-1",
+      "huy-2"
+    ],
+    "municipalities": [
+      "61019",
+      "61024",
+      "61080",
+      "62026",
+      "64034",
+      "64047"
+    ],
     "address": {
       "street": "Quai d'Arona 4",
       "postalCode": "4500",
@@ -21449,6 +21679,10 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-de-liege-division-huy/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/03/11/2024002654/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21462,6 +21696,34 @@
     },
     "judicialArea": "liege",
     "arrondissement": "liege",
+    "cantons": [
+      "fleron",
+      "herstal",
+      "liege-1",
+      "liege-2",
+      "liege-3",
+      "liege-4",
+      "seraing",
+      "vise"
+    ],
+    "municipalities": [
+      "62006",
+      "62009",
+      "62032",
+      "62100",
+      "62118",
+      "62120",
+      "62122",
+      "64008",
+      "64021",
+      "64023",
+      "64025",
+      "64029",
+      "64056",
+      "64063",
+      "64074",
+      "64076"
+    ],
     "address": {
       "street": "Rue Saint Gilles 87-89",
       "postalCode": "4000",
@@ -21497,6 +21759,10 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-de-liege-division-liege/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/03/11/2024002654/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21510,6 +21776,12 @@
     },
     "judicialArea": "liege",
     "arrondissement": "liege",
+    "cantons": [
+      "limbourg",
+      "spa",
+      "verviers-1",
+      "verviers-2"
+    ],
     "address": {
       "street": "Rue de Tribunal 4",
       "postalCode": "4800",
@@ -21541,6 +21813,10 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-de-liege-division-verviers/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/03/11/2024002654/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21595,6 +21871,16 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "limburg",
+    "cantons": [
+      "pelt"
+    ],
+    "municipalities": [
+      "71004",
+      "71034",
+      "71071",
+      "72030",
+      "72038"
+    ],
     "contacts": [
       {
         "type": "phone",
@@ -21623,6 +21909,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-beringen/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/09/27/2018013698/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21636,6 +21930,13 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "limburg",
+    "municipalities": [
+      "71002",
+      "71016",
+      "72003",
+      "72004",
+      "72042"
+    ],
     "contacts": [
       {
         "type": "phone",
@@ -21664,6 +21965,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-genk/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/09/27/2018013698/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21677,6 +21986,15 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "limburg",
+    "cantons": [
+      "hasselt-1",
+      "hasselt-2"
+    ],
+    "municipalities": [
+      "71066",
+      "71070",
+      "72039"
+    ],
     "contacts": [
       {
         "type": "phone",
@@ -21755,6 +22073,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-hasselt/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/09/27/2018013698/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21768,6 +22094,13 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "limburg",
+    "cantons": [
+      "maasmechelen"
+    ],
+    "municipalities": [
+      "72018",
+      "72021"
+    ],
     "contacts": [
       {
         "type": "phone",
@@ -21797,6 +22130,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-maaseik/contact",
         "retrieved": "2026-11-16"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/09/27/2018013698/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21810,6 +22151,9 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "limburg",
+    "cantons": [
+      "sint-truiden"
+    ],
     "contacts": [
       {
         "type": "phone",
@@ -21838,6 +22182,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-sint-truiden/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/09/27/2018013698/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21851,6 +22203,13 @@
     },
     "judicialArea": "antwerpen",
     "arrondissement": "limburg",
+    "cantons": [
+      "bilzen-hoeselt",
+      "tongeren-borgloon"
+    ],
+    "municipalities": [
+      "71067"
+    ],
     "contacts": [
       {
         "type": "phone",
@@ -21880,6 +22239,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-limburg-afdeling-tongeren-borgloon/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/09/27/2018013698/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21934,6 +22301,10 @@
     },
     "judicialArea": "liege",
     "arrondissement": "luxembourg",
+    "cantons": [
+      "arlon",
+      "virton"
+    ],
     "address": {
       "street": "Place Schalbert",
       "postalCode": "6700",
@@ -21965,6 +22336,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-luxembourg-division-arlon/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/07/22/2018040538/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -21978,6 +22361,9 @@
     },
     "judicialArea": "liege",
     "arrondissement": "luxembourg",
+    "cantons": [
+      "marche-en-famenne"
+    ],
     "address": {
       "street": "Rue Victor Libert 7",
       "postalCode": "6900",
@@ -22009,6 +22395,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-luxembourg-division-marche-en-famenne/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/07/22/2018040538/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22022,6 +22420,10 @@
     },
     "judicialArea": "liege",
     "arrondissement": "luxembourg",
+    "cantons": [
+      "bastogne",
+      "neufchateau"
+    ],
     "address": {
       "street": "Place Charles Bergh 7/3",
       "postalCode": "6840",
@@ -22053,6 +22455,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-du-luxembourg-division-neufchateau/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/07/22/2018040538/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22104,6 +22518,11 @@
     },
     "judicialArea": "liege",
     "arrondissement": "namur",
+    "cantons": [
+      "dinant",
+      "ciney",
+      "philippeville"
+    ],
     "address": {
       "street": "Rue A. Defoin 215 C",
       "postalCode": "5500",
@@ -22135,6 +22554,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-de-namur-division-dinant/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22148,6 +22575,13 @@
     },
     "judicialArea": "liege",
     "arrondissement": "namur",
+    "cantons": [
+      "andenne",
+      "fosses-la-ville",
+      "gembloux",
+      "namur-1",
+      "namur-2"
+    ],
     "address": {
       "street": "rue général Michel, 10",
       "postalCode": "5000",
@@ -22179,6 +22613,14 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/fr/tribunal-de-police-de-namur-division-namur/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/04/15/2018011654/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22248,6 +22690,11 @@
     },
     "judicialArea": "gent",
     "arrondissement": "oost-vlaanderen",
+    "cantons": [
+      "aalst-1",
+      "aalst-2",
+      "ninove"
+    ],
     "address": {
       "street": "Dr. André Sierenstraat 16 bus 3/B",
       "postalCode": "9300",
@@ -22283,6 +22730,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-oost-vlaanderen-afdeling-aalst/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22296,6 +22755,12 @@
     },
     "judicialArea": "gent",
     "arrondissement": "oost-vlaanderen",
+    "cantons": [
+      "dendermonde",
+      "hamme",
+      "lokeren",
+      "wetteren"
+    ],
     "address": {
       "street": "Noordlaan 31/3",
       "postalCode": "9200",
@@ -22331,6 +22796,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-oost-vlaanderen-afdeling-dendermonde/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22344,6 +22821,17 @@
     },
     "judicialArea": "gent",
     "arrondissement": "oost-vlaanderen",
+    "cantons": [
+      "deinze",
+      "eeklo",
+      "gent-1",
+      "gent-2",
+      "gent-3",
+      "gent-4",
+      "gent-5",
+      "merelbeke-melle",
+      "zelzate"
+    ],
     "address": {
       "street": "Opgeëistenlaan 401/M - lokaal 524",
       "postalCode": "9000",
@@ -22389,6 +22877,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-oost-vlaanderen-afdeling-gent/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22402,6 +22902,11 @@
     },
     "judicialArea": "gent",
     "arrondissement": "oost-vlaanderen",
+    "cantons": [
+      "geraardsbergen",
+      "oudenaarde",
+      "herzele"
+    ],
     "address": {
       "street": "Tacambaroplein 5",
       "postalCode": "9700",
@@ -22437,6 +22942,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-oost-vlaanderen-afdeling-oudenaarde/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22450,6 +22967,10 @@
     },
     "judicialArea": "gent",
     "arrondissement": "oost-vlaanderen",
+    "cantons": [
+      "beveren-kruibeke-zwijndrecht",
+      "sint-niklaas"
+    ],
     "address": {
       "street": "Kazernestraat 8",
       "postalCode": "9100",
@@ -22485,6 +23006,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-oost-vlaanderen-afdeling-sint-niklaas/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2024/12/20/2024011888/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22617,6 +23150,16 @@
     },
     "judicialArea": "gent",
     "arrondissement": "west-vlaanderen",
+    "cantons": [
+      "brugge-1",
+      "brugge-2",
+      "brugge-3",
+      "brugge-4",
+      "oostende-1",
+      "oostende-2",
+      "tielt",
+      "torhout"
+    ],
     "address": {
       "street": "Kazernevest 3",
       "postalCode": "8000",
@@ -22658,6 +23201,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-west-vlaanderen-afdeling-brugge/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/07/22/2018040538/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22671,6 +23226,10 @@
     },
     "judicialArea": "gent",
     "arrondissement": "west-vlaanderen",
+    "cantons": [
+      "ieper",
+      "poperinge"
+    ],
     "address": {
       "street": "Korte Meersstraat 18",
       "postalCode": "8900",
@@ -22702,6 +23261,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-west-vlaanderen-afdeling-ieper/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/07/22/2018040538/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22715,6 +23286,14 @@
     },
     "judicialArea": "gent",
     "arrondissement": "west-vlaanderen",
+    "cantons": [
+      "izegem",
+      "kortrijk-1",
+      "kortrijk-2",
+      "menen",
+      "roeselare",
+      "waregem"
+    ],
     "address": {
       "street": "Beheerstraat 41",
       "postalCode": "8500",
@@ -22746,6 +23325,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-west-vlaanderen-afdeling-kortrijk/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/07/22/2018040538/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   },
@@ -22759,6 +23350,9 @@
     },
     "judicialArea": "gent",
     "arrondissement": "west-vlaanderen",
+    "cantons": [
+      "veurne"
+    ],
     "address": {
       "street": "Peter Benoitlaan 2",
       "postalCode": "8630",
@@ -22790,6 +23384,18 @@
       {
         "url": "https://www.tribunaux-rechtbanken.be/nl/politierechtbank-west-vlaanderen-afdeling-veurne/contact",
         "retrieved": "2026-11-11"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2014/03/14/2014009088/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/05/17/2018012032/staatsblad",
+        "retrieved": "2026-11-22"
+      },
+      {
+        "url": "https://www.ejustice.just.fgov.be/eli/besluit/2018/07/22/2018040538/staatsblad",
+        "retrieved": "2026-11-22"
       }
     ]
   }

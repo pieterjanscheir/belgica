@@ -387,8 +387,12 @@ findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour
 function findDivisionsWithJurisdiction(
     municipalityId: string,
     type: CourtType,
-    options?: OnDay,
+    options?: DivisionOptions,
 ): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // the kind of case: 'civil' | 'criminal'
+}
 ```
 
 Where to file for a municipality, by REFNIS code: for each court that
@@ -396,9 +400,14 @@ Where to file for a municipality, by REFNIS code: for each court that
 the municipality, as the royal decrees under art. 186 of the Judicial Code set it (see
 [divisions](/data/courts#divisions)). A municipality belongs to the division that names it in
 `municipalities`, or else to the one that has its canton in `cantons`. A court that isn't
-divided, or whose division areas aren't in the data (the police courts), gives itself. A city
-split over cantons that go to different divisions would give each, and the street address
-decides; no city is split that way today. `[]` for an unknown code.
+divided gives itself. A city split over cantons that go to different divisions would give each,
+and the street address decides; no city is split that way today. `[]` for an unknown code.
+
+The court of first instance and the police court of Antwerp have one area for civil and another
+for criminal cases (a division's [`criminalArea`](/data/courts#civil-and-criminal-cases)):
+Hulshout and Herenthout go to Mechelen in the first and to Turnhout in the second. `matter` says
+which. Without it, those two municipalities get both divisions, the civil one first; every other
+municipality gets the same answer whatever the kind of case.
 
 ```ts
 findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
@@ -406,6 +415,10 @@ findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
 // ['labour-court-hainaut-charleroi']: Pont-à-Celles, though the rest of its canton goes to Binche
 findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-leuven']: not divided
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']: Hulshout, which goes to Mechelen in civil cases
 ```
 
 ### `findCourtsForPostalCode` {#findcourtsforpostalcode}
@@ -1127,7 +1140,7 @@ geometry and loader types from the root too. Record types are inferred from the
 | `Validity`, `OnDay`, `Coverage`                                                                                                                                                                                                | [Time](#time)                                                                            |
 | `JudicialArea`, `Arrondissement`, `Canton`, `Municipality`, `Province`, `Region`, `LegalBasis`                                                                                                                                 | [Territory](/data/territory)                                                             |
 | `Court`, `CourtType`, `CourtFilter`, `Address`, `Contact`, `ContactType`, `NamedCourt`, `FormatCourtNameOptions`                                                                                                               | [Courts](/data/courts#shape)                                                             |
-| `CantonCourt`, `PostalCodeCourts`                                                                                                                                                                                              | [Jurisdiction](#jurisdiction)                                                            |
+| `CantonCourt`, `PostalCodeCourts`, `DivisionOptions`, `Matter`                                                                                                                                                                 | [Jurisdiction](#jurisdiction)                                                            |
 | `CourtSummary`, `CourtDetails`, `LoadCourtsFilter`, `CantonSummary`, `CantonTerritory`                                                                                                                                         | [Only the courts you need](/data/courts#only-the-courts-you-need)                        |
 | `PostalCode`                                                                                                                                                                                                                   | [Postal codes](/data/postal-codes)                                                       |
 | `Prison`, `HouseOfJustice`                                                                                                                                                                                                     | [Prisons](/data/prisons), [houses of justice](/data/houses-of-justice)                   |

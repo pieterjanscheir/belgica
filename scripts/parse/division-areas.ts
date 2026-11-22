@@ -20,11 +20,19 @@
  * unknown canton or municipality. test/data.test.ts checks that a court's divisions cover its
  * area once.
  *
- * The police courts aren't here yet: their areas are lists of municipalities, and the police
- * court of Antwerp has one area for civil and one for criminal cases.
+ * A decree can set one area for civil and another for criminal cases, as those of the court of
+ * first instance and the police court of Antwerp do. `divisions` then has the civil areas and
+ * `criminal` the criminal ones, and the build writes a division's `criminalArea` where the two
+ * differ.
+ *
+ * The police courts' areas were read on 22 November 2026 from Justel's consolidated texts of
+ * the decree of 14 March 2014 (chapter 5) and of the case-allocation decrees of the police
+ * courts of Limburg, Antwerp and Liège, which repealed its articles 22, 21 and 26.
  */
 
 export const DIVISION_AREAS_CHECKED = '2026-11-13'
+/** The day the police courts' areas were read */
+const POLICE_COURTS_CHECKED = '2026-11-22'
 
 /** A publication in the Belgian Official Journal: its numac and its promulgation date */
 export interface Decree {
@@ -56,8 +64,15 @@ export interface CourtDivisions {
     decrees: Decree[]
     /** The article of the first decree that sets the areas */
     article: number
-    /** Per division id: its area */
+    /** Per division id: its area, the one for civil cases where the decree sets two */
     divisions: Record<string, DivisionArea>
+    /**
+     * Per division id: its area in criminal cases, for a court whose decree sets one apart
+     * from the area in civil cases. Every division of the court is listed, as in the decree.
+     */
+    criminal?: Record<string, DivisionArea>
+    /** The day the text was read, when that is later than `DIVISION_AREAS_CHECKED` */
+    checked?: string
 }
 
 /** The ELI of a decree's publication in the Belgian Official Journal */
@@ -86,6 +101,27 @@ const KB_2024_12_20 = decree('2024011888', '2024-12-20')
 
 const cantons = (...ids: string[]): DivisionArea => ({ cantons: ids })
 const provinces = (...codes: string[]): DivisionArea => ({ provinces: codes })
+
+// The three divisions in the arrondissement of Antwerp, as the decrees of 16 December 2020 give
+// them to the court of first instance and to the police court
+const ANTWERPEN = [
+    'antwerpen-1',
+    'antwerpen-2',
+    'antwerpen-3',
+    'antwerpen-4',
+    'antwerpen-5',
+    'antwerpen-6',
+    'antwerpen-7',
+    'merksem',
+    'deurne',
+    'boom',
+    'brasschaat',
+    'kapellen',
+    'kontich',
+    'zandhoven',
+]
+const MECHELEN = ['heist-op-den-berg', 'lier', 'mechelen', 'willebroek']
+const TURNHOUT = ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo']
 
 export const DIVISION_AREAS: Record<string, CourtDivisions> = {
     // Labour courts of appeal: a division per province
@@ -123,41 +159,26 @@ export const DIVISION_AREAS: Record<string, CourtDivisions> = {
     // Courts of first instance
 
     // Case-allocation decree of 16 February 2016, art. 1, replaced on 16 December 2020. That
-    // text gives one area for civil cases (here) and one for criminal cases, where the
-    // municipalities Hulshout and Herenthout go to Turnhout instead of Mechelen.
+    // text gives one area for civil cases and one for criminal cases, where the municipalities
+    // Hulshout and Herenthout (canton Heist-op-den-Berg) go to Turnhout instead of Mechelen.
     'court-of-first-instance-antwerpen': {
         decrees: [decree('2016009074', '2016-02-16'), decree('2020016202', '2020-12-16')],
         article: 1,
         divisions: {
-            'court-of-first-instance-antwerpen-antwerpen': cantons(
-                'antwerpen-1',
-                'antwerpen-2',
-                'antwerpen-3',
-                'antwerpen-4',
-                'antwerpen-5',
-                'antwerpen-6',
-                'antwerpen-7',
-                'merksem',
-                'deurne',
-                'boom',
-                'brasschaat',
-                'kapellen',
-                'kontich',
-                'zandhoven',
-            ),
-            'court-of-first-instance-antwerpen-mechelen': cantons(
-                'heist-op-den-berg',
-                'lier',
-                'mechelen',
-                'willebroek',
-            ),
-            'court-of-first-instance-antwerpen-turnhout': cantons(
-                'mol-geel-1',
-                'mol-geel-2',
-                'turnhout-1',
-                'turnhout-2',
-                'westerlo',
-            ),
+            'court-of-first-instance-antwerpen-antwerpen': cantons(...ANTWERPEN),
+            'court-of-first-instance-antwerpen-mechelen': cantons(...MECHELEN),
+            'court-of-first-instance-antwerpen-turnhout': cantons(...TURNHOUT),
+        },
+        criminal: {
+            'court-of-first-instance-antwerpen-antwerpen': cantons(...ANTWERPEN),
+            'court-of-first-instance-antwerpen-mechelen': {
+                cantons: [...MECHELEN],
+                except: ['Hulshout', 'Herenthout'],
+            },
+            'court-of-first-instance-antwerpen-turnhout': {
+                cantons: [...TURNHOUT],
+                plus: ['Hulshout', 'Herenthout'],
+            },
         },
     },
     // KB 14 March 2014, art. 5
@@ -742,6 +763,330 @@ export const DIVISION_AREAS: Record<string, CourtDivisions> = {
             ),
         },
     },
+
+    // Police courts
+
+    // Case-allocation decree of 16 December 2020, art. 1, which repealed art. 21 of the KB of
+    // 2014. As for the court of first instance: one area for civil cases and one for criminal
+    // cases, where Hulshout and Herenthout go to Turnhout instead of Mechelen.
+    'police-court-antwerpen': {
+        decrees: [decree('2020016203', '2020-12-16')],
+        article: 1,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-antwerpen-antwerpen': cantons(...ANTWERPEN),
+            'police-court-antwerpen-mechelen': cantons(...MECHELEN),
+            'police-court-antwerpen-turnhout': cantons(...TURNHOUT),
+        },
+        criminal: {
+            'police-court-antwerpen-antwerpen': cantons(...ANTWERPEN),
+            'police-court-antwerpen-mechelen': {
+                cantons: [...MECHELEN],
+                except: ['Hulshout', 'Herenthout'],
+            },
+            'police-court-antwerpen-turnhout': {
+                cantons: [...TURNHOUT],
+                plus: ['Hulshout', 'Herenthout'],
+            },
+        },
+    },
+    // Case-allocation decree of 27 September 2018, art. 1, which repealed art. 22 of the KB of
+    // 2014 and lists municipalities; the decree of 20 December 2024 gave it the merged ones.
+    // The decree writes "Herck-de-stad" for Herk-de-Stad.
+    'police-court-limburg': {
+        decrees: [decree('2018013698', '2018-09-27'), KB_2024_12_20],
+        article: 1,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-limburg-hasselt': {
+                municipalities: [
+                    'Hasselt',
+                    'Halen',
+                    'Herk-de-Stad',
+                    'Diepenbeek',
+                    'Houthalen-Helchteren',
+                    'Zonhoven',
+                    'Heusden-Zolder',
+                    'Lummen',
+                ],
+            },
+            'police-court-limburg-beringen': {
+                municipalities: [
+                    'Beringen',
+                    'Peer',
+                    'Lommel',
+                    'Hamont-Achel',
+                    'Leopoldsburg',
+                    'Tessenderlo-Ham',
+                    'Hechtel-Eksel',
+                    'Pelt',
+                ],
+            },
+            'police-court-limburg-sint-truiden': {
+                municipalities: ['Sint-Truiden', 'Nieuwerkerken', 'Gingelom'],
+            },
+            'police-court-limburg-tongeren-borgloon': {
+                municipalities: [
+                    'Tongeren-Borgloon',
+                    'Bilzen-Hoeselt',
+                    'Alken',
+                    'Wellen',
+                    'Heers',
+                    'Herstappe',
+                    'Riemst',
+                    'Voeren',
+                    'Zutendaal',
+                ],
+            },
+            'police-court-limburg-genk': {
+                municipalities: ['Bree', 'Genk', 'As', 'Oudsbergen', 'Bocholt'],
+            },
+            'police-court-limburg-maaseik': {
+                municipalities: ['Maaseik', 'Dilsen-Stokkem', 'Kinrooi', 'Maasmechelen', 'Lanaken'],
+            },
+        },
+    },
+    // KB 14 March 2014, art. 23
+    'police-court-brabant-wallon': {
+        decrees: [KB_2014, KB_2018_04_15, KB_2019_05_23],
+        article: 23,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-brabant-wallon-nivelles': cantons('braine-l-alleud', 'nivelles'),
+            'police-court-brabant-wallon-wavre': cantons('jodoigne', 'wavre-1', 'wavre-2'),
+        },
+    },
+    // KB 14 March 2014, art. 24
+    'police-court-oost-vlaanderen': {
+        decrees: [KB_2014, KB_2018_05_17, KB_2024_12_20],
+        article: 24,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-oost-vlaanderen-gent': cantons(
+                'deinze',
+                'eeklo',
+                'gent-1',
+                'gent-2',
+                'gent-3',
+                'gent-4',
+                'gent-5',
+                'merelbeke-melle',
+                'zelzate',
+            ),
+            'police-court-oost-vlaanderen-dendermonde': cantons(
+                'dendermonde',
+                'hamme',
+                'lokeren',
+                'wetteren',
+            ),
+            'police-court-oost-vlaanderen-sint-niklaas': cantons(
+                'beveren-kruibeke-zwijndrecht',
+                'sint-niklaas',
+            ),
+            'police-court-oost-vlaanderen-aalst': cantons('aalst-1', 'aalst-2', 'ninove'),
+            'police-court-oost-vlaanderen-oudenaarde': cantons(
+                'geraardsbergen',
+                'oudenaarde',
+                'herzele',
+            ),
+        },
+    },
+    // KB 14 March 2014, art. 25
+    'police-court-west-vlaanderen': {
+        decrees: [KB_2014, KB_2018_05_17, KB_2018_07_22],
+        article: 25,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-west-vlaanderen-brugge': cantons(
+                'brugge-1',
+                'brugge-2',
+                'brugge-3',
+                'brugge-4',
+                'oostende-1',
+                'oostende-2',
+                'tielt',
+                'torhout',
+            ),
+            'police-court-west-vlaanderen-ieper': cantons('ieper', 'poperinge'),
+            'police-court-west-vlaanderen-kortrijk': cantons(
+                'izegem',
+                'kortrijk-1',
+                'kortrijk-2',
+                'menen',
+                'roeselare',
+                'waregem',
+            ),
+            'police-court-west-vlaanderen-veurne': cantons('veurne'),
+        },
+    },
+    // Case-allocation decree of 11 March 2024, art. 1, which repealed art. 26 of the KB of 2014
+    // and lists municipalities. Its art. 2 sends the offences that belong to the labour courts
+    // (art. 155 of the Judicial Code) to the division of Liège for the whole court.
+    'police-court-liege': {
+        decrees: [decree('2024002654', '2024-03-11')],
+        article: 1,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-liege-liege': {
+                municipalities: [
+                    'Luik',
+                    'Seraing',
+                    'Wezet',
+                    'Borgworm',
+                    'Ans',
+                    'Awans',
+                    'Aywaille',
+                    'Bitsingen',
+                    'Berloz',
+                    'Beyne-Heusay',
+                    'Blégny',
+                    'Chaudfontaine',
+                    'Crisnée',
+                    'Dalhem',
+                    'Donceel',
+                    'Esneux',
+                    'Faimes',
+                    'Fexhe-le-Haut-Clocher',
+                    'Flémalle',
+                    'Fléron',
+                    'Geer',
+                    'Grâce-Hollogne',
+                    'Herstal',
+                    'Juprelle',
+                    'Oerle',
+                    'Oupeye',
+                    'Remicourt',
+                    'Saint-Nicolas',
+                    'Soumagne',
+                    'Sprimont',
+                    'Trooz',
+                ],
+            },
+            'police-court-liege-huy': {
+                municipalities: [
+                    'Hannuit',
+                    'Hoei',
+                    'Amay',
+                    'Anthisnes',
+                    'Braives',
+                    'Burdinne',
+                    'Clavier',
+                    'Comblain-au-Pont',
+                    'Engis',
+                    'Ferrières',
+                    'Hamoir',
+                    'Héron',
+                    'Lijsem',
+                    'Marchin',
+                    'Modave',
+                    'Nandrin',
+                    'Neupré',
+                    'Ouffet',
+                    'Saint-Georges-sur-Meuse',
+                    'Tinlot',
+                    'Villers-le-Bouillet',
+                    'Verlaine',
+                    'Wanze',
+                    'Wasseiges',
+                ],
+            },
+            'police-court-liege-verviers': {
+                municipalities: [
+                    'Herve',
+                    'Limburg',
+                    'Malmedy',
+                    'Stavelot',
+                    'Verviers',
+                    'Aubel',
+                    'Baelen',
+                    'Dison',
+                    'Jalhay',
+                    'Lierneux',
+                    'Olne',
+                    'Pepinster',
+                    'Plombières',
+                    'Spa',
+                    'Stoumont',
+                    'Theux',
+                    'Thimister-Clermont',
+                    'Trois-Ponts',
+                    'Weismes',
+                    'Welkenraedt',
+                ],
+            },
+        },
+    },
+    // KB 14 March 2014, art. 27
+    'police-court-eupen': {
+        decrees: [KB_2014, KB_2019_05_23],
+        article: 27,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-eupen-eupen': cantons('eupen-sankt-vith-1'),
+            'police-court-eupen-sankt-vith': cantons('eupen-sankt-vith-2'),
+        },
+    },
+    // KB 14 March 2014, art. 28
+    'police-court-luxembourg': {
+        decrees: [KB_2014, KB_2018_04_15, KB_2018_07_22],
+        article: 28,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-luxembourg-arlon': cantons('arlon', 'virton'),
+            'police-court-luxembourg-marche-en-famenne': cantons('marche-en-famenne'),
+            'police-court-luxembourg-neufchateau': cantons('bastogne', 'neufchateau'),
+        },
+    },
+    // KB 14 March 2014, art. 29
+    'police-court-namur': {
+        decrees: [KB_2014, KB_2018_04_15],
+        article: 29,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-namur-namur': cantons(
+                'andenne',
+                'fosses-la-ville',
+                'gembloux',
+                'namur-1',
+                'namur-2',
+            ),
+            'police-court-namur-dinant': cantons('dinant', 'ciney', 'philippeville'),
+        },
+    },
+    // KB 14 March 2014, art. 30
+    'police-court-hainaut': {
+        decrees: [KB_2014, KB_2018_04_15, KB_2019_01_20, KB_2019_05_23],
+        article: 30,
+        checked: POLICE_COURTS_CHECKED,
+        divisions: {
+            'police-court-hainaut-charleroi': cantons(
+                'chimay',
+                'binche',
+                'charleroi-1',
+                'charleroi-2',
+                'charleroi-3',
+                'charleroi-4',
+                'chatelet',
+                'seneffe',
+                'thuin',
+            ),
+            'police-court-hainaut-mons': cantons(
+                'mons-1',
+                'mons-2',
+                'boussu-colfontaine-1',
+                'boussu-colfontaine-2',
+                'la-louviere',
+                'soignies',
+            ),
+            'police-court-hainaut-tournai': cantons(
+                'ath',
+                'mouscron',
+                'leuze-en-hainaut',
+                'tournai-1',
+                'tournai-2',
+            ),
+        },
+    },
 }
 
 /** The pieces of the data the areas resolve against */
@@ -879,14 +1224,19 @@ export interface DivisibleCourt {
     arrondissement?: string
     cantons?: string[]
     municipalities?: string[]
+    criminalArea?: { cantons?: string[]; municipalities?: string[] }
     sources: { url: string; retrieved: string }[]
 }
 
+const same = (a: readonly string[], b: readonly string[]) =>
+    a.length === b.length && a.every((x, i) => x === b[i])
+
 /**
  * Gives each division in `DIVISION_AREAS` its area (`cantons`, and `municipalities` where it
- * shares a canton) and cites the decrees in its `sources`. Returns what a person has to look
- * at: `problems` (an area that doesn't resolve, a division on the portal without an area) and
- * `missing` (a court or division in the table that the sources don't have).
+ * shares a canton), its `criminalArea` where the decree sets another one for criminal cases,
+ * and cites the decrees in its `sources`. Returns what a person has to look at: `problems` (an
+ * area that doesn't resolve, a division on the portal without an area) and `missing` (a court
+ * or division in the table that the sources don't have).
  */
 export function applyDivisionAreas(
     courts: DivisibleCourt[],
@@ -902,6 +1252,15 @@ export function applyDivisionAreas(
         }
         const resolved = resolveDivisionAreas(divided, court.cantons ?? [], territory)
         problems.push(...resolved.problems)
+        const criminal =
+            divided.criminal &&
+            resolveDivisionAreas(
+                { ...divided, divisions: divided.criminal },
+                court.cantons ?? [],
+                territory,
+            )
+        for (const problem of criminal?.problems ?? [])
+            problems.push(`in criminal cases, ${problem}`)
         const divisions = courts.filter((c) => c.court === courtId && c.kind === 'division')
         for (const division of divisions) {
             const area = resolved.areas.get(division.id)
@@ -913,6 +1272,23 @@ export function applyDivisionAreas(
             else delete division.cantons
             if (area.municipalities.length > 0) division.municipalities = area.municipalities
             else delete division.municipalities
+            // Only where the decree's area for criminal cases differs from the civil one
+            const other = criminal?.areas.get(division.id)
+            if (criminal && !other) problems.push(`${division.id}: has no area in criminal cases`)
+            if (
+                other &&
+                !(
+                    same(other.cantons, area.cantons) &&
+                    same(other.municipalities, area.municipalities)
+                )
+            )
+                division.criminalArea = {
+                    ...(other.cantons.length > 0 ? { cantons: other.cantons } : {}),
+                    ...(other.municipalities.length > 0 ?
+                        { municipalities: other.municipalities }
+                    :   {}),
+                }
+            else delete division.criminalArea
             // Its arrondissement follows from its area, as a court's does: none when the area
             // spans several (the province of Liège holds the arrondissement Eupen too)
             const held = new Set(area.arrondissements)
@@ -927,7 +1303,10 @@ export function applyDivisionAreas(
             const cited = new Set(division.sources.map((s) => s.url))
             for (const d of divided.decrees)
                 if (!cited.has(decreeEli(d)))
-                    division.sources.push({ url: decreeEli(d), retrieved: DIVISION_AREAS_CHECKED })
+                    division.sources.push({
+                        url: decreeEli(d),
+                        retrieved: divided.checked ?? DIVISION_AREAS_CHECKED,
+                    })
         }
         for (const id of resolved.areas.keys())
             if (!divisions.some((d) => d.id === id)) missing.push(id)

@@ -7,13 +7,11 @@ import { data as stats } from '../.vitepress/stats.data'
 - **Courts not on the portal** aren't in the data: the Court of Cassation, the Constitutional
   Court, the Council of State and the disciplinary courts
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **The police courts' divisions have no area.** The divisions of the courts of first instance,
-  enterprise and labour courts and labour courts of appeal have theirs
-  ([divisions](./courts#divisions)). The police courts' decrees list municipalities, and the
-  police court of Antwerp has one area for civil and one for criminal cases, so
-  `findDivisionsWithJurisdiction` gives the police court as a whole
-  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)). The division areas are the
-  civil ones, and leave out a decree's rules that send one kind of case to one division.
+- **Rules that send one kind of case to one division aren't in the data.** Every division has
+  its area, and its area in criminal cases where the decree sets another one
+  ([divisions](./courts#divisions)). A decree can also send one kind of case to one division for
+  the whole court, such as the collective debt settlements of the labour court of Hainaut:
+  `findDivisionsWithJurisdiction` doesn't know those.
 - **{{ stats.courts.withoutAddress }} courts have no single address**: a court whose divisions
   each have their own (the address is on the division), or one that publishes its addresses as
   a sentence. Their `address` is missing rather than guessed; the divisions have theirs.

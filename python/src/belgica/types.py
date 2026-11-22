@@ -20,6 +20,9 @@ CourtType: TypeAlias = Literal[
 ]
 
 CourtKind: TypeAlias = Literal['court', 'division', 'seat']
+Matter: TypeAlias = Literal['civil', 'criminal']
+"""The kind of case. A few courts give their divisions one area for civil cases and another
+for criminal ones."""
 
 ContactType: TypeAlias = Literal['phone', 'fax', 'email', 'bank-account']
 
@@ -164,6 +167,15 @@ class Canton(Validity):
     sources: NotRequired[list[SourceRef]]
 
 
+class DivisionArea(TypedDict):
+    """A division's area in criminal cases, read as its `cantons` and `municipalities` are"""
+
+    cantons: NotRequired[list[str]]
+    """The cantons that lie wholly in the area"""
+    municipalities: NotRequired[list[str]]
+    """The municipalities it takes from a canton it shares, by REFNIS code"""
+
+
 class Court(Validity):
     """A court, a division of one, or one of the seats of a justice of the peace"""
 
@@ -182,12 +194,16 @@ class Court(Validity):
     canton: NotRequired[str]
     """For a justice of the peace: the canton it serves"""
     cantons: NotRequired[list[str]]
-    """For a court other than a justice of the peace: the cantons it covers. For a division of a
-    court of first instance, enterprise or labour court or labour court of appeal: the cantons
-    wholly in its area, as the royal decrees under art. 186 of the Judicial Code set it"""
+    """For a court other than a justice of the peace: the cantons it covers. For a division: the
+    cantons wholly in its area, as the royal decrees under art. 186 of the Judicial Code set it;
+    the area for civil cases where the decree sets another one for criminal cases"""
     municipalities: NotRequired[list[str]]
     """For a division whose area takes only part of a canton: those municipalities, by REFNIS
     code"""
+    criminalArea: NotRequired[DivisionArea]
+    """For a division whose decree sets another area for criminal cases (with the civil claims
+    heard in them) than for civil ones: its area in criminal cases. Missing where the division
+    has one area for both."""
     ecli: NotRequired[list[str]]
     address: NotRequired[Address]
     contacts: list[Contact]

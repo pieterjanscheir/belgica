@@ -66,22 +66,45 @@ export function findCourtsWithJurisdiction(
 }
 
 /**
+ * The kind of case. A few courts give their divisions one area for civil cases and another for
+ * criminal ones.
+ */
+export type Matter = 'civil' | 'criminal'
+
+/** Options for a division lookup: the day, and the kind of case */
+export interface DivisionOptions extends OnDay {
+    /**
+     * The kind of case, for a court whose divisions have one area for civil cases and another
+     * for criminal ones (with the civil claims heard in them). Without it, a municipality that
+     * the two areas send to different divisions gets both.
+     */
+    matter?: Matter
+}
+
+/**
  * Where to file for a municipality on a day (today by default), by REFNIS code: for each court
  * of the type that `findCourtsWithJurisdiction` gives, the division (afdeling, division) whose
  * area holds the municipality, as the royal decrees under art. 186 of the Judicial Code set it.
- * A court that isn't divided, or whose division areas aren't in the data (the police courts),
- * gives itself. A city split over cantons that go to different divisions gives each of them,
- * and the street address decides. Empty for an unknown code.
+ * A court that isn't divided gives itself. A city split over cantons that go to different
+ * divisions gives each of them, and the street address decides. Empty for an unknown code.
+ *
+ * The court of first instance and the police court of Antwerp have one area for civil and
+ * another for criminal cases: Hulshout and Herenthout go to Mechelen in the first and to
+ * Turnhout in the second. `matter` says which; without it, those two municipalities get both
+ * divisions, the civil one first.
  *
  *     findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id)
  *     // ['enterprise-court-gent-brugge']
+ *     findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+ *     // ['police-court-antwerpen-turnhout']
  */
 export function findDivisionsWithJurisdiction(
     municipalityId: string,
     type: CourtType,
-    options: OnDay = {},
+    options: DivisionOptions = {},
 ): Court[] {
     const cantons = new Set(getCantonsForMunicipality(municipalityId, options).map((c) => c.id))
+    const matters: readonly Matter[] = options.matter ? [options.matter] : ['civil', 'criminal']
     const found: Court[] = []
     for (const court of findCourtsWithJurisdiction(municipalityId, type, options)) {
         const divisions = getDivisions(court.id, options).filter(
@@ -91,16 +114,22 @@ export function findDivisionsWithJurisdiction(
             found.push(court)
             continue
         }
-        // A municipality named in a division's `municipalities` belongs there, even when
-        // another division has the rest of its canton
-        const named = divisions.filter((d) =>
-            (d.municipalities as readonly string[] | undefined)?.includes(municipalityId),
-        )
-        found.push(
-            ...(named.length > 0 ?
-                named
-            :   divisions.filter((d) => d.cantons?.some((c) => cantons.has(c)))),
-        )
+        for (const matter of matters) {
+            const areas = divisions.map((division) => ({
+                division,
+                area: (matter === 'criminal' ? division.criminalArea : undefined) ?? division,
+            }))
+            // A municipality named in a division's `municipalities` belongs there, even when
+            // another division has the rest of its canton
+            const named = areas.filter(({ area }) =>
+                (area.municipalities as readonly string[] | undefined)?.includes(municipalityId),
+            )
+            const holding =
+                named.length > 0 ?
+                    named
+                :   areas.filter(({ area }) => area.cantons?.some((c) => cantons.has(c)))
+            for (const { division } of holding) if (!found.includes(division)) found.push(division)
+        }
     }
     return found
 }

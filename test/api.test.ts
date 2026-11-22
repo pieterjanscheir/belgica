@@ -147,10 +147,48 @@ describe('findDivisionsWithJurisdiction', () => {
         ])
     })
 
-    it('gives the court itself where the data has no divisions', () => {
+    it('gives the court itself where it has no divisions', () => {
         expect(ids('24062', 'court-of-first-instance')).toEqual(['court-of-first-instance-leuven'])
-        // The police courts' division areas aren't in the data yet
-        expect(ids('44021', 'police-court')).toEqual(['police-court-oost-vlaanderen'])
+        expect(ids('24062', 'police-court')).toEqual(['police-court-leuven'])
+    })
+
+    it('finds the division of a police court', () => {
+        // KB 14 March 2014, art. 24 and 29: by canton
+        expect(ids('44021', 'police-court')).toEqual(['police-court-oost-vlaanderen-gent'])
+        expect(ids('91034', 'police-court')).toEqual(['police-court-namur-dinant'])
+        // The police court of Limburg lists municipalities: Zutendaal (canton Genk) goes to
+        // Tongeren-Borgloon, Genk itself to Genk
+        expect(ids('71067', 'police-court')).toEqual(['police-court-limburg-tongeren-borgloon'])
+        expect(ids('71016', 'police-court')).toEqual(['police-court-limburg-genk'])
+        // As does that of Liège: Hannut (canton Waremme) goes to Huy, Waremme itself to Liège
+        expect(ids('64034', 'police-court')).toEqual(['police-court-liege-huy'])
+        expect(ids('64074', 'police-court')).toEqual(['police-court-liege-liege'])
+    })
+
+    it('tells civil from criminal cases where a court has an area for each', () => {
+        const on = (
+            municipality: string,
+            type: Parameters<typeof findDivisionsWithJurisdiction>[1],
+            matter: 'civil' | 'criminal',
+        ) => findDivisionsWithJurisdiction(municipality, type, { matter }).map((c) => c.id)
+        // Decrees of 16 December 2020, art. 1: Hulshout and Herenthout (canton
+        // Heist-op-den-Berg) go to Mechelen in civil cases and to Turnhout in criminal ones
+        for (const municipality of ['13016', '13012']) {
+            for (const type of ['police-court', 'court-of-first-instance'] as const) {
+                const court = `${type}-antwerpen`
+                expect(on(municipality, type, 'civil')).toEqual([`${court}-mechelen`])
+                expect(on(municipality, type, 'criminal')).toEqual([`${court}-turnhout`])
+                // Without the kind of case: both, the civil one first
+                expect(ids(municipality, type)).toEqual([`${court}-mechelen`, `${court}-turnhout`])
+            }
+        }
+        // The rest of the canton stays in Mechelen in both
+        expect(on('12014', 'police-court', 'criminal')).toEqual(['police-court-antwerpen-mechelen'])
+        expect(ids('12014', 'police-court')).toEqual(['police-court-antwerpen-mechelen'])
+        // A court with one area gives the same division whatever the kind of case
+        expect(on('31005', 'enterprise-court', 'criminal')).toEqual([
+            'enterprise-court-gent-brugge',
+        ])
     })
 
     it('is empty for an unknown municipality', () => {

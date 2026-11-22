@@ -33,6 +33,7 @@ export type Court = Omit<
     | 'canton'
     | 'cantons'
     | 'municipalities'
+    | 'criminalArea'
     | 'address'
 > & {
     id: string
@@ -42,6 +43,7 @@ export type Court = Omit<
     canton?: string
     cantons?: string[]
     municipalities?: string[]
+    criminalArea?: { cantons?: string[]; municipalities?: string[] }
     address?: Address
 }
 export type Prison = Omit<PublishedPrison, 'id' | 'address'> & { id: string; address: Address }

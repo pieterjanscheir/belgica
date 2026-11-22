@@ -75,6 +75,13 @@ def test_municipalities() -> None:
                 type: ids(belgica.find_divisions_with_jurisdiction(id, type, on))
                 for type in case['divisions']
             },
+            'divisionsByMatter': {
+                matter: {
+                    type: ids(belgica.find_divisions_with_jurisdiction(id, type, on, matter))
+                    for type in by_type
+                }
+                for matter, by_type in case['divisionsByMatter'].items()
+            },
         }
         assert actual == case
 

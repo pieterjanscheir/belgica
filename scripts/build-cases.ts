@@ -109,6 +109,18 @@ const municipalityCases = days.flatMap((on) =>
         divisions: Object.fromEntries(
             types.map((type) => [type, ids(findDivisionsWithJurisdiction(id, type, { on }))]),
         ),
+        // The division in civil and in criminal cases, where a court has an area for each
+        divisionsByMatter: Object.fromEntries(
+            (['civil', 'criminal'] as const).map((matter) => [
+                matter,
+                Object.fromEntries(
+                    types.map((type) => [
+                        type,
+                        ids(findDivisionsWithJurisdiction(id, type, { on, matter })),
+                    ]),
+                ),
+            ]),
+        ),
     })),
 )
 

@@ -6,7 +6,7 @@ from ._courts import get_courts_for_canton, get_divisions, get_justice_of_the_pe
 from ._postal_codes import get_municipalities_for_postal_code
 from ._territory import get_cantons_for_municipality
 from ._time import Day
-from .types import Canton, Court, CourtType, Municipality
+from .types import Canton, Court, CourtType, DivisionArea, Matter, Municipality
 
 
 @dataclass(frozen=True)
@@ -63,15 +63,24 @@ def find_courts_with_jurisdiction(
 
 
 def find_divisions_with_jurisdiction(
-    municipality_id: str, type: CourtType, on: Day | None = None
+    municipality_id: str,
+    type: CourtType,
+    on: Day | None = None,
+    matter: Matter | None = None,
 ) -> list[Court]:
     """Where to file for a municipality on a day (today by default), by REFNIS code: for each
     court of the type that `find_courts_with_jurisdiction` gives, the division whose area holds
     the municipality, as the royal decrees under art. 186 of the Judicial Code set it. A
     municipality belongs to the division that names it in `municipalities`, or else to the one
-    that has its canton in `cantons`. A court that isn't divided, or whose division areas aren't
-    in the data (the police courts), gives itself. Empty for an unknown code."""
+    that has its canton in `cantons`. A court that isn't divided gives itself. Empty for an
+    unknown code.
+
+    The court of first instance and the police court of Antwerp have one area for civil and
+    another for criminal cases: Hulshout and Herenthout go to Mechelen in the first and to
+    Turnhout in the second. `matter` ('civil' or 'criminal') says which; without it, those two
+    municipalities get both divisions, the civil one first."""
     cantons = {canton['id'] for canton in get_cantons_for_municipality(municipality_id, on)}
+    matters: tuple[Matter, ...] = (matter,) if matter else ('civil', 'criminal')
     found: list[Court] = []
     for court in find_courts_with_jurisdiction(municipality_id, type, on):
         divisions = [
@@ -82,10 +91,18 @@ def find_divisions_with_jurisdiction(
         if not divisions:
             found.append(court)
             continue
-        named = [d for d in divisions if municipality_id in d.get('municipalities', [])]
-        found.extend(
-            named or [d for d in divisions if any(c in cantons for c in d.get('cantons', []))]
-        )
+        for kind in matters:
+            areas: list[tuple[Court, Court | DivisionArea]] = [
+                (d, d['criminalArea'] if kind == 'criminal' and 'criminalArea' in d else d)
+                for d in divisions
+            ]
+            # A municipality named in a division's `municipalities` belongs there, even when
+            # another division has the rest of its canton
+            named = [d for d, area in areas if municipality_id in area.get('municipalities', [])]
+            holding = named or [
+                d for d, area in areas if any(c in cantons for c in area.get('cantons', []))
+            ]
+            found.extend(d for d in holding if not any(d is f for f in found))
     return found
 
 

@@ -74,9 +74,9 @@ for (const court of getCourtsForCanton('antwerpen-4')) {
 }
 ```
 
-Welke afdeling van een rechtbank de zaak behandelt, is bij koninklijk besluit bepaald en zit nog
-niet in de data ([#58](https://github.com/pieterjanscheir/belgica/issues/58)): `getDivisions`
-somt ze op.
+Welke afdeling van een rechtbank de zaak behandelt, is bij koninklijk besluit bepaald:
+[`findDivisionsWithJurisdiction`](/api#finddivisionswithjurisdiction) geeft ze voor een gemeente,
+en `getDivisions` somt de afdelingen van een rechtbank op.
 
 ## De kaart {#the-map}
 

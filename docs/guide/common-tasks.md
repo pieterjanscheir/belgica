@@ -87,16 +87,25 @@ findCourtsWithJurisdiction('21004', 'labour-court').map((c) => c.id)
 
 The result is the court as a whole. `findDivisionsWithJurisdiction` gives the division to file
 with, from the areas the royal decrees set (see [divisions](/data/courts#divisions)). A court
-that isn't divided gives itself, and so does a police court, whose division areas aren't in the
-data yet:
+that isn't divided gives itself:
 
 ```ts
 findDivisionsWithJurisdiction('31005', 'enterprise-court').map((d) => d.id) // ['enterprise-court-gent-brugge']
 findDivisionsWithJurisdiction('64034', 'court-of-first-instance').map((d) => d.id) // ['court-of-first-instance-liege-huy']
+findDivisionsWithJurisdiction('44021', 'police-court').map((d) => d.id) // ['police-court-oost-vlaanderen-gent']
 findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((d) => d.id) // ['court-of-first-instance-leuven']
 
 const [court] = findCourtsWithJurisdiction('44021', 'police-court')
-getDivisions(court.id).map((d) => d.id) // its divisions, to choose from
+getDivisions(court.id).map((d) => d.id) // all its divisions
+```
+
+The court of first instance and the police court of Antwerp have one area for civil and another
+for criminal cases. Say which with `matter`; without it, a municipality the two areas send to
+different divisions (Hulshout and Herenthout) gets both:
+
+```ts
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((d) => d.id)
+// ['police-court-antwerpen-turnhout']: Hulshout, which goes to Mechelen in civil cases
 ```
 
 The court types are `justice-of-the-peace`, `police-court`, `court-of-first-instance`,
