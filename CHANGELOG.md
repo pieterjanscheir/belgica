@@ -7,6 +7,8 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-11-22
+
 ### Added
 
 - **The police courts' divisions have their area**
@@ -657,7 +659,8 @@ OpenStreetMap `opening_hours` syntax (`Mo-Fr 08:30-12:30,13:30-16:00`).
 - Courts (justices of the peace in East and West Flanders, Ondernemingsrechtbank Gent) and the
   legal and commercial interest rates.
 
-[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.10.0...HEAD
+[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/pieterjanscheir/belgica/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/pieterjanscheir/belgica/compare/v0.9.1...v0.10.0
 [0.9.1]: https://github.com/pieterjanscheir/belgica/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/pieterjanscheir/belgica/compare/v0.8.0...v0.9.0
