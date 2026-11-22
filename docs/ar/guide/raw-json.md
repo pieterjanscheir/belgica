@@ -8,7 +8,7 @@
 - من رابط raw مثبّت على release tag.
 
 ```
-https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.11.0/data/cantons.json
+https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.11.1/data/cantons.json
 ```
 
 ثبّت tag بدلًا من `main`، حتى لا تتغير البيانات إلا حين تختار الترقية.
@@ -19,7 +19,7 @@ https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.11.0/data/cantons.j
 import json
 from urllib.request import urlopen
 
-BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.11.0/data"
+BASE = "https://raw.githubusercontent.com/pieterjanscheir/belgica/v0.11.1/data"
 
 cantons = json.load(urlopen(f"{BASE}/cantons.json"))
 
