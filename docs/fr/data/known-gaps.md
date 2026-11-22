@@ -9,7 +9,7 @@ import { data as stats } from '../../.vitepress/stats.data'
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
 - **Les règles qui envoient un type d'affaire à une seule division ne sont pas dans les données.**
   Chaque division a son territoire, et son territoire en matière pénale là où l'arrêté en fixe un
-  autre ([divisions](/data/courts#divisions)). Un arrêté peut aussi envoyer un type d'affaire à une
+  autre ([divisions](/fr/data/courts#divisions)). Un arrêté peut aussi envoyer un type d'affaire à une
   seule division pour toute la juridiction, comme les règlements collectifs de dettes du tribunal
   du travail du Hainaut : `findDivisionsWithJurisdiction` ne les connaît pas.
 - **{{ stats.courts.withoutAddress }} juridictions n'ont pas d'adresse unique** : une juridiction

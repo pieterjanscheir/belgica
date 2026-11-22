@@ -76,7 +76,7 @@ for (const court of getCourtsForCanton('antwerpen-4')) {
 ```
 
 Quelle division d'un tribunal connaît de l'affaire est fixé par arrêté royal :
-[`findDivisionsWithJurisdiction`](/api#finddivisionswithjurisdiction) la donne pour une commune,
+[`findDivisionsWithJurisdiction`](/fr/api#finddivisionswithjurisdiction-municipalityid-type) la donne pour une commune,
 et `getDivisions` liste les divisions d'un tribunal.
 
 ## La carte {#the-map}

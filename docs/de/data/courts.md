@@ -78,26 +78,28 @@ diesem Package: Wenn es darauf ankommt, prüfen Sie die Seite des Gerichts (`web
 
 ## Felder {#fields}
 
-| Feld               | Typ                                   | Beschreibung                                                                                                                                                                                                                                |
-| ------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`               | `CourtId`                             | Stabile ID: der `type`, dann der Ort in der eigenen Sprache des Gerichts: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Siehe [Identifikatoren](/de/guide/identifiers)                          |
-| `validFrom`        | string?                               | Erster Tag, an dem der Eintrag gilt, `YYYY-MM-DD`: der Tag, an dem das Portal ihn zuerst aufführte. Fehlend: seit Beginn des abgedeckten Zeitraums                                                                                          |
-| `validTo`          | string?                               | Letzter Tag, an dem der Eintrag gilt: der Tag vor der wöchentlichen Prüfung, die ihn nicht mehr auf dem Portal fand. Fehlend: gilt weiterhin                                                                                                |
-| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                                       |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | Das Gericht selbst, eine seiner Abteilungen (afdeling, division, Abteilung) oder einer der Orte, an denen ein Friedensgericht seinen Sitz hat                                                                                               |
-| `court`            | `CourtId`?                            | Bei einer Abteilung oder einem Sitz: das Gericht, zu dem sie gehört                                                                                                                                                                         |
-| `name`             | `{ nl?, fr?, de? }`                   | Der Name, wie das Gericht ihn veröffentlicht, in jeder Sprache, in der es eine Seite hat: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                                      |
-| `judicialArea`     | `JudicialAreaId`                      | Der Gerichtsbereich                                                                                                                                                                                                                         |
-| `arrondissement`   | `ArrondissementId`?                   | Der Gerichtsbezirk, für ein Gericht oder eine Abteilung, dessen Gebiet ein Gerichtsbezirk ist oder in einem liegt                                                                                                                           |
-| `canton`           | `CantonId`?                           | Bei einem Friedensgericht: der Kanton, für den es zuständig ist                                                                                                                                                                             |
-| `cantons`          | `CantonId[]`?                         | Bei jedem anderen Gericht (nicht seinen Abteilungen): die Kantone, die es abdeckt, wie die Anlage zum Gerichtsgesetzbuch (Art. 3–5) und Art. 114 des Gesetzbuchs sie festlegen                                                              |
-| `ecli`             | `string[]`?                           | Die ECLI-Codes des Gerichts, einer pro Sprache, in der es urteilt; nur Codes, die in veröffentlichten Entscheidungen vorkommen                                                                                                              |
-| `address`          | `Address`?                            | Wo sich die Kanzlei befindet, mit der Gemeinde, zu der ihre Postleitzahl gehört (`municipality`, per REFNIS-Code). Fehlt, wenn das Gericht keine einheitliche Adresse veröffentlicht (ein Gericht, dessen Abteilungen je eine eigene haben) |
-| `contacts`         | `Contact[]`                           | Telefon, Fax, E-Mail und Bankverbindung, jeweils mit der Kanzlei, zu der sie gehören (`label`), und dem damit veröffentlichten Text (`note`)                                                                                                |
-| `openingHours`     | string?                               | Öffnungszeiten der Kanzlei in der OpenStreetMap-Syntax [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours): `Mo-Fr 08:30-12:30,13:30-16:00`, nur wenn der veröffentlichte Text genau das sagt                          |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Die Öffnungszeiten wie veröffentlicht, pro Sprache                                                                                                                                                                                          |
-| `website`          | `{ nl?, fr?, de? }`                   | Die Seite des Gerichts auf dem Portal, pro Sprache                                                                                                                                                                                          |
-| `sources`          | `{ url, retrieved }[]`                | Die Seiten, aus denen der Eintrag gelesen wurde, und wann ihr Inhalt zuerst gesehen wurde                                                                                                                                                   |
+| Feld               | Typ                                   | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`               | `CourtId`                             | Stabile ID: der `type`, dann der Ort in der eigenen Sprache des Gerichts: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Siehe [Identifikatoren](/de/guide/identifiers)                                                                                                                                                                                                       |
+| `validFrom`        | string?                               | Erster Tag, an dem der Eintrag gilt, `YYYY-MM-DD`: der Tag, an dem das Portal ihn zuerst aufführte. Fehlend: seit Beginn des abgedeckten Zeitraums                                                                                                                                                                                                                                                                       |
+| `validTo`          | string?                               | Letzter Tag, an dem der Eintrag gilt: der Tag vor der wöchentlichen Prüfung, die ihn nicht mehr auf dem Portal fand. Fehlend: gilt weiterhin                                                                                                                                                                                                                                                                             |
+| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                                                                                                                                                                                                                    |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | Das Gericht selbst, eine seiner Abteilungen (afdeling, division, Abteilung) oder einer der Orte, an denen ein Friedensgericht seinen Sitz hat                                                                                                                                                                                                                                                                            |
+| `court`            | `CourtId`?                            | Bei einer Abteilung oder einem Sitz: das Gericht, zu dem sie gehört                                                                                                                                                                                                                                                                                                                                                      |
+| `name`             | `{ nl?, fr?, de? }`                   | Der Name, wie das Gericht ihn veröffentlicht, in jeder Sprache, in der es eine Seite hat: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                                                                                                   |
+| `judicialArea`     | `JudicialAreaId`                      | Der Gerichtsbereich                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `arrondissement`   | `ArrondissementId`?                   | Der Gerichtsbezirk, für ein Gericht oder eine Abteilung, dessen Gebiet ein Gerichtsbezirk ist oder in einem liegt                                                                                                                                                                                                                                                                                                        |
+| `canton`           | `CantonId`?                           | Bei einem Friedensgericht: der Kanton, für den es zuständig ist                                                                                                                                                                                                                                                                                                                                                          |
+| `cantons`          | `CantonId[]`?                         | Bei jedem anderen Gericht: die Kantone, die es abdeckt, wie die Anlage zum Gerichtsgesetzbuch (Art. 3–5) und Art. 114 des Gesetzbuchs sie festlegen. Bei einer Abteilung: die Kantone, die ganz in ihrem Gebiet liegen, wie die Königlichen Erlasse aufgrund von Art. 186 des Gesetzbuchs es festlegen (siehe [Abteilungen](#divisions)); das Gebiet für Zivilsachen, wo der Erlass für Strafsachen ein anderes festlegt |
+| `municipalities`   | `MunicipalityId[]`?                   | Bei einer Abteilung, deren Gebiet nur einen Teil eines Kantons umfasst: diese Gemeinden, per REFNIS-Code                                                                                                                                                                                                                                                                                                                 |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | Bei einer Abteilung, deren Erlass für Strafsachen ein anderes Gebiet festlegt als für Zivilsachen: ihr Gebiet in Strafsachen, zu lesen wie `cantons` und `municipalities`. Fehlt, wenn die Abteilung ein Gebiet für beides hat                                                                                                                                                                                           |
+| `ecli`             | `string[]`?                           | Die ECLI-Codes des Gerichts, einer pro Sprache, in der es urteilt; nur Codes, die in veröffentlichten Entscheidungen vorkommen                                                                                                                                                                                                                                                                                           |
+| `address`          | `Address`?                            | Wo sich die Kanzlei befindet, mit der Gemeinde, zu der ihre Postleitzahl gehört (`municipality`, per REFNIS-Code). Fehlt, wenn das Gericht keine einheitliche Adresse veröffentlicht (ein Gericht, dessen Abteilungen je eine eigene haben)                                                                                                                                                                              |
+| `contacts`         | `Contact[]`                           | Telefon, Fax, E-Mail und Bankverbindung, jeweils mit der Kanzlei, zu der sie gehören (`label`), und dem damit veröffentlichten Text (`note`)                                                                                                                                                                                                                                                                             |
+| `openingHours`     | string?                               | Öffnungszeiten der Kanzlei in der OpenStreetMap-Syntax [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours): `Mo-Fr 08:30-12:30,13:30-16:00`, nur wenn der veröffentlichte Text genau das sagt                                                                                                                                                                                                       |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | Die Öffnungszeiten wie veröffentlicht, pro Sprache                                                                                                                                                                                                                                                                                                                                                                       |
+| `website`          | `{ nl?, fr?, de? }`                   | Die Seite des Gerichts auf dem Portal, pro Sprache                                                                                                                                                                                                                                                                                                                                                                       |
+| `sources`          | `{ url, retrieved }[]`                | Die Seiten, aus denen der Eintrag gelesen wurde, und wann ihr Inhalt zuerst gesehen wurde                                                                                                                                                                                                                                                                                                                                |
 
 ::: tip Neue Gerichtstypen
 `type` kann neue Werte erhalten (etwa den Kassationshof). Wenn Sie mit `switch` darauf verzweigen,
@@ -119,6 +121,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -144,6 +148,69 @@ interface Contact {
 }
 ```
 
+## Abteilungen {#divisions}
+
+Ein Gericht erster Instanz, ein Unternehmensgericht, ein Arbeitsgericht, ein Arbeitsgerichtshof
+oder ein Polizeigericht kann in Abteilungen (afdelingen, divisions) aufgeteilt sein: Dort reichen
+Sie ein, und dort findet die Sitzung statt. Die Abteilung eines Unternehmensgerichts ist auch
+diejenige, die in der Angabe des Registers der juristischen Personen auf Gesellschaftsdokumenten
+steht („RPR Gent, afdeling Brugge“). Ein Königlicher Erlass aufgrund von Art. 186 des
+Gerichtsgesetzbuchs legt das Gebiet jeder Abteilung fest: der Erlass vom 14. März 2014 oder, für
+viele Gerichte seither, die eigene Regelung zur Verteilung der Rechtssachen des Gerichts
+(zaakverdelingsreglement). Die Kantonsreformen von 2017–2019 und die Gemeindefusionen von 2025
+haben beide geändert.
+
+Jede Abteilung hat ihr Gebiet in `cantons`: die Kantone, die ganz darin liegen. Wo ein Erlass einen
+Kanton teilt, führt die Abteilung die Gemeinden, die sie daraus erhält, in `municipalities` auf.
+Das Arbeitsgericht Hennegau weist Pont-à-Celles (Kanton Seneffe) der Abteilung Charleroi zu,
+Erquelinnes und Merbes-le-Château (Kanton Chimay) der Abteilung Binche. Das Gericht erster Instanz
+Lüttich (seit 2024) und die Polizeigerichte Limburg und Lüttich geben ihren Abteilungen Listen von
+Gemeinden statt Kantonen.
+Eine Gemeinde gehört zu der Abteilung, die sie in `municipalities` nennt, andernfalls zu der, die
+ihren Kanton hat. `findDivisionsWithJurisdiction` übernimmt diese Suche.
+
+### Zivilsachen und Strafsachen {#civil-and-criminal-cases}
+
+Ein Erlass kann ein Gebiet für Zivilsachen und ein anderes für Strafsachen festlegen. Das Gericht
+erster Instanz und das Polizeigericht Antwerpen tun das in ihren Erlassen vom 16. Dezember 2020:
+In Zivilsachen geht der ganze Kanton Heist-op-den-Berg an die Abteilung Mecheln, und in
+Strafsachen (mit den darin verhandelten Zivilklagen) gehen seine Gemeinden Hulshout und Herenthout
+an Turnhout.
+
+`cantons` und `municipalities` sind dann das Gebiet in Zivilsachen, und die Abteilung hat ihr
+Gebiet in Strafsachen in `criminalArea`, mit denselben zwei Feldern:
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout und Hulshout
+```
+
+Nur eine Abteilung, deren zwei Gebiete sich unterscheiden, hat ein `criminalArea`: heute vier,
+Mecheln und Turnhout bei beiden Gerichten. Für jede andere Abteilung gilt das eine Gebiet für
+beides. `findDivisionsWithJurisdiction` nimmt die Art der Sache als `matter` entgegen:
+
+```ts
+const ids = (matter) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', { matter }).map((d) => d.id)
+ids('civil') // ['police-court-antwerpen-mechelen']
+ids('criminal') // ['police-court-antwerpen-turnhout']
+ids() // beide, die für Zivilsachen zuerst: Die Art der Sache entscheidet
+```
+
+### Quellen {#sources}
+
+Die Gebiete sind der geltende Text, von Hand konsolidiert aus den Veröffentlichungen im Belgischen
+Staatsblatt, die jede Abteilung in `sources` angibt: der Erlass, der das Gebiet festlegt, und jeder
+spätere, der es geändert hat. Die Gebiete der Polizeigerichte wurden aus den konsolidierten Texten
+von Justel gelesen. Ein Test prüft, dass die Abteilungen eines Gerichts sein Gebiet genau einmal
+abdecken, in Zivilsachen und in Strafsachen.
+
+Ein Erlass kann auch eine Art von Sachen für das ganze Gericht einer einzigen Abteilung zuweisen:
+die kollektiven Schuldenregelungen des Arbeitsgerichts Hennegau oder die Straftaten, die in die
+Zuständigkeit der Arbeitsgerichte fallen, beim Polizeigericht Lüttich. Diese Regeln sind nicht in
+den Daten.
+
 ## Hilfsfunktionen {#helpers}
 
 ```ts
@@ -152,6 +219,8 @@ getJusticeOfThePeace('gent-1') // dasselbe Gericht, über die Kanton-ID
 getDivisions('enterprise-court-gent') // seine acht Abteilungen
 getCourtsForCanton('gent-1') // sein Friedensgericht und je ein Gericht jedes anderen Typs
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde], per REFNIS-Code
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // der Wert des ersten passenden Kontakts
 formatPhoneNumber('+3253820701') // '053 82 07 01'

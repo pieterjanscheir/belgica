@@ -490,14 +490,56 @@ De hoven of rechtbanken van een type die bevoegd zijn voor een gemeente op een d
 de rechtbanken in wier gebied, zoals de wet het vastlegt (`cantons`), een van de kantons van de gemeente ligt.
 Eén rechtbank voor de meeste gemeenten; in Brussel de Nederlandstalige en de Franstalige rechtbank; voor een
 stad die over kantons gesplitst is, elk vredegerecht dat een van die kantons bedient. Je krijgt de rechtbank
-als geheel: welke van haar afdelingen een zaak behandelt, wordt bij koninklijk besluit bepaald en zit nog niet in de
-data, dus kies zelf uit `getDivisions(court.id)`. Leeg voor een onbekende code.
+als geheel: [`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type) geeft de
+afdeling. Leeg voor een onbekende code.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // de soort zaak: 'civil' | 'criminal'
+}
+```
+
+Waar je neerlegt voor een gemeente, op REFNIS-code: voor elk gerecht dat
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type) geeft, de afdeling in wier gebied de gemeente ligt, zoals de
+koninklijke besluiten op grond van art. 186 van het Gerechtelijk Wetboek het vastleggen (zie
+[afdelingen](/nl/data/courts#divisions)). Een gemeente behoort tot de afdeling die ze in
+`municipalities` noemt, of anders tot de afdeling die haar kanton in `cantons` heeft. Een gerecht
+dat niet in afdelingen verdeeld is, geeft zichzelf. Een stad die gesplitst is over kantons die naar
+verschillende afdelingen gaan, zou ze allemaal geven, en dan beslist het adres; vandaag is geen
+enkele stad zo gesplitst. Leeg voor een onbekende code.
+
+De rechtbank van eerste aanleg en de politierechtbank Antwerpen hebben één gebied voor burgerlijke
+zaken en een ander voor strafzaken (het
+[`criminalArea`](/nl/data/courts#civil-and-criminal-cases) van een afdeling): Hulshout en
+Herenthout gaan in burgerlijke zaken naar Mechelen en in strafzaken naar Turnhout. `matter` zegt
+om welke soort zaak het gaat. Zonder `matter` krijgen die twee gemeenten beide afdelingen, de
+burgerlijke eerst; elke andere gemeente krijgt hetzelfde antwoord, wat de soort zaak ook is.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']: Pont-à-Celles, hoewel de rest van zijn kanton naar Binche gaat
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']: niet in afdelingen verdeeld
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']: Hulshout, dat in burgerlijke zaken naar Mechelen gaat
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

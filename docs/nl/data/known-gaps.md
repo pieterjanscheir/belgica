@@ -9,7 +9,7 @@ import { data as stats } from '../../.vitepress/stats.data'
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
 - **Regels die één soort zaak naar één afdeling sturen, zitten niet in de data.** Elke afdeling
   heeft haar gebied, en haar gebied in strafzaken waar het besluit een ander bepaalt
-  ([afdelingen](/data/courts#divisions)). Een besluit kan ook één soort zaak voor het hele gerecht
+  ([afdelingen](/nl/data/courts#divisions)). Een besluit kan ook één soort zaak voor het hele gerecht
   naar één afdeling sturen, zoals de collectieve schuldenregelingen van de arbeidsrechtbank
   Henegouwen: die kent `findDivisionsWithJurisdiction` niet.
 - **{{ stats.courts.withoutAddress }} gerechten hebben geen enkel adres**: een gerecht waarvan elke
