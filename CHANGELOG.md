@@ -15,6 +15,11 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ### Fixed
 
+- The Prepare release workflow says what to do when it may not open the release pull request.
+  It pushed the branch and then failed on GitHub's "GitHub Actions is not permitted to create or
+  approve pull requests", as it did for 0.11.0. The run now ends with a link that opens the pull
+  request in one click, and names the repository setting and the bot that let it open the pull
+  request itself.
 - The sources run tries its calls to GitHub's API that open or update the data pull request
   and the data-update issue three times when GitHub answers a 5xx or the connection drops. On
   19 November 2026 a single `504 Gateway Timeout` after the push left the data on the branch
