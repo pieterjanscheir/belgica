@@ -153,11 +153,11 @@ instead, and keep the offices, chambers and the areas they cover.
    version, bumps `version` in `package.json` and the Python package (`python/pyproject.toml`
    and `python/uv.lock`), points the raw data links in the docs at the new
    tag (`scripts/prepare-release.ts`), and opens the release pull request.
-2. Tidy the version's section if it needs it (two branches can each add an `### Added`), check
-   the pull request, and merge it.
+2. Tidy the version's section if it needs it (two branches can each add an `### Added`).
 3. If the version changes an answer, a field's meaning or the shape of the data, add a section
-   to [Upgrading](./upgrading): what changes for code that already uses the package, with the
-   answer before and after, and what to do.
+   to [Upgrading](./upgrading) in the same pull request: what changes for code that already
+   uses the package, with the answer before and after, and what to do.
+4. Check the pull request, and merge it.
 
 Merging a new `version` into main starts the release workflow: it runs `pnpm check`, publishes
 to npm with provenance and to PyPI, tags the commit, and creates a GitHub release with the data, schemas and

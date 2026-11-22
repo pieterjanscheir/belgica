@@ -60,12 +60,13 @@ give themselves.
 What to change:
 
 - **You want the court, not the division.** Call `findCourtsWithJurisdiction`, which is
-  unchanged, or go up from the division with `court`:
+  unchanged, or go up from the division with `court`, which a division has and a court
+  doesn't:
 
     ```ts
-    const [division] = findDivisionsWithJurisdiction('44021', 'police-court')
-    const court = division.kind === 'division' ? getCourt(division.court) : division
-    court.id // 'police-court-oost-vlaanderen'
+    const [found] = findDivisionsWithJurisdiction('44021', 'police-court')
+    const court = found?.court ? getCourt(found.court) : found
+    court?.id // 'police-court-oost-vlaanderen'
     ```
 
 - **You listed the divisions to let someone choose.** That is no longer needed: the result is
@@ -97,9 +98,10 @@ What to change:
     // ['police-court-antwerpen-turnhout']
     ```
 
-- **You don't.** Show both, as you would for a city split over cantons. Code that takes the
-  first result keeps getting Mechelen, the answer of 0.10; code that requires exactly one
-  result fails for these two municipalities.
+- **You don't.** Show both, as you would for a city split over cantons. Code that requires
+  exactly one result fails for these two municipalities. For the court of first instance, code
+  that takes the first result keeps getting Mechelen, the answer of 0.10; for the police court,
+  0.10 gave the court as a whole, so [the change above](#v0-11-police) applies.
 
 Every other municipality gets one division of these courts, with or without `matter`.
 

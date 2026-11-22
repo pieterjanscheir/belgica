@@ -7,6 +7,12 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Added
+
+- The documentation has an [Upgrading](https://pieterjanscheir.github.io/belgica/guide/upgrading)
+  page: what each version asks of code that already uses the package, with the answer before
+  and after and what to do. It starts with 0.10 to 0.11.
+
 ## [0.11.0] - 2026-11-22
 
 ### Added
