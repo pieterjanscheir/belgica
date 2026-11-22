@@ -85,7 +85,7 @@
           "items": {
             "$ref": "#/definitions/CantonId"
           },
-          "description": "For a court other than a justice of the peace: the cantons it covers, as the annex to the Judicial Code (art. 3–5) and art. 114 of the Code set them. A justice of the peace covers its `canton`. For a division of a court of first instance, enterprise court, labour court or labour court of appeal: the cantons that lie wholly in its area, as the royal decrees under art. 186 of the Code set it; `municipalities` has the rest. A seat, and a division of a police court, has neither."
+          "description": "For a court other than a justice of the peace: the cantons it covers, as the annex to the Judicial Code (art. 3–5) and art. 114 of the Code set them. A justice of the peace covers its `canton`. For a division (afdeling, division): the cantons that lie wholly in its area, as the royal decrees under art. 186 of the Code set it; `municipalities` has the rest. Where the decree sets one area for civil and another for criminal cases, this is the one for civil cases, and `criminalArea` has the other. A seat has neither."
         },
         "municipalities": {
           "type": "array",
@@ -93,6 +93,27 @@
             "$ref": "#/definitions/MunicipalityId"
           },
           "description": "For a division whose area takes only some municipalities of a canton (one it shares with another division of its court): those municipalities, by REFNIS code. A municipality belongs to the division that has it here, or else to the one that has its canton in `cantons`."
+        },
+        "criminalArea": {
+          "type": "object",
+          "properties": {
+            "cantons": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CantonId"
+              },
+              "description": "The cantons that lie wholly in the division's area in criminal cases"
+            },
+            "municipalities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MunicipalityId"
+              },
+              "description": "The municipalities it takes from a canton it shares, by REFNIS code"
+            }
+          },
+          "additionalProperties": false,
+          "description": "For a division whose decree sets another area for criminal cases (strafzaken, with the civil claims heard in them) than for civil ones: its area in criminal cases, read as `cantons` and `municipalities` are. Missing where the division has one area for both, as almost every division does."
         },
         "ecli": {
           "type": "array",

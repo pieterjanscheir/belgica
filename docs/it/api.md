@@ -418,14 +418,56 @@ predefinita), per codice REFNIS: i tribunali la cui area, come la stabilisce la 
 (`cantons`), comprende uno dei cantoni del comune. Un solo tribunale per la maggior parte dei
 comuni; a Bruxelles il tribunale di lingua neerlandese e quello di lingua francese; per una città
 suddivisa tra cantoni, ogni giudice di pace che ne serve uno. Restituisce il tribunale nel suo
-insieme: quale delle sue sezioni tratta una causa è stabilito da un regio decreto e non è ancora
-nei dati, quindi scegli tra `getDivisions(court.id)`. Vuoto per un codice sconosciuto.
+insieme: [`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type)
+restituisce la sezione. Vuoto per un codice sconosciuto.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // il tipo di causa: 'civil' | 'criminal'
+}
+```
+
+Dove depositare per un comune, per codice REFNIS: per ogni tribunale restituito da
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type), la sezione la
+cui area comprende il comune, come la stabiliscono i regi decreti adottati in base all'art. 186
+del Gerechtelijk Wetboek / Code judiciaire (vedi [sezioni](/it/data/courts#divisions)). Un comune
+appartiene alla sezione che lo nomina in `municipalities`, altrimenti a quella che ha il suo
+cantone in `cantons`. Un tribunale non suddiviso in sezioni restituisce se stesso. Una città
+suddivisa tra cantoni che vanno a sezioni diverse le restituirebbe tutte, e decide l'indirizzo;
+oggi nessuna città è suddivisa in questo modo. Vuoto per un codice sconosciuto.
+
+Il rechtbank van eerste aanleg e il politierechtbank di Antwerpen hanno un'area per le cause
+civili e un'altra per quelle penali (il
+[`criminalArea`](/it/data/courts#civil-and-criminal-cases) di una sezione): Hulshout e Herenthout
+vanno a Mechelen nelle prime e a Turnhout nelle seconde. `matter` dice quale. Senza, questi due
+comuni ottengono entrambe le sezioni, prima quella civile; ogni altro comune ottiene la stessa
+risposta qualunque sia il tipo di causa.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']: Pont-à-Celles, anche se il resto del suo cantone va a Binche
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']: non suddiviso in sezioni
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']: Hulshout, che nelle cause civili va a Mechelen
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}

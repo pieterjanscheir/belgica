@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+
 import { describe, expect, it } from 'vitest'
 
 import {
@@ -5,6 +7,7 @@ import {
     decreeEli,
     resolveDivisionAreas,
     type CourtDivisions,
+    type DivisibleCourt,
     type Territory,
 } from '../../scripts/parse/division-areas.ts'
 
@@ -98,6 +101,59 @@ describe('resolveDivisionAreas', () => {
 describe('applyDivisionAreas', () => {
     it('reports a divided court the sources lack', () => {
         expect(applyDivisionAreas([], territory).missing).toContain('labour-court-gent')
+    })
+
+    it('gives a division its area in criminal cases only where it differs', () => {
+        const data = (file: string) =>
+            JSON.parse(readFileSync(`data/${file}.json`, 'utf8')) as unknown
+        const division = (place: string): DivisibleCourt => ({
+            id: `police-court-antwerpen-${place}`,
+            kind: 'division',
+            court: 'police-court-antwerpen',
+            sources: [],
+        })
+        const court: DivisibleCourt = {
+            id: 'police-court-antwerpen',
+            kind: 'court',
+            cantons: [
+                ...['1', '2', '3', '4', '5', '6', '7'].map((n) => `antwerpen-${n}`),
+                ...['merksem', 'deurne', 'boom', 'brasschaat', 'kapellen', 'kontich'],
+                ...['zandhoven', 'heist-op-den-berg', 'lier', 'mechelen', 'willebroek'],
+                ...['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+            ],
+            sources: [],
+        }
+        const [antwerpen, mechelen, turnhout] = ['antwerpen', 'mechelen', 'turnhout'].map(division)
+        const { problems } = applyDivisionAreas(
+            [court, antwerpen, mechelen, turnhout].flatMap((c) => c ?? []),
+            {
+                cantons: data('cantons') as Territory['cantons'],
+                municipalities: data('municipalities') as Territory['municipalities'],
+            },
+        )
+        expect(problems).toEqual([])
+        // The same area in civil and in criminal cases
+        expect(antwerpen?.cantons).toContain('antwerpen-1')
+        expect(antwerpen?.criminalArea).toBeUndefined()
+        // Hulshout (13016) and Herenthout (13012) leave Mechelen for Turnhout in criminal cases,
+        // so Mechelen keeps Heist-op-den-Berg (12014) and Putte (12029) of their canton by name
+        expect(mechelen?.cantons).toEqual(['heist-op-den-berg', 'lier', 'mechelen', 'willebroek'])
+        expect(mechelen?.municipalities).toBeUndefined()
+        expect(mechelen?.criminalArea).toEqual({
+            cantons: ['lier', 'mechelen', 'willebroek'],
+            municipalities: ['12014', '12029'],
+        })
+        expect(turnhout?.criminalArea).toEqual({
+            cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+            municipalities: ['13012', '13016'],
+        })
+        // Read later than the other courts' areas
+        expect(mechelen?.sources).toEqual([
+            {
+                url: 'https://www.ejustice.just.fgov.be/eli/besluit/2020/12/16/2020016203/staatsblad',
+                retrieved: '2026-11-22',
+            },
+        ])
     })
 
     it('cites the publication in the Official Journal', () => {

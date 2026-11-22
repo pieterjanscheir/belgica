@@ -79,26 +79,28 @@ outra coisa neste pacote: quando for importante, consulte a página do tribunal 
 
 ## Campos {#fields}
 
-| Campo              | Tipo                                  | Descrição                                                                                                                                                                                                              |
-| ------------------ | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`               | `CourtId`                             | Id estável: o `type`, depois o local na língua do próprio tribunal: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Veja [identificadores](/pt/guide/identifiers)            |
-| `validFrom`        | string?                               | Primeiro dia em que o registo se aplica, `YYYY-MM-DD`: o dia em que o portal o listou pela primeira vez. Nenhum: desde o início da cobertura                                                                           |
-| `validTo`          | string?                               | Último dia em que o registo se aplica: o dia anterior à verificação semanal que deu pela sua ausência no portal. Nenhum: ainda se aplica                                                                               |
-| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                  |
-| `kind`             | `'court'` \| `'division'` \| `'seat'` | O próprio tribunal, uma das suas divisões (afdeling, division, Abteilung), ou um dos locais onde um justice de paix tem sede                                                                                           |
-| `court`            | `CourtId`?                            | Para uma divisão ou sede: o tribunal a que pertence                                                                                                                                                                    |
-| `name`             | `{ nl?, fr?, de? }`                   | O nome tal como o tribunal o publica, em cada língua em que tem uma página: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                               |
-| `judicialArea`     | `JudicialAreaId`                      | A área judicial                                                                                                                                                                                                        |
-| `arrondissement`   | `ArrondissementId`?                   | O arrondissement, para um tribunal ou divisão cuja área é um arrondissement ou fica dentro de um                                                                                                                       |
-| `canton`           | `CantonId`?                           | Para um justice de paix: o cantão que serve                                                                                                                                                                            |
-| `cantons`          | `CantonId[]`?                         | Para todos os outros tribunais (não as suas divisões): os cantões que abrange, tal como os fixam o anexo ao Gerechtelijk Wetboek / Code judiciaire (art. 3–5) e o art. 114 do mesmo código                             |
-| `ecli`             | `string[]`?                           | Os códigos ECLI do tribunal, um por língua em que julga; só códigos vistos em decisões publicadas                                                                                                                      |
-| `address`          | `Address`?                            | Onde fica a secretaria, com o município a que pertence o seu código postal (`municipality`, por código REFNIS). Ausente quando o tribunal não publica uma morada única (um tribunal cujas divisões têm cada uma a sua) |
-| `contacts`         | `Contact[]`                           | Telefone, fax, e-mail e conta bancária, cada um com a secretaria a que pertence (`label`) e o texto publicado com ele (`note`)                                                                                         |
-| `openingHours`     | string?                               | Horário da secretaria na sintaxe [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) do OpenStreetMap: `Mo-Fr 08:30-12:30,13:30-16:00`, só quando o texto publicado diz exatamente isso           |
-| `openingHoursText` | `{ nl?, fr?, de? }`?                  | O horário tal como publicado, por língua                                                                                                                                                                               |
-| `website`          | `{ nl?, fr?, de? }`                   | A página do tribunal no portal, por língua                                                                                                                                                                             |
-| `sources`          | `{ url, retrieved }[]`                | As páginas de onde o registo foi lido, e quando o seu conteúdo foi visto pela primeira vez                                                                                                                             |
+| Campo              | Tipo                                  | Descrição                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`               | `CourtId`                             | Id estável: o `type`, depois o local na língua do próprio tribunal: `justice-of-the-peace-gent-1`, `police-court-brussel-fr`, `enterprise-court-gent-brugge`. Veja [identificadores](/pt/guide/identifiers)                                                                                                                                                                                                                           |
+| `validFrom`        | string?                               | Primeiro dia em que o registo se aplica, `YYYY-MM-DD`: o dia em que o portal o listou pela primeira vez. Nenhum: desde o início da cobertura                                                                                                                                                                                                                                                                                          |
+| `validTo`          | string?                               | Último dia em que o registo se aplica: o dia anterior à verificação semanal que deu pela sua ausência no portal. Nenhum: ainda se aplica                                                                                                                                                                                                                                                                                              |
+| `type`             | `CourtType`                           | `justice-of-the-peace`, `police-court`, `court-of-first-instance`, `enterprise-court`, `labour-court`, `court-of-appeal`, `labour-court-of-appeal`, `court-of-assize`                                                                                                                                                                                                                                                                 |
+| `kind`             | `'court'` \| `'division'` \| `'seat'` | O próprio tribunal, uma das suas divisões (afdeling, division, Abteilung), ou um dos locais onde um justice de paix tem sede                                                                                                                                                                                                                                                                                                          |
+| `court`            | `CourtId`?                            | Para uma divisão ou sede: o tribunal a que pertence                                                                                                                                                                                                                                                                                                                                                                                   |
+| `name`             | `{ nl?, fr?, de? }`                   | O nome tal como o tribunal o publica, em cada língua em que tem uma página: `Vredegerecht Gent 1`, `Tribunal de l'entreprise du Hainaut - division Mons`                                                                                                                                                                                                                                                                              |
+| `judicialArea`     | `JudicialAreaId`                      | A área judicial                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `arrondissement`   | `ArrondissementId`?                   | O arrondissement, para um tribunal ou divisão cuja área é um arrondissement ou fica dentro de um                                                                                                                                                                                                                                                                                                                                      |
+| `canton`           | `CantonId`?                           | Para um justice de paix: o cantão que serve                                                                                                                                                                                                                                                                                                                                                                                           |
+| `cantons`          | `CantonId[]`?                         | Para todos os outros tribunais: os cantões que abrange, tal como os fixam o anexo ao Gerechtelijk Wetboek / Code judiciaire (art. 3–5) e o art. 114 do mesmo código. Para uma divisão: os cantões que ficam inteiramente na sua área, tal como a fixam os decretos reais adotados ao abrigo do art. 186 do código (veja [divisões](#divisions)); a área para os processos cíveis quando o decreto fixa outra para os processos penais |
+| `municipalities`   | `MunicipalityId[]`?                   | Para uma divisão cuja área abrange só parte de um cantão: esses municípios, por código REFNIS                                                                                                                                                                                                                                                                                                                                         |
+| `criminalArea`     | `{ cantons?, municipalities? }`?      | Para uma divisão cujo decreto fixa para os processos penais uma área diferente da dos cíveis: a sua área nos processos penais, lida como `cantons` e `municipalities`. Ausente quando a divisão tem uma só área para ambos                                                                                                                                                                                                            |
+| `ecli`             | `string[]`?                           | Os códigos ECLI do tribunal, um por língua em que julga; só códigos vistos em decisões publicadas                                                                                                                                                                                                                                                                                                                                     |
+| `address`          | `Address`?                            | Onde fica a secretaria, com o município a que pertence o seu código postal (`municipality`, por código REFNIS). Ausente quando o tribunal não publica uma morada única (um tribunal cujas divisões têm cada uma a sua)                                                                                                                                                                                                                |
+| `contacts`         | `Contact[]`                           | Telefone, fax, e-mail e conta bancária, cada um com a secretaria a que pertence (`label`) e o texto publicado com ele (`note`)                                                                                                                                                                                                                                                                                                        |
+| `openingHours`     | string?                               | Horário da secretaria na sintaxe [`opening_hours`](https://wiki.openstreetmap.org/wiki/Key:opening_hours) do OpenStreetMap: `Mo-Fr 08:30-12:30,13:30-16:00`, só quando o texto publicado diz exatamente isso                                                                                                                                                                                                                          |
+| `openingHoursText` | `{ nl?, fr?, de? }`?                  | O horário tal como publicado, por língua                                                                                                                                                                                                                                                                                                                                                                                              |
+| `website`          | `{ nl?, fr?, de? }`                   | A página do tribunal no portal, por língua                                                                                                                                                                                                                                                                                                                                                                                            |
+| `sources`          | `{ url, retrieved }[]`                | As páginas de onde o registo foi lido, e quando o seu conteúdo foi visto pela primeira vez                                                                                                                                                                                                                                                                                                                                            |
 
 ::: tip Novos tipos de tribunal
 `type` pode ganhar valores (o Hof van Cassatie / Cour de cassation, por exemplo). Se fizer um
@@ -120,6 +122,8 @@ interface Court {
     arrondissement?: ArrondissementId
     canton?: CantonId
     cantons?: CantonId[]
+    municipalities?: MunicipalityId[]
+    criminalArea?: { cantons?: CantonId[]; municipalities?: MunicipalityId[] }
     ecli?: string[]
     address?: Address
     contacts: Contact[]
@@ -145,6 +149,70 @@ interface Contact {
 }
 ```
 
+## Divisões {#divisions}
+
+Um tribunal de première instance / rechtbank van eerste aanleg, um tribunal de l'entreprise /
+ondernemingsrechtbank, um tribunal du travail / arbeidsrechtbank, uma cour du travail /
+arbeidshof ou um tribunal de police / politierechtbank pode estar dividido em divisões
+(afdelingen, divisions): onde se dá entrada do processo, e onde decorre a audiência. A divisão de
+um tribunal de l'entreprise é também a que consta da menção do registo das pessoas coletivas nos
+documentos das empresas ("RPR Gent, afdeling Brugge"). Um decreto real adotado ao abrigo do art.
+186 do Gerechtelijk Wetboek / Code judiciaire fixa a área de cada divisão: o decreto de 14 de
+março de 2014 ou, desde então para muitos tribunais, o decreto de repartição dos processos do
+próprio tribunal (zaakverdelingsreglement). As reformas dos cantões de 2017–2019 e as fusões de
+municípios de 2025 alteraram ambos.
+
+Cada divisão tem a sua área em `cantons`: os cantões que ficam inteiramente nela. Quando um
+decreto divide um cantão, a divisão lista em `municipalities` os municípios que dele recebe. O
+tribunal du travail de Hainaut envia Pont-à-Celles (cantão de Seneffe) para Charleroi, e
+Erquelinnes e Merbes-le-Château (cantão de Chimay) para Binche. O tribunal de première instance
+de Liège (desde 2024) e os tribunaux de police de Limburg e de Liège dão às suas divisões listas
+de municípios em vez de cantões. Um município pertence à divisão que o indica em
+`municipalities` ou, se nenhuma o indicar, à que tem o seu cantão.
+`findDivisionsWithJurisdiction` faz essa pesquisa.
+
+### Processos cíveis e penais {#civil-and-criminal-cases}
+
+Um decreto pode fixar uma área para os processos cíveis e outra para os penais. É o que fazem o
+tribunal de première instance e o tribunal de police de Antwerpen, nos seus decretos de 16 de
+dezembro de 2020: nos processos cíveis todo o cantão de Heist-op-den-Berg vai para a divisão de
+Mechelen, e nos processos penais (com os pedidos cíveis neles julgados) os seus municípios de
+Hulshout e Herenthout vão para Turnhout.
+
+`cantons` e `municipalities` são então a área nos processos cíveis, e a divisão tem a sua área
+nos processos penais em `criminalArea`, com os mesmos dois campos:
+
+```ts
+getCourt('police-court-antwerpen-turnhout').criminalArea
+// { cantons: ['mol-geel-1', 'mol-geel-2', 'turnhout-1', 'turnhout-2', 'westerlo'],
+//   municipalities: ['13012', '13016'] }   Herenthout e Hulshout
+```
+
+Só uma divisão cujas duas áreas diferem tem `criminalArea`: hoje são quatro, Mechelen e Turnhout
+nos dois tribunais. Para todas as outras divisões, a única área vale para os dois tipos de
+processo. `findDivisionsWithJurisdiction` recebe o tipo de processo em `matter`:
+
+```ts
+const ids = (options?: DivisionOptions) =>
+    findDivisionsWithJurisdiction('13016', 'police-court', options).map((d) => d.id)
+ids({ matter: 'civil' }) // ['police-court-antwerpen-mechelen']
+ids({ matter: 'criminal' }) // ['police-court-antwerpen-turnhout']
+ids() // ambas, a cível primeiro: o tipo de processo decide
+```
+
+### Fontes {#sources}
+
+As áreas são o texto em vigor, consolidado à mão a partir das publicações no Belgisch
+Staatsblad / Moniteur belge que cada divisão cita em `sources`: o decreto que fixa a área e todos
+os posteriores que a alteraram. As áreas dos tribunaux de police / politierechtbanken foram lidas
+dos textos consolidados do Justel. Um teste verifica que as divisões de um tribunal cobrem a sua
+área uma só vez, nos processos cíveis e nos penais.
+
+Um decreto pode também enviar um tipo de processo para uma só divisão em todo o tribunal: os
+processos de regularização coletiva de dívidas do tribunal du travail de Hainaut, ou as infrações
+que cabem aos tribunaux du travail no tribunal de police de Liège. Essas regras não estão nos
+dados.
+
 ## Funções auxiliares {#helpers}
 
 ```ts
@@ -153,6 +221,8 @@ getJusticeOfThePeace('gent-1') // o mesmo tribunal, pelo id do cantão
 getDivisions('enterprise-court-gent') // as suas oito divisões
 getCourtsForCanton('gent-1') // o seu justice de paix, e um tribunal de cada um dos outros tipos
 findCourtsWithJurisdiction('23088', 'police-court') // [police-court-vilvoorde], por código REFNIS
+findDivisionsWithJurisdiction('31005', 'enterprise-court') // [enterprise-court-gent-brugge]
+findDivisionsWithJurisdiction('44021', 'police-court') // [police-court-oost-vlaanderen-gent]
 findCourts({ type: 'police-court', kind: 'court', judicialArea: 'gent' })
 getContact(court, 'email', 'Greffe pénal') // o valor do primeiro contacto correspondente
 formatPhoneNumber('+3253820701') // '053 82 07 01'

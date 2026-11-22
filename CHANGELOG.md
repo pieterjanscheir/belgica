@@ -18,6 +18,39 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
   `data-freshness` issue say the branch is pushed and ready, with a link to open the pull
   request by hand.
 
+## [0.11.0] - 2026-11-22
+
+### Added
+
+- **The police courts' divisions have their area**
+  ([#58](https://github.com/pieterjanscheir/belgica/issues/58)): the 33 divisions of the ten
+  divided police courts have `cantons`, and `municipalities` where a decree splits a canton, as
+  the divisions of the other courts do. `findDivisionsWithJurisdiction(municipalityId,
+'police-court')` now gives the division; it gave the police court as a whole. The areas are
+  Justel's consolidated texts of the decree of 14 March 2014 (art. 23–25 and 27–30) and of the
+  case-allocation decrees of the police courts of Limburg (27 September 2018), Antwerp (16
+  December 2020) and Liège (11 March 2024), which list municipalities for Limburg and Liège.
+- **A division's area in criminal cases**: `criminalArea` (`cantons` and `municipalities`) on a
+  division whose decree sets another area for criminal cases than for civil ones. The court of
+  first instance and the police court of Antwerp do: Hulshout and Herenthout (canton
+  Heist-op-den-Berg) go to Mechelen in civil cases and to Turnhout in criminal ones, so their
+  divisions Mechelen and Turnhout have a `criminalArea`. `cantons` and `municipalities` stay
+  the area in civil cases, and a division with one area has no `criminalArea`. The court
+  summaries in `data/courts/` have the field too.
+- `findDivisionsWithJurisdiction` takes the kind of case: `{ matter: 'civil' | 'criminal' }`
+  (Python: `matter='criminal'`), with the types `Matter` and `DivisionOptions`.
+
+### Changed
+
+- `belgica/courts` is 57.8 KB gzipped, from 57.0 KB: the police courts' division areas and the
+  decrees they cite. Its size limit in the tests goes from 57 to 58.5 KB.
+- Without `matter`, `findDivisionsWithJurisdiction` gives **both** divisions for a municipality
+  that the civil and the criminal area send to different ones, the civil one first. That is
+  Hulshout (13016) and Herenthout (13012) for the court of first instance of Antwerp, which
+  gave only Mechelen. For every other municipality and for the other courts that already had
+  division areas, the answer is the one it was; a police court now gives its division, as said
+  above.
+
 ## [0.10.0] - 2026-11-19
 
 ### Added
@@ -637,7 +670,8 @@ OpenStreetMap `opening_hours` syntax (`Mo-Fr 08:30-12:30,13:30-16:00`).
 - Courts (justices of the peace in East and West Flanders, Ondernemingsrechtbank Gent) and the
   legal and commercial interest rates.
 
-[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.10.0...HEAD
+[Unreleased]: https://github.com/pieterjanscheir/belgica/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/pieterjanscheir/belgica/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/pieterjanscheir/belgica/compare/v0.9.1...v0.10.0
 [0.9.1]: https://github.com/pieterjanscheir/belgica/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/pieterjanscheir/belgica/compare/v0.8.0...v0.9.0

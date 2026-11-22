@@ -8,9 +8,11 @@ import { data as stats } from '../../.vitepress/stats.data'
   (Касаційний суд), Grondwettelijk Hof / Cour constitutionnelle (Конституційний суд), Raad van
   State / Conseil d'État (Державна рада) і дисциплінарні суди
   ([#4](https://github.com/pieterjanscheir/belgica/issues/4)).
-- **Компетенція закінчується на рівні суду.** `cantons` і `findCourtsWithJurisdiction` кажуть, який
-  суд охоплює громаду, але не яке з його відділень: територію відділення визначає королівський
-  указ, і в даних її поки немає ([#58](https://github.com/pieterjanscheir/belgica/issues/58)).
+- **Правил, що спрямовують один вид справ до одного відділення, у даних немає.** Кожне відділення
+  має свою територію, а також територію в кримінальних справах, якщо указ визначає для них іншу
+  ([відділення](/uk/data/courts#divisions)). Указ може також спрямувати один вид справ до одного
+  відділення для всього суду, як-от колективне врегулювання боргів (règlement collectif de
+  dettes) у tribunal du travail du Hainaut: `findDivisionsWithJurisdiction` таких правил не знає.
 - **{{ stats.courts.withoutAddress }} судів не мають єдиної адреси**: суд, кожне відділення
   якого має власну адресу (адреса вказана у відділенні), або суд, що публікує свої адреси у
   вигляді речення. Їхня `address` відсутня, а не вгадана; відділення мають свої.

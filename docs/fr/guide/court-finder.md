@@ -75,9 +75,9 @@ for (const court of getCourtsForCanton('antwerpen-4')) {
 }
 ```
 
-Quelle division d'un tribunal connaît de l'affaire est fixé par arrêté royal et n'est pas encore
-dans les données ([#58](https://github.com/pieterjanscheir/belgica/issues/58)) : `getDivisions`
-les liste.
+Quelle division d'un tribunal connaît de l'affaire est fixé par arrêté royal :
+[`findDivisionsWithJurisdiction`](/fr/api#finddivisionswithjurisdiction-municipalityid-type) la donne pour une commune,
+et `getDivisions` liste les divisions d'un tribunal.
 
 ## La carte {#the-map}
 

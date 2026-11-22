@@ -46,6 +46,7 @@ const SUMMARY: readonly (keyof CourtSummary)[] = [
     'canton',
     'cantons',
     'municipalities',
+    'criminalArea',
     'arrondissement',
     'judicialArea',
     'address',

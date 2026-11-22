@@ -416,15 +416,57 @@ Os tribunais de um tipo competentes para um município num dia (hoje por omissã
 REFNIS: os tribunais cuja área, tal como a lei a fixa (`cantons`), contém um dos cantões do
 município. Um tribunal para a maioria dos municípios; em Bruxelas o tribunal neerlandófono e o
 francófono; para uma cidade dividida por cantões, cada justice de paix que serve um deles. Dá o
-tribunal como um todo: qual das suas divisões julga um processo é fixado por decreto real e ainda
-não está nos dados, por isso escolha entre `getDivisions(court.id)`. Vazio para um código
-desconhecido.
+tribunal como um todo:
+[`findDivisionsWithJurisdiction`](#finddivisionswithjurisdiction-municipalityid-type) dá a
+divisão. Vazio para um código desconhecido.
 
 ```ts
 findCourtsWithJurisdiction('23088', 'police-court').map((c) => c.id) // ['police-court-vilvoorde']
 findCourtsWithJurisdiction('21004', 'court-of-first-instance').map((c) => c.id)
 // ['court-of-first-instance-brussel-fr', 'court-of-first-instance-brussel-nl']
 findCourtsWithJurisdiction('44021', 'labour-court').map((c) => c.id) // ['labour-court-gent']
+```
+
+### `findDivisionsWithJurisdiction(municipalityId, type, options?)` {#finddivisionswithjurisdiction-municipalityid-type}
+
+```ts
+function findDivisionsWithJurisdiction(
+    municipalityId: string,
+    type: CourtType,
+    options?: DivisionOptions,
+): Court[]
+
+interface DivisionOptions extends OnDay {
+    matter?: Matter // o tipo de processo: 'civil' | 'criminal'
+}
+```
+
+Onde dar entrada do processo para um município, por código REFNIS: para cada tribunal que
+[`findCourtsWithJurisdiction`](#findcourtswithjurisdiction-municipalityid-type) dá, a divisão
+cuja área contém o município, tal como a fixam os decretos reais adotados ao abrigo do art. 186
+do Gerechtelijk Wetboek / Code judiciaire (veja [divisões](/pt/data/courts#divisions)). Um
+município pertence à divisão que o indica em `municipalities` ou, se nenhuma o indicar, à que tem
+o seu cantão em `cantons`. Um tribunal que não está dividido dá-se a si próprio. Uma cidade
+dividida por cantões que vão para divisões diferentes daria cada uma delas, e decide a morada
+exata; hoje nenhuma cidade está dividida assim. Vazio para um código desconhecido.
+
+O tribunal de première instance e o tribunal de police de Antwerpen têm uma área para os
+processos cíveis e outra para os penais (o
+[`criminalArea`](/pt/data/courts#civil-and-criminal-cases) de uma divisão): Hulshout e Herenthout
+vão para Mechelen nos primeiros e para Turnhout nos segundos. `matter` diz qual. Sem ele, esses
+dois municípios recebem as duas divisões, a cível primeiro; todos os outros municípios recebem a
+mesma resposta seja qual for o tipo de processo.
+
+```ts
+findDivisionsWithJurisdiction('31005', 'enterprise-court').map((c) => c.id) // ['enterprise-court-gent-brugge']
+findDivisionsWithJurisdiction('52055', 'labour-court').map((c) => c.id)
+// ['labour-court-hainaut-charleroi']: Pont-à-Celles, embora o resto do seu cantão vá para Binche
+findDivisionsWithJurisdiction('24062', 'court-of-first-instance').map((c) => c.id)
+// ['court-of-first-instance-leuven']: não está dividido
+findDivisionsWithJurisdiction('44021', 'police-court').map((c) => c.id)
+// ['police-court-oost-vlaanderen-gent']
+findDivisionsWithJurisdiction('13016', 'police-court', { matter: 'criminal' }).map((c) => c.id)
+// ['police-court-antwerpen-turnhout']: Hulshout, que nos processos cíveis vai para Mechelen
 ```
 
 ### `findJusticesOfThePeace(municipalityId)` {#findjusticesofthepeace-municipalityid}
