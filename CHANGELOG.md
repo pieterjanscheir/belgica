@@ -7,6 +7,17 @@ minor version, fixing a value a patch, removing or renaming an id a major versio
 
 ## [Unreleased]
 
+### Fixed
+
+- The sources run tries its calls to GitHub's API that open or update the data pull request
+  and the data-update issue three times when GitHub answers a 5xx or the connection drops. On
+  19 November 2026 a single `504 Gateway Timeout` after the push left the data on the branch
+  `data/sources` with no pull request and no issue, and the run looked like a data failure. A
+  refusal, such as a token that may not open pull requests, still opens or updates the
+  data-update issue at once. When every try fails, the run, its summary and the
+  `data-freshness` issue say the branch is pushed and ready, with a link to open the pull
+  request by hand.
+
 ## [0.11.0] - 2026-11-22
 
 ### Added
