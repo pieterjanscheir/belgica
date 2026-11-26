@@ -6,9 +6,9 @@
             "status": 200,
             "contentType": "text/xml",
             "file": "opendata.fin.belgium.be/download/ATOM/6bcbdf8f-e89f-11ec-be04-9453308970f2-en.xml",
-            "sha256": "48b24daa88a98e1b31e5353fc153bbc095e902d6469780eaa1c5bcbd2defc640",
-            "retrieved": "2026-11-23",
-            "checked": "2026-11-23"
+            "sha256": "a90d1a17810738eb388a392fed29a989293253c9076e807f89a312998c8619d8",
+            "retrieved": "2026-11-26",
+            "checked": "2026-11-26"
         },
         {
             "url": "https://opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
@@ -17,7 +17,7 @@
             "file": "opendata.fin.belgium.be/download/datasets/6bcbdf8f-e89f-11ec-be04-9453308970f2_20260618_shp_3812_01000.zip",
             "sha256": "1086bbf5d86775f2df82de54ec367b1261380ab27f7a8b92045fcfe1cdce6fa6",
             "retrieved": "2026-11-23",
-            "checked": "2026-11-23"
+            "checked": "2026-11-26"
         }
     ]
 }
