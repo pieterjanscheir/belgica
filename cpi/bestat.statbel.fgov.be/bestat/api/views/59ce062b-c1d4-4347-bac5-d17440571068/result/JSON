@@ -1,11 +1,6 @@
 {
   "facts" : [ {
     "Jaar" : "1951",
-    "Maand" : "November 1951",
-    "Basisjaar" : "2004 = 100",
-    "Consumptieprijsindex" : 16.300000000000058
-  }, {
-    "Jaar" : "1951",
     "Maand" : "December 1951",
     "Basisjaar" : "2004 = 100",
     "Consumptieprijsindex" : 16.360000000000056
@@ -4499,5 +4494,10 @@
     "Maand" : "Oktober 2026",
     "Basisjaar" : "2004 = 100",
     "Consumptieprijsindex" : 174.50000000000063
+  }, {
+    "Jaar" : "2026",
+    "Maand" : "November 2026",
+    "Basisjaar" : "2004 = 100",
+    "Consumptieprijsindex" : 175.2000000000006
   } ]
 }
